@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="EquipUpSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
+	<e:Image source="equip_0004_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Label text="升级需要消耗" x="303.32" y="425" anchorOffsetX="0" width="185" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24"/>
+	<e:Image id="img_weapon" source="Sequip1_png" x="242" y="282"/>
+	<e:Label id="txt_weapon" text="武器名称" x="132.5" y="180.48" size="28" anchorOffsetX="0" width="312" bold="true" fontFamily="Microsoft YaHei" textColor="0xb39e70" textAlign="center"/>
+	<e:Image id="btn_close" source="button_0009_png" x="980" y="79.99"/>
+	<e:Label id="curr_lv" text="Lv.1" x="472" y="179.66" anchorOffsetX="0" width="236" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
+	<e:Label id="next_lv" text="Lv.2" x="747.16" y="179.66" anchorOffsetX="0" width="230" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
+	<e:Image source="exp_0002_png" x="453" y="416"/>
+	<e:Label id="txt_exp" text="100" x="492" y="425.66" anchorOffsetX="0" width="101" size="25" textAlign="right" textColor="0xf28b09" rotation="0.1" bold="true" fontFamily="Microsoft YaHei"/>
+	<e:Label id="txt_sole" text="100" x="650.04" y="426.07" anchorOffsetX="0" width="101" size="25" textAlign="right" rotation="0.1" bold="true" textColor="0xc91ebb" fontFamily="Microsoft YaHei"/>
+	<e:Image source="sole_0002_png" x="606" y="416"/>
+	<e:Button id="btn_upLevel" label="升级" y="483" anchorOffsetX="0" width="288" horizontalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0011_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-10" bold="true" fontFamily="Microsoft YaHei" size="32" textColor="0x260303"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="title_0007_png" x="486" y="82" />
+	<e:RadioButton id="radio_one" label="一次" x="794.16" y="426"/>
+	<e:RadioButton id="radio_ten" label="十次" x="912" y="426"/>
+</e:Skin>

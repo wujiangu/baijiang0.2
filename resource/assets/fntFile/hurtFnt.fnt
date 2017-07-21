@@ -1,0 +1,12 @@
+{"file":"hurtFnt.png","frames":{
+"1":{"x":88,"y":30,"w":12,"h":28,"offX":4,"offY":0,"sourceW":20,"sourceH":28},
+"2":{"x":44,"y":30,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"3":{"x":66,"y":30,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"4":{"x":0,"y":30,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"5":{"x":22,"y":0,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"6":{"x":66,"y":0,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"7":{"x":44,"y":0,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"8":{"x":0,"y":0,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"9":{"x":88,"y":0,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28},
+"-":{"x":102,"y":30,"w":20,"h":12,"offX":0,"offY":8,"sourceW":20,"sourceH":28},
+"0":{"x":22,"y":30,"w":20,"h":28,"offX":0,"offY":0,"sourceW":20,"sourceH":28}}}

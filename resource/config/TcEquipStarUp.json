@@ -1,0 +1,152 @@
+[
+  {
+    "stage": 1,
+    "star": 0,
+    "bassValue": 500,
+    "needValue": 0
+  },
+  {
+    "stage": 1,
+    "star": 1,
+    "bassValue": 500,
+    "needValue": 600
+  },
+  {
+    "stage": 1,
+    "star": 2,
+    "bassValue": 500,
+    "needValue": 1100
+  },
+  {
+    "stage": 2,
+    "star": 0,
+    "bassValue": 2500,
+    "needValue": 0
+  },
+  {
+    "stage": 2,
+    "star": 1,
+    "bassValue": 2500,
+    "needValue": 2600
+  },
+  {
+    "stage": 2,
+    "star": 2,
+    "bassValue": 2500,
+    "needValue": 5100
+  },
+  {
+    "stage": 2,
+    "star": 3,
+    "bassValue": 2500,
+    "needValue": 7600
+  },
+  {
+    "stage": 3,
+    "star": 0,
+    "bassValue": 12500,
+    "needValue": 0
+  },
+  {
+    "stage": 3,
+    "star": 1,
+    "bassValue": 12501,
+    "needValue": 12600
+  },
+  {
+    "stage": 3,
+    "star": 2,
+    "bassValue": 12502,
+    "needValue": 25102
+  },
+  {
+    "stage": 3,
+    "star": 3,
+    "bassValue": 12503,
+    "needValue": 37606
+  },
+  {
+    "stage": 3,
+    "star": 4,
+    "bassValue": 12504,
+    "needValue": 50112
+  },
+  {
+    "stage": 4,
+    "star": 0,
+    "bassValue": 62500,
+    "needValue": 0
+  },
+  {
+    "stage": 4,
+    "star": 1,
+    "bassValue": 62501,
+    "needValue": 62600
+  },
+  {
+    "stage": 4,
+    "star": 2,
+    "bassValue": 62502,
+    "needValue": 125102
+  },
+  {
+    "stage": 4,
+    "star": 3,
+    "bassValue": 62503,
+    "needValue": 187606
+  },
+  {
+    "stage": 4,
+    "star": 4,
+    "bassValue": 62504,
+    "needValue": 250112
+  },
+  {
+    "stage": 4,
+    "star": 5,
+    "bassValue": 62505,
+    "needValue": 312620
+  },
+  {
+    "stage": 5,
+    "star": 0,
+    "bassValue": 750000,
+    "needValue": 0
+  },
+  {
+    "stage": 5,
+    "star": 1,
+    "bassValue": 750000,
+    "needValue": 750100
+  },
+  {
+    "stage": 5,
+    "star": 2,
+    "bassValue": 750000,
+    "needValue": 1500100
+  },
+  {
+    "stage": 5,
+    "star": 3,
+    "bassValue": 750000,
+    "needValue": 2250100
+  },
+  {
+    "stage": 5,
+    "star": 4,
+    "bassValue": 750000,
+    "needValue": 3000100
+  },
+  {
+    "stage": 5,
+    "star": 5,
+    "bassValue": 750000,
+    "needValue": 3750100
+  },
+  {
+    "stage": 5,
+    "star": 6,
+    "bassValue": 750000,
+    "needValue": 4500100
+  }
+]

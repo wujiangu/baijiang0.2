@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="DamageInfo" width="620" height="56" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="pvp_0003_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Label x="0" y="5" anchorOffsetX="0" width="68" anchorOffsetY="0" height="45" verticalAlign="middle" textAlign="center" size="25" fontFamily="Verdana" bold="true" textColor="0x847b7b" text="{data.num}"/>
+	<e:Label text="{data.name}" x="73" y="6" anchorOffsetY="0" height="49" verticalAlign="middle" size="22" fontFamily="Microsoft YaHei" bold="true" anchorOffsetX="0" width="170" textColor="0xc9c9c9"/>
+	<e:Label text="{data.damage}" x="480" y="6" anchorOffsetY="0" height="45" anchorOffsetX="0" width="130" textAlign="right" verticalAlign="middle" size="25" fontFamily="Microsoft YaHei" textColor="0x88653f" bold="true"/>
+	<e:Label text="伤害值:" x="393" y="4.5" anchorOffsetX="0" width="94" anchorOffsetY="0" height="48" size="22" fontFamily="Microsoft YaHei" verticalAlign="middle" bold="true" textColor="0x88653f"/>
+</e:Skin>

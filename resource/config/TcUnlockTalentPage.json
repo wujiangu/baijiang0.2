@@ -1,0 +1,22 @@
+[
+  {
+    "page": 1,
+    "diamond": 0
+  },
+  {
+    "page": 2,
+    "diamond": 400
+  },
+  {
+    "page": 3,
+    "diamond": 800
+  },
+  {
+    "page": 4,
+    "diamond": 1600
+  },
+  {
+    "page": 5,
+    "diamond": 3200
+  }
+]

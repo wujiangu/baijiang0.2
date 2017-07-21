@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image source="tianfu_0001_png" x="0" y="0" width="1136" height="640"/>
+	<e:Image x="960.64" y="46.08" width="160" height="44" source="crystal_0001_png"/>
+	<e:Label id="lab_soul" text="99999" y="56.08" size="25" fontFamily="Microsoft YaHei" bold="true" x="988.64" textColor="0x2D6EA6" anchorOffsetX="0" width="120" textAlign="right"/>
+	<e:Image source="tianfu_0002_png" x="127.66" y="8.5"/>
+	<e:Label text="天赋页" x="23" y="105.17" fontFamily="Microsoft YaHei" bold="true" size="35" textColor="0x0f0e0e"/>
+	<e:Label text="（最多可点满10个天赋）" x="681.42" y="110" fontFamily="Microsoft YaHei" bold="true" size="26" textColor="0x757164"/>
+	<e:Button id="btn_add" label="" x="210" y="100" width="48" height="48">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0008_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="btn_reset" label="重置" x="992" y="100" anchorOffsetX="0" anchorOffsetY="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_reset_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" bold="true" fontFamily="Microsoft YaHei" size="25" size.down="24" textColor="0x260303" horizontalCenter="0" verticalCenter="-4"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="power_0001_png" x="790.64" y="46.08"/>
+
+	<e:Label id="lab_power" text="99999" y="56.08" fontFamily="Microsoft YaHei" textColor="0xffd375" size="25" bold="true" x="825.64" textAlign="right" anchorOffsetX="0" width="113"/>
+	<e:Button id="btn_back" label="" x="14" y="14" width="104" height="68">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Group id="pageGroup" width="1136" height="485" x="0" y="154">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</e:Group>
+	<e:Group id="popupGroup" width="1136" height="640" x="0" y="0" visible="false">
+		<e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280"/>
+		<e:Image source="popmenu_0001_png" x="248" y="114.5"/>
+		<e:Label id="lab_title" text="购买天赋" textAlign="center" horizontalCenter="0" verticalCenter="-149" fontFamily="Microsoft YaHei" bold="true" size="34" visible="false"/>
+		<e:Button id="btn_close" label="" x="796" y="148">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_certain" label="确定" x="424.5" y="410">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0011_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" size.down="27" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" textColor="0x260303"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="lab_detail" text="购买天赋需要花费50钻石" horizontalCenter="0" verticalCenter="-37.5" size="25" fontFamily="Microsoft YaHei" bold="true" textColor="0x6b6b6b"/>
+		<e:Label text="是否继续？" horizontalCenter="-0.5" verticalCenter="-2.5" size="25" fontFamily="Microsoft YaHei" bold="true" textColor="0x6b6b6b"/>
+		<e:Image id="img_title" source="title_0008_png" y="149.5" horizontalCenter="0"/>
+	</e:Group>
+	<e:Group id="skillPopupGroup" width="1136" height="640" x="1" y="1" anchorOffsetX="0" anchorOffsetY="0" visible="false">
+		<e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280"/>
+		<e:Image x="398.17" y="84" width="332" height="472" source="equip_0006_png"/>
+		<e:Label id="lab_name" text="天赋名称" x="418.33" y="144.34" fontFamily="Microsoft YaHei" size="26" bold="true" textColor="0xA89A77"/>
+		<e:Button id="btn_closeDetail" label="" x="682" y="88.5">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label text="天赋升级" x="501.72" y="98.33" fontFamily="Microsoft YaHei" size="32" bold="true" textColor="0xe0e0e0"/>
+		<e:Label text="等级：" x="420.34" y="180" size="22" fontFamily="Microsoft YaHei" bold="true" textColor="0x72685b"/>
+		<e:Label id="lab_lv" text="0/10" x="504.36" y="180" size="22" fontFamily="Microsoft YaHei" bold="true" textColor="0x72685b"/>
+		<e:Label id="lab_condition" text="需要xx天赋升到5级。" x="424.01" y="181.83" fontFamily="Microsoft YaHei" size="22" textColor="0x8c0a0a" bold="true" visible="false"/>
+		<e:Label id="lab_skillDetail" text="对敌方英雄造成伤害时，回复伤害的10%血量。" x="420.34" y="214" fontFamily="Microsoft YaHei" size="20" multiline="true" width="291" lineSpacing="10" bold="true" anchorOffsetX="0" anchorOffsetY="0" height="170" textColor="0x595959"/>
+		<e:Button id="btn_upPower" label="1000" x="420" y="395">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0004_png" horizontalCenter="0" verticalCenter="0" width.down="90%" height.down="90%"/>
+				<e:Image source="power_0002_png" horizontalCenter="-64" verticalCenter="-7" width.down="36" height.down="36" visible.disabled="false"/>
+				<e:Label id="labelDisplay" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size.down="27" textColor="0xfff4d3" horizontalCenter="20"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_upDiamond" label="50" x="420" y="471.5">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shopGet_png" horizontalCenter="0" verticalCenter="0" width.down="90%" height.down="90%"/>
+				<e:Image source="crystal_0002_png" horizontalCenter="-64" verticalCenter="-7" width.down="36" height.down="36" visible.disabled="false"/>
+				<e:Label id="labelDisplay" horizontalCenter="6" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size.down="27" textColor="0xFFF4D3" text="50"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_unLock" label="未解锁" x="420" y="471.5" visible="false">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0010_png" horizontalCenter="0" verticalCenter="0" width.down="90%" height.down="90%"/>
+				<e:Label id="labelDisplay" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size.down="27" text="未解锁" anchorOffsetX="0" width="281" horizontalCenter="0" textAlign="center" textColor="0x151515"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+</e:Skin>

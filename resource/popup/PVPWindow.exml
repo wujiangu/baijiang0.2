@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="1136">
+	<e:Image source="pvp_0001_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image source="crystal_0001_png" x="959.65" y="45.14"/>
+	<e:Label id="lab_soul" text="99999" y="55.66" size="25" fontFamily="Microsoft YaHei" x="993.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="117" textAlign="right"/>
+
+	<e:Button id="btn_start" label="挑战" x="764" y="561">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0012_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="30" textColor="0x260303"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="btn_buy" label="100" x="764" y="561">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_shopGet_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image source="crystal_0002_png" horizontalCenter="-60" verticalCenter="-8" width.down="36" height.down="36"/>
+			<e:Label id="labelDisplay" horizontalCenter="20" verticalCenter="-8" bold="true" size.down="25"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Label id="lab_time" text="结算时间：00时30分" x="660" y="497" anchorOffsetX="0" width="468" anchorOffsetY="0" height="45" textAlign="center" verticalAlign="middle" size="23" fontFamily="Microsoft YaHei" bold="true" textColor="0x7a7a7a"/>
+
+	<e:Label text="试炼场对战规则" x="660" y="109" anchorOffsetX="0" width="467" textAlign="center" verticalAlign="middle" anchorOffsetY="0" height="50" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0x6d6d6d"/>
+	<e:Label text="排行榜" x="267" y="98" anchorOffsetX="0" width="107" anchorOffsetY="0" height="47" textAlign="center" verticalAlign="middle" bold="true" textColor="0x0a0909" fontFamily="Microsoft YaHei" size="32"/>
+	<e:Scroller width="636" height="475.2" x="8" y="156" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Group id="scrollGroup" width="636" height="476" anchorOffsetY="0">
+
+		</e:Group>
+	</e:Scroller>
+	<e:Label id="lab_content" text="" x="668.84" y="159.67" anchorOffsetY="0" height="317" anchorOffsetX="0" width="449" fontFamily="Microsoft YaHei" size="20" bold="true" verticalAlign="top" textColor="0x494949"/>
+	<e:Image source="pvp_0002_png" y="556.01" x="11.66"/>
+	<e:Button id="btn_close" label="" x="24.25" y="16">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>

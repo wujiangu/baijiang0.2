@@ -1,0 +1,20 @@
+{
+    "diaochan":{
+        "attr":[],
+        "id":1,
+        "skill":"Imprisoned",
+        "buff":[4, 6]
+    },
+    "buxiaoman":{
+        "attr":[],
+        "id":2,
+        "skill":"Bristle",
+        "buff":[5, 9]
+    },
+    "zhaoyun":{
+        "attr":[],
+        "id":3,
+        "skill":"SevenInOut",
+        "buff":[7, 8]
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "diamond":[
+        {"name":"购买300钻石", "type":"rmb", "count":300, "price":"￥30", "imgItem":"shop_0012_png", "detail":"内有300钻石"},
+        {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":"￥128", "imgItem":"shop_0013_png", "detail":"内有1280钻石"}
+    ],
+    "packs":[
+        {"name":"新手礼包", "type":"soul", "count":1, "price":500, "imgItem":"shop_0015_png", "detail":"礼包内有方天画戟x1、魂石x1000、经验x20000、钻石x50"}
+    ],
+    "heros":[
+        {"key":"zhaoyun", "name":"赵云", "type":"soul", "count":1, "price":1280, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"}
+    ]
+}

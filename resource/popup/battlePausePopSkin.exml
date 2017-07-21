@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="mask_png" x="0" y="0" width="1136" height="640" locked="true"/>
+	<e:Image id="img_battlePause" x="0" y="0" source="battle_0009_png" width="1136" height="642"/>
+	<e:Group id="popupGroup" width="1136" height="640" x="0" y="0" visible="false">
+		<e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280"/>
+		<e:Image source="popmenu_0001_png" x="253.5" y="82"/>
+		<e:Label text="暂停" textAlign="center" horizontalCenter="4" verticalCenter="-182" fontFamily="Microsoft YaHei" bold="true" size="34" textColor="0xf2e8e8" stroke="2"/>
+		<e:Button id="btn_close" label="" x="796" y="113">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+
+		<e:Label text="中途退出试炼场，将记录             ，" horizontalCenter="0.5" verticalCenter="-64.5" size="25" fontFamily="Microsoft YaHei" bold="true" textColor="0x6b6b6b"/>
+		<e:Label text="当前伤害" horizontalCenter="127" verticalCenter="-64.5" size="25" fontFamily="Microsoft YaHei" bold="true" textColor="0xa46539"/>
+		<e:Label text="且消耗一次挑战机会。" horizontalCenter="1" verticalCenter="-28.5" size="25" fontFamily="Microsoft YaHei" bold="true" textColor="0x6B6B6B"/>
+
+
+	</e:Group>
+	<e:Button id="btn_leave" label="退出" x="340.04" y="379.9" width="168" height="76">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0014_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="27" size="28" textColor="0x1e0f0f"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="btn_continue" label="继续" x="627.71" y="379.9" height="76" width="168">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0024_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="27" size="28" textColor="0x260909"/>
+			</e:Skin>
+		</e:skinName>
+
+
+	</e:Button>
+</e:Skin>

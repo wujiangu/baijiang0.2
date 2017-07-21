@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+
+	<e:Image source="0_0075_di_png" width="1136" height="640"/>
+
+	<e:Button id="btn_ready" x="947.5" y="451.2" anchorOffsetX="0" width="132" anchorOffsetY="0" height="136">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_intoBattle_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="-1.5" verticalCenter="-3" fontFamily="Microsoft YaHei" size="30" textColor="0xfde286" bold="true" size.down="27" visible="false"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+
+	<e:Button id="btn_equip" x="818.85" y="199.31" anchorOffsetX="0" width="120" height="138">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_intoEquip_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="-1.5" verticalCenter="-3" fontFamily="Microsoft YaHei" size="30" textColor="0xFDE286" bold="true" visible="false"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+
+	<e:Button id="btn_talent" x="898.71" y="306.31" width="120" height="138">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_intoTalent_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="-1.5" verticalCenter="-3" fontFamily="Microsoft YaHei" size="30" textColor="0xFDE286" bold="true"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+
+	<e:Button id="btn_setting" label="设置" x="816" y="373" width="240" height="92" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0001_png" source.down="button_0001_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="-1.5" verticalCenter="-3" fontFamily="Microsoft YaHei" size="30" textColor="0xFDE286" bold="true"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+
+	<e:Button id="btn_shop" x="738.86" y="92" width="120" height="138">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_intoShop_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="-1.5" verticalCenter="-3" fontFamily="Microsoft YaHei" size="30" textColor="0xFDE286" bold="true" size.down="27" visible="false"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	
+	<e:Group id="popupGroup" width="1136" height="640" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="false">
+		<e:Image source="mask_png" x="0" y="0" scaleX="1" scaleY="1" scale9Grid="0,0,1,1" anchorOffsetX="0" width="1136" anchorOffsetY="0" height="640"/>
+		<e:Image source="popmenu_0001_png" x="248" y="128"/>
+		<e:Label text="音乐" x="378" y="290"/>
+		<e:Label text="音效" x="378" y="359"/>
+		<e:Button id="btn_applicate" label="应用" x="480" y="419">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0006_png" source.down="button_0004_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x000000" bold="true"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_close" label="" horizontalCenter="248.5" verticalCenter="-141.5">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="button_0005_png" width.down="80%" height.down="80%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:HSlider id="music_Hslider" width="234.4" height="30.4" x="475.6" y="289" anchorOffsetX="0" anchorOffsetY="0"/>
+		<e:HSlider id="sound_Hslider" width="234.4" height="30.4" x="475.6" y="362.8" anchorOffsetX="0" anchorOffsetY="0"/>
+	</e:Group>
+	<e:Image id="img_diamond" source="crystal_0001_png" x="959.65" y="10.48"/>
+	<e:Image id="img_soul" source="sole_0001_png" x="785.98" y="10.48"/>
+	<e:Image id="img_power" source="power_0001_png" x="418.64" y="10.48"/>
+	<e:Image id="img_exp" source="exp_0001_png" x="604.16" y="10.48"/>
+	<e:Label id="lab_diamond" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="997.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="113" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_soul" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="825.86" bold="true" textColor="0x8b2ea5" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_exp" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="637.56" bold="true" textColor="0xbc822b" anchorOffsetX="0" width="117" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_power" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="457.01" bold="true" textColor="0xc1a77c" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
+	<e:Button id="btn_pvp" label="" x="960.73" y="154.65">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_intoPVP_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+
+	<e:Image source="0_0021_kaorou_png" x="455.01" y="407" scaleX="1" scaleY="1"/>
+	<e:Image id="img_light" source="0_0022_huoguang01_png" x="470.01" y="517" scaleY="1" scaleX="1" anchorOffsetX="63" anchorOffsetY="63"/>
+</e:Skin>
