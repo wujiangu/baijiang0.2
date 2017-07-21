@@ -114,7 +114,6 @@ class BattleScene extends Base {
         this.comboCount.anchorOffsetY = this.comboCount.height/2;
         this.comboCount.text = str;
         if (this.lastCombo == value) return;
-        this.hero.comboAnimate(value);
         if (!this.comboStatus) {
             this.comboStatus = true;
             this.lastCombo = value;
@@ -177,9 +176,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        // let level:number = HeroData.getHeroData(GameData.curHero).lv
-        // let attr = data[level - 1];
-        let attr = data[0];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv
+        let attr = data[level - 1];
+        // let attr = data[0];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;

@@ -77,7 +77,6 @@ class Hero extends BaseGameObject {
         this.combo = 0;
         this.isEnemy = false;
         this.isPlay = false;
-        // this.isAttack = false;
         this.isPVP = isPVP;
         this.skill_status = false;
         this.enermy = [];
@@ -142,9 +141,9 @@ class Hero extends BaseGameObject {
     public setBuff():void {
         // let buff = HeroData.list[this.name].buff;
         let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        let talent:Array<any> = GameData.testTalent.talent;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // let talent:Array<any> = GameData.testTalent.talent;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -272,6 +271,7 @@ class Hero extends BaseGameObject {
             this.gotoIdle();
             this.img_swordLight.visible = false;
             this.setEnermy();
+            let count:number = 0;
             //怪物到中点的距离
             for (let i = 0; i < this.enermy.length; i++) {
                 let radian = MathUtils.getRadian2(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
@@ -286,6 +286,7 @@ class Hero extends BaseGameObject {
                         if (state != Enermy.Action_Dead && state != BaseGameObject.Action_Hurt && !this.enermy[i].isReadSkill) {
                             this.isHit = true;
                             this.combo ++;
+                            count ++;
                         }
                         if (modBuff.isAttackBuff(this, this.enermy[i])) {
                             // Common.log("击晕了");
@@ -305,6 +306,9 @@ class Hero extends BaseGameObject {
                     if (this.combo >= 2){
                         SceneManager.battleScene.update(this.combo);
                     }
+                }
+                if (count >= 2) {
+                    this.comboAnimate(count);
                 }
             }
             // egret.setTimeout(()=>{this.isAttack = false}, this, 100);
@@ -499,6 +503,7 @@ class Hero extends BaseGameObject {
         this.atk_radian = MathUtils.getRadian2(this.originX, this.originY, endX, endY);
         let dis_atk:number = MathUtils.getDistance(this.originX, this.originY, this.endX, this.endY);
         if (dis_atk > this.atk_range) dis_atk = 200;
+        else if (dis_atk <= 100) dis_atk = 100;
         this.img_swordLight.scaleX = dis_atk/280;
         //实际角度
         let trueAngle:number = Math.floor(MathUtils.getAngle(this.atk_radian));
@@ -647,7 +652,7 @@ class Hero extends BaseGameObject {
     public comboAnimate(value:number):void {
         this.addChild(this.comboText);
         value = Math.floor(value);
-        this.comboText.text = `${value.toString()} Combo`;
+        this.comboText.text = `${value.toString()} Kill`;
         this.comboText.anchorOffsetX = this.comboText.width/2;
         this.comboText.y = this.y;
         this.comboText.x = this.x;
