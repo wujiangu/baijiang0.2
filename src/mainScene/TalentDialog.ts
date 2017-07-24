@@ -29,10 +29,14 @@ class TalentDialog extends PopupWindow {
         let talentPage = modTalent.getTalentData();
         for (let i = 0; i < talentPage.length; i++) {
             this.pages[i] = new TalentIR(i);
+            this.createToggleBtn(i);
+            this.addChild(this.topBtnSkin[i]);
         }
         this.pageGroup.addChild(this.pages[this.curPage]);
         Utils.toggleButtonStatus(this.topBtn, this.curPage);
+        
         this.allLv = talentPage[this.curPage].count == null ? 1 : talentPage[this.curPage].count;
+        this.btn_add.x = 155 + 55 * talentPage.length;
     }
 
     private uiCompleteHandler():void {
@@ -129,10 +133,6 @@ class TalentDialog extends PopupWindow {
         let talentPage = modTalent.getTalentData();
         if (type == 1) {
             //购买天赋页
-            if (talentPage.length >= 10) {
-                Animations.showTips("天赋页已满", 1, true);
-                return;
-            }
 
             if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", 50)){
                 Animations.showTips("钻石不足，无法购买天赋页", 1, true);
@@ -151,6 +151,11 @@ class TalentDialog extends PopupWindow {
             this.pageGroup.addChild(this.pages[len - 1]);
             LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
             LeanCloud.GetInstance().SaveRoleData("curTalentPage", this.curPage + 1);
+
+             if (talentPage.length >= 5) {
+                 this.btn_add.visible = false;
+            }
+
         }else{
             //重置天赋页
             if (talentPage[this.curPage].talent.length == 0) {
@@ -295,19 +300,20 @@ class TalentDialog extends PopupWindow {
         this.lab_skillDetail.text = desc.replace(/n/, value.toString());
     }
 
+    public Show():void{
+        super.Show();
+
+        let tanlent = modTalent.getTalentData();
+        this.show_lab_text();
+
+        if(tanlent.length >= 5) this.btn_add.visible = false
+        else this.btn_add.visible = true;
+    }
+
     /**
      * 界面显示
      */
     public Reset():void {
-        let pages = modTalent.getTalentData().length;
-        for (let i = 0; i < pages; i++) {
-            if (!this.topBtnSkin[i]) {
-                this.createToggleBtn(i);
-            }
-            this.addChild(this.topBtnSkin[i]);
-        }
-        this.btn_add.x = 155 + 55 * pages;
-        this.show_lab_text();
 
         this.btn_add.addEventListener(egret.TouchEvent.TOUCH_TAP, this.topBtnListener, this);
         this.btn_reset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.topBtnListener, this);

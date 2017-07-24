@@ -10,10 +10,12 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.effectArmature = new DragonBonesArmatureContainer();
         this.buffArmature = new DragonBonesArmatureContainer();
         this.skillArmature = new DragonBonesArmatureContainer();
+        this.specialArmature = new DragonBonesArmatureContainer();
         this.addChild(this.armature);
         this.addChild(this.effectArmature);
         this.addChild(this.buffArmature);
         this.addChild(this.skillArmature);
+        this.addChild(this.specialArmature);
         this.shadow = Utils.createBitmap("shadow_png");
         this.shadow.y = -this.shadow.height/2;
         this.shadow.scaleX = 1.5;
@@ -202,6 +204,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     /**硬直计时器监听 */
     private onAttack():void {
         this.atk_timer.reset();
+        Common.log("可以攻击")
         this.isComplete = true;
     }
     public static Action_Enter:string = "enter";
@@ -253,6 +256,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public buffArmature:DragonBonesArmatureContainer;
     /**角色释放主动技能的骨架 */
     public skillArmature:DragonBonesArmatureContainer;
+    /**角色特殊效果的骨架 */
+    public specialArmature:DragonBonesArmatureContainer;
     /***************************人物的基本属性************************/
     /**身上带的buff */
     public buff:any[];

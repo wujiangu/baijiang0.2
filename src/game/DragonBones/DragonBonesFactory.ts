@@ -28,8 +28,10 @@ class DragonBonesFactory {
      * 初始化一个动画文件
      */
     public initDragonBonesArmatureFile(skeletonData:any, textureData:any, texture:egret.Texture):void {
-        this.factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
-        this.addTextureAtlas(texture, textureData);
+        this.factory.parseDragonBonesData(skeletonData);
+        this.factory.parseTextureAtlasData(textureData, texture);
+        // this.factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        // this.addTextureAtlas(texture, textureData);
     }
 
     /**

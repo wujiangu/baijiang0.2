@@ -141,9 +141,9 @@ class Hero extends BaseGameObject {
     public setBuff():void {
         // let buff = HeroData.list[this.name].buff;
         let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        // let talent:Array<any> = GameData.testTalent.talent;
-        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        let talent:Array<any> = modTalent.getData(curPage).talent;
+        let talent:Array<any> = GameData.testTalent.talent;
+        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        // let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -355,6 +355,7 @@ class Hero extends BaseGameObject {
 
     /**奔跑 */
     public gotoRun() {
+        if (this.curState == "skill") return;
         this.curState = "run";
         let useSpeed:number = this.speed * 0.1;
         this.radian = MathUtils.getRadian2(this.x, this.y, this.endX, this.endY);
@@ -479,6 +480,7 @@ class Hero extends BaseGameObject {
     public gotoAttack() {
         if (!this.isComplete) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
+        // Common.log("进入攻击", this.curState, this.isComplete);
         this.isComplete = false;
         this.atk_timer.start();
         this.curState = "attack";
@@ -518,8 +520,8 @@ class Hero extends BaseGameObject {
         this.img_swordLight.rotation = swordAngle + ((trueAngle - swordAngle)/2.25);
         let dx = Math.cos(this.atk_radian) * dis_atk;
         let dy = Math.sin(this.atk_radian) * dis_atk;
-        this.atk_rangeX = Math.floor(Math.abs(dx));
-        this.atk_rangeY = Math.floor(Math.abs(dy));
+        this.atk_rangeX = parseFloat(Math.abs(dx).toFixed(2));
+        this.atk_rangeY = parseFloat(Math.abs(dy).toFixed(2));
         /**怪物的弧度 */
         this.centerX = Math.floor((2*this.originX + dx)/2);
         this.centerY = Math.floor((2*this.originY + dy)/2);
@@ -598,7 +600,7 @@ class Hero extends BaseGameObject {
     private armaturePlayEnd():void {
         switch (this.curState) {
             case Hero.Action_Skill:
-                this.curState = BaseGameObject.Action_Idle;
+                // this.curState = BaseGameObject.Action_Idle;
                 this.skill.end();
             break;
             case BaseGameObject.Action_Enter:

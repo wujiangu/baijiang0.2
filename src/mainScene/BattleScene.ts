@@ -62,11 +62,12 @@ class BattleScene extends Base {
     /**放开监听 */
     private onTouchEnd(event:egret.TouchEvent):void {
         this.timer.reset();
-        if (this.moveCount <= 10) {
+        if (this.moveCount <= 10 && this.hero.curState == "idle") {
             this.hero.moveToTarget(event.stageX, event.stageY, ()=>{
                 this.hero.gotoAttack();
            });
-        }else{
+        }
+        else if (this.moveCount > 10 && this.hero.curState != "attack"){
             this.hero.gotoIdle();
         }
         this.moveCount = 0;
@@ -176,9 +177,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        let level:number = HeroData.getHeroData(GameData.curHero).lv
-        let attr = data[level - 1];
-        // let attr = data[0];
+        // let level:number = HeroData.getHeroData(GameData.curHero).lv
+        // let attr = data[level - 1];
+        let attr = data[0];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;
@@ -200,7 +201,8 @@ class BattleScene extends Base {
     }
 
     public createSingleMonster(data:Array<any>, isElite:boolean = false, isSummon:boolean = false):void {
-        this.monster = ObjectPool.pop("Monster");
+        if (isElite) this.monster = ObjectPool.pop("EliteMonster");
+        else this.monster = ObjectPool.pop("Monster");
         GameData.monsters.push(this.monster);
         this.monster.init(data, isElite, isSummon);
         this.monster.x = MathUtils.getRandom(100, 1050);

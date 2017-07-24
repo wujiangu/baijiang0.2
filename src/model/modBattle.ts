@@ -114,15 +114,23 @@ namespace modBattle {
      */
     function setMonsterData(id:number, lv:number, isBoss:boolean = false, k_hp:number = 1, k_atk:number = 1):any {
             let type:string = `monster0${id}`;
-            let data:any = Utils.cloneObj(getEnermyData(id));
+            let data = Utils.cloneObj(getEnermyData(id));
             if (isBoss){
                 type = `Boss0${id - 99}`;
-                data.attr = ConfigManager.boss[id-100][lv-1];
+                data["attr"] = Utils.cloneObj(ConfigManager.boss[id-100][lv-1]);
             }else{
-                data.attr = ConfigManager.monsters[id-1][lv-1];
+                //精英怪带的buff个数
+                let buffCount:number = 1;
+                let arrayBuff:Array<number> = [];
+                for (let i = 0; i < buffCount; i++) {
+                    let random:number = MathUtils.getRandom(1, 6);
+                    arrayBuff.push(random);
+                }
+                data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
+                data["arrayBuff"] = arrayBuff;
             }
-            data.attr.hp *= k_hp;
-            data.attr.atk *= k_atk;
+            data["attr"].hp *= k_hp;
+            data["attr"].atk *= k_atk;
             return [type, data];
     }
 

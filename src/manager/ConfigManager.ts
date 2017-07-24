@@ -36,7 +36,7 @@ namespace ConfigManager {
     /**骨架数据 */
     export var armatures:Array<string> = ["daoguang_effect", "diaochan", "monster01", "enter_monster_01", "Boss01",
         "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun", "zhaoyun_skill", "buxiaoman", "buxiaoman_skill", "buff",
-        "monster03", "monster02", "monster02_skill"];
+        "monster03", "monster02", "monster02_skill", "Elitemonster_skill"];
     /**
      * 加载配置文件
      */
@@ -97,7 +97,7 @@ namespace ConfigManager {
     function initBattleDragonBones():void {
         for (let i = 0; i < armatures.length; i++) {
             let name:string = armatures[i];
-            let skeletonData = RES.getRes(name+"_ske_json");
+            let skeletonData = RES.getRes(name+"_ske_dbbin");
             let textureData = RES.getRes(name+"_tex_json");
             let texture = RES.getRes(name+"_tex_png");
             DragonBonesFactory.getInstance().initDragonBonesArmatureFile(skeletonData, textureData, texture);
