@@ -93,7 +93,7 @@ class Enermy extends BaseGameObject {
     /**
      * 走路巡逻状态
      */
-    public state_run(time:number):void {
+    public state_run(time:number, func:Function = null):void {
         if (!this.canMove) return;
         this.moveToTarget(GameData.heros[0].x, GameData.heros[0].y, ()=>{
             let useSpeed:number = this.speed * 0.1;
@@ -104,12 +104,17 @@ class Enermy extends BaseGameObject {
             if (animation != this.lastAnimation) {
                 this.lastAnimation = animation;
                 this.armature.play(animation, 0);
+                if (this.isFaster) func(this.radian);
             }
             if (distance > 15 ){
                 let tempX:number = Math.cos(this.radian) * useSpeed;
                 let tempY:number = Math.sin(this.radian) * useSpeed;
                 this.deltaX = parseFloat(tempX.toFixed(2));
                 this.deltaY = parseFloat(tempY.toFixed(2));
+                let gotoX = this.x + this.deltaX;
+                let gotoY = this.y + this.deltaY;
+                let isMove:boolean = this.isCollison(gotoX, gotoY);
+                if (!isMove) return;
                 this.x += this.deltaX;
                 this.y += this.deltaY;
                 this.x = parseFloat(this.x.toFixed(2));
@@ -251,6 +256,23 @@ class Enermy extends BaseGameObject {
         ObjectPool.push(this);
         if (this.parent && this.parent.removeChild) this.parent.removeChild(this);
     }
+    /**
+     * 设置buff或被动技能
+     */
+    public setBuff():void {
+        let buff:Array<number> = this.arrayBuffs;
+        // let talent:Array<any> = GameData.testTalent.talent;
+        // for (let i = 0; i < buff.length; i++) {
+        //     let id = buff[i] + 50;
+        //     buff.push(id);
+        // }
+        for (let i = 0; i < buff.length; i++) {
+            let buffConfig = modBuff.getBuff(buff[i]+50);
+            let newBuff = ObjectPool.pop(buffConfig.className);
+            newBuff.buffInit(buffConfig)
+            this.addBuff(newBuff);
+        }
+    }
     /**增加buff */
     public addBuff(buff:any, isBind:boolean = false) {
         if (isBind && this.curState != Monster.Action_Dead) {
@@ -279,7 +301,15 @@ class Enermy extends BaseGameObject {
      * 特效动画播放完成函数
      */
     public effectArmaturePlayEnd():void {
-        if (this.curState == BaseGameObject.Action_Enter || this.curState == BaseGameObject.Action_Hurt) {
+        if (this.curState == BaseGameObject.Action_Enter) {
+            this.effectArmature.visible = false;
+            if (this.isElite) {
+                this.setBuff();
+                if (this.isExistBuff(55, true)) this.isFaster = true;
+                else this.isFaster = false;
+            }
+        }
+        else if (this.curState == BaseGameObject.Action_Hurt) {
             this.effectArmature.visible = false;
         }
         if (this.attr.hp <= 0) {
@@ -412,6 +442,8 @@ class Enermy extends BaseGameObject {
     public isElite:boolean;
     /**是否为boss */
     public isBoss:boolean;
+    /**是否快速移动 */
+    public isFaster:boolean;
     /**是否技能准备 */
     public isReadSkill:boolean;
     /**经验图片 */
@@ -427,6 +459,8 @@ class Enermy extends BaseGameObject {
     public img_sigh:egret.Bitmap;
     /**受击次数 */
     public beAttackCount:number;
+    /**精英怪的特殊buff */
+    public arrayBuffs:Array<number>;
 
     /*************敌方的状态***************/
     public static Action_Run01:string = "run01";

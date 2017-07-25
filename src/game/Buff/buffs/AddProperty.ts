@@ -66,6 +66,11 @@ class AddProperty extends BuffBase {
                 let speed:number = this.target.getSpeed() * (1 + value/100);
                 this.target.setSpeed(Math.floor(speed));
             break;
+            //快速(精英怪专属buff)
+            case 55:
+                let movSpeed:number = this.target.getSpeed() * 2;
+                this.target.setSpeed(Math.floor(movSpeed));
+            break;
         }
     }
 

@@ -110,8 +110,8 @@ class Monster extends Enermy {
     /**
      * 走路巡逻状态
      */
-    public state_run(time:number):void {
-        super.state_run(time);
+    public state_run(time:number, func:Function = null):void {
+        super.state_run(time, func);
     }
 
     /**

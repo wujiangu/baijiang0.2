@@ -11,11 +11,11 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.buffArmature = new DragonBonesArmatureContainer();
         this.skillArmature = new DragonBonesArmatureContainer();
         this.specialArmature = new DragonBonesArmatureContainer();
+        this.addChild(this.specialArmature);
         this.addChild(this.armature);
         this.addChild(this.effectArmature);
         this.addChild(this.buffArmature);
         this.addChild(this.skillArmature);
-        this.addChild(this.specialArmature);
         this.shadow = Utils.createBitmap("shadow_png");
         this.shadow.y = -this.shadow.height/2;
         this.shadow.scaleX = 1.5;
@@ -87,6 +87,25 @@ class BaseGameObject extends egret.DisplayObjectContainer {
      */
     public getCurState() {
         return this.curState;
+    }
+
+    /**障碍物判断 */
+    public isCollison(gotoX:number, gotoY:number):boolean {
+        let collison = SceneManager.battleScene.getCollison();
+        let isMove:boolean = true;
+        if (collison.length > 0) {
+            for (let i = 0; i < collison.length; i++) {
+                let minX:number = collison[i].minX;
+                let maxX:number = collison[i].maxX;
+                let minY:number = collison[i].minY;
+                let maxY:number = collison[i].maxY;
+                if (gotoX >= minX && gotoX <= maxX && gotoY >= minY && gotoY <= maxY) {
+                    isMove = false;
+                    break;
+                }
+            }
+        }
+        return isMove;
     }
 
     /**
@@ -191,12 +210,21 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     }
 
     /**检查是否应经存在buff */
-    public isExistBuff(buff:any):boolean {
+    public isExistBuff(buff:any, isID:boolean = false):boolean {
         let status:boolean = false;
-        for (let i = 0; i < this.buff.length; i++) {
-            if (buff.buffData.id == this.buff[i].buffData.id) {
-                status = true;
-                break;
+        if (isID) {
+            for (let i = 0; i < this.buff.length; i++) {
+                if (buff == this.buff[i].buffData.id) {
+                    status = true;
+                    break;
+                }
+            }
+        }else{
+            for (let i = 0; i < this.buff.length; i++) {
+                if (buff.buffData.id == this.buff[i].buffData.id) {
+                    status = true;
+                    break;
+                }
             }
         }
         return status;
@@ -207,6 +235,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         Common.log("可以攻击")
         this.isComplete = true;
     }
+
     public static Action_Enter:string = "enter";
     public static Action_Idle:string = "idle";
     public static Action_Attack01:string = "attack01";

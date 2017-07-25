@@ -36,6 +36,7 @@ class BattleScene extends Base {
             this.effectLayer.addChild(this.comboGroup);
         }
         modBattle.init();
+        this.areaCollison = [];
         // Common.log(JSON.stringify(modTalent.getData(0)));
         DragonBonesFactory.getInstance().startTimer();
         this.createHero();
@@ -141,6 +142,7 @@ class BattleScene extends Base {
     private createMap():void {
         this.battleLayer = new egret.DisplayObjectContainer();
         this.effectLayer = new egret.DisplayObjectContainer();
+        this.otherLayer = new egret.DisplayObjectContainer();
         this.particleLayer = new eui.UILayer();
         this.particleLayer.touchEnabled = false;
         this.mapBg = new eui.Image();
@@ -163,6 +165,7 @@ class BattleScene extends Base {
         this.blood.touchEnabled = false;
         this.blood.visible = false;
         this.addChild(this.particleLayer);
+        this.addChild(this.otherLayer);
         this.addChild(this.battleLayer);
         this.addChild(this.effectLayer);
         this.addChild(this.blood);
@@ -249,6 +252,51 @@ class BattleScene extends Base {
         GameLayerManager.gameLayer().sceneLayer.removeChild(this);
     }
 
+    /**设置碰撞范围 */
+    public setCollison(data:any):void {
+                // var shp:egret.Shape = new egret.Shape();
+                // shp.x = data.pos[0];
+                // shp.y = data.pos[1];
+                // shp.graphics.lineStyle( 1, 0x00ff00 );
+                // shp.graphics.beginFill( 0xff0000, 1);
+                // shp.graphics.drawCircle( 0, 0, 5 );
+                // shp.graphics.endFill();
+                // this.addChild( shp );
+        switch (data.type) {
+            case 1:
+                data.minX = data.x - 73;
+                data.maxX = data.x + 73;
+                data.minY = data.y - 98;
+                data.maxY = data.y - 30;
+            break;
+            case 2:
+                data.minX = data.x - 30;
+                data.maxX = data.x + 30;
+                data.minY = data.y - 100;
+                data.maxY = data.y + 40;     
+            break;
+        }
+        Common.log(this.areaCollison)
+    }
+
+    /**增加碰撞区域 */
+    public addCollison(data:any):void {
+        this.areaCollison.push(data);
+        this.setCollison(data);
+    }
+
+    /**清除碰撞区域 */
+    public removeCollison(target:any):void {
+        let index = this.areaCollison.indexOf(target);
+        this.areaCollison.splice(index, 1);
+        Common.log(this.areaCollison)
+    }
+
+    /**获取碰撞区域 */
+    public getCollison() {
+        return this.areaCollison;
+    }
+
     /**鼠标或者点击的位置 */
     private mouseX:number;
     private mouseY:number;
@@ -258,10 +306,13 @@ class BattleScene extends Base {
     public battleLayer:egret.DisplayObjectContainer;
     /**特效层（包括技能/buff等） */
     public effectLayer:egret.DisplayObjectContainer;
+    /**其他元素层 */
+    public otherLayer:egret.DisplayObjectContainer;
     public hero:Hero;
     public monster:Monster;
     public boss:Boss;
-
+    /**碰撞区域 */
+    public areaCollison:Array<any>;
     /**场景部件 */
     public battleSceneCom:BattleSceneCom;
     /**地图 */

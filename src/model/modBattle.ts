@@ -123,7 +123,8 @@ namespace modBattle {
                 let buffCount:number = 1;
                 let arrayBuff:Array<number> = [];
                 for (let i = 0; i < buffCount; i++) {
-                    let random:number = MathUtils.getRandom(1, 6);
+                    // let random:number = MathUtils.getRandom(1, 6);
+                    let random:number = 1;
                     arrayBuff.push(random);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);

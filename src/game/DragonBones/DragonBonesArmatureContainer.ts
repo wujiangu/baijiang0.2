@@ -152,6 +152,16 @@ class DragonBonesArmatureContainer extends egret.DisplayObjectContainer {
 
 
     /**
+     * 暂停
+     */
+    public pause(action:string):void {
+        var currArm:DragonBonesArmature = this.armatures[this.curArmatureIndex];
+        if (currArm) {
+            currArm.pause(action);
+        }
+    }
+
+    /**
      * 停止当前DragonBonesArmature
      */
     public stop():void {

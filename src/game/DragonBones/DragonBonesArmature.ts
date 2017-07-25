@@ -139,6 +139,13 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
     }
 
     /**
+     * 暂停播放动画
+     */
+    public pause(action:string):void {
+        this._armature.animation.stop(action);
+    }
+
+    /**
      * 设置动画的播放速度
      */
     public setTimeScale(action:string, value:number):void {

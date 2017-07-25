@@ -258,6 +258,8 @@ class Hero extends BaseGameObject {
         }
         let gotoX = this.x + this.deltaX;
         let gotoY = this.y + this.deltaY;
+        let isMove:boolean = this.isCollison(gotoX, gotoY);
+        if (!isMove) return;
         this.x = Math.floor(gotoX);
         this.y = Math.floor(gotoY);
     }
