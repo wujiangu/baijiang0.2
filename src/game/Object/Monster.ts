@@ -147,9 +147,15 @@ class Monster extends Enermy {
             // }else{
             // }
         }
-
-        this.x = this.x + this.deltaX;
-        this.y = this.y + this.deltaY;
+        let gotoX = this.x + this.deltaX;
+        let gotoY = this.y + this.deltaY;
+        let isMove:boolean = this.isCollison(gotoX, gotoY);
+        if (!isMove) {
+            this.gotoRun();
+            return;
+        }
+        this.x = Math.floor(gotoX);
+        this.y = Math.floor(gotoY);
         this.sumDeltaX = this.sumDeltaX + this.deltaX;
         this.sumDeltaY = this.sumDeltaY + this.deltaY;
         if (!this.skill_atkStatus) {

@@ -38,6 +38,14 @@ class Hero extends BaseGameObject {
             BaseGameObject.Action_Hurt
         ]);
 
+        //buff动画
+        this.buffArmature.register(DragonBonesFactory.getInstance().makeArmature("buff", "buff", 10), [
+            "Burning",
+            "xuanyun"
+        ]);
+        this.buffArmature.visible = false;
+        this.buffArmature.scaleX = 1.5;
+        this.buffArmature.scaleY = 1.5;
         /**从配置文件读取技能动画 */
         // let heroConfig = HeroData.list[name];
         let heroConfig = ConfigManager.heroConfig[name];
@@ -319,8 +327,26 @@ class Hero extends BaseGameObject {
         if (Math.abs(this.sumDeltaX)>this.atk_rangeX/3){
             this.img_swordLight.visible = true;
         }
-        this.x = this.x + this.deltaX;
-        this.y = this.y + this.deltaY;
+        let gotoX = this.x + this.deltaX;
+        let gotoY = this.y + this.deltaY;
+        let isMove:boolean = this.isCollison(gotoX, gotoY);
+        if (!isMove) {
+            let buffConfig = modBuff.getBuff(2);
+            let extraBuff = ObjectPool.pop(buffConfig.className);
+            extraBuff.buffInit(buffConfig);
+            extraBuff.effectName = "xuanyun";
+            extraBuff.buffData.id = buffConfig.id;
+            extraBuff.buffData.duration = buffConfig.duration;
+            extraBuff.buffData.postionType = PostionType.PostionType_Head;
+            this.addBuff(extraBuff);
+            this.armature.play(BaseGameObject.Action_Hurt, 0);
+            this.img_swordLight.visible = false;
+            return;
+        }
+        this.x = Math.floor(gotoX);
+        this.y = Math.floor(gotoY);
+        // this.x = this.x + this.deltaX;
+        // this.y = this.y + this.deltaY;
         this.sumDeltaX = this.sumDeltaX + this.deltaX;
         this.sumDeltaY = this.sumDeltaY + this.deltaY;
     }
@@ -357,6 +383,7 @@ class Hero extends BaseGameObject {
 
     /**奔跑 */
     public gotoRun() {
+        if (!this.canMove) return;
         if (this.curState == "skill") return;
         this.curState = "run";
         let useSpeed:number = this.speed * 0.1;

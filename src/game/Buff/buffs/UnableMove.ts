@@ -35,8 +35,12 @@ class UnableMove extends BuffBase {
         this.HideEffect();
         let index = this.target.buff.indexOf(this.buffData.id);
         this.target.buff.splice(index, 1);
-        if (this.target.attr.hp > 0) {
-            this.target.gotoRun();
+        if (this.target.isEnemy) {
+            if (this.target.attr.hp > 0) {
+                this.target.gotoRun();
+            }
+        }else{
+            this.target.gotoIdle();
         }
         // this.target.removeEffectComplete();
         // this.target.addEffectComplete();

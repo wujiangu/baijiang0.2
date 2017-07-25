@@ -26,7 +26,6 @@ class BuildWall extends BuffBase {
     public buffStart(target:any) {
         this.target = target;
         this.getRandom();
-        // TimerManager.getInstance().doTimer(this.buffData.cd, 0, this.onHeal, this);
     }
 
     /**结束 */
@@ -55,9 +54,9 @@ class BuildWall extends BuffBase {
     }
     
     private onWallDisappear():void {
-        Common.log("消失");
-        // this.target.specialArmature.play(`skill01_0${this.type}`, 1, 2, 4);
-        // SceneManager.battleScene.removeCollison(this);
+        this.target.specialArmature.play(`skill01_0${this.type}`, 1, 2, 4);
+        SceneManager.battleScene.removeCollison(this);
+        TimerManager.getInstance().doTimer(this.buffData.cd*1000, 1, this.getRandom, this);
     }
 
     /**
@@ -100,7 +99,12 @@ class BuildWall extends BuffBase {
             this.getRandom();
         }
     }
-
+    /**回收buff类 */
+    public recycleBuff() {
+        super.recycleBuff();
+        // TimerManager.getInstance().remove(this.onWallDisappear, this);
+        // TimerManager.getInstance().remove(this.getRandom, this);
+    }
     private target:any;
     /**墙的类型 */
     public type:number;
