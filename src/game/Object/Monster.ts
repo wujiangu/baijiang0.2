@@ -40,6 +40,7 @@ class Monster extends Enermy {
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
         this.attr.initEnermyAttr(data[1].attr);
         super.init(data);
+        this._isAvatar = data[1].isAvatar;
         this.initDragonBonesArmature(data[0]);
         this.isSummon = isSummon;
         this.isElite = isElite;
@@ -50,6 +51,7 @@ class Monster extends Enermy {
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
         this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.gotoEnter();
+        // Common.log(JSON.stringify(data));
     }
 
     /**
@@ -336,6 +338,7 @@ class Monster extends Enermy {
     public isSkillHurt:boolean;
     private readyCount:number;
     private heroRadian:number;
+    public _isAvatar:boolean;
     /**远程攻击标志 */
     private _remote:boolean;
     private _deltaX:number;

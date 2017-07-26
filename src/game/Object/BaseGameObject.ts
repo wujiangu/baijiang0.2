@@ -24,6 +24,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.atk_timer = new egret.Timer(1000, 1);
         this.atk_timer.stop();
         this.atk_timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onAttack, this);
+        this.hurtText = Utils.createBitmapText("hurtFnt_fnt", this);
+        this.hurtText.x = -10;
     }
 
     public init(data:Array<any> = null) {
@@ -100,8 +102,14 @@ class BaseGameObject extends egret.DisplayObjectContainer {
                 let minY:number = collison[i].minY;
                 let maxY:number = collison[i].maxY;
                 if (gotoX >= minX && gotoX <= maxX && gotoY >= minY && gotoY <= maxY) {
-                    isMove = false;
-                    break;
+                    if (collison[i].type < 3) {
+                        isMove = false;
+                        break;
+                    }
+                    else if (collison[i].type == 3 && !this.isEnemy) {
+                        let value:number = Math.floor(this.originHP * 0.1);
+                        this.hurtHandler(value);
+                    }
                 }
             }
         }
@@ -229,11 +237,33 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         }
         return status;
     }
+
+    /**
+     * 受伤处理
+     */
+    public hurtHandler(value:number):void {
+
+    }
+
     /**硬直计时器监听 */
     private onAttack():void {
         this.atk_timer.reset();
         Common.log("可以攻击")
         this.isComplete = true;
+    }
+
+    /**
+     * 受伤表现
+     */
+    public hurtAnimate(value:number):void {
+        this.addChild(this.hurtText);
+        value = Math.floor(value);
+        this.hurtText.text = `-${value.toString()}`;
+        this.hurtText.anchorOffsetX = this.hurtText.width/2;
+        this.hurtText.y = this.y;
+        this.hurtText.x = this.x;
+        SceneManager.battleScene.effectLayer.addChild(this.hurtText);
+        Animations.hurtTips(this.hurtText);
     }
 
     public static Action_Enter:string = "enter";
@@ -245,7 +275,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public static Action_Attack05:string = "attack05";
     public static Action_Hurt:string = "hurt";
 
-
+    /**伤害位图 */
+    public hurtText:egret.BitmapText;
     public attr:BaseCharactorData;
     /**阴影 */
     public shadow:egret.Bitmap;

@@ -30,9 +30,9 @@
     {"id":39, "className":"Meditation", "cd":0, "duration":0, "damage":0},
     {"id":40, "className":"KillBuff", "cd":0, "duration":3, "damage":0},
     {"id":51, "className":"BuildWall", "cd":8, "duration":5, "damage":0},
-    {"id":52, "className":"KillBuff", "cd":0, "duration":3, "damage":0},
-    {"id":53, "className":"KillBuff", "cd":0, "duration":3, "damage":0},
-    {"id":54, "className":"KillBuff", "cd":0, "duration":3, "damage":0},
+    {"id":52, "className":"Crack", "cd":8, "duration":5, "damage":0},
+    {"id":53, "className":"Frost", "cd":8, "duration":0, "damage":0},
+    {"id":54, "className":"Avatar", "cd":8, "duration":0, "damage":0},
     {"id":55, "className":"Faster", "cd":0, "duration":0, "damage":0},
     {"id":56, "className":"BlowUp", "cd":0, "duration":0, "damage":0}
 ]

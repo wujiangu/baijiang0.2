@@ -1,8 +1,8 @@
 /**
- * 筑墙
- * 筑起一道墙，撞到眩晕1s，5s后消失
+ * 裂缝
+ * 地面上产生裂缝，触碰受伤，5s消失
  */
-class BuildWall extends BuffBase {
+class Crack extends BuffBase {
     public constructor() {
         super();
     }
@@ -11,7 +11,7 @@ class BuildWall extends BuffBase {
     public buffInit(options:any) {
         super.buffInit();
         this.options = options;
-        this.buffData.className = "BuildWall";
+        this.buffData.className = "Crack";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_None;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;
@@ -54,7 +54,8 @@ class BuildWall extends BuffBase {
     }
     
     private onWallDisappear():void {
-        this.target.specialArmature.play(`skill01_0${this.type}`, 1, 2, 4);
+        this.target.specialArmature.pause("skill02");
+        this.target.specialArmature.play("skill02", 1, 2, 11);
         SceneManager.battleScene.removeCollison(this);
         if (this.target.curState == "dead"){
             TimerManager.getInstance().remove(this.onWallDisappear, this);
@@ -66,23 +67,16 @@ class BuildWall extends BuffBase {
     /**
      * 筑墙
      */
-    private buildWall(x:number, y:number):void {
-        let radian = MathUtils.getRadian2(this.target.x, this.target.y, x, y);
-        let direction:string = this.target.getWalkPosition("skill01_", radian);
-        let num:number = parseInt(direction.charAt(9));
-        Common.log("位置--->", this.target.x, this.target.y, x, y, num);
+    private buildCrack(x:number, y:number):void {
+        Common.log("位置--->", this.target.x, this.target.y, x, y);
         this.target.specialArmature.visible = true;
         SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
         this.target.specialArmature.x = x;
         this.target.specialArmature.y = y;
         this.x = x;
         this.y = y;
-        if (num == 2) {
-            this.type = 2;
-        }else{
-            this.type = 1;
-        }
-        this.target.specialArmature.play(`skill01_0${this.type}`, 1);
+        this.type = 3;
+        this.target.specialArmature.play("skill02", 1);
         SceneManager.battleScene.addCollison(this);
         TimerManager.getInstance().doTimer(this.buffData.duration*1000, 1, this.onWallDisappear, this);
     }
@@ -98,7 +92,7 @@ class BuildWall extends BuffBase {
 
         let distance:number = MathUtils.getDistance(this.target.x, this.target.y, randomX, randomY);
         if (distance >= 50 && distance <= 200 && !isBound) {
-            this.buildWall(randomX, randomY);
+            this.buildCrack(randomX, randomY);
         }else{
             this.getRandom();
         }

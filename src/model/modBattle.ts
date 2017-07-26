@@ -124,11 +124,13 @@ namespace modBattle {
                 let arrayBuff:Array<number> = [];
                 for (let i = 0; i < buffCount; i++) {
                     // let random:number = MathUtils.getRandom(1, 6);
-                    let random:number = 1;
+                    // Common.log("精英怪类型----->", random);
+                    let random:number = 5;
                     arrayBuff.push(random);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
                 data["arrayBuff"] = arrayBuff;
+                data["isAvatar"] = false;
             }
             data["attr"].hp *= k_hp;
             data["attr"].atk *= k_atk;

@@ -182,7 +182,7 @@ class BattleScene extends Base {
         // Common.log(HeroData.getHeroData(GameData.curHero));
         // let level:number = HeroData.getHeroData(GameData.curHero).lv
         // let attr = data[level - 1];
-        let attr = data[0];
+        let attr = data[50];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;
@@ -254,14 +254,6 @@ class BattleScene extends Base {
 
     /**设置碰撞范围 */
     public setCollison(data:any):void {
-                // var shp:egret.Shape = new egret.Shape();
-                // shp.x = data.pos[0];
-                // shp.y = data.pos[1];
-                // shp.graphics.lineStyle( 1, 0x00ff00 );
-                // shp.graphics.beginFill( 0xff0000, 1);
-                // shp.graphics.drawCircle( 0, 0, 5 );
-                // shp.graphics.endFill();
-                // this.addChild( shp );
         switch (data.type) {
             case 1:
                 data.minX = data.x - 73;
@@ -275,8 +267,14 @@ class BattleScene extends Base {
                 data.minY = data.y - 100;
                 data.maxY = data.y + 40;     
             break;
+            case 3:
+                data.minX = data.x - 145;
+                data.maxX = data.x + 145;
+                data.minY = data.y - 49;
+                data.maxY = data.y - 30;
+            break;
         }
-        Common.log(this.areaCollison)
+        // Common.log(this.areaCollison)
     }
 
     /**增加碰撞区域 */

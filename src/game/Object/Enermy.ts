@@ -4,8 +4,6 @@ class Enermy extends BaseGameObject {
         this.colorFlilter = new egret.ColorMatrixFilter(this.colorMatrix);
         this.defaultFlilter = new egret.ColorMatrixFilter(this.defaultMatrix);
         this.createExpAndSoul();
-        this.hurtText = Utils.createBitmapText("hurtFnt_fnt", this);
-        this.hurtText.x = -10;
         this.img_sigh = Utils.createBitmap("img_sigh_png");
         this.img_sigh.scaleX = 0.5;
         this.img_sigh.scaleY = 0.5;
@@ -119,6 +117,7 @@ class Enermy extends BaseGameObject {
                 this.y += this.deltaY;
                 this.x = parseFloat(this.x.toFixed(2));
                 this.y = parseFloat(this.y.toFixed(2));
+                // if (this.isFaster) func(this.radian);
             }
             if (this.isComplete == true) {
                 // let dis:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
@@ -215,24 +214,12 @@ class Enermy extends BaseGameObject {
         this.buffArmature.visible = false;
         this.fallExpAndSoul();
         GameData.heros[0].killBuff();
+        this.recycle();
         TimerManager.getInstance().doTimer(5000, 0, this.disappear, this);
     }
     /****************************************************/
 
     /***********************其他函数**********************/
-    /**
-     * 受伤表现
-     */
-    public hurtAnimate(value:number):void {
-        this.addChild(this.hurtText);
-        value = Math.floor(value);
-        this.hurtText.text = `-${value.toString()}`;
-        this.hurtText.anchorOffsetX = this.hurtText.width/2;
-        this.hurtText.y = this.y;
-        this.hurtText.x = this.x;
-        SceneManager.battleScene.effectLayer.addChild(this.hurtText);
-        Animations.hurtTips(this.hurtText);
-    }
     /**
      * 设置状态
      */
@@ -453,8 +440,6 @@ class Enermy extends BaseGameObject {
     /**经验和魂石的移动 */
     public isMovExp:boolean;
     public isMovSoul:boolean;
-    /**伤害位图 */
-    public hurtText:egret.BitmapText;
     /**感叹号(攻击提示) */
     public img_sigh:egret.Bitmap;
     /**受击次数 */

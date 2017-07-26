@@ -45,6 +45,8 @@ class EliteMonster extends Monster {
         this.img_halo.visible = true;
         this.armature.visible = true;
         this.specialArmature.visible = false;
+        this.visible = true;
+        this.alpha = 1.0;
     }
 
     /**
@@ -53,7 +55,17 @@ class EliteMonster extends Monster {
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
         super.init(data, isElite, isSummon);
         this.arrayBuffs = data[1].arrayBuff;
-        Common.log(JSON.stringify(data[1]));
+        this._data = data;
+        if (this._isAvatar) {
+            this.scaleX = -1;
+            this.specialArmature.visible = true;
+            egret.Tween.get(this).to({x:this.x+100}, 50);
+            this.specialArmature.play("skill04", 1, 2, 8);
+        }else{
+            this.addChild(this.specialArmature);
+            this.specialArmature.x = 0;
+            this.specialArmature.y = 0;
+        }
     }
 
     public update(time:number):void {
@@ -125,8 +137,38 @@ class EliteMonster extends Monster {
 
     /**受到攻击 */
     public gotoHurt(hurtValue:number = 1, isSkillHurt:boolean = false) {
-        super.gotoHurt(hurtValue, isSkillHurt);
-        if (this.isFaster) this.specialArmature.visible = false;
+        if (this._isAvatar) {
+            if (this.curState == Enermy.Action_Dead) return;
+            this.armature.play("hurt", 0);
+            this.curState = Enermy.Action_Dead;
+            Animations.fadeIn(this, 500, ()=>{
+                this.disappear();
+            });
+            let enermy = GameData.heros[0].getEnermy();
+            for (let i = 0; i < enermy.length; i++) {
+                let buff = enermy[i].buff;
+                for (let i = 0; i < buff.length; i++) {
+                    if (buff[i].buffData.id == 54) {
+                        buff[i].startTimer();
+                        break;
+                    }
+                }
+            }
+            if (!isSkillHurt) {
+                let buffConfig = modBuff.getBuff(2);
+                let extraBuff = ObjectPool.pop(buffConfig.className);
+                extraBuff.buffInit(buffConfig);
+                extraBuff.effectName = "xuanyun";
+                extraBuff.buffData.id = buffConfig.id;
+                extraBuff.buffData.duration = buffConfig.duration;
+                extraBuff.buffData.postionType = PostionType.PostionType_Head;
+                GameData.heros[0].addBuff(extraBuff);
+            }
+        }else{
+            this.removeAvatar();
+            super.gotoHurt(hurtValue, isSkillHurt);
+            if (this.isFaster) this.specialArmature.visible = false;
+        }
     }
 
     /**增加buff */
@@ -143,15 +185,18 @@ class EliteMonster extends Monster {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
-        this.img_halo.visible = false;
-        if (this.isFaster) this.specialArmature.visible = false;
         for (let i = 0; i < this.buff.length; i++) {
             if (this.buff[i].buffData.id == 56) {
                 this.armature.visible = false;
                 this.buff[i].update();
-                break;
+            }
+            else if(this.buff[i].buffData.id == 54) {
+                this.buff[i].removeTimer();
             }
         }
+        this.removeAvatar();
+        this.img_halo.visible = false;
+        if (this.isFaster) this.specialArmature.visible = false;
     }
 
     /**消失 */
@@ -192,13 +237,73 @@ class EliteMonster extends Monster {
             break;
             case "buildEnd2":
                 this.specialArmature.pause("skill01_02");
-            break
+            break;
+            case "End":
+                this.specialArmature.play("skill02", 1, 2, 6);
+            break;
+            case "impact":
+                let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
+                if (distance <= 200 ) {
+                    let buffConfig = modBuff.getBuff(2);
+                    let extraBuff = ObjectPool.pop(buffConfig.className);
+                    extraBuff.buffInit(buffConfig);
+                    extraBuff.effectName = "xuanyun";
+                    extraBuff.buffData.id = buffConfig.id;
+                    extraBuff.buffData.duration = buffConfig.duration;
+                    extraBuff.buffData.postionType = PostionType.PostionType_Head;
+                    GameData.heros[0].addBuff(extraBuff);
+                    GameData.heros[0].hurtHandler(this.attr.atk);
+                }
+            break;
+            case "split":
+                if (this.attr.hp <= 0) return;
+                egret.Tween.get(this).to({x:this.x-100}, 50).call(()=>{
+                    this.setCanMove(true);
+                    this.gotoRun();
+                });
+                this.createAvatar();
+                GameData.monsters.push(this._avatar);
+                this._avatar.init(this._data);
+                SceneManager.battleScene.battleLayer.addChild(this._avatar);
+            break;
+            case "blowup":
+                let dis:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
+                if (dis <= 100) {
+                    let hurt:number = this.attr.atk * 2;
+                    GameData.heros[0].hurtHandler(hurt);
+                }
+            break;
         }
         
     }
 
+    /**
+     * 创建分身
+     */
+    public createAvatar():void {
+        this._avatar = ObjectPool.pop("EliteMonster");
+        this._avatar.x = this.x;
+        this._avatar.y = this.y;
+        this._avatar.alpha = 1.0;
+        this._avatar.visible = true;
+        this._avatar.anchorOffsetY = -50;
+        this._data[1]["isAvatar"] = true;
+    }
+
+    /**
+     * 清除分身
+     */
+    public removeAvatar():void {
+        let enermy = GameData.heros[0].getEnermy();
+        for (let i = 0; i < enermy.length; i++) {
+            if (enermy[i]._isAvatar) {
+                enermy[i].gotoHurt(1, true);
+            }
+        }
+    }
+
     public specialArmaturePlayEnd():void {
-        this.specialArmature.visible = false;
+        if (!this.isFaster) this.specialArmature.visible = false;
     }
 
     /**
@@ -247,6 +352,9 @@ class EliteMonster extends Monster {
         this.specialArmature.play(specialAnimate, 0);
     }.bind(this);
 
+
+    private _data:any;
+    private _avatar:EliteMonster;
     /*************************图片************************/
     private img_halo:egret.Bitmap;
 }

@@ -106,8 +106,8 @@ class Hero extends BaseGameObject {
     /**
      * 无敌状态
      */
-    public gotoInvincible():void {
-        Animations.flash(this, 3000, 100, ()=>{this._isInvincible = false});
+    public gotoInvincible(time:number = 1500):void {
+        Animations.flash(this, time, 190, ()=>{this._isInvincible = false});
     }
 
     /**设置无敌状态 */
@@ -141,6 +141,10 @@ class Hero extends BaseGameObject {
     /**获取护盾的值 */
     public getShieldCount():number {
         return this._shieldCount;
+    }
+
+    public setSwordStatus(status:boolean):void {
+        this.img_swordLight.visible = status;
     }
 
     /**
@@ -268,6 +272,7 @@ class Hero extends BaseGameObject {
         let gotoY = this.y + this.deltaY;
         let isMove:boolean = this.isCollison(gotoX, gotoY);
         if (!isMove) return;
+        if (!this.canMove) return;
         this.x = Math.floor(gotoX);
         this.y = Math.floor(gotoY);
     }
@@ -280,7 +285,6 @@ class Hero extends BaseGameObject {
         if (Math.abs(this.sumDeltaX) > this.atk_rangeX || Math.abs(this.sumDeltaY) > this.atk_rangeY) {
             this.gotoIdle();
             this.img_swordLight.visible = false;
-            this.setEnermy();
             let count:number = 0;
             //怪物到中点的距离
             for (let i = 0; i < this.enermy.length; i++) {
@@ -340,6 +344,10 @@ class Hero extends BaseGameObject {
             extraBuff.buffData.postionType = PostionType.PostionType_Head;
             this.addBuff(extraBuff);
             this.armature.play(BaseGameObject.Action_Hurt, 0);
+            this.img_swordLight.visible = false;
+            return;
+        }
+        if (!this.canMove){
             this.img_swordLight.visible = false;
             return;
         }
@@ -458,6 +466,16 @@ class Hero extends BaseGameObject {
             if (modBuff.isImmuneBuff(this)) return;
         }
         if (this.curState == BaseGameObject.Action_Hurt || this.curState == "attack") return;
+        SceneManager.battleScene.bloodTween();
+        this.hurtHandler(value);
+    }
+
+    /**
+     * 受伤处理
+     */
+    public hurtHandler(value:number):void {
+        super.hurtHandler(value);
+        if (this._isInvincible) return;
         this.curState = BaseGameObject.Action_Hurt;
         this.img_swordLight.visible = false;
         if (!this.skill_status) {
@@ -467,7 +485,6 @@ class Hero extends BaseGameObject {
             this.effectArmature.x = -15;
         }
         this.attr.hp -= value;
-        SceneManager.battleScene.bloodTween();
         if (this.attr.hp <= 0) {
             this.removeComplete();
             if (modBuff.isRevival(this)) Common.log("复活");
@@ -475,7 +492,10 @@ class Hero extends BaseGameObject {
             return;
         }
         SceneManager.battleScene.battleSceneCom.setHpProgress(this.attr.hp);
+        this.setInvincible(true);
+        this.gotoInvincible(1500);
     }
+
     /**
      * 击杀增加的buff
      */
@@ -508,13 +528,14 @@ class Hero extends BaseGameObject {
     /**攻击 */
     public gotoAttack() {
         if (!this.isComplete) return;
+        if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
         // Common.log("进入攻击", this.curState, this.isComplete);
         this.isComplete = false;
         this.atk_timer.start();
         this.curState = "attack";
         // this.isAttack = true;
-
+        this.setEnermy();
         let useSpeed = this.atk_speed * 0.1;
         this.sumDeltaX = 0;
         this.sumDeltaY = 0;
@@ -568,6 +589,7 @@ class Hero extends BaseGameObject {
      * 技能
      */
     public gotoSkill() {
+        if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
         this.skillArmature.visible = true;
         this.curState = Hero.Action_Skill;
@@ -622,6 +644,7 @@ class Hero extends BaseGameObject {
      */
     private effectArmaturePlayEnd():void {
         this.effectArmature.visible = false;
+        if (!this.canMove) return;
         // this.isAttack = false;
         this.gotoIdle();
     }
