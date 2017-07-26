@@ -275,7 +275,8 @@ class Monster extends Enermy {
      * 特效动画播放完成函数
      */
     public effectArmaturePlayEnd():void {
-        super.effectArmaturePlayEnd();
+        if (this._isAvatar && this.attr.hp <= 0) this.gotoHurt(1, true);
+        else super.effectArmaturePlayEnd();
     }
 
     public skillArmatureFrame(event:dragonBones.FrameEvent):void {

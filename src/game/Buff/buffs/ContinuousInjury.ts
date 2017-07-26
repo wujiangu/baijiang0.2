@@ -47,11 +47,14 @@ class ContinuousInjury extends BuffBase {
 
     /**扣血特效 */
     public bloodEffect() {
-        if (this.target.scaleX == -1) this.bloodTips.scaleX = -1;
+        // if (this.target.scaleX == -1) this.bloodTips.scaleX = -1;
         this.target.addChild(this.bloodTips);
-        this.bloodTips.y = this.target.buffArmature.y;
         this.bloodTips.text = `-${this.damage}`;
         this.bloodTips.alpha = 0;
+        this.bloodTips.x = this.target.x;
+        // this.bloodTips.y = this.target.buffArmature.y + this.target.y;
+        this.bloodTips.y = this.target.y;
+        SceneManager.battleScene.effectLayer.addChild(this.bloodTips);
         var step2:Function = function(){
             this.target.attr.hp -= this.damage;
             if (this.target.attr.hp <= 0){
@@ -62,7 +65,7 @@ class ContinuousInjury extends BuffBase {
         var step1:Function = function(){
             egret.Tween.get(this.bloodTips).to({alpha:0}, 400).call(step2, this);   
         };
-        egret.Tween.get(this.bloodTips).to({y:this.target.buffArmature.y - 50,alpha:1}, 400, egret.Ease.backOut).call(step1, this);
+        egret.Tween.get(this.bloodTips).to({y:this.target.y - 50,alpha:1}, 400, egret.Ease.backOut).call(step1, this);
     }
 
     /**刷新数据 */

@@ -182,7 +182,7 @@ class Enermy extends BaseGameObject {
         this.curState = BaseGameObject.Action_Hurt;
         this.armature.play(this.curState, 0);
         this.effectArmature.visible = true;
-        if (!isSkillHurt) {
+        // if (!isSkillHurt) {
             if (this.attr.hp <= hurtValue) {
                 this.effectArmature.play(Enermy.Action_HurtDie, 1);
                 this.effectArmature.x = 0;
@@ -194,7 +194,7 @@ class Enermy extends BaseGameObject {
                 if (this.attr.hp < 0) this.gotoDead();
             }
             this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
-        }
+        // }
         this.attr.hp -= hurtValue;
         this.beAttackCount ++;
         this.hurtAnimate(hurtValue);

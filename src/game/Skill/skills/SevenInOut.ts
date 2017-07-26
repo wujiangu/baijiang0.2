@@ -91,7 +91,7 @@ class SevenInOut extends SkillBase {
             if (enermy[i].attr.hp > 0) {
                 enermy[i].setCurState("none");
             }
-            enermy[i].gotoHurt(this.damage);
+            enermy[i].gotoHurt(this.damage, true);
         }
     }
 

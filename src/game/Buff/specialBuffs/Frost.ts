@@ -34,6 +34,7 @@ class Frost extends BuffBase {
      */
     private releaseBegin():void {
         this.target.specialArmature.visible = true;
+        this.target.setChildIndex(this.target.specialArmature, 0);
         this.target.specialArmature.play("skill03", 1);
         // SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
         // this.target.specialArmature.x = this.target.x;

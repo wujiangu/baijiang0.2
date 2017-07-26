@@ -88,7 +88,8 @@ class EliteMonster extends Monster {
      * 走路巡逻状态
      */
     public state_run(time:number):void {
-        super.state_run(time, this.setFasterEffect);
+        if (this._isAvatar) super.state_run(time);
+        else super.state_run(time, this.setFasterEffect);
     }
 
     /**
@@ -141,6 +142,7 @@ class EliteMonster extends Monster {
             if (this.curState == Enermy.Action_Dead) return;
             this.armature.play("hurt", 0);
             this.curState = Enermy.Action_Dead;
+            this.attr.hp = 0;
             Animations.fadeIn(this, 500, ()=>{
                 this.disappear();
             });
@@ -294,6 +296,7 @@ class EliteMonster extends Monster {
      * 清除分身
      */
     public removeAvatar():void {
+        GameData.heros[0].setEnermy();
         let enermy = GameData.heros[0].getEnermy();
         for (let i = 0; i < enermy.length; i++) {
             if (enermy[i]._isAvatar) {
