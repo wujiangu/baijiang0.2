@@ -5,7 +5,7 @@
 	<e:Label id="lab_soul" text="99999" y="56.08" size="25" fontFamily="Microsoft YaHei" bold="true" x="988.64" textColor="0x2D6EA6" anchorOffsetX="0" width="120" textAlign="right"/>
 	<e:Image source="tianfu_0002_png" x="127.66" y="8.5"/>
 	<e:Label text="天赋页" x="23" y="105.17" fontFamily="Microsoft YaHei" bold="true" size="35" textColor="0x0f0e0e"/>
-	<e:Label text="（最多可点满5个天赋）" x="681.42" y="110" fontFamily="Microsoft YaHei" bold="true" size="26" textColor="0x757164" anchorOffsetX="0" width="292" textAlign="center"/>
+	<e:Label text="（最多可点满10个天赋）" x="681.42" y="110" fontFamily="Microsoft YaHei" bold="true" size="26" textColor="0x757164" anchorOffsetX="0" width="299" textAlign="center"/>
 	<e:Button id="btn_add" label="" x="210" y="100" width="48" height="48">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

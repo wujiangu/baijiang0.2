@@ -49,7 +49,10 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public setCanMove(status:boolean):void {
         this.canMove = status;
     }
-
+    /**设置无敌状态 */
+    public setInvincible(status:boolean):void {
+        this.isInvincible = status;
+    }
     /**
      * 设置速度
      */
@@ -275,6 +278,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public static Action_Attack05:string = "attack05";
     public static Action_Hurt:string = "hurt";
 
+    /**是否无敌状态 */
+    public isInvincible:boolean;
     /**伤害位图 */
     public hurtText:egret.BitmapText;
     public attr:BaseCharactorData;

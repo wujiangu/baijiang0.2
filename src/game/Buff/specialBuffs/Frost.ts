@@ -20,13 +20,20 @@ class Frost extends BuffBase {
         this.buffData.id = options.id;
         this.buffData.cd = options.cd;
         this.buffData.duration = options.duration;
+        this._isFinish = true;
     }
 
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
-        this.releaseBegin();
-        TimerManager.getInstance().doTimer(this.buffData.cd*1000, 0, this.release, this);
+    }
+
+    public begin():void {
+        if (this._isFinish) {
+            this._isFinish = false;
+            this.releaseBegin();
+            TimerManager.getInstance().doTimer(this.buffData.cd*1000, 0, this.release, this);
+        }
     }
 
     /**
@@ -35,10 +42,7 @@ class Frost extends BuffBase {
     private releaseBegin():void {
         this.target.specialArmature.visible = true;
         this.target.setChildIndex(this.target.specialArmature, 0);
-        this.target.specialArmature.play("skill03", 1);
-        // SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
-        // this.target.specialArmature.x = this.target.x;
-        // this.target.specialArmature.y = this.target.y;
+        this.target.specialArmature.play("skill03", 1, 1, 0, 0.6);
     }
 
     /**
@@ -48,6 +52,7 @@ class Frost extends BuffBase {
         let random:number = MathUtils.getRandom(1, 100);
         if (random >= 0) {
             this.releaseBegin();
+            this._isFinish = true;
         }
     }
 
@@ -80,7 +85,9 @@ class Frost extends BuffBase {
     public recycleBuff() {
         super.recycleBuff();
         TimerManager.getInstance().remove(this.release, this);
-        // TimerManager.getInstance().remove(this.getRandom, this);
     }
     private target:any;
+
+    /**cd是否结束 */
+    private _isFinish:boolean;
 }

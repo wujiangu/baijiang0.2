@@ -21,6 +21,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Image source="title_0007_png" x="486" y="82" />
-	<e:RadioButton id="radio_one" label="一次" x="794.16" y="426"/>
+	<e:RadioButton id="radio_one" label="一次" x="794.16" y="426" skinName="skins.RadioButtonSkin">
+	</e:RadioButton>
 	<e:RadioButton id="radio_ten" label="十次" x="912" y="426"/>
 </e:Skin>

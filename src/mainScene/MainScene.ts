@@ -13,12 +13,12 @@ class MainScene extends Base {
 
         this.onListener();
         this.createMainScene();
-        this.show_label_text();      
+        this.show_label_text();    
     }
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -149,7 +149,10 @@ class MainScene extends Base {
 				this.popupGroup.visible = true;
 				break;
             case this.btn_shop:
-                this.ShowPop("ShopDialog")
+                this.ShowPop("ShopDialog");
+                break;
+                case this.btn_email:
+                    this.ShowPop("EmailWindow");
                 break;
             case this.btn_applicate:
                 this.popupGroup.visible = false;
@@ -204,6 +207,7 @@ class MainScene extends Base {
     /**退出弹窗 */
     private btn_close:eui.Button;
 
+    private btn_email:eui.Button;
     private btn_pvp:eui.Button;
 
     private img_light:eui.Image;

@@ -25,6 +25,7 @@ class Avatar extends BuffBase {
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
+        this.target.setInvincible(true);
         this.releaseBegin();
     }
 

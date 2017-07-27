@@ -41,6 +41,7 @@ class Enermy extends BaseGameObject {
 
     public init(data:Array<any>) {
         super.init(data);
+        this.isInvincible = false;
         this.buff = [];
         this.isEnemy = true;
         this.isSummon = false;
@@ -176,6 +177,7 @@ class Enermy extends BaseGameObject {
 
     /**受到攻击 */
     public gotoHurt(hurtValue:number = 1, isSkillHurt:boolean = false) {
+        if (this.isInvincible) return;
         if (this.attr.hp <= 0) return;
         if ((this.curState == Enermy.Action_Dead) || (this.curState == BaseGameObject.Action_Hurt)) return;
         ShakeTool.getInstance().shakeObj(SceneManager.battleScene, 1, 5, 5);
@@ -187,11 +189,15 @@ class Enermy extends BaseGameObject {
                 this.effectArmature.play(Enermy.Action_HurtDie, 1);
                 this.effectArmature.x = 0;
                 this.effectArmature.y = 5;
+                modBattle.addSumkill();
             }else{
                 this.effectArmature.play(BaseGameObject.Action_Hurt, 1);
                 this.effectArmature.x = -15;
                 this.effectArmature.y = 5;
-                if (this.attr.hp < 0) this.gotoDead();
+                if (this.attr.hp < 0){
+                    this.gotoDead();
+                    modBattle.addSumkill();
+                }
             }
             this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         // }
@@ -248,11 +254,6 @@ class Enermy extends BaseGameObject {
      */
     public setBuff():void {
         let buff:Array<number> = this.arrayBuffs;
-        // let talent:Array<any> = GameData.testTalent.talent;
-        // for (let i = 0; i < buff.length; i++) {
-        //     let id = buff[i] + 50;
-        //     buff.push(id);
-        // }
         for (let i = 0; i < buff.length; i++) {
             let buffConfig = modBuff.getBuff(buff[i]+50);
             let newBuff = ObjectPool.pop(buffConfig.className);

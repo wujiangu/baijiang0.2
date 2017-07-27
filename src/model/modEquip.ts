@@ -235,6 +235,16 @@ namespace modEquip {
             LeanCloud.GetInstance().SaveEquipData();
         }
 
+        public InsertEquipList(list:any):void{
+            if(list.length == 0) return;
+
+            for(let i of list){
+                let info = new EquipInfo(i, 0, TcManager.GetInstance().GetTcEquipData(i).grade);
+                this.Add(info);
+            }
+            LeanCloud.GetInstance().SaveEquipData();
+        }
+
         /** 移除装备信息 */
         public RemoveEquipInfo(info:EquipInfo):void{
             for(let i:number = 0; i < this.equip_list.length; i++){

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="HeroDialogSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
+	<e:Image source="share_0001_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Label id="lab_title" text="英雄" x="461" y="128" anchorOffsetX="0" width="417" anchorOffsetY="0" height="49" textAlign="center" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Button id="btn_close" label="" x="879" y="128">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0009_png" source.down="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="btn_share" label="分享" x="629" y="412" scaleX="1" scaleY="1" width="159" height="62" anchorOffsetX="0" anchorOffsetY="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_shopBuy_png" source.down="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-4" text="" fontFamily="Microsoft YaHei" textColor="0x0f0e0e" bold="true" size.down="25"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Label id="lab_share" text="分享可得" x="571" y="343" anchorOffsetX="0" width="344" textAlign="right" size="22" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Image id="img_goods" source="Sequip5_png" x="812" y="392"/>
+	<e:Label id="lab_content1" text="一骑当千！" x="548" y="232" anchorOffsetX="0" width="351" anchorOffsetY="0" height="45" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" size="45" textAlign="center" textColor="0xeda02d"/>
+	<e:Label id="lab_content2" text="真-三国无双！" x="652" y="285" anchorOffsetX="0" width="276" anchorOffsetY="0" height="37" textAlign="left" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" textColor="0xd35013"/>
+	<e:Label id="lab_content3" text="您已经超越了99%的玩家！" x="564" y="188" anchorOffsetX="0" width="355" anchorOffsetY="0" height="183" textAlign="center" verticalAlign="middle" textColor="0xbf6222" size="27" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Label id="lab_content4" text="Label" x="568" y="232" anchorOffsetX="0" width="338" anchorOffsetY="0" height="87" textColor="0xba8b53" verticalAlign="top" textAlign="left" fontFamily="Microsoft YaHei" bold="true"/>
+</e:Skin>

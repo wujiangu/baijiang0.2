@@ -136,6 +136,7 @@ class EquipUpWindow extends PopupWindow{
             this.equip_info.Lv = this.equip_info.Lv + this.upLevelNum;
             for(let i:number = 0; i < attr.length; i++) attr[i] += this.quality_attr_list[i] * this.upLevelNum;
             this.equip_info.SetEquipAttr(attr);
+            this.upgradeEffect();
             Animations.showTips("升级成功", 1);
 
             let data = HeroData.list[GameData.curHero];
@@ -189,6 +190,31 @@ class EquipUpWindow extends PopupWindow{
         }
         this.starGroup.width = this.equip_info.Quality * 32;
         Common.SetXY(this.starGroup, this.img_weapon.x + (this.img_weapon.width - this.starGroup.width) / 2 - 20, this.img_weapon.y - 45);
+    }
+
+     /** equip upgrade effect */
+    private upgradeEffect():void{
+        let img_bg:egret.Bitmap = new egret.Bitmap(RES.getRes("wuqi_01_png"));
+        this.addChild(img_bg);
+        Common.SetXY(img_bg, this.img_weapon.x + (this.img_weapon.width - img_bg.width >> 1), this.img_weapon.y + (this.img_weapon.height - img_bg.height >> 1));
+        
+        let img_upArrow:egret.Bitmap = new egret.Bitmap(RES.getRes("wuqi_02_png"))
+        this.addChild(img_upArrow);
+        Common.SetXY(img_upArrow, this.img_weapon.x + (this.img_weapon.width - img_upArrow.width >> 1), this.img_weapon.y + (this.img_weapon.height - img_upArrow.height >> 1));
+
+        let mc = Common.CreateMovieClip("upArrow");
+        this.addChild(mc);
+        Common.SetXY(mc, this.curr_lv.x + this.curr_lv.width - 6, this.curr_lv.y + this.curr_lv.height * 4 + 6);
+        mc.play(1);
+
+        egret.Tween.get(img_bg).to({alpha:1},400).to({alpha:0},400);
+        egret.Tween.get(img_upArrow).to({y:img_upArrow.y - 100, alpha:0}, 800).call(()=>{
+            this.removeChild(img_bg);
+            this.removeChild(img_upArrow);
+            this.removeChild(mc);
+            egret.Tween.removeTweens(img_bg);
+            egret.Tween.removeTweens(img_upArrow);
+        });
     }
 
    /**  */

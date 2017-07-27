@@ -9,11 +9,16 @@ class BattleScene extends Base {
         GameData.boss = new Array();
         this.timer = new egret.Timer(10, 0);
         this.timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
+        this.comboTimer = new egret.Timer(20, 100);
+        this.comboTimer.stop();
+        this.comboTimer.addEventListener(egret.TimerEvent.TIMER, this.onCombo, this);
+        this.comboTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onComboComplete, this);
         modBattle.createTimer();
     }
     protected createChildren(): void{
         this.createMap();
         this.createComboGroup();
+        this.createRewardCombo();
     }
 
     protected childrenCreated(): void{
@@ -33,7 +38,9 @@ class BattleScene extends Base {
 
         if (this.comboGroup) {
             this.comboGroup.visible = false;
+            this.instantKill.visible = false;
             this.effectLayer.addChild(this.comboGroup);
+            this.effectLayer.addChild(this.instantKill);
         }
         modBattle.init();
         this.areaCollison = [];
@@ -86,7 +93,7 @@ class BattleScene extends Base {
         bg.scaleX = 3;
         bg.scaleY = 3;
         this.comboGroup.addChild(bg);
-        let comboText:egret.TextField = Utils.createText("连击", 20, 15, 26, 0x501414);
+        let comboText:egret.TextField = Utils.createText("击杀", 20, 15, 26, 0x501414);
         comboText.bold = true;
         comboText.fontFamily = "Microsoft YaHei";
         this.comboGroup.addChild(comboText);
@@ -94,10 +101,8 @@ class BattleScene extends Base {
         //位图字体
         let font = RES.getRes("combo_fnt");
         this.comboCount = new egret.BitmapText();
-        this.comboCount.scaleX = 3;
-        this.comboCount.scaleY = 3;
         this.comboCount.font = font;
-        this.comboCount.x = 100;
+        this.comboCount.x = 130;
         this.comboCount.y = 30;
         this.comboCount.text = "0";
         this.comboCount.letterSpacing = 1;
@@ -110,21 +115,20 @@ class BattleScene extends Base {
      * 更新连击数字
      */
     public update(value:number) {
-        this.comboGroup.visible = true;
-        if (value >= 10) this.comboCount.x = 90;
         let str:string = value.toString();
-        this.comboCount.anchorOffsetY = this.comboCount.height/2;
         this.comboCount.text = str;
-        if (this.lastCombo == value) return;
+        this.comboCount.anchorOffsetY = this.comboCount.height/2;
         if (!this.comboStatus) {
             this.comboStatus = true;
-            this.lastCombo = value;
-            Animations.fadeOut(this.comboGroup, 500, ()=>{
-                Animations.zoomIn(this.comboCount);
+            this.comboGroup.alpha = 0;
+            Animations.fadeOut(this.comboGroup, 250, null, ()=>{
+                this.comboGroup.visible = true;
+                Animations.stamp(this.comboCount, 300, 450, 10, 5);
+                Animations.fadeIn(this.comboGroup, 500);
             })
         }else{
-            this.lastCombo = value;
-            Animations.zoomIn(this.comboCount);
+            this.comboGroup.visible = true;
+            Animations.stamp(this.comboCount, 300, 450, 10, 5);
         }
     }
 
@@ -134,6 +138,30 @@ class BattleScene extends Base {
     public hideCombo():void {
         this.comboStatus = false;
         this.comboGroup.visible = false;
+    }
+
+    /**
+     * 创建一次击杀奖励组
+     */
+    private createRewardCombo():void {
+        this.instantKill = new egret.DisplayObjectContainer();
+        this.instantKill.x = 150;
+        this.instantKill.y = 150;
+        this.img_insKill = Utils.createBitmap("kill_0002_png");
+        this.img_insKill.anchorOffsetX = this.img_insKill.width/2;
+        this.img_insKill.anchorOffsetY = this.img_insKill.height/2;
+        this.instantKill.addChild(this.img_insKill);
+    }
+
+    /**
+     * 更新一次击杀数据
+     */
+    public updateInstantKill(value:number):void {
+        this.instantKill.visible = true;
+        let num:number = value;
+        if (value >= 5) num = 5;
+        this.img_insKill.texture = RES.getRes(`kill_000${num}_png`);
+        Animations.stamp(this.instantKill, 300, 300);
     }
 
     /**
@@ -248,6 +276,7 @@ class BattleScene extends Base {
     public cleanChildren():void {
         modBattle.recycleObject();
         this.effectLayer.removeChildren();
+        this.otherLayer.removeChildren();
         // GameLayerManager.gameLayer().effectLayer.removeChildren();
         GameLayerManager.gameLayer().sceneLayer.removeChild(this);
     }
@@ -319,6 +348,8 @@ class BattleScene extends Base {
     public blood:eui.Image;
     /**定时器 */
     private timer:egret.Timer;
+    /**连击计时器 */
+    private comboTimer:egret.Timer;
     /** */
     private moveCount:number;
     /**连击显示组 */
@@ -329,4 +360,8 @@ class BattleScene extends Base {
     private lastCombo:number;
     /**连击数字 */
     private comboCount:egret.BitmapText;
+    /**一次击杀奖励组 */
+    private instantKill:egret.DisplayObjectContainer;
+    /**一次击杀图片 */
+    private img_insKill:egret.Bitmap;
 }

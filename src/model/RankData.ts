@@ -47,6 +47,16 @@ class RankData{
         return this.data_list.length;
     }
 
+     /** 根据伤害值获得伤害索引 */
+    public GetIndexFromDamage(damage:number):number{
+         for(let i:number = 0; i < this.data_list.length; i++){
+            if(this.data_list[i].damage == damage){
+                return i + 1;
+            }
+        }
+        return -1;
+    }
+
     public FindDataFromId():any{
         for(let i:number = 0; i < this.data_list.length; i++){
             if(this.data_list[i]["ObjectId"] == LeanCloud.ObjectId){

@@ -22,7 +22,7 @@
 	</e:Scroller>
 
 	<e:Group id="equipGroup" width="484" height="544" x="652" y="96.33" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Image id="img_weapon" source="equip1_png" scaleX="1" scaleY="1" anchorOffsetY="0" height="389"/>
+		<e:Image id="img_weapon" source="equip1_png" scaleX="1" scaleY="1" anchorOffsetY="0" height="389" y="5" x="5"/>
 		<e:Label id="lab_lv" text="等级: 100/100" size="25" fontFamily="Microsoft YaHei" bold="true" anchorOffsetX="0" width="172" textAlign="right" textColor="0x5e5954" x="250.23" y="358"/>
 		<e:Image id="img_detail" source="shop_0003_png" x="429.23" y="349"/>
 		<e:Label id="lab_name" text="方天画戟" x="6" y="409" fontFamily="Microsoft YaHei" bold="true" textColor="0xc1b17c" anchorOffsetX="0" width="467" textAlign="center"/>

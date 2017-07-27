@@ -34,6 +34,7 @@ class BattleSceneCom extends Base {
 
     /**失败弹窗 */
     public onFailPop():void {
+        Common.log("杀敌总数------>", modBattle.getSumkill());
         TimerManager.getInstance().stopTimer();
         if (!this.battleFailPop) {
             this.battleFailPop = new BattleFailPop();

@@ -10,6 +10,11 @@ class EliteMonster extends Monster {
         this.img_halo.x = -30;
         this.img_halo.y = -96;
         this.addChild(this.img_halo);
+        
+        this.img_type = Utils.createBitmap("Elitemonster001_png");
+        this.img_type.x = 0;
+        this.img_type.y = -100;
+        this.addChild(this.img_type);
         this.arrayBuffs = new Array();
         this.createSpecialArmature();
     }
@@ -43,6 +48,7 @@ class EliteMonster extends Monster {
     public initDragonBonesArmature(name:string):void {
         super.initDragonBonesArmature(name);
         this.img_halo.visible = true;
+        this.img_type.visible = true;
         this.armature.visible = true;
         this.specialArmature.visible = false;
         this.visible = true;
@@ -56,6 +62,7 @@ class EliteMonster extends Monster {
         super.init(data, isElite, isSummon);
         this.arrayBuffs = data[1].arrayBuff;
         this._data = data;
+        this.isFaster = false;
         if (this._isAvatar) {
             this.scaleX = -1;
             this.specialArmature.visible = true;
@@ -65,6 +72,10 @@ class EliteMonster extends Monster {
             this.addChild(this.specialArmature);
             this.specialArmature.x = 0;
             this.specialArmature.y = 0;
+        }
+        for (let i = 0; i < this.arrayBuffs.length; i++) {
+            let Image:string = `Elitemonster00${this.arrayBuffs[i]}_png`;
+            this.img_type.texture = RES.getRes(Image);
         }
     }
 
@@ -89,7 +100,18 @@ class EliteMonster extends Monster {
      */
     public state_run(time:number):void {
         if (this._isAvatar) super.state_run(time);
-        else super.state_run(time, this.setFasterEffect);
+        else{
+            super.state_run(time, this.setFasterEffect);
+            let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
+            if (distance < 250) {
+                for (let i = 0; i < this.buff.length; i++) {
+                    if (this.buff[i].buffData.id == 53) {
+                        this.buff[i].begin();
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -198,6 +220,7 @@ class EliteMonster extends Monster {
         }
         this.removeAvatar();
         this.img_halo.visible = false;
+        this.img_type.visible = false;
         if (this.isFaster) this.specialArmature.visible = false;
     }
 
@@ -260,6 +283,7 @@ class EliteMonster extends Monster {
             case "split":
                 if (this.attr.hp <= 0) return;
                 egret.Tween.get(this).to({x:this.x-100}, 50).call(()=>{
+                    this.setInvincible(false);
                     this.setCanMove(true);
                     this.gotoRun();
                 });
@@ -359,5 +383,8 @@ class EliteMonster extends Monster {
     private _data:any;
     private _avatar:EliteMonster;
     /*************************图片************************/
+    /**精英怪的标志图 */
     private img_halo:egret.Bitmap;
+    /**精英怪的类型标志图 */
+    private img_type:egret.Bitmap;
 }

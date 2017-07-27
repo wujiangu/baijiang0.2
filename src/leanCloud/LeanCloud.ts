@@ -191,11 +191,10 @@ class LeanCloud{
     public InitRoleData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            UserDataInfo.GetInstance().SetBasicData("exp", todo.get("exp"));
-            UserDataInfo.GetInstance().SetBasicData("diamond", todo.get("diamond"));
-            UserDataInfo.GetInstance().SetBasicData("soul", todo.get("soul"));
-            UserDataInfo.GetInstance().SetBasicData("power", todo.get("power"));
-            UserDataInfo.GetInstance().SetBasicData("curTalentPage", todo.get("curTalentPage"));
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email"];
+            for(let i in str_list){
+                UserDataInfo.GetInstance().SetBasicData(str_list[i], todo.get(str_list[i]));
+            }
         },
         function(error){
             Common.log(error);
@@ -205,10 +204,10 @@ class LeanCloud{
     public SaveRoleBasicData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            todo.set("exp", UserDataInfo.GetInstance().GetBasicData("exp"));
-            todo.set("soul", UserDataInfo.GetInstance().GetBasicData("soul"));
-            todo.set("diamond", UserDataInfo.GetInstance().GetBasicData("diamond"));
-            todo.set("power", UserDataInfo.GetInstance().GetBasicData("power"));
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "email"];
+            for(let i in str_list){
+                todo.set(str_list[i], UserDataInfo.GetInstance().GetBasicData(str_list[i]))
+            }
             todo.save();
         });
     }

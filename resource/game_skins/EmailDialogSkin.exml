@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="EmailDialogSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="email_001_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Button id="btn_back" label="" x="50" y="13">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_0005_png" source.down="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Scroller width="460" height="430" x="14" y="107" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group id="scrollGroup" width="459" height="430" anchorOffsetX="0" x="0" y="0" anchorOffsetY="0"/>
+	</e:Scroller>
+	<e:Button id="btn_getAll" label="一键收取" x="127" y="559" width="200" height="70">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_shopBuy_png" source.down="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-5" textColor="0x141212" bold="true" fontFamily="Microsoft YaHei" size.down="25"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="email_font_png" x="211" y="13"/>
+	<e:Group id="emailGroup" width="639" height="538" x="489" y="99" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Label id="lab_title" text="标题" y="0" anchorOffsetX="0" width="626" textAlign="center" verticalAlign="middle" anchorOffsetY="0" height="52" scaleX="1" scaleY="1" horizontalCenter="1.5"/>
+		<e:Label id="lab_content" text="Content" x="8.5" y="62" anchorOffsetX="0" width="632" anchorOffsetY="0" height="196" verticalAlign="top" textAlign="left" fontFamily="Microsoft YaHei" scaleX="1" scaleY="1" textColor="0x4f4646"/>
+		<e:Button id="btn_get" label="领取" x="304" y="459.5" width="130" height="55" scaleX="1" scaleY="1">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shopBuy_png" source.down="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-5" textColor="0x141212" bold="true" fontFamily="Microsoft YaHei" size.down="25"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_delete" label="删除" x="478" y="459.5" width="130" height="55" scaleX="1" scaleY="1">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shopBuy_png" source.down="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-5" textColor="0x141212" bold="true" fontFamily="Microsoft YaHei" size.down="25"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="lab_time" text="剩余时间" x="422" y="293" anchorOffsetX="0" width="205" textAlign="right" fontFamily="Microsoft YaHei" size="25"/>
+	</e:Group>
+	<e:Label id="lab_tip" text="暂无邮件可查看" x="498" y="327" anchorOffsetX="0" width="628" textAlign="center" anchorOffsetY="0" height="49" verticalAlign="middle" visible="false"/>
+</e:Skin>

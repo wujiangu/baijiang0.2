@@ -4,14 +4,6 @@
 class Hero extends BaseGameObject {
     public constructor() {
         super();
-        this.comboText = Utils.createBitmapText("fntCombo_fnt", this);
-        this.comboText.scaleX = 0.5;
-        this.comboText.scaleY = 0.5;
-        this.comboText.x = -10;
-        this.comboTimer = new egret.Timer(20, 100);
-        this.comboTimer.stop();
-        this.comboTimer.addEventListener(egret.TimerEvent.TIMER, this.onCombo, this);
-        this.comboTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onComboComplete, this);
     }
 
     private initDragonBonesArmature(name:string):void {
@@ -69,7 +61,7 @@ class Hero extends BaseGameObject {
     }
 
     public init(data:Array<any>, isPVP:boolean=false) {
-        this._isInvincible = true;
+        this.isInvincible = true;
         super.init(data);
         this.initDragonBonesArmature(data[0]);
         this.attr.initHeroAttr(data[1]);
@@ -82,18 +74,17 @@ class Hero extends BaseGameObject {
         this._shieldCount = 0;
         this.atk_range = 200;
         this.atk_speed = 150;
-        this.combo = 0;
         this.isEnemy = false;
         this.isPlay = false;
         this.isPVP = isPVP;
         this.skill_status = false;
         this.enermy = [];
         this.buff = [];
+        this.lastKill = 0;
         this.lastAnimation = "";
         this.skill.skillData.skill_range = 150;
         this.visible = false;
         this.shadow.visible = false;
-        this.comboTimer.reset();
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
@@ -107,12 +98,7 @@ class Hero extends BaseGameObject {
      * 无敌状态
      */
     public gotoInvincible(time:number = 1500):void {
-        Animations.flash(this, time, 190, ()=>{this._isInvincible = false});
-    }
-
-    /**设置无敌状态 */
-    public setInvincible(status:boolean):void {
-        this._isInvincible = status;
+        Animations.flash(this, time, 190, ()=>{this.isInvincible = false});
     }
 
     /**
@@ -151,9 +137,9 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        // let buff = HeroData.list[this.name].buff;
         let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
         let talent:Array<any> = GameData.testTalent.talent;
+        // let buff = HeroData.list[this.name].buff;
         // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
         // let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
@@ -214,37 +200,11 @@ class Hero extends BaseGameObject {
         return this.enermy;
     }
 
-    /**获取连击数 */
-    public getCombo():number {
-        return this.combo;
-    }
-
     /**
      * 每帧数据更新
      */
     public update(time:number):void {
         super.update(time);
-    }
-
-    /**
-     * 连击计时器监听
-     */
-    private onCombo(event:egret.TimerEvent):void {
-        if (this.isHit) {
-            this.comboTimer.reset();
-            this.comboTimer.start();
-            this.isHit = false;
-        }
-    }
-
-    /**
-     * 连击结束监听
-     */
-    private onComboComplete():void {
-        this.combo = 0;
-        this.isHit = false;
-        this.comboTimer.reset();
-        SceneManager.battleScene.hideCombo();
     }
 
     /**
@@ -270,8 +230,10 @@ class Hero extends BaseGameObject {
         }
         let gotoX = this.x + this.deltaX;
         let gotoY = this.y + this.deltaY;
-        let isMove:boolean = this.isCollison(gotoX, gotoY);
-        if (!isMove) return;
+        if (!this.isPVP) {
+            let isMove:boolean = this.isCollison(gotoX, gotoY);
+            if (!isMove) return;
+        }
         if (!this.canMove) return;
         this.x = Math.floor(gotoX);
         this.y = Math.floor(gotoY);
@@ -299,30 +261,28 @@ class Hero extends BaseGameObject {
                         let state = this.enermy[i].curState;
                         if (state != Enermy.Action_Dead && state != BaseGameObject.Action_Hurt && !this.enermy[i].isReadSkill) {
                             this.isHit = true;
-                            this.combo ++;
-                            count ++;
                         }
-                        if (modBuff.isAttackBuff(this, this.enermy[i])) {
-                            // Common.log("击晕了");
-                        }
+                        modBuff.isAttackBuff(this, this.enermy[i]);
                     }
-                    // let value = this.getHurtValue();
                     if (this.isCrit()){
                         this._hurtValue *= 1.5;
                     }
-                    // Common.log("伤害值---->", this._hurtValue);
                     this.enermy[i].gotoHurt(this._hurtValue);
-                }
-            }
-            if (!this.isPVP){
-                if (this.combo >= 1) {
-                    if (!this.comboTimer.running) this.comboTimer.start();
-                    if (this.combo >= 2){
-                        SceneManager.battleScene.update(this.combo);
+                    if (!this.isPVP) {
+                        let state = this.enermy[i].curState;
+                        if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
                     }
                 }
+            }
+            if (!this.isPVP && count > 0){
+                let killCount:number = modBattle.getSumkill();
+                if (this.lastKill != killCount) {
+                    this.lastKill = killCount;
+                    Common.log("杀敌总数------>", modBattle.getSumkill());
+                    SceneManager.battleScene.update(killCount);
+                }
                 if (count >= 2) {
-                    this.comboAnimate(count);
+                    SceneManager.battleScene.updateInstantKill(count);
                 }
             }
             // egret.setTimeout(()=>{this.isAttack = false}, this, 100);
@@ -333,19 +293,21 @@ class Hero extends BaseGameObject {
         }
         let gotoX = this.x + this.deltaX;
         let gotoY = this.y + this.deltaY;
-        let isMove:boolean = this.isCollison(gotoX, gotoY);
-        if (!isMove) {
-            let buffConfig = modBuff.getBuff(2);
-            let extraBuff = ObjectPool.pop(buffConfig.className);
-            extraBuff.buffInit(buffConfig);
-            extraBuff.effectName = "xuanyun";
-            extraBuff.buffData.id = buffConfig.id;
-            extraBuff.buffData.duration = buffConfig.duration;
-            extraBuff.buffData.postionType = PostionType.PostionType_Head;
-            this.addBuff(extraBuff);
-            this.armature.play(BaseGameObject.Action_Hurt, 0);
-            this.img_swordLight.visible = false;
-            return;
+        if (!this.isPVP) {
+            let isMove:boolean = this.isCollison(gotoX, gotoY);
+            if (!isMove) {
+                let buffConfig = modBuff.getBuff(2);
+                let extraBuff = ObjectPool.pop(buffConfig.className);
+                extraBuff.buffInit(buffConfig);
+                extraBuff.effectName = "xuanyun";
+                extraBuff.buffData.id = buffConfig.id;
+                extraBuff.buffData.duration = buffConfig.duration;
+                extraBuff.buffData.postionType = PostionType.PostionType_Head;
+                this.addBuff(extraBuff);
+                this.armature.play(BaseGameObject.Action_Hurt, 0);
+                this.img_swordLight.visible = false;
+                return;
+            }
         }
         if (!this.canMove){
             this.img_swordLight.visible = false;
@@ -454,7 +416,7 @@ class Hero extends BaseGameObject {
      * 受伤
      */
     public gotoHurt(value:number = 1) {
-        if (this._isInvincible) return;
+        if (this.isInvincible) return;
         //回避
         if (this.isDodge()) return;
         //护盾
@@ -475,7 +437,7 @@ class Hero extends BaseGameObject {
      */
     public hurtHandler(value:number):void {
         super.hurtHandler(value);
-        if (this._isInvincible) return;
+        if (this.isInvincible) return;
         this.curState = BaseGameObject.Action_Hurt;
         this.img_swordLight.visible = false;
         if (!this.skill_status) {
@@ -661,8 +623,9 @@ class Hero extends BaseGameObject {
                 this.setBuff();
                 this.shadow.visible = true;
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
+                else SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
                 Common.log(JSON.stringify(this.attr));
-                SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
+                
             break;
         }
     }
@@ -699,25 +662,10 @@ class Hero extends BaseGameObject {
         this.img_swordLight.visible = false;
         this.addChild(this.img_swordLight);
     }
-
-    /**
-     * 连击动画
-     */
-    public comboAnimate(value:number):void {
-        this.addChild(this.comboText);
-        value = Math.floor(value);
-        this.comboText.text = `${value.toString()} Kill`;
-        this.comboText.anchorOffsetX = this.comboText.width/2;
-        this.comboText.y = this.y;
-        this.comboText.x = this.x;
-        SceneManager.battleScene.effectLayer.addChild(this.comboText);
-        Animations.hurtTips(this.comboText);
-    }
-
-    /**连击奖励位图 */
-    private comboText:egret.BitmapText;
     /**是否正在运行跑步骨骼 */
     private isPlay:boolean;
+    /**上次击杀 */
+    private lastKill:number;
     // private isAttack:boolean;
     /**技能状态 0:没有释放 1:开始释放 */
     private skill_status:boolean;
@@ -746,10 +694,6 @@ class Hero extends BaseGameObject {
     private skill:any;
     /**技能范围 */
     private skill_range:number;
-    /**一次攻击怪的数量 */
-    private combo:number;
-    /**连击计时器 */
-    private comboTimer:egret.Timer;
     /************************************/
 
     private attack_effect:dragonBones.Bone;
@@ -759,6 +703,4 @@ class Hero extends BaseGameObject {
     private offsetIndex:number;
     /**是否攻击到敌人 */
     private isHit:boolean;
-    /**是否无敌状态 */
-    private _isInvincible:boolean;
 }

@@ -34,6 +34,14 @@ class SevenInOut extends SkillBase {
                 sevenInOut.visible = false;
             }, this);
         }
+
+        this.img_cut = Utils.createBitmap("zhaoyun_skill01_02_png");
+        this.img_cut.anchorOffsetX = this.img_cut.width/2;
+        this.img_cut.anchorOffsetY = this.img_cut.height/2;
+        this.img_cut.x = Common.SCREEN_W/2;
+        this.img_cut.y = Common.SCREEN_H/2;
+        this.img_cut.visible = false;
+        SceneManager.curScene.addChild(this.img_cut);
     }
 
     public start(animation:string, target:any) {
@@ -71,6 +79,8 @@ class SevenInOut extends SkillBase {
         Animations.fadeOut(this.mask, 500, null, ()=>{
             Animations.fadeIn(this.mask, 200);
         });
+        this.img_cut.visible = true;
+        Animations.stamp(this.img_cut, 300, 400);
     }
 
     public update(target:any) {
@@ -118,6 +128,7 @@ class SevenInOut extends SkillBase {
         [850, 300, 100],
         [350, 150, -10]
     ];
+    private img_cut:egret.Bitmap;
     private mask:egret.Bitmap;
     private isBindBuff:boolean;
 }

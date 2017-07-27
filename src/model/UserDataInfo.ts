@@ -19,11 +19,11 @@ class UserDataInfo{
         return this._userInfo;
     }
 
-    public SetBasicData(name:string, val:number):void{
+    public SetBasicData(name:string, val:any):void{
         this.basicData[name] = val;
     }
 
-    public GetBasicData(name:string):number{
+    public GetBasicData(name:string):any{
         return this.basicData[name];
     }
 
@@ -48,6 +48,21 @@ class UserDataInfo{
             return true;
         }
         return false;
+    }
+
+    /** 移除想要删除的文件根据索引 */
+    public RemoveEmailFromIndex(index:number):void{
+        if(index < 0 || index > this.basicData["email"].length) return;
+
+        for(let i:number = 0; i < this.basicData["email"].length; i++){
+            if(i == index){
+                for(let j:number = i + 1; j < this.basicData["email"].length; j++){
+                    this.basicData["email"][j - 1] = this.basicData["email"][j];
+                }
+                break;
+            }
+        }
+        this.basicData["email"].pop();
     }
 
     /**用户数据 */

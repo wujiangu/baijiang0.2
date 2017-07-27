@@ -64,9 +64,9 @@ class BuffBase {
     /**获取天赋的数值 */
     public getTalentValue():number {
         let id:number = this.buffData.id;
-        let talent = modTalent.getTestData(id-19);
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent = modTalent.getData(curPage, id-19);
+        // let talent = modTalent.getTestData(id-19);
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent = modTalent.getData(curPage, id-19);
         let lv = talent[1];
         let index:number = modTalent.getIndexFromId(id-19);
         let value:number = ConfigManager.tcTalent[index].value[lv-1];

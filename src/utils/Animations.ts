@@ -343,4 +343,59 @@ namespace Animations {
         }
         egret.Tween.get(target).to({y:target.y - offset,alpha:1},500,egret.Ease.backOut).call(step1);
     }
+
+    let img_list:Array<egret.Bitmap> = new Array();
+    let txt_list:Array<egret.TextField> = new Array();
+
+    /** 显示获得物品弹窗效果 
+     * @param list 数组列表 指定武器对应的id目前只支持武器id
+    */
+    export function ShowGoodsPopEffect(list:any):void{
+        if(list.length == 0) return;
+
+        for(let i in img_list) egret.Tween.removeTweens(img_list[i]);
+        for(let i in txt_list) egret.Tween.removeTweens(txt_list[i]);
+
+        for(let i:number = 0; i < list.length; i++){
+            egret.setTimeout(()=>{
+                if(img_list[i] == null){
+                    img_list[i] = new egret.Bitmap();
+                    txt_list[i] = Common.CreateText("",30,0xff0000,true,"Microsoft YaHei");
+                }
+
+                img_list[i].texture = RES.getRes(`Sequip${25 - list[i]}_png`);
+                txt_list[i].text  = "恭喜获得" + TcManager.GetInstance().GetTcEquipData(list[i]).name;
+
+                GameLayerManager.gameLayer().maskLayer.addChild(img_list[i]);
+                GameLayerManager.gameLayer().maskLayer.addChild(txt_list[i]);
+                Common.SetXY(img_list[i], 1136 / 2 - 150, 640 - img_list[i].height >> 1);
+                Common.SetXY(txt_list[i], img_list[i].x + img_list[i].width + 10, img_list[i].y + (img_list[i].height - txt_list[i].height >> 1));
+                egret.Tween.get(img_list[i]).to({x:img_list[i].x, y:img_list[i].y - 100},500);
+                egret.Tween.get(txt_list[i]).to({x:txt_list[i].x, y:txt_list[i].y - 100},500).call(()=>{
+                    GameLayerManager.gameLayer().maskLayer.removeChild(img_list[i]);
+                    GameLayerManager.gameLayer().maskLayer.removeChild(txt_list[i]);
+                })
+            }, null, i * 400)
+        }
+    }
+    
+    /**
+     * 盖章效果
+     */
+    export function stamp(target:any, timeStamp:number, timeDisappear:number, b_scale:number = 2, a_scale:number = 1, func:Function = null):void {
+        target.scaleX = b_scale;
+        target.scaleY = b_scale;
+        target.alpha = 1.0;
+        var step2 = function () {
+            egret.Tween.get(target).to({alpha:0}, timeDisappear).call(()=>{
+                if (func) func();
+            })
+        }
+        var step1 = function () {
+            egret.Tween.get(target).to({scaleX:a_scale, scaleY:a_scale}, timeStamp, egret.Ease.bounceOut).call(()=>{
+                step2();
+            })
+        }
+        step1();
+    }
 }

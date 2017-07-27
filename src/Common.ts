@@ -209,4 +209,28 @@ namespace Common {
             for(let i in arr_list) arr_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, func, obj);
         }
     }
+
+    /** 修改图片的滤镜
+     * #param obj 图片对象 必须是bitmap类型
+     * @param filterColor 颜色类型
+     */
+    export function ChangeImgMatrixFilter(obj:egret.Bitmap, filterColor:string):void{
+        let colorMatrix = null;
+        if(filterColor == "gray"){
+            colorMatrix = [ 0.3,0.6,0,0,0,0.3,0.6,0,0,0,0.3,0.6,0,0,0,0,0,0,1,0];
+        }
+        let colorFilter = new egret.ColorMatrixFilter(colorMatrix);
+        obj.filters = [colorFilter];
+    }
+
+    /** create mc 
+     * @param name clip name
+     */
+    export function CreateMovieClip(name:string):egret.MovieClip{
+        let data = RES.getRes(name + "_json");
+        let texture = RES.getRes(name + "_png");
+        let mcData = new egret.MovieClipDataFactory(data, texture);
+        let mc = new egret.MovieClip(mcData.generateMovieClipData("action"));
+        return mc;
+    }
 }

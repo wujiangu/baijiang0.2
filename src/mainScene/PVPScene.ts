@@ -172,6 +172,12 @@ class PVPScene extends Base {
         let pop = WindowManager.GetInstance().GetWindow("BattleWinPop");
         pop.Show();
         Animations.fadeOut(pop);
+
+        let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
+
+        if(rankIndex != -1){
+            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10});  
+        }
     }
 
     /**

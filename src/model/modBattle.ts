@@ -20,11 +20,23 @@ namespace modBattle {
         timer.repeatCount = 1;
         productCount = 0;
         sumDead = 0;
+        sumKill = 0;
         surviveCount = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
         timer.start();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modBattle);
+    }
+
+    export function addSumkill():void {
+        sumKill ++;
+    }
+
+    /**
+     * 获取杀敌的总数
+     */
+    export function getSumkill():number {
+        return sumKill;
     }
 
     /**
@@ -123,9 +135,9 @@ namespace modBattle {
                 let buffCount:number = 1;
                 let arrayBuff:Array<number> = [];
                 for (let i = 0; i < buffCount; i++) {
-                    // let random:number = MathUtils.getRandom(1, 6);
+                    let random:number = MathUtils.getRandom(1, 6);
                     // Common.log("精英怪类型----->", random);
-                    let random:number = 4;
+                    // let random:number = 3;
                     arrayBuff.push(random);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
@@ -309,6 +321,8 @@ namespace modBattle {
     var productCount:number;
     /**死亡的总数 */
     var sumDead:number;
+    /**杀敌的总数 */
+    var sumKill:number;
     /**存活的敌人数量 */
     var surviveCount:number;
     /**关卡的配置数据 */
