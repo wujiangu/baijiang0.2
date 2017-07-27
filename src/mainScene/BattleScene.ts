@@ -44,6 +44,8 @@ class BattleScene extends Base {
         }
         modBattle.init();
         this.areaCollison = [];
+        this.isHit = false;
+        this.comboStatus = false;
         // Common.log(JSON.stringify(modTalent.getData(0)));
         DragonBonesFactory.getInstance().startTimer();
         this.createHero();
@@ -93,7 +95,7 @@ class BattleScene extends Base {
         bg.scaleX = 3;
         bg.scaleY = 3;
         this.comboGroup.addChild(bg);
-        let comboText:egret.TextField = Utils.createText("击杀", 20, 15, 26, 0x501414);
+        let comboText:egret.TextField = Utils.createText("斩", 80, 15, 30, 0x501414);
         comboText.bold = true;
         comboText.fontFamily = "Microsoft YaHei";
         this.comboGroup.addChild(comboText);
@@ -102,29 +104,30 @@ class BattleScene extends Base {
         let font = RES.getRes("combo_fnt");
         this.comboCount = new egret.BitmapText();
         this.comboCount.font = font;
-        this.comboCount.x = 130;
+        this.comboCount.x = 5;
         this.comboCount.y = 30;
         this.comboCount.text = "0";
         this.comboCount.letterSpacing = 1;
         this.comboGroup.addChild(this.comboCount);
         this.comboGroup.visible = false;
-        this.comboStatus = false;
     }
 
     /**
      * 更新连击数字
      */
     public update(value:number) {
+        this.isHit = true;
         let str:string = value.toString();
         this.comboCount.text = str;
         this.comboCount.anchorOffsetY = this.comboCount.height/2;
         if (!this.comboStatus) {
+            this.comboTimer.start();
             this.comboStatus = true;
             this.comboGroup.alpha = 0;
-            Animations.fadeOut(this.comboGroup, 250, null, ()=>{
+            Animations.fadeOut(this.comboGroup, 200, null, ()=>{
                 this.comboGroup.visible = true;
                 Animations.stamp(this.comboCount, 300, 450, 10, 5);
-                Animations.fadeIn(this.comboGroup, 500);
+                // Animations.fadeIn(this.comboGroup, 500);
             })
         }else{
             this.comboGroup.visible = true;
@@ -138,6 +141,26 @@ class BattleScene extends Base {
     public hideCombo():void {
         this.comboStatus = false;
         this.comboGroup.visible = false;
+    }
+
+    /**
+     * 连击计时器监听
+     */
+    private onCombo(event:egret.TimerEvent):void {
+        if (this.isHit){
+            this.isHit = false;
+            this.comboTimer.reset();
+            this.comboTimer.start();
+        }
+    }
+
+    /**
+     * 连击结束监听
+     */
+    private onComboComplete():void {
+        this.comboTimer.reset();
+        this.comboStatus = false;
+        Animations.fadeIn(this.comboGroup, 500);
     }
 
     /**
@@ -274,6 +297,7 @@ class BattleScene extends Base {
      * 清除子对象
      */
     public cleanChildren():void {
+        this.comboTimer.reset();
         modBattle.recycleObject();
         this.effectLayer.removeChildren();
         this.otherLayer.removeChildren();
@@ -356,8 +380,8 @@ class BattleScene extends Base {
     private comboGroup:egret.DisplayObjectContainer;
     /**连击显示组的状态 */
     private comboStatus:boolean;
-    /**上一次的连击数 */
-    private lastCombo:number;
+    /**是否连续击杀 */
+    private isHit:boolean;
     /**连击数字 */
     private comboCount:egret.BitmapText;
     /**一次击杀奖励组 */
