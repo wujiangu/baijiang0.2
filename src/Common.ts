@@ -233,4 +233,44 @@ namespace Common {
         let mc = new egret.MovieClip(mcData.generateMovieClipData("action"));
         return mc;
     }
+
+    /** 根据品级来区分不同的颜色 */
+    export function GetEquipColorFromGrade(grade:number):number{
+        if(grade == 1) return 0x858685;
+        else if(grade == 2) return 0x5e972b;
+        else if(grade == 3) return 0x2f76b0;
+        else if(grade == 4) return 0x852f9b;
+        else if(grade == 5) return 0xab5515;
+    }
+
+    /** 根据不同的物品类型来获得不同的纹理
+     * @param type 1 装备 2 基本物品 如经验 钻石
+     * @param name 物品名字
+     */
+    export function GetTextureFromType(param):any{
+        if(param.type == 1){
+            return RES.getRes(`Sequip${25-param.data}_png`);
+        }
+        else if(param.type == 2)
+        {
+            let str_list = {diamond:"crystal_0002_png", exp:"exp_0002_png",soul:"sole_0002_png",power:"power_0002_png"};
+            return RES.getRes(str_list[param.name]);
+        }
+    }
+
+    /** 对奖励进行细分计算 
+     * @param type 1 装备 2 基本物品 如经验 钻石
+     * @param name 物品名字
+    */
+    export function DealReward(list):void{
+        for(let i in list){
+            if(list[i].type == 1){
+                modEquip.EquipData.GetInstance().InsertEquipList([list[i].data]);
+            }
+            else if(list[i].type == 2)
+            {
+                UserDataInfo.GetInstance().SetBasicData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].data));
+            }
+        }
+    }
 }

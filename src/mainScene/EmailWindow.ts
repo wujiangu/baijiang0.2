@@ -23,10 +23,14 @@ class EmailWindow extends PopupWindow{
         this.img_bg_list = new Array();
         this.time_list = new Array();
         this.icon_list = new Array();
+        this.digit_list = new Array();
 
         for(let i:number = 0; i < 5; i++){
             this.img_reward_list[i] = new egret.Bitmap();
+            this.digit_list[i] = Common.CreateText("",20,0xff00ff,true,"Microsoft YaHei","right");
             this.emailGroup.addChild(this.img_reward_list[i]);
+            this.emailGroup.addChild(this.digit_list[i]);
+            this.digit_list[i].width = 92;
         }
 
         this.img_click = new egret.Bitmap(RES.getRes("email_002_png"));
@@ -53,7 +57,6 @@ class EmailWindow extends PopupWindow{
         this.onEventManager();
         for(let i:number = 0; i < this._eventNum; i++) this.img_bg_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
-        LeanCloud.GetInstance().SaveRoleBasicData();
     }
 
    private showClickInfo():void{
@@ -69,12 +72,18 @@ class EmailWindow extends PopupWindow{
 
        for(let i:number = 0; i < 5; i++){
            if(len > i){
-               this.img_reward_list[i].texture = RES.getRes(`Sequip${25-tempData.reward[i]}_png`)
+               this.img_reward_list[i].texture = Common.GetTextureFromType(tempData.reward[i]); 
+
+               if(tempData.reward[i].type == 1) this.digit_list[i].text = "1";
+               else this.digit_list[i].text = Common.TranslateDigit(tempData.reward[i].data);
+
                Common.SetXY(this.img_reward_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.img_reward_list[i].height >> 1));
+               Common.SetXY(this.digit_list[i], this.img_reward_list[i].x, this.btn_get.y - 40);
            }
            else
            {
                this.img_reward_list[i].texture = null;
+               this.digit_list[i].text = "";
            }
        }
    }
@@ -152,8 +161,8 @@ class EmailWindow extends PopupWindow{
                     return;
                 } 
 
+                Common.DealReward(this._emailData[this._clickIndex].reward);
                 Animations.ShowGoodsPopEffect(this._emailData[this._clickIndex].reward);
-                modEquip.EquipData.GetInstance().InsertEquipList(this._emailData[this._clickIndex].reward);
                 this.setEmailStatus(2);
             break;
             case this.btn_getAll:
@@ -172,7 +181,7 @@ class EmailWindow extends PopupWindow{
                 }
 
                 Animations.ShowGoodsPopEffect(list);
-                modEquip.EquipData.GetInstance().InsertEquipList(list);
+                Common.DealReward(list);
                 UserDataInfo.GetInstance().SetBasicData("email", []);
                 this.initData();
             break;
@@ -241,6 +250,7 @@ class EmailWindow extends PopupWindow{
     private lab_time:eui.Label;
     private title_list:Array<egret.TextField>;
     private time_list:Array<egret.TextField>;
+    private digit_list:Array<egret.TextField>;
 
     /** image */
     private img_list:Array<egret.Bitmap>;

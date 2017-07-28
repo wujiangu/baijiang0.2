@@ -334,12 +334,12 @@ class Enermy extends BaseGameObject {
         Animations.fadeOut(this.img_exp, 1000, null, ()=>{
             this.moveExpAndSoul(this.img_exp, 1);
         })
-        let probability:number = MathUtils.getRandom(1, 10000);
-        if (probability <= 9000) {
+        // let probability:number = MathUtils.getRandom(1, 10000);
+        // if (probability <= 9000) {
             Animations.fadeOut(this.img_soul, 1000, null, ()=>{
                 this.moveExpAndSoul(this.img_soul, 2);
             })
-        }
+        // }
     }
 
     /**
@@ -366,12 +366,27 @@ class Enermy extends BaseGameObject {
         var dis = MathUtils.getDistance(target.x, target.y, GameData.heros[0].x, GameData.heros[0].y);
         if (dis < 10) {
             if (type == 1) this.isMovExp = false;
-            else if (type == 2) this.isMovSoul = false;
+            else if (type == 2){
+                this.getExpAndSoulCount();
+                this.isMovSoul = false;
+            }
             target.x = originx;
             target.y = -20;
             target.alpha = 0;
             this.addChild(target);
         }
+    }
+
+    /**
+     * 获取经验和魂石的数量
+     */
+    public getExpAndSoulCount():void {
+        let stageData = modBattle.getStage();
+        let exp:number = stageData.exp;
+        let soul:number = modBattle.getSoulCount();
+        modBattle.setExp(exp);
+        modBattle.setSoul(soul);
+        SceneManager.battleScene.battleSceneCom.setExpAndSoul(modBattle.getExp(), modBattle.getSoul());
     }
 
     /**

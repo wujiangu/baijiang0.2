@@ -43,6 +43,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.canMove = true;
         this.isReverse = false;
         this.isComplete = true;
+        this.curState = "";
     }
 
     /**设置控制状态 */

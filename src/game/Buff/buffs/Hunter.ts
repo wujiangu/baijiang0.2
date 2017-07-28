@@ -35,7 +35,7 @@ class Hunter extends BuffBase {
     public update(target:any, callBack:Function = null) {
         let value:number = this.getTalentValue();
         let hurtValue:number = this.target.getHurtValue();
-        if (this.target.getCombo() > value) {
+        if (modBattle.getSumkill() > value) {
             hurtValue *= 1.5;
             this.target.setHurtValue(hurtValue);
         }

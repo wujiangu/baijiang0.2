@@ -277,14 +277,6 @@ namespace modEquip {
             info_list = [];
         }
 
-        public RemoveEquipFromIndex(index:number):void{
-            if(index < 0 || index > this.equip_list.length) return;
-            for(let j:number = index; j < this.equip_list.length - 1; j++){
-                this.equip_list[j] = this.equip_list[j + 1];
-            }
-            this.equip_list.pop();
-        }
-
         public set Lucky(val:number){
             this.lucky = val;
         }

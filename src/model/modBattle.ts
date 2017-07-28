@@ -22,6 +22,8 @@ namespace modBattle {
         sumDead = 0;
         sumKill = 0;
         surviveCount = 0;
+        exp = 0;
+        soul = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
         timer.start();
@@ -32,11 +34,48 @@ namespace modBattle {
         sumKill ++;
     }
 
+    export function getStage():any {
+        return tcStage;
+    }
+
     /**
      * 获取杀敌的总数
      */
     export function getSumkill():number {
         return sumKill;
+    }
+
+    /**
+     * 魂石掉落
+     */
+    export function getSoulCount():number {
+        let value:number = 0;
+        let random:number = MathUtils.getRandom(1, 100);
+        if (random <= 5) value = 5;
+        else if (random > 5 && random <= 15) value = 4;
+        else if (random > 15 && random <= 35) value = 3;
+        else if (random > 35 && random <= 65) value = 2;
+        else value = 1;
+        return value;
+    }
+
+    /**设置经验 */
+    export function setExp(value:number):void {
+        exp += value;
+    }
+
+    /**设置魂石 */
+    export function setSoul(value:number):void {
+        soul += value;
+    }
+
+    /**获取经验 */
+    export function getExp():number {
+        return exp;
+    }
+
+    export function getSoul():number {
+        return soul;
     }
 
     /**
@@ -137,7 +176,7 @@ namespace modBattle {
                 for (let i = 0; i < buffCount; i++) {
                     let random:number = MathUtils.getRandom(1, 6);
                     // Common.log("精英怪类型----->", random);
-                    // let random:number = 3;
+                    // let random:number = 5;
                     arrayBuff.push(random);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
@@ -335,4 +374,10 @@ namespace modBattle {
     var isBoss:boolean;
     /**定时器 */
     var timer:egret.Timer;
+    /**魂石掉落概率分布 */
+    var soulProbabity:Array<number> = [5, 10, 20, 30, 35];
+    /**经验数量 */
+    var exp:number;
+    /**魂石数量 */
+    var soul:number;
 }

@@ -1,26 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
-	<e:Image x="110" y="28" width="941" height="588" source="battle_0008_png"/>
-
-	<e:Button id="btn_giveup" label="返回主界面" x="293.67" y="413.24" width="168" height="76">
-		<e:skinName>
+	<e:Image source="mask_png" x="0" y="0" width="1136" height="640" locked="true"/>
+	<e:Group id="group_fail" width="941" height="588" horizontalCenter="12.5" verticalCenter="2">
+		<e:Image id="img_bg" x="0" y="0" width="941" height="588" source="battle_0008_png" scaleX="1" scaleY="1"/>
+		<e:Button id="btn_giveup" label="结束" x="183.67000000000002" y="423.24" width="168" height="76" scaleX="1" scaleY="1">
+			<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0014_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="24" size.down="22" textColor="0x190b0b"/>
+				<e:Image width="100%" height="100%" source="button_0014_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="24" size.down="22" textColor="0x190b0b"/>
 			</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Button id="btn_reavival" label="复活" x="605.33" y="413.24" height="76" width="168">
-		<e:skinName>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_reavival" label="复活" x="495.33000000000004" y="423.24" height="76" width="168" scaleX="1" scaleY="1">
+			<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0024_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="28" size.down="25" textColor="0x260909"/>
+				<e:Image width="100%" height="100%" source="button_0024_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="28" size.down="25" textColor="0x260909"/>
 			</e:Skin>
-		</e:skinName>
-
-	</e:Button>
-	<e:Label text="获得物品：" x="240" y="276" fontFamily="Microsoft YaHei" bold="true" size="24" textColor="0x9e9e9e" visible="false"/>
-	<e:Group id="itemGroup" width="550" height="110" x="240" y="316" anchorOffsetY="0" anchorOffsetX="0" visible="false">
+			</e:skinName>
+		</e:Button>
+		<e:Group id="group_killCount1" width="301" height="52" x="307.5" y="264" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1" visible="false">
+			<e:Label text="击杀：" x="4" y="15" textColor="0x9e6d49" bold="true" fontFamily="Microsoft YaHei" size="34"/>
+			<e:Label id="lab_killCount1" text="1334" x="112" y="3" fontFamily="Microsoft YaHei" textColor="0xcf802c" bold="true" size="50"/>
+		</e:Group>
+		<e:Group id="group_killProg" width="729" height="50" x="101" y="337" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1" visible="false">
+			<e:Image source="battle_0013_png" x="122" y="-17"/>
+			<e:Image id="prog_killCount" source="battle_0014_png" x="126" y="24" scaleX="1" scaleY="1" anchorOffsetX="0" width="448"/>
+			<e:Image id="img_knife" source="battle_0015_png" x="112" y="-5"/>
+			<e:Label id="lab_curKill" text="1100" y="10" textColor="0xd8c6b1" fontFamily="Microsoft YaHei" right="619"/>
+			<e:Label id="lab_maxKill" text="1100" y="10" textColor="0xD8C6B1" fontFamily="Microsoft YaHei" left="626"/>
+		</e:Group>
+		<e:Group id="group_killCount2" width="133" height="138" x="213" y="263" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1">
+			<e:Label text="击杀：" x="24" y="19" textColor="0x9E6D49" bold="true" fontFamily="Microsoft YaHei" size="34"/>
+			<e:Label id="lab_killCount2" text="1334" y="61" fontFamily="Microsoft YaHei" textColor="0xCF802C" bold="true" size="40" horizontalCenter="-1.5"/>
+		</e:Group>
+		<e:Group id="group_item" width="325" height="135" x="394" y="260" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1">
+			<e:Label text="获得物品：" x="10" y="0" textColor="0x726652" fontFamily="Microsoft YaHei" bold="true"/>
+			<e:Image source="battle_0016_png" x="0" y="34"/>
+			<e:Label id="lab_exp" text="100" y="104" fontFamily="Microsoft YaHei" textColor="0xe0e0e0" size="20" stroke="4" right="238"/>
+			<e:Image source="battle_0017_png" x="100" y="34"/>
+			<e:Label id="lab_soul" text="100" y="104" fontFamily="Microsoft YaHei" textColor="0xE0E0E0" size="20" stroke="4" right="140"/>
+		</e:Group>
 	</e:Group>
+
+
+
+
+
+
 </e:Skin>

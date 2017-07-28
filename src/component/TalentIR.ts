@@ -25,21 +25,11 @@ class TalentIR extends Base {
                 iconImage.source = `talent${i}_${j+1}_png`;
                 this.iconGroup[id-1].addChild(iconImage);
 
-                let boxBg:eui.Image = new eui.Image();
-                boxBg.source = "talentLvBox_png";
-                this.iconGroup[id-1].addChild(boxBg);
-                boxBg.x = 4;
-                boxBg.y = 72;
-
                 //等级
-                this.lvGroup[id-1] = new eui.Label();
-                this.lvGroup[id-1].textColor = 0x6f685d;
-                this.lvGroup[id-1].text = `0/${this._maxLv[id-1]}`;
-                this.lvGroup[id-1].fontFamily = "Microsoft YaHei";
-                this.lvGroup[id-1].right = 4;
-                this.lvGroup[id-1].size = 18;
-                this.lvGroup[id-1].x = boxBg.x;
-                this.lvGroup[id-1].y = boxBg.y+4;
+                this.lvGroup[id-1] = Common.CreateText(`0/${this._maxLv[id-1]}`, 18, 0x6f685d, true,"Microsoft YaHei","center")
+                this.lvGroup[id-1].x = 4;
+                this.lvGroup[id-1].y = 76;
+                this.lvGroup[id-1].width = 100;
                 this.iconGroup[id-1].addChild(this.lvGroup[id-1]);
 
                 //遮罩
@@ -52,7 +42,7 @@ class TalentIR extends Base {
                 this.iconGroup[id-1].addChild(mask);
 
                 //外框
-                let box = Utils.createBitmap("talentMaxBox_png");
+                let box = new egret.Bitmap();
                 this.iconGroup[id-1]["box"] = box;
                 box.visible = false;
                 this.iconGroup[id-1].addChild(box);
@@ -97,12 +87,15 @@ class TalentIR extends Base {
             this.iconGroup[id-1]["Mask"].visible = false;
             this.iconGroup[id-1]["lv"] = talent[1];
             this.lvGroup[id-1].text = `${talent[1]}/${this._maxLv[id-1]}`;
-            if(talent[1] > 0){
-                this.iconGroup[id-1]["box"].visible = true;
+            if(talent[1] > 0) this.iconGroup[id-1]["box"].visible = true;
+
+            if(talent[1] == 1){
+                this.iconGroup[id-1]["box"].texture = RES.getRes("talentBox_png");
             }
 
             if (talent[1] == this._maxLv[id-1]){
                 this.lvGroup[id-1].textColor = 0x91bd32;
+                this.iconGroup[id-1]["box"].texture = RES.getRes("talentMaxBox_png");
             }
         }
     }
@@ -125,8 +118,8 @@ class TalentIR extends Base {
             for(let i:number = 0; i < this.iconGroup.length; i++){
                 this.iconGroup[i]["Mask"].visible = true;
             }
-            this.showIconGroupStatus();
         }
+        this.showIconGroupStatus();
     }
 
     /**
@@ -186,7 +179,7 @@ class TalentIR extends Base {
     /**天赋组 */
     private iconGroup:Array<eui.Group>;
     /**等级 */
-    private lvGroup:Array<eui.Label>;
+    private lvGroup:Array<egret.TextField>;
     /**最大等级 */
     private _maxLv:Array<number>;
 }

@@ -52,9 +52,13 @@ declare module skins{
 }
 declare class DamageInfo extends eui.Skin{
 }
+declare class EmailDialogSkin extends eui.Skin{
+}
 declare class EquipUpSkin extends eui.Skin{
 }
 declare class EquipUpStarSkin extends eui.Skin{
 }
 declare class ResetEquipAttrSkin extends eui.Skin{
+}
+declare class HeroDialogSkin extends eui.Skin{
 }

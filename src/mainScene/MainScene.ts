@@ -18,7 +18,7 @@ class MainScene extends Base {
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email,this.btn_purchase,this.btn_gm];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -56,7 +56,7 @@ class MainScene extends Base {
     private createMainScene():void{
         //星星列表
         this.star_list = [];                                                                                                        
-        let starPosition = [[54,174],[75,42],[242,39],[622,80],[738,69],[958,110],[550,170],[1060,122],[1058,335],[1072,412]];
+        let starPosition = [[54,220],[75,42],[242,39],[622,80],[738,69],[958,110],[550,170],[1060,122],[1058,335],[1072,412]];
         let star_scale_list = [3, 2, 3, 2, 1, 2, 3, 2, 1, 1];
         for(let i:number = 0; i < 10; i++){
             this.star_list[i] = new egret.Bitmap(RES.getRes("0_0000_yinghuochongda01_png"));
@@ -151,9 +151,17 @@ class MainScene extends Base {
             case this.btn_shop:
                 this.ShowPop("ShopDialog");
                 break;
-                case this.btn_email:
-                    this.ShowPop("EmailWindow");
-                break;
+            case this.btn_email:
+                 this.ShowPop("EmailWindow");
+            break;
+            case this.btn_purchase:
+                 let pop = WindowManager.GetInstance().GetWindow("QuickPurchaseWindow")
+                 pop.Show([15, 20]);
+                 pop.addEventListener(egret.Event.CLOSE, this.onPurchaseDialog, this);
+            break;
+            case this.btn_gm:
+                  WindowManager.GetInstance().GetWindow("GMWindow").Show();
+            break;
             case this.btn_applicate:
                 this.popupGroup.visible = false;
                 break;
@@ -169,6 +177,11 @@ class MainScene extends Base {
         Animations.fadeOut(pop);
     }
 
+    private onPurchaseDialog(event:egret.Event):void{
+        event.target.removeEventListener(egret.Event.CLOSE, this.onPurchaseDialog, this);
+        this.show_label_text();
+    }
+
      private onChangeData():void{
        GameLayerManager.gameLayer().panelLayer.removeChildren();
        this.addChild(this._shape);
@@ -176,7 +189,6 @@ class MainScene extends Base {
            this.removeChild(this._shape);
        });
 
-       LeanCloud.GetInstance().SaveRoleBasicData();
        this.show_label_text();
     }
 
@@ -209,6 +221,8 @@ class MainScene extends Base {
 
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;
+    private btn_purchase:eui.Button;
+    private btn_gm:eui.Button;
 
     private img_light:eui.Image;
     private star_list:Array<egret.Bitmap>;

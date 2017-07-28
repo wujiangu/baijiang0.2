@@ -19,8 +19,9 @@ class UserDataInfo{
         return this._userInfo;
     }
 
-    public SetBasicData(name:string, val:any):void{
+    public SetBasicData(name:string, val:any, isSave:boolean = true):void{
         this.basicData[name] = val;
+        if(isSave) LeanCloud.GetInstance().SaveRoleBasicData();
     }
 
     public GetBasicData(name:string):any{
@@ -63,6 +64,7 @@ class UserDataInfo{
             }
         }
         this.basicData["email"].pop();
+        LeanCloud.GetInstance().SaveRoleBasicData();
     }
 
     /**用户数据 */

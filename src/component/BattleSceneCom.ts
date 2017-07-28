@@ -11,7 +11,7 @@ class BattleSceneCom extends Base {
         this.img_killCount.x = 350;
         this.img_killCount.y = 594;
         this.img_killCount.width = 414;
-        this.addChild(this.img_killCount);
+        this.group_top.addChild(this.img_killCount);
     }
 
     private onComplete():void {
@@ -34,12 +34,12 @@ class BattleSceneCom extends Base {
 
     /**失败弹窗 */
     public onFailPop():void {
-        Common.log("杀敌总数------>", modBattle.getSumkill());
+        // Common.log("杀敌总数------>", modBattle.getSumkill());
         TimerManager.getInstance().stopTimer();
-        if (!this.battleFailPop) {
-            this.battleFailPop = new BattleFailPop();
-        }
-        this.addChild(this.battleFailPop);
+        modBattle.stop();
+        this.battleFailPop = WindowManager.GetInstance().GetWindow("BattleFailPop");
+        this.battleFailPop.Show();
+        // SceneManager.battleScene.addChild(this.battleFailPop);
         Animations.fadeOut(this.battleFailPop);
     }
 
@@ -61,17 +61,25 @@ class BattleSceneCom extends Base {
         this.lab_killCount.text = `0/${tcStage.count}`;
         this.lab_stage.text = `第${GameData.curStage}关`;
         this.lab_stage.alpha = 0;
+        this.lab_exp.text = "0";
+        this.lab_soul.text = "0";
         let id = modHero.getIdFromKey(GameData.curHero);
         let index = modHero.getIndextFromId(id);
         this.lab_name.text = ConfigManager.tcHero[index].name;
         this.img_headIcon.source = ConfigManager.tcHero[index].icon;
         //英雄的数据
         let data = ConfigManager[`${GameData.curHero}Attr`];
-        // let level:number = HeroData.getHeroData(GameData.curHero).lv;
-        // let attr = data[level - 1];
-        let attr = data[50];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv;
+        let attr = data[level - 1];
+        // let attr = data[50];
         this._sumHP = attr.hp;
         Animations.fadeOutIn(this.lab_stage);
+    }
+
+    /**设置经验魂石的值 */
+    public setExpAndSoul(exp:number, soul:number):void {
+        this.lab_exp.text = exp.toString();
+        this.lab_soul.text = soul.toString();
     }
 
     /**更新界面 */
@@ -151,11 +159,13 @@ class BattleSceneCom extends Base {
         return skill;
     }
 
+    public group_top:eui.Group;
+    public group_btn:eui.Group;
     private _sumHP:number;
     /**暂停 */
     private btn_pause:eui.Button;
     private btn_skill:eui.Button;
-    private battleFailPop:BattleFailPop;
+    private battleFailPop:PopupWindow;
     private stage_count:number;
     private cd_time:number;
 
@@ -170,4 +180,6 @@ class BattleSceneCom extends Base {
     private img_skillMask:eui.Image;
     private lab_stage:eui.Label;
     private img_skillBg:eui.Image;
+    private lab_exp:eui.Label;
+    private lab_soul:eui.Label;
 }

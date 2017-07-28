@@ -63,6 +63,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
         this.changeAttrInfo(type, value);
         Animations.showTips("洗练成功", 1);
         this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index})
+        LeanCloud.GetInstance().SaveEquipData();
     }
 
     private changeAttrInfo(type:number, value:number){

@@ -11,6 +11,13 @@ class HeroData {
     }
 
     /**
+     * 设置英雄的属性数值
+     */
+    public static setHeroAttr(name:string, curLv:number):void {
+        
+    }
+
+    /**
      * 根据英雄的名字获取数据
      */
     public static getHeroData(name:string) {

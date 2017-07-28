@@ -13,7 +13,7 @@ class Stunned extends BuffBase {
         super.buffInit();
         this.options = options;
         this.buffData.className = "Stunned";
-        this.buffData.probability = 90;
+        this.buffData.probability = 10;
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_None;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;

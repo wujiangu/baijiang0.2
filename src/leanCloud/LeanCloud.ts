@@ -193,7 +193,7 @@ class LeanCloud{
         query.get(LeanCloud.RoleId).then(function(todo){
             let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email"];
             for(let i in str_list){
-                UserDataInfo.GetInstance().SetBasicData(str_list[i], todo.get(str_list[i]));
+                UserDataInfo.GetInstance().SetBasicData(str_list[i], todo.get(str_list[i]), false);
             }
         },
         function(error){

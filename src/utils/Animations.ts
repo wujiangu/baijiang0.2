@@ -363,8 +363,11 @@ namespace Animations {
                     txt_list[i] = Common.CreateText("",30,0xff0000,true,"Microsoft YaHei");
                 }
 
-                img_list[i].texture = RES.getRes(`Sequip${25 - list[i]}_png`);
-                txt_list[i].text  = "恭喜获得" + TcManager.GetInstance().GetTcEquipData(list[i]).name;
+                img_list[i].texture = Common.GetTextureFromType(list[i]);
+                if(list[i].type == 1){
+                    txt_list[i].text  = "恭喜获得" + TcManager.GetInstance().GetTcEquipData(list[i].data).name;
+                }
+                else txt_list[i].text = "x" + list[i].data;
 
                 GameLayerManager.gameLayer().maskLayer.addChild(img_list[i]);
                 GameLayerManager.gameLayer().maskLayer.addChild(txt_list[i]);

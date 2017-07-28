@@ -97,6 +97,7 @@ class EquipUpStarWindow extends PopupWindow{
         for(let i:number = 0; i < equipData.length; i++){
             modEquip.EquipData.GetInstance().RemoveEquipInfo(equipData[i]);
         }
+        LeanCloud.GetInstance().SaveEquipData();
 
         //判断是否升星成功
         if(this.isUpStar(this.successNum)){

@@ -75,7 +75,6 @@ class EquipDialog extends PopupWindow {
 
     public Close():void{
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
-        LeanCloud.GetInstance().SaveEquipData();
 
         this.eventType();
     }

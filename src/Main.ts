@@ -159,13 +159,13 @@ class Main extends eui.UILayer {
         // this.test();
         // var nodeGame = document.getElementById("game");
         // Common.log(nodeGame);
-        // SceneManager.enterGameScene = new EnterGameScene();
-        // GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
-        // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
+        SceneManager.enterGameScene = new EnterGameScene();
+        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
+        LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
-        SceneManager.battleScene = new BattleScene();
-        SceneManager.curScene = SceneManager.battleScene;
-        this.addChild(SceneManager.battleScene);
+        // SceneManager.battleScene = new BattleScene();
+        // SceneManager.curScene = SceneManager.battleScene;
+        // this.addChild(SceneManager.battleScene);
         // SceneManager.pvpScene = new PVPScene();
         // SceneManager.curScene = SceneManager.pvpScene;
         // this.addChild(SceneManager.pvpScene);

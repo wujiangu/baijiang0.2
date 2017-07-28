@@ -34,7 +34,8 @@ class BattleScene extends Base {
         }else{
             this.battleSceneCom.show();
         }
-        this.addChild(this.battleSceneCom);
+        this.topLayer.addChild(this.battleSceneCom.group_top);
+        this.addChild(this.battleSceneCom.group_btn);
 
         if (this.comboGroup) {
             this.comboGroup.visible = false;
@@ -196,13 +197,14 @@ class BattleScene extends Base {
         this.otherLayer = new egret.DisplayObjectContainer();
         this.particleLayer = new eui.UILayer();
         this.particleLayer.touchEnabled = false;
+        this.topLayer = new eui.UILayer();
         this.mapBg = new eui.Image();
         this.mapBg.source = "map_png";
         this.mapBg.smoothing = false;
-        this.mapBg.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBin, this);
-        this.mapBg.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
-        this.mapBg.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-        this.mapBg.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onTouchEnd, this);
+        this.topLayer.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBin, this);
+        this.topLayer.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        this.topLayer.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        this.topLayer.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onTouchEnd, this);
         this.mapBg.scaleX = 2;
         this.mapBg.scaleY = 2;
         this.addChild(this.mapBg);
@@ -220,6 +222,7 @@ class BattleScene extends Base {
         this.addChild(this.battleLayer);
         this.addChild(this.effectLayer);
         this.addChild(this.blood);
+        this.addChild(this.topLayer);
     }
 
     /**
@@ -231,9 +234,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        // let level:number = HeroData.getHeroData(GameData.curHero).lv
-        // let attr = data[level - 1];
-        let attr = data[50];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv
+        let attr = data[level - 1];
+        // let attr = data[50];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;
@@ -359,6 +362,8 @@ class BattleScene extends Base {
     public effectLayer:egret.DisplayObjectContainer;
     /**其他元素层 */
     public otherLayer:egret.DisplayObjectContainer;
+    /**顶层 */
+    public topLayer:eui.UILayer;
     public hero:Hero;
     public monster:Monster;
     public boss:Boss;
