@@ -2,7 +2,7 @@
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="equip_0012_png" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label text="GM功能弹窗通过邮件获得物品" x="342" y="74" anchorOffsetX="0" width="458" textAlign="center" textColor="0xa000ff" fontFamily="Microsoft YaHei" size="25" bold="true"/>
+	<e:Label text="根据图标获得对应物品" x="342" y="74" anchorOffsetX="0" width="458" textAlign="center" textColor="0xa000ff" fontFamily="Microsoft YaHei" size="25" bold="true"/>
 	<e:Image source="Sequip1_png" x="353" y="130"/>
 	<e:TextInput id="input_weapon" width="200" height="27" x="474" y="167" anchorOffsetY="0" restrict="0-9"/>
 	<e:TextInput id="input_diamond" width="200" height="27" x="471" y="257" anchorOffsetY="0" restrict="0-9"/>
