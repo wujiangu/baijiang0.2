@@ -133,7 +133,7 @@ class DragonBonesArmatureContainer extends egret.DisplayObjectContainer {
         }
     }
 
-    public fadeOut(action:string) {
+    public fadeIn(action:string, fadeInTime:number, playTimes:number, layer:number, group:string) {
          if (this.actions[action] == null) {
             return;
         }
@@ -146,7 +146,7 @@ class DragonBonesArmatureContainer extends egret.DisplayObjectContainer {
         if (newArmature) {
             this.addChild(newArmature);
             this.curArmatureIndex = newArmatureIndex;
-            newArmature.fadeOut(action);
+            newArmature.fadeIn(action, fadeInTime, playTimes, layer, group);
         }
     }
 

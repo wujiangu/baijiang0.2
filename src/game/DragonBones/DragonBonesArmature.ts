@@ -139,6 +139,13 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
     }
 
     /**
+     * 淡入播放动画
+     */
+    public fadeIn(animationName:string, fadeInTime:number, playTimes:number, layer:number, group:string) {
+        this._armature.animation.fadeIn(animationName, fadeInTime, playTimes, layer, group, dragonBones.AnimationFadeOutMode.SameGroup);
+    }
+
+    /**
      * 暂停播放动画
      */
     public pause(action:string):void {
@@ -166,7 +173,7 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
     public playMuti(actions:Array<string>, id:Array<number>, playTimes:Array<number> = null):void {
         this.start();
         for (let i = 0; i < actions.length; i++) {
-            // this._armature.animation.fadeIn(actions[i], 0, 0, 0, `Group${id[i]}`, dragonBones.Animation.SameLayerAndGroup);
+            // this._armature.animation.fadeIn(actions[i], 0, 0, 0, `Group${id[i]}`, dragonBones.AnimationFadeOutMode.SameLayerAndGroup);
         }   
     }
 

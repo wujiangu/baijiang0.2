@@ -85,6 +85,8 @@ class Hero extends BaseGameObject {
         this.skill.skillData.skill_range = 150;
         this.visible = false;
         this.shadow.visible = false;
+        this.canMove = false;
+        this.curState = BaseGameObject.Action_Enter;
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
@@ -92,6 +94,7 @@ class Hero extends BaseGameObject {
         this.effectArmature.visible = false;
         this._hurtValue = 0;
         if (data[2]) this.attr.hp = data[3];
+        this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
     }
 
     /**
@@ -137,11 +140,11 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        // let talent:Array<any> = GameData.testTalent.talent;
-        let buff = HeroData.list[this.name].buff;
-        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        let talent:Array<any> = modTalent.getData(curPage).talent;
+        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
+        let talent:Array<any> = GameData.testTalent.talent;
+        // let buff = HeroData.list[this.name].buff;
+        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        // let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -255,9 +258,9 @@ class Hero extends BaseGameObject {
                 let angle = Math.abs(this.atk_radian - radian);
                 let dx = dis*Math.cos(angle);
                 let dy = dis*Math.sin(angle);
-                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 30)) {
+                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 30) && (this.enermy[i].attr.hp > 0)) {
                     this.setHurtValue(this.attr.atk);
-                    if (!this.isPVP) {
+                    if (!this.isPVP && this.enermy[i]) {
                         let state = this.enermy[i].curState;
                         if (state != Enermy.Action_Dead && state != BaseGameObject.Action_Hurt && !this.enermy[i].isReadSkill) {
                             this.isHit = true;
@@ -268,8 +271,8 @@ class Hero extends BaseGameObject {
                         this._hurtValue *= 1.5;
                     }
                     this.enermy[i].gotoHurt(this._hurtValue);
-                    if (!this.isPVP) {
-                        let state = this.enermy[i].curState;
+                    if (!this.isPVP && this.enermy[i]) {
+                        let state = this.enermy[i].getCurState();
                         if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
                     }
                 }
@@ -278,14 +281,12 @@ class Hero extends BaseGameObject {
                 let killCount:number = modBattle.getSumkill();
                 if (this.lastKill != killCount) {
                     this.lastKill = killCount;
-                    Common.log("杀敌总数------>", modBattle.getSumkill());
                     SceneManager.battleScene.update(killCount);
                 }
                 if (count >= 2) {
                     SceneManager.battleScene.updateInstantKill(count);
                 }
             }
-            // egret.setTimeout(()=>{this.isAttack = false}, this, 100);
             return;
         }
         if (Math.abs(this.sumDeltaX)>this.atk_rangeX/3){
@@ -448,14 +449,11 @@ class Hero extends BaseGameObject {
         }
         this.attr.hp -= value;
         if (this.attr.hp <= 0) {
-            this.removeComplete();
-            if (modBuff.isRevival(this)) Common.log("复活");
-            else SceneManager.battleScene.battleSceneCom.onFailPop();
             return;
         }
         SceneManager.battleScene.battleSceneCom.setHpProgress(this.attr.hp);
         this.setInvincible(true);
-        this.gotoInvincible(1500);
+        this.gotoInvincible();
     }
 
     /**
@@ -581,7 +579,6 @@ class Hero extends BaseGameObject {
             case "shake":
                 ShakeTool.getInstance().shakeObj(SceneManager.curScene, 1, 5, 5);
                 //增加动画完成函数
-                this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
                 this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
                 this.skillArmature.addCompleteCallFunc(this.skillArmaturePlayEnd, this);
             break;
@@ -607,8 +604,13 @@ class Hero extends BaseGameObject {
     private effectArmaturePlayEnd():void {
         this.effectArmature.visible = false;
         if (!this.canMove) return;
-        // this.isAttack = false;
-        this.gotoIdle();
+        if (this.attr.hp <= 0) {
+            this.removeComplete();
+            if (modBuff.isRevival(this)) Common.log("复活");
+            else SceneManager.battleScene.battleSceneCom.onFailPop();
+        }else{
+            this.gotoIdle();
+        }
     }
 
     private armaturePlayEnd():void {
@@ -622,10 +624,9 @@ class Hero extends BaseGameObject {
                 this.gotoIdle();
                 this.setBuff();
                 this.shadow.visible = true;
+                this.canMove = true;
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
                 else SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
-                Common.log(JSON.stringify(this.attr));
-                
             break;
         }
     }

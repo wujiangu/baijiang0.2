@@ -51,7 +51,7 @@ class Monster extends Enermy {
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
         this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.gotoEnter();
-        Common.log(JSON.stringify(data));
+        // Common.log(JSON.stringify(data));
     }
 
     /**

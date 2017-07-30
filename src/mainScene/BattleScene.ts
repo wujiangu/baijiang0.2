@@ -28,12 +28,14 @@ class BattleScene extends Base {
     public init():void {
         TimerManager.getInstance().startTimer();
         GameLayerManager.gameLayer().panelLayer.removeChildren();
-        if (!this.battleSceneCom) {
-            this.battleSceneCom = new BattleSceneCom();
-            this.battleSceneCom.show();
-        }else{
-            this.battleSceneCom.show();
-        }
+        // if (!this.battleSceneCom) {
+        //     this.battleSceneCom = new BattleSceneCom();
+        //     this.battleSceneCom.show();
+        // }else{
+        //     this.battleSceneCom.show();
+        // }
+        if (!this.battleSceneCom) this.battleSceneCom = new BattleSceneCom();
+        this.battleSceneCom.show();
         this.topLayer.addChild(this.battleSceneCom.group_top);
         this.addChild(this.battleSceneCom.group_btn);
 
@@ -79,7 +81,7 @@ class BattleScene extends Base {
            });
         }
         else if (this.moveCount > 10 && this.hero.curState != "attack"){
-            this.hero.gotoIdle();
+            if (this.hero.getCurState() != BaseGameObject.Action_Enter) this.hero.gotoIdle();
         }
         this.moveCount = 0;
     }
@@ -234,9 +236,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        let level:number = HeroData.getHeroData(GameData.curHero).lv
-        let attr = data[level - 1];
-        // let attr = data[50];
+        // let level:number = HeroData.getHeroData(GameData.curHero).lv
+        // let attr = data[level - 1];
+        let attr = data[0];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;

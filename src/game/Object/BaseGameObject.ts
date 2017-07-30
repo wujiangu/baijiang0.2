@@ -252,7 +252,6 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     /**硬直计时器监听 */
     private onAttack():void {
         this.atk_timer.reset();
-        Common.log("可以攻击")
         this.isComplete = true;
     }
 

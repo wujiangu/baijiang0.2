@@ -39,7 +39,7 @@ class BattleSceneCom extends Base {
         modBattle.stop();
         this.battleFailPop = WindowManager.GetInstance().GetWindow("BattleFailPop");
         this.battleFailPop.Show();
-        // SceneManager.battleScene.addChild(this.battleFailPop);
+        SceneManager.battleScene.addChild(this.battleFailPop);
         Animations.fadeOut(this.battleFailPop);
     }
 
@@ -69,9 +69,9 @@ class BattleSceneCom extends Base {
         this.img_headIcon.source = ConfigManager.tcHero[index].icon;
         //英雄的数据
         let data = ConfigManager[`${GameData.curHero}Attr`];
-        let level:number = HeroData.getHeroData(GameData.curHero).lv;
-        let attr = data[level - 1];
-        // let attr = data[50];
+        // let level:number = HeroData.getHeroData(GameData.curHero).lv;
+        // let attr = data[level - 1];
+        let attr = data[0];
         this._sumHP = attr.hp;
         Animations.fadeOutIn(this.lab_stage);
     }

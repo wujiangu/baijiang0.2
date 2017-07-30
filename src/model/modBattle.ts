@@ -171,13 +171,12 @@ namespace modBattle {
                 data["attr"] = Utils.cloneObj(ConfigManager.boss[id-100][lv-1]);
             }else{
                 //精英怪带的buff个数
-                let buffCount:number = 1;
+                let buffCount:number = 2;
                 let arrayBuff:Array<number> = [];
+                let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
+                originArray.sort(function(){ return 0.5 - Math.random(); });
                 for (let i = 0; i < buffCount; i++) {
-                    let random:number = MathUtils.getRandom(1, 6);
-                    // Common.log("精英怪类型----->", random);
-                    // let random:number = 5;
-                    arrayBuff.push(random);
+                    arrayBuff.push(originArray[i]);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
                 data["arrayBuff"] = arrayBuff;

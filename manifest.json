@@ -16,14 +16,14 @@
 	],
 	"game": [
 		"bin-debug/game/Object/BaseGameObject.js",
-		"bin-debug/game/Object/Enermy.js",
 		"bin-debug/Base.js",
+		"bin-debug/game/Object/Enermy.js",
 		"bin-debug/game/Buff/BuffBase.js",
 		"bin-debug/game/Machine/BaseStateMachine.js",
 		"bin-debug/game/Object/Monster.js",
 		"bin-debug/game/Skill/SkillBase.js",
 		"bin-debug/popup/PopupWindow.js",
-		"bin-debug/game/Skill/skills/TaijiPalm.js",
+		"bin-debug/heroInfo/heroInfoPanel.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/game/Buff/BuffData.js",
 		"bin-debug/game/Buff/buffs/AddProperty.js",
@@ -78,8 +78,8 @@
 		"bin-debug/game/Skill/skills/SevenInOut.js",
 		"bin-debug/game/Skill/skills/SolaCut.js",
 		"bin-debug/game/Skill/skills/Summon.js",
-		"bin-debug/component/TalentIR.js",
-		"bin-debug/heroInfo/heroInfoPanel.js",
+		"bin-debug/game/Skill/skills/TaijiPalm.js",
+		"bin-debug/utils/utilsClass/ShakeTools.js",
 		"bin-debug/leanCloud/LeanCloud.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/localStorage/LocalStorage.js",
@@ -121,6 +121,7 @@
 		"bin-debug/popup/drawCardPop.js",
 		"bin-debug/popup/EquipUpStarWindow.js",
 		"bin-debug/popup/EquipUpWindow.js",
+		"bin-debug/popup/GMWindow.js",
 		"bin-debug/popup/GoodsTipWindow.js",
 		"bin-debug/enterGameScene/EnterGameScene.js",
 		"bin-debug/popup/PVPWindow.js",
@@ -141,6 +142,6 @@
 		"bin-debug/utils/Utils.js",
 		"bin-debug/utils/utilsClass/LEvent.js",
 		"bin-debug/utils/utilsClass/LListener.js",
-		"bin-debug/utils/utilsClass/ShakeTools.js"
+		"bin-debug/component/TalentIR.js"
 	]
 }
