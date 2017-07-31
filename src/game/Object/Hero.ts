@@ -140,12 +140,12 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        // let talent:Array<any> = GameData.testTalent.talent;
-        let buff = HeroData.list[this.name].buff;
-        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        let talent:Array<any> = modTalent.getData(curPage).talent;
-        Common.log("talent---->", JSON.stringify(talent));
+        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
+        let talent:Array<any> = GameData.testTalent.talent;
+        // let buff = HeroData.list[this.name].buff;
+        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
             buff.push(id);
