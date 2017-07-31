@@ -5,6 +5,15 @@
 class BuildWall extends BuffBase {
     public constructor() {
         super();
+        var data = RES.getRes("BuildWall_json");
+        var txtr = RES.getRes("BuildWall_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("BuildWall"));
+        this._mc1.scaleX = 1.5;
+        this._mc1.scaleY = 1.5;
+        this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
+        SceneManager.battleScene.otherLayer.addChild(this._mc1);
     }
 
     /**初始化 */
@@ -21,6 +30,18 @@ class BuildWall extends BuffBase {
         this.buffData.cd = options.cd;
         this.buffData.duration = options.duration;
     }
+
+    private onMovie(event:egret.MovieClipEvent) {
+        let label:string = event.frameLabel;
+        if (label == "@buildEnd1" || label == "@buildEnd2") {
+            this._mc1.stop();
+        }
+    }
+
+    private onComplete(event:egret.MotionEvent) {
+        this._mc1.visible = false;
+    }
+
 
     /**开始 */
     public buffStart(target:any) {
@@ -54,7 +75,8 @@ class BuildWall extends BuffBase {
     }
     
     private onWallDisappear():void {
-        this.target.specialArmature.play(`skill01_0${this.type}`, 1, 2, 4);
+        // this.target.specialArmature.play(`skill01_0${this.type}`, 1, 2, 4);
+        this._mc1.play(1);
         SceneManager.battleScene.removeCollison(this);
         if (this.target.curState == "dead"){
             TimerManager.getInstance().remove(this.onWallDisappear, this);
@@ -71,10 +93,12 @@ class BuildWall extends BuffBase {
         let direction:string = this.target.getWalkPosition("skill01_", radian);
         let num:number = parseInt(direction.charAt(9));
         Common.log("位置--->", this.target.x, this.target.y, x, y, num);
-        this.target.specialArmature.visible = true;
-        SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
-        this.target.specialArmature.x = x;
-        this.target.specialArmature.y = y;
+        // this.target.specialArmature.visible = true;
+        // SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
+        // this.target.specialArmature.x = x;
+        // this.target.specialArmature.y = y;
+        this._mc1.x = x;
+        this._mc1.y = y;
         this.x = x;
         this.y = y;
         if (num == 2) {
@@ -82,7 +106,9 @@ class BuildWall extends BuffBase {
         }else{
             this.type = 1;
         }
-        this.target.specialArmature.play(`skill01_0${this.type}`, 1);
+        // this.target.specialArmature.play(`skill01_0${this.type}`, 1);
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay(`skill01_0${this.type}`, 1);
         SceneManager.battleScene.addCollison(this);
         TimerManager.getInstance().doTimer(this.buffData.duration*1000, 1, this.onWallDisappear, this);
     }
@@ -110,6 +136,8 @@ class BuildWall extends BuffBase {
         TimerManager.getInstance().remove(this.getRandom, this);
     }
     private target:any;
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
     /**墙的类型 */
     public type:number;
     /**x坐标 */

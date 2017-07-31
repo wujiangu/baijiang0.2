@@ -32,12 +32,13 @@ class shopItemIR extends Base {
                 }
                 else if(this.btn_buy.name == "packs"){
                     if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 500)){
-                         Animations.showTips("购买礼包成功", 1);
+                        Animations.showTips("购买礼包成功", 1);
                         let info = new modEquip.EquipInfo(20, 0, 5);
                         modEquip.EquipData.GetInstance().Add(info, 1);
                         UserDataInfo.GetInstance().SetBasicData("soul", UserDataInfo.GetInstance().GetBasicData("soul") + 1000);
                         UserDataInfo.GetInstance().SetBasicData("exp", UserDataInfo.GetInstance().GetBasicData("exp") + 20000);
                         UserDataInfo.GetInstance().SetBasicData("diamond", UserDataInfo.GetInstance().GetBasicData("diamond") + 50);
+                        GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
                     }
                     else Animations.showTips("钻石不足，无法购买", 1,true);
                 }
@@ -55,6 +56,7 @@ class shopItemIR extends Base {
                                 WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
                             }
                             WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:"zhaoyun",share:10});  
+                            GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
                         }
                         else Animations.showTips("钻石不足，无法购买", 1);
                     }

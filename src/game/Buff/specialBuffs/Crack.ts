@@ -5,6 +5,17 @@
 class Crack extends BuffBase {
     public constructor() {
         super();
+        var data = RES.getRes("Crack_json");
+        var txtr = RES.getRes("Crack_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("Crack"));
+        this._mc1.scaleX = 1.5;
+        this._mc1.scaleY = 1.5;
+        this._mc1.anchorOffsetX = 190;
+        this._mc1.anchorOffsetY = 100;
+        this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
+        SceneManager.battleScene.otherLayer.addChild(this._mc1);
     }
 
     /**初始化 */
@@ -22,6 +33,16 @@ class Crack extends BuffBase {
         this.buffData.duration = options.duration;
     }
 
+    private onMovie(event:egret.MovieClipEvent) {
+        let label:string = event.frameLabel;
+        if (label == "@End") {
+            this._mc1.gotoAndPlay(6, 1);
+        }
+    }
+
+    private onComplete(event:egret.MotionEvent) {
+        this._mc1.visible = false;
+    }
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
@@ -54,8 +75,10 @@ class Crack extends BuffBase {
     }
     
     private onWallDisappear():void {
-        this.target.specialArmature.pause("skill02");
-        this.target.specialArmature.play("skill02", 1, 2, 11);
+        // this.target.specialArmature.pause("skill02");
+        // this.target.specialArmature.play("skill02", 1, 2, 11);
+        this._mc1.stop();
+        this._mc1.gotoAndPlay(11, 1);
         SceneManager.battleScene.removeCollison(this);
         if (this.target.curState == "dead"){
             TimerManager.getInstance().remove(this.onWallDisappear, this);
@@ -68,15 +91,19 @@ class Crack extends BuffBase {
      * 筑墙
      */
     private buildCrack(x:number, y:number):void {
-        Common.log("位置--->", this.target.x, this.target.y, x, y);
-        this.target.specialArmature.visible = true;
-        SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
-        this.target.specialArmature.x = x;
-        this.target.specialArmature.y = y;
+        // Common.log("位置--->", this.target.x, this.target.y, x, y);
+        // this.target.specialArmature.visible = true;
+        // SceneManager.battleScene.otherLayer.addChild(this.target.specialArmature);
+        // this.target.specialArmature.x = x;
+        // this.target.specialArmature.y = y;
+        this._mc1.x = x;
+        this._mc1.y = y;
         this.x = x;
         this.y = y;
         this.type = 3;
-        this.target.specialArmature.play("skill02", 1);
+        // this.target.specialArmature.play("skill02", 1);
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay("skill02", 1);
         SceneManager.battleScene.addCollison(this);
         TimerManager.getInstance().doTimer(this.buffData.duration*1000, 1, this.onWallDisappear, this);
     }
@@ -104,6 +131,8 @@ class Crack extends BuffBase {
         TimerManager.getInstance().remove(this.getRandom, this);
     }
     private target:any;
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
     /**墙的类型 */
     public type:number;
     /**x坐标 */

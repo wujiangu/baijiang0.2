@@ -5,6 +5,17 @@
 class BlowUp extends BuffBase {
     public constructor() {
         super();
+        var data = RES.getRes("BlowUp_json");
+        var txtr = RES.getRes("BlowUp_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("BlowUp"));
+        this._mc1.scaleX = 1.5;
+        this._mc1.scaleY = 1.5;
+        this._mc1.anchorOffsetX = 44;
+        this._mc1.anchorOffsetY = 60;
+        this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
+        // this._mc1.visible = false;
     }
 
     /**初始化 */
@@ -25,6 +36,18 @@ class BlowUp extends BuffBase {
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
+        this.target.addChild(this._mc1);
+    }
+
+    private onMovie(event:egret.MovieClipEvent) {
+        let label:string = event.frameLabel;
+        if (label == "@blowup") {
+            this.target.blew();
+        }
+    }
+
+    private onComplete(event:egret.MotionEvent) {
+        // this._mc1.visible = false;
     }
 
     /**结束 */
@@ -34,8 +57,10 @@ class BlowUp extends BuffBase {
 
     /**刷新数据 */
     public update(target:any, callBack:Function = null) {
-        this.target.specialArmature.visible = true;
-        this.target.specialArmature.play("skill06", 1);
+        // this.target.specialArmature.visible = true;
+        // this.target.specialArmature.play("skill06", 1);
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay("skill06", 1);
     }
 
     /**增加特效 */
@@ -52,6 +77,7 @@ class BlowUp extends BuffBase {
     public HideEffect() {
         // this.target.skillArmature.visible = false;
     }
-    
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
     private target:any;
 }

@@ -166,14 +166,36 @@ class EquipUpWindow extends PopupWindow{
         let num = quality >= 5 ? 5 : quality;
         for(let i:number = 0; i < num; i++){
             this.txt_front_list[i].text = `${Math.floor(attr[i])}`;
-            this.txt_rear_list[i].text = `${Math.floor(attr[i] + this.quality_attr_list[i] * this.upLevelNum)}`;
+            if(this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV) this.txt_rear_list[i].text = "";
+            else this.txt_rear_list[i].text = `${Math.floor(attr[i] + this.quality_attr_list[i] * this.upLevelNum)}`;
         }
 
         let data = this.getEquipExpAndSoul();
-        this.txt_exp.text = `${data.exp}`;
-        this.txt_sole.text = `${data.soul}`
+        if(this.equip_info.Lv < modEquip.EquipSource.EQUIPLV){
+            this.showEquipLvInfo(true, `${data.exp}`, `${data.soul}`, "Lv." + (this.equip_info.Lv + this.upLevelNum))
+        }
+        else
+        {
+            this.showEquipLvInfo();
+        }
+
         this.curr_lv.text = "Lv." + this.equip_info.Lv;
-        this.next_lv.text = "Lv." + (this.equip_info.Lv + this.upLevelNum);
+    }
+
+    /** show equip lv info 
+     * @param isShow  is can show
+     * @param strExp  exp consume number
+     * @param strSole sole consume number
+     * @param strNext next lv show info 
+     */
+    private showEquipLvInfo(isShow:boolean = false, strExp:string = "0", strSole:string = "0", strNext:string = ""):void{
+        for(let i:number = 0; i < 5; i++){
+            this.txt_rear_title[i].visible = isShow
+        }
+        this.txt_exp.text = strExp;
+        this.txt_sole.text = strSole;
+        this.next_lv.text  = strNext;
+        this.lab_max.visible = !isShow;
     }
 
     private showStar():void{
@@ -218,10 +240,11 @@ class EquipUpWindow extends PopupWindow{
         });
     }
 
-   /**  */
+   /** image */
     private img_weapon:eui.Image;
+    private imgStar_list:Array<egret.Bitmap>;
  
-    /**  */
+    /** label */
     private txt_weapon:eui.Label;
     private txt_exp:eui.Label;
     private txt_sole:eui.Label;
@@ -231,19 +254,22 @@ class EquipUpWindow extends PopupWindow{
     private txt_rear_list:Array<egret.TextField>;
     private txt_front_title:Array<egret.TextField>;
     private txt_rear_title:Array<egret.TextField>;
-    private group_list:Array<eui.Group>;
-    private imgStar_list:Array<egret.Bitmap>;
-    private starGroup:eui.Group;
     private quality_attr_list:any;
+    private lab_max:eui.Label;
 
-    /** */
+    /** Group */
+    private group_list:Array<eui.Group>;
+    private starGroup:eui.Group;
+
+    /** button */
     private btn_close:eui.Button;
     private btn_upLevel:eui.Button;
     private radio_one:eui.RadioButton;
     private radio_ten:eui.RadioButton;
 
+    /** other */
     private upLevelNum:number;
    
-    /**  */
+    /** class */
     private equip_info:modEquip.EquipInfo;
 }

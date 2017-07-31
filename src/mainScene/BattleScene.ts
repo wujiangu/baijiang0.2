@@ -112,7 +112,7 @@ class BattleScene extends Base {
         this.comboCount.text = "0";
         this.comboCount.letterSpacing = 1;
         this.comboGroup.addChild(this.comboCount);
-        this.comboGroup.visible = false;
+        // this.comboGroup.visible = false;
     }
 
     /**
@@ -123,19 +123,21 @@ class BattleScene extends Base {
         let str:string = value.toString();
         this.comboCount.text = str;
         this.comboCount.anchorOffsetY = this.comboCount.height/2;
-        if (!this.comboStatus) {
-            this.comboTimer.start();
-            this.comboStatus = true;
-            this.comboGroup.alpha = 0;
-            Animations.fadeOut(this.comboGroup, 200, null, ()=>{
-                this.comboGroup.visible = true;
-                Animations.stamp(this.comboCount, 300, 450, 10, 5);
-                // Animations.fadeIn(this.comboGroup, 500);
-            })
-        }else{
-            this.comboGroup.visible = true;
-            Animations.stamp(this.comboCount, 300, 450, 10, 5);
-        }
+        // if (!this.comboStatus) {
+        //     this.comboTimer.start();
+        //     this.comboStatus = true;
+        //     this.comboGroup.alpha = 0;
+        //     Animations.fadeOut(this.comboGroup, 200, null, ()=>{
+        //         this.comboGroup.visible = true;
+        //         Animations.stamp(this.comboCount, 300, 450, 10, 5);
+        //         // Animations.fadeIn(this.comboGroup, 500);
+        //     })
+        // }else{
+        //     this.comboGroup.visible = true;
+        //     Animations.stamp(this.comboCount, 300, 450, 10, 5);
+        // }
+        this.comboGroup.visible = true;
+        Animations.stamp(this.comboCount, 300, 450, 10, 5);
     }
 
     /**
@@ -236,9 +238,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        // let level:number = HeroData.getHeroData(GameData.curHero).lv
-        // let attr = data[level - 1];
-        let attr = data[0];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv
+        let attr = data[level - 1];
+        // let attr = data[50];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;
@@ -314,25 +316,25 @@ class BattleScene extends Base {
     public setCollison(data:any):void {
         switch (data.type) {
             case 1:
-                data.minX = data.x - 73;
-                data.maxX = data.x + 73;
-                data.minY = data.y - 98;
-                data.maxY = data.y - 30;
+                data.minX = data.x;
+                data.maxX = data.x + 146;
+                data.minY = data.y - 40;
+                data.maxY = data.y + 28;
             break;
             case 2:
-                data.minX = data.x - 30;
-                data.maxX = data.x + 30;
-                data.minY = data.y - 100;
-                data.maxY = data.y + 40;     
+                data.minX = data.x;
+                data.maxX = data.x + 60;
+                data.minY = data.y - 50;
+                data.maxY = data.y + 90;     
             break;
             case 3:
-                data.minX = data.x - 145;
-                data.maxX = data.x + 145;
+                data.minX = data.x - 150;
+                data.maxX = data.x + 140;
                 data.minY = data.y - 49;
                 data.maxY = data.y - 30;
             break;
         }
-        // Common.log(this.areaCollison)
+        Common.log("障碍", this.areaCollison)
     }
 
     /**增加碰撞区域 */

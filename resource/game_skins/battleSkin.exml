@@ -12,8 +12,8 @@
 		<e:Image id="img_headIcon" source="img_buxiaoman_png" x="1" y="1.18" scaleX="1" scaleY="1"/>
 		<e:Image source="exp_0001_png" x="704" y="14" pixelHitTest="true" touchEnabled="true" scaleX="1" scaleY="1"/>
 		<e:Image source="sole_0001_png" x="883" y="14" scaleX="1" scaleY="1"/>
-		<e:Label id="lab_exp" text="100" y="20" fontFamily="Microsoft YaHei" textColor="0xbd8e0f" right="281" x="802" scaleX="1" scaleY="1"/>
-		<e:Label id="lab_soul" text="100" y="20" fontFamily="Microsoft YaHei" right="101" textColor="0x851a9b" x="982" scaleX="1" scaleY="1"/>
+		<e:Label id="lab_exp" text="100" y="20" fontFamily="Microsoft YaHei" textColor="0xbd8e0f" right="281" x="802" scaleX="1" scaleY="1" bold="true"/>
+		<e:Label id="lab_soul" text="100" y="20" fontFamily="Microsoft YaHei" right="101" textColor="0x851a9b" x="982" scaleX="1" scaleY="1" bold="true"/>
 	</e:Group>
 
 

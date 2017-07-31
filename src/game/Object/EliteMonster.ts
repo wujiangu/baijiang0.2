@@ -10,13 +10,17 @@ class EliteMonster extends Monster {
         this.img_halo.x = -30;
         this.img_halo.y = -96;
         this.addChild(this.img_halo);
-        
-        this.img_type = Utils.createBitmap("Elitemonster001_png");
-        this.img_type.x = 0;
-        this.img_type.y = -100;
-        this.addChild(this.img_type);
+        this.img_type = new Array();
+        for (let i = 0; i < 3; i++) {
+            let img_type = Utils.createBitmap("Elitemonster001_png");
+            img_type.y = -100;
+            this.addChild(img_type);
+            img_type.visible = false;
+            this.img_type.push(img_type);
+        }
+
         this.arrayBuffs = new Array();
-        this.createSpecialArmature();
+        // this.createSpecialArmature();
     }
 
     /**
@@ -48,7 +52,7 @@ class EliteMonster extends Monster {
     public initDragonBonesArmature(name:string):void {
         super.initDragonBonesArmature(name);
         this.img_halo.visible = true;
-        this.img_type.visible = true;
+        // this.img_type.visible = true;
         this.armature.visible = true;
         this.specialArmature.visible = false;
         this.visible = true;
@@ -62,12 +66,13 @@ class EliteMonster extends Monster {
         super.init(data, isElite, isSummon);
         this.arrayBuffs = data[1].arrayBuff;
         this._data = data;
+        this._groupIndex = 0;
         this.isFaster = false;
         if (this._isAvatar) {
             this.scaleX = -1;
             this.specialArmature.visible = true;
             egret.Tween.get(this).to({x:this.x+100}, 50);
-            this.specialArmature.play("skill04", 1, 2, 8);
+            // this.specialArmature.play("skill04", 1, 2, 8);
         }else{
             this.addChild(this.specialArmature);
             this.specialArmature.x = 0;
@@ -75,8 +80,14 @@ class EliteMonster extends Monster {
         }
         for (let i = 0; i < this.arrayBuffs.length; i++) {
             let Image:string = `Elitemonster00${this.arrayBuffs[i]}_png`;
-            this.img_type.texture = RES.getRes(Image);
+            this.img_type[i].x = -5 * (this.arrayBuffs.length - 1) + 10 * i;
+            this.img_type[i].visible = true;
+            this.img_type[i].texture = RES.getRes(Image);
         }
+    }
+
+    public setGroupIndex():void {
+        this._groupIndex ++;
     }
 
     public update(time:number):void {
@@ -103,7 +114,7 @@ class EliteMonster extends Monster {
         else{
             super.state_run(time, this.setFasterEffect);
             let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
-            if (distance < 250) {
+            if (distance < 250 && this.curState == "run") {
                 for (let i = 0; i < this.buff.length; i++) {
                     if (this.buff[i].buffData.id == 53) {
                         this.buff[i].begin();
@@ -143,6 +154,12 @@ class EliteMonster extends Monster {
     /**奔跑 */
     public gotoRun() {
         super.gotoRun();
+        for (let i = 0; i < this.buff.length; i++) {
+            if (this.buff[i].buffData.id == 55) {
+                this._fasterBuff = this.buff[i];
+                break;
+            }
+        }
     }
 
     /**
@@ -191,7 +208,7 @@ class EliteMonster extends Monster {
         }else{
             this.removeAvatar();
             super.gotoHurt(hurtValue, isSkillHurt);
-            if (this.isFaster) this.specialArmature.visible = false;
+            if (this.isFaster) this._fasterBuff.HideEffect();
         }
     }
 
@@ -203,7 +220,7 @@ class EliteMonster extends Monster {
     /**蓄力 */
     public gotoReady() {
         super.gotoReady();
-        if (this.isFaster) this.specialArmature.visible = false;
+        if (this.isFaster) this._fasterBuff.HideEffect();
     }
 
     /**死亡 */
@@ -220,7 +237,8 @@ class EliteMonster extends Monster {
         }
         this.removeAvatar();
         this.img_halo.visible = false;
-        this.img_type.visible = false;
+        for (let i = 0; i < this.arrayBuffs.length; i++) this.img_type[i].visible = false;
+        // this.img_type.visible = false;
         if (this.isFaster) this.specialArmature.visible = false;
     }
 
@@ -317,6 +335,33 @@ class EliteMonster extends Monster {
     }
 
     /**
+     * 分裂
+     */
+    public splite():void {
+        if (this.attr.hp <= 0) return;
+        egret.Tween.get(this).to({x:this.x-100}, 50).call(()=>{
+            this.setInvincible(false);
+            this.setCanMove(true);
+            this.gotoRun();
+        });
+        this.createAvatar();
+        GameData.monsters.push(this._avatar);
+        this._avatar.init(this._data);
+        SceneManager.battleScene.battleLayer.addChild(this._avatar);
+    }
+
+    /**
+     * 自爆
+     */
+    public blew():void {
+        let dis:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
+        if (dis <= 100) {
+            let hurt:number = this.attr.atk * 2;
+            GameData.heros[0].hurtHandler(hurt);
+        }
+    }
+
+    /**
      * 清除分身
      */
     public removeAvatar():void {
@@ -330,7 +375,7 @@ class EliteMonster extends Monster {
     }
 
     public specialArmaturePlayEnd():void {
-        if (!this.isFaster) this.specialArmature.visible = false;
+        if (!this.isFaster) this._fasterBuff.HideEffect();
     }
 
     /**
@@ -357,34 +402,20 @@ class EliteMonster extends Monster {
     }
     /**快速移动的特效 */
     private setFasterEffect = function(radian:number):void {
-        this.specialArmature.visible = true;
+        // this.specialArmature.visible = true;
         let specialAnimate = this.getWalkPosition("skill05_", radian);
         let num:number = parseInt(specialAnimate.charAt(9));
-        this.setChildIndex(this.specialArmature, 0);
-        switch (num) {
-            case 1:
-                this.setChildIndex(this.specialArmature, this.numChildren+1);
-                this.specialArmature.x = 5;
-                this.specialArmature.y = 0;
-            break;
-            case 2:
-                this.specialArmature.x = -13;
-                this.specialArmature.y = 0;
-            break;
-            case 3:
-                this.specialArmature.x = 5;
-                this.specialArmature.y = 0;
-            break;
-        }
-        this.specialArmature.play(specialAnimate, 0);
+        this._fasterBuff.releaseBegin(num);
     }.bind(this);
 
 
     private _data:any;
     private _avatar:EliteMonster;
+    private _groupIndex:number;
+    private _fasterBuff:Faster;
     /*************************图片************************/
     /**精英怪的标志图 */
     private img_halo:egret.Bitmap;
     /**精英怪的类型标志图 */
-    private img_type:egret.Bitmap;
+    private img_type:Array<egret.Bitmap>;
 }

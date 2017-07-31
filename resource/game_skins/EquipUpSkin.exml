@@ -24,4 +24,5 @@
 	<e:RadioButton id="radio_one" label="一次" x="794.16" y="426" skinName="skins.RadioButtonSkin">
 	</e:RadioButton>
 	<e:RadioButton id="radio_ten" label="十次" x="912" y="426"/>
+	<e:Label id="lab_max" text="已满级" x="747" y="216" anchorOffsetX="0" width="232" anchorOffsetY="0" height="177" textAlign="center" verticalAlign="middle" size="50" textColor="0xbf9b11" fontFamily="Microsoft YaHei" bold="true"/>
 </e:Skin>

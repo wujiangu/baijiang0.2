@@ -5,6 +5,16 @@
 class Avatar extends BuffBase {
     public constructor() {
         super();
+        var data = RES.getRes("Avatar_json");
+        var txtr = RES.getRes("Avatar_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("Avatar"));
+        this._mc1.scaleX = 1.5;
+        this._mc1.scaleY = 1.5;
+        this._mc1.anchorOffsetX = 40;
+        this._mc1.anchorOffsetY = 80;
+        this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
     }
 
     /**初始化 */
@@ -34,12 +44,25 @@ class Avatar extends BuffBase {
      */
     private releaseBegin():void {
         if (this.target.attr.hp <= 0) return;
-        this.target.specialArmature.visible = true;
+        // this.target.specialArmature.visible = true;
         this.target.gotoIdle();
         this.target.setCanMove(false);
-        this.target.setChildIndex(this.target.specialArmature, this.target.numChildren+1);
-        // this.target.createAvatar();
-        this.target.specialArmature.play("skill04", 1);
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay("skill04", 1);
+        this.target.addChild(this._mc1);
+        this.target.setChildIndex(this._mc1, this.target.numChildren+1);
+        // this.target.specialArmature.play("skill04", 1);
+    }
+
+    private onMovie(event:egret.MovieClipEvent) {
+        let label:string = event.frameLabel;
+        if (label == "@split") {
+            this.target.splite();
+        }
+    }
+
+    private onComplete(event:egret.MotionEvent) {
+        this._mc1.visible = false;
     }
 
     /**结束 */
@@ -85,4 +108,6 @@ class Avatar extends BuffBase {
     }
 
     private target:any;
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
 }

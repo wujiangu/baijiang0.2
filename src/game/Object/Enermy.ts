@@ -51,7 +51,8 @@ class Enermy extends BaseGameObject {
         this.lastAnimation = "";
         this.atk_distance = data[1].mov;
         this.away_distance = data[1].away;
-        this.atk_timer.delay = this.attr.wsp * 1000;
+        // this.atk_timer.delay = this.attr.wsp * 1000;
+        this.atk_timer.delay = 0;
         this.isRemote = data[1].isRemote;
         this.originHP = this.attr.hp;
         this.beAttackCount = 0;

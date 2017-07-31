@@ -86,7 +86,7 @@ class Hero extends BaseGameObject {
         this.visible = false;
         this.shadow.visible = false;
         this.canMove = false;
-        this.curState = BaseGameObject.Action_Enter;
+        // this.curState = BaseGameObject.Action_Enter;
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
@@ -140,12 +140,12 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        let talent:Array<any> = GameData.testTalent.talent;
-        // let buff = HeroData.list[this.name].buff;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
-        // Common.log("talent---->", JSON.stringify(talent));
+        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
+        // let talent:Array<any> = GameData.testTalent.talent;
+        let buff = HeroData.list[this.name].buff;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
+        Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
             buff.push(id);
@@ -175,6 +175,7 @@ class Hero extends BaseGameObject {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
+        HeroData.list[this.name].buff.splice(2);
     }
 
     /**
@@ -627,6 +628,7 @@ class Hero extends BaseGameObject {
                 this.canMove = true;
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
                 else SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
+                Common.log(JSON.stringify(this.attr));
             break;
         }
     }

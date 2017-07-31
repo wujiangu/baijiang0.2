@@ -173,10 +173,13 @@ namespace modBattle {
                 //精英怪带的buff个数
                 let buffCount:number = 2;
                 let arrayBuff:Array<number> = [];
+                //简单随机排序
                 let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
                 originArray.sort(function(){ return 0.5 - Math.random(); });
                 for (let i = 0; i < buffCount; i++) {
                     arrayBuff.push(originArray[i]);
+                    // let id:number = 6;
+                    // arrayBuff.push(id);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
                 data["arrayBuff"] = arrayBuff;

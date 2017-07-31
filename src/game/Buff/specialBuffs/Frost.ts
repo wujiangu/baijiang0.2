@@ -5,6 +5,16 @@
 class Frost extends BuffBase {
     public constructor() {
         super();
+        var data = RES.getRes("Frost_json");
+        var txtr = RES.getRes("Frost_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("Frost"));
+        this._mc1.scaleX = 1.5;
+        this._mc1.scaleY = 1.5;
+        this._mc1.anchorOffsetX = 125;
+        this._mc1.anchorOffsetY = 110;
+        this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
     }
 
     /**初始化 */
@@ -21,6 +31,7 @@ class Frost extends BuffBase {
         this.buffData.cd = options.cd;
         this.buffData.duration = options.duration;
         this._isFinish = true;
+        this._animateStatus = true;
     }
 
     /**开始 */
@@ -29,7 +40,7 @@ class Frost extends BuffBase {
     }
 
     public begin():void {
-        if (this._isFinish) {
+        if (this._isFinish && this._animateStatus) {
             this._isFinish = false;
             this.releaseBegin();
             TimerManager.getInstance().doTimer(this.buffData.cd*1000, 0, this.release, this);
@@ -40,22 +51,43 @@ class Frost extends BuffBase {
      * 开始释放
      */
     private releaseBegin():void {
-        this.target.specialArmature.visible = true;
-        this.target.setChildIndex(this.target.specialArmature, 0);
-        this.target.specialArmature.play("skill03", 1, 1, 0, 0.6);
+        this._animateStatus = false;
+        // this.target.specialArmature.visible = true;
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay("skill03", 1);
+        this.target.addChild(this._mc1);
+        this.target.setChildIndex(this._mc1, 0);
+        // this.target.specialArmature.play("skill03", 1, 1, 0, 0.6);
     }
 
     /**
      * 释放buff
      */
     private release():void {
-        let random:number = MathUtils.getRandom(1, 100);
-        if (random >= 0) {
-            this.releaseBegin();
-            this._isFinish = true;
+        this._isFinish = true;
+    }
+    private onMovie(event:egret.MovieClipEvent) {
+        let label:string = event.frameLabel;
+        if (label == "@impact") {
+            let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.target.x, this.target.y);
+            if (distance <= 200 ) {
+                let buffConfig = modBuff.getBuff(2);
+                let extraBuff = ObjectPool.pop(buffConfig.className);
+                extraBuff.buffInit(buffConfig);
+                extraBuff.effectName = "xuanyun";
+                extraBuff.buffData.id = buffConfig.id;
+                extraBuff.buffData.duration = buffConfig.duration;
+                extraBuff.buffData.postionType = PostionType.PostionType_Head;
+                GameData.heros[0].addBuff(extraBuff);
+                GameData.heros[0].hurtHandler(this.target.attr.atk);
+            }
         }
     }
 
+    private onComplete(event:egret.MotionEvent) {
+        this._mc1.visible = false;
+        this._animateStatus = true;
+    }
     /**结束 */
     public buffEnd() {
         
@@ -87,7 +119,10 @@ class Frost extends BuffBase {
         TimerManager.getInstance().remove(this.release, this);
     }
     private target:any;
-
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
     /**cd是否结束 */
     private _isFinish:boolean;
+    /**动画状态 */
+    private _animateStatus:boolean;
 }

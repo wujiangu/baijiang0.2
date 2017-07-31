@@ -51,7 +51,7 @@ class GMWindow extends PopupWindow{
 
     private onTouchBtn(event:egret.TouchEvent):void{
 
-        if(this.data_list.length > 5){
+        if(this.data_list.length >= 5 && event.target != this.btn_close){
             Animations.showTips("一封邮件最多只能获得5份物品", 1, true);
             return;
         }
@@ -79,13 +79,14 @@ class GMWindow extends PopupWindow{
     }
 
     private onClickWeapon():void{
-        let digit:number;
-        let str:string = this.input_weapon.text;
 
-        if(str.substr(0, 1) == "0"){
-            digit = parseInt(str.substr(1, 1))
+        if(this.input_weapon.text.length == 0){
+            Animations.showTips("请输入(1 - 24)的数字获得装备!", 1, true);
+            return;
         }
-        else digit = parseInt(str);
+
+        let str:string = this.input_weapon.text;
+        let digit:number = parseInt(str);
         
         if(digit <= 0 || digit > 24){
             Animations.showTips("没有此类型装备请从(1 - 24)的id号进行筛选", 1, true);
@@ -96,6 +97,11 @@ class GMWindow extends PopupWindow{
     }
 
     private onAddGoods(name:string, strNum:string):void{
+        if(strNum.length == 0){
+            Animations.showTips("请输入数值获得道具，不能为空", 1, true);
+            return;
+        }
+
         if(strNum.length > 10){
             Animations.showTips("sorry you input digit too longer", 1, true);
             return;

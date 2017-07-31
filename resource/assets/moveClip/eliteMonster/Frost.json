@@ -1,0 +1,52 @@
+{"mc":{
+	"Frost":{
+		"frameRate":12,
+		"labels":[
+			{"name":"skill03","frame":1,"end":6}
+			
+			],
+		"events":[
+			{"name":"@impact","frame":5}
+			],
+		"frames":[
+			
+			{
+			"res":"bingshuang01",
+			"x":87,
+			"y":78
+			},
+			{
+			"res":"bingshuang02",
+			"x":42,
+			"y":38
+			},
+			{
+			"res":"bingshuang03",
+			"x":27,
+			"y":25
+			},
+			{
+			"res":"bingshuang04",
+			"x":16,
+			"y":15
+			},
+			{
+			"res":"bingshuang05",
+			"x":6,
+			"y":6
+			},
+			{
+			"res":"bingshuang06",
+			"x":0,
+			"y":0
+			}
+			]
+}},
+	"res":{
+        "bingshuang01":{"x":491,"y":196,"w":76,"h":67},
+        "bingshuang02":{"x":710,"y":176,"w":165,"h":147},
+        "bingshuang03":{"x":710,"y":0,"w":195,"h":174},
+        "bingshuang04":{"x":491,"y":0,"w":217,"h":194},
+        "bingshuang05":{"x":251,"y":0,"w":238,"h":212},
+        "bingshuang06":{"x":0,"y":0,"w":249,"h":223}
+	}}

@@ -34,12 +34,14 @@ class EmailWindow extends PopupWindow{
         }
 
         this.img_click = new egret.Bitmap(RES.getRes("email_002_png"));
+        this._bottomGroup = new eui.Group();
     }
 
     public Show():void{
         super.Show();
 
         this._clickIndex = 0;
+        this.scrollGroup.scrollV = 0;
         this.initData();
     }
 
@@ -97,6 +99,7 @@ class EmailWindow extends PopupWindow{
                 this.icon_list[i] = new egret.Bitmap(RES.getRes("email_new_png"));
                 this.title_list[i] = Common.CreateText("",25, 0x858685,true, "Microsoft YaHei");
                 this.time_list[i] = Common.CreateText("",20, 0x858685,true, "Microsoft YaHei");
+                
                 this.group_list[i].addChild(this.img_bg_list[i]);
                 this.group_list[i].addChild(this.img_list[i]);
                 this.group_list[i].addChild(this.icon_list[i]);
@@ -119,15 +122,17 @@ class EmailWindow extends PopupWindow{
             this.img_bg_list[i]["index"] = i;
             this.img_bg_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
             Common.SetXY(this.group_list[i], 0, i * 118 + 10);
+
+            this.group_list[i].visible = true;
             this.scrollGroup.addChild(this.group_list[i]);
         }
 
+        this.scrollGroup.addChild(this._bottomGroup);
+        Common.SetXY(this._bottomGroup, 0, this._eventNum *  118 + 10);
+
         if(this.group_list.length > this._eventNum){
-            for(let i:number = 0; i < this.group_list.length; i++){
-                if(this._eventNum > i){
-                    this.group_list[i].visible = true;
-                }
-                else this.group_list[i].visible = false;
+            for(let i:number = this._eventNum; i < this.group_list.length; i++){
+                this.group_list[i].visible = false;
             }
         }
     }
@@ -235,6 +240,7 @@ class EmailWindow extends PopupWindow{
         }
         this.img_list[this._clickIndex].texture = RES.getRes(`email_status${this._emailData[this._clickIndex].status}_png`);
         this.showRewardGoodsColor();
+        UserDataInfo.GetInstance().SetBasicData("email", this._emailData);
     }
 
     /** button */
@@ -263,6 +269,7 @@ class EmailWindow extends PopupWindow{
     private group_list:Array<eui.Group>;
     private scrollGroup:eui.Group;
     private emailGroup:eui.Group;
+    private _bottomGroup:eui.Group;
 
     /** other */
     private _emailData:any;
