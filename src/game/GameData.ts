@@ -22,8 +22,10 @@ class GameData {
     /**木桩 */
     public static stakes:Array<Stakes>;
     /**当前英雄 */
-    public static curHero:string = "zhaoyun";    /**存储一些游戏的初始数据 */
+    public static curHero:string = "diaochan";    /**存储一些游戏的初始数据 */
     public static initData:any = null;
     /**测试天赋 */
-    public static testTalent:any = {"name":"","count":1,"talent":[[9, 10]]}
+    public static testTalent:any = {"name":"","count":1,"talent":[[9, 10]]};
+    /**是否测试模式 */
+    public static isDebug:boolean = true;
 }

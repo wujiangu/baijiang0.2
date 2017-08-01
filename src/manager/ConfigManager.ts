@@ -25,6 +25,8 @@ namespace ConfigManager {
     export var tcEquip:any;
     /**英雄描述配置文件 */
     export var tcHero:any;
+    /**英雄升级消耗 */
+    export var tcHeroUp:any;
     /**技能配置文件 */
     export var tcSkill:any;
     /**天赋配置文件 */
@@ -48,6 +50,7 @@ namespace ConfigManager {
 
         tcEquip = RES.getRes("TcEquip_json");
         tcHero = RES.getRes("TcHero_json");
+        tcHeroUp = RES.getRes("TcHeroUp_json");
         tcSkill = RES.getRes("TcSkill_json");
         tcTalent = RES.getRes("TcTalent_json");
         tcTalentUp = RES.getRes("TcTalentUp_json");

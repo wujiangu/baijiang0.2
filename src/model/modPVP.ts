@@ -109,7 +109,7 @@ namespace modPVP {
         surviveCount = 0;
         let count:number = GameData.stakes.length;
         for (let i = 0; i < count; i++) {
-            if (GameData.stakes[i].hp > 0) surviveCount ++;
+            if (GameData.stakes[i].attr.hp > 0) surviveCount ++;
         }
     }
 

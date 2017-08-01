@@ -62,7 +62,7 @@ class HeroData {
      * 更新英雄的数据
      */
     public static update():void{
-        LeanCloud.GetInstance().SaveRoleData("hero", HeroData.list);
+        if (HeroData.list) LeanCloud.GetInstance().SaveRoleData("hero", HeroData.list);
     }
 
     /**数据表 */

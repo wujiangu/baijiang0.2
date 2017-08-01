@@ -13,6 +13,18 @@ namespace modHero {
         return index;
     }
 
+    /**根据英雄的id获取英雄名字 */
+    export function getNameFromId(id:number):string {
+        let name:string;
+        for (let i = 0; i < ConfigManager.tcHero.length; i++) {
+            if (ConfigManager.tcHero[i].hero_id == id) {
+                name = ConfigManager.tcHero[i].name;
+                break;
+            }
+        }
+        return name;
+    }
+
     export function getCurIndex():number {
         return curIndex;
     }

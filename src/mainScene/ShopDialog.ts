@@ -73,7 +73,7 @@ class ShopDialog extends PopupWindow {
                     let cardInfo = modShop.drawOnce();
                     this.cards.push(cardInfo);
                     Common.log(JSON.stringify(this.cards));
-                    Animations.drawCard(cardInfo, ()=>{
+                    Animations.drawCard("once", cardInfo, ()=>{
                         this.createEquipPop(this.cards, "once")
                     });
                 }
@@ -87,7 +87,7 @@ class ShopDialog extends PopupWindow {
                         if (startLen >= 10) {
                             this.createEquipPop(this.cards, "ten");
                         }else{
-                            Animations.drawCard(this.cards[startLen.toString()], ()=>{
+                            Animations.drawCard("ten", this.cards[startLen.toString()], ()=>{
                                 startLen ++;
                                 popFunc();
                             });
@@ -131,9 +131,16 @@ class ShopDialog extends PopupWindow {
     }
 
     /**
+     * 获取卡组
+     */
+    public getCards():Array<any> {
+        return this.cards;
+    }
+
+    /**
      * 创建弹窗
      */
-    private createEquipPop(infos:Array<any>, type:string) {
+    public createEquipPop(infos:Array<any>, type:string) {
         let pop:PopupWindow = WindowManager.GetInstance().GetWindow("DrawCardPop");
         pop.Show(infos, type);
         Animations.PopupBackOut(pop, 500);

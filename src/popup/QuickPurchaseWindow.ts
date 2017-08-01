@@ -16,16 +16,16 @@ class QuickPurchaseWindow extends PopupWindow{
     }
 
     public Init():void{
-
+        this.goods_list = [];
     }
 
     public Show(list:any):void{
         super.Show();
 
-        this.goods_list = list;
         let name_list:any = [];
         let data_list:any = [];
         for(let i:number = 0; i < list.length; i++){
+            this.goods_list[i] = {type:1,data:list[i]};
             let tempData = TcManager.GetInstance().GetTcEquipData(list[i]);
             if(i == list.length - 1) name_list[i] = tempData.name + "x1"
             else name_list[i] = tempData.name + "x1,";
@@ -54,7 +54,7 @@ class QuickPurchaseWindow extends PopupWindow{
     private onTouchPurchase(event:egret.TouchEvent):void{
         if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 60)){
             Animations.ShowGoodsPopEffect(this.goods_list);
-            modEquip.EquipData.GetInstance().InsertEquipList(this.goods_list);
+            Common.DealReward(this.goods_list);
             this.Close();
         }
         else Animations.showTips("钻石不足，无法购买", 1, true);

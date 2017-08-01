@@ -149,7 +149,10 @@ class MainScene extends Base {
 				this.popupGroup.visible = true;
 				break;
             case this.btn_shop:
-                this.ShowPop("ShopDialog");
+                // this.ShowPop("ShopDialog");
+                this.shopDialog = WindowManager.GetInstance().GetWindow("ShopDialog");
+                this.shopDialog.Show();
+                Animations.fadeOut(this.shopDialog);
                 break;
             case this.btn_email:
                  this.ShowPop("EmailWindow");
@@ -192,7 +195,7 @@ class MainScene extends Base {
        this.show_label_text();
     }
 
-    private show_label_text():void{
+    public show_label_text():void{
         this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
         this.lab_diamond.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
@@ -215,7 +218,7 @@ class MainScene extends Base {
     private btn_applicate:eui.Button;
     /**商城 */
     private btn_shop:eui.Button;
-    private shopDialog:ShopDialog;
+    public shopDialog:any;
     /**退出弹窗 */
     private btn_close:eui.Button;
 

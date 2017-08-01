@@ -209,7 +209,7 @@ namespace Animations {
      * 5:18 54 90 126 162
      * 6:0 36 72 108 144 180
      */
-    export function drawCard(card:any, func:Function = null) {
+    export function drawCard(type:string, card:any, func:Function = null) {
         //动画是否播放完成
         let isFinish:boolean = false;
         let equipGrade:number = 0;
@@ -308,6 +308,30 @@ namespace Animations {
         /*******************************************/
         step2();
         GameLayerManager.gameLayer().maskLayer.addChild(group);
+        //跳过
+        if (type == "ten") {
+            var btn_Jump:egret.TextField = Utils.createText("跳过", 1057, 7, 30, 0xA86B18);
+            btn_Jump.fontFamily = "Microsoft YaHei";
+            btn_Jump.bold = true;
+            GameLayerManager.gameLayer().maskLayer.addChild(btn_Jump);
+
+            function btn_flash() {
+              egret.Tween.get(btn_Jump).to({alpha:0.2},1000,egret.Ease.circIn).call(()=>{
+                    egret.Tween.get(btn_Jump).to({alpha:1},1000).call(btn_flash, this);
+                },this)
+            }
+            btn_flash();
+
+            btn_Jump.touchEnabled = true;
+            btn_Jump.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
+                shp.graphics.clear();
+                egret.Tween.removeTweens(group);
+                egret.Tween.removeTweens(btn_Jump);
+                GameLayerManager.gameLayer().maskLayer.removeChildren();
+                let cards = SceneManager.mainScene.shopDialog.getCards();
+                SceneManager.mainScene.shopDialog.createEquipPop(cards, "ten");
+            }, this);
+        }
         //添加播放完成事件
         mc1.addEventListener(egret.Event.COMPLETE, function (){
             mc1.visible = false;

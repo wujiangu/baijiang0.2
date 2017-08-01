@@ -20,7 +20,7 @@ class Stakes extends egret.DisplayObjectContainer {
 
     public init() {
         this.alpha = 1.0;
-        this.hp = 5;
+        this.attr.hp = 5;
         this.curState = "";
         this.buff = [];
         //buff动画
@@ -32,14 +32,14 @@ class Stakes extends egret.DisplayObjectContainer {
         this.buffArmature.scaleY = 1.5;
     }
 
-    public gotoHurt():void {
-        if (this.hp <= 0) return;
+    public gotoHurt(hurtValue:number = 1):void {
+        if (this.attr.hp <= 0) return;
         if (this.curState == "hurt") return;
         // ShakeTool.getInstance().shakeObj(SceneManager.pvpScene, 1, 5, 5);
         this.curState = "hurt";
         this._mc.gotoAndPlay("stakes", 1);
-        this.hp --;
-        let hurtValue = MathUtils.getRandom(100, 2000);
+        this.attr.hp --;
+        // let hurtValue = MathUtils.getRandom(100, 2000);
         this.hurtText.text = `-${hurtValue.toString()}`;
         this.hurtText.anchorOffsetX = this.hurtText.width/2;
         this.hurtText.y = 50;
@@ -67,7 +67,6 @@ class Stakes extends egret.DisplayObjectContainer {
 
     /**增加buff */
     public addBuff(buff:any) {
-        Common.log("增加buff")
         if (this.isExistBuff(buff) && (buff.buffData.controlType == ControlType.YES) && (buff.buffData.superpositionType == SuperpositionType.SuperpositionType_None)) return;
         this.buff.push(buff);
         buff.buffStart(this);
@@ -108,9 +107,8 @@ class Stakes extends egret.DisplayObjectContainer {
     }
 
     private _onClipComplete():void {
-        Common.log("move end");
         this.curState = "";
-        if (this.hp <= 0) {
+        if (this.attr.hp <= 0) {
             this.gotoDead();
         }
     }
@@ -118,6 +116,7 @@ class Stakes extends egret.DisplayObjectContainer {
     public isPVP:boolean;
     private _mc:egret.MovieClip;
     public hp:number;
+    public attr:any = {"hp":0};
     private curState:string;
     /**身上带的buff */
     public buff:any[];

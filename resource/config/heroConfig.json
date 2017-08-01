@@ -2,18 +2,24 @@
     "diaochan":{
         "attr":[],
         "id":1,
+        "exp":0,
+        "lv":1,
         "skill":"Imprisoned",
         "buff":[4, 6]
     },
     "buxiaoman":{
         "attr":[],
         "id":2,
+        "exp":0,
+        "lv":1,
         "skill":"Bristle",
         "buff":[5, 9]
     },
     "zhaoyun":{
         "attr":[],
         "id":3,
+        "exp":0,
+        "lv":1,
         "skill":"SevenInOut",
         "buff":[7, 8]
     }

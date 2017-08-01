@@ -95,6 +95,7 @@ class Hero extends BaseGameObject {
         this._hurtValue = 0;
         if (data[2]) this.attr.hp = data[3];
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
+        if (!isPVP) SceneManager.battleScene.showComboLayer();
     }
 
     /**
@@ -140,11 +141,11 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;
-        let talent:Array<any> = GameData.testTalent.talent;
-        // let buff = HeroData.list[this.name].buff;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        // let talent:Array<any> = GameData.testTalent.talent;     //test
+        let buff = HeroData.list[this.name].buff;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -175,7 +176,9 @@ class Hero extends BaseGameObject {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        HeroData.list[this.name].buff.splice(2);
+        HeroData.list[this.name].buff.splice(2);         //test
+        let data:any = HeroData.getHeroData(GameData.curHero);
+        HeroData.update();
     }
 
     /**

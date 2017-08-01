@@ -191,7 +191,7 @@ class LeanCloud{
     public InitRoleData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email"];
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email", "revivalCount"];
             for(let i in str_list){
                 UserDataInfo.GetInstance().SetBasicData(str_list[i], todo.get(str_list[i]), false);
             }
@@ -204,7 +204,7 @@ class LeanCloud{
     public SaveRoleBasicData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "email"];
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "email", "revivalCount"];
             for(let i in str_list){
                 todo.set(str_list[i], UserDataInfo.GetInstance().GetBasicData(str_list[i]))
             }

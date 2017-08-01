@@ -34,7 +34,6 @@ class ReadyDialog extends PopupWindow {
     private _createAttr():void {
         let attr = ["生命", "攻击", "护甲", "闪避", "暴击", "攻速"];
         let hero:any = HeroData.getHeroData(GameData.curHero);
-
         for (let i = 0; i < attr.length; i++) {
             let leftText  = Common.CreateText(attr[i], 24, 0x858685, true, "Microsoft YaHei");
             this.biographyGroup.addChild(leftText);

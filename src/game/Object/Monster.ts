@@ -248,7 +248,7 @@ class Monster extends Enermy {
         super.gotoReady();
         this.curState = Monster.Action_Ready01;
         this.readyCount = 0;
-        this.armature.play(Monster.Action_Ready01, 3);
+        this.armature.play(Monster.Action_Ready01, 6);
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
     }
 
@@ -296,7 +296,7 @@ class Monster extends Enermy {
         switch (this.curState) {
             case Monster.Action_Ready01:
                 this.readyCount ++;
-                if (this.readyCount == 3) {
+                if (this.readyCount == 6) {
                     if (this.isRemote){
                         this.gotoSkill();
                         this.isComplete = false;

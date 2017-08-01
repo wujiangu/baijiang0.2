@@ -28,23 +28,10 @@ class BattleScene extends Base {
     public init():void {
         TimerManager.getInstance().startTimer();
         GameLayerManager.gameLayer().panelLayer.removeChildren();
-        // if (!this.battleSceneCom) {
-        //     this.battleSceneCom = new BattleSceneCom();
-        //     this.battleSceneCom.show();
-        // }else{
-        //     this.battleSceneCom.show();
-        // }
         if (!this.battleSceneCom) this.battleSceneCom = new BattleSceneCom();
         this.battleSceneCom.show();
         this.topLayer.addChild(this.battleSceneCom.group_top);
         this.addChild(this.battleSceneCom.group_btn);
-
-        if (this.comboGroup) {
-            this.comboGroup.visible = false;
-            this.instantKill.visible = false;
-            this.effectLayer.addChild(this.comboGroup);
-            this.effectLayer.addChild(this.instantKill);
-        }
         modBattle.init();
         this.areaCollison = [];
         this.isHit = false;
@@ -52,6 +39,16 @@ class BattleScene extends Base {
         // Common.log(JSON.stringify(modTalent.getData(0)));
         DragonBonesFactory.getInstance().startTimer();
         this.createHero();
+    }
+
+    /**加入连击的显示层 */
+    public showComboLayer():void {
+        if (this.comboGroup) {
+            this.comboGroup.visible = false;
+            this.instantKill.visible = false;
+            this.effectLayer.addChild(this.comboGroup);
+            this.effectLayer.addChild(this.instantKill);
+        }
     }
 
     private timerFunc(event:egret.TimerEvent) {
@@ -238,9 +235,9 @@ class BattleScene extends Base {
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
-        // let level:number = HeroData.getHeroData(GameData.curHero).lv
-        // let attr = data[level - 1];
-        let attr = data[50];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv
+        let attr = data[level - 1];
+        // let attr = data[0];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);
         this.hero.x = Common.SCREEN_W/2;
@@ -334,7 +331,6 @@ class BattleScene extends Base {
                 data.maxY = data.y - 30;
             break;
         }
-        Common.log("障碍", this.areaCollison)
     }
 
     /**增加碰撞区域 */
@@ -347,7 +343,6 @@ class BattleScene extends Base {
     public removeCollison(target:any):void {
         let index = this.areaCollison.indexOf(target);
         this.areaCollison.splice(index, 1);
-        Common.log(this.areaCollison)
     }
 
     /**获取碰撞区域 */

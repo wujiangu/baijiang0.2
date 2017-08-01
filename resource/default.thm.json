@@ -59,6 +59,7 @@
     "resource/popup/battleWinPopSkin.exml",
     "resource/popup/changeEquipSkin.exml",
     "resource/popup/drawCardPopSkin.exml",
+    "resource/popup/hangupPopSkin.exml",
     "resource/popup/shopItemPopSkin.exml",
     "resource/popup/unlockStarLvSkin.exml"
   ]
