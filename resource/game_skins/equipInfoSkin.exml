@@ -13,13 +13,13 @@
 	<e:Label id="lab_name" text="武器名称" x="411.5" y="92" textColor="0xff9900" bold="true" fontFamily="Microsoft YaHei"/>
 	<e:Label text="等级：" x="411.5" y="132" size="23" bold="true" fontFamily="Microsoft YaHei" textColor="0x9b9b9b"/>
 	<e:Label id="lab_lv" text="100/100" x="486.5" y="132" size="23" bold="true" fontFamily="Microsoft YaHei" anchorOffsetX="0" width="98" textColor="0x9b9b9b"/>
-	<e:Label text="装备者：" x="411.5" y="165" size="21" bold="true" fontFamily="Microsoft YaHei" textColor="0x1879a3"/>
-	<e:Label id="lab_equiptor" text="无" x="512.5" y="166" size="21" bold="true" fontFamily="Microsoft YaHei" width="187" anchorOffsetX="0" textColor="0x1879a3"/>
 
 
 
 
-	<e:Label text="洗炼：" x="415" y="321.5" size="21" bold="true" fontFamily="Microsoft YaHei" textColor="0xa01e8f"/>
+
+
+	<e:Label text="洗炼：" x="415" y="285" size="21" bold="true" fontFamily="Microsoft YaHei" textColor="0xa01e8f"/>
 
 
 

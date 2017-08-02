@@ -11,6 +11,7 @@ class Unbending extends BuffBase {
     public buffInit(options:any) {
         super.buffInit();
         this.options = options;
+        this.effectName = "hpShield_01";
         this.buffData.className = "Unbending";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_None;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
@@ -28,6 +29,7 @@ class Unbending extends BuffBase {
         let value:number = this.getTalentValue();
         let shieldCount:number = Math.floor(this.target.originHP * (value/100));
         this.target.setShieldCount(shieldCount);
+        this.AddEffect(target);
     }
 
     /**结束 */
@@ -42,17 +44,21 @@ class Unbending extends BuffBase {
 
     /**增加特效 */
     public AddEffect(target:any) {
-        // this.ShowEffect();
+        this.ShowEffect();
+        target.buffArmature.x = 0;
+        target.buffArmature.y = -40;
+        target.setBuffStatus(false);
+        target.buffArmature.play(this.effectName, 1);
     }
 
     /**显示特效 */
     public ShowEffect() {
-        // this.target.skillArmature.visible = true;
+        this.target.buffArmature.visible = true;
     }
 
     /**隐藏特效 */
     public HideEffect() {
-        // this.target.skillArmature.visible = false;
+        this.target.buffArmature.visible = false;
     }
     
     private target:any;

@@ -11,8 +11,8 @@
 		</e:skinName>
 
 	</e:Button>
-	<e:Scroller id="equip_scroll" width="821" height="314" x="164" y="147" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Group id="scrollGroup" anchorOffsetX="0" width="821" height="314" scaleX="1"/>
+	<e:Scroller id="equip_scroll" width="520" height="314" x="143" y="147" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group id="scrollGroup" anchorOffsetX="0" width="520" height="314" scaleX="1"/>
 	</e:Scroller>
 	<e:Button id="btn_change" label="更换" x="419.5" y="481" height="76" width="288">
 		<e:skinName>
@@ -24,5 +24,8 @@
 
 	</e:Button>
 	<e:Image source="Title_0002_png" x="481" y="79"/>
-	<e:Image source="equip_0011_png" x="109.68" y="419.67" width="908"/>
+	<e:Image source="equip_0013_png" x="669" y="147"/>
+	<e:Label id="lab_name" text="方天画戟" x="687" y="161" anchorOffsetX="0" width="216" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xe58e0b"/>
+	<e:Image id="img_weapon" source="Sequip1_png" x="913" y="158"/>
+	<e:Label id="lab_lv" text="等级：100/100" x="687" y="199" anchorOffsetX="0" width="217" size="22" textColor="0xb2a2a2" fontFamily="Microsoft YaHei" bold="true"/>
 </e:Skin>

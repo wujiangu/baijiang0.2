@@ -17,8 +17,8 @@ class EquipUpWindow extends PopupWindow{
         this.txt_rear_list = [];
         this.imgStar_list = [];
 
-        let txt_list = ["生命", "攻击", "护甲", "暴击", "闪避"];
-        for(let i:number = 0; i < 5; i++){
+        let txt_list = ["血量", "护甲", "攻击", "暴击"];
+        for(let i:number = 0; i < 4; i++){
             this.group_list[i] = new eui.Group();
             this.addChild(this.group_list[i]);
             Common.SetXY(this.group_list[i], this.curr_lv.x + 10, this.curr_lv.y + this.curr_lv.height + 18 + i * (35));
@@ -47,16 +47,9 @@ class EquipUpWindow extends PopupWindow{
         for(let i:number = 0; i < 6; i++) this.imgStar_list[i] = new egret.Bitmap();
     }
 
-    private hide_attr_info(index:number, isVisible:boolean):void{
-        for(let i:number = index; i < 5; i++){
-            this.group_list[i].visible = isVisible;
-        }
-    }
-
     public Show(equip_info:modEquip.EquipInfo):void{
         super.Show();
 
-        this.hide_attr_info(0, true);
         this.equip_info = equip_info;
         this.radio_one.selected = true;
         this.upLevelNum = 1;
@@ -64,9 +57,7 @@ class EquipUpWindow extends PopupWindow{
         let equip_data = TcManager.GetInstance().GetTcEquipData(this.equip_info.Id);
         this.img_weapon.source = RES.getRes(`Sequip${25-this.equip_info.Id}_png`)
         this.txt_weapon.text   = equip_data.name;
-        this.quality_attr_list = equip_info.GetOriginAttr();
         
-        this.hide_attr_info(this.equip_info.Quality + 1, false);
         this.showStar();
         this.showUpgradeInfo();
 
@@ -92,7 +83,6 @@ class EquipUpWindow extends PopupWindow{
         this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, -1);
     }
 
-    /**  */
     private getEquipExpAndSoul():any{
         let allExp:number = 0, allSoul:number = 0;
         for(let i:number = 0; i < this.upLevelNum; i++){
@@ -134,7 +124,7 @@ class EquipUpWindow extends PopupWindow{
         if(UserDataInfo.GetInstance().IsHaveOhterGoods("exp", upData.exp, "soul", upData.soul)){
             let attr:any = this.equip_info.GetEquipAttr();
             this.equip_info.Lv = this.equip_info.Lv + this.upLevelNum;
-            for(let i:number = 0; i < attr.length; i++) attr[i] += this.quality_attr_list[i] * this.upLevelNum;
+            for(let i:number = 0; i < 4; i++)  attr[i] = modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv, i);
             this.equip_info.SetEquipAttr(attr);
             this.upgradeEffect();
             Animations.showTips("升级成功", 1);
@@ -160,14 +150,11 @@ class EquipUpWindow extends PopupWindow{
     }
 
     private showUpgradeInfo():void{
-        let quality:number = this.equip_info.Quality + 1;
         let attr:any = this.equip_info.GetEquipAttr();
 
-        let num = quality >= 5 ? 5 : quality;
-        for(let i:number = 0; i < num; i++){
-            this.txt_front_list[i].text = `${Math.floor(attr[i])}`;
-            if(this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV) this.txt_rear_list[i].text = "";
-            else this.txt_rear_list[i].text = `${Math.floor(attr[i] + this.quality_attr_list[i] * this.upLevelNum)}`;
+        for(let i:number = 0; i < 4; i++){
+            this.txt_front_list[i].text = `${Math.ceil(attr[i])}`;
+            this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? `${Math.ceil(modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv + this.upLevelNum, i))}` : "";
         }
 
         let data = this.getEquipExpAndSoul();
@@ -189,7 +176,7 @@ class EquipUpWindow extends PopupWindow{
      * @param strNext next lv show info 
      */
     private showEquipLvInfo(isShow:boolean = false, strExp:string = "0", strSole:string = "0", strNext:string = ""):void{
-        for(let i:number = 0; i < 5; i++){
+        for(let i:number = 0; i < 4; i++){
             this.txt_rear_title[i].visible = isShow
         }
         this.txt_exp.text = strExp;
@@ -200,14 +187,11 @@ class EquipUpWindow extends PopupWindow{
 
     private showStar():void{
         this.starGroup.removeChildren();
-        let value:number;
+        let quality:number;
 
         for(let i:number = 0; i < this.equip_info.Quality + 1; i++){
-            if(this.equip_info.GetAttrType().length > i){
-                value = this.equip_info.GetAttrType()[i].Value;
-            }
-            else value = 0;
-            this.imgStar_list[i].texture = RES.getRes(modEquip.GetEquipLvFromValue(value).img);
+            quality = this.equip_info.GetAttrType().length > i ? this.equip_info.GetAttrType()[i].Quality:-1;
+            this.imgStar_list[i].texture = RES.getRes(modEquip.GetEquipLvFromValue(quality).img);
             this.starGroup.addChild(this.imgStar_list[i]);
             Common.SetXY(this.imgStar_list[i], i * 32, 0);
         }
@@ -254,7 +238,6 @@ class EquipUpWindow extends PopupWindow{
     private txt_rear_list:Array<egret.TextField>;
     private txt_front_title:Array<egret.TextField>;
     private txt_rear_title:Array<egret.TextField>;
-    private quality_attr_list:any;
     private lab_max:eui.Label;
 
     /** Group */

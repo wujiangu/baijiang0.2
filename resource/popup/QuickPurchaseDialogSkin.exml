@@ -11,7 +11,7 @@
 		</e:skinName>
 	</e:Button>
 	<e:Label text="是否购买新手礼包?" y="232.33" anchorOffsetX="0" width="469" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="5.5" textColor="0x474747" size="23"/>
-	<e:Label text="新手礼包" y="148.67" anchorOffsetX="0" width="458.67" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="6.5" textColor="0xfff8ef" anchorOffsetY="0" height="39" size="38"/>
+	<e:Label text="特惠礼包" y="148.67" anchorOffsetX="0" width="458.67" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="6.5" textColor="0xfff8ef" anchorOffsetY="0" height="39" size="38"/>
 	<e:Image x="381.62" y="275.33" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" source="buy_0001_png"/>
 	<e:Label id="lab_content" text="内容" x="491" y="277.18" anchorOffsetX="0" width="338.33" size="24" fontFamily="Microsoft YaHei" bold="true" anchorOffsetY="0" height="57" textColor="0xa316aa"/>
 	<e:Image source="crystal_0002_png" y="331.99" horizontalCenter="-5"/>

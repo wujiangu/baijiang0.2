@@ -48,6 +48,7 @@ class Stakes extends egret.DisplayObjectContainer {
     }
     public gotoDead():void {
         this.clearObject();
+        this.clearList();
         Common.dispatchEvent(GameEvents.EVT_PRODUCEMONSTER);
     }
 
@@ -56,7 +57,6 @@ class Stakes extends egret.DisplayObjectContainer {
         Animations.fadeIn(this, 500, ()=>{
             ObjectPool.push(this);
             if (this.parent && this.parent.removeChild) this.parent.removeChild(this);
-            this.clearList();
         })
     }
 

@@ -119,7 +119,7 @@ class LeanCloud{
                 let info = new modEquip.EquipInfo(data[i].id, data[i].star, data[i].quality, data[i].lv);
                 info.SetEquipAttr(data[i].attr_list);
                 for(let j in data[i].attrType){
-                    info.InsertAttrType(new modEquip.AttrType(data[i].attrType[j].type, data[i].attrType[j].value));
+                    info.InsertAttrType(new modEquip.AttrType(data[i].attrType[j].type, data[i].attrType[j].value, data[i].attrType[j].quality));
                 }
                 modEquip.EquipData.GetInstance().Add(info);
                 modEquip.EquipData.GetInstance().Lucky = todo.get("lucky") == null ? 0 : todo.get("lucky");

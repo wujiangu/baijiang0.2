@@ -33,7 +33,14 @@ class Hero extends BaseGameObject {
         //buff动画
         this.buffArmature.register(DragonBonesFactory.getInstance().makeArmature("buff", "buff", 10), [
             "Burning",
-            "xuanyun"
+            "xuanyun",
+            "dongjie",
+            "hpShield_01",
+            "hpShield_02",
+            "leidian",
+            "speedup",
+            "xue",
+            "xuejia"
         ]);
         this.buffArmature.visible = false;
         this.buffArmature.scaleX = 1.5;
@@ -76,6 +83,7 @@ class Hero extends BaseGameObject {
         this.atk_speed = 150;
         this.isEnemy = false;
         this.isPlay = false;
+        this.isBuffLoop = false;
         this.isPVP = isPVP;
         this.skill_status = false;
         this.enermy = [];
@@ -86,7 +94,6 @@ class Hero extends BaseGameObject {
         this.visible = false;
         this.shadow.visible = false;
         this.canMove = false;
-        // this.curState = BaseGameObject.Action_Enter;
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
@@ -135,6 +142,11 @@ class Hero extends BaseGameObject {
 
     public setSwordStatus(status:boolean):void {
         this.img_swordLight.visible = status;
+    }
+
+    /**设置buff循环 */
+    public setBuffStatus(status:boolean):void {
+        this.isBuffLoop = status;
     }
 
     /**
@@ -308,6 +320,7 @@ class Hero extends BaseGameObject {
                 extraBuff.buffData.id = buffConfig.id;
                 extraBuff.buffData.duration = buffConfig.duration;
                 extraBuff.buffData.postionType = PostionType.PostionType_Head;
+                this.isBuffLoop = true;
                 this.addBuff(extraBuff);
                 this.armature.play(BaseGameObject.Action_Hurt, 0);
                 this.img_swordLight.visible = false;
@@ -358,6 +371,7 @@ class Hero extends BaseGameObject {
 
     /**奔跑 */
     public gotoRun() {
+        this.img_swordLight.visible = false;
         if (!this.canMove) return;
         if (this.curState == "skill") return;
         this.curState = "run";
@@ -491,6 +505,7 @@ class Hero extends BaseGameObject {
 
     /**攻击 */
     public gotoAttack() {
+        this.img_swordLight.visible = false;
         if (!this.isComplete) return;
         if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
@@ -553,6 +568,7 @@ class Hero extends BaseGameObject {
      * 技能
      */
     public gotoSkill() {
+        this.img_swordLight.visible = false;
         if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
         this.skillArmature.visible = true;
@@ -585,6 +601,7 @@ class Hero extends BaseGameObject {
                 //增加动画完成函数
                 this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
                 this.skillArmature.addCompleteCallFunc(this.skillArmaturePlayEnd, this);
+                this.buffArmature.addCompleteCallFunc(this.buffArmaturePlayEnd, this);
             break;
             case "idleEnd":
                 this.armature.visible = false;
@@ -642,6 +659,11 @@ class Hero extends BaseGameObject {
         this.armature.visible = true;
         this.gotoIdle();
     }
+
+    private buffArmaturePlayEnd():void {
+        if (!this.isBuffLoop) this.buffArmature.visible = false;
+    }
+
     /**
      * 停止动画
      */
@@ -672,7 +694,7 @@ class Hero extends BaseGameObject {
     private isPlay:boolean;
     /**上次击杀 */
     private lastKill:number;
-    // private isAttack:boolean;
+    private isBuffLoop:boolean;
     /**技能状态 0:没有释放 1:开始释放 */
     private skill_status:boolean;
     public  isPVP:boolean;

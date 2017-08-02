@@ -33,10 +33,11 @@ class Thunderbolt extends BuffBase {
     }
 
     /**刷新数据 */
-    public update(target:any, callBack:Function = null) {
+    public update(enermy:any, callBack:Function = null) {
         if (!this._isTrigger) {
             this._isTrigger = true;
         }
+        enermy.onAttackCount();
     }
 
     /**增加特效 */

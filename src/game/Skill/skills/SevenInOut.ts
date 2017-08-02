@@ -67,6 +67,8 @@ class SevenInOut extends SkillBase {
                 for (let i = 0; i < this._enermy.length; i++) {
                     let buffConfig = modBuff.getBuff(3);
                     this.buff = ObjectPool.pop(buffConfig.className);
+                    buffConfig.duration = 3;
+                    buffConfig.damage = this.target.attr.skd;
                     this.buff.buffInit(buffConfig);
                     //特效名字
                     this.buff.effectName = "Burning";

@@ -239,6 +239,8 @@ class ReadyDialog extends PopupWindow {
      * 更新武器信息
      */
     public updateEquip(equip:any):void{
+        if(equip == null) return ;
+
         this.starGroup.removeChildren();
         for (let i = 0; i < equip.quality+1; i++) {
             let img_star:egret.Bitmap = Utils.createBitmap("star_00_png");
@@ -246,15 +248,8 @@ class ReadyDialog extends PopupWindow {
             this.starGroup.addChild(img_star);
         }
         for (let i = 0; i < equip.attrType.length; i++) {
-            let imgId = 0;
-            for (let j = 0; j < modShop.affixValueRolls.length; j++) {
-                let affixInfo = modShop.affixValueRolls[j];
-                if (equip.attrType[i].Value >= affixInfo[0] && equip.attrType[i].Value <= affixInfo[1]) {
-                    imgId = j + 1;
-                    break;
-                }
-            }
-            let img_affix:egret.Bitmap = Utils.createBitmap(`star_0${imgId}_png`);
+            let srcData:any = modEquip.GetEquipLvFromValue(equip.attrType[i].Quality);
+            let img_affix:egret.Bitmap = Utils.createBitmap(srcData.img);
             img_affix.x = 36 * i;
             this.starGroup.addChild(img_affix);
         }

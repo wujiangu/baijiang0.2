@@ -25,6 +25,10 @@ class TalentIR extends Base {
                 iconImage.source = `talent${i}_${j+1}_png`;
                 this.iconGroup[id-1].addChild(iconImage);
 
+                let imgBottom:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_bottom_png"));
+                this.iconGroup[id-1].addChild(imgBottom);
+                Common.SetXY(imgBottom, 0, 76);
+
                 //等级
                 this.lvGroup[id-1] = Common.CreateText(`0/${this._maxLv[id-1]}`, 18, 0x6f685d, true,"Microsoft YaHei","center")
                 this.lvGroup[id-1].x = 4;

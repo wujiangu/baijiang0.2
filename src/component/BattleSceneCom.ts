@@ -137,7 +137,6 @@ class BattleSceneCom extends Base {
             this.img_skillMask.visible = false;
             value = this._sumHP;
         }
-        Common.log("实际--->", value, "总共---->", this._sumHP);
         this.img_hp.scaleX = value/this._sumHP;
     }
 

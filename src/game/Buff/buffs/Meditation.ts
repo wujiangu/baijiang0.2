@@ -11,6 +11,7 @@ class Meditation extends BuffBase {
     public buffInit(options:any) {
         super.buffInit();
         this.options = options;
+        this.effectName = "xue";
         this.buffData.className = "Meditation";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_None;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
@@ -32,14 +33,9 @@ class Meditation extends BuffBase {
     /**愈合 */
     private onHeal():void {
         if (this.target.attr.hp < this.target.originHP) {
+            this.AddEffect(this.target);
             let hurtValue:number = this.target.originHP - this.target.attr.hp;
             this._recoverCount = Math.floor(hurtValue * 0.01);
-            // let afterRecover:number = this.target.attr.hp + this._recoverCount;
-            // let value:number = this._recoverCount;
-            // if (afterRecover > this.target.originHP) {
-            //     let overFlow:number = afterRecover - this.target.originHP;
-            //     value = this._recoverCount - overFlow;
-            // }
             this.target.attr.hp += this._recoverCount;
             Common.log("冥想---->", this._recoverCount);
             SceneManager.battleScene.battleSceneCom.setHpProgress(this.target.attr.hp);
@@ -57,17 +53,21 @@ class Meditation extends BuffBase {
 
     /**增加特效 */
     public AddEffect(target:any) {
-        // this.ShowEffect();
+        this.ShowEffect();
+        target.buffArmature.x = 0;
+        target.buffArmature.y = -40;
+        target.setBuffStatus(false);
+        target.buffArmature.play(this.effectName, 1);
     }
 
     /**显示特效 */
     public ShowEffect() {
-        // this.target.skillArmature.visible = true;
+        this.target.buffArmature.visible = true;
     }
 
     /**隐藏特效 */
     public HideEffect() {
-        // this.target.skillArmature.visible = false;
+        this.target.buffArmature.visible = false;
     }
     /**回收buff类 */
     public recycleBuff() {

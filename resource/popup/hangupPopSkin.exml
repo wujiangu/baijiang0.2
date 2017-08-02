@@ -2,7 +2,7 @@
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
     <e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280" locked="true"/>
 	<e:Image source="popmenu_0001_png" x="254" y="116"/>
-	<e:Label text="离线收益" x="488" y="152" fontFamily="Microsoft YaHei" bold="true" size="40" textColor="0xdedede" stroke="2" strokeColor="0x635416"/>
+	<e:Label text="离线收益" x="488" y="152" fontFamily="Microsoft YaHei" size="40" textColor="0xdedede"  bold="true"/>
 
 
 	<e:Button id="btn_back" label="" x="803" y="148">
@@ -13,23 +13,23 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Label text="本次离线时长：" x="333" y="238" fontFamily="Microsoft YaHei" textColor="0x3f3939" bold="true"/>
-	<e:Group width="170" height="30" x="369" y="294" anchorOffsetX="0">
-		<e:Label text="可领取      ：" x="0" y="0" fontFamily="Microsoft YaHei" textColor="0x3F3939" bold="true" scaleX="1" scaleY="1"/>
-		<e:Label text="魂石" x="93" y="0" scaleX="1" scaleY="1" textColor="0x9a1daa" bold="true" fontFamily="Microsoft YaHei"/>
+	<e:Label text="本次离线时长：" x="368.99" y="236.66" fontFamily="Microsoft YaHei" bold="true" textColor="0x383838" size="26"/>
+	<e:Group width="170" height="30" x="432.96" y="292.67" anchorOffsetX="0">
+		<e:Label text="可领取      ：" x="0" y="0" fontFamily="Microsoft YaHei" bold="true" scaleX="1" scaleY="1" textColor="0x383838" size="25"/>
+		<e:Label text="魂石" x="78.34" y="0" scaleX="1" scaleY="1" textColor="0x9a1daa" bold="true" fontFamily="Microsoft YaHei" size="25"/>
 	</e:Group>
-	<e:Group width="170" height="30" x="369" y="340" anchorOffsetX="0">
-		<e:Label text="可领取      ：" x="-1" y="0" fontFamily="Microsoft YaHei" textColor="0x3F3939" bold="true" scaleX="1" scaleY="1"/>
-		<e:Label text="经验" x="93" y="0" scaleX="1" scaleY="1" bold="true" fontFamily="Microsoft YaHei" textColor="0xa86b18"/>
+	<e:Group width="170" height="30" x="432.96" y="338.67" anchorOffsetX="0">
+		<e:Label text="可领取      ：" x="-1" y="1.33" fontFamily="Microsoft YaHei" bold="true" scaleX="1" scaleY="1" textColor="0x383838" size="25"/>
+		<e:Label text="经验" x="77" y="1.33" scaleX="1" scaleY="1" bold="true" fontFamily="Microsoft YaHei" textColor="0xa86b18" size="25"/>
 	</e:Group>
-	<e:Label id="lab_offline" text="本次离线时长：" y="238" fontFamily="Microsoft YaHei" bold="true" textColor="0x6a6654" left="554"/>
-	<e:Label id="lab_soul" text="1000" y="302" scaleX="1" scaleY="1" textColor="0x9A1DAA" bold="true" fontFamily="Microsoft YaHei" left="579"/>
-	<e:Label id="lab_exp" text="1000" y="340" scaleX="1" scaleY="1" textColor="0xA86B18" bold="true" fontFamily="Microsoft YaHei" left="579"/>
+	<e:Label id="lab_offline" text="00：00：00" y="235.34" fontFamily="Microsoft YaHei" bold="true" textColor="0x6a6654" left="562"/>
+	<e:Label id="lab_soul" text="1000" y="291.32" scaleX="1" scaleY="1" textColor="0x9A1DAA" bold="true" fontFamily="Microsoft YaHei" left="604"/>
+	<e:Label id="lab_exp" text="1000" y="337.34" scaleX="1" scaleY="1" textColor="0xA86B18" bold="true" fontFamily="Microsoft YaHei" left="605"/>
 	<e:Button id="btn_sure" label="确定" x="484" y="415">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-10" size.down="27" fontFamily="Microsoft YaHei" textColor="0x372614" bold="true"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-10" size.down="27" fontFamily="Microsoft YaHei" bold="true" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>

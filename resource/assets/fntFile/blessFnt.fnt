@@ -1,0 +1,14 @@
+{"file":"blessFnt.png","frames":{
+"0":{"x":110,"y":63,"w":22,"h":29,"offX":1,"offY":1,"sourceW":24,"sourceH":31},
+"1":{"x":24,"y":87,"w":16,"h":31,"offX":4,"offY":0,"sourceW":24,"sourceH":31},
+"2":{"x":117,"y":0,"w":24,"h":30,"offX":0,"offY":1,"sourceW":24,"sourceH":31},
+"3":{"x":85,"y":53,"w":23,"h":29,"offX":1,"offY":1,"sourceW":24,"sourceH":31},
+"4":{"x":143,"y":33,"w":22,"h":30,"offX":1,"offY":0,"sourceW":24,"sourceH":31},
+"5":{"x":143,"y":0,"w":23,"h":31,"offX":1,"offY":0,"sourceW":24,"sourceH":31},
+"6":{"x":24,"y":56,"w":23,"h":29,"offX":0,"offY":1,"sourceW":24,"sourceH":31},
+"7":{"x":0,"y":56,"w":22,"h":31,"offX":2,"offY":0,"sourceW":24,"sourceH":31},
+"8":{"x":60,"y":53,"w":23,"h":30,"offX":0,"offY":1,"sourceW":24,"sourceH":31},
+"9":{"x":117,"y":32,"w":24,"h":29,"offX":0,"offY":1,"sourceW":24,"sourceH":31},
+"x":{"x":49,"y":85,"w":24,"h":24,"offX":0,"offY":3,"sourceW":24,"sourceH":31},
+"福":{"x":60,"y":0,"w":55,"h":51,"offX":1,"offY":2,"sourceW":58,"sourceH":54},
+"祝":{"x":0,"y":0,"w":58,"h":54,"offX":0,"offY":0,"sourceW":58,"sourceH":54}}}

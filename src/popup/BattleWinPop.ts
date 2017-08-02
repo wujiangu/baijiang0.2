@@ -43,19 +43,21 @@ class BattleWinPop extends PopupWindow {
     }
 
     /**设置弹出的内容显示 */
-    public Show():void {
+    public Show(params:any):void {
         super.Show();
-        let continueObj:any = this.btn_continue.getChildAt(1);
+        // let continueObj:any = this.btn_continue.getChildAt(1);
         if (SceneManager.curScene == SceneManager.battleScene){
             this.popType = 1;
             this.winGroup.visible = true;
             this.pvpFinishGroup.visible = false;
-            continueObj.text = "下一关";
+            this.btn_continue.label = "下一关";
         }else{
             this.popType = 2;
             this.winGroup.visible = false;
             this.pvpFinishGroup.visible = true;
-            continueObj.text = "继续";
+            this.btn_continue.label = "继续";
+            this.lab_hurt.text = params.value.toString();
+            this.lab_rank.text = params.rank.toString();
         }
     }
 
@@ -79,4 +81,8 @@ class BattleWinPop extends PopupWindow {
     /**popup类型 */
     private popType:number;
     /*******************图片和文字************************/
+    /**当前伤害 */
+    private lab_hurt:eui.Label;
+    /**当前排名 */
+    private lab_rank:eui.Label;
 }

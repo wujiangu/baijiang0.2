@@ -20,7 +20,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
         this._index = index;
         this.equip_info = equipInfo;
         let attrType = this.equip_info.GetPointTypeFromIndex(index);
-        this.changeAttrInfo(attrType.Type, attrType.Value);
+        this.changeAttrInfo(attrType.Type, attrType.Value, attrType.Quality);
 
         Animations.PopupBackOut(this, 350);
     }
@@ -48,26 +48,29 @@ class ResetEqiopAttrWindow extends PopupWindow{
             return;
         }
 
-        let rand = Math.floor((Math.random() % 100 * 100));
-        let type = rand % 5 == 0 ? 5:rand % 5;
-        let value = rand % 100 == 0 ? 1 : rand % 100;
+        let data = modEquip.GetResetEquipData(this.equip_info);
+        let type = data.type
+        let value = data.value;
+        let quality = data.quality;
+
         if(modEquip.EquipData.GetInstance().Lucky == 100){
             modEquip.EquipData.GetInstance().Lucky = 0;
-            value = 100;
+            value = modEquip.GetQualityMaxValue(this.equip_info.Quality, type);
+            quality = 4;
         }
         else
         {
             modEquip.EquipData.GetInstance().Lucky += 2;
         } 
-        this.equip_info.ChangeAttrType(this._index, type, value);
-        this.changeAttrInfo(type, value);
+        this.equip_info.ChangeAttrType(this._index, type, value, quality);
+        this.changeAttrInfo(type, value, quality);
         Animations.showTips("洗练成功", 1);
-        this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index})
+        this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index, quality:quality})
         LeanCloud.GetInstance().SaveEquipData();
     }
 
-    private changeAttrInfo(type:number, value:number){
-        let data = modEquip.GetEquipLvFromValue(value);
+    private changeAttrInfo(type:number, value:number, quality:number){
+        let data = modEquip.GetEquipLvFromValue(quality);
         this.lab_attr.text = modEquip.GetAttrInfo(type, value);
         this.lab_attr.textColor = data.color;
         this.imgStar.source = data.img;

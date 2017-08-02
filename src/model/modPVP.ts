@@ -19,7 +19,7 @@ namespace modPVP {
         // timer.delay = 1000;
         // timer.repeatCount = 1;
         curWave = 1;
-        
+        isProduct = false;
         productRule();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modPVP);
     }
@@ -86,11 +86,9 @@ namespace modPVP {
         let len:number = GameData.stakes.length;
         for (let i = 0; i < GameData.stakes.length; i++) {
             GameData.stakes[i].clearObject();
+            GameData.stakes[i].clearList();
+            i --;
         }
-        // for (let i = 0; i < len; i++) {
-        //     if (GameData.stakes[i].hp )
-        //     GameData.stakes.pop();
-        // }
         curWave ++;
         productRule();
     }
@@ -132,10 +130,14 @@ namespace modPVP {
      */
     function production(count:number):void{
         //每次生产的数量
+        Common.log("生产的个数----->", count);
         for (let i = 0; i < count; i++){
-            SceneManager.pvpScene.createSingleStake();
-            productCount ++;
+            // egret.setTimeout(()=>{
+                SceneManager.pvpScene.createSingleStake();
+            // }, this, (i+1)*10);
+            // productCount ++;
         }
+        isProduct = false;
     }
 
     /**
@@ -149,6 +151,8 @@ namespace modPVP {
      * 木桩的刷新规则
      */
     function productRule():void{
+        if (isProduct) return;
+        isProduct = true;
         timer.start();
         if (curWave <= 5) {
             production(curWave);
@@ -166,4 +170,6 @@ namespace modPVP {
     var curWave:number;
     /**定时器 */
     var timer:egret.Timer;
+    /**是否正在生产 */
+    var isProduct:boolean;
 }

@@ -24,15 +24,16 @@ namespace modEquip {
 
     /** 撞瘪的属性类型 */
     export class AttrType{
-        public static BLOOD:number  = 1;
+        public static BLOOD:number  = 0;
+        public static DEFEND:number = 1;
         public static ATTACK:number = 2;
-        public static DEFEND:number = 3;
-        public static CRIT:number   = 4;
-        public static DODGE:number  = 5;
+        public static CRIT:number   = 3;
+        public static DODGE:number  = 4;
 
-        public constructor(type:number, value:number){
+        public constructor(type:number, value:number,quality:number){
             this.type = type;
             this.value = value;
+            this.quality = quality;
         }
         
         public set Type(val:number){
@@ -51,8 +52,17 @@ namespace modEquip {
             return this.value;
         }
 
+        public set Quality(val:number){
+            this.quality = val;
+        }
+
+        public get Quality(){
+            return this.quality
+        }
+
         private type:number;
         private value:number;
+        private quality:number;
     }
 
     /** 装备信息 */
@@ -68,21 +78,11 @@ namespace modEquip {
            this.attr_list = [];
            this.origin_attr_list = [];
 
+           let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(quality);
            for(let i:number = 0; i < 5; i++){
-               if(this.quality >= i){
-                   if(i >= 3) this.set_attr(i, this.quality * 20);
-                   else this.set_attr(i, this.quality * 100);
-               }
-               else
-               {
-                   this.set_attr(i, 0);
-               }
+               this.origin_attr_list[i] = (this.quality >= i && i < 4) ? tempData.init[i] : 0;
+               this.attr_list[i] = (this.quality >= i && i < 4) ? GetEquipUpAttr(this, 1, i) : 0
             }
-       }
-
-       private set_attr(i:number, val:number):void{
-           this.attr_list[i] = val;
-           this.origin_attr_list[i] = val / 100;
        }
 
         public set Id(val:number){
@@ -129,10 +129,11 @@ namespace modEquip {
             this.attrType.push(attrType);
         }
 
-        public ChangeAttrType(index:number, type:number, value:number):void{
+        public ChangeAttrType(index:number, type:number, value:number, quality:number):void{
             if(index < 0 || index > this.attrType.length) return;
             this.attrType[index].Type  = type;
             this.attrType[index].Value = value;
+            this.attrType[index].Quality = quality;
         }
 
         public GetAttrType():any{
@@ -150,7 +151,7 @@ namespace modEquip {
 
         public SetEquipAttr(attrList:Array<number>):void{
             for(let i:number = 0; i < 5; i++){
-                this.attr_list[i] = attrList[i];
+                this.attr_list[i] = i < 4 ? attrList[i] : 0;
             }
         }
 
@@ -163,7 +164,7 @@ namespace modEquip {
         private star:number;                    //装备星级
         private quality:number;                 //装备的品质
         private typeID:number;                  //装备的类型id 主要是区别id一样的时候不同的typeid
-        private attr_list:Array<number>;        //[1]生命[2]攻击[3]护甲[4]暴击[5]闪避
+        private attr_list:Array<number>;        //[1]生命[2]护甲[3]攻击[4]暴击[5]闪避
         private origin_attr_list:Array<number>;    //源氏的数据列表
         private attrType:Array<AttrType>;       //属性类型
     }
@@ -225,7 +226,7 @@ namespace modEquip {
         public InsertEquipInfo(equipInfo:any):void{
             let info:EquipInfo = new EquipInfo(equipInfo.id, equipInfo.star, TcManager.GetInstance().GetTcEquipData(equipInfo.id).grade);
             for(let i:number = 0; i < equipInfo.affix.length; i++){
-                let attrType = new AttrType(equipInfo.affix[i].type, equipInfo.affix[i].value);
+                let attrType = new AttrType(equipInfo.affix[i].type, equipInfo.affix[i].value, 0);
                 info.InsertAttrType(attrType);
             }
             info.TypeID = this.id_list[info.Id]++;
@@ -308,36 +309,11 @@ namespace modEquip {
 
     /** 根据对应的类型和值 来获得对应的字符信息 */
     export function GetAttrInfo(type:number, value:number):string{
-        if(type == AttrType.ATTACK) return "攻击+" + value + "%";
-        else if(type == AttrType.DEFEND) return "护甲+" + value + "%";
-        else if(type == AttrType.BLOOD) return "生命+" + value + "%";
-        else if(type == AttrType.CRIT) return "暴击+" + value + "%";
-        else if(type == AttrType.DODGE) return "闪避+" + value + "%";
-    }
-
-    export function GetEquipLvFromValue(value):any{
-
-        if(value == 0) return {color:0x858685,img:"star_00_png"};
-
-        if(value < 20){
-            return {color:0x858685,img:"star_01_png"};
-        }
-        else if(value >= 20 && value < 40)
-        {
-            return {color:0x5e972b,img:"star_02_png"};
-        }
-        else if(value >= 40 && value < 60)
-        {
-            return {color:0x2f76b0,img:"star_03_png"};
-        }
-        else if(value >= 60 && value < 80)
-        {
-            return {color:0x852f9b,img:"star_04_png"};
-        }
-        else if(value >= 80)
-        {
-            return {color:0xab5515,img:"star_05_png"};
-        }
+        if(type == AttrType.ATTACK) return "攻击+" + Math.ceil(value);
+        else if(type == AttrType.DEFEND) return "护甲+" + Math.ceil(value);
+        else if(type == AttrType.BLOOD) return "生命+" + Math.ceil(value);
+        else if(type == AttrType.CRIT) return "暴击+" + Math.ceil(value * 10) / 10 + "%";
+        else if(type == AttrType.DODGE) return "闪避+" + Math.ceil(value) + "%";
     }
 
     /** 计算升级成功的概率 */
@@ -347,5 +323,78 @@ namespace modEquip {
         let successRate:number = Math.floor((consumeData.bassValue / upData.needValue) * 100 );
 
         return successRate;
+    }
+
+    let reset_list:any = [[[150,250],[18,30],[150,250],[0,4]],[[200,280],[22,36],[200,280],[1,4]],[[250,320],[26,42],[250,320],[2,4]],
+                 [[280,360],[31,45],[280,360],[2,5]],[[320,380],[35,48],[320,380],[3,5]]];
+    let complete:any = [0.25,0.34,0.5,0.75,1]
+    export function GetResetEquipData(info:EquipInfo):any{
+        let type:number = Math.floor((Math.random() * 100) % 4), value:number = 0;
+        let quality:number = Math.floor(Math.random() * 100 % 5);
+        let tempList:any = reset_list[info.Quality - 1];
+        let minNum:number = tempList[type][1] - tempList[type][0];
+
+        if(type < 3) value = Math.floor((Math.random() * minNum) % minNum) + tempList[type][0];
+        else value = (Math.random() * minNum) % minNum + tempList[type][0];
+        value = value * complete[quality];
+
+        return {type:type,value:value,quality:quality};
+    }
+
+    export function GetQualityMaxValue(quality:number, type:number):number{
+        return reset_list[quality - 1][type][1];
+    }
+
+    export function GetEquipLvFromValue(quality:number,type:number = 1):any{
+        let imgName:string = type == 1 ? "star" : "point";
+
+        if(quality == null || quality == -1) return {color:0x858685,img:imgName + "_00_png"};
+        if(quality == 0) return {color:0x858685,img:imgName + "_01_png"};
+        else if(quality == 1) return {color:0x5e972b,img:imgName + "_02_png"};
+        else if(quality == 2) return {color:0x2f76b0,img:imgName + "_03_png"};
+        else if(quality == 3) return {color:0x852f9b,img:imgName + "_04_png"};
+        else if(quality == 4) return {color:0xab5515,img:imgName + "_05_png"};
+    }
+
+    let star_up_attr:any = [7.047,0.688,7.13,0.0291];
+    export function GetEquipUpAttr(info:EquipInfo, lv:number, index:number):number{
+        let value:number = 0;
+        let upData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(info.Quality);
+        let equipData:any = TcManager.GetInstance().GetTcEquipData(info.Id);
+        let attr_list:any = info.GetAttrType();
+
+        let first:number  
+        if(info.Star == 0) first = lv * upData.up[index] + info.GetOriginAttr()[index];
+        else first = (lv + (info.Quality - 1 + info.Star) * 100) * star_up_attr[index] + info.GetOriginAttr()[index];
+
+        let second:number = 0,third:number = 0;
+
+        if(equipData.attr[index] == 1) second = upData.character[index] * (info.Star + 1) / upData.character[4];
+
+        if(info.Id > 15 && equipData.attr[2] == 1 && equipData.attr[3] == 1){
+            second = upData.character[index] / 2 * (info.Star + 1) / upData.character[4];
+        }
+
+       for(let i in attr_list){
+           if(index == 0 && attr_list[i].Type == AttrType.ATTACK){
+               third += attr_list[i].Value;
+           }
+           else if(index == 1 && attr_list[i].type == AttrType.BLOOD)
+           {
+               third += attr_list[i].Value;
+           }
+           else if(index == 2 && attr_list[i].type == AttrType.DEFEND)
+           {
+               third += attr_list[i].Value;
+           }
+           else if(index == 3 && attr_list[i].type == AttrType.CRIT)
+           {
+               third += attr_list[i].Value;
+           }
+       }
+
+       value = first + second + third;
+
+        return value;
     }
 }

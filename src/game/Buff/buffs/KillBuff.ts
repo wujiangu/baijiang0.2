@@ -94,6 +94,7 @@ class KillBuff extends BuffBase {
             case 29:
                 this._isReset = true;
                 if (this._extraSpeed == 0) {
+                    this.AddEffect({x:0, y:-80, actions:"speedup"});
                     let speed:number = this.target.getSpeed();
                     this._extraSpeed = Math.floor(speed * (value/100));
                     this.target.setSpeed(speed + this._extraSpeed);
@@ -121,13 +122,7 @@ class KillBuff extends BuffBase {
             //风语者的祝福
             case 40:
                 this._isReset = true;
-                // if (this._extraShield == 0) {
-                //     let shield:number = this.target.getShieldCount();
-                //     this._extraShield = Math.floor(this.target.originHP * (value/100));
-                //     this.target.setShieldCount(shield + this._extraShield);
-                //     Common.log("风语者的祝福开启--->", this.target.getShieldCount());
-                //     SceneManager.battleScene.battleSceneCom.setShieldProgress(this.target.getShieldCount());
-                // }
+                this.AddEffect({x:0, y:-40, actions:"hpShield_02"});
                 let shield:number = this.target.getShieldCount();
                 this.target.setShieldCount(shield - this._extraShield);
                 Common.log("风语者的祝福开启--->", this.target.getShieldCount(), this._extraShield);
@@ -141,18 +136,22 @@ class KillBuff extends BuffBase {
     }
 
     /**增加特效 */
-    public AddEffect(target:any) {
-        // this.ShowEffect();
+    public AddEffect(params:any) {
+        this.ShowEffect();
+        this.target.buffArmature.x = params.x;
+        this.target.buffArmature.y = params.y;
+        this.target.setBuffStatus(false);
+        this.target.buffArmature.play(params.actions, 1);
     }
 
     /**显示特效 */
     public ShowEffect() {
-        // this.target.skillArmature.visible = true;
+        this.target.buffArmature.visible = true;
     }
 
     /**隐藏特效 */
     public HideEffect() {
-        // this.target.skillArmature.visible = false;
+        this.target.buffArmature.visible = false;
     }
     /**回收buff */
     public recycleBuff() {

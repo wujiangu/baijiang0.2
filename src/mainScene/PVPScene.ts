@@ -22,6 +22,7 @@ class PVPScene extends Base {
 
     public init():void {
         TimerManager.getInstance().startTimer();
+        this._isTimeOut = false;
         this._curValue = 0;
         this._cdTime = 90;
         this.lab_cdSkill.visible = false;
@@ -53,6 +54,7 @@ class PVPScene extends Base {
     public createSingleStake():void {
         this._stake = ObjectPool.pop("Stakes");
         GameData.stakes.push(this._stake);
+        Common.log("长度------>", GameData.stakes.length)
         this._stake.init();
         this._stake.x = MathUtils.getRandom(100, 1050);
         this._stake.y = MathUtils.getRandom(100, 550);
@@ -84,7 +86,7 @@ class PVPScene extends Base {
      * 清除子对象
      */
     public cleanChildren():void {
-        RankData.GetInstance().InsertData(this._curValue);
+        if (!this._isTimeOut) RankData.GetInstance().InsertData(this._curValue);
         modPVP.recycleObject();
         TimerManager.getInstance().remove(this.timerCD, this);
         TimerManager.getInstance().remove(this._onTimeCD, this);
@@ -169,12 +171,12 @@ class PVPScene extends Base {
     private _onTimeComplete():void {
         TimerManager.getInstance().stopTimer();
         modPVP.stop();
-        let pop = WindowManager.GetInstance().GetWindow("BattleWinPop");
-        pop.Show();
-        Animations.fadeOut(pop);
-
+        this._isTimeOut = true;
+        RankData.GetInstance().InsertData(this._curValue);
         let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
-
+        let pop = WindowManager.GetInstance().GetWindow("BattleWinPop");
+        pop.Show({value:this._curValue, rank:rankIndex});
+        Animations.fadeOut(pop);
         if(rankIndex != -1){
             WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10});  
         }
@@ -215,6 +217,8 @@ class PVPScene extends Base {
     public battleLayer:egret.DisplayObjectContainer;
     private _timer:egret.Timer;
     private _skillTimer:egret.Timer;
+    /**是否倒计时完成 */
+    private _isTimeOut:boolean;
 
     /**鼠标或者点击的位置 */
     private _mouseX:number;

@@ -101,9 +101,8 @@ class EquipUpStarWindow extends PopupWindow{
 
         //判断是否升星成功
         if(this.isUpStar(this.successNum)){
-            let rand = Math.floor(((Math.random() % 100) * 100))
-            let type = rand % 5 == 0 ? 5 : rand % 5; 
-            let attrType:modEquip.AttrType = new modEquip.AttrType(type, rand % 100);
+            let tempData:any = modEquip.GetResetEquipData(this.equip_info);
+            let attrType:modEquip.AttrType = new modEquip.AttrType(tempData.type, tempData.value, tempData.quality);
             this.equip_info.InsertAttrType(attrType);
             this.equip_info.Lv = 1;
             this.equip_info.Star++;

@@ -2,7 +2,7 @@
 <e:Skin class="HeroDialogSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="share_0001_png" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label id="lab_title" text="英雄" x="461" y="128" anchorOffsetX="0" width="417" anchorOffsetY="0" height="49" textAlign="center" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Label id="lab_title" text="英雄" x="457.01" y="125.33" anchorOffsetX="0" width="417" anchorOffsetY="0" height="49" textAlign="center" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" size="38"/>
 	<e:Button id="btn_close" label="" x="879" y="128">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
@@ -11,11 +11,11 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_share" label="分享" x="629" y="412" scaleX="1" scaleY="1" width="159" height="62" anchorOffsetX="0" anchorOffsetY="0">
+	<e:Button id="btn_share" label="分享" x="618.36" y="406.69" scaleX="1" scaleY="1" width="168" height="76" anchorOffsetX="0" anchorOffsetY="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopBuy_png" source.down="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-4" text="" fontFamily="Microsoft YaHei" textColor="0x0f0e0e" bold="true" size.down="25"/>
+			<e:Image width="100%" height="100%" source="button_0024_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" text="" fontFamily="Microsoft YaHei" bold="true" size.down="25" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>

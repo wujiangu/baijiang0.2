@@ -2,26 +2,26 @@
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="equip_0012_png" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label text="根据图标获得对应物品" x="342" y="74" anchorOffsetX="0" width="458" textAlign="center" textColor="0xa000ff" fontFamily="Microsoft YaHei" size="25" bold="true"/>
-	<e:Image source="Sequip1_png" x="353" y="130"/>
-	<e:TextInput id="input_weapon" width="200" height="27" x="474" y="167" anchorOffsetY="0" restrict="0-9"/>
-	<e:TextInput id="input_diamond" width="200" height="27" x="471" y="257" anchorOffsetY="0" restrict="0-9"/>
-	<e:TextInput id="input_exp" width="200" height="27" x="468" y="351" anchorOffsetY="0" restrict="0-9"/>
-	<e:TextInput id="input_soul" width="200" height="27" x="468" y="438" anchorOffsetY="0" restrict="0-9"/>
-	<e:TextInput id="input_power" width="200" height="27" x="468" y="527.5" anchorOffsetY="0" restrict="0-9"/>
-	<e:Image source="crystal_0002_png" x="383" y="257"/>
-	<e:Image source="exp_0002_png" x="380" y="351"/>
-	<e:Image source="sole_0002_png" x="383" y="438"/>
-	<e:Image source="power_0002_png" x="383" y="521"/>
-	<e:Button id="btn_weapon" label="武器" x="700" y="158.5" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
+	<e:Label text="GM资源" x="342" y="72.48" anchorOffsetX="0" width="458" textAlign="center" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0xe0e0e0"/>
+	<e:Image x="391" y="159.02" source="email_new_png"/>
+	<e:TextInput id="input_weapon" width="200" height="27" x="467" y="159.02" anchorOffsetY="0" restrict="0-9"/>
+	<e:TextInput id="input_diamond" width="200" height="27" x="467" y="249.02" anchorOffsetY="0" restrict="0-9"/>
+	<e:TextInput id="input_exp" width="200" height="27" x="467" y="343.02" anchorOffsetY="0" restrict="0-9"/>
+	<e:TextInput id="input_soul" width="200" height="27" x="467" y="430.02" anchorOffsetY="0" restrict="0-9"/>
+	<e:TextInput id="input_power" width="200" height="27" x="467" y="519.52" anchorOffsetY="0" restrict="0-9"/>
+	<e:Image source="crystal_0002_png" x="383" y="242.37"/>
+	<e:Image source="exp_0002_png" x="380" y="336.35"/>
+	<e:Image source="sole_0002_png" x="383" y="424.66"/>
+	<e:Image source="power_0002_png" x="383" y="514.35"/>
+	<e:Button id="btn_weapon" label="武器" x="697.34" y="153.18" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" textColor="0x111010" fontFamily="Microsoft YaHei" bold="true" size.down="18"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" fontFamily="Microsoft YaHei" bold="true" size.down="18" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_close" label="" x="754" y="65.5" anchorOffsetX="0" width="40" anchorOffsetY="0" height="40">
+	<e:Button id="btn_close" label="" x="754" y="62.84" anchorOffsetX="0" width="40" anchorOffsetY="0" height="48">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
@@ -29,35 +29,35 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_diamond" label="钻石" x="700" y="251" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
+	<e:Button id="btn_diamond" label="钻石" x="697.34" y="245.68" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" textColor="0x111010" fontFamily="Microsoft YaHei" bold="true" size.down="18"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" fontFamily="Microsoft YaHei" bold="true" size.down="18" textColor="0x260303"/>
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_exp" label="经验" x="700" y="341.5" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
+	<e:Button id="btn_exp" label="经验" x="697.34" y="336.18" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" textColor="0x111010" fontFamily="Microsoft YaHei" bold="true" size.down="18"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" fontFamily="Microsoft YaHei" bold="true" size.down="18" textColor="0x260303"/>
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_soul" label="魂石" x="700" y="428.5" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
+	<e:Button id="btn_soul" label="魂石" x="697.34" y="423.18" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" textColor="0x111010" fontFamily="Microsoft YaHei" bold="true" size.down="18"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" fontFamily="Microsoft YaHei" bold="true" size.down="18" textColor="0x260303"/>
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="btn_power" label="能力" x="700" y="515" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
+	<e:Button id="btn_power" label="能量" x="697.34" y="509.68" anchorOffsetX="0" width="86" anchorOffsetY="0" height="46">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0024_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" textColor="0x111010" fontFamily="Microsoft YaHei" bold="true" size.down="18"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-3" size="20" fontFamily="Microsoft YaHei" bold="true" size.down="18" textColor="0x260303"/>
 		</e:Skin>
 		</e:skinName>
 	</e:Button>

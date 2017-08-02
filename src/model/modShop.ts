@@ -113,13 +113,13 @@ namespace modShop {
         let roll:number = MathUtils.getRandom(1, 10000);
         let id:number = drawCard(roll);
         let starRoll:number = MathUtils.getRandom(1, 10000);
-        let star:number = starDistribute(starRoll);
+        let star:number = 0;//starDistribute(starRoll);
         let affixs:Array<any> = new Array();
-        for (let i = 0; i < star; i ++) {
-            let affixRoll:number = MathUtils.getRandom(1, 10000);
-            let affix:any = affixDistribute(affixRoll);
-            affixs.push(affix);
-        }
+        // for (let i = 0; i < star; i ++) {
+        //     let affixRoll:number = MathUtils.getRandom(1, 10000);
+        //     let affix:any = affixDistribute(affixRoll);
+        //     affixs.push(affix);
+        // }
         return {"id":id, "star":star, "affix":affixs};
     }
 

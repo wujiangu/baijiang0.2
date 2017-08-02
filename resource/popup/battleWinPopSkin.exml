@@ -8,6 +8,12 @@
 	</e:Group>
 	<e:Group id="pvpFinishGroup" width="916" height="584" x="110" y="28">
 		<e:Image source="bg_pvpfinish_png" x="0" y="0" locked="true"/>
+		<e:Group width="399" height="131" x="229" y="247" anchorOffsetY="0" anchorOffsetX="0">
+			<e:Label text="总伤害量：" x="60" y="14" fontFamily="Microsoft YaHei" textColor="0xb5cec8" bold="true" size="25"/>
+			<e:Label id="lab_hurt" text="123456789" y="14" fontFamily="Microsoft YaHei" textColor="0xB5CEC8" bold="true" size="25" right="60"/>
+			<e:Label text="当前排名：" x="60" y="70" fontFamily="Microsoft YaHei" textColor="0xB5CEC8" bold="true" size="25"/>
+			<e:Label id="lab_rank" text="1" y="70" fontFamily="Microsoft YaHei" textColor="0xB5CEC8" bold="true" size="25" right="60"/>
+		</e:Group>
 	</e:Group>
 
 
