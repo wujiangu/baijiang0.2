@@ -6,6 +6,16 @@ class Imprisoned extends SkillBase {
         super();
         this._createGroup();
         this._effectGroup.alpha = 0;
+        var data = RES.getRes("diaoClip_json");
+        var txtr = RES.getRes("diaoClip_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this._mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("diaoClip"));
+        this._mc1.anchorOffsetX = this._mc1.width/2;
+        this._mc1.anchorOffsetY = this._mc1.height/2;
+        this._mc1.x = Common.SCREEN_W/2;
+        this._mc1.y = Common.SCREEN_H/2;
+        this._mc1.visible = false;
+        SceneManager.curScene.addChild(this._mc1);
     }
 
     public init() {
@@ -17,6 +27,7 @@ class Imprisoned extends SkillBase {
     public start(animation:string, target:any) {
         super.start(animation, target);
         target.armature.play(BaseGameObject.Action_Idle, 0);
+        target.setInvincible(true);
         target.skillArmature.play(animation, 1, 1, 0, 2);
     }
 
@@ -26,7 +37,11 @@ class Imprisoned extends SkillBase {
         this._effectGroup.alpha = 1;
         this._effectFunc();
         this.duration = target.attr.dur;
-        egret.Tween.get(this._effectGroup).to({alpha:0}, this.duration*1000);
+        this._mc1.visible = true;
+        this._mc1.gotoAndPlay(1, 1);
+        egret.Tween.get(this._effectGroup).to({alpha:0}, this.duration*1000).call(()=>{
+            this._mc1.visible = false;
+        });
         if (target.isPVP) return;
         for (let i = 0; i < enermy.length; i++) {
             if (enermy[i].isSkillHurt) return;
@@ -119,4 +134,7 @@ class Imprisoned extends SkillBase {
     private _effectGroup:egret.DisplayObjectContainer;
 
     private _effectFunc:Function;
+
+    /**动画数据 */
+    private _mc1:egret.MovieClip;
 }

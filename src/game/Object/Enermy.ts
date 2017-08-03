@@ -427,10 +427,10 @@ class Enermy extends BaseGameObject {
      * 受击次数处理
      */
     public onAttackCount():void {
-        if (this.beAttackCount >= 2) {
+        // if (this.beAttackCount >= 2) {
             this.beAttackCount = 0;
             this.rangeDamage();
-        }
+        // }
     }
 
     /**

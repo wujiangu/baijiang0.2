@@ -76,9 +76,11 @@ class EquipUpStarWindow extends PopupWindow{
             return;
         }
 
-        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",1000)){
-             Animations.showTips("魂石不足，无法升星");
-             return;
+        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",modEquip.EquipSource.UPSTARCONSUME)){
+            Common.ShowLackDataPopup("soul", ()=>{
+                this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 0);
+            })
+            return;
         } 
 
         //移除所有的监听 防止去除后又重复监听
@@ -202,7 +204,7 @@ class EquipUpStarWindow extends PopupWindow{
         this.changeObjectStatus(this.source_list[index], target.name, target.source);
         this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(parseInt(target.name)), 1, true)
 
-        if(this.isHaveEquip()) this.lab_sole.text = "1000";
+        if(this.isHaveEquip()) this.lab_sole.text = `${modEquip.EquipSource.UPSTARCONSUME}`;
     }
 
     /** 获得当前没满的索引  */

@@ -129,6 +129,10 @@ class BattleSceneCom extends Base {
         this.img_shield.scaleX = value/this._sumHP;
     }
 
+    public setSumHp(value:number):void {
+        this._sumHP = value;
+    }
+
     /**复活 */
     public onRevive(isPassive:boolean = false, value:number = 1):void {
         if (!isPassive){

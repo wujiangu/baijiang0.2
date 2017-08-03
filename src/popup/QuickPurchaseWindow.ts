@@ -16,22 +16,15 @@ class QuickPurchaseWindow extends PopupWindow{
     }
 
     public Init():void{
-        this.goods_list = [];
     }
 
-    public Show(list:any):void{
+    public Show(goodsName:string = "exp"):void{
         super.Show();
 
-        let name_list:any = [];
-        let data_list:any = [];
-        for(let i:number = 0; i < list.length; i++){
-            this.goods_list[i] = {type:1,data:list[i]};
-            let tempData = TcManager.GetInstance().GetTcEquipData(list[i]);
-            if(i == list.length - 1) name_list[i] = tempData.name + "x1"
-            else name_list[i] = tempData.name + "x1,";
-            data_list[i] = ({text:name_list[i], style:{"textColor":Common.GetEquipColorFromGrade(tempData.grade)}})
-        }
-        this.lab_content.textFlow = <Array<egret.ITextElement>>data_list;
+        this.goods_list = [{type:2,data:10000,name:goodsName}];
+        let name_list:any = {exp:"经验",soul:"魂石"};
+        this.lab_content.text = `${name_list[goodsName]}*10000`;
+        this.lab_title.text = `${name_list[goodsName]}不足是否购买特惠礼包?`;
 
         Animations.PopupBackOut(this, 350);
     }
@@ -41,21 +34,22 @@ class QuickPurchaseWindow extends PopupWindow{
         this.btn_purchase.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchPurchase, this);
     }
 
-    public Close():void{
+    /** type 根据类型来判断是关闭还是更新并且关闭数据 默认是关闭 */
+    public Close(type:number = 0):void{
         Animations.PopupBackIn(this, 350,  ()=>{
             super.Close();
         });
 
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_purchase.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchPurchase, this);
-        this.dispatchEventWith(egret.Event.CLOSE);
+        this.dispatchEventWith(egret.Event.CLOSE, false, type);
     }
 
     private onTouchPurchase(event:egret.TouchEvent):void{
-        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 60)){
+        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 100)){
             Animations.ShowGoodsPopEffect(this.goods_list);
             Common.DealReward(this.goods_list);
-            this.Close();
+            this.Close(1);
         }
         else Animations.showTips("钻石不足，无法购买", 1, true);
     }
@@ -66,6 +60,7 @@ class QuickPurchaseWindow extends PopupWindow{
     
     /** label */
     private lab_content:eui.Label;
+    private lab_title:eui.Label;
 
     /** other data */
     private goods_list:any;

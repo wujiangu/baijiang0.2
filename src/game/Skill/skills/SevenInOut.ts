@@ -10,6 +10,7 @@ class SevenInOut extends SkillBase {
 
     public init() {
         super.init();
+        this.copySkillArmature = [];
         this.isBindBuff = false;
         this.cd = 5;
         this.mask = Utils.createBitmap("sevenInOut_png");
@@ -63,6 +64,10 @@ class SevenInOut extends SkillBase {
         egret.setTimeout(()=>{
             target.visible = true;
             target.setInvincible(false);
+            target.skillArmature.x = 0;
+            target.skillArmature.y = 0;
+            target.skillArmature.rotation = 0;
+            target.addChild(target.skillArmature);
             if (this.isBindBuff) {
                 for (let i = 0; i < this._enermy.length; i++) {
                     let buffConfig = modBuff.getBuff(3);

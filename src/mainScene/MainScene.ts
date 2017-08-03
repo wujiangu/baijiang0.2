@@ -18,7 +18,7 @@ class MainScene extends Base {
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email,this.btn_purchase,this.btn_gm];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email,this.btn_gm];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -157,11 +157,6 @@ class MainScene extends Base {
             case this.btn_email:
                  this.ShowPop("EmailWindow");
             break;
-            case this.btn_purchase:
-                 let pop = WindowManager.GetInstance().GetWindow("QuickPurchaseWindow")
-                 pop.Show([15, 20]);
-                 pop.addEventListener(egret.Event.CLOSE, this.onPurchaseDialog, this);
-            break;
             case this.btn_gm:
                   WindowManager.GetInstance().GetWindow("GMWindow").Show();
             break;
@@ -178,11 +173,6 @@ class MainScene extends Base {
         let pop = WindowManager.GetInstance().GetWindow(clsName);
         pop.Show();
         Animations.fadeOut(pop);
-    }
-
-    private onPurchaseDialog(event:egret.Event):void{
-        event.target.removeEventListener(egret.Event.CLOSE, this.onPurchaseDialog, this);
-        this.show_label_text();
     }
 
      private onChangeData():void{
@@ -224,7 +214,6 @@ class MainScene extends Base {
 
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;
-    private btn_purchase:eui.Button;
     private btn_gm:eui.Button;
 
     private img_light:eui.Image;

@@ -39,7 +39,7 @@ class Stakes extends egret.DisplayObjectContainer {
         this.curState = "hurt";
         this._mc.gotoAndPlay("stakes", 1);
         this.attr.hp --;
-        // let hurtValue = MathUtils.getRandom(100, 2000);
+        hurtValue = Math.floor(hurtValue);
         this.hurtText.text = `-${hurtValue.toString()}`;
         this.hurtText.anchorOffsetX = this.hurtText.width/2;
         this.hurtText.y = 50;

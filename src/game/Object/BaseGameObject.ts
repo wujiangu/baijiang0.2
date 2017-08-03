@@ -112,6 +112,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
                     }
                     else if (collison[i].type == 3 && !this.isEnemy) {
                         let value:number = Math.floor(this.originHP * 0.1);
+                        this.setInvincible(false);
                         this.hurtHandler(value);
                     }
                 }

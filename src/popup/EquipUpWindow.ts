@@ -122,17 +122,15 @@ class EquipUpWindow extends PopupWindow{
 
         let upData:any = this.getEquipExpAndSoul();
         if(UserDataInfo.GetInstance().IsHaveOhterGoods("exp", upData.exp, "soul", upData.soul)){
-            let attr:any = this.equip_info.GetEquipAttr();
             this.equip_info.Lv = this.equip_info.Lv + this.upLevelNum;
-            for(let i:number = 0; i < 4; i++)  attr[i] = modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv, i);
-            this.equip_info.SetEquipAttr(attr);
+            this.equip_info.UpdataBaseAttr();
             this.upgradeEffect();
             Animations.showTips("升级成功", 1);
 
             let data = HeroData.list[GameData.curHero];
             let equipId = data.equip;
             if (equipId != 0 && equipId == this.equip_info.Id) modEquip.update(this.equip_info);
-            this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, this.equip_info.Lv);
+            this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, 1);
 
             if(this.upLevelNum == 10 && this.equip_info.Lv + this.upLevelNum > modEquip.EquipSource.EQUIPLV){
                 this.upLevelNum = 1;
@@ -144,8 +142,12 @@ class EquipUpWindow extends PopupWindow{
         }
         else
         {
-            if(!UserDataInfo.GetInstance().IsHaveGoods("exp", upData.exp)) Animations.showTips("经验不足无法升级",1,true);
-            else if(!UserDataInfo.GetInstance().IsHaveGoods("soul", upData.soul)) Animations.showTips("灵魂石不足无法升级",1,true);
+            let goodsName:string;
+            if(!UserDataInfo.GetInstance().IsHaveGoods("exp", upData.exp)) goodsName = "exp";
+            else if(!UserDataInfo.GetInstance().IsHaveGoods("soul", upData.soul)) goodsName = "soul";
+            Common.ShowLackDataPopup(goodsName, ()=>{
+                this.dispatchEventWith(modEquip.EquipSource.UPGRADE);
+            })
         }
     }
 
@@ -153,8 +155,9 @@ class EquipUpWindow extends PopupWindow{
         let attr:any = this.equip_info.GetEquipAttr();
 
         for(let i:number = 0; i < 4; i++){
-            this.txt_front_list[i].text = `${Math.ceil(attr[i])}`;
-            this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? `${Math.ceil(modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv + this.upLevelNum, i))}` : "";
+            this.txt_front_list[i].text = i < 3 ?`${Math.ceil(attr[i])}` : `${Math.ceil(attr[i] * 10) / 10}%`;
+            let rearNum:number = modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv + this.upLevelNum, i);
+            this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? (i < 3 ? `${Math.ceil(rearNum)}`:`${Math.ceil(rearNum * 10) / 10}%`) : "";
         }
 
         let data = this.getEquipExpAndSoul();

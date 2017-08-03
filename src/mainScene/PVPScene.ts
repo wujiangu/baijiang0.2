@@ -53,6 +53,7 @@ class PVPScene extends Base {
      */
     public createSingleStake():void {
         this._stake = ObjectPool.pop("Stakes");
+        this.battleLayer.addChild(this._stake);
         GameData.stakes.push(this._stake);
         Common.log("长度------>", GameData.stakes.length)
         this._stake.init();
@@ -60,7 +61,6 @@ class PVPScene extends Base {
         this._stake.y = MathUtils.getRandom(100, 550);
         this._stake.anchorOffsetX = this._stake.width/2;
         this._stake.anchorOffsetY = this._stake.height/2;
-        this.battleLayer.addChild(this._stake);
     }
 
     /**
@@ -91,7 +91,7 @@ class PVPScene extends Base {
         TimerManager.getInstance().remove(this.timerCD, this);
         TimerManager.getInstance().remove(this._onTimeCD, this);
         TimerManager.getInstance().removeComplete(this._onTimeComplete, this);
-        this._effectLayer.removeChildren();
+        this.effectLayer.removeChildren();
         // GameLayerManager.gameLayer().effectLayer.removeChildren();
         GameLayerManager.gameLayer().sceneLayer.removeChild(this);
     }
@@ -204,13 +204,13 @@ class PVPScene extends Base {
      */
     private _createMap():void {
         this.battleLayer = new egret.DisplayObjectContainer();
-        this._effectLayer = new egret.DisplayObjectContainer();
+        this.effectLayer = new egret.DisplayObjectContainer();
         this.img_map.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBin, this);
         this.img_map.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
         this.img_map.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         this.addChild(this.battleLayer);
         this.setChildIndex(this.battleLayer, 1);
-        this.addChild(this._effectLayer);
+        this.addChild(this.effectLayer);
     }
 
     /**英雄和怪物层 */
@@ -226,7 +226,7 @@ class PVPScene extends Base {
     /**当前的伤害 */
     private _curValue:number;
     /**特效层（包括技能/buff等） */
-    private _effectLayer:egret.DisplayObjectContainer;
+    private effectLayer:egret.DisplayObjectContainer;
     /**倒计时长 */
     private _cdTime:number;
     /**技能倒计时 */

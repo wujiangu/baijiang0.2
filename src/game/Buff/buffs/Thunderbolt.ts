@@ -22,6 +22,13 @@ class Thunderbolt extends BuffBase {
         this._isTrigger = false;
     }
 
+    /**触发 */
+    private onTrigger():void {
+        Common.log("可以触发雷霆");
+        TimerManager.getInstance().remove(this.onTrigger, this);
+        this._isTrigger = false;
+    }
+
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
@@ -34,10 +41,17 @@ class Thunderbolt extends BuffBase {
 
     /**刷新数据 */
     public update(enermy:any, callBack:Function = null) {
-        if (!this._isTrigger) {
+        // if (!this._isTrigger) {
+        //     this._isTrigger = true;
+        //     enermy.onAttackCount();
+        //     TimerManager.getInstance().doTimer(this.buffData.cd * 1000, 1, this.onTrigger, this);
+        // }
+        let count = enermy.getBeAttackCount();
+        if (count >= 2 && !this._isTrigger) {
+            enermy.onAttackCount();
             this._isTrigger = true;
+            TimerManager.getInstance().doTimer(this.buffData.cd * 1000, 1, this.onTrigger, this);
         }
-        enermy.onAttackCount();
     }
 
     /**增加特效 */
@@ -55,6 +69,12 @@ class Thunderbolt extends BuffBase {
         // this.target.skillArmature.visible = false;
     }
     
+    /**回收buff类 */
+    public recycleBuff() {
+        super.recycleBuff();
+        TimerManager.getInstance().remove(this.onTrigger, this);
+    }
+
     /**是否触发 */
     private _isTrigger:boolean;
     private target:any;

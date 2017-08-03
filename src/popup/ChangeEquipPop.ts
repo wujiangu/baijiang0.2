@@ -89,6 +89,8 @@ class ChangeEquipPop extends PopupWindow {
             raw = Math.floor(i / 5);
             col = i % 5;
             Common.SetXY(this.equip_object_list[i], col * 105, 4 + raw * 105)
+
+            this.equip_object_list[i].visible = true;
             this.scrollGroup.addChild(this.equip_object_list[i]);
 
             if(id == this.equip_object_list[i].GetId() && this.equip_object_list[i].GetTypeId() == typeId){
@@ -100,8 +102,8 @@ class ChangeEquipPop extends PopupWindow {
         this.scrollGroup.addChild(this.img_selectBox);
 
         if(this.equip_object_list.length > equip_list.length){
-            for(let i:number = 0; i < this.equip_object_list.length; i++)
-                this.equip_object_list[i].visible = equip_list.length > i ? true : false;
+            for(let i:number = this._eventNum; i < this.equip_object_list.length; i++)
+                this.equip_object_list[i].visible = false;
         }
 
         if (equip_list.length >= 1) {

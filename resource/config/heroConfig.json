@@ -4,6 +4,7 @@
         "id":1,
         "exp":0,
         "lv":1,
+        "equip":1,
         "skill":"Imprisoned",
         "buff":[4, 6]
     },
@@ -12,6 +13,7 @@
         "id":2,
         "exp":0,
         "lv":1,
+        "equip":0,
         "skill":"Bristle",
         "buff":[5, 9]
     },
@@ -20,6 +22,7 @@
         "id":3,
         "exp":0,
         "lv":1,
+        "equip":10,
         "skill":"SevenInOut",
         "buff":[7, 8]
     }

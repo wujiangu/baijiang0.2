@@ -31,13 +31,19 @@ class shopItemIR extends Base {
                     Animations.showTips("无法购买，现金充值尚未开放", 1, true);
                 }
                 else if(this.btn_buy.name == "packs"){
-                    if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 500)){
+                    if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price)){
                         Animations.showTips("购买礼包成功", 1);
-                        let info = new modEquip.EquipInfo(20, 0, 5);
-                        modEquip.EquipData.GetInstance().Add(info, 1);
-                        UserDataInfo.GetInstance().SetBasicData("soul", UserDataInfo.GetInstance().GetBasicData("soul") + 1000);
-                        UserDataInfo.GetInstance().SetBasicData("exp", UserDataInfo.GetInstance().GetBasicData("exp") + 20000);
-                        UserDataInfo.GetInstance().SetBasicData("diamond", UserDataInfo.GetInstance().GetBasicData("diamond") + 50);
+                        if(this.content.type == "pack"){
+                            let info = new modEquip.EquipInfo(20, 0, 5);
+                            modEquip.EquipData.GetInstance().Add(info, 1);
+                            UserDataInfo.GetInstance().SetBasicData("soul", UserDataInfo.GetInstance().GetBasicData("soul") + 1000);
+                            UserDataInfo.GetInstance().SetBasicData("exp", UserDataInfo.GetInstance().GetBasicData("exp") + 20000);
+                            UserDataInfo.GetInstance().SetBasicData("diamond", UserDataInfo.GetInstance().GetBasicData("diamond") + 50);
+                        }
+                        else if(this.content.type == "exp" || this.content.type == "soul")
+                        {
+                            UserDataInfo.GetInstance().SetBasicData(this.content.type, UserDataInfo.GetInstance().GetBasicData(this.content.type) + this.content.count);
+                        }
                         GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
                     }
                     else Animations.showTips("钻石不足，无法购买", 1,true);
@@ -49,7 +55,7 @@ class shopItemIR extends Base {
                     }
                     else
                     {
-                        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 1280)){
+                        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price)){
                             Animations.showTips(`购买英雄${this.content.name}成功`, 1);
                             HeroData.addHeroData(this.content.key, GameData.initData["hero"]);
                             if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
@@ -74,16 +80,19 @@ class shopItemIR extends Base {
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
         
-        if(type == "diamond"){
-            this.set_label_Text("",content.price, false, true);
+        if(type == "diamond") this.set_label_Text("",content.price, "首冲送" + this.content.count + "钻石", false, true);
+        else if(content.discount == 1){
+            let strContent:string = "原价" + content.initPrice + "(打" + (content.price / content.initPrice) * 10 + "折)";
+            this.set_label_Text(content.price,"", strContent,true, true);
+            this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;
         } 
-        else this.set_label_Text(content.price,"", true);
+        else this.set_label_Text(content.price,"", "",true);
     }
 
-    private set_label_Text(strBtn:string, strMoney:string, isVisible:boolean, isShowGroup:boolean = false):void{
-        this.btn_buy.label = strBtn;
+    private set_label_Text(btnName:string, strMoney:string, strContent:string, isVisible:boolean, isShowGroup:boolean = false):void{
+        this.btn_buy.label = btnName;
         this.lab_money.text = strMoney;
-        this.lab_reward.text = "首冲送" + this.content.count + "钻石";
+        this.lab_reward.text = strContent;
         this.img_diamond.visible = isVisible;
         this.btn_itemDetail.visible = isVisible;
         this.diamondGroup.visible = isShowGroup;

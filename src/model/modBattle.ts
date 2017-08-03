@@ -178,7 +178,7 @@ namespace modBattle {
                 originArray.sort(function(){ return 0.5 - Math.random(); });
                 for (let i = 0; i < buffCount; i++) {
                     arrayBuff.push(originArray[i]);
-                    // let id:number = 6;
+                    // let id:number = 2;
                     // arrayBuff.push(id);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);

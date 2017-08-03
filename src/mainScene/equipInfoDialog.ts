@@ -38,14 +38,13 @@ class EquipInfoDialog extends PopupWindow {
         this.lab_lv.text   = info.Lv + "/100";
         let str_list:any = ["生命: ", "护甲: ", "攻击: ", "暴击: "];
 
-        for(let i in this.self_attr_list){
-            this.self_attr_list[i].text = str_list[i] + Math.ceil(info.GetEquipAttr()[i]);
+        for(let i:number = 0; i < this.self_attr_list.length; i++){
+            this.self_attr_list[i].text = str_list[i] + ( i < 3 ? Math.ceil(info.GetEquipAttr()[i]) : Math.ceil(info.GetEquipAttr()[i] * 10) / 10 + "%");
         }
 
        let attrData = info.GetAttrType();
-       for(let i in this.refine_attr_list){
-           if(attrData.length > i) this.refine_attr_list[i].text = modEquip.GetAttrInfo(attrData[i].Type, attrData[i].Value);
-           else this.refine_attr_list[i].text = "";
+       for(let i:number = 0; i < this.refine_attr_list.length; i++){
+           this.refine_attr_list[i].text = attrData.length > i ? modEquip.GetAttrInfo(attrData[i].Type, attrData[i].Value) : "";
        }
     }
 

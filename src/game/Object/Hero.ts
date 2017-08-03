@@ -46,8 +46,7 @@ class Hero extends BaseGameObject {
         this.buffArmature.scaleX = 1.5;
         this.buffArmature.scaleY = 1.5;
         /**从配置文件读取技能动画 */
-        // let heroConfig = HeroData.list[name];
-        let heroConfig = ConfigManager.heroConfig[name];
+        let heroConfig = modHero.getHeroConfig(name);
         let skillArmature = `${name}_skill`;
         this.skillArmature.register(DragonBonesFactory.getInstance().makeArmature(skillArmature, skillArmature, 10), [
             Hero.Effect_Skill01,
@@ -71,6 +70,7 @@ class Hero extends BaseGameObject {
         this.isInvincible = true;
         super.init(data);
         this.initDragonBonesArmature(data[0]);
+        let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.name = data[0];
@@ -102,7 +102,11 @@ class Hero extends BaseGameObject {
         this._hurtValue = 0;
         if (data[2]) this.attr.hp = data[3];
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
-        if (!isPVP) SceneManager.battleScene.showComboLayer();
+        if (!isPVP){
+            SceneManager.battleScene.showComboLayer();
+            SceneManager.battleScene.battleSceneCom.setSumHp(this.originHP);
+        }
+        Common.log("位置---->", this.x, this.y)
     }
 
     /**
@@ -181,6 +185,7 @@ class Hero extends BaseGameObject {
 
     /**回收技能类 */
     public recycleSkill():void {
+        this.img_swordLight.visible = false;
         this.skill.end();
         for (let i = 0; i < this.buff.length; i++) {
             if (this.buff[i].buffData.className) {
@@ -266,6 +271,7 @@ class Hero extends BaseGameObject {
         if (Math.abs(this.sumDeltaX) > this.atk_rangeX || Math.abs(this.sumDeltaY) > this.atk_rangeY) {
             this.gotoIdle();
             this.img_swordLight.visible = false;
+            this.setInvincible(false);
             let count:number = 0;
             //怪物到中点的距离
             for (let i = 0; i < this.enermy.length; i++) {
@@ -278,15 +284,10 @@ class Hero extends BaseGameObject {
                     this.setHurtValue(this.attr.atk);
                     if (!this.isPVP && this.enermy[i]) {
                         let state = this.enermy[i].curState;
-                        if (state != Enermy.Action_Dead && state != BaseGameObject.Action_Hurt && !this.enermy[i].isReadSkill) {
-                            this.isHit = true;
-                        }
                         modBuff.isAttackBuff(this, this.enermy[i]);
                     }
-                    if (this.isCrit()){
-                        this._hurtValue *= 1.5;
-                    }
-                    this.enermy[i].gotoHurt(this._hurtValue);
+                    if (this.isCrit()) this._hurtValue *= 1.5;
+                    if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
                     if (!this.isPVP && this.enermy[i]) {
                         let state = this.enermy[i].getCurState();
                         if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
@@ -509,8 +510,8 @@ class Hero extends BaseGameObject {
         if (!this.isComplete) return;
         if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
-        // Common.log("进入攻击", this.curState, this.isComplete);
         this.isComplete = false;
+        this.setInvincible(true);
         this.atk_timer.start();
         this.curState = "attack";
         // this.isAttack = true;
@@ -654,6 +655,7 @@ class Hero extends BaseGameObject {
     }
 
     private skillArmaturePlayEnd():void {
+        if (this.name != "zhaoyun") this.setInvincible(false);
         this.skill_status = false;
         this.skillArmature.visible = false;
         this.armature.visible = true;

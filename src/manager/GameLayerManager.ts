@@ -47,6 +47,7 @@ class GameLayerManager extends eui.UILayer{
         this.sceneLayer.touchThrough = true;
         this.panelLayer.touchThrough = true;
         this.effectLayer.touchThrough = true;
+        this.effectLayer.touchEnabled = false;
         this.maskLayer.touchThrough = true;
         this.loadLayer.touchThrough = true;
         this.addChild(this.sceneLayer);

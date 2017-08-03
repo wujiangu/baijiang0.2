@@ -39,6 +39,8 @@ class BattleScene extends Base {
         // Common.log(JSON.stringify(modTalent.getData(0)));
         DragonBonesFactory.getInstance().startTimer();
         this.createHero();
+        this.x = 0;
+        this.y = 0;
     }
 
     /**加入连击的显示层 */
@@ -236,7 +238,7 @@ class BattleScene extends Base {
         let data = ConfigManager[`${GameData.curHero}Attr`];
         // Common.log(HeroData.getHeroData(GameData.curHero));
         let level:number = HeroData.getHeroData(GameData.curHero).lv
-        let attr = data[level - 1];
+        let attr = Utils.cloneObj(data[level - 1]);
         // let attr = data[0];
         //数据结构后续优化
         this.hero.init([GameData.curHero, attr, isRevival, hp]);

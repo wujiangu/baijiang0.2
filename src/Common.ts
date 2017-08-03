@@ -273,4 +273,22 @@ namespace Common {
             }
         }
     }
+
+    /** show lack goods popup
+     * @param gooodsName 
+     * @param listener 回调函数
+     */
+    export function ShowLackDataPopup(goodsName:string,listener:Function){
+        let pop = WindowManager.GetInstance().GetWindow("QuickPurchaseWindow")
+        pop.Show(goodsName);
+        pop.addEventListener(egret.Event.CLOSE, onQuickPurchase, null);
+        pop["listener"] = listener;
+    }
+
+    function onQuickPurchase(event:egret.Event):void{
+        event.target.removeEventListener(egret.Event.CLOSE, onQuickPurchase, null);
+        let listener = event.target.listener;
+        if(event.data == 1 && listener)
+            listener();
+    }
 }

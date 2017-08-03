@@ -1,0 +1,58 @@
+{"mc":{
+	"diaoClip":{
+		"frameRate":7,
+		"labels":[
+			{"name":"diaoClip","frame":1,"end":7}
+			
+			],
+		"events":[
+
+			],
+		"frames":[
+			
+			{
+			"res":"diaoClip1",
+			"x":11,
+			"y":0
+			},
+			{
+			"res":"diaoClip2",
+			"x":11,
+			"y":0
+			},
+			{
+			"res":"diaoClip3",
+			"x":11,
+			"y":0
+			},
+			{
+			"res":"diaoClip4",
+			"x":0,
+			"y":0
+			},
+			{
+			"res":"diaoClip5",
+			"x":5,
+			"y":1
+			},
+			{
+			"res":"diaoClip6",
+			"x":9,
+			"y":3
+			},
+			{
+			"res":"diaoClip7",
+			"x":15,
+			"y":4
+			}
+			]
+}},
+	"res":{
+        "diaoClip1":{"x":0,"y":1502,"w":347,"h":365},
+        "diaoClip2":{"x":0,"y":1135,"w":347,"h":365},
+        "diaoClip3":{"x":0,"y":768,"w":347,"h":365},
+        "diaoClip4":{"x":374,"y":0,"w":366,"h":365},
+        "diaoClip5":{"x":0,"y":390,"w":373,"h":376},
+        "diaoClip6":{"x":0,"y":0,"w":372,"h":388},
+        "diaoClip7":{"x":349,"y":768,"w":338,"h":357}
+	}}

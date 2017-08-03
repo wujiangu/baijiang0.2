@@ -21,7 +21,7 @@
     {"id":30, "className":"Ruthless", "cd":0, "duration":0, "damage":0},
     {"id":31, "className":"ReaperGift", "cd":60, "duration":0, "damage":0},
     {"id":32, "className":"AddProperty", "cd":0, "duration":0, "damage":0},
-    {"id":33, "className":"Thunderbolt", "cd":90, "duration":0, "damage":0},
+    {"id":33, "className":"Thunderbolt", "cd":10, "duration":0, "damage":0},
     {"id":34, "className":"HealBuff", "cd":5, "duration":0, "damage":0},
     {"id":35, "className":"Unbending", "cd":0, "duration":0, "damage":0},
     {"id":36, "className":"KillBuff", "cd":0, "duration":0, "damage":0},

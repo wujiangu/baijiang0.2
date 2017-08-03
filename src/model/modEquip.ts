@@ -16,6 +16,7 @@ namespace modEquip {
     /**装备的通用资源 */
     export class EquipSource{
         public static EQUIPLV:number = 100;
+        public static UPSTARCONSUME:number = 10000;
         public static RESETATTR:string = "RESETATTR";
         public static UPSTAR:string = "UPSTAR";
         public static UPGRADE:string = "UPGRADE";
@@ -157,6 +158,13 @@ namespace modEquip {
 
         public GetOriginAttr():any{
             return this.origin_attr_list;
+        }
+
+        /** 更新基本属性 */
+        public UpdataBaseAttr():void{
+            for(let i:number = 0; i < 4; i++){
+                this.attr_list[i] = GetEquipUpAttr(this, this.lv, i);
+            }
         }
 
         private id:number;                      //装备id
@@ -357,6 +365,7 @@ namespace modEquip {
     }
 
     let star_up_attr:any = [7.047,0.688,7.13,0.0291];
+    let star_init_attr:any = [300,50,200,0];
     export function GetEquipUpAttr(info:EquipInfo, lv:number, index:number):number{
         let value:number = 0;
         let upData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(info.Quality);
@@ -365,7 +374,7 @@ namespace modEquip {
 
         let first:number  
         if(info.Star == 0) first = lv * upData.up[index] + info.GetOriginAttr()[index];
-        else first = (lv + (info.Quality - 1 + info.Star) * 100) * star_up_attr[index] + info.GetOriginAttr()[index];
+        else first = (lv + (info.Quality - 1 + info.Star) * 100) * star_up_attr[index] + star_init_attr[index];
 
         let second:number = 0,third:number = 0;
 

@@ -87,19 +87,21 @@ class EquipDialog extends PopupWindow {
     private upGradeGoodsInfo(event:egret.Event):void{
         if(event.data == -1){
             event.target.removeEventListener(modEquip.EquipSource.UPGRADE, this.upGradeGoodsInfo, this);
+            return;
         }
-        else
+
+        if(event.data == 1)
         {
-            this.show_label_data();
             this.lab_lv.textFlow = <Array<egret.ITextElement>>[
-                {text:"等级: " + event.data + "/", style:{"textColor":0x727272}},
+                {text:"等级: " + this.equip_info.Lv + "/", style:{"textColor":0x727272}},
                 {text:modEquip.EquipSource.EQUIPLV + "", style:{"textColor":0xf28b01}}
             ]
-            if(event.data >= modEquip.EquipSource.EQUIPLV){
+            if(this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV){
                 this.showResetGroup();
             } 
             this.equip_object_list[this.goods_index].UpEquipData(this.equip_info);
         }
+        this.show_label_data();
     }
 
     private onTouchBtn(event:egret.TouchEvent):void{
@@ -246,10 +248,16 @@ class EquipDialog extends PopupWindow {
             return;
         }
 
+        if(event.data == 0){
+            this.show_label_data();
+            return;
+        }
+
         if(event.data == 1){
             let starIndex = this.equip_info.Star - 1;
             this.lab_lv.textFlow = <Array<egret.ITextElement>>[{text:"等级: 1/", style:{"textColor":0x727272}},{text:"" + modEquip.EquipSource.EQUIPLV, style:{"textColor":0xf28b01}}]
             this.star_list[starIndex].texture = RES.getRes(modEquip.GetEquipLvFromValue(this.equip_info.GetPointTypeFromIndex(starIndex).Quality).img);
+            this.equip_info.UpdataBaseAttr();
             this.showResetGroup();
         }
 
@@ -316,13 +324,14 @@ class EquipDialog extends PopupWindow {
                     Common.SetXY(this.imgClick, this.equip_object_list[i].x, this.equip_object_list[i].y);
                 }
             }
+            this.equip_object_list[i].visible = true;
             this.scrollGroup.addChild(this.equip_object_list[i]); 
         }
 
         //如果当前的装备数组大于总装备数量 根据情况显示
         if(this.equip_object_list.length > equip_list.length){
-            for(let i:number = 0; i < this.equip_object_list.length; i++){
-                this.equip_object_list[i].visible = equip_list.length > i ? true : false;
+            for(let i:number = this.eventLen; i < this.equip_object_list.length; i++){
+                this.equip_object_list[i].visible = false;
             }
         }
 
