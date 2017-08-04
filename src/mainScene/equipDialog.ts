@@ -51,8 +51,9 @@ class EquipDialog extends PopupWindow {
         this.createEquips();
 
         let len = modEquip.EquipData.GetInstance().GetEquipNum();
+        this.imgClick.visible = len > 0 ? true : false;
+
         if(len > 0){
-            this.imgClick.visible = true;
             this.ShowGoodsInfo(0);
         } 
         else 
@@ -60,7 +61,6 @@ class EquipDialog extends PopupWindow {
             this.lab_lv.text = "";
             this.lab_name.text = "";
             this.img_weapon.source = "";
-            this.imgClick.visible = false;
         } 
     }
 
@@ -158,14 +158,8 @@ class EquipDialog extends PopupWindow {
     /** 显示装备星级 */
     private showEquipStar(star:number):void{
         for(let i:number = 0; i < 6; i++){
-            if(star > i){
-                let data = modEquip.GetEquipLvFromValue(this.equip_info.GetPointTypeFromIndex(i).Quality)
-                this.star_list[i].texture = RES.getRes(data.img);
-            }
-            else 
-            {
-                this.star_list[i].texture = RES.getRes("star_00_png");
-            }
+            let strStar:string = star > i ? modEquip.GetEquipLvFromValue(this.equip_info.GetPointTypeFromIndex(i).Quality).img : "star_00_png";
+            this.star_list[i].texture = RES.getRes(strStar);
             this.star_list[i].visible = this.equip_info.Quality >= i ? true : false;
         }
     }
@@ -178,22 +172,14 @@ class EquipDialog extends PopupWindow {
         if(isActive){
             let attrType:modEquip.AttrType = this.equip_info.GetPointTypeFromIndex(index);
             strType = modEquip.GetAttrInfo(attrType.Type, attrType.Value);
-            strImg = "button_0016_png";
             quality = attrType.Quality
         }
         else
         {
-            if(this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV){
-                strType = "可升星";
-                strImg = "button_0017_png";
-            }
-            else
-            {
-                strType = "等级没满，不能升星";
-                strImg = "btn_upgradeStar_png";
-            }
+            strType = this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV ? "可升星" : "等级没满，不能升星";
         }
-
+        strImg = isActive ? "button_0016_png" : (this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV ? "button_0017_png" : "btn_upgradeStar_png");
+        
         let imgBg:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_0005_png"));
         group.addChild(imgBg);
 
@@ -346,15 +332,8 @@ class EquipDialog extends PopupWindow {
         for(let i:number = 0; i < 6; i++) this.reset_list[i].removeChildren();
 
         for(let i:number = 0; i < star; i++){
-            if(this.equip_info.Star > i){
-                this.createResetView(this.reset_list[i], i, true);
-            }
-            else
-            {
-                this.createResetView(this.reset_list[i], i, false);
-            }
-            if(this.equip_info.Quality >= i) this.reset_list[i].visible = true;
-            else this.reset_list[i].visible = false;
+            this.createResetView(this.reset_list[i], i, this.equip_info.Star > i ? true : false);
+            this.reset_list[i].visible = this.equip_info.Quality >= i ? true : false;
         }
     }
 

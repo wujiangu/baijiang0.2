@@ -82,17 +82,18 @@ class shopItemIR extends Base {
         
         if(type == "diamond") this.set_label_Text("",content.price, "首冲送" + this.content.count + "钻石", false, true);
         else if(content.discount == 1){
-            let strContent:string = "原价" + content.initPrice + "(打" + (content.price / content.initPrice) * 10 + "折)";
-            this.set_label_Text(content.price,"", strContent,true, true);
+            this.set_label_Text(content.price,"", "限时折扣：    折",true, true);
             this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;
+            this.lab_discount.visible = true;
+            this.lab_discount.text = `${(content.price / content.initPrice) * 10}`;
         } 
         else this.set_label_Text(content.price,"", "",true);
     }
 
-    private set_label_Text(btnName:string, strMoney:string, strContent:string, isVisible:boolean, isShowGroup:boolean = false):void{
+    private set_label_Text(btnName:string, strMoney:string, strReward:string, isVisible:boolean, isShowGroup:boolean = false):void{
         this.btn_buy.label = btnName;
         this.lab_money.text = strMoney;
-        this.lab_reward.text = strContent;
+        this.lab_reward.text = strReward;
         this.img_diamond.visible = isVisible;
         this.btn_itemDetail.visible = isVisible;
         this.diamondGroup.visible = isShowGroup;
@@ -115,6 +116,7 @@ class shopItemIR extends Base {
     private img_diamond:eui.Image;
     private lab_money:eui.Label;
     private lab_reward:eui.Label;
+    private lab_discount:eui.Label;
     private diamondGroup:eui.Group;
 
 }

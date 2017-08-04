@@ -51,5 +51,10 @@ class TcManager{
         return this.tc_list[4][grade - 1];
     }
 
+    public GetTcListFromIndex(index:number):any{
+        if(index < 0 || index > this.tc_list.length) return null;
+        return this.tc_list[index];
+    }
+
     private tc_list:any;
 }

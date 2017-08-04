@@ -117,7 +117,7 @@ class KillBuff extends BuffBase {
             break;
             //探云手
             case 37:
-                
+                modBattle.setExp(value);
             break;
             //风语者的祝福
             case 40:

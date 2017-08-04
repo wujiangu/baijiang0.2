@@ -168,8 +168,9 @@ class TalentDialog extends PopupWindow {
                 return;
             }
 
+            this.returnTalentPower();
             talentPage[this.curPage].talent = [];
-            talentPage[this.curPage]["count"] = this.allLv;
+            talentPage[this.curPage]["count"] = 1;
             this.pages[this.curPage].reset(this.curPage);
             LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
 
@@ -268,25 +269,16 @@ class TalentDialog extends PopupWindow {
         this.lab_name.text = this.tcTalent[id].name;
         this._updateTalentDesc(id, lv);
         this.lab_lv.text = `${lv}/${this._curMaxLv}`;
-        if (this.curLevel == this._curMaxLv) {
-            this.lab_lv.textColor = Common.TextColors.lvFull;
-        }else{
-            this.lab_lv.textColor = Common.TextColors.lvNotFull;
-        }
+        this.lab_lv.textColor = this.curLevel == this._curMaxLv ? Common.TextColors.lvFull : Common.TextColors.lvNotFull;
 
         let btn:any = this.btn_upPower.getChildAt(0);
         let diamondBtn:any = this.btn_upDiamond.getChildAt(0);
 
        if(this.isSkillFull()) return;
 
-        if (modTalent.isUnlock(this.curPage, num)) {
-            this.lab_condition.text = "";
-            this.show_btn_text(true);
-        }else{
-            this.show_btn_text(false);
-            let strs = modTalent.getTips(this.curTalentId, false);
-            this.lab_condition.text = strs;
-        }
+       let isUnlock:boolean = modTalent.isUnlock(this.curPage, num);
+       this.lab_condition.text = isUnlock ? "" :modTalent.getTips(this.curTalentId, false);
+       this.show_btn_text(isUnlock);
     }
 
     /**
@@ -294,9 +286,7 @@ class TalentDialog extends PopupWindow {
      */
     private _updateTalentDesc(index:number, lv:number) {
         let desc:string = this.tcTalent[index].desc;
-        let value:number = 0;
-        if (lv == 0) value = this.tcTalent[index].value[0];
-        else value = this.tcTalent[index].value[lv-1];
+        let value:number = lv == 0 ? this.tcTalent[index].value[0] : this.tcTalent[index].value[lv-1];
         this.lab_skillDetail.text = desc.replace(/n/, value.toString());
     }
 
@@ -305,9 +295,7 @@ class TalentDialog extends PopupWindow {
 
         let tanlent = modTalent.getTalentData();
         this.show_lab_text();
-
-        if(tanlent.length >= 5) this.btn_add.visible = false
-        else this.btn_add.visible = true;
+        this.btn_add.visible = tanlent.length >= 5 ? false : true;
     }
 
     /**
@@ -346,7 +334,7 @@ class TalentDialog extends PopupWindow {
         //如果当前的天赋等级为最高级的话 则显示天赋已满
         if (this.curLevel >= this._curMaxLv) {
             this.show_btn_text(false);
-            this.btn_unLock.label = "当前天赋已满";
+            this.btn_unLock.label = "该天赋已满";
             return true;
         } 
         
@@ -387,6 +375,15 @@ class TalentDialog extends PopupWindow {
         Animations.popupOut(this.popupGroup, 500);
         this.popupGroup.visible = true;
         GameLayerManager.gameLayer().maskLayer.addChild(this.popupGroup);
+    }
+
+    private returnTalentPower():void{
+        let allPower:number = 0;
+        let tempList:any = TcManager.GetInstance().GetTcListFromIndex(3);
+        for(let i:number = 0; i < this.allLv - 1; i++){
+            allPower += tempList[i].power;
+        }
+        UserDataInfo.GetInstance().SetBasicData("power", UserDataInfo.GetInstance().GetBasicData("power") + allPower);
     }
 
     public static instance:TalentDialog;

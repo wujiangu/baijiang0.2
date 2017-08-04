@@ -79,6 +79,8 @@ class BattleFailPop extends PopupWindow {
             Animations.popupOut(this.group_fail, 300, ()=>{
                 if (this._isUp) {
                     this.img_upgrade.visible = true;
+                    // let data = HeroData.getHeroData(GameData.curHero);
+                    // Common.log("英雄的数据---->", data);
                     egret.Tween.get(this.img_upgrade).to({y:this.img_upgrade.y - 100, alpha:0}, 800).call(()=>{
                         this.img_upgrade.visible = false;
                         egret.Tween.removeTweens(this.img_upgrade);
@@ -148,14 +150,17 @@ class BattleFailPop extends PopupWindow {
                 break;
             }
         }
-        if (upLv > level) this._isUp = true;
+        if (upLv > level){
+            this._isUp = true;
+            HeroData.setHeroAttr(GameData.curHero, upLv);
+        }
         this.lab_lv.text = `lv.${upLv.toString()}`;
         this._scaleX = upExp/tcHeroUp[upLv-1].exp;
         Common.log("after等级---->", upLv, upExp)
         // this.img_exp.scaleX = upExp/tcHeroUp[upLv-1].exp;
         data["lv"] = upLv;
         data["exp"] = upExp;
-        HeroData.update();
+        GameData.heros[0].recycleSkill();
     }
 
     public Init():void {

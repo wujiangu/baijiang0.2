@@ -197,14 +197,14 @@ class Enermy extends BaseGameObject {
                 this.effectArmature.play(Enermy.Action_HurtDie, 1);
                 this.effectArmature.x = 0;
                 this.effectArmature.y = 5;
-                modBattle.addSumkill();
+                this.updateKillCount();
             }else{
                 this.effectArmature.play(BaseGameObject.Action_Hurt, 1);
                 this.effectArmature.x = -15;
                 this.effectArmature.y = 5;
                 if (this.attr.hp < 0){
                     this.gotoDead();
-                    modBattle.addSumkill();
+                    this.updateKillCount();
                 }
             }
             this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
@@ -234,6 +234,14 @@ class Enermy extends BaseGameObject {
     /****************************************************/
 
     /***********************其他函数**********************/
+    /**
+     * 更新击杀数
+     */
+    public updateKillCount():void {
+        modBattle.addSumkill();
+        let killCount:number = modBattle.getSumkill();
+        SceneManager.battleScene.update(killCount);
+    }
     /**
      * 设置状态
      */

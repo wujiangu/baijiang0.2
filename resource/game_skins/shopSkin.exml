@@ -89,37 +89,8 @@
 		<e:Scroller id="scrollHero" width="100%" height="100%" x="0" y="0">
 		</e:Scroller>
 	</e:ViewStack>
+	<e:Image source="exp_0001_png" x="620" y="43"/>
+	<e:Label id="lab_exp" text="9999999" x="656" y="49" anchorOffsetX="0" width="113" anchorOffsetY="0" height="21" size="25" verticalAlign="top" textAlign="right" textColor="0xe5a024" fontFamily="Microsoft YaHei" bold="true"/>
 	
-	<e:Group id="detailGroup" width="1136" height="640" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="false">
-		<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
-		<e:Image source="equip_0006_png" x="388.5" y="77"/>
-		<e:Button id="btn_closeDetail" label="" x="722" y="72">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
-		</e:Button>
-		<e:Label id="lab_name1" text="武器名称" x="411.5" y="92" textColor="0xff9900" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="等级：" x="411.5" y="132" size="23" textColor="0xceb6a2" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_equipLv" text="1/100" x="486.5" y="132" textColor="0xCEB6A2" size="23" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="装备者：" x="411.5" y="165" size="21" textColor="0xff000a" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_equiptor" text="xx" x="512.5" y="166" textColor="0xFF000A" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="+" x="411.5" y="195" size="21" textColor="0xffffff" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_attr1" text="500 攻击力" x="441.5" y="195" size="21" textColor="0xFFFFFF" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="+" x="411.5" y="224" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_attr2" text="2000 生命值" x="441.5" y="224" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="+" x="411.5" y="253" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_attr3" text="90 移速" x="440" y="253" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="+" x="412" y="282" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label id="lab_attr4" text="30% 暴击" x="441" y="282" textColor="0xFFFFFF" size="21" bold="true" fontFamily="Microsoft YaHei"/>
-		<e:Label text="精炼：" x="415" y="321.5" size="21" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="350" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="378" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="406" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="433" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="461" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-		<e:Label text="+" x="413" y="489" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xbc0da2"/>
-	</e:Group>
+
 </e:Skin>

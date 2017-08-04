@@ -15,7 +15,8 @@
 	<e:Label id="lab_money" text="" x="9" y="403" anchorOffsetX="0" width="265" textAlign="center" textColor="0x070707" fontFamily="Microsoft YaHei" bold="true" touchEnabled="false"/>
 	<e:Group id="diamondGroup" width="256" height="52" x="12" y="319" anchorOffsetY="0" anchorOffsetX="0">
 		<e:Image source="shop_0019_png" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1"/>
-		<e:Label id="lab_reward" text="" anchorOffsetX="0" width="234" fontFamily="Microsoft YaHei" bold="true" size="22" verticalAlign="middle" textAlign="center" horizontalCenter="0" verticalCenter="-2.5" textColor="0xe88658"/>
+		<e:Label id="lab_reward" text="限时折扣：    折" anchorOffsetX="0" width="234" fontFamily="Microsoft YaHei" bold="true" size="22" horizontalCenter="0" verticalCenter="-2.5" textColor="0xe88658" anchorOffsetY="0" height="33" verticalAlign="middle" textAlign="center"/>
+		<e:Label id="lab_discount" text="8" x="150" y="2" anchorOffsetX="0" width="38" size="35" anchorOffsetY="0" height="43" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" textAlign="center" textColor="0xedd0bb" visible="false"/>
 	</e:Group>
 	<e:Button id="btn_itemDetail" label="" x="228" y="325" scaleX="1" scaleY="1">
 		<e:skinName>

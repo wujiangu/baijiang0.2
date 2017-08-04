@@ -66,6 +66,8 @@ namespace modHero {
             attr.hp += Math.ceil(equipAttr[0]);
             attr.def += Math.ceil(equipAttr[1]);
             attr.atk += Math.ceil(equipAttr[2]);
+            let crt = parseFloat(equipAttr[3].toFixed(2));
+            attr.crt += crt;
             let attrType = equipInfo.GetAttrType();
             if (attrType.length > 0) {
                 addWashAttr(attrType, attr);

@@ -9,8 +9,8 @@
 	<e:Label id="curr_lv" text="Lv.1" x="472" y="179.66" anchorOffsetX="0" width="236" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
 	<e:Label id="next_lv" text="Lv.2" x="747.16" y="179.66" anchorOffsetX="0" width="230" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
 	<e:Image source="exp_0002_png" x="453" y="416"/>
-	<e:Label id="txt_exp" text="100" x="492" y="425.66" anchorOffsetX="0" width="101" size="25" textAlign="right" textColor="0xf28b09" rotation="0.1" bold="true" fontFamily="Microsoft YaHei"/>
-	<e:Label id="txt_sole" text="100" x="650.04" y="426.07" anchorOffsetX="0" width="101" size="25" textAlign="right" rotation="0.1" bold="true" textColor="0xc91ebb" fontFamily="Microsoft YaHei"/>
+	<e:Label id="txt_exp" text="100" x="492" y="426.66" anchorOffsetX="0" width="101" size="22" textAlign="right" textColor="0xf28b09" rotation="0.1" bold="true" fontFamily="Microsoft YaHei"/>
+	<e:Label id="txt_sole" text="100" x="650.04" y="427.07" anchorOffsetX="0" width="101" size="22" textAlign="right" rotation="0.1" bold="true" textColor="0xc91ebb" fontFamily="Microsoft YaHei"/>
 	<e:Image source="sole_0002_png" x="606" y="416"/>
 	<e:Button id="btn_upLevel" label="升级" y="483" anchorOffsetX="0" width="288" horizontalCenter="0">
 		<e:skinName>

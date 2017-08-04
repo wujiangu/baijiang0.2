@@ -60,6 +60,7 @@ class ContinuousInjury extends BuffBase {
             if (this.target.attr.hp <= 0){
                 TimerManager.getInstance().remove(this.update, this);
                 this.target.gotoDead();
+                this.target.updateKillCount();
             }
         };
         var step1:Function = function(){

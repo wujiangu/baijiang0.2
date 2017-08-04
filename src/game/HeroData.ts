@@ -8,13 +8,36 @@ class HeroData {
      */
     public static initData(hero:any):void {
         HeroData.list = hero;
+        HeroData.addHeroAttr();
+    }
+
+    public static addHeroAttr():void {
+        for (let key in HeroData.list) {
+            HeroData.list[key].attr = [];
+            let data = ConfigManager[`${key}Attr`];
+            let level:number = HeroData.list[key].lv;
+            let attr = Utils.cloneObj(data[level - 1]);
+            HeroData.list[key].attr.push(attr["hp"]);
+            HeroData.list[key].attr.push(attr["atk"]);
+            HeroData.list[key].attr.push(attr["def"]);
+            HeroData.list[key].attr.push(attr["avo"]);
+            HeroData.list[key].attr.push(attr["crt"]);
+            HeroData.list[key].attr.push(attr["wsp"]);
+        }
     }
 
     /**
      * 设置英雄的属性数值
      */
     public static setHeroAttr(name:string, curLv:number):void {
-        
+        let data = ConfigManager[`${name}Attr`];
+        let attr = Utils.cloneObj(data[curLv - 1]);
+        HeroData.list[name].attr[0] = attr["hp"];
+        HeroData.list[name].attr[1] = attr["atk"];
+        HeroData.list[name].attr[2] = attr["def"];
+        HeroData.list[name].attr[3] = attr["avo"];
+        HeroData.list[name].attr[4] = attr["crt"];
+        HeroData.list[name].attr[5] = attr["wsp"];
     }
 
     /**
@@ -34,9 +57,11 @@ class HeroData {
      * 添加新的英雄
      */
     public static addHeroData(name:string, data:any) {
+        let currentHero = HeroData.getHeroData(GameData.curHero);
         let hero = data[name];
         HeroData.list[name] = hero;
-        HeroData.list[name]["lv"] = 1;        
+        HeroData.list[name]["lv"] = 1; 
+        if (currentHero.equip != 0) HeroData.list[name]["equip"] = currentHero.equip;
         this.update();
     }
 
@@ -63,6 +88,7 @@ class HeroData {
      */
     public static update():void{
         if (HeroData.list) LeanCloud.GetInstance().SaveRoleData("hero", HeroData.list);
+        // Common.log("更新英雄列表数据---->", JSON.stringify(HeroData.list));
     }
 
     /**数据表 */

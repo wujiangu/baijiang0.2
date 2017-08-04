@@ -30,7 +30,6 @@ class ShopDialog extends PopupWindow {
         this.btn_hero.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
-        this.btn_closeDetail.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         this.btn_oneDraw.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_tenDraw.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
@@ -39,13 +38,11 @@ class ShopDialog extends PopupWindow {
     }
 
     public onPurchaseData(event:egret.Event):void{
-        this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
-        this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+        this.show_label_text();
     }
 
     public Init():void{
-        this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
-        this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+        this.show_label_text();
     }
 
     public Reset(){
@@ -97,9 +94,6 @@ class ShopDialog extends PopupWindow {
                     popFunc();
               }
             break;
-            case this.btn_closeDetail:
-                this.detailGroup.visible = false;
-            break;
             default:
                 GameLayerManager.gameLayer().removeEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
                 GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
@@ -130,6 +124,12 @@ class ShopDialog extends PopupWindow {
         return false;
     }
 
+    private show_label_text():void{
+        this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
+        this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+        this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));
+    }
+
     /**
      * 获取卡组
      */
@@ -152,6 +152,7 @@ class ShopDialog extends PopupWindow {
     private lab_money:eui.Label;
     /**魂石 */
     private lab_soul:eui.Label;
+    private lab_exp:eui.Label;
 
     /*****************顶部按钮*******************/
     private btn_top:eui.ToggleButton[];
@@ -170,8 +171,6 @@ class ShopDialog extends PopupWindow {
     /*******************************************/
 
     private btn_back:eui.Button;
-    private detailGroup:eui.Group;
-    private btn_closeDetail:eui.Group;
 
     /**单抽按钮 */
     private btn_oneDraw:eui.Button;

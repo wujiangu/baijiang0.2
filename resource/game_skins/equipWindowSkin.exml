@@ -61,7 +61,7 @@
 	<e:Image source="exp_0001_png" x="604.16" y="42.4"/>
 	<e:Label id="lab_diamond" text="99999" y="52.92" size="25" fontFamily="Microsoft YaHei" x="996.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="114" textAlign="right"/>
 	<e:Label id="lab_soul" text="99999" y="52.92" size="25" fontFamily="Microsoft YaHei" x="828.86" bold="true" textColor="0x8B2EA5" anchorOffsetX="0" width="108" textAlign="right"/>
-	<e:Label id="lab_exp" text="99999" y="52.92" size="25" fontFamily="Microsoft YaHei" x="642.56" bold="true" textColor="0xBC822B" anchorOffsetX="0" width="112" textAlign="right"/>
+	<e:Label id="lab_exp" text="99999" y="49.92" size="25" fontFamily="Microsoft YaHei" x="642.56" bold="true" textColor="0xBC822B" anchorOffsetX="0" width="112" textAlign="right"/>
 
 
 

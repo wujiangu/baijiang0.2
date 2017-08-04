@@ -171,19 +171,20 @@ namespace modBattle {
                 data["attr"] = Utils.cloneObj(ConfigManager.boss[id-100][lv-1]);
             }else{
                 //精英怪带的buff个数
-                let buffCount:number = 2;
+                let buffCount:number = MathUtils.getRandom(1, 2);
                 let arrayBuff:Array<number> = [];
                 //简单随机排序
                 let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
                 originArray.sort(function(){ return 0.5 - Math.random(); });
                 for (let i = 0; i < buffCount; i++) {
                     arrayBuff.push(originArray[i]);
-                    // let id:number = 2;
+                    // let id:number = 4;
                     // arrayBuff.push(id);
                 }
                 data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
                 data["arrayBuff"] = arrayBuff;
                 data["isAvatar"] = false;
+                data["direction"] = 0;
             }
             data["attr"].hp *= k_hp;
             data["attr"].atk *= k_atk;

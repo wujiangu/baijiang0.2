@@ -162,7 +162,7 @@ class Hero extends BaseGameObject {
         let buff = HeroData.list[this.name].buff;
         let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
         let talent:Array<any> = modTalent.getData(curPage).talent;
-        // Common.log("talent---->", JSON.stringify(talent));
+        Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
             buff.push(id);
@@ -295,11 +295,11 @@ class Hero extends BaseGameObject {
                 }
             }
             if (!this.isPVP && count > 0){
-                let killCount:number = modBattle.getSumkill();
-                if (this.lastKill != killCount) {
-                    this.lastKill = killCount;
-                    SceneManager.battleScene.update(killCount);
-                }
+                // let killCount:number = modBattle.getSumkill();
+                // if (this.lastKill != killCount) {
+                //     this.lastKill = killCount;
+                //     SceneManager.battleScene.update(killCount);
+                // }
                 if (count >= 2) {
                     SceneManager.battleScene.updateInstantKill(count);
                 }

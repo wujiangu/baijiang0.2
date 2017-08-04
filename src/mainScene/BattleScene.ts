@@ -91,13 +91,13 @@ class BattleScene extends Base {
     private createComboGroup():void {
         this.comboGroup = new egret.DisplayObjectContainer();
         this.comboGroup.x = 0;
-        this.comboGroup.y = 260;
+        this.comboGroup.y = 450;
 
         let bg:egret.Bitmap = Utils.createBitmap("combo_bg_png");
         bg.scaleX = 3;
         bg.scaleY = 3;
         this.comboGroup.addChild(bg);
-        let comboText:egret.TextField = Utils.createText("斩", 80, 15, 30, 0x501414);
+        let comboText:egret.TextField = Utils.createText("斩", 150, 15, 30, 0x501414);
         comboText.bold = true;
         comboText.fontFamily = "Microsoft YaHei";
         this.comboGroup.addChild(comboText);
@@ -118,7 +118,7 @@ class BattleScene extends Base {
      * 更新连击数字
      */
     public update(value:number) {
-        this.isHit = true;
+        // this.isHit = true;
         let str:string = value.toString();
         this.comboCount.text = str;
         this.comboCount.anchorOffsetY = this.comboCount.height/2;
@@ -136,7 +136,10 @@ class BattleScene extends Base {
         //     Animations.stamp(this.comboCount, 300, 450, 10, 5);
         // }
         this.comboGroup.visible = true;
-        Animations.stamp(this.comboCount, 300, 450, 10, 5);
+        this.comboCount.scaleX = 10;
+        this.comboCount.scaleY = 10;
+        egret.Tween.get(this.comboCount).to({scaleX:5, scaleY:5}, 300, egret.Ease.bounceOut);
+        // Animations.stamp(this.comboCount, 300, 450, 10, 5);
     }
 
     /**

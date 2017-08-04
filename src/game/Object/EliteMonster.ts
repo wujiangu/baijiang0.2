@@ -68,11 +68,14 @@ class EliteMonster extends Monster {
         this._data = data;
         this._groupIndex = 0;
         this.isFaster = false;
-        if (this._isAvatar) {
-            this.scaleX = -1;
+        if (this._isAvatar && this.direction) {
             this.specialArmature.visible = true;
-            egret.Tween.get(this).to({x:this.x+100}, 50);
-            // this.specialArmature.play("skill04", 1, 2, 8);
+            if (this.direction == 1) {
+                egret.Tween.get(this).to({x:this.x-100}, 50);
+            }else{
+                this.scaleX = -1;
+                egret.Tween.get(this).to({x:this.x+100}, 50);
+            }
         }else{
             this.addChild(this.specialArmature);
             this.specialArmature.x = 0;
@@ -339,15 +342,28 @@ class EliteMonster extends Monster {
      */
     public splite():void {
         if (this.attr.hp <= 0) return;
-        egret.Tween.get(this).to({x:this.x-100}, 50).call(()=>{
-            this.setInvincible(false);
-            this.setCanMove(true);
-            this.gotoRun();
-        });
+        let avatarPos = MathUtils.getRandom(1, 2);
+        if (avatarPos == 1) {
+            this.scaleX = -1;
+            egret.Tween.get(this).to({x:this.x+100}, 50).call(()=>{
+                this.afterSplite();
+            });
+        }else{
+            egret.Tween.get(this).to({x:this.x-100}, 50).call(()=>{
+                this.afterSplite();
+            });
+        }
         this.createAvatar();
+        this._data[1]["direction"] = avatarPos;
         GameData.monsters.push(this._avatar);
         this._avatar.init(this._data);
         SceneManager.battleScene.battleLayer.addChild(this._avatar);
+    }
+
+    private afterSplite():void {
+        this.setInvincible(false);
+        this.setCanMove(true);
+        this.gotoRun();
     }
 
     /**

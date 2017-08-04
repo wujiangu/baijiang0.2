@@ -41,6 +41,7 @@ class Monster extends Enermy {
         this.attr.initEnermyAttr(data[1].attr);
         super.init(data);
         this._isAvatar = data[1].isAvatar;
+        this.direction = data[1].direction;
         this.initDragonBonesArmature(data[0]);
         this.isSummon = isSummon;
         this.isElite = isElite;
@@ -339,7 +340,10 @@ class Monster extends Enermy {
     public isSkillHurt:boolean;
     private readyCount:number;
     private heroRadian:number;
+    /**是否为分身 */
     public _isAvatar:boolean;
+    /**分身的初始方向 1:左, 1:右 */
+    public direction:number;
     /**远程攻击标志 */
     private _remote:boolean;
     private _deltaX:number;

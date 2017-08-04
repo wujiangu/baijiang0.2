@@ -162,7 +162,7 @@ class EquipUpWindow extends PopupWindow{
 
         let data = this.getEquipExpAndSoul();
         if(this.equip_info.Lv < modEquip.EquipSource.EQUIPLV){
-            this.showEquipLvInfo(true, `${data.exp}`, `${data.soul}`, "Lv." + (this.equip_info.Lv + this.upLevelNum))
+            this.showEquipLvInfo(true, data.exp, data.soul, "Lv." + (this.equip_info.Lv + this.upLevelNum))
         }
         else
         {
@@ -178,12 +178,12 @@ class EquipUpWindow extends PopupWindow{
      * @param strSole sole consume number
      * @param strNext next lv show info 
      */
-    private showEquipLvInfo(isShow:boolean = false, strExp:string = "0", strSole:string = "0", strNext:string = ""):void{
+    private showEquipLvInfo(isShow:boolean = false, exp:number = 0, soul:number = 0, strNext:string = ""):void{
         for(let i:number = 0; i < 4; i++){
             this.txt_rear_title[i].visible = isShow
         }
-        this.txt_exp.text = strExp;
-        this.txt_sole.text = strSole;
+        this.txt_exp.text = Common.TranslateDigit(exp);
+        this.txt_sole.text = Common.TranslateDigit(soul);
         this.next_lv.text  = strNext;
         this.lab_max.visible = !isShow;
     }

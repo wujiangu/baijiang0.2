@@ -22,7 +22,7 @@ class ReadyDialog extends PopupWindow {
         this._armatureGroup.y = 460;
         this._heroArmature = new Array();
         this._curAttr = new Array();
-        this._tempAttr = new Array();
+        // this._tempAttr = new Array();
         this._selectBox = Utils.createBitmap("img_selectHero_png");
         this._createAttr();
         this._createHeroIcon();
@@ -45,13 +45,26 @@ class ReadyDialog extends PopupWindow {
             Common.SetXY(curAttr, leftText.x + leftText.width + 100, leftText.y);
             curAttr.width = 200;
 
-            this._tempAttr[i] = Common.CreateText("+1", 24, Common.TextColors.green, true, "Microsoft YaHei","right");
-            this.biographyGroup.addChild(this._tempAttr[i]);
-            Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
-            this._tempAttr[i].width = 160;
+            // this._tempAttr[i] = Common.CreateText("+1", 24, Common.TextColors.green, true, "Microsoft YaHei","right");
+            // this.biographyGroup.addChild(this._tempAttr[i]);
+            // Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
+            // this._tempAttr[i].width = 160;
         }
 
         this.set_label_text(hero);
+    }
+
+    /**
+     * 更新人物属性界面数据
+     */
+    public updateHeroAttr():void {
+        // for (let i = 0; i < 6; i++) {
+        //     if (isUpgrade) {
+        //         hero.attr[i] ++;
+        //     }
+        //     let attr = hero.attr[i];
+        //     this._curAttr[i].text = attr
+        // }
     }
 
     /**
@@ -383,7 +396,7 @@ class ReadyDialog extends PopupWindow {
     // public static instance:ReadyDialog;
     private _isPVP:boolean;
     private _curAttr:Array<egret.TextField>;
-    private _tempAttr:Array<egret.TextField>;
+    // private _tempAttr:Array<egret.TextField>;
     /**属性组 */
     private biographyGroup:eui.Group;
     /**武器信息组 */

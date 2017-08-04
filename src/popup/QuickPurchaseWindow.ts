@@ -24,7 +24,8 @@ class QuickPurchaseWindow extends PopupWindow{
         this.goods_list = [{type:2,data:10000,name:goodsName}];
         let name_list:any = {exp:"经验",soul:"魂石"};
         this.lab_content.text = `${name_list[goodsName]}*10000`;
-        this.lab_title.text = `${name_list[goodsName]}不足是否购买特惠礼包?`;
+        this.lab_title.text = `${name_list[goodsName]}不足是否购买${name_list[goodsName]}礼包?`;
+        this.lab_topTitle.text = `${name_list[goodsName]}礼包`;
 
         Animations.PopupBackOut(this, 350);
     }
@@ -61,6 +62,7 @@ class QuickPurchaseWindow extends PopupWindow{
     /** label */
     private lab_content:eui.Label;
     private lab_title:eui.Label;
+    private lab_topTitle:eui.Label;
 
     /** other data */
     private goods_list:any;

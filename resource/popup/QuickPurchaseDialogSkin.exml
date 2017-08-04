@@ -10,12 +10,12 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Label id="lab_title" text="" y="232.33" anchorOffsetX="0" width="469" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="5.5" textColor="0x474747" size="23"/>
-	<e:Label text="特惠礼包" y="148.67" anchorOffsetX="0" width="458.67" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="6.5" textColor="0xfff8ef" anchorOffsetY="0" height="39" size="38"/>
-	<e:Image x="381.62" y="275.33" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" source="buy_0001_png"/>
-	<e:Label id="lab_content" text="魂石*50000" x="491" y="277.18" anchorOffsetX="0" width="338.33" size="24" fontFamily="Microsoft YaHei" bold="true" anchorOffsetY="0" height="57" textColor="0xa316aa" textAlign="center" verticalAlign="middle"/>
-	<e:Image source="crystal_0002_png" y="339.99" horizontalCenter="37"/>
-	<e:Label text="100" x="636.99" y="346" anchorOffsetX="0" width="87" textColor="0x0b6ebf" textAlign="center" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Label id="lab_title" text="" y="216.33" anchorOffsetX="0" width="549" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="5.5" size="25" textAlign="center" height="25" verticalAlign="middle" textColor="0xd60e0e"/>
+	<e:Label id="lab_topTitle" text="特惠礼包" y="148.67" anchorOffsetX="0" width="458.67" textAlign="center" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="6.5" textColor="0xfff8ef" anchorOffsetY="0" height="39" size="38"/>
+	<e:Image y="247.33" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" source="buy_0001_png" horizontalCenter="-100"/>
+	<e:Label id="lab_content" text="魂石*10000" x="574" y="260.18" anchorOffsetX="0" width="267.33" size="24" fontFamily="Microsoft YaHei" bold="true" anchorOffsetY="0" height="36" textColor="0xa316aa" textAlign="left" verticalAlign="middle"/>
+	<e:Image source="crystal_0002_png" y="305.99" horizontalCenter="20"/>
+	<e:Label text="100" x="605.99" y="310" anchorOffsetX="0" width="87" textColor="0x0b6ebf" textAlign="center" fontFamily="Microsoft YaHei" bold="true"/>
 	<e:Button id="btn_purchase" label="购买" y="408.71" horizontalCenter="1" width="288" height="76">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -25,4 +25,5 @@
 		</e:skinName>
 
 	</e:Button>
+	<e:Label text="商城有更优惠的(经验&amp;魂石)礼包" x="302.32" y="362" anchorOffsetX="0" width="542" textAlign="center" fontFamily="Microsoft YaHei" size="20" bold="true" height="20" textColor="0x9b8f8f"/>
 </e:Skin>
