@@ -9,32 +9,25 @@ class Monster extends Enermy {
     public initDragonBonesArmature(name:string):void {
         super.initDragonBonesArmature(name);
         this.armature.register(DragonBonesFactory.getInstance().makeArmature(name, name, 2), [
-            BaseGameObject.Action_Idle,
             BaseGameObject.Action_Hurt,
             BaseGameObject.Action_Attack01,
             BaseGameObject.Action_Attack02,
             BaseGameObject.Action_Attack03,
+            Enermy.Action_Idle1,
+            Enermy.Action_Idle2,
+            Enermy.Action_Idle3,
             Enermy.Action_Run01,
             Enermy.Action_Run02,
             Enermy.Action_Run03,
             Enermy.Action_Dead,
             Monster.Action_Ready01,
-            Monster.Action_Ready02
+            Monster.Action_Ready02,
+            Monster.Action_Ready03
         ]);
-        //释放主动技能动画
-        if (ConfigManager.isInArmatures(`${name}_skill`)) {
-            this.skillArmature.register(DragonBonesFactory.getInstance().makeArmature(`${name}_skill`, `${name}_skill`, 10), [
-                "skill01_01",
-                "skill01_02"
-            ]);
-            this.skillArmature.addFrameCallFunc(this.skillArmatureFrame, this);
-        }
         //增加动画帧执行函数
         this.armature.addFrameCallFunc(this.armatureFrame, this);
         this.armature.scaleX = 1.5;
         this.armature.scaleY = 1.5;
-        this.skillArmature.scaleX = 1.5;
-        this.skillArmature.scaleY = 1.5;
     }
 
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
@@ -43,6 +36,7 @@ class Monster extends Enermy {
         this._isAvatar = data[1].isAvatar;
         this.direction = data[1].direction;
         this.initDragonBonesArmature(data[0]);
+        this.addSkillArmature(data[1].type);
         this.isSummon = isSummon;
         this.isElite = isElite;
         this.speed = 10;
@@ -53,6 +47,22 @@ class Monster extends Enermy {
         this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.gotoEnter();
         // Common.log(JSON.stringify(data));
+    }
+
+    /**
+     * 主动或远程骨架添加
+     */
+    public addSkillArmature(name:string):void {
+        //释放主动技能动画
+        if (ConfigManager.isInArmatures(`${name}_skill`)) {
+            this.skillArmature.register(DragonBonesFactory.getInstance().makeArmature(`${name}_skill`, `${name}_skill`, 10), [
+                "skill01_01",
+                "skill01_02"
+            ]);
+            this.skillArmature.addFrameCallFunc(this.skillArmatureFrame, this);
+        }
+        this.skillArmature.scaleX = 1.5;
+        this.skillArmature.scaleY = 1.5;
     }
 
     /**
@@ -175,7 +185,7 @@ class Monster extends Enermy {
      */
     public gotoEnter() {
         super.gotoEnter();
-        this.armature.play(BaseGameObject.Action_Idle, 0);
+        this.armature.play(Enermy.Action_Idle3, 0);
     }
 
     /**奔跑 */
@@ -258,6 +268,11 @@ class Monster extends Enermy {
         super.gotoDead();
     }
 
+    public gotoIdle() {
+        this.curState = Enermy.Action_Idle3;
+        this.armature.play(Enermy.Action_Idle3, 0);
+    }
+
     /**消失 */
     public disappear():void {
         super.disappear();
@@ -307,7 +322,7 @@ class Monster extends Enermy {
                         this.gotoAttack();
                     }
                 }
-                else if (this.readyCount == 2 && this.isElite) {
+                else if (this.readyCount == 4 && this.isElite) {
                     Animations.fadeOutIn(this.img_sigh, 200);
                 }
             break;
@@ -353,6 +368,7 @@ class Monster extends Enermy {
     /*************英雄的动作***************/
     private static Action_Ready01:string = "xuli01";
     private static Action_Ready02:string = "xuli02";
+    private static Action_Ready03:string = "xuli03";
     private static Action_Skill:string = "skill01"
     /************************************/
 }

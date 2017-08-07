@@ -14,11 +14,13 @@ class MainScene extends Base {
         this.onListener();
         this.createMainScene();
         this.show_label_text();    
+        this.showSignDialog();
     }
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,this.btn_pvp,this.btn_email,this.btn_gm];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,
+                              this.btn_pvp,this.btn_email,this.btn_gm,this.btn_sign];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -160,6 +162,9 @@ class MainScene extends Base {
             case this.btn_gm:
                   WindowManager.GetInstance().GetWindow("GMWindow").Show();
             break;
+            case this.btn_sign:
+                WindowManager.GetInstance().GetWindow("SignDialog").Show();
+            break;
             case this.btn_applicate:
                 this.popupGroup.visible = false;
                 break;
@@ -183,6 +188,12 @@ class MainScene extends Base {
        });
 
        this.show_label_text();
+    }
+
+    private showSignDialog():void{
+        if(UserDataInfo.GetInstance().GetBasicData("isSign")) return;
+
+        WindowManager.GetInstance().GetWindow("SignDialog").Show();
     }
 
     public show_label_text():void{
@@ -215,6 +226,7 @@ class MainScene extends Base {
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;
     private btn_gm:eui.Button;
+    private btn_sign:eui.Button;
 
     private img_light:eui.Image;
     private star_list:Array<egret.Bitmap>;

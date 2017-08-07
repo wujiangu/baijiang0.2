@@ -1,6 +1,7 @@
 class UserDataInfo{
     public constructor(){
         this.basicData = {};
+        this.login_time_list = new Array();
     }
 
     public static instance:UserDataInfo;
@@ -67,7 +68,26 @@ class UserDataInfo{
         LeanCloud.GetInstance().SaveRoleBasicData();
     }
 
+    public GetLastLoginTime():any{
+        return this.login_time_list;
+    }
+
+    public IsDifferenceDate(val:any):boolean{
+        let date = new Date();
+        if(val == null){
+            this.login_time_list = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+            return true;
+        }
+
+        if(date.getFullYear() == val[0] && date.getMonth() + 1 == val[1] && val[2] == date.getDate()) return false;
+        else if(date.getFullYear() != val[0] || date.getMonth() + 1 != val[1] && date.getDate() != val[2]){
+            this.login_time_list = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+        }
+        return true;
+    }
+
     /**用户数据 */
     private _userInfo:any;
     private basicData:any;
+    private login_time_list:Array<number>;
 }

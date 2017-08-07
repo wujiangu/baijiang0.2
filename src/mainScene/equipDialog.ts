@@ -158,7 +158,7 @@ class EquipDialog extends PopupWindow {
     /** 显示装备星级 */
     private showEquipStar(star:number):void{
         for(let i:number = 0; i < 6; i++){
-            let strStar:string = star > i ? modEquip.GetEquipLvFromValue(this.equip_info.GetPointTypeFromIndex(i).Quality).img : "star_00_png";
+            let strStar:string = star > i ? modEquip.GetEquipColorFromQuality(this.equip_info.GetPointTypeFromIndex(i).Quality).img : "star_00_png";
             this.star_list[i].texture = RES.getRes(strStar);
             this.star_list[i].visible = this.equip_info.Quality >= i ? true : false;
         }
@@ -183,7 +183,7 @@ class EquipDialog extends PopupWindow {
         let imgBg:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_0005_png"));
         group.addChild(imgBg);
 
-        let data = modEquip.GetEquipLvFromValue(quality);
+        let data = modEquip.GetEquipColorFromQuality(quality);
         this.img_star_list[index].texture = RES.getRes(data.img);
         Common.SetXY(this.img_star_list[index], this.img_star_list[index].width - 7, imgBg.height - this.img_star_list[index].height >> 1);
         group.addChild(this.img_star_list[index]);
@@ -242,7 +242,7 @@ class EquipDialog extends PopupWindow {
         if(event.data == 1){
             let starIndex = this.equip_info.Star - 1;
             this.lab_lv.textFlow = <Array<egret.ITextElement>>[{text:"等级: 1/", style:{"textColor":0x727272}},{text:"" + modEquip.EquipSource.EQUIPLV, style:{"textColor":0xf28b01}}]
-            this.star_list[starIndex].texture = RES.getRes(modEquip.GetEquipLvFromValue(this.equip_info.GetPointTypeFromIndex(starIndex).Quality).img);
+            this.star_list[starIndex].texture = RES.getRes(modEquip.GetEquipColorFromQuality(this.equip_info.GetPointTypeFromIndex(starIndex).Quality).img);
             this.equip_info.UpdataBaseAttr();
             this.showResetGroup();
         }
@@ -263,13 +263,14 @@ class EquipDialog extends PopupWindow {
         }
 
         let index = event.data.index;
-        let data = modEquip.GetEquipLvFromValue(event.data.quality);
+        let data = modEquip.GetEquipColorFromQuality(event.data.quality);
 
         this.txt_attr_list[index].text = modEquip.GetAttrInfo(event.data.type, event.data.value);
         this.txt_attr_list[index].textColor = data.color;
         this.img_star_list[index].texture = RES.getRes(data.img);
         this.star_list[index].texture = RES.getRes(data.img)
         this.equip_object_list[this.goods_index].UpEquipData(this.equip_info);
+        this.equip_info.UpdataBaseAttr();
         this.show_label_data();
     }
 

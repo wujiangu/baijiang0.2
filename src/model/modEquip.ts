@@ -80,9 +80,9 @@ namespace modEquip {
            this.origin_attr_list = [];
 
            let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(quality);
-           for(let i:number = 0; i < 5; i++){
-               this.origin_attr_list[i] = (this.quality >= i && i < 4) ? tempData.init[i] : 0;
-               this.attr_list[i] = (this.quality >= i && i < 4) ? GetEquipUpAttr(this, 1, i) : 0
+           for(let i:number = 0; i < 4; i++){
+               this.origin_attr_list[i] = tempData.init[i];
+               this.attr_list[i] = GetEquipUpAttr(this, 1, i);
             }
        }
 
@@ -151,8 +151,8 @@ namespace modEquip {
         }
 
         public SetEquipAttr(attrList:Array<number>):void{
-            for(let i:number = 0; i < 5; i++){
-                this.attr_list[i] = i < 4 ? attrList[i] : 0;
+            for(let i:number = 0; i < 4; i++){
+                this.attr_list[i] = attrList[i];
             }
         }
 
@@ -353,7 +353,7 @@ namespace modEquip {
         return reset_list[quality - 1][type][1];
     }
 
-    export function GetEquipLvFromValue(quality:number,type:number = 1):any{
+    export function GetEquipColorFromQuality(quality:number,type:number = 1):any{
         let imgName:string = type == 1 ? "star" : "point";
 
         if(quality == null || quality == -1) return {color:0x858685,img:imgName + "_00_png"};
@@ -372,11 +372,9 @@ namespace modEquip {
         let equipData:any = TcManager.GetInstance().GetTcEquipData(info.Id);
         let attr_list:any = info.GetAttrType();
 
-        let first:number  
+        let first:number,second:number = 0,third:number = 0  
         if(info.Star == 0) first = lv * upData.up[index] + info.GetOriginAttr()[index];
-        else first = (lv + (info.Quality - 1 + info.Star) * 100) * star_up_attr[index] + star_init_attr[index];
-
-        let second:number = 0,third:number = 0;
+        else first = (lv + (info.Quality + info.Star) * 100) * star_up_attr[index] + star_init_attr[index];
 
         if(equipData.attr[index] == 1) second = upData.character[index] * (info.Star + 1) / upData.character[4];
 
@@ -385,14 +383,14 @@ namespace modEquip {
         }
 
        for(let i in attr_list){
-           if(index == 0 && attr_list[i].Type == AttrType.ATTACK){
+           if(index == 0 && attr_list[i].Type == AttrType.BLOOD){
                third += attr_list[i].Value;
            }
-           else if(index == 1 && attr_list[i].type == AttrType.BLOOD)
+           else if(index == 1 && attr_list[i].type == AttrType.DEFEND)
            {
                third += attr_list[i].Value;
            }
-           else if(index == 2 && attr_list[i].type == AttrType.DEFEND)
+           else if(index == 2 && attr_list[i].type == AttrType.ATTACK)
            {
                third += attr_list[i].Value;
            }

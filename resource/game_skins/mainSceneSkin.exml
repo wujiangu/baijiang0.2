@@ -113,4 +113,12 @@
 		</e:skinName>
 
 	</e:Button>
+	<e:Button id="btn_sign" label="" x="4" y="2">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_sign_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

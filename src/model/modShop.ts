@@ -43,16 +43,16 @@ namespace modShop {
      * 2: 5%
      */
     function starDistribute(roll:number):number {
-        let star;
-        if (roll >= starRolls[0][0] && roll <= starRolls[0][1]) {
-            star = 0;
-        }
-        else if (roll >= starRolls[1][0] && roll <= starRolls[1][1]) {
-            star = 1;
-        }
-        else if (roll >= starRolls[2][0] && roll <= starRolls[2][1]) {
-            star = 2;
-        }
+        let star = 0;
+        // if (roll >= starRolls[0][0] && roll <= starRolls[0][1]) {
+        //     star = 0;
+        // }
+        // else if (roll >= starRolls[1][0] && roll <= starRolls[1][1]) {
+        //     star = 1;
+        // }
+        // else if (roll >= starRolls[2][0] && roll <= starRolls[2][1]) {
+        //     star = 2;
+        // }
         return star;
     }
 

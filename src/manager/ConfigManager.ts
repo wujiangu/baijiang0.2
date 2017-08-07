@@ -36,9 +36,10 @@ namespace ConfigManager {
     /**解锁天赋页配置文件 */
     export var tcUnlockTalentPage:any;
     /**骨架数据 */
-    export var armatures:Array<string> = ["daoguang_effect", "diaochan", "monster01", "enter_monster_01", "Boss01",
+    export var armatures:Array<string> = ["daoguang_effect", "diaochan", "enter_monster_01", "Boss01",
         "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun", "zhaoyun_skill", "buxiaoman", "buxiaoman_skill", "buff",
-        "monster03", "monster02", "monster02_skill", "Elitemonster_skill"];
+        "monster02_skill", "Elitemonster_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
+        "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4"];
     /**
      * 加载配置文件
      */

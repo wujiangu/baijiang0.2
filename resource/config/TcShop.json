@@ -7,7 +7,7 @@
         {"name":"新手礼包", "type":"pack", "count":1, "initPrice":500, "discount":0, "price":500, "imgItem":"shop_0015_png", "detail":"礼包内有方天画戟x1、魂石x1000、经验x20000、钻石x50"},
         {"name":"经验礼包(小)", "type":"exp", "count":15000, "initPrice":100, "discount":0, "price":100, "imgItem":"shop_0020_png", "detail":"礼包中含有15000经验"},
         {"name":"经验礼包(中)", "type":"exp", "count":150000, "initPrice":1000, "discount":1, "price":800, "imgItem":"shop_0021_png", "detail":"礼包中含有150000经验"},
-        {"name":"经验礼包(大)", "type":"exp", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"shop_0022_png", "detail":"礼包中含有150000经验"},
+        {"name":"经验礼包(大)", "type":"exp", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"shop_0022_png", "detail":"礼包中含有1500000经验"},
         {"name":"魂石礼包(小)", "type":"soul", "count":15000, "initPrice":100, "discount":0, "price":100, "imgItem":"shop_0023_png", "detail":"礼包中含有15000魂石"},
         {"name":"魂石礼包(中)", "type":"soul", "count":150000, "initPrice":1000, "discount":1, "price":800, "imgItem":"shop_0024_png", "detail":"礼包中含有150000魂石"},
         {"name":"魂石礼包(大)", "type":"soul", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"shop_0025_png", "detail":"礼包中含有1500000魂石"}

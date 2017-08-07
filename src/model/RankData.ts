@@ -78,5 +78,14 @@ class RankData{
         }
     }
 
+    public set ChallengeNum(val:number){
+        this.challengeNum = val;
+    }
+
+    public get ChallengeNum(){
+        return this.challengeNum;
+    }
+
     private data_list:any;
+    private challengeNum:number;
 }

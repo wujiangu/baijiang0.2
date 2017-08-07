@@ -145,7 +145,8 @@ class Enermy extends BaseGameObject {
      */
     public gotoIdle() {
         this.curState = BaseGameObject.Action_Idle;
-        super.gotoIdle();
+        this.armature.play(BaseGameObject.Action_Idle, 0);
+        // super.gotoIdle();
     }
 
     /**
@@ -510,6 +511,9 @@ class Enermy extends BaseGameObject {
     public arrayBuffs:Array<number>;
 
     /*************敌方的状态***************/
+    public static Action_Idle1:string = "idle01";
+    public static Action_Idle2:string = "idle02";
+    public static Action_Idle3:string = "idle03";
     public static Action_Run01:string = "run01";
     public static Action_Run02:string = "run02";
     public static Action_Run03:string = "run03";

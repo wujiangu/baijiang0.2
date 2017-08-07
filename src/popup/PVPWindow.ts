@@ -34,7 +34,6 @@ class PVPWindow extends PopupWindow{
         this.scrollGroup.addChild(this.txt_damage_info);
 
         this.txt_damage.width = 130;
-        UserData.challengeNum = 0;
 
         //列表数据
         this.damageList = new eui.List();
@@ -54,7 +53,7 @@ class PVPWindow extends PopupWindow{
     public Show():void{
         super.Show();
 
-        if(UserData.challengeNum == 0) this.show_and_hide_btn(true, false);
+        if(RankData.GetInstance().ChallengeNum == 0) this.show_and_hide_btn(true, false);
         else this.show_and_hide_btn(false, true);
 
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
@@ -87,7 +86,7 @@ class PVPWindow extends PopupWindow{
             this.Close();
             SceneManager.nextScene = "pvpScene";
             WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
-            UserData.challengeNum++;
+            RankData.GetInstance().ChallengeNum++;
         }
         else if(target == this.btn_buy){
             if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 100)){
@@ -112,9 +111,6 @@ class PVPWindow extends PopupWindow{
         let date = new Date();
         let currHour = date.getHours();
         let currMinutes = date.getMinutes();
-        if(currHour == 21 && currMinutes == 0){
-            UserData.challengeNum = 0;
-        }
 
         let hour:number, minuter:number;
         if(currMinutes == 0){

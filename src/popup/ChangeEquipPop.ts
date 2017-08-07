@@ -134,7 +134,7 @@ class ChangeEquipPop extends PopupWindow {
         let special_list:any = info.GetAttrType();
         for(let i:number = 0; i < 6; i++){
             this.special_attr_list[i].text = special_list.length > i ? modEquip.GetAttrInfo(special_list[i].Type, special_list[i].Value) : "";
-            this.star_list[i].texture = RES.getRes(special_list.length > i ? modEquip.GetEquipLvFromValue(special_list[i].Quality).img : "star_00_png");
+            this.star_list[i].texture = RES.getRes(special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).img : "star_00_png");
             this.star_list[i].visible = info.Quality + 1 > i ? true : false;
         }
     }

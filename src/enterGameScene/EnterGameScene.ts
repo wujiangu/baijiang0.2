@@ -10,7 +10,7 @@ class EnterGameScene extends Base {
 
     private uiCompleteHandler():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
-        this.lab_enter.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onEnterGame, this);
+        this.lab_enter.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickText, this);
         this.objFadeEffect();
     }
 
@@ -32,13 +32,31 @@ class EnterGameScene extends Base {
     /**
      * 进入游戏
      */
-    private onEnterGame():void {
+    private onClickText():void {
+        this.lab_enter.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickText, this);
         egret.Tween.removeTweens(this.lab_enter);
-        GameLayerManager.gameLayer().sceneLayer.removeChildren();
+        this.removeChild(this.lab_enter);
 
+        let mc:egret.MovieClip = Common.CreateMovieClip("loginSword");
+        this.addChild(mc);
+        mc.play(1);
+
+        mc.width = mc.width * 2.5; mc.height = mc.height * 2.5;
+        mc.scaleX = 2.5; mc.scaleY = 2.5;
+        Common.SetXY(mc, this.width - mc.width >> 1, this.height - mc.height >> 1);
+
+        mc.addEventListener(egret.Event.COMPLETE, this.onEnterGame, this);
+    }
+
+    private onEnterGame(event:egret.Event):void{
+        event.target.removeEventListener(egret.Event.COMPLETE, this.onEnterGame, this);
+
+        GameLayerManager.gameLayer().sceneLayer.removeChildren();
         SceneManager.mainScene = new MainScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+        
     }
+
     private onConnectionState(status:boolean):void {
         if (status) {
             Common.log("链接服务器成功，正在登陆");

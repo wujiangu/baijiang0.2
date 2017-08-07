@@ -164,31 +164,33 @@ namespace modBattle {
      * 设置小兵的配置数据
      */
     function setMonsterData(id:number, lv:number, isBoss:boolean = false, k_hp:number = 1, k_atk:number = 1):any {
-            let type:string = `monster0${id}`;
-            let data = Utils.cloneObj(getEnermyData(id));
-            if (isBoss){
-                type = `Boss0${id - 99}`;
-                data["attr"] = Utils.cloneObj(ConfigManager.boss[id-100][lv-1]);
-            }else{
-                //精英怪带的buff个数
-                let buffCount:number = MathUtils.getRandom(1, 2);
-                let arrayBuff:Array<number> = [];
-                //简单随机排序
-                let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
-                originArray.sort(function(){ return 0.5 - Math.random(); });
-                for (let i = 0; i < buffCount; i++) {
-                    arrayBuff.push(originArray[i]);
-                    // let id:number = 4;
-                    // arrayBuff.push(id);
-                }
-                data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
-                data["arrayBuff"] = arrayBuff;
-                data["isAvatar"] = false;
-                data["direction"] = 0;
+        let colorId:number = Math.ceil(GameData.curStage/5) % 4;
+        if (colorId == 0) colorId = 4;
+        let type:string = `monster${id}_${colorId}`;
+        let data = Utils.cloneObj(getEnermyData(id));
+        if (isBoss){
+            type = `Boss0${id - 99}`;
+            data["attr"] = Utils.cloneObj(ConfigManager.boss[id-100][lv-1]);
+        }else{
+            //精英怪带的buff个数
+            let buffCount:number = MathUtils.getRandom(1, 2);
+            let arrayBuff:Array<number> = [];
+            //简单随机排序
+            let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
+            originArray.sort(function(){ return 0.5 - Math.random(); });
+            for (let i = 0; i < buffCount; i++) {
+                arrayBuff.push(originArray[i]);
+                // let id:number = 4;
+                // arrayBuff.push(id);
             }
-            data["attr"].hp *= k_hp;
-            data["attr"].atk *= k_atk;
-            return [type, data];
+            data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
+            data["arrayBuff"] = arrayBuff;
+            data["isAvatar"] = false;
+            data["direction"] = 0;
+        }
+        data["attr"].hp *= k_hp;
+        data["attr"].atk *= k_atk;
+        return [type, data];
     }
 
     /**
@@ -214,8 +216,13 @@ namespace modBattle {
         let waveCount:number = tcStage.wave;
         //敌方的配置
         maxEachWave = MathUtils.randomStage(maxCount, waveCount);
-        Common.log("敌方配置---->", maxEachWave);
+        // Common.log("敌方配置---->", maxEachWave);
         curWave = 0;
+
+        //关卡背景
+        let stageId:number = Math.ceil(GameData.curStage/5) % 3;
+        if (stageId == 0) stageId = 3;
+        SceneManager.battleScene.changeBg(stageId);
     }
 
     /**
@@ -264,7 +271,8 @@ namespace modBattle {
         let len:number = tcStage.monster.length - 1;
         for (let i = 0; i < count; i++){
             //敌人的类型索引
-            let index:number = MathUtils.getRandom(len);
+            // let index:number = MathUtils.getRandom(len);
+            let index:number = getMonsterIndex(len);
             //生产的敌人数据
             let id:number = tcStage.monster[index];
             let lv:number = tcStage.lv;
@@ -358,6 +366,28 @@ namespace modBattle {
         }
         return enermyConf;
     }
+
+    /**获取小怪的索引 */
+    function getMonsterIndex(len:number):number {
+        let arr:Array<number> = [];
+        let index:number = 0;
+        for (let i = 0; i < len; i++) {
+            arr.push(i);
+        }
+        let random:number = MathUtils.getRandom(1, 100);
+        let seed:number = Math.ceil(GameData.curStage/20) * 10;
+        if (random < seed) {
+            index = 1;
+        }else{
+            arr.splice(1, 1);
+            let temp:number = 0;
+            if (arr.length > 1) temp = MathUtils.getRandom(arr.length);
+            index = arr[temp];
+        }
+        // Common.log("当前关卡："+curWave, "随机："+random, "seed："+seed, "index："+index);
+        return index;
+    }
+
 
     /**生产的敌人数量 */
     var productCount:number;

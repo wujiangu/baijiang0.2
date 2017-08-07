@@ -228,21 +228,16 @@ namespace Animations {
         bg.width = Common.SCREEN_W;
         bg.height = Common.SCREEN_H;
         group.addChild(bg);
-        //白色遮罩
-        var shp:egret.Shape = new egret.Shape();
-        shp.graphics.beginFill( 0xffffff, 1);
-        shp.graphics.drawRect( 0, 0, Common.SCREEN_W, Common.SCREEN_H );
-        shp.graphics.endFill();
-        shp.alpha = 0;
-        group.addChild( shp );
         //武器
         let equipGroup:eui.Group = new eui.Group();
-        equipGroup.alpha = 0;
+        // equipGroup.alpha = 0;
         group.addChild(equipGroup);
         let equipBg:egret.Bitmap = Utils.createBitmap(`drawCard0${equipGrade}_png`);
+        equipBg.alpha = 0;
         equipBg.x = 186;
         equipGroup.addChild(equipBg);
         let nameText:egret.TextField = Utils.createText(name, Common.SCREEN_W/2, 79, 45, 0x0A0000);
+        nameText.alpha = 0;
         nameText.fontFamily = "Microsoft YaHei";
         nameText.bold = true;
         nameText.stroke = 3;
@@ -250,14 +245,19 @@ namespace Animations {
         nameText.anchorOffsetX = nameText.width/2;
         equipGroup.addChild(nameText);
         let img_equip:egret.Bitmap = Utils.createBitmap(`equip${25-card.id}_png`);
+        img_equip.visible = false;
         img_equip.anchorOffsetX = img_equip.width/2;
         img_equip.x = nameText.x;
         img_equip.y = 181;
         equipGroup.addChild(img_equip);
         let starGroup:eui.Group = new eui.Group();
         equipGroup.addChild(starGroup);
+
+        let ArrayStar:Array<egret.Bitmap> = []
         for (let i = 0; i < equipGrade+1; i++) {
             let img_star:egret.Bitmap = Utils.createBitmap("star_00_png");
+            ArrayStar.push(img_star);
+            img_star.visible = false;
             img_star.x = 36 * i;
             starGroup.addChild(img_star);
         }
@@ -274,39 +274,41 @@ namespace Animations {
                 }
             }
             let img_affix:egret.Bitmap = Utils.createBitmap(`star_0${imgId}_png`);
+            // img_affix.visible = false;
             img_affix.x = 36 * i;
             starGroup.addChild(img_affix);
         }
 
        //动画
-        var data = RES.getRes("drawCard_json");
-        var txtr = RES.getRes("drawCard_png");
+        var data = RES.getRes("drawCardClip_json");
+        var txtr = RES.getRes("drawCardClip_png");
         var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
-        var mc1:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "drawCard" ) );
-        mc1.x = Common.SCREEN_W/2 - 154;
-        mc1.y = Common.SCREEN_H/2 - 144;
+        var mc1:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "drawCardClip" ) );
+        mc1.x = Common.SCREEN_W/2 - 395;
+        mc1.y = Common.SCREEN_H/2 - 325;
         mc1.visible = false;
         group.addChild(mc1);
 
         /********************动画********************/
-        var step3 = function() {
-            egret.Tween.get(equipGroup).to({ alpha: 1.0 }, 400).call(()=>{
-                isFinish = true;
-            });
-        }
         var step2 = function() {
+            for (let i = 0; i < ArrayStar.length; i++) {
+                egret.setTimeout(()=>{
+                    ArrayStar[i].visible = true;
+                    ArrayStar[i].scaleX = 0;
+                    ArrayStar[i].scaleY = 0;
+                    egret.Tween.get(ArrayStar[i]).to({scaleX:1.0, scaleY:1.0}, 120, egret.Ease.elasticOut);
+                }, this, 100*i);
+            }
             egret.setTimeout(()=>{
-                mc1.visible = true;
-                mc1.gotoAndPlay("drawCard", 1);
-                egret.setTimeout(step3, this, 250);
-            }, this, 200);
-            egret.Tween.get(shp).to({ alpha: 0 }, 250);
+                isFinish = true;
+            }, this, 120*ArrayStar.length);
         }
         var step1 = function() {
-            egret.Tween.get(shp).to({ alpha: 1.0 }, 200).call(step2);
+            mc1.visible = true;
+            mc1.gotoAndPlay(1);
         }
         /*******************************************/
-        step2();
+        step1();
         GameLayerManager.gameLayer().maskLayer.addChild(group);
         //跳过
         if (type == "ten") {
@@ -324,7 +326,6 @@ namespace Animations {
 
             btn_Jump.touchEnabled = true;
             btn_Jump.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
-                shp.graphics.clear();
                 egret.Tween.removeTweens(group);
                 egret.Tween.removeTweens(btn_Jump);
                 GameLayerManager.gameLayer().maskLayer.removeChildren();
@@ -335,11 +336,22 @@ namespace Animations {
         //添加播放完成事件
         mc1.addEventListener(egret.Event.COMPLETE, function (){
             mc1.visible = false;
-            // step3();
+            step2();
+        }, this);
+        //添加播放播放过程事件
+        mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, (event:egret.MovieClipEvent)=>{
+            let label:string = event.frameLabel;
+            if (label == "@show") {
+                img_equip.visible = true;
+                img_equip.scaleX = 2.0;
+                img_equip.scaleY = 2.0;
+                egret.Tween.get(img_equip).to({scaleX:1.0, scaleY:1.0}, 200);
+                egret.Tween.get(nameText).to({alpha:1.0}, 300);
+                egret.Tween.get(equipBg).to({alpha:1.0}, 300);
+            }
         }, this);
         group.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
             if (isFinish) {
-                shp.graphics.clear();
                 egret.Tween.removeTweens(group);
                 GameLayerManager.gameLayer().maskLayer.removeChildren();
                 if (func) {
@@ -375,7 +387,12 @@ namespace Animations {
      * @param list 数组列表 指定武器对应的id目前只支持武器id
     */
     export function ShowGoodsPopEffect(list:any):void{
-        if(list.length == 0) return;
+        if(list == null) return;
+
+        if(list.length == null){
+            let tempData = list;
+            list = [tempData];
+        }
 
         for(let i in img_list) egret.Tween.removeTweens(img_list[i]);
         for(let i in txt_list) egret.Tween.removeTweens(txt_list[i]);

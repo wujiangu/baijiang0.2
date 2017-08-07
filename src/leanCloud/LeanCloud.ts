@@ -163,6 +163,7 @@ class LeanCloud{
             UserData.RoleName  = todo.get("roleName");
             UserData.rankDamage = todo.get("damage");
             RankData.GetInstance().InitDataList(JSON.parse(todo.get("rankData")));
+            RankData.GetInstance().ChallengeNum = todo.get("challenge");
             LeanCloud.GetInstance().InitRoleData();
             if(LeanCloud.GoodsId.length != 0){
                 LeanCloud.InitEquipData()
@@ -180,6 +181,7 @@ class LeanCloud{
             todo.set("rankData", JSON.stringify(RankData.GetInstance().GetDataList()));
             todo.set("damage", UserData.rankDamage);
             todo.set("name", UserData.RoleName);
+            todo.set("challenge", RankData.GetInstance().ChallengeNum)
             todo.save();
         },
         function(error){
@@ -191,9 +193,23 @@ class LeanCloud{
     public InitRoleData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email", "revivalCount"];
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "curTalentPage", "email", "revivalCount","sign", "isSign"];
             for(let i in str_list){
                 UserDataInfo.GetInstance().SetBasicData(str_list[i], todo.get(str_list[i]), false);
+            }
+
+            if(UserDataInfo.GetInstance().IsDifferenceDate(todo.get("userLoginTime"))){
+                if(UserDataInfo.GetInstance().GetBasicData("sign") >= 7){
+                    UserDataInfo.GetInstance().SetBasicData("sign", 0, false);
+                    todo.set("sign", UserDataInfo.GetInstance().GetBasicData("sign"));
+                }
+                
+                todo.set("isSign", false);
+                todo.set("userLoginTime", UserDataInfo.GetInstance().GetLastLoginTime());
+                todo.save();
+                
+                RankData.GetInstance().ChallengeNum = 0;
+                LeanCloud.GetInstance().SaveRankData();
             }
         },
         function(error){
@@ -204,7 +220,7 @@ class LeanCloud{
     public SaveRoleBasicData():void{
         let query = new AV.Query("RoleData");
         query.get(LeanCloud.RoleId).then(function(todo){
-            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "email", "revivalCount"];
+            let str_list:any = ["exp", "soul", "diamond", "power", "recharge", "email", "revivalCount","sign","isSign"];
             for(let i in str_list){
                 todo.set(str_list[i], UserDataInfo.GetInstance().GetBasicData(str_list[i]))
             }

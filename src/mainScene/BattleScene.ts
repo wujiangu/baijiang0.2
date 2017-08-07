@@ -97,15 +97,16 @@ class BattleScene extends Base {
         bg.scaleX = 3;
         bg.scaleY = 3;
         this.comboGroup.addChild(bg);
-        let comboText:egret.TextField = Utils.createText("斩", 150, 15, 30, 0x501414);
-        comboText.bold = true;
-        comboText.fontFamily = "Microsoft YaHei";
-        this.comboGroup.addChild(comboText);
+        // let comboText:egret.TextField = Utils.createText("斩", 150, 15, 30, 0x501414);
+        // comboText.bold = true;
+        // comboText.fontFamily = "Microsoft YaHei";
+        // this.comboGroup.addChild(comboText);
 
         //位图字体
-        let font = RES.getRes("combo_fnt");
+        let font = RES.getRes("killFnt_fnt");
         this.comboCount = new egret.BitmapText();
         this.comboCount.font = font;
+        this.comboCount.textAlign = "center";
         this.comboCount.x = 5;
         this.comboCount.y = 30;
         this.comboCount.text = "0";
@@ -120,7 +121,7 @@ class BattleScene extends Base {
     public update(value:number) {
         // this.isHit = true;
         let str:string = value.toString();
-        this.comboCount.text = str;
+        this.comboCount.text = str + "斩";
         this.comboCount.anchorOffsetY = this.comboCount.height/2;
         // if (!this.comboStatus) {
         //     this.comboTimer.start();
@@ -136,9 +137,9 @@ class BattleScene extends Base {
         //     Animations.stamp(this.comboCount, 300, 450, 10, 5);
         // }
         this.comboGroup.visible = true;
-        this.comboCount.scaleX = 10;
-        this.comboCount.scaleY = 10;
-        egret.Tween.get(this.comboCount).to({scaleX:5, scaleY:5}, 300, egret.Ease.bounceOut);
+        this.comboCount.scaleX = 2;
+        this.comboCount.scaleY = 2;
+        egret.Tween.get(this.comboCount).to({scaleX:1, scaleY:1}, 300, egret.Ease.bounceOut);
         // Animations.stamp(this.comboCount, 300, 450, 10, 5);
     }
 
@@ -205,7 +206,7 @@ class BattleScene extends Base {
         this.particleLayer.touchEnabled = false;
         this.topLayer = new eui.UILayer();
         this.mapBg = new eui.Image();
-        this.mapBg.source = "map_png";
+        this.mapBg.source = "map1_png";
         this.mapBg.smoothing = false;
         this.topLayer.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBin, this);
         this.topLayer.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
@@ -229,6 +230,11 @@ class BattleScene extends Base {
         this.addChild(this.effectLayer);
         this.addChild(this.blood);
         this.addChild(this.topLayer);
+    }
+
+    /**设置战场的背景 */
+    public changeBg(id:number):void {
+        this.mapBg.source = `map${id}_png`;
     }
 
     /**
@@ -267,6 +273,7 @@ class BattleScene extends Base {
         if (isElite) this.monster = ObjectPool.pop("EliteMonster");
         else this.monster = ObjectPool.pop("Monster");
         GameData.monsters.push(this.monster);
+        Common.log("怪物的数据---->", data);
         this.monster.init(data, isElite, isSummon);
         this.monster.x = MathUtils.getRandom(100, 1050);
         this.monster.y = MathUtils.getRandom(100, 550);

@@ -162,7 +162,7 @@ class Hero extends BaseGameObject {
         let buff = HeroData.list[this.name].buff;
         let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
         let talent:Array<any> = modTalent.getData(curPage).talent;
-        Common.log("talent---->", JSON.stringify(talent));
+        // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
             buff.push(id);

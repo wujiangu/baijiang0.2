@@ -35,7 +35,7 @@ class EquipObject extends eui.Group{
         let list = info.GetAttrType();
         let srcX = this.img_weapon.width - ((info.Quality + 1) * 10) - 7;
         for(let i:number = 0; i < 6; i++){
-            this.img_list[i].texture = RES.getRes(list.length > i ? modEquip.GetEquipLvFromValue(list[i].Quality,0).img : "point_00_png");
+            this.img_list[i].texture = RES.getRes(list.length > i ? modEquip.GetEquipColorFromQuality(list[i].Quality,0).img : "point_00_png");
             this.img_list[i].visible = info.Quality + 1 > i ? true : false;
             Common.SetXY(this.img_list[i], srcX + 10 * i, this.img_bottom.y + (this.img_bottom.height - 8 >> 1));
         }

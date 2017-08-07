@@ -263,6 +263,12 @@ namespace Common {
      * @param name 物品名字
     */
     export function DealReward(list):void{
+        if(list == null) return;
+        if(list.length == null){
+            let tempData = list;
+            list = [tempData];
+        }
+
         for(let i in list){
             if(list[i].type == 1){
                 modEquip.EquipData.GetInstance().InsertEquipList([list[i].data]);

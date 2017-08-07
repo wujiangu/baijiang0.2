@@ -70,7 +70,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
     }
 
     private changeAttrInfo(type:number, value:number, quality:number){
-        let data = modEquip.GetEquipLvFromValue(quality);
+        let data = modEquip.GetEquipColorFromQuality(quality);
         this.lab_attr.text = modEquip.GetAttrInfo(type, value);
         this.lab_attr.textColor = data.color;
         this.imgStar.source = data.img;

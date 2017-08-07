@@ -45,6 +45,7 @@ class EquipInfoDialog extends PopupWindow {
        let attrData = info.GetAttrType();
        for(let i:number = 0; i < this.refine_attr_list.length; i++){
            this.refine_attr_list[i].text = attrData.length > i ? modEquip.GetAttrInfo(attrData[i].Type, attrData[i].Value) : "";
+           this.refine_attr_list[i].textColor = modEquip.GetEquipColorFromQuality(attrData.length > i ? attrData[i].Quality : -1).color;
        }
     }
 

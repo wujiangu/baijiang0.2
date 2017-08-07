@@ -194,7 +194,7 @@ class EquipUpWindow extends PopupWindow{
 
         for(let i:number = 0; i < this.equip_info.Quality + 1; i++){
             quality = this.equip_info.GetAttrType().length > i ? this.equip_info.GetAttrType()[i].Quality:-1;
-            this.imgStar_list[i].texture = RES.getRes(modEquip.GetEquipLvFromValue(quality).img);
+            this.imgStar_list[i].texture = RES.getRes(modEquip.GetEquipColorFromQuality(quality).img);
             this.starGroup.addChild(this.imgStar_list[i]);
             Common.SetXY(this.imgStar_list[i], i * 32, 0);
         }
