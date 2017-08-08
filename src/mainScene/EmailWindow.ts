@@ -73,20 +73,10 @@ class EmailWindow extends PopupWindow{
        let srcX = this.emailGroup.width - 105 * len >> 1
 
        for(let i:number = 0; i < 5; i++){
-           if(len > i){
-               this.img_reward_list[i].texture = Common.GetTextureFromType(tempData.reward[i]); 
-
-               if(tempData.reward[i].type == 1) this.digit_list[i].text = "1";
-               else this.digit_list[i].text = Common.TranslateDigit(tempData.reward[i].data);
-
-               Common.SetXY(this.img_reward_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.img_reward_list[i].height >> 1));
-               Common.SetXY(this.digit_list[i], this.img_reward_list[i].x, this.btn_get.y - 40);
-           }
-           else
-           {
-               this.img_reward_list[i].texture = null;
-               this.digit_list[i].text = "";
-           }
+           this.img_reward_list[i].texture = len > i ? Common.GetTextureFromType(tempData.reward[i]) : null;
+           this.digit_list[i].text = len > i ? (tempData.reward[i].type == 1 ? "1" : Common.TranslateDigit(tempData.reward[i].data)) : "";
+           Common.SetXY(this.img_reward_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.img_reward_list[i].height >> 1));
+           Common.SetXY(this.digit_list[i], this.img_reward_list[i].x, this.btn_get.y - 40);
        }
    }
 
@@ -162,12 +152,11 @@ class EmailWindow extends PopupWindow{
         switch(event.target){
             case this.btn_get:
                 if(this._emailData[this._clickIndex].status == 1){
-                    Animations.showTips("您已经领取过该奖励", 1);
+                    Animations.showTips("您已经领取过该奖励", 1, true);
                     return;
                 } 
 
                 Common.DealReward(this._emailData[this._clickIndex].reward);
-                Animations.ShowGoodsPopEffect(this._emailData[this._clickIndex].reward);
                 this.setEmailStatus(2);
             break;
             case this.btn_getAll:
@@ -185,7 +174,6 @@ class EmailWindow extends PopupWindow{
                     return;
                 }
 
-                Animations.ShowGoodsPopEffect(list);
                 Common.DealReward(list);
                 UserDataInfo.GetInstance().SetBasicData("email", []);
                 this.initData();

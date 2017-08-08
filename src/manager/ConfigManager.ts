@@ -39,7 +39,7 @@ namespace ConfigManager {
     export var armatures:Array<string> = ["daoguang_effect", "diaochan", "enter_monster_01", "Boss01",
         "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun", "zhaoyun_skill", "buxiaoman", "buxiaoman_skill", "buff",
         "monster02_skill", "Elitemonster_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
-        "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4"];
+        "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "buffdiaoluo"];
     /**
      * 加载配置文件
      */

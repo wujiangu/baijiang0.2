@@ -21,6 +21,12 @@ class UserDataInfo{
     }
 
     public SetBasicData(name:string, val:any, isSave:boolean = true):void{
+        if(val == null){
+            if(name == "diamond" || name == "exp" || name == "soul" || name == "power" || name == "sign" || name == "recharge") val = 0;
+            else if(name == "email") val = [];
+            else if(name == "isSign") val = false;
+        }
+
         this.basicData[name] = val;
         if(isSave) LeanCloud.GetInstance().SaveRoleBasicData();
     }

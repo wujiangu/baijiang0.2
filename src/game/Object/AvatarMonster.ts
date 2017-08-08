@@ -59,9 +59,9 @@ class AvatarMonster extends Monster {
     /**
      * 蓄力状态
      */
-    public state_xuli01(time:number):void {
-        super.state_xuli01(time);
-    }
+    // public state_xuli01(time:number):void {
+    //     super.state_xuli01(time);
+    // }
 
     /**
      * 收到攻击状态

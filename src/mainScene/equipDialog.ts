@@ -16,11 +16,11 @@ class EquipDialog extends PopupWindow {
     public Init():void{
 
         this.equip_object_list = new Array();
-        this.star_list   = [];
-        this.reset_list = [];
-        this.reset_btn_list = [];
-        this.img_star_list = [];
-        this.txt_attr_list = [];
+        this.star_list   = new Array();
+        this.reset_list = new Array();
+        this.reset_btn_list = new Array();
+        this.img_star_list = new Array();
+        this.txt_attr_list = new Array();
         this.goods_index = 0;
 
         for(let i:number = 0; i < 6; i++){
@@ -43,7 +43,6 @@ class EquipDialog extends PopupWindow {
 
     /** 创建物品信息 */
     public Show():void{
-
         super.Show();
 
         this.setGroupStatus(true, false);

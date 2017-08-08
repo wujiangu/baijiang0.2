@@ -57,6 +57,7 @@ class EquipUpWindow extends PopupWindow{
         let equip_data = TcManager.GetInstance().GetTcEquipData(this.equip_info.Id);
         this.img_weapon.source = RES.getRes(`Sequip${25-this.equip_info.Id}_png`)
         this.txt_weapon.text   = equip_data.name;
+        this.txt_weapon.textColor = modEquip.GetEquipColorFromQuality(equip_info.Quality - 1).color;
         
         this.showStar();
         this.showUpgradeInfo();

@@ -183,6 +183,23 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         return posName;
     }
 
+    /**蓄力方向 */
+    public getReadyPosition(name:string, radian:number, isRemote:boolean) {
+        let posName:string;
+        let pi:number = Math.PI;
+        if (isRemote) {
+            posName = this.getWalkPosition(name, radian);
+        }else{
+            if ((radian >= -pi) && (radian < 0)) {
+                posName = name + "01";
+            }
+            else if (radian >= 0 && radian < pi) {
+                posName = name + "02"
+            } 
+        }
+        return posName;
+    }
+
     /**攻击方向 */
     public getAttackPosition(radian:number) {
         let pos:any = {};

@@ -33,31 +33,23 @@ class TimerManager {
         }
     }
 
+    /**加入到排序队列 */
+    private addObject(target:any):void {
+        if (target && target.length != 0) {
+            for (let i = 0; i < target.length; i++) {
+                this._object.push(target[i]);
+            }
+        }
+    }
+
     /**对象排序，并重新设置层级 */
     private objectSort():void {
         // if (!GameData.heros || !GameData.monsters || !GameData.boss || !GameData.stakes || GameData.heros.length == 0) return;
-        if (GameData.heros && GameData.heros.length != 0) {
-            for (let i = 0; i < GameData.heros.length; i++) {
-                this._object.push(GameData.heros[i]);
-            }
-        }
-        if (GameData.monsters && GameData.monsters.length != 0) {
-            for (let i = 0; i < GameData.monsters.length; i++) {
-                this._object.push(GameData.monsters[i]);
-            }
-        }
-
-        if (GameData.boss && GameData.boss.length != 0) {
-            for (let i = 0; i < GameData.boss.length; i++) {
-                this._object.push(GameData.boss[i]);
-            }            
-        }
-
-        if (GameData.stakes && GameData.stakes.length != 0) {
-            for (let i = 0; i < GameData.stakes.length; i++) {
-                this._object.push(GameData.stakes[i]);
-            }            
-        }
+        this.addObject(GameData.heros);
+        this.addObject(GameData.monsters);
+        this.addObject(GameData.boss);
+        this.addObject(GameData.stakes);
+        this.addObject(GameData.chests);
 
         this._object.sort(function(a, b){return a.y > b.y ? 1:-1;});
 

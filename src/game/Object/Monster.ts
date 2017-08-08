@@ -46,7 +46,7 @@ class Monster extends Enermy {
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
         this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.gotoEnter();
-        // Common.log(JSON.stringify(data));
+        // Common.log(JSON.stringify(this.confData));
     }
 
     /**
@@ -125,13 +125,6 @@ class Monster extends Enermy {
      */
     public state_run(time:number, func:Function = null):void {
         super.state_run(time, func);
-    }
-
-    /**
-     * 蓄力状态
-     */
-    public state_xuli01(time:number):void {
-        
     }
 
     /**
@@ -257,15 +250,17 @@ class Monster extends Enermy {
     public gotoReady() {
         if (!this.canMove) return;
         super.gotoReady();
-        this.curState = Monster.Action_Ready01;
+        this.curState = "xuli";
+        let animation = this.getReadyPosition("xuli", this.radian, this.confData.isRemote);
         this.readyCount = 0;
-        this.armature.play(Monster.Action_Ready01, 6);
+        this.armature.play(animation, 6);
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
     }
 
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
+        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:70});
     }
 
     public gotoIdle() {
@@ -310,7 +305,7 @@ class Monster extends Enermy {
     public armaturePlayEnd():void {
         super.armaturePlayEnd();
         switch (this.curState) {
-            case Monster.Action_Ready01:
+            case "xuli":
                 this.readyCount ++;
                 if (this.readyCount == 6) {
                     if (this.isRemote){

@@ -48,6 +48,7 @@ class Enermy extends BaseGameObject {
 
     public init(data:Array<any>) {
         super.init(data);
+        this.confData = data[1];
         this.isInvincible = false;
         this.buff = [];
         this.isEnemy = true;
@@ -218,6 +219,9 @@ class Enermy extends BaseGameObject {
     /**蓄力 */
     public gotoReady() {
         if (this.attr.hp <= 0) return;
+        /**攻击的弧度 */
+        this.radian = MathUtils.getRadian2(this.x, this.y, GameData.heros[0].x, GameData.heros[0].y);
+        this.reverse(this, this.radian);
     }
 
     /**死亡 */
@@ -351,12 +355,9 @@ class Enermy extends BaseGameObject {
         Animations.fadeOut(this.img_exp, 1000, null, ()=>{
             this.moveExpAndSoul(this.img_exp, 1);
         })
-        // let probability:number = MathUtils.getRandom(1, 10000);
-        // if (probability <= 9000) {
-            Animations.fadeOut(this.img_soul, 1000, null, ()=>{
-                this.moveExpAndSoul(this.img_soul, 2);
-            })
-        // }
+        Animations.fadeOut(this.img_soul, 1000, null, ()=>{
+            this.moveExpAndSoul(this.img_soul, 2);
+        })
     }
 
     /**
@@ -478,6 +479,8 @@ class Enermy extends BaseGameObject {
         0,0,0,1,0
     ]
     public defaultFlilter:egret.ColorMatrixFilter;
+    /**配置数据 */
+    public confData:any;
     /**受到的伤害是否为技能伤害 */
     public isSkillHurt:boolean;
     /**是否远程攻击 */

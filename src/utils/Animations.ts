@@ -442,4 +442,18 @@ namespace Animations {
         }
         step1();
     }
+
+    /** object fade effect 
+     * @param obj 
+     */
+    export function ObjFadeEffect(obj:any):void{
+        let randTime:number = Math.floor((Math.random() % 10) * 1000);
+        randTime = randTime < 100 ? 100 : randTime;
+        egret.Tween.get(obj).to({alpha:0.5},randTime).call(()=>{
+            egret.Tween.get(obj).to({alpha:1},randTime).call(()=>{
+                egret.Tween.removeTweens(obj);
+                ObjFadeEffect(obj);
+            },this)
+        },this);
+    }
 }

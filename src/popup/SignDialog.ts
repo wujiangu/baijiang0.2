@@ -144,7 +144,6 @@ class SignDialog extends PopupWindow{
 
         this.gooods_info_list[signTime].ShowClickSignEffect();
         Common.DealReward(this.gooods_data[signTime]);
-        Animations.ShowGoodsPopEffect(this.gooods_data[signTime]);
 
         UserDataInfo.GetInstance().SetBasicData("isSign", true);
         UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);

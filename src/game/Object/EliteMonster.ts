@@ -129,13 +129,6 @@ class EliteMonster extends Monster {
     }
 
     /**
-     * 蓄力状态
-     */
-    public state_xuli01(time:number):void {
-        super.state_xuli01(time);
-    }
-
-    /**
      * 收到攻击状态
      */
     public state_hurt(time:number):void {

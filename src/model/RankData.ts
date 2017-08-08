@@ -79,7 +79,7 @@ class RankData{
     }
 
     public set ChallengeNum(val:number){
-        this.challengeNum = val;
+        this.challengeNum = val == null ? 0 : val;
     }
 
     public get ChallengeNum(){

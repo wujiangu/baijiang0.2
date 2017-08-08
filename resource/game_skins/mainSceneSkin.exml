@@ -80,10 +80,10 @@
 	<e:Image id="img_soul" source="sole_0001_png" x="785.98" y="10.48"/>
 	<e:Image id="img_power" source="power_0001_png" x="418.64" y="10.48"/>
 	<e:Image id="img_exp" source="exp_0001_png" x="604.16" y="10.48"/>
-	<e:Label id="lab_diamond" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="997.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="113" textAlign="right" touchEnabled="false"/>
-	<e:Label id="lab_soul" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="825.86" bold="true" textColor="0x8b2ea5" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
-	<e:Label id="lab_exp" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="637.56" bold="true" textColor="0xbc822b" anchorOffsetX="0" width="117" textAlign="right" touchEnabled="false"/>
-	<e:Label id="lab_power" text="99999" y="21" size="25" fontFamily="Microsoft YaHei" x="457.01" bold="true" textColor="0xc1a77c" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_diamond" text="99999" y="19" size="25" fontFamily="Microsoft YaHei" x="997.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="113" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_soul" text="99999" y="19" size="25" fontFamily="Microsoft YaHei" x="825.86" bold="true" textColor="0x8b2ea5" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_exp" text="99999" y="19" size="25" fontFamily="Microsoft YaHei" x="637.56" bold="true" textColor="0xbc822b" anchorOffsetX="0" width="117" textAlign="right" touchEnabled="false"/>
+	<e:Label id="lab_power" text="99999" y="19" size="25" fontFamily="Microsoft YaHei" x="457.01" bold="true" textColor="0xc1a77c" anchorOffsetX="0" width="111" textAlign="right" touchEnabled="false"/>
 	<e:Button id="btn_pvp" label="" x="960.73" y="197.11">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

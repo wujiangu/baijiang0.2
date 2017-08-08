@@ -70,7 +70,7 @@ class Hero extends BaseGameObject {
         this.isInvincible = true;
         super.init(data);
         this.initDragonBonesArmature(data[0]);
-        let attr = modHero.addEquipAttr(data);      //test
+        // let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.name = data[0];
@@ -106,7 +106,6 @@ class Hero extends BaseGameObject {
             SceneManager.battleScene.showComboLayer();
             SceneManager.battleScene.battleSceneCom.setSumHp(this.originHP);
         }
-        Common.log("位置---->", this.x, this.y)
     }
 
     /**
@@ -157,11 +156,11 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
-        // let talent:Array<any> = GameData.testTalent.talent;     //test
-        let buff = HeroData.list[this.name].buff;
-        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        let talent:Array<any> = modTalent.getData(curPage).talent;
+        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        let talent:Array<any> = GameData.testTalent.talent;     //test
+        // let buff = HeroData.list[this.name].buff;
+        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        // let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -193,9 +192,9 @@ class Hero extends BaseGameObject {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        HeroData.list[this.name].buff.splice(2);         //test
-        let data:any = HeroData.getHeroData(GameData.curHero);
-        HeroData.update();
+        // HeroData.list[this.name].buff.splice(2);         //test
+        // let data:any = HeroData.getHeroData(GameData.curHero);
+        // HeroData.update();
     }
 
     /**

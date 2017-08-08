@@ -72,7 +72,7 @@ class ContinuousInjury extends BuffBase {
     /**刷新数据 */
     public update() {
         if (this.target.attr.hp > 0) {
-            if (!this.target.isPVP && this.target.curState != "xuli01"){
+            if (!this.target.isPVP && this.target.curState != "xuli"){
                 this.target.gotoRun();
             }
             this.bloodEffect();

@@ -1,0 +1,33 @@
+{"mc":{
+	"killTips2Clip":{
+		"frameRate":20,
+		"labels":[
+			{"name":"killTips2Clip","frame":1,"end":3}
+			],
+		"events":[
+			{"name":"@move","frame":2}
+			],
+		"frames":[
+			
+			{
+			"res":"jishatishi2_03",
+			"x":0,
+			"y":1
+			},
+			{
+			"res":"jishatishi2_02",
+			"x":28,
+			"y":27
+			},
+			{
+			"res":"jishatishi2_01",
+			"x":18,
+			"y":18
+			}        
+			]
+}},
+	"res":{
+        "jishatishi2_01":{"x":0,"y":0,"w":351,"h":115},
+        "jishatishi2_02":{"x":0,"y":117,"w":331,"h":97},
+        "jishatishi2_03":{"x":0,"y":216,"w":368,"h":31}
+	}}

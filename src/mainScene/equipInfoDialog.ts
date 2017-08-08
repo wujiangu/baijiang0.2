@@ -34,8 +34,11 @@ class EquipInfoDialog extends PopupWindow {
 
     public Show(info:modEquip.EquipInfo, name:string = "wu"):void{
         super.Show();
+
         this.lab_name.text = TcManager.GetInstance().GetTcEquipData(info.Id).name;
+        this.lab_name.textColor = modEquip.GetEquipColorFromQuality(info.Quality - 1).color;
         this.lab_lv.text   = info.Lv + "/100";
+
         let str_list:any = ["生命: ", "护甲: ", "攻击: ", "暴击: "];
 
         for(let i:number = 0; i < this.self_attr_list.length; i++){

@@ -261,8 +261,8 @@ namespace MathUtils {
             if (array.length > 0) {
                 tempSum += array[i-1];
             }
-            let maxValue:number = sum - tempSum - (count - (i+1));
-            let data:number = getRandom(1, maxValue);
+            let maxValue:number = sum - tempSum - (count - (i+1))*5;
+            let data:number = getRandom(5, maxValue);
             array.push(data);
         }
         return array;

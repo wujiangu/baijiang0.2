@@ -208,6 +208,7 @@ class LeanCloud{
                 todo.set("userLoginTime", UserDataInfo.GetInstance().GetLastLoginTime());
                 todo.save();
                 
+                UserDataInfo.GetInstance().SetBasicData("isSign", false, false);
                 RankData.GetInstance().ChallengeNum = 0;
                 LeanCloud.GetInstance().SaveRankData();
             }

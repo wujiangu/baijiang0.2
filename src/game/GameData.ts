@@ -21,6 +21,8 @@ class GameData {
     public static boss:Array<Boss>;
     /**木桩 */
     public static stakes:Array<Stakes>;
+    /**宝箱 */
+    public static chests:Array<Chest>;
     /**当前英雄 */
     public static curHero:string = "diaochan";    /**存储一些游戏的初始数据 */
     public static initData:any = null;

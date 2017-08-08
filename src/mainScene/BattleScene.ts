@@ -7,18 +7,20 @@ class BattleScene extends Base {
         GameData.heros = new Array();
         GameData.monsters = new Array();
         GameData.boss = new Array();
+        GameData.chests = new Array();
         this.timer = new egret.Timer(10, 0);
         this.timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
-        this.comboTimer = new egret.Timer(20, 100);
-        this.comboTimer.stop();
-        this.comboTimer.addEventListener(egret.TimerEvent.TIMER, this.onCombo, this);
-        this.comboTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onComboComplete, this);
+        // this.comboTimer = new egret.Timer(20, 100);
+        // this.comboTimer.stop();
+        // this.comboTimer.addEventListener(egret.TimerEvent.TIMER, this.onCombo, this);
+        // this.comboTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onComboComplete, this);
         modBattle.createTimer();
     }
     protected createChildren(): void{
         this.createMap();
         this.createComboGroup();
         this.createRewardCombo();
+        this.createRewardGroup();
     }
 
     protected childrenCreated(): void{
@@ -50,6 +52,7 @@ class BattleScene extends Base {
             this.instantKill.visible = false;
             this.effectLayer.addChild(this.comboGroup);
             this.effectLayer.addChild(this.instantKill);
+            this.effectLayer.addChild(this.rewardGroup);
         }
     }
 
@@ -91,7 +94,7 @@ class BattleScene extends Base {
     private createComboGroup():void {
         this.comboGroup = new egret.DisplayObjectContainer();
         this.comboGroup.x = 0;
-        this.comboGroup.y = 450;
+        this.comboGroup.y = 550;
 
         let bg:egret.Bitmap = Utils.createBitmap("combo_bg_png");
         bg.scaleX = 3;
@@ -107,7 +110,7 @@ class BattleScene extends Base {
         this.comboCount = new egret.BitmapText();
         this.comboCount.font = font;
         this.comboCount.textAlign = "center";
-        this.comboCount.x = 5;
+        this.comboCount.x = 25;
         this.comboCount.y = 30;
         this.comboCount.text = "0";
         this.comboCount.letterSpacing = 1;
@@ -140,7 +143,9 @@ class BattleScene extends Base {
         this.comboCount.scaleX = 2;
         this.comboCount.scaleY = 2;
         egret.Tween.get(this.comboCount).to({scaleX:1, scaleY:1}, 300, egret.Ease.bounceOut);
-        // Animations.stamp(this.comboCount, 300, 450, 10, 5);
+        if (value%50 == 0) {
+            this.updateRewardGroup(value);
+        }
     }
 
     /**
@@ -195,6 +200,82 @@ class BattleScene extends Base {
         Animations.stamp(this.instantKill, 300, 300);
     }
 
+    /**
+     * 创建击杀奖励组
+     */
+    private createRewardGroup():void {
+        this.rewardGroup = new egret.DisplayObjectContainer();
+        this.rewardGroup.x = 300;
+        this.rewardGroup.y = 80;
+        this.killTips = Common.CreateMovieClip("killTipsBgClip", true);
+        this.killTips.visible = false;
+        this.killTips.addEventListener(egret.Event.COMPLETE, this.onTipsBgComplete, this);
+        this.rewardGroup.addChild(this.killTips);
+        this.rewardGroup["count"] = Utils.createText("击杀怪物数 100!", 150, 100, 30, 0xF7D890);
+        this.rewardGroup["count"].visible = false;
+        this.rewardGroup.addChild(this.rewardGroup["count"]);
+        this.rewardGroup["count"].bold = true;
+        this.rewardGroup["exp"] = Utils.createText("+30000点经验奖励", 240, 120, 30, 0xF7D890);
+        this.rewardGroup["exp"].anchorOffsetX = this.rewardGroup["exp"].width/2;
+        this.rewardGroup["exp"].visible = false;
+        this.rewardGroup.addChild(this.rewardGroup["exp"]);
+        this.rewardGroup["exp"].bold = true;
+    }
+
+    /**更新击杀奖励 */
+    private updateRewardGroup(value:number):void {
+        let index:number = value/50;
+        if (index > 5) return;
+        this.killClip = Common.CreateMovieClip(`killTips${index}Clip`, true);
+        this.killClip.anchorOffsetY = this.killClip.height/2;
+        this.killClip.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this.killClip.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
+        this.rewardGroup.addChild(this.killClip);
+        this.killClip.x = 50;
+        this.killClip.y = 50;
+        this.killTips.visible = true;
+        this.killTips.gotoAndPlay(1);
+    }
+    private onTipsBgComplete():void {
+        this.killClip.gotoAndPlay(1);
+    }
+    private onMovie(event:egret.MovieClipEvent):void {
+        let label:string = event.frameLabel;
+        if (label == "@move") {
+            this.killClip.y = -20;
+            let value = modBattle.getSumkill();
+            this.rewardGroup["count"].visible = true;
+            this.rewardGroup["count"].text = "击杀数 " + value + "!";
+        }
+    }
+    private onComplete():void {
+        let value = modBattle.getSumkill();
+        let exp:number = value * 40;
+        this.rewardGroup["exp"].y = 120;
+        this.rewardGroup["exp"].text = "+" + exp + "点经验奖励";
+        this.rewardGroup["exp"].visible = true;
+        egret.Tween.get(this.rewardGroup["exp"]).to({y:this.rewardGroup["exp"].y+20}, 100).call(()=>{
+            modBattle.setExp(exp);
+            modBattle.setSoul(0);
+            SceneManager.battleScene.battleSceneCom.setExpAndSoul(modBattle.getExp(), modBattle.getSoul());
+            egret.Tween.get(this.rewardGroup).to({alpha:0}, 800, egret.Ease.circIn).call(()=>{
+                this.clearRewardGroup();
+            })
+        });
+    }
+    private clearRewardGroup():void {
+        this.killClip.removeEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        this.killClip.removeEventListener(egret.Event.COMPLETE, this.onComplete, this);
+        egret.Tween.removeTweens(this.rewardGroup);
+        this.killTips.visible = false;
+        this.rewardGroup["count"].visible = false;
+        this.rewardGroup["exp"].visible = false;
+        this.rewardGroup.alpha = 1.0;
+        this.rewardGroup.removeChild(this.killClip);
+        this.killClip = null;
+    }
+
+    /***********************************************************************************/
     /**
      * 创建地图背景
      */
@@ -273,7 +354,7 @@ class BattleScene extends Base {
         if (isElite) this.monster = ObjectPool.pop("EliteMonster");
         else this.monster = ObjectPool.pop("Monster");
         GameData.monsters.push(this.monster);
-        Common.log("怪物的数据---->", data);
+        // Common.log("怪物的数据---->", data);
         this.monster.init(data, isElite, isSummon);
         this.monster.x = MathUtils.getRandom(100, 1050);
         this.monster.y = MathUtils.getRandom(100, 550);
@@ -296,6 +377,18 @@ class BattleScene extends Base {
         this.battleLayer.addChild(this.boss);
     }
 
+    /**
+     * 创建宝箱
+     */
+    public createChest(params:any):void {
+        let chest = ObjectPool.pop("Chest");
+        GameData.chests.push(chest);
+        chest.init(params.id);
+        chest.x = params.x;
+        chest.y = params.y + 20;
+        this.battleLayer.addChild(chest);
+    }
+
     private createParticle() {
         //获取纹理
         var texture = RES.getRes("newParticle_png");
@@ -313,7 +406,7 @@ class BattleScene extends Base {
      * 清除子对象
      */
     public cleanChildren():void {
-        this.comboTimer.reset();
+        // this.comboTimer.reset();
         modBattle.recycleObject();
         this.effectLayer.removeChildren();
         this.otherLayer.removeChildren();
@@ -404,4 +497,10 @@ class BattleScene extends Base {
     private instantKill:egret.DisplayObjectContainer;
     /**一次击杀图片 */
     private img_insKill:egret.Bitmap;
+    /**击杀数量奖励组 */
+    private rewardGroup:egret.DisplayObjectContainer;
+    /**击杀提示动画 */
+    private killTips:egret.MovieClip;
+    /**击杀动画 */
+    private killClip:egret.MovieClip;
 }

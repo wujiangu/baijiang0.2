@@ -31,18 +31,6 @@ class MainScene extends Base {
         GameLayerManager.gameLayer().addEventListener(UserData.CHANGEDATA, this.onChangeData, this);
     }
 
-    /** 对象渐变效果 */
-    private objFadeEffect(obj:any):void{
-        let randTime:number = Math.floor((Math.random() % 10) * 1000);
-        randTime = randTime < 100 ? 100 : randTime;
-        egret.Tween.get(obj).to({alpha:0.5},randTime).call(()=>{
-            egret.Tween.get(obj).to({alpha:1},randTime).call(()=>{
-                egret.Tween.removeTweens(obj);
-                this.objFadeEffect(obj);
-            },this)
-        },this);
-    }
-
     /** 创建精灵 */
     private createMovie(name:string,x:number,y:number,index:number = -1):MovieClipManager{
         let movie = new MovieClipManager(name);
@@ -66,7 +54,7 @@ class MainScene extends Base {
             Common.SetXY(this.star_list[i], starPosition[i][0], starPosition[i][1]);
             this.star_list[i].scaleX = star_scale_list[i];
             this.star_list[i].scaleY = star_scale_list[i];
-            this.objFadeEffect(this.star_list[i]);
+            Animations.ObjFadeEffect(this.star_list[i]);
         }
         
         //精灵列表
@@ -151,10 +139,7 @@ class MainScene extends Base {
 				this.popupGroup.visible = true;
 				break;
             case this.btn_shop:
-                // this.ShowPop("ShopDialog");
-                this.shopDialog = WindowManager.GetInstance().GetWindow("ShopDialog");
-                this.shopDialog.Show();
-                Animations.fadeOut(this.shopDialog);
+                this.ShowPop("ShopDialog");
                 break;
             case this.btn_email:
                  this.ShowPop("EmailWindow");

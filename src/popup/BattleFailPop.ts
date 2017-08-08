@@ -102,9 +102,9 @@ class BattleFailPop extends PopupWindow {
         let killCount:number = modBattle.getSumkill();
         this.lab_killCount1.text = killCount.toString();
         this.lab_curKill.text = killCount.toString();
-        if (killCount <= 1000) maxCount = 1000;
+        if (killCount <= 50) maxCount = 50;
         else{
-            maxCount = Math.ceil(killCount/1000) * 1000;
+            maxCount = Math.ceil(killCount/50) * 50;
         }
         this.lab_maxKill.text = maxCount.toString();
         this.prog_killCount.scaleX = killCount/maxCount;

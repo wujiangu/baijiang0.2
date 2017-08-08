@@ -124,6 +124,7 @@ class ChangeEquipPop extends PopupWindow {
         let info:modEquip.EquipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(this.select_list[0], this.select_list[1]);
         this.lab_lv.text = "等级："+ info.Lv + "/" + modEquip.EquipSource.EQUIPLV;
         this.lab_name.text = TcManager.GetInstance().GetTcEquipData(this.select_list[0]).name
+        this.lab_name.textColor = modEquip.GetEquipColorFromQuality(info.Quality - 1).color;
         this.img_weapon.source = `Sequip${25-this.select_list[0]}_png`;
 
         let attr_name_list:any = [" 生命", " 护甲", " 攻击", " 暴击"];
@@ -134,6 +135,7 @@ class ChangeEquipPop extends PopupWindow {
         let special_list:any = info.GetAttrType();
         for(let i:number = 0; i < 6; i++){
             this.special_attr_list[i].text = special_list.length > i ? modEquip.GetAttrInfo(special_list[i].Type, special_list[i].Value) : "";
+            this.special_attr_list[i].textColor = special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).color : 0xff00ff;
             this.star_list[i].texture = RES.getRes(special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).img : "star_00_png");
             this.star_list[i].visible = info.Quality + 1 > i ? true : false;
         }

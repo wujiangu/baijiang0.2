@@ -48,7 +48,6 @@ class QuickPurchaseWindow extends PopupWindow{
 
     private onTouchPurchase(event:egret.TouchEvent):void{
         if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 100)){
-            Animations.ShowGoodsPopEffect(this.goods_list);
             Common.DealReward(this.goods_list);
             this.Close(1);
         }

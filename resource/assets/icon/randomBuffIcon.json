@@ -1,0 +1,16 @@
+{"file":"randomBuffIcon.png","frames":{
+"buff_bisha":{"x":76,"y":88,"w":40,"h":36,"offX":0,"offY":4,"sourceW":40,"sourceH":44},
+"buff_chihuan":{"x":38,"y":88,"w":36,"h":40,"offX":4,"offY":4,"sourceW":40,"sourceH":44},
+"buff_hudun":{"x":0,"y":88,"w":36,"h":40,"offX":4,"offY":4,"sourceW":40,"sourceH":44},
+"buff_jiasu":{"x":76,"y":46,"w":36,"h":40,"offX":4,"offY":4,"sourceW":40,"sourceH":44},
+"buff_kuangbao":{"x":80,"y":0,"w":36,"h":44,"offX":4,"offY":0,"sourceW":40,"sourceH":44},
+"buff_liuxue":{"x":0,"y":42,"w":36,"h":44,"offX":4,"offY":0,"sourceW":40,"sourceH":44},
+"buff_mangmu":{"x":76,"y":126,"w":36,"h":36,"offX":4,"offY":4,"sourceW":40,"sourceH":44},
+"buff_xuruo":{"x":42,"y":0,"w":36,"h":44,"offX":4,"offY":0,"sourceW":40,"sourceH":44},
+"buff_yinghua":{"x":0,"y":0,"w":40,"h":40,"offX":0,"offY":4,"sourceW":40,"sourceH":44},
+"buff_yishang":{"x":38,"y":46,"w":36,"h":40,"offX":4,"offY":4,"sourceW":40,"sourceH":44},
+"buff_jingxiang":{"x":0,"y":164,"w":15,"h":20,"offX":0,"offY":0,"sourceW":15,"sourceH":20},
+"buff_lei":{"x":0,"y":130,"w":32,"h":32,"offX":0,"offY":0,"sourceW":32,"sourceH":32},
+"buff_zhadan":{"x":57,"y":162,"w":16,"h":21,"offX":0,"offY":0,"sourceW":16,"sourceH":21},
+"buff_dingshen":{"x":34,"y":162,"w":21,"h":26,"offX":0,"offY":0,"sourceW":21,"sourceH":26},
+"buff_jian":{"x":34,"y":130,"w":30,"h":30,"offX":0,"offY":0,"sourceW":30,"sourceH":30}}}

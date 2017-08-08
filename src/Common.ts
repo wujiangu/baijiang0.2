@@ -226,11 +226,13 @@ namespace Common {
     /** create mc 
      * @param name clip name
      */
-    export function CreateMovieClip(name:string):egret.MovieClip{
+    export function CreateMovieClip(name:string, isSame:boolean = false):egret.MovieClip{
         let data = RES.getRes(name + "_json");
         let texture = RES.getRes(name + "_png");
         let mcData = new egret.MovieClipDataFactory(data, texture);
-        let mc = new egret.MovieClip(mcData.generateMovieClipData("action"));
+        let mc:egret.MovieClip;
+        if (isSame) mc = new egret.MovieClip(mcData.generateMovieClipData(name));
+        else mc = new egret.MovieClip(mcData.generateMovieClipData("action"));
         return mc;
     }
 
@@ -278,6 +280,8 @@ namespace Common {
                 UserDataInfo.GetInstance().SetBasicData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].data));
             }
         }
+
+        Animations.ShowGoodsPopEffect(list);
     }
 
     /** show lack goods popup
