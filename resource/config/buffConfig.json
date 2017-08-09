@@ -35,5 +35,9 @@
     {"id":54, "className":"Avatar", "cd":8, "duration":0, "damage":0, "name":""},
     {"id":55, "className":"Faster", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":56, "className":"BlowUp", "cd":0, "duration":0, "damage":0, "name":""},
-    {"id":70, "className":"Violent", "cd":0, "duration":10, "damage":0, "name":"狂暴"}
+    {"id":70, "className":"Violent", "cd":0, "duration":10, "damage":0, "name":"狂暴"},
+    {"id":71, "className":"Hardening", "cd":0, "duration":10, "damage":0, "name":"硬化"},
+    {"id":72, "className":"SpeedUp", "cd":0, "duration":10, "damage":0, "name":"加速"},
+    {"id":73, "className":"TempShield", "cd":0, "duration":10, "damage":0, "name":"护盾"},
+    {"id":74, "className":"InstanteKill", "cd":0, "duration":10, "damage":0, "name":"必杀"}
 ]

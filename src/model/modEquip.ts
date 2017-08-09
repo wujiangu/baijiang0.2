@@ -15,8 +15,9 @@ namespace modEquip {
 
     /**装备的通用资源 */
     export class EquipSource{
-        public static EQUIPLV:number = 100;
-        public static UPSTARCONSUME:number = 10000;
+        public static EQUIPLV:number = 100;             //武器最大等级
+        public static UPSTARPRICE:number = 10000;       //武器升星价格
+        public static RESETPRICE:number = 20;           //武器洗练价格
         public static RESETATTR:string = "RESETATTR";
         public static UPSTAR:string = "UPSTAR";
         public static UPGRADE:string = "UPGRADE";

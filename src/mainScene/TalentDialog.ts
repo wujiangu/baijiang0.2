@@ -312,6 +312,7 @@ class TalentDialog extends PopupWindow {
         this.btn_upPower.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkillPop, this);
         this.btn_upDiamond.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkillPop, this);
         this.btn_unLock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUnLock, this);
+        this.btn_help.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelp, this);
     }
 
     public Close():void{
@@ -326,6 +327,11 @@ class TalentDialog extends PopupWindow {
         this.btn_upPower.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkillPop, this);
         this.btn_upDiamond.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkillPop, this);
         this.btn_unLock.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUnLock, this);
+        this.btn_help.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelp, this);
+    }
+
+    private onHelp(event:egret.TouchEvent):void{
+        WindowManager.GetInstance().GetWindow("HelpTipDialog").Show(0);
     }
 
     /** 如果天赋慢的话则返回true  否则返回false */
@@ -440,4 +446,5 @@ class TalentDialog extends PopupWindow {
     private purchassType:number;
     private pages:Array<TalentIR>;
     private img_title:eui.Image;
+    private btn_help:eui.Button;
 }

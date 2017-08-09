@@ -169,13 +169,14 @@ class Hero extends BaseGameObject {
         for (let i = 0; i < buff.length; i++) {
             let buffConfig = modBuff.getBuff(buff[i]);
             let newBuff = ObjectPool.pop(buffConfig.className);
-            newBuff.buffInit(buffConfig)
+            newBuff.buffInit(buffConfig);
             this.addBuff(newBuff);
         }
     }
 
     /**增加buff */
-    public addBuff(buff:any):void {
+    public addBuff(buff:any, isTemp:boolean=false):void {
+        if (this.isExistBuff(buff) && isTemp) return;
         if (this.isExistBuff(buff) && (buff.buffData.controlType == ControlType.YES) && (buff.buffData.superpositionType == SuperpositionType.SuperpositionType_None)) return;
         Common.log("增加buff----->", buff.buffData.className);
         this.buff.push(buff);
@@ -197,22 +198,24 @@ class Hero extends BaseGameObject {
         // HeroData.update();
     }
 
+    /**增加攻击对象队列 */
+    private addVictim(target:any) {
+        for (let i = 0; i < target.length; i++) {
+            this.enermy.push(target[i]);
+        }
+    }
+
     /**
      * 设置敌人(当英雄进行攻击、释放技能时，判断受到影响的敌人)
      */
     public setEnermy():void {
         this.enermy = [];
         if (!this.isPVP) {
-            for (let i = 0; i < GameData.boss.length; i++) {
-                this.enermy.push(GameData.boss[i]);
-            }
-            for (let i = 0; i < GameData.monsters.length; i++) {
-                this.enermy.push(GameData.monsters[i]);
-            }
+            this.addVictim(GameData.boss);
+            this.addVictim(GameData.monsters);
+            this.addVictim(GameData.chests);
         }else{
-            for (let i = 0; i < GameData.stakes.length; i++) {
-                this.enermy.push(GameData.stakes[i]);
-            }
+            this.addVictim(GameData.stakes);
         }
     }
 
@@ -279,17 +282,23 @@ class Hero extends BaseGameObject {
                 let angle = Math.abs(this.atk_radian - radian);
                 let dx = dis*Math.cos(angle);
                 let dy = dis*Math.sin(angle);
-                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 30) && (this.enermy[i].attr.hp > 0)) {
-                    this.setHurtValue(this.attr.atk);
-                    if (!this.isPVP && this.enermy[i]) {
-                        let state = this.enermy[i].curState;
-                        modBuff.isAttackBuff(this, this.enermy[i]);
+                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 30)) {
+                    if (this.enermy[i].type == 0) {
+                        //道具或宝箱
+                        this.enermy[i].gotoHurt();
                     }
-                    if (this.isCrit()) this._hurtValue *= 1.5;
-                    if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
-                    if (!this.isPVP && this.enermy[i]) {
-                        let state = this.enermy[i].getCurState();
-                        if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
+                    else if(this.enermy[i].type == 1 && this.enermy[i].attr.hp > 0) {
+                        this.setHurtValue(this.attr.atk);
+                        if (!this.isPVP && this.enermy[i]) {
+                            let state = this.enermy[i].curState;
+                            modBuff.isAttackBuff(this, this.enermy[i]);
+                        }
+                        if (this.isCrit()) this._hurtValue *= 1.5;
+                        if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
+                        if (!this.isPVP && this.enermy[i]) {
+                            let state = this.enermy[i].getCurState();
+                            if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
+                        }
                     }
                 }
             }
@@ -443,11 +452,12 @@ class Hero extends BaseGameObject {
         if (shieldCount == 0) return;
         else value = shieldCount;
         //免疫伤害
-        if (!this.skill_status){
-            if (modBuff.isImmuneBuff(this)) return;
-        }
+        if (!this.skill_status && modBuff.isImmuneBuff(this)) return;
         if (this.curState == BaseGameObject.Action_Hurt || this.curState == "attack") return;
         SceneManager.battleScene.bloodTween();
+        if (modBuff.isHurtReduce(this)) value *= 0.5;
+        modBuff.reflection(this);
+        Common.log("受到伤害------>", value);
         this.hurtHandler(value);
     }
 
@@ -578,6 +588,7 @@ class Hero extends BaseGameObject {
         if (this.isPVP){
             SceneManager.pvpScene.onCDTime(this.skill.cd);
         }else{
+            modBuff.isInstanteKill(this);
             SceneManager.battleScene.battleSceneCom.onCDTime(this.skill.cd);
         }
     }

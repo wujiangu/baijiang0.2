@@ -24,8 +24,7 @@ class EquipObject extends eui.Group{
     }
 
     public ChangeEquipSource(info:modEquip.EquipInfo):void{
-        this.img_weapon.texture = RES.getRes( `Sequip${25-info.Id}_png`);
-
+        this.img_weapon.texture = RES.getRes(`Sequip${25-info.Id}_png`);
         Common.SetXY(this.img_bottom, this.img_weapon.width - this.img_bottom.width >> 1, this.img_weapon.height - this.img_bottom.height - 7);
         this.UpEquipData(info);
     }

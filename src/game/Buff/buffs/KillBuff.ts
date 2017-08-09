@@ -64,7 +64,7 @@ class KillBuff extends BuffBase {
             let speed:number = this.target.getSpeed();
             this.target.setSpeed(speed - this._extraSpeed);
             this._extraSpeed = 0;
-            Common.log("刺客buff结束--->", this.target.getSpeed())
+            Common.log("刺客buff结束--->", this.target.getSpeed());
         }
         else if (this.buffData.id == 40) {
             let shield:number = this.target.getShieldCount();

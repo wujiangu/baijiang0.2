@@ -183,11 +183,13 @@ class EliteMonster extends Monster {
             });
             let enermy = GameData.heros[0].getEnermy();
             for (let i = 0; i < enermy.length; i++) {
-                let buff = enermy[i].buff;
-                for (let i = 0; i < buff.length; i++) {
-                    if (buff[i].buffData.id == 54) {
-                        buff[i].startTimer();
-                        break;
+                if (enermy[i].type == 1) {
+                    let buff = enermy[i].buff;
+                    for (let i = 0; i < buff.length; i++) {
+                        if (buff[i].buffData.id == 54) {
+                            buff[i].startTimer();
+                            break;
+                        }
                     }
                 }
             }
@@ -377,7 +379,7 @@ class EliteMonster extends Monster {
         GameData.heros[0].setEnermy();
         let enermy = GameData.heros[0].getEnermy();
         for (let i = 0; i < enermy.length; i++) {
-            if (enermy[i]._isAvatar) {
+            if (enermy[i].type == 1 && enermy[i]._isAvatar) {
                 enermy[i].gotoHurt(1, true);
             }
         }

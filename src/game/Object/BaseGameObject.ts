@@ -44,6 +44,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.isReverse = false;
         this.isComplete = true;
         this.curState = "";
+        this.type = 1;
     }
 
     /**设置控制状态 */
@@ -296,6 +297,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public static Action_Attack05:string = "attack05";
     public static Action_Hurt:string = "hurt";
 
+    /**对象类型 0:掉落的宝箱或道具，1:角色或敌人 */
+    public type:number;
     /**是否无敌状态 */
     public isInvincible:boolean;
     /**伤害位图 */

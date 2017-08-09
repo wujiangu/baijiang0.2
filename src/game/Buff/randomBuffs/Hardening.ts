@@ -1,10 +1,10 @@
 /**
- * 狂暴
+ * 硬化
  */
-class Violent extends BaseRandomBuff {
+class Hardening extends BaseRandomBuff {
     public constructor() {
         super();
-        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_kuangbao");
+        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_yinghua");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
     }
@@ -12,9 +12,9 @@ class Violent extends BaseRandomBuff {
     /**初始化 */
     public buffInit(options:any) {
         super.buffInit(options);
-        this.iconName = "randomBuffIcon_json.buff_kuangbao";
+        this.iconName = "randomBuffIcon_json.buff_yinghua";
         this.options = options;
-        this.buffData.className = "Violent";
+        this.buffData.className = "Hardening";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_Overlay;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;
@@ -36,21 +36,24 @@ class Violent extends BaseRandomBuff {
 
     /**刷新数据 */
     public update(target:any, callBack:Function = null) {
-        
+        if (callBack) {
+            let isReduce:boolean = false;
+            if (this._extraValue > 0) isReduce = true;
+            callBack(isReduce);
+        }
     }
 
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_kuangbao");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_yinghua");
     }
 
     public addProperty():void {
         super.addProperty();
         if (this._extraValue == 0){
-            this._extraValue = Math.floor(GameData.heros[0].attr.atk * 0.5);
-            GameData.heros[0].attr.atk += this._extraValue;
+            this._extraValue = 1;
         }
     }
 
@@ -59,7 +62,6 @@ class Violent extends BaseRandomBuff {
      */
     public _onComplete(event:egret.TimerEvent) {
         super._onComplete(event);
-        GameData.heros[0].attr.atk -= this._extraValue;
         this._extraValue = 0;
     }
 
@@ -72,5 +74,4 @@ class Violent extends BaseRandomBuff {
     public HideEffect() {
         
     }
-    
 }

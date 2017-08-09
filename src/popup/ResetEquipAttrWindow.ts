@@ -43,7 +43,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
 
     private onTouchReset(event:egret.TouchEvent):void{
 
-        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", 50)){
+        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", modEquip.EquipSource.RESETPRICE)){
             Animations.showTips("钻石不足，无法洗练", 1, true);
             return;
         }
@@ -74,13 +74,13 @@ class ResetEqiopAttrWindow extends PopupWindow{
         this.lab_attr.text = modEquip.GetAttrInfo(type, value);
         this.lab_attr.textColor = data.color;
         this.imgStar.source = data.img;
-        this.lab_money.text = "当前幸运值: " + modEquip.EquipData.GetInstance().Lucky;
+        this.lab_lucky.text = "当前幸运值: " + modEquip.EquipData.GetInstance().Lucky;
     }
 
     private imgStar:eui.Image;
 
     private lab_attr:eui.Label;
-    private lab_money:eui.Label;
+    private lab_lucky:eui.Label;
 
     private btn_reset:eui.Button;
     private btn_close:eui.Image;

@@ -145,6 +145,8 @@ class SignDialog extends PopupWindow{
         this.gooods_info_list[signTime].ShowClickSignEffect();
         Common.DealReward(this.gooods_data[signTime]);
 
+        if(this.gooods_data[signTime].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+
         UserDataInfo.GetInstance().SetBasicData("isSign", true);
         UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);
         this.showSignStatus();
@@ -156,7 +158,7 @@ class SignDialog extends PopupWindow{
             this.gooods_info_list[i].ShowAndHideHook(true);
         }
 
-        this.img_click.visible = signTime < 7 ? true : false;
+        this.img_click.visible = UserDataInfo.GetInstance().GetBasicData("isSign") == false ? true : false;
         if(signTime >= 7) return;
         Common.SetXY(this.img_click, this.gooods_info_list[signTime].x + (this.gooods_info_list[signTime].width - this.img_click.width >> 1), this.gooods_info_list[signTime].GetImgSrcY());
     }

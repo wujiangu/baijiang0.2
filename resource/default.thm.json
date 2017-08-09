@@ -50,6 +50,7 @@
     "resource/game_skins/talentSkinIR.exml",
     "resource/game_skins/talentWindowSkin.exml",
     "resource/popup/GMWindowSkin.exml",
+    "resource/popup/HelpDialogSkin.exml",
     "resource/popup/PVPWindow.exml",
     "resource/popup/QuickPurchaseDialogSkin.exml",
     "resource/popup/ShareDialogSkin.exml",

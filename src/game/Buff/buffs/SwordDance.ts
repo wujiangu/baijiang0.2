@@ -120,10 +120,12 @@ class SwordDance extends BuffBase {
             this.target.setEnermy();
             let enermy = this.target.getEnermy();
             for (let i = 0; i < enermy.length; i++) {
-                let dis = MathUtils.getDistance(this.target.x, this.target.y, enermy[i].x, enermy[i].y);
-                if (dis <= 150) {
-                    let value:number = this.target.attr.atk * 0.5;
-                    enermy[i].gotoHurt(value);
+                if (enermy[i].type == 1) {
+                    let dis = MathUtils.getDistance(this.target.x, this.target.y, enermy[i].x, enermy[i].y);
+                    if (dis <= 150) {
+                        let value:number = this.target.attr.atk * 0.5;
+                        enermy[i].gotoHurt(value);
+                    }
                 }
             }
         }

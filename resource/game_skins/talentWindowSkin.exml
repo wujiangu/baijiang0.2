@@ -124,4 +124,12 @@
 			</e:skinName>
 		</e:Button>
 	</e:Group>
+	<e:Button id="btn_help" label="" x="246" y="44">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="help_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

@@ -74,12 +74,17 @@ class BattleSceneCom extends Base {
         // let attr = data[0];
         this._sumHP = attr.hp;
         Animations.fadeOutIn(this.lab_stage);
+        this.arrayBuff = [];
     }
 
     /**设置经验魂石的值 */
     public setExpAndSoul(exp:number, soul:number):void {
         this.lab_exp.text = exp.toString();
         this.lab_soul.text = soul.toString();
+    }
+
+    public getCDtime():number {
+        return this.cd_time;
     }
 
     /**更新界面 */
@@ -99,6 +104,14 @@ class BattleSceneCom extends Base {
             Animations.fadeOutIn(this.lab_stage);
         }
         this.lab_killCount.text = `${num}/${sum}`;
+    }
+
+    /**技能cd清零 */
+    public cdTimeClear():void {
+        this.cd_time = 0;
+        this.lab_cdTime.visible = false;
+        this.img_skillMask.visible = false;
+        TimerManager.getInstance().remove(this.timerCD, this);
     }
 
     /**技能cd */
@@ -133,6 +146,30 @@ class BattleSceneCom extends Base {
         this._sumHP = value;
     }
 
+    /**增加buff图标 */
+    public addBuffIcon(name:string):void {
+        if (this._isExistBuff(name)) return;
+        let icon:egret.Bitmap = Utils.createBitmap(name);
+        icon.name = name;
+        icon.x = this.arrayBuff.length * 40;
+        this.arrayBuff.push(icon);
+        this.buffGroup.addChild(icon);
+    }
+
+    /**删除buff图标 */
+    public removeBuffIcon(name:string):void {
+        for (let i = 0; i < this.arrayBuff.length; i++) {
+            if (this.arrayBuff[i].name == name) {
+                let icon = this.arrayBuff[i];
+                egret.Tween.get(icon).to({alpha:0}, 200).call(()=>{
+                    this.buffGroup.removeChild(icon);
+                });
+                this.arrayBuff.splice(i, 1);
+                break;
+            }
+        }
+    }
+
     /**复活 */
     public onRevive(isPassive:boolean = false, value:number = 1):void {
         if (!isPassive){
@@ -162,8 +199,24 @@ class BattleSceneCom extends Base {
         return skill;
     }
 
+    /**判断是否已存在buff */
+    private _isExistBuff(name:string):boolean {
+        let status:boolean = false;
+        for (let i = 0; i < this.arrayBuff.length; i++) {
+            if (this.arrayBuff[i].name == name) {
+                status = true;
+                break;
+            }
+        }
+        return status;
+    }
+
     public group_top:eui.Group;
     public group_btn:eui.Group;
+    /**buff组 */
+    private buffGroup:eui.Group;
+    /**buff图标组 */
+    private arrayBuff:Array<egret.Bitmap>
     private _sumHP:number;
     /**暂停 */
     private btn_pause:eui.Button;

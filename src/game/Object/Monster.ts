@@ -260,7 +260,7 @@ class Monster extends Enermy {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
-        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:70});
+        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:74});
     }
 
     public gotoIdle() {

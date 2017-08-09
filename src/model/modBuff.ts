@@ -38,12 +38,24 @@ namespace modBuff {
     }
 
     /**
+     * 反弹伤害的buff
+     */
+    export function reflection(obj:Hero):void {
+        for (let i = 0; i < obj.buff.length; i++) {
+            //圆波剑舞
+            if (obj.buff[i].buffData.id == 6) {
+                obj.buff[i].update();
+            }
+        }
+    }
+
+    /**
      * 检测是否有免疫伤害的buff或者反弹伤害的buff
      */
     export function isImmuneBuff(obj:Hero):boolean {
         for (let i = 0; i < obj.buff.length; i++) {
             //护盾
-            if (obj.buff[i].buffData.id == 4) {
+            if (obj.buff[i].buffData.id == 4 || obj.buff[i].buffData.id == 73) {
                 // obj.skillArmature.visible = false;
                 obj.buff[i].update();
                 return true
@@ -56,13 +68,24 @@ namespace modBuff {
                     return true;
                 }
             }
-            //圆波剑舞
-            else if (obj.buff[i].buffData.id == 6) {
-                if (!modBuff.isExistBuff(obj.buff, 4)) obj.buff[i].update();
-                // return false;
-            }
         }
         return false;
+    }
+
+    /**
+     * 是否伤害减少
+     */
+    export function isHurtReduce(obj:Hero):boolean {
+        let status:boolean = false;
+        for (let i = 0; i < obj.buff.length; i++) {
+            //硬化
+            if (obj.buff[i].buffData.id == 71) {
+                obj.buff[i].update(obj, (isReduce)=>{
+                    status = isReduce;
+                });
+            }
+        }
+        return status;
     }
 
     /**
@@ -80,6 +103,20 @@ namespace modBuff {
             }
         }
         return status;
+    }
+
+    /**
+     * 是否有必杀buff
+     */
+    export function isInstanteKill(obj:Hero):boolean {
+        for (let i = 0; i < obj.buff.length; i++) {
+            //必杀
+            if (obj.buff[i].buffData.id == 74) {
+                obj.buff[i].update();
+                return true
+            }
+        }
+        return false;
     }
 
     /**

@@ -44,26 +44,28 @@ class Imprisoned extends SkillBase {
         });
         if (target.isPVP) return;
         for (let i = 0; i < enermy.length; i++) {
-            if (enermy[i].isSkillHurt) return;
-            enermy[i].isSkillHurt = true;
-            enermy[i].removeActComplete();
-            let buffCofig = modBuff.getBuff(1);
-            this.buff = ObjectPool.pop(buffCofig.className);
-            buffCofig.duration = this.duration;
-            this.buff.buffInit(buffCofig);
-            switch (this.buffIndex) {
-                //禁锢
-                case 1:
-                    //特效名字
-                    this.buff.effectName = "skill01";
-                    //作用点
-                    this.buff.buffData.postionType = PostionType.PostionType_Foot;
-                break;
-                //眩晕
-                case 2:
-                break;
+            if (enermy[i].type == 1) {
+                if (enermy[i].isSkillHurt) return;
+                enermy[i].isSkillHurt = true;
+                enermy[i].removeActComplete();
+                let buffCofig = modBuff.getBuff(1);
+                this.buff = ObjectPool.pop(buffCofig.className);
+                buffCofig.duration = this.duration;
+                this.buff.buffInit(buffCofig);
+                switch (this.buffIndex) {
+                    //禁锢
+                    case 1:
+                        //特效名字
+                        this.buff.effectName = "skill01";
+                        //作用点
+                        this.buff.buffData.postionType = PostionType.PostionType_Foot;
+                    break;
+                    //眩晕
+                    case 2:
+                    break;
+                }
+                enermy[i].addBuff(this.buff);
             }
-            enermy[i].addBuff(this.buff);
         }
     }
 

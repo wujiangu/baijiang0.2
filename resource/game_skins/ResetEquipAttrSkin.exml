@@ -2,17 +2,16 @@
 <e:Skin class="ResetEquipAttrSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="equip_0008_png" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label id="lab_money" text="当前幸运值：0" x="317.17" y="204.2" anchorOffsetX="0" width="501.67" textAlign="center" fontFamily="Microsoft YaHei" size="35" bold="true" anchorOffsetY="0" height="52.33" verticalAlign="middle" textColor="0x9e8661"/>
+	<e:Label id="lab_lucky" text="当前幸运值：0" x="317.17" y="204.2" anchorOffsetX="0" width="501.67" textAlign="center" fontFamily="Microsoft YaHei" size="35" bold="true" anchorOffsetY="0" height="52.33" verticalAlign="middle" textColor="0x9e8661"/>
 	<e:Button id="btn_reset" label="重置" x="406.5" y="484" height="76" width="288">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="btn_shopGet_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label id="labelDisplay0" horizontalCenter="20" verticalCenter="-8" textColor="0xE2E4B5" fontFamily="Microsoft YaHei" bold="true" text="50"/>
+	<e:Label id="labelDisplay0" horizontalCenter="20" verticalCenter="-8" textColor="0xE2E4B5" fontFamily="Microsoft YaHei" bold="true" text="20"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
 	<e:Image source="crystal_0002_png" x="496" y="493"/>
-	<e:Label text="重置属性" y="83" size="40" horizontalCenter="0" textColor="0xe8e3e3" bold="true" fontFamily="Microsoft YaHei" visible="false"/>
 	<e:Image source="equip_0005_png" x="334.74" y="312.68"/>
 	<e:Image id="imgStar" source="star_05_png" x="362.62" y="340.68"/>
 	<e:Label id="lab_attr" text="攻击力+20%" x="440" y="342.48" anchorOffsetX="0" width="253.49" size="25" fontFamily="Microsoft YaHei" anchorOffsetY="0" height="33" verticalAlign="middle" textAlign="center" bold="true" textColor="0xea7c23"/>

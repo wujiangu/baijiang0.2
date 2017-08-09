@@ -112,19 +112,11 @@ class EmailWindow extends PopupWindow{
             this.img_bg_list[i]["index"] = i;
             this.img_bg_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
             Common.SetXY(this.group_list[i], 0, i * 118 + 10);
-
-            this.group_list[i].visible = true;
             this.scrollGroup.addChild(this.group_list[i]);
         }
 
         this.scrollGroup.addChild(this._bottomGroup);
         Common.SetXY(this._bottomGroup, 0, this._eventNum *  118 + 10);
-
-        if(this.group_list.length > this._eventNum){
-            for(let i:number = this._eventNum; i < this.group_list.length; i++){
-                this.group_list[i].visible = false;
-            }
-        }
     }
 
     private onTouchImg(event:egret.TouchEvent):void{

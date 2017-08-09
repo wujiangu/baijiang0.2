@@ -449,16 +449,18 @@ class Enermy extends BaseGameObject {
     public rangeDamage():void {
         let enermy = GameData.heros[0].getEnermy();
         for (let i = 0; i < enermy.length; i++) {
-            let dis = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, enermy[i].x, enermy[i].y);
-            if (dis < 300 && enermy[i].attr.hp > 0) {
-                let value:number = GameData.heros[0].attr.atk * 0.5;
-                enermy[i].gotoHurt(value);
-                enermy[i].buffArmature.visible = true;
-                enermy[i].buffArmature.x = 0;
-                enermy[i].buffArmature.y = -40;
-                enermy[i].buffArmature.play("leidian", 1);
-                egret.setTimeout(()=>{enermy[i].buffArmature.visible = false;}, this, 500);
-                enermy[i].beAttackCount = 0;
+            if (enermy[i].type == 1) {
+                let dis = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, enermy[i].x, enermy[i].y);
+                if (dis < 300 && enermy[i].attr.hp > 0) {
+                    let value:number = GameData.heros[0].attr.atk * 0.5;
+                    enermy[i].gotoHurt(value);
+                    enermy[i].buffArmature.visible = true;
+                    enermy[i].buffArmature.x = 0;
+                    enermy[i].buffArmature.y = -40;
+                    enermy[i].buffArmature.play("leidian", 1);
+                    egret.setTimeout(()=>{enermy[i].buffArmature.visible = false;}, this, 500);
+                    enermy[i].beAttackCount = 0;
+                }
             }
         }
     }

@@ -10,15 +10,16 @@ class EquipUpStarWindow extends PopupWindow{
     }
 
     public Init():void{
-        this.equip_list = [];
-        this.icon_list =  [];
-        this.click_list = [];
-        this.source_list = [this.img_source1, this.img_source2, this.img_source3];;
+        this.equip_object_list = new Array();
+        this.icon_list =  new Array();
+        this.click_list = new Array();
+        this.source_list = [this.img_source1, this.img_source2, this.img_source3];
 
         for(let i:number = 0; i < 3; i++){
             this.icon_list[i] = new egret.Bitmap(RES.getRes("equip_0009_png"));
-            this.scrollGroup.addChild(this.icon_list[i]);
         }
+        this._bottomGroup = new eui.Group();
+        
         this.initData();
     }
 
@@ -63,8 +64,8 @@ class EquipUpStarWindow extends PopupWindow{
             this.source_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchSource, this);
         }
 
-        for(let i:number = 0; i < this.equip_list.length; i++){
-            this.equip_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
+        for(let i:number = 0; i < this._eventNum; i++){
+            this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
         }
 
         this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, -1);
@@ -76,7 +77,7 @@ class EquipUpStarWindow extends PopupWindow{
             return;
         }
 
-        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",modEquip.EquipSource.UPSTARCONSUME)){
+        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",modEquip.EquipSource.UPSTARPRICE)){
             Common.ShowLackDataPopup("soul", ()=>{
                 this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 0);
             })
@@ -84,8 +85,8 @@ class EquipUpStarWindow extends PopupWindow{
         } 
 
         //移除所有的监听 防止去除后又重复监听
-        for(let i:number = 0; i < this.equip_list.length; i++){
-            this.equip_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
+        for(let i:number = 0; i < this._eventNum; i++){
+            this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
         }
 
         let equipData:Array<modEquip.EquipInfo> = [];
@@ -140,9 +141,6 @@ class EquipUpStarWindow extends PopupWindow{
 
     /** 显示当前拥有的装备 */
     private showGoodsView():void{
-        let img:eui.Image;
-        for(let i:number = 0; i < this.equip_list.length; i++) this.equip_list.pop();
-
         this.scrollGroup.removeChildren();
 
         let index:number = 0;
@@ -150,22 +148,30 @@ class EquipUpStarWindow extends PopupWindow{
         let list:any = modEquip.EquipData.GetInstance().GetEquipList();
         let currHero = HeroData.getHeroData(GameData.curHero);
         currHero["typeId"] = currHero["typeId"] != null ? currHero["typeId"] : 0;
+
         for(let i:number = 0; i < list.length; i++){
             if( (list[i].Id == this.equip_info.Id && list[i].TypeID != this.equip_info.TypeID) || list[i].Id != this.equip_info.Id){
                 if((currHero.equip == list[i].Id && currHero["typeId"] != list[i].TypeID) || currHero.equip != list[i].Id){
+                    if(this.equip_object_list.length <= index){
+                        this.equip_object_list[index] = new EquipObject();
+                    }
+
+                    this.scrollGroup.addChild(this.equip_object_list[index]); 
+                    this.equip_object_list[index].ChangeEquipSource(list[i]);
+                    this.equip_object_list[index].Index = i;
+                    this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
+
                     raw = Math.floor(index / 4);
                     col = index % 4;
-                    let img:eui.Image = new eui.Image();
-                    img.source = `Sequip${25-list[i].Id}_png`;
-                    this.scrollGroup.addChild(img); 
-                    this.equip_list.push(img);
-                    Common.SetXY(img, 4 + 104*col, 4 + 104*raw);
-                    img.name = i + "";
+                    Common.SetXY(this.equip_object_list[index], 4 + 104*col, 4 + 104*raw);
                     index++;
-                    img.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
                 }
             }
         }
+
+        this._eventNum = index;
+        this.scrollGroup.addChild(this._bottomGroup);
+        Common.SetXY(this._bottomGroup, 0, this.equip_object_list[index - 1].y + 100);
 
         for(let i:number = 0; i < 3; i++){
             this.scrollGroup.addChild(this.icon_list[i]);
@@ -178,10 +184,10 @@ class EquipUpStarWindow extends PopupWindow{
     private isSameEquip(target:any):boolean{
         let isSame:boolean = false;
         for(let i:number = 0; i < this.source_list.length; i++){
-            if(target.name == this.source_list[i].name){
+            if(target.Index == this.source_list[i].name){
                 isSame = true;
                 this.set_obj_attr(i, false, 0,"-1", "");
-                this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(parseInt(target.name)), -1, true)
+                this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(parseInt(target.Index)), -1, true)
                 break;
             }
         }
@@ -201,10 +207,10 @@ class EquipUpStarWindow extends PopupWindow{
 
         this.icon_list[index].visible = true;
         Common.SetXY(this.icon_list[index], target.x, target.y);
-        this.changeObjectStatus(this.source_list[index], target.name, target.source);
-        this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(parseInt(target.name)), 1, true)
+        this.changeObjectStatus(this.source_list[index], `${target.Index}`, `Sequip${25-target.GetId()}_png`);
+        this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(target.Index), 1, true)
 
-        if(this.isHaveEquip()) this.lab_sole.text = `${modEquip.EquipSource.UPSTARCONSUME}`;
+        if(this.isHaveEquip()) this.lab_sole.text = `${modEquip.EquipSource.UPSTARPRICE}`;
     }
 
     /** 获得当前没满的索引  */
@@ -270,21 +276,30 @@ class EquipUpStarWindow extends PopupWindow{
         this.lab_lucky.textFlow = <Array<egret.ITextElement>>[{text:"当前成功率: "}, {text:actual + "%", style:{"size":45}}];
     }
 
+    /** image */
     private img_source1:eui.Image;
     private img_source2:eui.Image;
     private img_source3:eui.Image;
+
+    /** label */
     private lab_lucky:eui.Label;
     private lab_sole:eui.Label;
 
+    /** button */
     private btn_close:eui.Button;
     private btn_upStar:eui.Button;
 
     private scrollGroup:eui.Scroller;
-    private equip_list:Array<eui.Image>;
+    private _bottomGroup:eui.Group;
     private icon_list:Array<egret.Bitmap>;
     private click_list:Array<number>;
     private source_list:any;
-    private successNum:number;
     
+    /** class */
     private equip_info:modEquip.EquipInfo;
+    private equip_object_list:Array<EquipObject>;
+
+    /** other */
+    private _eventNum:number;
+    private successNum:number;
 }

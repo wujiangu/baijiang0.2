@@ -59,27 +59,29 @@ class Bristle extends SkillBase {
         this.duration = target.attr.dur;
         this.damage = target.attr.skd;
         for (let i = 0; i < enermy.length; i++) {
-            if (enermy[i]._isAvatar) enermy[i].gotoHurt(1, true);
-            else{
-                let buffConfig = modBuff.getBuff(3);
-                if (!target.isPVP) enermy[i].removeActComplete();
-                this.buff = ObjectPool.pop(buffConfig.className);
-                buffConfig.duration = this.duration;
-                buffConfig.damage = this.damage;
-                this.buff.buffInit(buffConfig);
-                switch (this.buffIndex) {
-                    //烧伤
-                    case 1:
-                        //特效名字
-                        this.buff.effectName = "Burning";
-                        //作用点
-                        this.buff.buffData.postionType = PostionType.PostionType_Body;
-                    break;
-                    //中毒
-                    case 2:
-                    break;
+            if (enermy[i].type == 1) {
+                if (enermy[i]._isAvatar) enermy[i].gotoHurt(1, true);
+                else{
+                    let buffConfig = modBuff.getBuff(3);
+                    if (!target.isPVP) enermy[i].removeActComplete();
+                    this.buff = ObjectPool.pop(buffConfig.className);
+                    buffConfig.duration = this.duration;
+                    buffConfig.damage = this.damage;
+                    this.buff.buffInit(buffConfig);
+                    switch (this.buffIndex) {
+                        //烧伤
+                        case 1:
+                            //特效名字
+                            this.buff.effectName = "Burning";
+                            //作用点
+                            this.buff.buffData.postionType = PostionType.PostionType_Body;
+                        break;
+                        //中毒
+                        case 2:
+                        break;
+                    }
+                    enermy[i].addBuff(this.buff);   
                 }
-                enermy[i].addBuff(this.buff);   
             }
         }
     }

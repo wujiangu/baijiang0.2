@@ -64,7 +64,7 @@ class EquipDialog extends PopupWindow {
     }
 
     private eventType(type:number = 0):void{
-        let obj_list:any = [this.btn_back, this.btn_change, this.btn_upgrade, this.btn_close,  this.img_weapon, this.img_detail];
+        let obj_list:any = [this.btn_back, this.btn_change, this.btn_upgrade, this.btn_close,  this.img_weapon, this.img_detail, this.btn_help];
         Common.ListenerAndRemoveEvent(obj_list, this.onTouchBtn, this, type);
         obj_list = [];
     }
@@ -116,6 +116,9 @@ class EquipDialog extends PopupWindow {
                 let pop:PopupWindow = WindowManager.GetInstance().GetWindow("EquipUpWindow");
                 pop.Show(this.equip_info);
                 pop.addEventListener(modEquip.EquipSource.UPGRADE, this.upGradeGoodsInfo, this);
+            break;
+            case this.btn_help:
+                WindowManager.GetInstance().GetWindow("HelpTipDialog").Show(1);
             break;
             case this.btn_back:                                                             //点击关闭界面
                 this.Close();
@@ -310,15 +313,7 @@ class EquipDialog extends PopupWindow {
                     Common.SetXY(this.imgClick, this.equip_object_list[i].x, this.equip_object_list[i].y);
                 }
             }
-            this.equip_object_list[i].visible = true;
             this.scrollGroup.addChild(this.equip_object_list[i]); 
-        }
-
-        //如果当前的装备数组大于总装备数量 根据情况显示
-        if(this.equip_object_list.length > equip_list.length){
-            for(let i:number = this.eventLen; i < this.equip_object_list.length; i++){
-                this.equip_object_list[i].visible = false;
-            }
         }
 
         this.scrollGroup.addChild(this.imgClick);
@@ -356,6 +351,7 @@ class EquipDialog extends PopupWindow {
     private btn_change:eui.Button;
     private btn_upgrade:eui.Button;
     private btn_close:eui.Button;
+    private btn_help:eui.Button;
 
     /** 装备 */
     private imgClick:egret.Bitmap;

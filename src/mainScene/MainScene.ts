@@ -165,13 +165,16 @@ class MainScene extends Base {
         Animations.fadeOut(pop);
     }
 
-     private onChangeData():void{
-       GameLayerManager.gameLayer().panelLayer.removeChildren();
-       this.addChild(this._shape);
-       Animations.fadeIn(this._shape, 350, ()=>{
-           this.removeChild(this._shape);
-       });
+     private onChangeData(event:egret.Event):void{
 
+       if(event.data == null){
+           GameLayerManager.gameLayer().panelLayer.removeChildren();
+           this.addChild(this._shape);
+           Animations.fadeIn(this._shape, 350, ()=>{
+              this.removeChild(this._shape);
+           });
+       }
+       
        this.show_label_text();
     }
 
