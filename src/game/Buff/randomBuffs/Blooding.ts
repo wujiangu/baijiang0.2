@@ -1,10 +1,10 @@
 /**
- * 狂暴
+ * 流血
  */
-class Violent extends BaseRandomBuff {
+class Blooding extends BaseRandomBuff {
     public constructor() {
         super();
-        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_kuangbao");
+        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_liuxue");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
     }
@@ -12,9 +12,9 @@ class Violent extends BaseRandomBuff {
     /**初始化 */
     public buffInit(options:any) {
         super.buffInit(options);
-        this.iconName = "randomBuffIcon_json.buff_kuangbao";
+        this.iconName = "randomBuffIcon_json.buff_liuxue";
         this.options = options;
-        this.buffData.className = "Violent";
+        this.buffData.className = "Blooding";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_Overlay;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;
@@ -38,19 +38,31 @@ class Violent extends BaseRandomBuff {
     public update(target:any, callBack:Function = null) {
         
     }
-
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_kuangbao");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_liuxue");
     }
 
     public addProperty():void {
         super.addProperty();
-        if (this._extraValue == 0){
-            this._extraValue = GameData.heros[0].attr.atk;
-            GameData.heros[0].attr.atk += this._extraValue;
+    }
+
+    /**
+     * 定时过程刷新数据
+     */
+    public _onUpdate(event:egret.TimerEvent) {
+        super._onUpdate(event);
+        let count:number = (<egret.Timer>event.target).currentCount;
+        if (count%25 == 0 && count > 0) {
+            this.target.attr.hp -= Math.floor(this.target.originHP * 0.01);
+            if (this.target.attr.hp <= 0) {
+                this.target.deadHandler();
+                this.afterRemoveBuff();
+            }else{
+                SceneManager.battleScene.battleSceneCom.setHpProgress(this.target.attr.hp);
+            }
         }
     }
 
@@ -59,7 +71,6 @@ class Violent extends BaseRandomBuff {
      */
     public _onComplete(event:egret.TimerEvent) {
         super._onComplete(event);
-        GameData.heros[0].attr.atk -= this._extraValue;
         this._extraValue = 0;
     }
 
@@ -72,5 +83,4 @@ class Violent extends BaseRandomBuff {
     public HideEffect() {
         
     }
-    
 }

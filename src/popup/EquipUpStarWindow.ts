@@ -215,16 +215,14 @@ class EquipUpStarWindow extends PopupWindow{
 
     /** 获得当前没满的索引  */
      private getEmptyIndex():number{
-        let temp:number = -1;
         for(let i:number = 0; i < 3; i++){
             if(this.click_list[i] == 0) 
             {
                 this.click_list[i] = 1;
-                temp = i;
-                break;
+                return i;
             }
         }
-        return temp;
+        return -1;
     }
 
     /** 判断是否有装备  */
@@ -250,20 +248,14 @@ class EquipUpStarWindow extends PopupWindow{
 
     /**判断是否可以升星 */
     private isUpStar(rate:number):boolean{
-        let isSuccess:boolean = false;
         let rand = Math.floor((Math.random() % 100) * 100);
-        if(rate > rand) isSuccess = true;
-        return isSuccess;
+        return rate > rand ? true : false;
     }
 
     private showEquipSusscess(info:modEquip.EquipInfo = null, num:number = 0, isClick:boolean = false):void{
 
-        if(num == 0) this.successNum = 0;
-        else this.successNum += modEquip.GetSuccessGoodsLv(this.equip_info, info) * num;
-
-        let actual = this.successNum;
-        if(actual > 100) actual = 100;
-        else if(actual < 0) actual = 0;
+        this.successNum = num == 0 ? 0 : this.successNum + modEquip.GetSuccessGoodsLv(this.equip_info, info) * num;
+        let actual:number = this.successNum > 100 ? 100 : this.successNum < 0 ? 0 : this.successNum;
         
         if(isClick && actual == 0){
             for(let i:number = 0; i < this.click_list.length; i++){

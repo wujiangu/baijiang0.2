@@ -15,7 +15,7 @@ class Chest extends egret.DisplayObjectContainer {
 
         this.itemArmature = new DragonBonesArmatureContainer();
         this.addChild(this.itemArmature);
-        this.itemArmature.register(DragonBonesFactory.getInstance().makeArmature("buffdiaoluo", "buffdiaoluo", 10), [
+        this.itemArmature.register(DragonBonesFactory.getInstance().makeArmature("buffdiaoluo", "buffdiaoluo", 20), [
             "skill01_01",
             "skill01_02",
             "skill01_03",
@@ -24,6 +24,7 @@ class Chest extends egret.DisplayObjectContainer {
             "skill03_02"
         ]);
         this.itemArmature.addFrameCallFunc(this.itemArmatureFrame, this);
+        this.itemArmature.addCompleteCallFunc(this.itemArmaturePlayEnd, this);
 
         this.chestArmature.scaleX = 1.5;
         this.chestArmature.scaleY = 1.5;
@@ -35,16 +36,27 @@ class Chest extends egret.DisplayObjectContainer {
     public init(buffId:number) {
         this.buffId = buffId;
         this.setChestStatus(true);
+        this.setItemStatus(false);
         this.chestArmature.play("diaoluoxiangzi", 1);
-        this.initBuffData(buffId);
+        if (buffId >= 70 && buffId < 80) this.initBuffData(buffId);
+        else this.initItemData(buffId);
         this.isOpen = true;
     }
 
+    /**初始buff数据 */
     private initBuffData(buffId:number) {
         // if (GameData.heros[0].isExistBuff(buffId, true)) return;
         let buffConfig:any = modBuff.getBuff(buffId);
         this.buff = ObjectPool.pop(buffConfig.className);
         this.buff.buffInit(buffConfig);
+    }
+
+    /**初始道具数据 */
+    private initItemData(itemId:number):void {
+        //不合理（后续可以添加道具配置文件）
+        let itemConfig:any = modBuff.getBuff(itemId);
+        this.item = ObjectPool.pop(itemConfig.className);
+        this.item.init(this);
     }
 
     /*********************************************************************/
@@ -62,6 +74,11 @@ class Chest extends egret.DisplayObjectContainer {
         if (status) this.chestArmature.alpha = 1;
     }
     
+    /**设置道具动画的显示状态 */
+    public setItemStatus(status:boolean):void {
+        this.itemArmature.visible = status;
+    }
+
     /**清除定时器 */
     public removeTimer():void {
         TimerManager.getInstance().remove(this.disappear, this);
@@ -75,6 +92,9 @@ class Chest extends egret.DisplayObjectContainer {
             this.setChestStatus(false);
             let index = GameData.chests.indexOf(this);
             GameData.chests.splice(index, 1);
+            ObjectPool.push(this);
+            if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
+            if (this.item && this.item.recycle) this.item.recycle();
         });
     }
 
@@ -87,15 +107,20 @@ class Chest extends egret.DisplayObjectContainer {
             TimerManager.getInstance().doTimer(10000, 1, this.disappear, this);
         }
         else if (evt == "itemShow") {
-            if (GameData.heros[0]) GameData.heros[0].addBuff(this.buff, true);
-            for (let i = 0; i < GameData.heros[0].buff.length; i++) {
-                //狂暴
-                if (GameData.heros[0].buff[i].buffData.id == this.buffId) {
-                    GameData.heros[0].buff[i].AddEffect(this);
-                    GameData.heros[0].buff[i].addProperty();
+            if (this.buffId >= 70 && this.buffId < 80) {
+                //增益或减益
+                if (GameData.heros[0]) GameData.heros[0].addBuff(this.buff, true);
+                for (let i = 0; i < GameData.heros[0].buff.length; i++) {
+                    //狂暴
+                    if (GameData.heros[0].buff[i].buffData.id == this.buffId) {
+                        GameData.heros[0].buff[i].AddEffect(this);
+                        GameData.heros[0].buff[i].addProperty();
+                    }
                 }
+                this.buff.AddEffect(this);
+            }else{
+                this.item.AddEffect(this);
             }
-            this.buff.AddEffect(this);
         }
     }
 
@@ -104,24 +129,43 @@ class Chest extends egret.DisplayObjectContainer {
         this.disappear();
     }
 
-    /**随机战场buff监听 */
+    /**随机道具监听 */
     private itemArmatureFrame(event:dragonBones.FrameEvent):void {
         let evt:string = event.frameLabel;
         if (evt == "explosion") {
-
+            GameData.heros[0].setEnermy();
+            let object:Array<any> = GameData.heros[0].getEnermy();
+            for (let i = 0; i < GameData.heros.length; i++) {
+                object.push(GameData.heros[i]);
+            }
+            for (let i = 0; i < object.length; i++) {
+                if (object[i].type == 1) {
+                    let dis = MathUtils.getDistance(this.item.icon.x, this.item.icon.y, object[i].x, object[i].y);
+                    if (dis < 100) {
+                        object[i].gotoHurt(GameData.heros[0].attr.atk);
+                    }
+                }
+            }
         }
+    }
+
+    /**道具动画完成监听 */
+    private itemArmaturePlayEnd():void {
+        this.setItemStatus(false);
     }
 
     /**对象类型 0:掉落的宝箱或道具，1:角色或敌人 */
     public type:number;
-    /**buff或者道具 */
+    /**buff */
     private buff:BuffBase;
-    /**buffId */
+    /**buffId或者道具id */
     private buffId:number;
+    /**道具 */
+    private item:BaseRandomItem;
     /**宝箱的状态*/
     private isOpen:boolean;
     /**宝箱骨骼动画组 */
     private chestArmature:DragonBonesArmatureContainer;
     /**道具动画组 */
-    private itemArmature:DragonBonesArmatureContainer;
+    public itemArmature:DragonBonesArmatureContainer;
 }

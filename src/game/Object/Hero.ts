@@ -455,9 +455,10 @@ class Hero extends BaseGameObject {
         if (!this.skill_status && modBuff.isImmuneBuff(this)) return;
         if (this.curState == BaseGameObject.Action_Hurt || this.curState == "attack") return;
         SceneManager.battleScene.bloodTween();
-        if (modBuff.isHurtReduce(this)) value *= 0.5;
+        let index:number = modBuff.hurtChange(this);
+        value *= (1+index*0.5);
         modBuff.reflection(this);
-        Common.log("受到伤害------>", value);
+        // Common.log("受到伤害------>", value, index);
         this.hurtHandler(value);
     }
 
@@ -601,6 +602,13 @@ class Hero extends BaseGameObject {
         this.armature.play(this.curState, 1);
     }
 
+    /**死亡处理 */
+    public deadHandler():void {
+        this.removeComplete();
+        if (modBuff.isRevival(this)) Common.log("复活");
+        else SceneManager.battleScene.battleSceneCom.onFailPop();
+    }
+
     /**
      * 帧事件处理函数
      */
@@ -637,9 +645,7 @@ class Hero extends BaseGameObject {
         this.effectArmature.visible = false;
         if (!this.canMove) return;
         if (this.attr.hp <= 0) {
-            this.removeComplete();
-            if (modBuff.isRevival(this)) Common.log("复活");
-            else SceneManager.battleScene.battleSceneCom.onFailPop();
+            this.deadHandler();
         }else{
             this.gotoIdle();
         }

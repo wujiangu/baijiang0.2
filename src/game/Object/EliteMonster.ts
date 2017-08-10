@@ -204,6 +204,7 @@ class EliteMonster extends Monster {
                 GameData.heros[0].addBuff(extraBuff);
             }
         }else{
+            if (modBuff.isBlind(GameData.heros[0])) return;
             this.removeAvatar();
             super.gotoHurt(hurtValue, isSkillHurt);
             if (this.isFaster) this._fasterBuff.HideEffect();

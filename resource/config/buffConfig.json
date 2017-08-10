@@ -39,5 +39,14 @@
     {"id":71, "className":"Hardening", "cd":0, "duration":10, "damage":0, "name":"硬化"},
     {"id":72, "className":"SpeedUp", "cd":0, "duration":10, "damage":0, "name":"加速"},
     {"id":73, "className":"TempShield", "cd":0, "duration":10, "damage":0, "name":"护盾"},
-    {"id":74, "className":"InstanteKill", "cd":0, "duration":10, "damage":0, "name":"必杀"}
+    {"id":74, "className":"InstanteKill", "cd":0, "duration":10, "damage":0, "name":"必杀"},
+    {"id":75, "className":"Slow", "cd":0, "duration":10, "damage":0, "name":"迟缓"},
+    {"id":76, "className":"BrokeShield", "cd":0, "duration":10, "damage":0, "name":"易伤"},
+    {"id":77, "className":"Weak", "cd":0, "duration":10, "damage":0, "name":"虚弱"},
+    {"id":78, "className":"Blindness", "cd":0, "duration":10, "damage":0, "name":"盲目"},
+    {"id":79, "className":"Blooding", "cd":0, "duration":10, "damage":0, "name":"流血"},
+    {"id":80, "className":"Explosive", "cd":0, "duration":0, "damage":0, "name":"炸弹"},
+    {"id":81, "className":"FixedBody", "cd":0, "duration":0, "damage":0, "name":"定身"},
+    {"id":82, "className":"Rocket", "cd":0, "duration":0, "damage":0, "name":"火箭"},
+    {"id":83, "className":"ArrowTube", "cd":0, "duration":0, "damage":0, "name":"箭筒"}
 ]

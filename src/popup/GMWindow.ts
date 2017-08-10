@@ -93,7 +93,7 @@ class GMWindow extends PopupWindow{
             return;
         }
 
-        this.data_list.push({type:1,data:digit, name:"equip"});
+        this.data_list.push({type:1,id:digit,count:1, name:"equip"});
     }
 
     private onAddGoods(name:string, strNum:string):void{
@@ -108,7 +108,7 @@ class GMWindow extends PopupWindow{
         }
 
         let num = parseInt(strNum);
-        this.data_list.push({type:2,data:num,name:name});
+        this.data_list.push({type:2,count:num,id:0,name:name});
     }
 
     /** button */

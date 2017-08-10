@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
-	<e:Image source="equip_0008_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image horizontalCenter="0" verticalCenter="0" source="help_tip_png"/>
 	<e:Image source="signBg_png" verticalCenter="-17" horizontalCenter="0"/>
 	<e:Button id="btn_sign" label="签到" y="486" horizontalCenter="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_0012_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-6" fontFamily="Microsoft YaHei" textColor="0x0a0909" bold="true" size="30" size.down="27"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size="30" size.down="27" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Label text="签到" y="83" fontFamily="Microsoft YaHei" bold="true" anchorOffsetX="0" width="229" textAlign="center" textColor="0xc6b8b8" size="40" horizontalCenter="0.5"/>
+	<e:Label text="签到" y="79.96" fontFamily="Microsoft YaHei" bold="true" anchorOffsetX="0" width="229" textAlign="center" size="40" horizontalCenter="0.5" textColor="0xdfdfdf"/>
 	<e:Button id="btn_close" label="" x="985" y="82">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

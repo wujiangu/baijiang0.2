@@ -13,7 +13,6 @@ class EquipInfoDialog extends PopupWindow {
         
         this.self_attr_list = [];
         this.refine_attr_list = [];
-        this.name_list = {diaochan:"貂蝉",zhaoyun:"赵云",buxiaoman:"布小蛮",wu:"无"};
 
         for(let i:number = 0; i < 4; i++){
             this.self_attr_list[i] = Common.CreateText("",19, 0x565656,true,"Microsoft YaHei");
@@ -68,5 +67,4 @@ class EquipInfoDialog extends PopupWindow {
     private lab_lv:eui.Label;
     private self_attr_list:Array<egret.TextField>;
     private refine_attr_list:Array<egret.TextField>;
-    private name_list:any;
 }

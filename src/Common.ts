@@ -251,12 +251,11 @@ namespace Common {
      */
     export function GetTextureFromType(param):any{
         if(param.type == 1){
-            return RES.getRes(`Sequip${25-param.data}_png`);
+            return RES.getRes(`Sequip${25-param.id}_png`);
         }
         else if(param.type == 2)
         {
-            let str_list = {diamond:"crystal_0002_png", exp:"exp_0002_png",soul:"sole_0002_png",power:"power_0002_png"};
-            return RES.getRes(str_list[param.name]);
+            return RES.getRes(`basic_${param.name}_png`);
         }
     }
 
@@ -273,11 +272,25 @@ namespace Common {
 
         for(let i in list){
             if(list[i].type == 1){
-                modEquip.EquipData.GetInstance().InsertEquipList([list[i].data]);
+                modEquip.EquipData.GetInstance().InsertEquipList([list[i].id]);
             }
             else if(list[i].type == 2)
             {
-                UserDataInfo.GetInstance().SetBasicData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].data));
+                UserDataInfo.GetInstance().SetBasicData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].count));
+            }
+            else if(list[i].type == 3)
+            {
+                 if (HeroData.hasHero(list[i].name)){
+                        Animations.showTips(`已有英雄${list[i].name}`, 1);
+                    }
+                    else
+                    {
+                        HeroData.addHeroData(list[i].name, GameData.initData["hero"]);
+                        if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
+                            WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
+                        }
+                        WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:list[i].name,share:10});  
+                    }
             }
         }
 

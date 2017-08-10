@@ -260,8 +260,10 @@ class ReadyDialog extends PopupWindow {
             img_star.x = 36 * i;
             this.starGroup.addChild(img_star);
         }
-        for (let i = 0; i < equip.attrType.length; i++) {
-            let srcData:any = modEquip.GetEquipColorFromQuality(equip.attrType[i].Quality);
+
+        let tempList:any = equip.GetAttrType();
+        for (let i = 0; i < tempList.length; i++) {
+            let srcData:any = modEquip.GetEquipColorFromQuality(tempList[i].Quality);
             let img_affix:egret.Bitmap = Utils.createBitmap(srcData.img);
             img_affix.x = 36 * i;
             this.starGroup.addChild(img_affix);

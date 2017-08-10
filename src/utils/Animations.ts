@@ -406,9 +406,9 @@ namespace Animations {
 
                 img_list[i].texture = Common.GetTextureFromType(list[i]);
                 if(list[i].type == 1){
-                    txt_list[i].text  = "恭喜获得" + TcManager.GetInstance().GetTcEquipData(list[i].data).name;
+                    txt_list[i].text  = "恭喜获得" + TcManager.GetInstance().GetTcEquipData(list[i].id).name;
                 }
-                else txt_list[i].text = "x" + list[i].data;
+                else txt_list[i].text = "x" + list[i].count;
 
                 GameLayerManager.gameLayer().maskLayer.addChild(img_list[i]);
                 GameLayerManager.gameLayer().maskLayer.addChild(txt_list[i]);

@@ -25,26 +25,36 @@ class SignGoodsInfo extends eui.Group{
     }
 
     public ChangeGoodsInfo(param:any):void{
-        let name:string,strTexture:string,strNum:string = "x1",textColor:number;
+        let name:string,strTexture:string,strNum:string = `x${param.count}`,textColor:number;
         if(param.type == 1){
-            let tempData:any = TcManager.GetInstance().GetTcEquipData(param.data);
-            name = tempData.name;
-            textColor = modEquip.GetEquipColorFromQuality(tempData.grade - 1).color;
-            strTexture = `Sequip${25-param.data}_png`;
+            let tempData:any = TcManager.GetInstance().GetTcEquipData(param.id);
+            name = param.id == 25 ? "随机橙装" : tempData.name;
+            textColor = param.id == 25 ? 0xab5515 : modEquip.GetEquipColorFromQuality(tempData.grade - 1).color;
+            strTexture = param.id == 25 ? "unknow_png" : `Sequip${25-param.id}_png`;
         }
         else if(param.type == 2)
         {
-            let data_list:any = {exp:["经验","battle_0016_png",0xab5515],soul:["魂石","battle_0017_png",0x852f9b]};
+            let data_list:any = {exp:["经验",0xab5515],soul:["魂石",0x852f9b],
+                                 diamond:["钻石",0x2D6EA6],power:["天赋点",0xBC822B]};
             name = data_list[param.name][0];
-            strTexture = data_list[param.name][1];
-            strNum = `x${param.data}`;
-            textColor = data_list[param.name][2];
+            textColor = data_list[param.name][1];
+            strTexture = `basic_${param.name}_png`;
+        }
+        else if(param.type == 3)
+        {
+            let name_list = {diaochan:"貂蝉",zhaoyun:"赵云",buxiaoman:"布小蛮"};
+            strTexture = `img_${param.name}1_png`;
+            name = name_list[param.name];
+            textColor = 0xff00ff;
         }
 
         this.txt_name.text = name;
         this.txt_name.textColor = textColor;
         this.txt_num.text = strNum;
         this.img_goods.texture = RES.getRes(strTexture);
+        if(param.type == 3) {
+            this.img_goods.width = 100;this.img_goods.height = 100;
+        }
 
         Common.SetXY(this.txt_name, this.width - this.txt_name.width >> 1, this.txt_title.y + this.txt_title.height + 40);
         Common.SetXY(this.img_goods, this.width - this.img_goods.width >> 1, this.txt_name.y + this.txt_name.height + 5);
@@ -99,14 +109,17 @@ class SignDialog extends PopupWindow{
         this.gooods_info_list = new Array();
 
         let day_list:any = ["第一天","第二天","第三天","第四天","第五天","第六天","第七天"];
-        this.gooods_data = [{type:1,data:6,name:"equip"},{type:1,data:8,name:"equip"},{type:2,data:20000,name:"exp"},
-                             {type:2,data:20000,name:"soul"},{type:1,data:16,name:"equip"},{type:1,data:18,name:"equip"},{type:1,data:20,name:"equip"}];
+        let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
+        let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
+        let num:number = signTime < 7 ? 0 : UserDataInfo.GetInstance().GetBasicData("isSign") && signTime - 7 == 0 ? 0 : 7;
+        let index:number = 0;
 
-        for(let i:number = 0; i < 7; i++){
-            this.gooods_info_list[i] = new SignGoodsInfo(day_list[i]);
-            this.addChild(this.gooods_info_list[i]);
-            this.gooods_info_list[i].ChangeGoodsInfo( this.gooods_data[i]);
-            Common.SetXY(this.gooods_info_list[i], 148 + i * 120, 0);
+        for(let i:number = num; i < num + 7; i++){
+            this.gooods_info_list[index] = new SignGoodsInfo(day_list[index]);
+            this.addChild(this.gooods_info_list[index]);
+            this.gooods_info_list[index].ChangeGoodsInfo(tcSign[i]);
+            Common.SetXY(this.gooods_info_list[index], 148 + index * 120, 0);
+            index++;
         }
 
         this.img_click = new egret.Bitmap(RES.getRes("equip_0009_png"));
@@ -140,25 +153,33 @@ class SignDialog extends PopupWindow{
             return;
         }
 
-        let signTime = UserDataInfo.GetInstance().GetBasicData("sign");
+        let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
+        let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
 
-        this.gooods_info_list[signTime].ShowClickSignEffect();
-        Common.DealReward(this.gooods_data[signTime]);
+        if(tcSign[signTime].type == 1 && tcSign[signTime].id == 25){
+            let rand:number = Math.floor((Math.random() * 100) % 4) + 21;
+            Common.DealReward({type:tcSign[signTime].type, name:tcSign[signTime].name, count:tcSign[signTime].count, id:rand});
+        }
+        else Common.DealReward(tcSign[signTime]);
 
-        if(this.gooods_data[signTime].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+        if(tcSign[signTime].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
 
-        UserDataInfo.GetInstance().SetBasicData("isSign", true);
+        this.gooods_info_list[this._currIndex].ShowClickSignEffect();
+        UserDataInfo.GetInstance().SetBasicData("isSign", true, false);
         UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);
         this.showSignStatus();
     }
 
     private showSignStatus():void{
         let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
+        signTime = signTime < 7 ? signTime : UserDataInfo.GetInstance().GetBasicData("isSign") && signTime - 7 == 0 ? 7 : signTime - 7;
+        this._currIndex = signTime;
+
         for(let i:number = 0; i < signTime; i++){
             this.gooods_info_list[i].ShowAndHideHook(true);
         }
 
-        this.img_click.visible = UserDataInfo.GetInstance().GetBasicData("isSign") == false ? true : false;
+        this.img_click.visible = UserDataInfo.GetInstance().GetBasicData("isSign") == false && signTime < 7 ? true : false;
         if(signTime >= 7) return;
         Common.SetXY(this.img_click, this.gooods_info_list[signTime].x + (this.gooods_info_list[signTime].width - this.img_click.width >> 1), this.gooods_info_list[signTime].GetImgSrcY());
     }
@@ -177,5 +198,5 @@ class SignDialog extends PopupWindow{
     private gooods_info_list:Array<SignGoodsInfo>;
 
     /** other */
-    private gooods_data:any;
+    private _currIndex:number;
 }

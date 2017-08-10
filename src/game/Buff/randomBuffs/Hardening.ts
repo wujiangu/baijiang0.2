@@ -37,9 +37,7 @@ class Hardening extends BaseRandomBuff {
     /**刷新数据 */
     public update(target:any, callBack:Function = null) {
         if (callBack) {
-            let isReduce:boolean = false;
-            if (this._extraValue > 0) isReduce = true;
-            callBack(isReduce);
+            callBack(this._extraValue);
         }
     }
 
@@ -53,7 +51,7 @@ class Hardening extends BaseRandomBuff {
     public addProperty():void {
         super.addProperty();
         if (this._extraValue == 0){
-            this._extraValue = 1;
+            this._extraValue = -1;
         }
     }
 

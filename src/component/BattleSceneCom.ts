@@ -146,6 +146,17 @@ class BattleSceneCom extends Base {
         this._sumHP = value;
     }
 
+    /**更新buff图标 */
+    private updateBuffIcon():void {
+        // this.buffGroup.removeChildren();
+        for (let i = 0; i < this.arrayBuff.length; i++) {
+            let icon = this.arrayBuff[i];
+            this.buffGroup.removeChild(icon);
+            icon.x = 40 * i;
+            this.buffGroup.addChild(icon);
+        }
+    }
+
     /**增加buff图标 */
     public addBuffIcon(name:string):void {
         if (this._isExistBuff(name)) return;
@@ -163,6 +174,7 @@ class BattleSceneCom extends Base {
                 let icon = this.arrayBuff[i];
                 egret.Tween.get(icon).to({alpha:0}, 200).call(()=>{
                     this.buffGroup.removeChild(icon);
+                    this.updateBuffIcon();
                 });
                 this.arrayBuff.splice(i, 1);
                 break;

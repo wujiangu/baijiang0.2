@@ -1,10 +1,10 @@
 /**
- * 狂暴
+ * 虚弱
  */
-class Violent extends BaseRandomBuff {
+class Weak extends BaseRandomBuff {
     public constructor() {
         super();
-        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_kuangbao");
+        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_xuruo");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
     }
@@ -12,9 +12,9 @@ class Violent extends BaseRandomBuff {
     /**初始化 */
     public buffInit(options:any) {
         super.buffInit(options);
-        this.iconName = "randomBuffIcon_json.buff_kuangbao";
+        this.iconName = "randomBuffIcon_json.buff_xuruo";
         this.options = options;
-        this.buffData.className = "Violent";
+        this.buffData.className = "Weak";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_Overlay;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;
@@ -43,14 +43,14 @@ class Violent extends BaseRandomBuff {
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_kuangbao");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_xuruo");
     }
 
     public addProperty():void {
         super.addProperty();
         if (this._extraValue == 0){
-            this._extraValue = GameData.heros[0].attr.atk;
-            GameData.heros[0].attr.atk += this._extraValue;
+            this._extraValue = Math.floor(GameData.heros[0].attr.atk * 0.5);
+            GameData.heros[0].attr.atk -= this._extraValue;
         }
     }
 
@@ -59,7 +59,7 @@ class Violent extends BaseRandomBuff {
      */
     public _onComplete(event:egret.TimerEvent) {
         super._onComplete(event);
-        GameData.heros[0].attr.atk -= this._extraValue;
+        GameData.heros[0].attr.atk += this._extraValue;
         this._extraValue = 0;
     }
 
@@ -72,5 +72,4 @@ class Violent extends BaseRandomBuff {
     public HideEffect() {
         
     }
-    
 }

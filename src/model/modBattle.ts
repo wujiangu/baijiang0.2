@@ -161,6 +161,23 @@ namespace modBattle {
     }
 
     /**
+     * 获取敌人存活的数量
+     */
+    export function getSurviveCount():void{
+        //地图上的敌人数量
+        let count:number = GameData.monsters.length;
+        let bossCount:number = GameData.boss.length;
+        surviveCount = 0;
+        for (let i = 0; i < count; i++) {
+            if (GameData.monsters[i].attr.hp > 0) surviveCount ++;
+        }
+        for (let i = 0; i < bossCount; i++) {
+            if (GameData.boss[i].attr.hp > 0) surviveCount ++;
+        }
+        // SceneManager.battleScene.battleSceneCom.update();
+    }
+
+    /**
      * 设置小兵的配置数据
      */
     function setMonsterData(id:number, lv:number, isBoss:boolean = false, k_hp:number = 1, k_atk:number = 1):any {
@@ -223,23 +240,6 @@ namespace modBattle {
         let stageId:number = Math.ceil(GameData.curStage/5) % 3;
         if (stageId == 0) stageId = 3;
         SceneManager.battleScene.changeBg(stageId);
-    }
-
-    /**
-     * 获取敌人存活的数量
-     */
-    function getSurviveCount():void{
-        //地图上的敌人数量
-        let count:number = GameData.monsters.length;
-        let bossCount:number = GameData.boss.length;
-        surviveCount = 0;
-        for (let i = 0; i < count; i++) {
-            if (GameData.monsters[i].attr.hp > 0) surviveCount ++;
-        }
-        for (let i = 0; i < bossCount; i++) {
-            if (GameData.boss[i].attr.hp > 0) surviveCount ++;
-        }
-        // SceneManager.battleScene.battleSceneCom.update();
     }
 
     /**
@@ -388,15 +388,14 @@ namespace modBattle {
         return index;
     }
 
-
+    /**存活的敌人数量 */
+    export var surviveCount:number;
     /**生产的敌人数量 */
     var productCount:number;
     /**死亡的总数 */
     var sumDead:number;
     /**杀敌的总数 */
     var sumKill:number;
-    /**存活的敌人数量 */
-    var surviveCount:number;
     /**关卡的配置数据 */
     var tcStage:any;
     /**每波敌方的最大数量 */

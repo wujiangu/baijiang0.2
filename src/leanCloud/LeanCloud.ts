@@ -118,8 +118,8 @@ class LeanCloud{
             for(let i:number = 0; i < data.length; i++){
                 let info = new modEquip.EquipInfo(data[i].id, data[i].star, data[i].quality, data[i].lv);
                 info.SetEquipAttr(data[i].attr_list);
-                for(let j in data[i].attrType){
-                    info.InsertAttrType(new modEquip.AttrType(data[i].attrType[j].type, data[i].attrType[j].value, data[i].attrType[j].quality));
+                for(let j in data[i].type_list){
+                    info.InsertAttrType(new modEquip.AttrType(data[i].type_list[j].type, data[i].type_list[j].value, data[i].type_list[j].quality));
                 }
                 modEquip.EquipData.GetInstance().Add(info);
                 modEquip.EquipData.GetInstance().Lucky = todo.get("lucky") == null ? 0 : todo.get("lucky");
@@ -199,11 +199,11 @@ class LeanCloud{
             }
 
             if(UserDataInfo.GetInstance().IsDifferenceDate(todo.get("userLoginTime"))){
-                if(UserDataInfo.GetInstance().GetBasicData("sign") >= 7){
-                    UserDataInfo.GetInstance().SetBasicData("sign", 0, false);
+                if(UserDataInfo.GetInstance().GetBasicData("sign") >= 14){
+                    UserDataInfo.GetInstance().SetBasicData("sign", 7, false);
                     todo.set("sign", UserDataInfo.GetInstance().GetBasicData("sign"));
                 }
-                
+
                 todo.set("isSign", false);
                 todo.set("userLoginTime", UserDataInfo.GetInstance().GetLastLoginTime());
                 todo.save();

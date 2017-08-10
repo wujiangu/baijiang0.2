@@ -74,7 +74,7 @@ class EmailWindow extends PopupWindow{
 
        for(let i:number = 0; i < 5; i++){
            this.img_reward_list[i].texture = len > i ? Common.GetTextureFromType(tempData.reward[i]) : null;
-           this.digit_list[i].text = len > i ? (tempData.reward[i].type == 1 ? "1" : Common.TranslateDigit(tempData.reward[i].data)) : "";
+           this.digit_list[i].text = len > i ? Common.TranslateDigit(tempData.reward[i].count) : "";
            Common.SetXY(this.img_reward_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.img_reward_list[i].height >> 1));
            Common.SetXY(this.digit_list[i], this.img_reward_list[i].x, this.btn_get.y - 40);
        }

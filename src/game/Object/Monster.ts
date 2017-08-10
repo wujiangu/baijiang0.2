@@ -238,6 +238,7 @@ class Monster extends Enermy {
 
     /**受到攻击 */
     public gotoHurt(hurtValue:number = 1, isSkillHurt:boolean = false) {
+        if (modBuff.isBlind(GameData.heros[0])) return;
         super.gotoHurt(hurtValue, isSkillHurt);
     }
 
@@ -260,7 +261,8 @@ class Monster extends Enermy {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
-        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:74});
+        // let id:number = MathUtils.getRandom(70, 79);
+        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:83});
     }
 
     public gotoIdle() {

@@ -76,9 +76,9 @@ namespace modEquip {
            this.quality = quality;
            this.lv   = lv;
            this.typeID = 0;
-           this.attrType = [];
-           this.attr_list = [];
-           this.origin_attr_list = [];
+           this.type_list = new Array();
+           this.attr_list = new Array();
+           this.origin_attr_list = new Array();
 
            let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(quality);
            for(let i:number = 0; i < 4; i++){
@@ -128,23 +128,23 @@ namespace modEquip {
         }
 
         public InsertAttrType(attrType:AttrType):void{
-            this.attrType.push(attrType);
+            this.type_list.push(attrType);
         }
 
         public ChangeAttrType(index:number, type:number, value:number, quality:number):void{
-            if(index < 0 || index > this.attrType.length) return;
-            this.attrType[index].Type  = type;
-            this.attrType[index].Value = value;
-            this.attrType[index].Quality = quality;
+            if(index < 0 || index > this.type_list.length) return;
+            this.type_list[index].Type  = type;
+            this.type_list[index].Value = value;
+            this.type_list[index].Quality = quality;
         }
 
         public GetAttrType():any{
-            return this.attrType;
+            return this.type_list;
         }
 
         public GetPointTypeFromIndex(index:number):AttrType{
-            if(index < 0 || index > this.attrType.length) return null;
-            return this.attrType[index];
+            if(index < 0 || index > this.type_list.length) return null;
+            return this.type_list[index];
         }
 
          public GetEquipAttr():any{
@@ -175,7 +175,7 @@ namespace modEquip {
         private typeID:number;                  //装备的类型id 主要是区别id一样的时候不同的typeid
         private attr_list:Array<number>;        //[1]生命[2]护甲[3]攻击[4]暴击[5]闪避
         private origin_attr_list:Array<number>;    //源氏的数据列表
-        private attrType:Array<AttrType>;       //属性类型
+        private type_list:Array<AttrType>;       //属性类型
     }
 
     /** 装备数据 负责所有的装备信息 */
@@ -280,8 +280,10 @@ namespace modEquip {
             }
             this.id_list[info.Id] = info_list.length;
             for(let i:number = 0; i < this.id_list[info.Id]; i++){
-                if(currHero.equip == info_list[i].Id && currHero["typeId"] == info_list[i].TypeID)
+                if(currHero.equip == info_list[i].Id && currHero["typeId"] == info_list[i].TypeID){
                     currHero["typeId"] = i;
+                    HeroData.update();
+                }
                 info_list[i].TypeID = i;
             }
             info_list = [];
@@ -337,6 +339,9 @@ namespace modEquip {
     let reset_list:any = [[[150,250],[18,30],[150,250],[0,4]],[[200,280],[22,36],[200,280],[1,4]],[[250,320],[26,42],[250,320],[2,4]],
                  [[280,360],[31,45],[280,360],[2,5]],[[320,380],[35,48],[320,380],[3,5]]];
     let complete:any = [0.25,0.34,0.5,0.75,1]
+    /** 获得洗练装备的数据值 随机洗练一个属性
+     * @param info 当前装备对象信息
+     */
     export function GetResetEquipData(info:EquipInfo):any{
         let type:number = Math.floor((Math.random() * 100) % 4), value:number = 0;
         let quality:number = Math.floor(Math.random() * 100 % 5);
@@ -354,6 +359,10 @@ namespace modEquip {
         return reset_list[quality - 1][type][1];
     }
 
+    /** 根据物品品质获得装备的颜色和图片资源
+     * @param quality  装备属性的品质
+     * @param type     类型 1 是星星 2 点
+     */
     export function GetEquipColorFromQuality(quality:number,type:number = 1):any{
         let imgName:string = type == 1 ? "star" : "point";
 
@@ -367,6 +376,11 @@ namespace modEquip {
 
     let star_up_attr:any = [7.047,0.688,7.13,0.0291];
     let star_init_attr:any = [300,50,200,0];
+    /** 获得装备的属性值
+     * @param info 当前装备对象
+     * @param lv 当前装备需要的等级
+     * @param index 4个属性的索引
+     */
     export function GetEquipUpAttr(info:EquipInfo, lv:number, index:number):number{
         let value:number = 0;
         let upData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(info.Quality);

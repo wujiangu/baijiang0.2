@@ -1,10 +1,10 @@
 /**
- * 狂暴
+ * 迟缓
  */
-class Violent extends BaseRandomBuff {
+class Slow extends BaseRandomBuff {
     public constructor() {
         super();
-        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_kuangbao");
+        this.icon = Utils.createBitmap("randomBuffIcon_json.buff_chihuan");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
     }
@@ -12,9 +12,9 @@ class Violent extends BaseRandomBuff {
     /**初始化 */
     public buffInit(options:any) {
         super.buffInit(options);
-        this.iconName = "randomBuffIcon_json.buff_kuangbao";
+        this.iconName = "randomBuffIcon_json.buff_chihuan";
         this.options = options;
-        this.buffData.className = "Violent";
+        this.buffData.className = "Slow";
         this.buffData.superpositionType = SuperpositionType.SuperpositionType_Overlay;
         this.buffData.buffType = BuffType.BuffType_DeBuff;
         this.buffData.disperseType = DisperseType.DisperseType_NoClear;
@@ -22,6 +22,7 @@ class Violent extends BaseRandomBuff {
         this.buffData.postionType = PostionType.PostionType_Body;
         this.buffData.id = options.id;
         this.buffData.cd = options.cd;
+        this._extraWSP = 0;
     }
 
     /**开始 */
@@ -36,21 +37,25 @@ class Violent extends BaseRandomBuff {
 
     /**刷新数据 */
     public update(target:any, callBack:Function = null) {
-        
+
     }
 
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_kuangbao");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_chihuan");
     }
 
     public addProperty():void {
         super.addProperty();
         if (this._extraValue == 0){
-            this._extraValue = GameData.heros[0].attr.atk;
-            GameData.heros[0].attr.atk += this._extraValue;
+            let speed:number = this.target.getSpeed();
+            this._extraValue = Math.floor(speed * 0.5);
+            this.target.setSpeed(speed - this._extraValue);
+            this._extraWSP = this.target.attr.wsp * 0.5;
+            this.target.attr.wsp += this._extraWSP;
+            this.target.setWSPDelay();
         }
     }
 
@@ -59,8 +64,12 @@ class Violent extends BaseRandomBuff {
      */
     public _onComplete(event:egret.TimerEvent) {
         super._onComplete(event);
-        GameData.heros[0].attr.atk -= this._extraValue;
+        let speed:number = this.target.getSpeed();
+        this.target.setSpeed(speed + this._extraValue);
+        this.target.attr.wsp -= this._extraWSP;
+        this.target.setWSPDelay();
         this._extraValue = 0;
+        this._extraWSP = 0;
     }
 
     /**显示特效 */
@@ -72,5 +81,7 @@ class Violent extends BaseRandomBuff {
     public HideEffect() {
         
     }
-    
+
+    /**额外攻击速度 */
+    private _extraWSP:number;
 }

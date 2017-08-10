@@ -24,6 +24,21 @@ namespace modBuff {
     }
 
     /**
+     * 是否盲目
+     */
+    export function isBlind(obj:Hero):boolean {
+        for (let i = 0; i < obj.buff.length; i++) {
+            //必杀
+            if (obj.buff[i].buffData.id == 78) {
+                let seed:number = MathUtils.getRandom(1, 100);
+                if (seed <= 30) return true;
+                else return false;
+            }
+        }
+        return false;
+    }
+
+    /**
      * 是否技能冷却缩短
      */
     export function isCdShorten(obj:Hero):boolean {
@@ -75,17 +90,24 @@ namespace modBuff {
     /**
      * 是否伤害减少
      */
-    export function isHurtReduce(obj:Hero):boolean {
-        let status:boolean = false;
+    export function hurtChange(obj:Hero):number {
+        let hardening:number = 0;
+        let brokeShield:number = 0;
         for (let i = 0; i < obj.buff.length; i++) {
             //硬化
             if (obj.buff[i].buffData.id == 71) {
-                obj.buff[i].update(obj, (isReduce)=>{
-                    status = isReduce;
+                obj.buff[i].update(obj, (value)=>{
+                    hardening = value;
+                });
+            }
+            //易伤
+            if (obj.buff[i].buffData.id == 76) {
+                obj.buff[i].update(obj, (value)=>{
+                    brokeShield = value;
                 });
             }
         }
-        return status;
+        return (hardening + brokeShield);
     }
 
     /**

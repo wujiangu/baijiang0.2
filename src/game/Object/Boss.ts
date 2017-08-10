@@ -149,6 +149,7 @@ class Boss extends Enermy {
      */
     public gotoHurt(hurtValue:number = 1, isSkillHurt:boolean = false) {
         if (this.attr.hp <=0 ) return;
+        if (modBuff.isBlind(GameData.heros[0])) return;
         if (!this.isReadSkill) {
             if (this.curState == Boss.Action_Skill02 || this.curState == "skill01") {
                 this.isReadSkill = true;

@@ -1,0 +1,16 @@
+[
+	{"type":2,"name":"power","count":5000,"id":0},
+	{"type":1,"name":"equip","count":1,"id":10},
+	{"type":3,"name":"diaochan","count":1,"id":0},
+	{"type":2,"name":"exp","count":10000,"id":0},
+	{"type":2,"name":"soul","count":12000,"id":0},
+	{"type":2,"name":"diamond","count":300,"id":0},
+	{"type":1,"name":"equip","count":1,"id":24},
+	{"type":2,"name":"diamond","count":150,"id":0},
+	{"type":2,"name":"diamond","count":200,"id":0},
+	{"type":1,"name":"equip","count":1,"id":25},
+	{"type":2,"name":"exp","count":10000,"id":0},
+	{"type":2,"name":"soul","count":12000,"id":0},
+	{"type":2,"name":"diamond","count":300,"id":0},
+	{"type":1,"name":"equip","count":1,"id":25}
+]

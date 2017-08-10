@@ -53,10 +53,8 @@ class BaseRandomBuff extends BuffBase {
      * 定时完成
      */
     public _onComplete(event:egret.TimerEvent) {
-        this.removeBuff();
+        this.afterRemoveBuff();
         Common.log("buff时间到");
-        this._isReset = false;
-        this._tempTimer.reset();
     }
 
     /**
@@ -67,6 +65,15 @@ class BaseRandomBuff extends BuffBase {
         let index = GameData.heros[0].buff.indexOf(this);
         GameData.heros[0].buff.splice(index, 1);
         ObjectPool.push(this);
+    }
+
+    /**
+     * 移除后处理
+     */
+    public afterRemoveBuff():void {
+        this.removeBuff();
+        this._isReset = false;
+        this._tempTimer.reset();
     }
 
     /**刷新数据 */

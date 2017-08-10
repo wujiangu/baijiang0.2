@@ -64,13 +64,14 @@ class Enermy extends BaseGameObject {
         this.isRemote = data[1].isRemote;
         this.originHP = this.attr.hp;
         this.beAttackCount = 0;
-        // this.maskImprisoned.mask = this;
+        this.isAttackTarget = false;
     }
 
     public update(time:number):void {
         super.update(time);
         if (this.isMovExp) this.gainExpAndSoul(this.img_exp, 1, 16, -10);
         if (this.isMovSoul) this.gainExpAndSoul(this.img_soul, 2, 14, 10);
+        if (this.isAttackTarget) this.beTrack();
     }
 
     /*******************状态的帧回调**********************/
@@ -239,6 +240,18 @@ class Enermy extends BaseGameObject {
     /****************************************************/
 
     /***********************其他函数**********************/
+    /**
+     * 设置被选为攻击目标状态
+     */
+    public setAttackTarget(status:boolean):void {
+        this.isAttackTarget = status;
+    }
+    /**
+     * 设置跟踪源
+     */
+    public setTrackTarget(target:any):void {
+        this.trackTarget = target;
+    }
     /**
      * 更新击杀数
      */
@@ -423,6 +436,23 @@ class Enermy extends BaseGameObject {
         this.addChild(this.img_soul);
     }
 
+    public beTrack():void {
+        let tempRadian = MathUtils.getRadian2(this.trackTarget.x, this.trackTarget.y, this.x, this.y);
+        let deltax = Math.cos(tempRadian) * 10;
+        let deltay = Math.sin(tempRadian) * 10;
+        this.trackTarget.x += deltax;
+        this.trackTarget.y += deltay;
+        var dis = MathUtils.getDistance(this.trackTarget.x, this.trackTarget.y, this.x, this.y);
+        if (dis < 10) {
+            this.setAttackTarget(false);
+            this.gotoHurt(GameData.heros[0].attr.atk * 0.5);
+            this.trackTarget.play("skill03_02", 1);
+            egret.setTimeout(()=>{
+                this.trackTarget.visible = false;
+            }, this, 100);
+        }
+    }
+
     /**设置受击次数 */
     public setBeAttackCount(value):void {
         this.beAttackCount = value;
@@ -483,6 +513,9 @@ class Enermy extends BaseGameObject {
     public defaultFlilter:egret.ColorMatrixFilter;
     /**配置数据 */
     public confData:any;
+    public trackTarget:any;
+    /**是否被选为自动攻击的目标 */
+    public isAttackTarget:boolean;
     /**受到的伤害是否为技能伤害 */
     public isSkillHurt:boolean;
     /**是否远程攻击 */

@@ -86,7 +86,7 @@ class EquipUpWindow extends PopupWindow{
 
     private getEquipExpAndSoul():any{
         let allExp:number = 0, allSoul:number = 0;
-        for(let i:number = 0; i < this.upLevelNum; i++){
+        for(let i:number = 1; i <= this.upLevelNum; i++){
             let upData:any = TcManager.GetInstance().GetDataFromLv(2, this.equip_info.Lv + i);
             allExp  += parseInt(upData.exp);
             allSoul += parseInt(upData.soul);
@@ -161,8 +161,8 @@ class EquipUpWindow extends PopupWindow{
             this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? (i < 3 ? `${Math.ceil(rearNum)}`:`${Math.ceil(rearNum * 10) / 10}%`) : "";
         }
 
-        let data = this.getEquipExpAndSoul();
         if(this.equip_info.Lv < modEquip.EquipSource.EQUIPLV){
+            let data = this.getEquipExpAndSoul();
             this.showEquipLvInfo(true, data.exp, data.soul, "Lv." + (this.equip_info.Lv + this.upLevelNum))
         }
         else
