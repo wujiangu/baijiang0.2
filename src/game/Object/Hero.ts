@@ -219,6 +219,12 @@ class Hero extends BaseGameObject {
         }
     }
 
+    public setLiveEnermy():void {
+        this.enermy = [];
+        this.addVictim(GameData.boss);
+        this.addVictim(GameData.monsters);
+    }
+
     /**
      * 获取敌人
      */

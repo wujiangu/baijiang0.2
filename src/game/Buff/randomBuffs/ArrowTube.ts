@@ -39,7 +39,6 @@ class ArrowTube extends BaseRandomItem {
             this._deltaY.push(deltaY);
         }
         this.isFly = false;
-        TimerManager.getInstance().doTimer(20, 0, this.action, this);
     }
 
     /**刷新数据 */
@@ -58,6 +57,8 @@ class ArrowTube extends BaseRandomItem {
                 SceneManager.battleScene.effectLayer.addChild(this.arrows[i]);
             }
             this.isFly = true;
+            this.count = 0;
+            TimerManager.getInstance().doFrame(1, 0, this.action, this);
         });
     }
 
@@ -73,6 +74,15 @@ class ArrowTube extends BaseRandomItem {
     private fly(id:number):void {
         this.arrows[id].x += this._deltaX[id];
         this.arrows[id].y += this._deltaY[id];
+        GameData.heros[0].setLiveEnermy();
+        let enermy = GameData.heros[0].getEnermy();
+        for (let i = 0; i < enermy.length; i++) {
+            let dis = MathUtils.getDistance(this.arrows[id].x, this.arrows[id].y, enermy[i].x, enermy[i].y);
+            if (dis < 30 && enermy[i].attr.hp > 0) {
+                enermy[i].gotoHurt(GameData.heros[0].attr.atk * 0.5);
+                this._bound(id);
+            }
+        }
         if (this.arrows[id].x < 20) this._bound(id);
         if (this.arrows[id].y < 20) this._bound(id);
         if (this.arrows[id].x > Common.SCREEN_W - 20) this._bound(id);
@@ -80,17 +90,31 @@ class ArrowTube extends BaseRandomItem {
     }
 
     private _bound(id:number):void {
-        if (this._deltaX[id] == 0 || this._deltaY[id] == 0) return;
+        if (this._deltaX[id] == 0) return;
+        this._deltaX[id] = 0;
+        this._deltaY[id] = 0;
         let target = this.arrows[id];
+        target.play("skill01_03", 1);
         egret.setTimeout(()=>{
             target.visible = false;
             if (target && target.parent){
                 target.parent.removeChild(target);
+                this.count ++;
+                if (this.count == 8) {
+                    Common.log("wwanfdsfds")
+                    this.isFly = false;
+                    TimerManager.getInstance().remove(this.action, this);
+                }
             }
         }, this, 100);
-        target.play("skill01_03", 1);
-        this._deltaX[id] = 0;
-        this._deltaY[id] = 0;
+    }
+
+    private _isFinish():number {
+        let sum:number = 0;
+        for (let i = 0; i < this._deltaX.length; i++) {
+            sum += this._deltaX[i];
+        }
+        return sum;
     }
 
     private armatures:Array<DragonBonesArmatureContainer>;
@@ -102,4 +126,6 @@ class ArrowTube extends BaseRandomItem {
     private _deltaY:Array<number>;
     /**运行状态 */
     private isFly:boolean;
+    /** */
+    private count:number;
 }
