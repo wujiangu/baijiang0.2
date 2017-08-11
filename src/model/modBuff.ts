@@ -24,6 +24,27 @@ namespace modBuff {
     }
 
     /**
+     * 暂停临时buff的计时器
+     */
+    export function randomBuffStop(obj:Hero):void {
+        for (let i = 0; i < obj.buff.length; i++) {
+            if (obj.buff[i].buffData.id >= 70 && obj.buff[i].buffData.id <= 79) {
+                obj.buff[i].stop();
+            }
+        }
+    }
+
+    /**开启临时buff的计时器 */
+    export function randomBuffStart(obj:Hero):void {
+        for (let i = 0; i < obj.buff.length; i++) {
+            if (obj.buff[i].buffData.id >= 70 && obj.buff[i].buffData.id <= 79) {
+                obj.buff[i].start();
+            }
+        }
+    }
+
+
+    /**
      * 是否盲目
      */
     export function isBlind(obj:Hero):boolean {

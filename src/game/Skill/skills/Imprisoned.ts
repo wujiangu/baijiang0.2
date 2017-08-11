@@ -21,7 +21,7 @@ class Imprisoned extends SkillBase {
     public init() {
         super.init();
         this.buffIndex = 1;
-        this.cd = 300;
+        this.cd = 30;
     }
 
     public start(animation:string, target:any) {

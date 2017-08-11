@@ -6,6 +6,17 @@ class BaseRandomBuff extends BuffBase {
         super();
     }
 
+    /**创建文字组 */
+    public createTextGroup(strBg:string, strText:string):void {
+        this.textGroup = new egret.DisplayObjectContainer();
+        let bg:egret.Bitmap = Utils.createBitmap("randomBuffSheet_json."+strBg);
+        this.textGroup.addChild(bg);
+        let text:egret.Bitmap = Utils.createBitmap("randomBuffSheet_json."+strText);
+        text.x = 50;
+        text.y = 2;
+        this.textGroup.addChild(text);
+    }
+
     /**初始化 */
     public buffInit(options:any) {
         super.buffInit();
@@ -119,11 +130,23 @@ class BaseRandomBuff extends BuffBase {
         if (this.buffData.duration > 0) this._tempTimer.reset();
     }
 
+    /**暂停计时器 */
+    public stop() {
+        if (this.buffData.duration > 0) this._tempTimer.stop();
+    }
+
+    /**开启计时器 */
+    public start() {
+        if (this.buffData.duration > 0) this._tempTimer.start();
+    }
+
     public target:any;
     /**图标的名字 */
     public iconName:string;
     /**buff图标 */
     public icon:egret.Bitmap;
+    /**buff文字组 */
+    public textGroup:egret.DisplayObjectContainer;
     /**附加的值 */
     public _extraValue:number;
     /**不叠加buff的刷新定时器 */

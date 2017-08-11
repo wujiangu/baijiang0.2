@@ -93,7 +93,7 @@ class Chest extends egret.DisplayObjectContainer {
             let index = GameData.chests.indexOf(this);
             GameData.chests.splice(index, 1);
             ObjectPool.push(this);
-            if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
+            // if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
             if (this.item && this.item.recycle) this.item.recycle();
         });
     }

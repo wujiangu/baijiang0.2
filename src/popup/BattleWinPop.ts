@@ -59,6 +59,7 @@ class BattleWinPop extends PopupWindow {
             this.lab_hurt.text = params.value.toString();
             this.lab_rank.text = params.rank.toString();
         }
+        Animations.fadeOut(this);
     }
 
     public Reset():void{

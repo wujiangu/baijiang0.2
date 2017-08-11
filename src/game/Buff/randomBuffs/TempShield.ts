@@ -7,6 +7,7 @@ class TempShield extends BaseRandomBuff {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_hudun");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_fumiandi", "buff_004");
     }
 
     /**初始化 */
@@ -43,7 +44,7 @@ class TempShield extends BaseRandomBuff {
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_hudun");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, "randomBuffIcon_json.buff_hudun");
     }
 
     public addProperty():void {

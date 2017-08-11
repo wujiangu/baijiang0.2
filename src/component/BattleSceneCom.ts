@@ -27,20 +27,24 @@ class BattleSceneCom extends Base {
     private onPause(event:egret.TouchEvent):void {
         TimerManager.getInstance().stopTimer();
         modBattle.stop();
+        modBuff.randomBuffStop(GameData.heros[0]);
         let pop = WindowManager.GetInstance().GetWindow("BattlePausePop");
         pop.Show();
         Animations.fadeOut(pop);
     }
 
     /**失败弹窗 */
-    public onFailPop():void {
+    public onFailPop(isExit:boolean=false):void {
         // Common.log("杀敌总数------>", modBattle.getSumkill());
         TimerManager.getInstance().stopTimer();
         modBattle.stop();
-        this.battleFailPop = WindowManager.GetInstance().GetWindow("BattleFailPop");
-        this.battleFailPop.Show();
-        SceneManager.battleScene.addChild(this.battleFailPop);
-        Animations.fadeOut(this.battleFailPop);
+
+        if(modBattle.getSumkill() >= ShareWindow.KILLREQUIRE){
+            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:2, data:0,share:10}, ()=>{
+                WindowManager.GetInstance().GetWindow("BattleFailPop").Show(isExit);
+            });
+        }
+        else WindowManager.GetInstance().GetWindow("BattleFailPop").Show(isExit);
     }
 
     /**设置弹出的内容显示 */
@@ -152,19 +156,21 @@ class BattleSceneCom extends Base {
         for (let i = 0; i < this.arrayBuff.length; i++) {
             let icon = this.arrayBuff[i];
             this.buffGroup.removeChild(icon);
-            icon.x = 40 * i;
+            icon.y = 40 * i;
             this.buffGroup.addChild(icon);
         }
     }
 
     /**增加buff图标 */
-    public addBuffIcon(name:string):void {
+    public addBuffIcon(group:egret.DisplayObjectContainer, name:string):void {
         if (this._isExistBuff(name)) return;
-        let icon:egret.Bitmap = Utils.createBitmap(name);
-        icon.name = name;
-        icon.x = this.arrayBuff.length * 40;
-        this.arrayBuff.push(icon);
-        this.buffGroup.addChild(icon);
+        // let icon:egret.DisplayObjectContainer = group;
+        group.name = name;
+        group.x = group.width;
+        group.y = this.arrayBuff.length * 40;
+        this.arrayBuff.push(group);
+        this.buffGroup.addChild(group);
+        egret.Tween.get(group).to({x:0}, 200, egret.Ease.elasticOut);
     }
 
     /**删除buff图标 */
@@ -172,7 +178,7 @@ class BattleSceneCom extends Base {
         for (let i = 0; i < this.arrayBuff.length; i++) {
             if (this.arrayBuff[i].name == name) {
                 let icon = this.arrayBuff[i];
-                egret.Tween.get(icon).to({alpha:0}, 200).call(()=>{
+                egret.Tween.get(icon).to({x:icon.width}, 200, egret.Ease.elasticIn).call(()=>{
                     this.buffGroup.removeChild(icon);
                     this.updateBuffIcon();
                 });
@@ -180,6 +186,12 @@ class BattleSceneCom extends Base {
                 break;
             }
         }
+    }
+
+    /**清空buff图标 */
+    public clearBuffIcon():void {
+        this.arrayBuff = [];
+        this.buffGroup.removeChildren();
     }
 
     /**复活 */
@@ -228,12 +240,11 @@ class BattleSceneCom extends Base {
     /**buff组 */
     private buffGroup:eui.Group;
     /**buff图标组 */
-    private arrayBuff:Array<egret.Bitmap>
+    private arrayBuff:Array<egret.DisplayObjectContainer>
     private _sumHP:number;
     /**暂停 */
     private btn_pause:eui.Button;
     private btn_skill:eui.Button;
-    private battleFailPop:PopupWindow;
     private stage_count:number;
     private cd_time:number;
 

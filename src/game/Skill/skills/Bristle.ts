@@ -29,7 +29,7 @@ class Bristle extends SkillBase {
         super.init();
         this.buffIndex = 1;
         this.push_range = 200;
-        this.cd = 300;
+        this.cd = 30;
     }
 
     private onComplete(event:egret.MotionEvent) {

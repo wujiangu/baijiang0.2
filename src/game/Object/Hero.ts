@@ -70,7 +70,7 @@ class Hero extends BaseGameObject {
         this.isInvincible = true;
         super.init(data);
         this.initDragonBonesArmature(data[0]);
-        // let attr = modHero.addEquipAttr(data);      //test
+        let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.name = data[0];
@@ -156,11 +156,11 @@ class Hero extends BaseGameObject {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
-        let talent:Array<any> = GameData.testTalent.talent;     //test
-        // let buff = HeroData.list[this.name].buff;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        // let talent:Array<any> = GameData.testTalent.talent;     //test
+        let buff = HeroData.list[this.name].buff;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -193,9 +193,9 @@ class Hero extends BaseGameObject {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        // HeroData.list[this.name].buff.splice(2);         //test
-        // let data:any = HeroData.getHeroData(GameData.curHero);
-        // HeroData.update();
+        HeroData.list[this.name].buff.splice(2);         //test
+        let data:any = HeroData.getHeroData(GameData.curHero);
+        HeroData.update();
     }
 
     /**增加攻击对象队列 */
@@ -288,7 +288,7 @@ class Hero extends BaseGameObject {
                 let angle = Math.abs(this.atk_radian - radian);
                 let dx = dis*Math.cos(angle);
                 let dy = dis*Math.sin(angle);
-                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 30)) {
+                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 40)) {
                     if (this.enermy[i].type == 0) {
                         //道具或宝箱
                         this.enermy[i].gotoHurt();
@@ -612,7 +612,7 @@ class Hero extends BaseGameObject {
     public deadHandler():void {
         this.removeComplete();
         if (modBuff.isRevival(this)) Common.log("复活");
-        else SceneManager.battleScene.battleSceneCom.onFailPop();
+        else SceneManager.battleScene.battleSceneCom.onFailPop(false);
     }
 
     /**

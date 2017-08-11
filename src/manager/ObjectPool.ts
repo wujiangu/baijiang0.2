@@ -19,7 +19,7 @@ class ObjectPool {
             let argsLen:number = args.length;
             if (argsLen == 0) {
                 item = new cls();
-                Common.log("创建", name);
+                // Common.log("创建", name);
             }
             else if (argsLen == 1) {
                 item = new cls(args[0]);

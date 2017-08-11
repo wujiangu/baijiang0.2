@@ -35,6 +35,7 @@ class BattleFailPop extends PopupWindow {
                     }
                     modBattle.recycleHero();
                     egret.setTimeout(()=>{
+                        SceneManager.battleScene.battleSceneCom.clearBuffIcon();
                         SceneManager.battleScene.effectLayer.removeChildren();
                         SceneManager.battleScene.createHero();
                         TimerManager.getInstance().startTimer();
@@ -64,37 +65,44 @@ class BattleFailPop extends PopupWindow {
     /**切换为结算界面 */
     private toRewardWindow():void {
         Animations.popupIn(this.group_fail, 300, ()=>{
-            let img_diammond:any = this.btn_reavival.getChildAt(2);
-            img_diammond.visible = false;
-            this.img_bg.source = "battle_0006_png";
-            this.group_killCount1.visible = false;
-            this.group_killProg.visible = false;
-            this.group_killCount2.visible = true;
-            this.group_item.visible = true;
-            this.group_hero.visible = true;
-            this.btn_giveup.label = "分享";
-            this.btn_reavival.label = "返回主界面";
-            this.typeBtn1 = 1;
-            this.typeBtn2 = 1;
-            Animations.popupOut(this.group_fail, 300, ()=>{
-                if (this._isUp) {
-                    this.img_upgrade.visible = true;
-                    // let data = HeroData.getHeroData(GameData.curHero);
-                    // Common.log("英雄的数据---->", data);
-                    egret.Tween.get(this.img_upgrade).to({y:this.img_upgrade.y - 100, alpha:0}, 800).call(()=>{
-                        this.img_upgrade.visible = false;
-                        egret.Tween.removeTweens(this.img_upgrade);
-                    });
-                }
-                egret.Tween.get(this.img_exp).to({scaleX:this._scaleX}, 300).call(()=>{
-                    egret.Tween.removeTweens(this.img_exp);
-                });
-            });
+            this.rewardWindow();
         })
     }
 
+    /**
+     * 结算界面
+     */
+    public rewardWindow():void {
+        let img_diammond:any = this.btn_reavival.getChildAt(2);
+        img_diammond.visible = false;
+        this.img_bg.source = "battle_0006_png";
+        this.group_killCount1.visible = false;
+        this.group_killProg.visible = false;
+        this.group_killCount2.visible = true;
+        this.group_item.visible = true;
+        this.group_hero.visible = true;
+        this.btn_giveup.label = "分享";
+        this.btn_reavival.label = "返回主界面";
+        this.typeBtn1 = 1;
+        this.typeBtn2 = 1;
+        Animations.popupOut(this.group_fail, 300, ()=>{
+            if (this._isUp) {
+                this.img_upgrade.visible = true;
+                // let data = HeroData.getHeroData(GameData.curHero);
+                // Common.log("英雄的数据---->", data);
+                egret.Tween.get(this.img_upgrade).to({y:this.img_upgrade.y - 100, alpha:0}, 800).call(()=>{
+                    this.img_upgrade.visible = false;
+                    egret.Tween.removeTweens(this.img_upgrade);
+                });
+            }
+            egret.Tween.get(this.img_exp).to({scaleX:this._scaleX}, 300).call(()=>{
+                egret.Tween.removeTweens(this.img_exp);
+            });
+        });
+    }
+
     /**设置弹出的内容显示 */
-    public Show():void {
+    public Show(isExit:boolean=false):void {
         super.Show();
         //阵亡界面内容
         this.img_bg.source = "battle_0008_png";
@@ -160,7 +168,7 @@ class BattleFailPop extends PopupWindow {
         // this.img_exp.scaleX = upExp/tcHeroUp[upLv-1].exp;
         data["lv"] = upLv;
         data["exp"] = upExp;
-        GameData.heros[0].recycleSkill();
+        if (isExit) this.rewardWindow();
     }
 
     public Init():void {

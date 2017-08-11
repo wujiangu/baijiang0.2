@@ -261,8 +261,15 @@ class Monster extends Enermy {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
-        // let id:number = MathUtils.getRandom(70, 79);
-        SceneManager.battleScene.createChest({x:this.x, y:this.y, id:83});
+        let random:number = MathUtils.getRandom(1, 100);
+        if (random <= 10) {
+            let id:number = 0;
+            let seed:number = MathUtils.getRandom(1, 100);
+            if (seed <= 40) id = MathUtils.getRandom(70, 74);
+            else if (seed > 40 && seed <= 60) id = MathUtils.getRandom(75, 79);
+            else id = MathUtils.getRandom(80, 83);
+            SceneManager.battleScene.createChest({x:this.x, y:this.y, id:id});
+        }
     }
 
     public gotoIdle() {

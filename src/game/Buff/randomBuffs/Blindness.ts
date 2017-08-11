@@ -7,6 +7,7 @@ class Blindness extends BaseRandomBuff {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_mangmu");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_youyidi", "buff_015");
     }
 
     /**初始化 */
@@ -43,7 +44,7 @@ class Blindness extends BaseRandomBuff {
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_mangmu");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, "randomBuffIcon_json.buff_mangmu");
     }
 
     public addProperty():void {

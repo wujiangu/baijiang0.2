@@ -19,7 +19,7 @@ namespace modShop {
      * 4: [8901, 9900]
      * 5: [9901, 10000]
      */
-    function drawCard(roll:number):number {
+    function drawCard(roll:number, isProtect:boolean=false):number {
         let id;
         if (roll >= rolls[0][0] && roll <= rolls[0][1]) {
             id = MathUtils.getRandom(1, 9);
@@ -31,7 +31,8 @@ namespace modShop {
             id = MathUtils.getRandom(15, 19);
         }
         else if (roll >= rolls[3][0] && roll <= rolls[3][1]) {
-            id = MathUtils.getRandom(20, 24);
+            if (isProtect) id = MathUtils.getRandom(21, 24);
+            else id = MathUtils.getRandom(20, 24);
         }
         return id;
     }
@@ -77,10 +78,11 @@ namespace modShop {
      */
     function certainlyPurple():any {
         Common.log("非洲难民");
-        let roll:number = MathUtils.getRandom(8901, 10000);
-        let id:number = drawCard(roll);
+        let roll:number = MathUtils.getRandom(9901, 10000);
+        let id:number = drawCard(roll, true);
         let starRoll:number = MathUtils.getRandom(1, 10000);
-        let star:number = 0;starDistribute(starRoll);
+        let star:number = 0;
+        starDistribute(starRoll);
         let affixs:Array<number> = new Array();
         // for (let i = 0; i < star; i ++) {
         //     let affixRoll:number = MathUtils.getRandom(1, 10000);
@@ -133,7 +135,7 @@ namespace modShop {
         for (let i = 0; i < 10; i++) {
             let arrId = drawOnce();
             // 判断是否有紫色武器以上
-            if (arrId[0] >= 15 && arrId[0] <= 24) {
+            if (arrId[0] >= 20 && arrId[0] <= 24) {
                 isPurple = true;
             }
             ids.push(arrId);

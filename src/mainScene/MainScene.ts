@@ -139,13 +139,17 @@ class MainScene extends Base {
 				this.popupGroup.visible = true;
 				break;
             case this.btn_shop:
-                this.ShowPop("ShopDialog");
+                // this.ShowPop("ShopDialog");
+                //大神!!!这个暂时不要再改回去了，报错了
+                this.shopDialog = WindowManager.GetInstance().GetWindow("ShopDialog");
+                this.shopDialog.Show();
+                Animations.fadeOut(this.shopDialog);
                 break;
             case this.btn_email:
-                 this.ShowPop("EmailWindow");
+                this.ShowPop("EmailWindow");
             break;
             case this.btn_gm:
-                  WindowManager.GetInstance().GetWindow("GMWindow").Show();
+                WindowManager.GetInstance().GetWindow("GMWindow").Show();
             break;
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();

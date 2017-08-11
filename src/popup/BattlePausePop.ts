@@ -26,15 +26,22 @@ class BattlePausePop extends PopupWindow {
         switch (event.currentTarget) {
             case this.btn_continue:
                 TimerManager.getInstance().startTimer();
-                if (this.popType == 1) modBattle.start();
+                if (this.popType == 1){
+                    modBattle.start();
+                    modBuff.randomBuffStart(GameData.heros[0]);
+                }
                 else modPVP.start();
             break;
             default:
-                Animations.sceneTransition(()=>{
-                    SceneManager.curScene.cleanChildren();
-                    DragonBonesFactory.getInstance().removeTimer();
-                    GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
-                });
+                if (SceneManager.curScene == SceneManager.battleScene){
+                    SceneManager.battleScene.battleSceneCom.onFailPop(true);
+                }else{
+                    Animations.sceneTransition(()=>{
+                        SceneManager.curScene.cleanChildren();
+                        DragonBonesFactory.getInstance().removeTimer();
+                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+                    });
+                }
             break;
         }
     }

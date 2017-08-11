@@ -408,6 +408,7 @@ class BattleScene extends Base {
     public cleanChildren():void {
         // this.comboTimer.reset();
         modBattle.recycleObject();
+        this.battleSceneCom.clearBuffIcon();
         this.effectLayer.removeChildren();
         this.otherLayer.removeChildren();
         // GameLayerManager.gameLayer().effectLayer.removeChildren();

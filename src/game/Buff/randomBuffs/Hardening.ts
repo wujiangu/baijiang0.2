@@ -7,6 +7,7 @@ class Hardening extends BaseRandomBuff {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_yinghua");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_fumiandi", "buff_002");
     }
 
     /**初始化 */
@@ -45,7 +46,7 @@ class Hardening extends BaseRandomBuff {
     public AddEffect(target:any) {
         super.AddEffect(target);
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon("randomBuffIcon_json.buff_yinghua");
+        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, "randomBuffIcon_json.buff_yinghua");
     }
 
     public addProperty():void {

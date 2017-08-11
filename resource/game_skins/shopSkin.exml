@@ -64,8 +64,8 @@
 			<e:Label text="10" x="916" y="247.32" fontFamily="Microsoft YaHei" bold="true" size="35"/>
 			<e:Label text="可获得：1-5星武器" x="167" y="317.32" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25"/>
 			<e:Label text="可获得：1-5星武器，" x="624" y="318.82" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25"/>
-			<e:Label text="必出一紫色武器" x="873" y="318.82" fontFamily="Microsoft YaHei" bold="true" size="25" textColor="0x932481"/>
-			<e:Button id="btn_oneDraw" label="220" x="145.5" y="368">
+			<e:Label text="必出一橙色武器" x="873" y="318.82" fontFamily="Microsoft YaHei" bold="true" size="25" textColor="0xca6e1a"/>
+			<e:Button id="btn_oneDraw" label="60" x="145.5" y="368">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
@@ -74,7 +74,7 @@
 					</e:Skin>
 				</e:skinName>
 			</e:Button>
-			<e:Button id="btn_tenDraw" label="2200" x="696" y="368">
+			<e:Button id="btn_tenDraw" label="490" x="696" y="368">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>

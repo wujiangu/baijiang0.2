@@ -37,7 +37,7 @@ class PVPScene extends Base {
      */
     public createCountDown():void {
         modPVP.init();
-        this.onCDTime(300);
+        this.onCDTime(30);
         TimerManager.getInstance().doTimer(1000, this._cdTime, this._onTimeCD, this, this._onTimeComplete, this);
     }
 
@@ -67,7 +67,7 @@ class PVPScene extends Base {
      * 更新伤害值
      */
     public updateValue(value:number):void {
-        this.cd_time -= 5;
+        this.cd_time -= 1;
         this.lab_cdTime.text = `${this._cdTime}`;
         this._curValue += value;
         this.lab_value.text = `${this._curValue}`;
@@ -174,12 +174,12 @@ class PVPScene extends Base {
         this._isTimeOut = true;
         RankData.GetInstance().InsertData(this._curValue);
         let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
-        let pop = WindowManager.GetInstance().GetWindow("BattleWinPop");
-        pop.Show({value:this._curValue, rank:rankIndex});
-        Animations.fadeOut(pop);
         if(rankIndex != -1){
-            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10});  
+            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10},()=>{
+                WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+            });  
         }
+        else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
     }
 
     /**

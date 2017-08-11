@@ -34,12 +34,15 @@ class ReadyDialog extends PopupWindow {
     private _createAttr():void {
         let attr = ["生命", "攻击", "护甲", "闪避", "暴击", "攻速"];
         let hero:any = HeroData.getHeroData(GameData.curHero);
+        let equip:number = hero.equip;
+        let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(equip, 0);
+        Common.log("装备信息----->", JSON.stringify(equipInfo));
         for (let i = 0; i < attr.length; i++) {
             let leftText  = Common.CreateText(attr[i], 24, 0x858685, true, "Microsoft YaHei");
             this.biographyGroup.addChild(leftText);
             Common.SetXY(leftText, 45, 85 + 40 * i);
 
-            let curAttr = Common.CreateText(hero.attr[i], 24, 0x858685, true, "Microsoft YaHei","center"); 
+            let curAttr = Common.CreateText(hero.attr[i], 24, 0x858685, true, "Microsoft YaHei"); 
             this.biographyGroup.addChild(curAttr);
             this._curAttr.push(curAttr);
             Common.SetXY(curAttr, leftText.x + leftText.width + 100, leftText.y);
@@ -130,6 +133,10 @@ class ReadyDialog extends PopupWindow {
     protected childrenCreated(): void{
         let id = modHero.getIdFromKey(GameData.curHero);
         this.showHero(id);
+        if (this.equipId != 0) {
+            let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, 0);
+            this.updateEquip(equip);
+        }
     }
 
     private onTouchEquip(event:egret.TouchEvent):void{
@@ -229,17 +236,17 @@ class ReadyDialog extends PopupWindow {
             }
         }
         //武器
-        for (let i = 0; i < this.detailGroup.numChildren; i++){
-            let obj:any = this.detailGroup.getChildAt(i);
-            obj.visible = false;
-        }
+        // for (let i = 0; i < this.detailGroup.numChildren; i++){
+        //     let obj:any = this.detailGroup.getChildAt(i);
+        //     obj.visible = false;
+        // }
         this.btn_change.visible = true;
         let data = HeroData.list[GameData.curHero];
         this.equipId = data.equip;
         this.equipTypeId = data["typeId"] == null ? 0 : data["typeId"];
         if (this.equipId != 0){
-            let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, 0);
-            this.updateEquip(equip);
+            // let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, 0);
+            // this.updateEquip(equip);
             this.btn_change.label = "替换";
         }else{
             this.btn_change.label = "装备";
@@ -286,9 +293,10 @@ class ReadyDialog extends PopupWindow {
         this.equipId = event.data[0];
         this.equipTypeId = event.data[1];
 
-        let heroData = HeroData.getHeroData(GameData.curHero);
-        heroData.equip = this.equipId ;
-        heroData["typeId"] = this.equipTypeId;
+        for (var key in HeroData.list) {
+            HeroData.list[key].equip = this.equipId;
+            HeroData.list[key]["typeId"] = this.equipTypeId;
+        }
         HeroData.update();
 
         let equip:any = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
@@ -375,7 +383,6 @@ class ReadyDialog extends PopupWindow {
 
     /**创建英雄头像 */
     private _createHeroIcon():void {
-        GameData.curHero = "diaochan";
         this.updateList();
         this._selectBox.x = 0;
     }

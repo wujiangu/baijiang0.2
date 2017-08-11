@@ -7,6 +7,7 @@ class Explosive extends BaseRandomItem {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_zhadan");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        // this.createTextGroup("buff_fumiandi", "buff_007");
     }
 
     public init(target:any):void {

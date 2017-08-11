@@ -46,6 +46,7 @@ class RevivalBuff extends BuffBase {
             this._count ++ ;
             let talentValue:number = this.getTalentValue();
             modBattle.recycleHero();
+            SceneManager.battleScene.battleSceneCom.clearBuffIcon();
             SceneManager.battleScene.effectLayer.removeChildren();
             let value:number = Math.floor(this.target.originHP * talentValue/100);
             SceneManager.battleScene.createHero(true, value);

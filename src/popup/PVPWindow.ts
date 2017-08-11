@@ -89,10 +89,12 @@ class PVPWindow extends PopupWindow{
             RankData.GetInstance().ChallengeNum++;
         }
         else if(target == this.btn_buy){
-            if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 100)){
+            let pvpConsume:number = RankData.GetInstance().ChallengeNum * 20 >= 100 ? 100 : RankData.GetInstance().ChallengeNum * 20;
+            if(UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume)){
                 this.Close();
                 SceneManager.nextScene = "pvpScene";
                 WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
+                RankData.GetInstance().ChallengeNum++;
             }
             else
             {
@@ -157,6 +159,7 @@ class PVPWindow extends PopupWindow{
     private show_and_hide_btn(startStatus:boolean, buyStatus:boolean):void{
         this.btn_start.visible = startStatus;
         this.btn_buy.visible = buyStatus;
+        this.btn_buy.label = RankData.GetInstance().ChallengeNum * 20 >= 100 ? `${100}` : `${RankData.GetInstance().ChallengeNum * 20}`;
     }
 
     private btn_close:eui.Button;
