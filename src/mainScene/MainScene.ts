@@ -110,9 +110,7 @@ class MainScene extends Base {
         let target = event.target;
         let type:number = parseInt(target.name);
 
-        let group = GoodsTipWindow.GetInstance();
-        group.Show(this, type);
-        Common.SetXY(group, target.x - 120, target.y + target.height + 10);
+        GoodsTipWindow.GetInstance().Show(this, type, target.x - 120, target.y + target.height + 10);
     }
 
     /**

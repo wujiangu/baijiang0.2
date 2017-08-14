@@ -58,8 +58,47 @@ class BattleWinPop extends PopupWindow {
             this.btn_continue.label = "继续";
             this.lab_hurt.text = params.value.toString();
             this.lab_rank.text = params.rank.toString();
+            let data = modPVP.getCurReward(params.rank);
+            // Common.log("当前获得的奖励------>", data);
+            this.createReward(data);
+
         }
-        Animations.fadeOut(this);
+        Animations.PopupBackOut(this, 500);
+    }
+
+    /**
+     *  创建奖励组
+     */
+    private createReward(data:any):void {
+        let posCount:number = 0;
+        let reward:Array<string> = ["soul", "exp", "diamond"];
+        if (data.equip && data.equip.id > 0) {
+            posCount ++;
+            let id:number = 25 - data.equip.id;
+            let Image_equip:egret.Bitmap = Utils.createBitmap("Sequip"+id+"_png");
+            Image_equip.x = 160;
+            Image_equip.y = 30;
+            this.resultGroup.addChild(Image_equip);
+        }
+        for (let i = 0; i < reward.length; i++) {
+            let group:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+            group.x = 160 + (posCount + i) * 100;
+            group.y = 30;
+            this.resultGroup.addChild(group);
+            let image:egret.Bitmap = Utils.createBitmap("basic_"+reward[i]+"_png");
+            group.addChild(image);
+            let value:number = data[reward[i]];
+            let str:string = value.toString();
+            if (value >= 10000){
+                value /= 10000;
+                str = value.toString() + "W";
+            }
+            Common.log("sdfdsfd----->", str);
+            let text = Common.CreateText(str, 20, Common.TextColors.orangeYellow, true, "Microsoft YaHei","right");
+            group.addChild(text);
+            Common.SetXY(text, 20, 73);
+            text.width = 71;
+        }
     }
 
     public Reset():void{
@@ -79,6 +118,8 @@ class BattleWinPop extends PopupWindow {
     private winGroup:eui.Group;
     /**PVP结束弹窗 */
     private pvpFinishGroup:eui.Group;
+    /**PVP结果 */
+    private resultGroup:eui.Group;
     /**popup类型 */
     private popType:number;
     /*******************图片和文字************************/

@@ -108,7 +108,20 @@ namespace modHero {
         //data:[hp, atk, def, avo, crt, wsp];
         //equip:[hp, def, akt, crt];
         let data:Array<number> = new Array();
-
+        let equipAttr = equipInfo.GetEquipAttr();
+        let attrType = equipInfo.GetAttrType();
+        let attr = {"hp":0, "def":0, "atk":0, "crt":0, "avo":0};
+        if (attrType.length > 0) {
+            addWashAttr(attrType, attr);
+        }
+        data.push(Math.ceil(equipAttr[0] + attr.hp));
+        data.push(Math.ceil(equipAttr[2] + attr.atk));
+        data.push(Math.ceil(equipAttr[1] + attr.def));
+        data.push(Math.ceil(attr.avo));
+        let crt = equipAttr[3] + attr.crt;
+        data.push(parseFloat(crt.toFixed(2)));
+        data.push(0);
+        return data;
     }
 
     var curIndex:number = 0;

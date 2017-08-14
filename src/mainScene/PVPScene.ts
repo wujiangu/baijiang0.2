@@ -55,7 +55,7 @@ class PVPScene extends Base {
         this._stake = ObjectPool.pop("Stakes");
         this.battleLayer.addChild(this._stake);
         GameData.stakes.push(this._stake);
-        Common.log("长度------>", GameData.stakes.length)
+        // Common.log("长度------>", GameData.stakes.length)
         this._stake.init();
         this._stake.x = MathUtils.getRandom(100, 1050);
         this._stake.y = MathUtils.getRandom(100, 550);
@@ -69,7 +69,7 @@ class PVPScene extends Base {
     public updateValue(value:number):void {
         this.cd_time -= 1;
         this.lab_cdTime.text = `${this._cdTime}`;
-        this._curValue += value;
+        this._curValue += Math.floor(value);
         this.lab_value.text = `${this._curValue}`;
     }
 
@@ -86,13 +86,11 @@ class PVPScene extends Base {
      * 清除子对象
      */
     public cleanChildren():void {
-        if (!this._isTimeOut) RankData.GetInstance().InsertData(this._curValue);
         modPVP.recycleObject();
         TimerManager.getInstance().remove(this.timerCD, this);
         TimerManager.getInstance().remove(this._onTimeCD, this);
         TimerManager.getInstance().removeComplete(this._onTimeComplete, this);
         this.effectLayer.removeChildren();
-        // GameLayerManager.gameLayer().effectLayer.removeChildren();
         GameLayerManager.gameLayer().sceneLayer.removeChild(this);
     }
 
@@ -168,10 +166,10 @@ class PVPScene extends Base {
         this.lab_cdTime.text = `${this._cdTime}`;
     }
 
-    private _onTimeComplete():void {
-        TimerManager.getInstance().stopTimer();
-        modPVP.stop();
-        this._isTimeOut = true;
+    /**
+     * 进入结算界面
+     */
+    public gotoFinish():void {
         RankData.GetInstance().InsertData(this._curValue);
         let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
         if(rankIndex != -1){
@@ -180,6 +178,13 @@ class PVPScene extends Base {
             });  
         }
         else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+    }
+
+    private _onTimeComplete():void {
+        TimerManager.getInstance().stopTimer();
+        modPVP.stop();
+        this._isTimeOut = true;
+        this.gotoFinish();
     }
 
     /**

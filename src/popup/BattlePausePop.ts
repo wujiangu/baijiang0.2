@@ -36,11 +36,12 @@ class BattlePausePop extends PopupWindow {
                 if (SceneManager.curScene == SceneManager.battleScene){
                     SceneManager.battleScene.battleSceneCom.onFailPop(true);
                 }else{
-                    Animations.sceneTransition(()=>{
-                        SceneManager.curScene.cleanChildren();
-                        DragonBonesFactory.getInstance().removeTimer();
-                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
-                    });
+                    SceneManager.pvpScene.gotoFinish();
+                    // Animations.sceneTransition(()=>{
+                    //     SceneManager.curScene.cleanChildren();
+                    //     DragonBonesFactory.getInstance().removeTimer();
+                    //     GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+                    // });
                 }
             break;
         }

@@ -39,10 +39,10 @@ class Rocket extends BaseRandomItem {
     public AddEffect(target:any) {
         super.AddEffect(target, ()=>{
             let object:Array<any> = new Array();
-            GameData.heros[0].setEnermy();
+            GameData.heros[0].setLiveEnermy();
             let enermy:Array<any> = GameData.heros[0].getEnermy();
             for (let i = 0; i < enermy.length; i++) {
-                if (enermy[i].type == 1 && enermy[i].attr.hp > 0) {
+                if (enermy[i].attr.hp > 0) {
                     enermy[i]["dis"] = MathUtils.getDistance(this.icon.x, this.icon.y, enermy[i].x, enermy[i].y);
                     object.push(enermy[i]);
                 }

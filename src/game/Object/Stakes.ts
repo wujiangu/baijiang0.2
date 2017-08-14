@@ -5,6 +5,7 @@ class Stakes extends egret.DisplayObjectContainer {
     public constructor() {
         super();
         this.isPVP = true;
+        this.type = 1;
         this.buffArmature = new DragonBonesArmatureContainer();
         let data = RES.getRes("stakes_json");
         let texture = RES.getRes("stakes_png");
@@ -117,6 +118,7 @@ class Stakes extends egret.DisplayObjectContainer {
     private _mc:egret.MovieClip;
     public hp:number;
     public attr:any = {"hp":0};
+    public type:number;
     private curState:string;
     /**身上带的buff */
     public buff:any[];

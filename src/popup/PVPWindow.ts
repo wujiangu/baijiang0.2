@@ -18,15 +18,15 @@ class PVPWindow extends PopupWindow{
         this.txt_self = Common.CreateText("1",25, 0xc9c9c9,true,"Microsoft YaHei");
         this.txt_damage = Common.CreateText("25000",25, 0x88653f,true,"Microsoft YaHei","right");
         this.txt_damage_info = Common.CreateText("伤害值: ",22, 0x88653f,true,"Microsoft YaHei");
-
-        this.lab_content.textFlow = <Array<egret.TextField>>[{text:"1、每日第一次挑战免费。",style:{"size":19}},{text:"\n",style:{"size":23}},
-                                                             {text:"2、试炼场限时90秒，在规定时间内打出的伤害越高则获得的奖励越好",style:{"size":19}},{text:"\n",style:{"size":23}},
-                                                             {text:"3、试炼场结算时间为每晚21点。",style:{"size":19}},{text:"\n",style:{"size":23}},
-                                                             {text:"试炼场排名奖励"},{text:"\n",style:{"size":23}},{text:"第1名:"},{text:"\n",style:{"size":23}},
-                                                             {text:"第2名:"},{text:"\n",style:{"size":23}},
-                                                             {text:"第3名:"},{text:"\n",style:{"size":23}},{text:"4-10名:"},{text:"\n",style:{"size":23}},
-                                                             {text:"11-50名:"},{text:"\n",style:{"size":23}},{text:"51-200名:"},{text:"\n",style:{"size":23}},
-                                                             {text:"201-500名:"},{text:"\n",style:{"size":23}},{text:"501及以下:"},{text:"\n",style:{"size":23}}];
+        let strs:Array<string> = modPVP.detailReward();
+        this.lab_content.textFlow = <Array<egret.TextField>>[{text:"1、每日第一次挑战免费。",style:{"size":19}},{text:"\n",style:{"size":18}},
+                                                             {text:"2、试炼场限时90秒，在规定时间内打出的伤害越高则获得的奖励越好",style:{"size":19}},{text:"\n",style:{"size":18}},
+                                                             {text:"3、试炼场结算时间为每晚21点。",style:{"size":19}},{text:"\n",style:{"size":18}},
+                                                             {text:"试炼场排名奖励"},{text:"\n",style:{"size":18}},{text:"第1名:"+strs[0],style:{"size":18}},{text:"\n",style:{"size":18}},
+                                                             {text:"第2名:"+strs[1],style:{"size":18}},{text:"\n",style:{"size":18}},
+                                                             {text:"第3名:"+strs[2],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"4-10名:"+strs[3],style:{"size":18}},{text:"\n",style:{"size":18}},
+                                                             {text:"11-50名:"+strs[4],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"51-200名:"+strs[5],style:{"size":18}},{text:"\n",style:{"size":18}},
+                                                             {text:"201-500名:"+strs[6],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"501及以下:"+strs[7],style:{"size":18}},{text:"\n",style:{"size":18}}];
 
         this.scrollGroup.addChild(this.img_bg);
         this.scrollGroup.addChild(this.txt_self);
@@ -138,7 +138,7 @@ class PVPWindow extends PopupWindow{
         for(let i:number = 0; i < data_list.length; i++){
             tempData[i] = {};
             tempData[i]["name"] = data_list[i]["name"];
-            tempData[i]["damage"] = data_list[i]["damage"];
+            tempData[i]["damage"] = `${Math.floor(data_list[i]["damage"])}`;
             tempData[i]["num"] = i + 1;
         }
         this.damageList.dataProvider = new eui.ArrayCollection(tempData);

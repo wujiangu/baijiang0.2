@@ -1,0 +1,13 @@
+{
+    "rank":[1, 2, 3, [4, 10], [11, 50], [51, 200], [201, 500], 501],
+    "reward":[
+        {"equip":{"id":20, "star":3}, "soul":1500000, "exp":1500000, "diamond":100},
+        {"equip":{"id":20, "star":3}, "soul":1200000, "exp":1200000, "diamond":80},
+        {"equip":{"id":20, "star":3}, "soul":1000000, "exp":1000000, "diamond":60},
+        {"equip":{"id":20, "star":2}, "soul":800000, "exp":800000, "diamond":50},
+        {"equip":{"id":20, "star":1}, "soul":500000, "exp":500000, "diamond":30},
+        {"equip":{"id":20, "star":0}, "soul":200000, "exp":200000, "diamond":20},
+        {"equip":{"id":20, "star":0}, "soul":100000, "exp":100000, "diamond":20},
+        {"equip":{"id":0, "star":0}, "soul":50000, "exp":50000, "diamond":20}
+    ]
+}

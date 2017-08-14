@@ -22,7 +22,7 @@ class ReadyDialog extends PopupWindow {
         this._armatureGroup.y = 460;
         this._heroArmature = new Array();
         this._curAttr = new Array();
-        // this._tempAttr = new Array();
+        this._tempAttr = new Array();
         this._selectBox = Utils.createBitmap("img_selectHero_png");
         this._createAttr();
         this._createHeroIcon();
@@ -36,7 +36,7 @@ class ReadyDialog extends PopupWindow {
         let hero:any = HeroData.getHeroData(GameData.curHero);
         let equip:number = hero.equip;
         let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(equip, 0);
-        Common.log("装备信息----->", JSON.stringify(equipInfo));
+        let equipAttr = modHero.handlerEquipData(equipInfo);
         for (let i = 0; i < attr.length; i++) {
             let leftText  = Common.CreateText(attr[i], 24, 0x858685, true, "Microsoft YaHei");
             this.biographyGroup.addChild(leftText);
@@ -48,10 +48,10 @@ class ReadyDialog extends PopupWindow {
             Common.SetXY(curAttr, leftText.x + leftText.width + 100, leftText.y);
             curAttr.width = 200;
 
-            // this._tempAttr[i] = Common.CreateText("+1", 24, Common.TextColors.green, true, "Microsoft YaHei","right");
-            // this.biographyGroup.addChild(this._tempAttr[i]);
-            // Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
-            // this._tempAttr[i].width = 160;
+            this._tempAttr[i] = Common.CreateText("+"+equipAttr[i].toString(), 24, Common.TextColors.green, true, "Microsoft YaHei","right");
+            this.biographyGroup.addChild(this._tempAttr[i]);
+            Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
+            this._tempAttr[i].width = 160;
         }
 
         this.set_label_text(hero);
@@ -209,13 +209,11 @@ class ReadyDialog extends PopupWindow {
         hero_id = modHero.getIndextFromId(num);
         //名字
         this.lab_heroName.text = ConfigManager.tcHero[hero_id].name;
-        for (let i = 0; i < this._heroArmature.length; i++) {
-            if (hero_id == i) {
-                this._heroArmature[i].visible = true;
-            }else{
-                this._heroArmature[i].visible = false;
-            }
+
+        for(let i:number = 0; i < this.hero_sort_list.length; i++){
+            this._heroArmature[i].visible = GameData.curHero == this.hero_sort_list[i] ? true : false;
         }
+
         //技能
         for (let i = 0; i < ConfigManager.tcHero[hero_id].skill.length; i++) {
             let skillId = ConfigManager.tcHero[hero_id].skill[i];
@@ -285,6 +283,16 @@ class ReadyDialog extends PopupWindow {
     }
 
     /**
+     * 更新装备增加属性数值
+     */
+    private updateEquipAttr(equipInfo:modEquip.EquipInfo):void {
+        let equipAttr = modHero.handlerEquipData(equipInfo);
+        for (let i = 0; i < this._tempAttr.length; i++) {
+            this._tempAttr[i].text = "+"+equipAttr[i].toString();
+        }
+    }
+
+    /**
      * 更新界面
      */
     public updateUI(event:egret.Event):void {
@@ -299,8 +307,9 @@ class ReadyDialog extends PopupWindow {
         }
         HeroData.update();
 
-        let equip:any = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
+        let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
         this.updateEquip(equip);
+        this.updateEquipAttr(equip);
     }
 
     public Show():void{
@@ -334,13 +343,32 @@ class ReadyDialog extends PopupWindow {
         btn_list = [];
     }
 
+    private HeroSortFromIsLock():any{
+        let list:Array<string> = new Array();
+        let unLock_list:Array<string> = new Array();
+        let lock_list:Array<string> = new Array();
+        let hero_list:any = ConfigManager.heroConfig;
+
+        for(let key in hero_list){
+            if(HeroData.list[key]) unLock_list.push(key);
+            else lock_list.push(key);
+        }
+
+        for(let i in unLock_list) list.push(unLock_list[i]);
+        for(let i in lock_list) list.push(lock_list[i]);
+
+        return list;
+    }
+
     /**更新英雄列表 */
     public updateList():void {
         let group:eui.Group = new eui.Group();
         let count = 0;
         this._heroArmature = [];
         this._armatureGroup.removeChildren();
-        for (var key in HeroData.list) {
+
+        this.hero_sort_list = this.HeroSortFromIsLock();
+        for(let key of this.hero_sort_list){
             let tempGroup:eui.Group = new eui.Group();
             let img_head = Utils.createBitmap(`img_${key}1_png`);
             tempGroup.addChild(img_head);
@@ -350,7 +378,12 @@ class ReadyDialog extends PopupWindow {
             count ++;
             group.addChild(tempGroup);
             this._createArmature(key);
+            
+            let img:egret.Bitmap = new egret.Bitmap(RES.getRes("heorLock_png"));
+            tempGroup.addChild(img);
+            img.visible = HeroData.list[key] == null ? true : false;
         }
+
         this._scrollHero.viewport = group;
         this._scrollHero.addChild(this._selectBox);
     }
@@ -383,12 +416,20 @@ class ReadyDialog extends PopupWindow {
 
     /**创建英雄头像 */
     private _createHeroIcon():void {
+        // GameData.curHero = "buxiaoman";
         this.updateList();
         this._selectBox.x = 0;
     }
 
     private _onSelete(event:egret.TouchEvent):void {
         let target = event.currentTarget;
+
+        if(HeroData.list[target.name] == null){
+            if(target.name == "zhaoyun") Animations.showTips("赵云需要再商城购买才能使用!", 1, true);
+            else if(target.name == "diaochan") Animations.showTips("貂蝉需要签到才能使用!", 1, true);
+            return;
+        }
+
         GameData.curHero = target.name;
         this._selectBox.x = target.x;
         this.updateAttr();
@@ -405,7 +446,7 @@ class ReadyDialog extends PopupWindow {
     // public static instance:ReadyDialog;
     private _isPVP:boolean;
     private _curAttr:Array<egret.TextField>;
-    // private _tempAttr:Array<egret.TextField>;
+    private _tempAttr:Array<egret.TextField>;
     /**属性组 */
     private biographyGroup:eui.Group;
     /**武器信息组 */
@@ -478,4 +519,7 @@ class ReadyDialog extends PopupWindow {
     private txt_sole:eui.Label;
     private equipId:number;
     private equipTypeId:number;
+
+    /** other */
+    private hero_sort_list:any;
 }

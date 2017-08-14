@@ -104,7 +104,7 @@ class ChangeEquipPop extends PopupWindow {
             if(id == 0){
                 this.select_list[0] = this.equip_object_list[0].GetId();
                 this.select_list[1] = this.equip_object_list[0].GetTypeId();
-                Common.SetXY(this.img_selectBox, 15, 4);
+                Common.SetXY(this.img_selectBox, this.equip_object_list[0].x, this.equip_object_list[0].y);
             } 
             this.img_selectBox.visible = true;
         }

@@ -31,7 +31,7 @@
 
 		</e:Group>
 	</e:Scroller>
-	<e:Label id="lab_content" text="" x="668.84" y="159.67" anchorOffsetY="0" height="317" anchorOffsetX="0" width="449" fontFamily="Microsoft YaHei" size="20" bold="true" verticalAlign="top" textColor="0x494949"/>
+
 	<e:Image source="pvp_0002_png" y="556.01" x="11.66"/>
 	<e:Button id="btn_close" label="" x="24.25" y="16">
 		<e:skinName>
@@ -41,4 +41,9 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Scroller width="457" height="317" x="669" y="160" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group>
+			<e:Label id="lab_content" text="" x="0" y="0" anchorOffsetY="0" anchorOffsetX="0" fontFamily="Microsoft YaHei" size="20" bold="true" verticalAlign="top" textColor="0x494949" scaleX="1" scaleY="1" width="457"/>
+		</e:Group>
+	</e:Scroller>
 </e:Skin>

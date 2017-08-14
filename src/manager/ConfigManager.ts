@@ -35,6 +35,8 @@ namespace ConfigManager {
     export var tcTalentUp:any;
     /**解锁天赋页配置文件 */
     export var tcUnlockTalentPage:any;
+    /**竞技场奖励配置文件 */
+    export var tcRankReward:any;
     /**骨架数据 */
     export var armatures:Array<string> = ["daoguang_effect", "diaochan", "enter_monster_01", "Boss01",
         "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun", "zhaoyun_skill", "buxiaoman", "buxiaoman_skill", "buff",
@@ -56,6 +58,7 @@ namespace ConfigManager {
         tcTalent = RES.getRes("TcTalent_json");
         tcTalentUp = RES.getRes("TcTalentUp_json");
         tcUnlockTalentPage = RES.getRes("TcUnlockTalentPage_json");
+        tcRankReward = RES.getRes("TcRankReward_json");
         initBattleDragonBones();
         loadHeroConfig();
         loadEnermyConfig();

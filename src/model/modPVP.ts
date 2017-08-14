@@ -73,6 +73,45 @@ namespace modPVP {
     }
 
     /**
+     * 获取奖励的具体描述
+     */
+    export function detailReward():Array<string> {
+        let rewardConf = ConfigManager.tcRankReward;
+        let rank = rewardConf.rank;
+        let strs:Array<string> = new Array();
+        for (let i = 0; i < rank.length; i++) {
+            let soul:number = rewardConf.reward[i].soul/10000;
+            let exp:number = rewardConf.reward[i].exp/10000;
+            let diamond:number = rewardConf.reward[i].diamond;
+            let str:string = "  魂石"+soul+"W、"+"经验"+exp+"W、"+diamond+"钻石"
+            let equipId:number = rewardConf.reward[i].equip.id;
+            if (equipId > 0) {
+                let star:number = rewardConf.reward[i].equip.star;
+                let equip_data = TcManager.GetInstance().GetTcEquipData(equipId);
+                let name:string = equip_data.name;
+                str += "、"+star+"星"+name;
+            }
+            strs.push(str);
+        }
+        return strs;
+    }
+
+    /**
+     * 获取当前排名的奖励
+     */
+    export function getCurReward(curRank:number) {
+        let rewardConf = ConfigManager.tcRankReward;
+        let rank = rewardConf.rank;
+        if (curRank <= 3) return rewardConf.reward[curRank-1];
+        else if (curRank >= rank[rank.length-1]) return rewardConf.reward[rank.length-1];
+        for (let i = 3; i < rank.length-1; i++) {
+            if (curRank >= rank[i][0] && curRank <= rank[i][1]) {
+                return rewardConf.reward[i];
+            }
+        }
+    }
+
+    /**
      * 定时结束回调函数
      */
     function update():void{
