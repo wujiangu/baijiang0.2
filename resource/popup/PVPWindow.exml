@@ -26,8 +26,8 @@
 
 	<e:Label text="试炼场对战规则" x="660" y="109" anchorOffsetX="0" width="467" textAlign="center" verticalAlign="middle" anchorOffsetY="0" height="50" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0x6d6d6d"/>
 	<e:Label text="排行榜" x="267" y="98" anchorOffsetX="0" width="107" anchorOffsetY="0" height="47" textAlign="center" verticalAlign="middle" bold="true" textColor="0x0a0909" fontFamily="Microsoft YaHei" size="32"/>
-	<e:Scroller width="636" height="475.2" x="8" y="156" anchorOffsetY="0" anchorOffsetX="0">
-		<e:Group id="scrollGroup" width="636" height="476" anchorOffsetY="0">
+	<e:Scroller id="scroller" width="636" height="475.2" x="8" y="156" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Group id="scrollGroup" width="636" height="475" anchorOffsetY="0">
 
 		</e:Group>
 	</e:Scroller>

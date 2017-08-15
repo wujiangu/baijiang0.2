@@ -106,6 +106,7 @@ namespace modBattle {
         let monsterCount = GameData.monsters.length;
         let bossCount = GameData.boss.length;
         recycleHero();
+        recycleChests();
         for (let i = 0; i < monsterCount; i++) {
             let monster:Monster = GameData.monsters[i];
             monster.recycle();
@@ -175,6 +176,20 @@ namespace modBattle {
             if (GameData.boss[i].attr.hp > 0) surviveCount ++;
         }
         // SceneManager.battleScene.battleSceneCom.update();
+    }
+
+    /**
+     * 回收宝箱
+     */
+    function recycleChests():void {
+        let count = GameData.chests.length;
+        for (let i = 0; i < count; i++) {
+            let chest:Chest = GameData.chests[i];
+            chest.recycle();
+            if (chest && chest.parent && chest.parent.removeChild) chest.parent.removeChild(chest);
+            ObjectPool.push(chest);
+        }
+        for (let i = 0; i < count; i++) GameData.chests.pop();
     }
 
     /**

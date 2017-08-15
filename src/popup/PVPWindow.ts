@@ -11,6 +11,7 @@ class PVPWindow extends PopupWindow{
 
     public Init():void{
 
+        this.damageList = new Array();
         this._time = new egret.Timer(60000, 0);         //初始化定时器
 
         //初始化对应的数据并且加入到滚动条中
@@ -32,21 +33,23 @@ class PVPWindow extends PopupWindow{
         this.scrollGroup.addChild(this.txt_self);
         this.scrollGroup.addChild(this.txt_damage);
         this.scrollGroup.addChild(this.txt_damage_info);
-
         this.txt_damage.width = 130;
-
-        //列表数据
-        this.damageList = new eui.List();
-        this.damageList.itemRenderer = DamageList;
-        this.scrollGroup.addChild(this.damageList);
 
         //设置位置
         Common.SetXY(this.img_bg, this.scrollGroup.width - this.img_bg.width >> 1, 10)
         Common.SetXY(this.txt_self, 80, this.img_bg.y + (this.img_bg.height - this.txt_self.height >> 1));
         Common.SetXY(this.txt_damage, this.img_bg.width - this.txt_damage.width, this.img_bg.y + (this.img_bg.height - this.txt_damage.height >> 1));
         Common.SetXY(this.txt_damage_info, this.txt_damage.x - this.txt_damage_info.width - 10, this.img_bg.y + (this.img_bg.height - this.txt_damage.height >> 1));
-        Common.SetXY(this.damageList, this.img_bg.x, this.img_bg.y + this.img_bg.height + 4);
+        for(let i:number = 1; i < 100; i++){
+            let group = new eui.Group();
+            this.scrollGroup.addChild(group);
+            Common.SetXY(group, 0, i * 57);
+        }
 
+        for(let i:number = 0; i < 10; i++){
+            this.damageList[i] = new DamageList();
+            this.scrollGroup.addChild(this.damageList[i]);
+        }
     }
 
     /** 数据数据 */
@@ -67,6 +70,7 @@ class PVPWindow extends PopupWindow{
         this.btn_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_start.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchButton, this);
         this.btn_buy.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchButton, this);
+        this.scroller.addEventListener(egret.Event.CHANGE, this.onScrollChange, this);
     }
 
     public Close():void{
@@ -77,6 +81,13 @@ class PVPWindow extends PopupWindow{
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_start.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchButton, this);
         this.btn_buy.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchButton, this);
+        this.scroller.removeEventListener(egret.Event.CHANGE, this.onScrollChange, this);
+    }
+
+    private onScrollChange(event:egret.Event):void{
+        if(this.scrollGroup.scrollV % 57 < 40 && this.scrollGroup.scrollV % 57 > 20) return; 
+
+        this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57));
     }
 
     /** 点击开始挑战按钮 */
@@ -127,22 +138,27 @@ class PVPWindow extends PopupWindow{
 
     /** 显示排名的奖励 */
     private showRankInfo():void{
+
         let data_list = RankData.GetInstance().GetDataList();
         let rankNum = this.searchDamageRank(data_list);
-        let strRank = "(当前没有排名)";
-        if(rankNum != -1) strRank = "(第" + rankNum + "名)";
+        let strRank = rankNum != -1 ? "(第" + rankNum + "名)" : "(当前没有排名)";
         this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:"我    "},{text:strRank, style:{"textColor":0x252525}}];
-        this.txt_damage.text = UserData.rankDamage + "";
+        this.txt_damage.text = `${UserData.rankDamage}`;
 
-        let tempData:any = [];
-        for(let i:number = 0; i < data_list.length; i++){
-            tempData[i] = {};
-            tempData[i]["name"] = data_list[i]["name"];
-            tempData[i]["damage"] = `${Math.floor(data_list[i]["damage"])}`;
-            tempData[i]["num"] = i + 1;
+        this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57))
+    }
+
+    /** change rank info */
+    private changeRankInfo(num:number):void{
+       if(num < 0 || num > RankData.GetInstance().GetDataList().length - 10) return;
+
+        let data_list = RankData.GetInstance().GetDataList();
+        let index:number = 0;
+        for(let i:number = num; i < num + 10; i++){
+            this.damageList[index].ChangeData(data_list[i]["name"], Math.floor(data_list[i]["damage"]), i + 1);
+            Common.SetXY(this.damageList[index], 0, this.img_bg.y + this.img_bg.height + i * 57);
+            index++;
         }
-        this.damageList.dataProvider = new eui.ArrayCollection(tempData);
-        tempData = [];
     }
 
     /** 寻找自己再第几名 如果结果为-1则没有排名 */
@@ -162,25 +178,48 @@ class PVPWindow extends PopupWindow{
         this.btn_buy.label = RankData.GetInstance().ChallengeNum * 20 >= 100 ? `${100}` : `${RankData.GetInstance().ChallengeNum * 20}`;
     }
 
+    /** button */
     private btn_close:eui.Button;
     private btn_start:eui.Button;
     private btn_buy:eui.Button;
 
+    /** label */
     private lab_time:eui.Label;
     private lab_content:eui.Label;
-    private scrollGroup:eui.Group;
-    private damageList:eui.List;
-    private img_bg:egret.Bitmap;
     private txt_self:egret.TextField;
     private txt_damage:egret.TextField;
     private txt_damage_info:egret.TextField;
-    private _time:egret.Timer;
     private lab_soul:eui.Label;
+    
+    /** Group */
+    private scrollGroup:eui.Group;
+    private scroller:eui.Scroller;
+
+    /** image */
+    private img_bg:egret.Bitmap;
+   
+    /** list */
+    private damageList:Array<DamageList>;
+
+    /** other */
+    private _time:egret.Timer;
+    private _startIndex:number;
+
 }
 
-class DamageList extends eui.ItemRenderer{
+class DamageList extends eui.Component{
     public constructor(){
         super();
         this.skinName = "resource/game_skins/DamageInfo.exml";
     }
+
+    public ChangeData(name:string, damage:number, rankNum:number):void{
+        this.lab_index.text  = `${rankNum}`;
+        this.lab_name.text   = name;
+        this.lab_damage.text = `${damage}`;
+    }
+
+    private lab_index:eui.Label;
+    private lab_name:eui.Label;
+    private lab_damage:eui.Label;
 }

@@ -24,8 +24,8 @@ class ReadyDialog extends PopupWindow {
         this._curAttr = new Array();
         this._tempAttr = new Array();
         this._selectBox = Utils.createBitmap("img_selectHero_png");
-        this._createAttr();
         this._createHeroIcon();
+        this._createAttr();
     }
 
     /**
@@ -55,19 +55,6 @@ class ReadyDialog extends PopupWindow {
         }
 
         this.set_label_text(hero);
-    }
-
-    /**
-     * 更新人物属性界面数据
-     */
-    public updateHeroAttr():void {
-        // for (let i = 0; i < 6; i++) {
-        //     if (isUpgrade) {
-        //         hero.attr[i] ++;
-        //     }
-        //     let attr = hero.attr[i];
-        //     this._curAttr[i].text = attr
-        // }
     }
 
     /**
@@ -133,8 +120,12 @@ class ReadyDialog extends PopupWindow {
     protected childrenCreated(): void{
         let id = modHero.getIdFromKey(GameData.curHero);
         this.showHero(id);
+        let currHero = HeroData.getHeroData(GameData.curHero);
+        this.equipId = currHero.equip;
+        this.equipTypeId = currHero.typeId;
+
         if (this.equipId != 0) {
-            let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, 0);
+            let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
             this.updateEquip(equip);
         }
     }
@@ -220,12 +211,7 @@ class ReadyDialog extends PopupWindow {
             for (let j = 0; j < ConfigManager.tcSkill.length; j++) {
                 if (ConfigManager.tcSkill[j].id == skillId) {
                     this._skill[i][0].text = ConfigManager.tcSkill[j].name;
-                    if (ConfigManager.tcSkill[j].cd == 0) {
-                        this._skill[i][1].text = "被动";
-                    }
-                    else {
-                        this._skill[i][1].text = `冷却：${ConfigManager.tcSkill[j].cd}秒`;
-                    }
+                    this._skill[i][1].text = ConfigManager.tcSkill[j].cd == 0 ? "被动" : `冷却：${ConfigManager.tcSkill[j].cd}秒`;
                     this._skill[i][2].text = ConfigManager.tcSkill[j].content;
                     this._skill[i][3].source = `skill_${ConfigManager.tcSkill[j].image_id}_png`;
                     this._skill[i][4].source = `${GameData.curHero}_skillBg_png`;
@@ -242,13 +228,7 @@ class ReadyDialog extends PopupWindow {
         let data = HeroData.list[GameData.curHero];
         this.equipId = data.equip;
         this.equipTypeId = data["typeId"] == null ? 0 : data["typeId"];
-        if (this.equipId != 0){
-            // let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, 0);
-            // this.updateEquip(equip);
-            this.btn_change.label = "替换";
-        }else{
-            this.btn_change.label = "装备";
-        }
+        this.btn_change.label = this.equipId != 0 ? "替换" : "装备";
 
         HeroData.setCurHeroData(GameData.curHero);
     }
@@ -280,6 +260,7 @@ class ReadyDialog extends PopupWindow {
         this.equipId = equip.id;
         this.starGroup.visible = true;
         this.img_equip.visible = true;
+        this.updateEquipAttr(equip);
     }
 
     /**
@@ -302,14 +283,13 @@ class ReadyDialog extends PopupWindow {
         this.equipTypeId = event.data[1];
 
         for (var key in HeroData.list) {
-            HeroData.list[key].equip = this.equipId;
+            HeroData.list[key]["equip"] = this.equipId;
             HeroData.list[key]["typeId"] = this.equipTypeId;
         }
         HeroData.update();
 
         let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
         this.updateEquip(equip);
-        this.updateEquipAttr(equip);
     }
 
     public Show():void{
@@ -356,6 +336,7 @@ class ReadyDialog extends PopupWindow {
 
         for(let i in unLock_list) list.push(unLock_list[i]);
         for(let i in lock_list) list.push(lock_list[i]);
+        GameData.curHero = unLock_list[0];
 
         return list;
     }
@@ -416,7 +397,6 @@ class ReadyDialog extends PopupWindow {
 
     /**创建英雄头像 */
     private _createHeroIcon():void {
-        // GameData.curHero = "buxiaoman";
         this.updateList();
         this._selectBox.x = 0;
     }

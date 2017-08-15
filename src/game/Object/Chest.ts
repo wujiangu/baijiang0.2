@@ -38,9 +38,12 @@ class Chest extends egret.DisplayObjectContainer {
         this.setChestStatus(true);
         this.setItemStatus(false);
         this.chestArmature.play("diaoluoxiangzi", 1);
+        this.buff = null;
+        this.item = null;
         if (buffId >= 70 && buffId < 80) this.initBuffData(buffId);
         else this.initItemData(buffId);
         this.isOpen = true;
+        this.isTimeOut = false;
     }
 
     /**初始buff数据 */
@@ -84,6 +87,13 @@ class Chest extends egret.DisplayObjectContainer {
         TimerManager.getInstance().remove(this.disappear, this);
     }
 
+    /**回收处理 */
+    public recycle():void {
+        Common.log("buff----->", this.buff, this.item);
+        if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
+        if (this.item && this.item.recycle) this.item.recycle();
+    }
+
     /**宝箱消失 */
     private disappear():void {
         this.isOpen = true;
@@ -93,8 +103,7 @@ class Chest extends egret.DisplayObjectContainer {
             let index = GameData.chests.indexOf(this);
             GameData.chests.splice(index, 1);
             ObjectPool.push(this);
-            // if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
-            if (this.item && this.item.recycle) this.item.recycle();
+            if (!this.isTimeOut) this.recycle();
         });
     }
 
@@ -126,6 +135,7 @@ class Chest extends egret.DisplayObjectContainer {
 
     /**宝箱动画完成监听 */
     private chestArmaturePlayEnd():void {
+        this.isTimeOut = true;
         this.disappear();
     }
 
@@ -157,13 +167,15 @@ class Chest extends egret.DisplayObjectContainer {
     /**对象类型 0:掉落的宝箱或道具，1:角色或敌人 */
     public type:number;
     /**buff */
-    private buff:BuffBase;
+    private buff:BaseRandomBuff;
     /**buffId或者道具id */
     private buffId:number;
     /**道具 */
     private item:BaseRandomItem;
     /**宝箱的状态*/
     private isOpen:boolean;
+    /**宝箱计时 */
+    private isTimeOut:boolean;
     /**宝箱骨骼动画组 */
     private chestArmature:DragonBonesArmatureContainer;
     /**道具动画组 */

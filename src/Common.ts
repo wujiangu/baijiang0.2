@@ -257,6 +257,10 @@ namespace Common {
         {
             return RES.getRes(`basic_${param.name}_png`);
         }
+        else if(param.type == 3)
+        {
+            return RES.getRes(`img_${param.name}1_png`);
+        }
     }
 
     /** 对奖励进行细分计算 
@@ -282,15 +286,15 @@ namespace Common {
             {
                  if (HeroData.hasHero(list[i].name)){
                         Animations.showTips(`已有英雄${list[i].name}`, 1);
+                 }
+                 else
+                 {
+                    HeroData.AddHero(list[i].name);
+                    if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
+                        WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
                     }
-                    else
-                    {
-                        HeroData.addHeroData(list[i].name, GameData.initData["hero"]);
-                        if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
-                            WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
-                        }
-                        WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:list[i].name,share:10});  
-                    }
+                    WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:list[i].name,share:10});  
+                 }
             }
         }
 

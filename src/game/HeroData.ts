@@ -65,6 +65,15 @@ class HeroData {
         this.update();
     }
 
+    /** up same */
+    public static AddHero(name:string):void{
+        let hero = ConfigManager.heroConfig[name];
+        HeroData.list[name] = hero;
+        HeroData.list[name]["equip"] = HeroData.getHeroData(GameData.curHero).equip;
+        HeroData.list[name]["typeId"] = HeroData.getHeroData(GameData.curHero).typeId;
+        this.update();
+    }
+
     /**
      * 判断是否已有英雄
      */

@@ -59,21 +59,21 @@ namespace modHero {
         if (equip == 0) {
             // attr = data[1];
         }else{
-            Common.log("人物属性---->", JSON.stringify(data[1]));
+            // Common.log("人物属性---->", JSON.stringify(data[1]));
             let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(equip, 0);
-            Common.log("装备信息----->", JSON.stringify(equipInfo));
+            // Common.log("装备信息----->", JSON.stringify(equipInfo));
             let equipAttr = equipInfo.GetEquipAttr();
             attr.hp += Math.ceil(equipAttr[0]);
             attr.def += Math.ceil(equipAttr[1]);
             attr.atk += Math.ceil(equipAttr[2]);
             let crt = parseFloat(equipAttr[3].toFixed(2));
             attr.crt += crt;
-            let attrType = equipInfo.GetAttrType();
-            if (attrType.length > 0) {
-                addWashAttr(attrType, attr);
-            }
+            // let attrType = equipInfo.GetAttrType();
+            // if (attrType.length > 0) {
+            //     addWashAttr(attrType, attr);
+            // }
         }
-        Common.log("装备后属性----->", JSON.stringify(attr));
+        // Common.log("装备后属性----->", JSON.stringify(attr));
         return attr;
     }
 
@@ -111,9 +111,9 @@ namespace modHero {
         let equipAttr = equipInfo.GetEquipAttr();
         let attrType = equipInfo.GetAttrType();
         let attr = {"hp":0, "def":0, "atk":0, "crt":0, "avo":0};
-        if (attrType.length > 0) {
-            addWashAttr(attrType, attr);
-        }
+        // if (attrType.length > 0) {
+        //     addWashAttr(attrType, attr);
+        // }
         data.push(Math.ceil(equipAttr[0] + attr.hp));
         data.push(Math.ceil(equipAttr[2] + attr.atk));
         data.push(Math.ceil(equipAttr[1] + attr.def));

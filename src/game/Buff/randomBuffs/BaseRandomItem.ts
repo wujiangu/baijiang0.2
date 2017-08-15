@@ -18,7 +18,7 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
     }
 
     public init(target:any = null):void {
-
+        this.isAction = false;
     }
 
     /**刷新数据 */
@@ -36,13 +36,14 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
             egret.Tween.removeTweens(this.icon);
             if (callBack) callBack();
             SceneManager.battleScene.effectLayer.removeChild(this.icon);
-            this.recycle();
+            if (!this.isAction) this.recycle();
         });
         SceneManager.battleScene.effectLayer.addChild(this.icon);
     }
 
     /**回收 */
     public recycle():void {
+        Common.log("回收random---->", this);
         ObjectPool.push(this);
     }
 
@@ -51,4 +52,6 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
     public icon:egret.Bitmap;
     /**buff文字组 */
     public textGroup:egret.DisplayObjectContainer;
+    /**是否有运行动画 */
+    public isAction:boolean;
 }

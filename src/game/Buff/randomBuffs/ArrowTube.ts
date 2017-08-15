@@ -39,6 +39,7 @@ class ArrowTube extends BaseRandomItem {
             this._deltaY.push(deltaY);
         }
         this.isFly = false;
+        this.isAction = true;
     }
 
     /**刷新数据 */
@@ -54,6 +55,7 @@ class ArrowTube extends BaseRandomItem {
                 this.arrows[i].play("skill01_02", 0);
                 this.arrows[i].x = this.icon.x;
                 this.arrows[i].y = this.icon.y;
+                this.arrows[i]["isBound"] = false;
                 SceneManager.battleScene.effectLayer.addChild(this.arrows[i]);
             }
             this.isFly = true;
@@ -78,8 +80,8 @@ class ArrowTube extends BaseRandomItem {
         let enermy = GameData.heros[0].getEnermy();
         for (let i = 0; i < enermy.length; i++) {
             let dis = MathUtils.getDistance(this.arrows[id].x, this.arrows[id].y, enermy[i].x, enermy[i].y);
-            if (dis < 30 && enermy[i].attr.hp > 0) {
-                enermy[i].gotoHurt(GameData.heros[0].attr.atk * 0.5);
+            if (dis < 30 && enermy[i].attr.hp > 0 && !this.arrows[id]["isBound"]) {
+                enermy[i].gotoHurt(GameData.heros[0].attr.atk * 0.5, true);
                 this._bound(id);
             }
         }
@@ -90,7 +92,8 @@ class ArrowTube extends BaseRandomItem {
     }
 
     private _bound(id:number):void {
-        if (this._deltaX[id] == 0) return;
+        if (this.arrows[id]["isBound"]) return;
+        this.arrows[id]["isBound"] = true;
         this._deltaX[id] = 0;
         this._deltaY[id] = 0;
         let target = this.arrows[id];
@@ -101,7 +104,7 @@ class ArrowTube extends BaseRandomItem {
                 target.parent.removeChild(target);
                 this.count ++;
                 if (this.count == 8) {
-                    Common.log("wwanfdsfds")
+                    this.recycle();
                     this.isFly = false;
                     TimerManager.getInstance().remove(this.action, this);
                 }
