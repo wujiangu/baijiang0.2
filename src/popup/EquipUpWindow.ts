@@ -16,6 +16,7 @@ class EquipUpWindow extends PopupWindow{
         this.txt_rear_title = [];
         this.txt_rear_list = [];
         this.imgStar_list = [];
+        this.srcX = this.img_click.x;
 
         let txt_list = ["血量", "护甲", "攻击", "暴击"];
         for(let i:number = 0; i < 4; i++){
@@ -51,7 +52,7 @@ class EquipUpWindow extends PopupWindow{
         super.Show();
 
         this.equip_info = equip_info;
-        this.radio_one.selected = true;
+        this.img_click.x = this.srcX;
         this.upLevelNum = 1;
 
         let equip_data = TcManager.GetInstance().GetTcEquipData(this.equip_info.Id);
@@ -68,8 +69,7 @@ class EquipUpWindow extends PopupWindow{
     public Reset():void{
         this.btn_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upLevel.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpGrade, this);
-        this.radio_one.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchRadio, this);
-        this.radio_ten.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchRadio, this);
+        this.img_bottom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
     }
 
     public Close():void{
@@ -79,8 +79,7 @@ class EquipUpWindow extends PopupWindow{
 
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upLevel.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpGrade, this);
-        this.radio_one.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchRadio, this);
-        this.radio_ten.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchRadio, this);
+        this.img_bottom.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
         this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, -1);
     }
 
@@ -94,23 +93,22 @@ class EquipUpWindow extends PopupWindow{
         return {exp:allExp, soul:allSoul};
     }
 
-    private onTouchRadio(event:egret.TouchEvent):void{
-        if((this.upLevelNum == 1 && this.radio_one == event.target) || (this.upLevelNum == 10 && this.radio_ten == event.target)) return;
+    private onTouchImg(event:egret.TouchEvent):void{
+        let stageX = event.stageX;
+        if((this.upLevelNum == 1 && stageX <= 885) || (this.upLevelNum == 10 && stageX >= 895)) return;
 
-        if(event.target == this.radio_one){
-            this.upLevelNum = 1;
-        }
-        else if(event.target == this.radio_ten)
-        {
+        if(stageX >= 895){
             if(this.equip_info.Lv + 10 >= modEquip.EquipSource.EQUIPLV){
                 Animations.showTips("将超过满级，无法操作", 1, true);
-                this.radio_one.selected = true;
                 return ; 
             }
-
             this.upLevelNum = 10;
         }
-
+        else if(stageX <= 885)
+        {
+            this.upLevelNum = 1;
+        }
+        this.img_click.x = this.srcX + (this.upLevelNum == 1 ? 0 : this.img_click.width + 5);
         this.showUpgradeInfo();
     }
 
@@ -135,7 +133,7 @@ class EquipUpWindow extends PopupWindow{
 
             if(this.upLevelNum == 10 && this.equip_info.Lv + this.upLevelNum > modEquip.EquipSource.EQUIPLV){
                 this.upLevelNum = 1;
-                this.radio_one.selected = true;
+                this.img_click.x = this.srcX;
             }
             
             this.showUpgradeInfo();
@@ -171,6 +169,8 @@ class EquipUpWindow extends PopupWindow{
         }
 
         this.curr_lv.text = "Lv." + this.equip_info.Lv;
+        this.lab_one.textFlow = <Array<egret.ITextElement>>[{text:"1",style:{"textColor":this.upLevelNum == 1 ? 0xE2B428 : 0x515151}},{text:"次"}];
+        this.lab_ten.textFlow = <Array<egret.ITextElement>>[{text:"10",style:{"textColor":this.upLevelNum == 10 ? 0xE2B428 : 0x515151}},{text:"次"}];
     }
 
     /** show equip lv info 
@@ -231,6 +231,8 @@ class EquipUpWindow extends PopupWindow{
    /** image */
     private img_weapon:eui.Image;
     private imgStar_list:Array<egret.Bitmap>;
+    private img_bottom:eui.Image;
+    private img_click:eui.Image;
  
     /** label */
     private txt_weapon:eui.Label;
@@ -243,6 +245,8 @@ class EquipUpWindow extends PopupWindow{
     private txt_front_title:Array<egret.TextField>;
     private txt_rear_title:Array<egret.TextField>;
     private lab_max:eui.Label;
+    private lab_one:eui.Label;
+    private lab_ten:eui.Label;
 
     /** Group */
     private group_list:Array<eui.Group>;
@@ -251,11 +255,10 @@ class EquipUpWindow extends PopupWindow{
     /** button */
     private btn_close:eui.Button;
     private btn_upLevel:eui.Button;
-    private radio_one:eui.RadioButton;
-    private radio_ten:eui.RadioButton;
 
     /** other */
     private upLevelNum:number;
+    private srcX:number;
    
     /** class */
     private equip_info:modEquip.EquipInfo;

@@ -48,5 +48,6 @@
     {"id":80, "className":"Explosive", "cd":0, "duration":0, "damage":0, "name":"炸弹"},
     {"id":81, "className":"FixedBody", "cd":0, "duration":0, "damage":0, "name":"定身"},
     {"id":82, "className":"Rocket", "cd":0, "duration":0, "damage":0, "name":"火箭"},
-    {"id":83, "className":"ArrowTube", "cd":0, "duration":0, "damage":0, "name":"箭筒"}
+    {"id":83, "className":"ArrowTube", "cd":0, "duration":0, "damage":0, "name":"箭筒"},
+    {"id":84, "className":"Mirror", "cd":0, "duration":0, "damage":0, "name":"镜像"}
 ]

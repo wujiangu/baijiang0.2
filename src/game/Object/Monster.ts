@@ -84,15 +84,18 @@ class Monster extends Enermy {
         //初始点的对角点
         let skillPoint = this.skillArmature.localToGlobal();
         if (!this.skill_atkStatus) {
-            let dis = MathUtils.getDistance(skillPoint.x, skillPoint.y, GameData.heros[0].x, GameData.heros[0].y);
-            if (dis <= 30) {
-                let state = GameData.heros[0].getCurState();
-                if (state == "attack") {
-                    this._bound();
-                }else{
-                    GameData.heros[0].gotoHurt(this.attr.atk);
+            for (let i = 0; i < GameData.heros.length; i++) {
+                let dis = MathUtils.getDistance(skillPoint.x, skillPoint.y, GameData.heros[i].x, GameData.heros[i].y);
+                if (dis <= 30) {
+                    let state = GameData.heros[i].getCurState();
+                    if (state == "attack") {
+                        this._bound();
+                    }else{
+                        GameData.heros[i].gotoHurt(this.attr.atk);
+                        this._bound();
+                    }
+                    this.skill_atkStatus = true;
                 }
-                this.skill_atkStatus = true;
             }
         }
         if (skillPoint.x < 20) this._bound();
@@ -165,10 +168,12 @@ class Monster extends Enermy {
         this.sumDeltaX = this.sumDeltaX + this.deltaX;
         this.sumDeltaY = this.sumDeltaY + this.deltaY;
         if (!this.skill_atkStatus) {
-            var dis = MathUtils.getDistance(this.x, this.y, GameData.heros[0].x, GameData.heros[0].y);
-            if (dis < 33) {
-                GameData.heros[0].gotoHurt(this.attr.atk);
-                this.skill_atkStatus = true;
+            for (let i = 0; i < GameData.heros.length; i++) {
+                var dis = MathUtils.getDistance(this.x, this.y, GameData.heros[i].x, GameData.heros[i].y);
+                if (dis < 33) {
+                    GameData.heros[i].gotoHurt(this.attr.atk);
+                    this.skill_atkStatus = true;
+                }
             }
         }
     }
@@ -261,13 +266,14 @@ class Monster extends Enermy {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
+        // SceneManager.battleScene.createChest({x:this.x, y:this.y, id:84});
         let random:number = MathUtils.getRandom(1, 100);
         if (random <= 10) {
             let id:number = 0;
             let seed:number = MathUtils.getRandom(1, 100);
             if (seed <= 40) id = MathUtils.getRandom(70, 74);
             else if (seed > 40 && seed <= 60) id = MathUtils.getRandom(75, 79);
-            else id = MathUtils.getRandom(80, 83);
+            else id = MathUtils.getRandom(80, 84);
             SceneManager.battleScene.createChest({x:this.x, y:this.y, id:id});
         }
     }

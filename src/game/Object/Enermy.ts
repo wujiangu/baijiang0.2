@@ -102,9 +102,18 @@ class Enermy extends BaseGameObject {
      */
     public state_run(time:number, func:Function = null):void {
         if (!this.canMove) return;
-        this.moveToTarget(GameData.heros[0].x, GameData.heros[0].y, ()=>{
+        let object:Array<any> = GameData.heros.slice();
+        if (object.length > 1) {
+            for (let i = 0; i < object.length; i++) {
+                object[i]["dis"] = MathUtils.getDistance(this.x, this.y, object[i].x, object[i].y);
+            }
+            object.sort(function(a, b){
+                return a.dis - b.dis;
+            });
+        }
+        this.moveToTarget(object[0].x, object[0].y, ()=>{
             let useSpeed:number = this.speed * 0.1;
-            let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
+            let distance:number = MathUtils.getDistance(object[0].x, object[0].y, this.x, this.y);
             this.radian = MathUtils.getRadian2(this.x, this.y, this.endX, this.endY);
             let animation = this.getWalkPosition("run", this.radian);
             this.reverse(this, this.radian);

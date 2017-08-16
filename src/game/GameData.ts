@@ -10,7 +10,7 @@ class GameData {
     }
 
     /**英雄 */
-    public static heros:Array<Hero>;
+    public static heros:Array<any>;
     /**血量 */
     public static hp:number;
     /**当前关卡 */

@@ -15,6 +15,7 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
         text.x = 50;
         text.y = 2;
         this.textGroup.addChild(text);
+        this.iconName = "randomBuffSheet_json."+strText;
     }
 
     public init(target:any = null):void {
@@ -39,6 +40,7 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
             if (!this.isAction) this.recycle();
         });
         SceneManager.battleScene.effectLayer.addChild(this.icon);
+        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, this.iconName);
     }
 
     /**回收 */
@@ -50,6 +52,8 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
     public target:Chest;
     /**buff图标 */
     public icon:egret.Bitmap;
+    /**图标的名字 */
+    public iconName:string;
     /**buff文字组 */
     public textGroup:egret.DisplayObjectContainer;
     /**是否有运行动画 */

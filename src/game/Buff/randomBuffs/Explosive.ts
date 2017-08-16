@@ -7,7 +7,7 @@ class Explosive extends BaseRandomItem {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_zhadan");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
-        // this.createTextGroup("buff_fumiandi", "buff_007");
+        this.createTextGroup("buff_fumiandi", "buff_007");
     }
 
     public init(target:any):void {
@@ -25,6 +25,9 @@ class Explosive extends BaseRandomItem {
         super.AddEffect(target, ()=>{
             this.target.setItemStatus(true);
             this.target.itemArmature.play("skill02", 1);
+            egret.setTimeout(()=>{
+                SceneManager.battleScene.battleSceneCom.removeBuffIcon(this.iconName);
+            }, this, 800);
         });
     }
 }

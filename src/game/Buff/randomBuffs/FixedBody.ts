@@ -7,6 +7,7 @@ class FixedBody extends BaseRandomItem {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_dingshen");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_fumiandi", "buff_009");
     }
 
     public init(target:any):void {
@@ -36,6 +37,9 @@ class FixedBody extends BaseRandomItem {
                     enermy[i].addBuff(buff);
                 }
             }
+            egret.setTimeout(()=>{
+                SceneManager.battleScene.battleSceneCom.removeBuffIcon(this.iconName);
+            }, this, 2000);
         });
     }
 }

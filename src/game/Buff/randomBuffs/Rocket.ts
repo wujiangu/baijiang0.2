@@ -7,6 +7,7 @@ class Rocket extends BaseRandomItem {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_lei");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_fumiandi", "buff_010");
         this.lightBalls = new Array();
         for (let i = 0; i < 3; i++) {
             let ball:DragonBonesArmatureContainer = new DragonBonesArmatureContainer();
@@ -102,6 +103,7 @@ class Rocket extends BaseRandomItem {
                         this.recycle();
                         this.isFly = false;
                         TimerManager.getInstance().remove(this.action, this);
+                        SceneManager.battleScene.battleSceneCom.removeBuffIcon(this.iconName);
                     }
                 }
             }, this, 100);

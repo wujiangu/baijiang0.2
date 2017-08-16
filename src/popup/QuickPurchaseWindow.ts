@@ -21,7 +21,7 @@ class QuickPurchaseWindow extends PopupWindow{
     public Show(goodsName:string = "exp"):void{
         super.Show();
 
-        this.goods_list = [{type:2,data:10000,name:goodsName}];
+        this.goods_list = [{type:2,id:0,count:10000,name:goodsName}];
         let name_list:any = {exp:"经验",soul:"魂石"};
         this.lab_content.text = `${name_list[goodsName]}*10000`;
         this.lab_title.text = `${name_list[goodsName]}不足是否购买${name_list[goodsName]}礼包?`;

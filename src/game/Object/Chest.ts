@@ -89,7 +89,7 @@ class Chest extends egret.DisplayObjectContainer {
 
     /**回收处理 */
     public recycle():void {
-        Common.log("buff----->", this.buff, this.item);
+        // Common.log("buff----->", this.buff, this.item);
         if (this.buff && this.buff.recycleBuff) this.buff.recycleBuff();
         if (this.item && this.item.recycle) this.item.recycle();
     }

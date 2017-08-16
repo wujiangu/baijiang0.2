@@ -7,6 +7,7 @@ class ArrowTube extends BaseRandomItem {
         this.icon = Utils.createBitmap("randomBuffIcon_json.buff_jian");
         this.icon.anchorOffsetX = this.icon.width/2;
         this.icon.anchorOffsetY = this.icon.height/2;
+        this.createTextGroup("buff_fumiandi", "buff_006");
         this.armatures = new Array();
         this._deltaX = new Array();
         this._deltaY = new Array();
@@ -107,6 +108,7 @@ class ArrowTube extends BaseRandomItem {
                     this.recycle();
                     this.isFly = false;
                     TimerManager.getInstance().remove(this.action, this);
+                    SceneManager.battleScene.battleSceneCom.removeBuffIcon(this.iconName);
                 }
             }
         }, this, 100);

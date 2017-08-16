@@ -1,27 +1,13 @@
 /**
  * 英雄
  */
-class Hero extends BaseGameObject {
+class Hero extends Alliance {
     public constructor() {
         super();
     }
 
-    private initDragonBonesArmature(name:string):void {
-        this.armature.register(DragonBonesFactory.getInstance().makeArmature(name, name, 20.0), [
-            BaseGameObject.Action_Enter,
-            BaseGameObject.Action_Idle,
-            BaseGameObject.Action_Hurt,
-            BaseGameObject.Action_Attack01,
-            BaseGameObject.Action_Attack02,
-            BaseGameObject.Action_Attack03,
-            BaseGameObject.Action_Attack04,
-            BaseGameObject.Action_Attack05,
-            Hero.Action_Run01,
-            Hero.Action_Run02,
-            Hero.Action_Run03
-        ]);
-        this.createSwordLight();
-        // this.hideBone(name, "effect_att01");
+    public initDragonBonesArmature(name:string):void {
+        super.initDragonBonesArmature(name);
         //增加动画帧执行函数
         this.armature.addFrameCallFunc(this.armatureFrame, this);
 
@@ -30,21 +16,6 @@ class Hero extends BaseGameObject {
             BaseGameObject.Action_Hurt
         ]);
 
-        //buff动画
-        this.buffArmature.register(DragonBonesFactory.getInstance().makeArmature("buff", "buff", 10), [
-            "Burning",
-            "xuanyun",
-            "dongjie",
-            "hpShield_01",
-            "hpShield_02",
-            "leidian",
-            "speedup",
-            "xue",
-            "xuejia"
-        ]);
-        this.buffArmature.visible = false;
-        this.buffArmature.scaleX = 1.5;
-        this.buffArmature.scaleY = 1.5;
         /**从配置文件读取技能动画 */
         let heroConfig = modHero.getHeroConfig(name);
         let skillArmature = `${name}_skill`;
@@ -57,49 +28,28 @@ class Hero extends BaseGameObject {
 
         this.skill = ObjectPool.pop(heroConfig["skill"]);
         this.skill.init();
-        this.armature.scaleX = 1.5;
-        this.armature.scaleY = 1.5;
         this.effectArmature.scaleX = 1.5;
         this.effectArmature.scaleY = 1.5;
         this.skillArmature.scaleX = 1.5;
         this.skillArmature.scaleY = 1.5;
-        this.img_swordLight.texture = RES.getRes(`${name}-pugong_png`);
     }
 
     public init(data:Array<any>, isPVP:boolean=false) {
-        this.isInvincible = true;
         super.init(data);
-        this.initDragonBonesArmature(data[0]);
         let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
-        this.name = data[0];
-        this.offset = [[1, -113], [77, -109], [121, -50], [75, 14], [0, 23]];
-        // this.offset = [[2, -74], [49, -71], [79, -32], [50, 9], [0, 15]]
-        this.speed = 40;
         this.originHP = this.attr.hp;
         this._shieldCount = 0;
-        this.atk_range = 200;
-        this.atk_speed = 150;
-        this.isEnemy = false;
-        this.isPlay = false;
-        this.isBuffLoop = false;
         this.isPVP = isPVP;
         this.skill_status = false;
-        this.enermy = [];
-        this.buff = [];
         this.lastKill = 0;
-        this.lastAnimation = "";
         this.skill.skillData.skill_range = 150;
         this.visible = false;
-        this.shadow.visible = false;
-        this.canMove = false;
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
         }, this, 500);
-        this.effectArmature.visible = false;
-        this._hurtValue = 0;
         if (data[2]) this.attr.hp = data[3];
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
         if (!isPVP){
@@ -147,11 +97,6 @@ class Hero extends BaseGameObject {
         this.img_swordLight.visible = status;
     }
 
-    /**设置buff循环 */
-    public setBuffStatus(status:boolean):void {
-        this.isBuffLoop = status;
-    }
-
     /**
      * 设置buff或被动技能
      */
@@ -174,15 +119,6 @@ class Hero extends BaseGameObject {
         }
     }
 
-    /**增加buff */
-    public addBuff(buff:any, isTemp:boolean=false):void {
-        if (this.isExistBuff(buff) && isTemp) return;
-        if (this.isExistBuff(buff) && (buff.buffData.controlType == ControlType.YES) && (buff.buffData.superpositionType == SuperpositionType.SuperpositionType_None)) return;
-        Common.log("增加buff----->", buff.buffData.className);
-        this.buff.push(buff);
-        buff.buffStart(this);
-    }
-
     /**回收技能类 */
     public recycleSkill():void {
         this.img_swordLight.visible = false;
@@ -198,13 +134,6 @@ class Hero extends BaseGameObject {
         HeroData.update();
     }
 
-    /**增加攻击对象队列 */
-    private addVictim(target:any) {
-        for (let i = 0; i < target.length; i++) {
-            this.enermy.push(target[i]);
-        }
-    }
-
     /**
      * 设置敌人(当英雄进行攻击、释放技能时，判断受到影响的敌人)
      */
@@ -217,40 +146,6 @@ class Hero extends BaseGameObject {
         }else{
             this.addVictim(GameData.stakes);
         }
-    }
-
-    public setLiveEnermy():void {
-        this.enermy = [];
-        this.addVictim(GameData.boss);
-        this.addVictim(GameData.monsters);
-    }
-
-    /**
-     * 获取敌人
-     */
-    public getEnermy():any {
-        return this.enermy;
-    }
-
-    /**
-     * 每帧数据更新
-     */
-    public update(time:number):void {
-        super.update(time);
-    }
-
-    /**
-     * 待机状态
-     */
-    public state_idle(time:number):void {
-
-    }
-
-    /**
-     * 释放技能
-     */
-    public state_skill01(time:number):void {
-        // this.skill.update(this);
     }
 
     /**
@@ -309,56 +204,15 @@ class Hero extends BaseGameObject {
                 }
             }
             if (!this.isPVP && count > 0){
-                // let killCount:number = modBattle.getSumkill();
-                // if (this.lastKill != killCount) {
-                //     this.lastKill = killCount;
-                //     SceneManager.battleScene.update(killCount);
-                // }
                 if (count >= 2) {
                     SceneManager.battleScene.updateInstantKill(count);
                 }
             }
             return;
         }
-        if (Math.abs(this.sumDeltaX)>this.atk_rangeX/3){
-            this.img_swordLight.visible = true;
-        }
-        let gotoX = this.x + this.deltaX;
-        let gotoY = this.y + this.deltaY;
-        if (!this.isPVP) {
-            let isMove:boolean = this.isCollison(gotoX, gotoY);
-            if (!isMove) {
-                let buffConfig = modBuff.getBuff(2);
-                let extraBuff = ObjectPool.pop(buffConfig.className);
-                extraBuff.buffInit(buffConfig);
-                extraBuff.effectName = "xuanyun";
-                extraBuff.buffData.id = buffConfig.id;
-                extraBuff.buffData.duration = buffConfig.duration;
-                extraBuff.buffData.postionType = PostionType.PostionType_Head;
-                this.isBuffLoop = true;
-                this.addBuff(extraBuff);
-                this.armature.play(BaseGameObject.Action_Hurt, 0);
-                this.img_swordLight.visible = false;
-                return;
-            }
-        }
-        if (!this.canMove){
-            this.img_swordLight.visible = false;
-            return;
-        }
-        this.x = Math.floor(gotoX);
-        this.y = Math.floor(gotoY);
-        // this.x = this.x + this.deltaX;
-        // this.y = this.y + this.deltaY;
-        this.sumDeltaX = this.sumDeltaX + this.deltaX;
-        this.sumDeltaY = this.sumDeltaY + this.deltaY;
+        super.state_attack(time);
     }
-    /**
-     * 收到攻击状态
-     */
-    public state_hurt(time:number):void {
-        // Common.log(this.effectArmature.getState(this.curState));
-    }
+
     /**
      * 走到指定的位置
      * 
@@ -366,7 +220,6 @@ class Hero extends BaseGameObject {
     public moveToTarget(gotoX:number, gotoY:number, func:Function = null):void {
         super.moveToTarget(gotoX, gotoY, func);
         this.img_swordLight.visible = false;
-        // if (this.isAttack || this.curState == BaseGameObject.Action_Hurt || this.curState == Hero.Action_Skill || this.curState == BaseGameObject.Action_Enter) return;
         if (this.curState == BaseGameObject.Action_Hurt || this.curState == Hero.Action_Skill || this.curState == BaseGameObject.Action_Enter) return;
         if (func != null) {
             func();
@@ -407,24 +260,6 @@ class Hero extends BaseGameObject {
     }
 
     /**
-     * 是否闪避
-     */
-    public isDodge():boolean {
-        let random = MathUtils.getRandom(1, 100);
-        if (random <= this.attr.avo) return true;
-        return false;
-    }
-
-    /**
-     * 是否暴击
-     */
-    public isCrit():boolean {
-        let random = MathUtils.getRandom(1, 100);
-        if (random <= this.attr.crt) return true;
-        return false;
-    }
-
-    /**
      * 是否存在溢出血量的护盾
      */
     public overFlow(value:number):number {
@@ -450,9 +285,7 @@ class Hero extends BaseGameObject {
      * 受伤
      */
     public gotoHurt(value:number = 1) {
-        if (this.isInvincible) return;
-        //回避
-        if (this.isDodge()) return;
+        super.gotoHurt();
         //护盾
         let shieldCount:number = this.overFlow(value);
         if (shieldCount == 0) return;
@@ -526,59 +359,8 @@ class Hero extends BaseGameObject {
         if (!this.isComplete) return;
         if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
-        this.isComplete = false;
-        this.setInvincible(true);
-        this.atk_timer.start();
-        this.curState = "attack";
-        // this.isAttack = true;
         this.setEnermy();
-        let useSpeed = this.atk_speed * 0.1;
-        this.sumDeltaX = 0;
-        this.sumDeltaY = 0;
-        this.originX = this.x;
-        this.originY = this.y;
-        /**攻击的弧度 */
-        this.radian = MathUtils.getRadian2(this.originX, this.originY, this.endX, this.endY);
-        let animation = this.getAttackPosition(this.radian);
-        this.offsetIndex = animation["id"];
-
-        //人物原来位置到剑端直线弧度
-        let endX = this.endX + this.offset[this.offsetIndex][0];
-        let endY = this.endY + this.offset[this.offsetIndex][1] + 33;
-        if (this.reverse(this, this.radian)) {
-            endX = this.endX - this.offset[this.offsetIndex][0];
-        }
-        this.atk_radian = MathUtils.getRadian2(this.originX, this.originY, endX, endY);
-        let dis_atk:number = MathUtils.getDistance(this.originX, this.originY, this.endX, this.endY);
-        if (dis_atk > this.atk_range) dis_atk = 200;
-        else if (dis_atk <= 100) dis_atk = 100;
-        this.img_swordLight.scaleX = dis_atk/280;
-        //实际角度
-        let trueAngle:number = Math.floor(MathUtils.getAngle(this.atk_radian));
-        //剑尖角度
-        let swordAngle:number = 45 * this.offsetIndex - 90;
-        if (this.reverse(this, this.atk_radian)) {
-            this.img_swordLight.scaleX = -dis_atk/280;
-            trueAngle = Math.floor(-MathUtils.getAngle(this.atk_radian));
-            swordAngle = 45 * this.offsetIndex + 90;
-            if (trueAngle < 0) trueAngle += 360;
-        }
-        this.img_swordLight.rotation = swordAngle + ((trueAngle - swordAngle)/2.25);
-        let dx = Math.cos(this.atk_radian) * dis_atk;
-        let dy = Math.sin(this.atk_radian) * dis_atk;
-        this.atk_rangeX = parseFloat(Math.abs(dx).toFixed(2));
-        this.atk_rangeY = parseFloat(Math.abs(dy).toFixed(2));
-        /**怪物的弧度 */
-        this.centerX = Math.floor((2*this.originX + dx)/2);
-        this.centerY = Math.floor((2*this.originY + dy)/2);
-
-        let tempX = Math.cos(this.atk_radian) * useSpeed;
-        let tempY = Math.sin(this.atk_radian) * useSpeed;
-        this.deltaX = parseFloat(tempX.toFixed(2));
-        this.deltaY = parseFloat(tempY.toFixed(2));
-        this.img_swordLight.x = this.offset[this.offsetIndex][0];
-        this.img_swordLight.y = this.offset[this.offsetIndex][1];
-        this.armature.play(animation["posName"], 0);
+        super.gotoAttack();
     }
 
     /**
@@ -647,7 +429,8 @@ class Hero extends BaseGameObject {
     /**
      * 特效动画播放完成函数
      */
-    private effectArmaturePlayEnd():void {
+    public effectArmaturePlayEnd():void {
+        super.effectArmaturePlayEnd();
         this.effectArmature.visible = false;
         if (!this.canMove) return;
         if (this.attr.hp <= 0) {
@@ -696,49 +479,19 @@ class Hero extends BaseGameObject {
         this.effectArmature.removeCompleteCallFunc(this.effectArmaturePlayEnd, this);
     }
 
-    /**
-     * 隐藏bone
-     */
-    private hideBone(skeletonName:string, boneName:string):void {
-        this.attack_effect = this.armature.getBone(skeletonName, boneName, this);
-        this.attack_effect.visible = true;
-    }
-
-    /**
-     * 创建剑光
-     */
-    private createSwordLight():void {
-        this.img_swordLight = Utils.createBitmap("diaochan-pugong_png");
-        this.img_swordLight.anchorOffsetX = this.img_swordLight.width;
-        this.img_swordLight.anchorOffsetY = this.img_swordLight.height/2;
-        this.img_swordLight.visible = false;
-        this.addChild(this.img_swordLight);
-    }
-    /**是否正在运行跑步骨骼 */
-    private isPlay:boolean;
     /**上次击杀 */
     private lastKill:number;
-    private isBuffLoop:boolean;
     /**技能状态 0:没有释放 1:开始释放 */
     private skill_status:boolean;
-    public  isPVP:boolean;
-    /**攻击到的敌人 */
-    private enermy:Array<any>;
 
-    public name:string;
     public skillEffect:any;
     public skillEffectArmature:Array<DragonBonesArmatureContainer>;
 
     /*************英雄的动作***************/
-    private static Action_Run01:string = "run01";
-    private static Action_Run02:string = "run02";
-    private static Action_Run03:string = "run03";
     private static Action_Skill:string = "skill";
     private static Effect_Skill01:string = "skill01";
     private static Effect_SKill02:string = "skill02";
     private static Effect_SKill03:string = "skill03";
-
-    private atk_radian:number;
 
     /**护盾 */
     private _shieldCount:number;
@@ -746,13 +499,4 @@ class Hero extends BaseGameObject {
     private skill:any;
     /**技能范围 */
     private skill_range:number;
-    /************************************/
-
-    private attack_effect:dragonBones.Bone;
-    private img_swordLight:egret.Bitmap;
-    /**剑光的偏移 */
-    private offset:any[];
-    private offsetIndex:number;
-    /**是否攻击到敌人 */
-    private isHit:boolean;
 }
