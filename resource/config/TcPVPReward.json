@@ -1,0 +1,10 @@
+[
+	{"name":"第一名:","reward":[{"type":2,"name":"soul","count":1500000,"id":0},{"type":2,"name":"exp","count":1500000,"id":0},{"type":2,"name":"diamond","count":100,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":3}]},
+	{"name":"第二名:","reward":[{"type":2,"name":"soul","count":1200000,"id":0},{"type":2,"name":"exp","count":1200000,"id":0},{"type":2,"name":"diamond","count":80,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":3}]},
+	{"name":"第三名:","reward":[{"type":2,"name":"soul","count":1000000,"id":0},{"type":2,"name":"exp","count":1000000,"id":0},{"type":2,"name":"diamond","count":60,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":3}]},
+	{"name":"4-10名","reward":[{"type":2,"name":"soul","count":800000,"id":0},{"type":2,"name":"exp","count":800000,"id":0},{"type":2,"name":"diamond","count":50,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":2}]},
+	{"name":"11-50名","reward":[{"type":2,"name":"soul","count":500000,"id":0},{"type":2,"name":"exp","count":500000,"id":0},{"type":2,"name":"diamond","count":30,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":1}]},
+	{"name":"51-200名","reward":[{"type":2,"name":"soul","count":200000,"id":0},{"type":2,"name":"exp","count":200000,"id":0},{"type":2,"name":"diamond","count":20,"id":0},{"type":1,"name":"equip","count":1,"id":20,"star":0}]},
+	{"name":"201-500名","reward":[{"type":2,"name":"soul","count":100000,"id":0},{"type":2,"name":"exp","count":100000,"id":0},{"type":2,"name":"diamond","count":20,"id":0}]},
+	{"name":"501及以下","reward":[{"type":2,"name":"soul","count":50000,"id":0},{"type":2,"name":"exp","count":50000,"id":0},{"type":2,"name":"diamond","count":20,"id":0}]}
+]

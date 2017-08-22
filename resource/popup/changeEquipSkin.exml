@@ -5,7 +5,7 @@
 	<e:Button id="btn_back" label="" x="979" y="80" width="44" height="48">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -17,15 +17,15 @@
 	<e:Button id="btn_change" label="更换" x="419.5" y="481" height="76" width="288">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0011_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0011" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" textColor="0x240404" bold="true" fontFamily="Microsoft YaHei" size="30" size.down="30"/>
 			</e:Skin>
 		</e:skinName>
 
 	</e:Button>
-	<e:Image source="Title_0002_png" x="481" y="79"/>
+	<e:Image x="481" y="79" source="title_res.title_0011"/>
 	<e:Image source="equip_0013_png" x="669" y="147"/>
 	<e:Label id="lab_name" text="方天画戟" x="687" y="161" anchorOffsetX="0" width="216" size="25" bold="true" fontFamily="Microsoft YaHei" textColor="0xe58e0b"/>
-	<e:Image id="img_weapon" source="Sequip1_png" x="913" y="158"/>
+	<e:Image id="img_weapon" x="913" y="158" source="equip_res.Sequip1"/>
 	<e:Label id="lab_lv" text="等级：100/100" x="687" y="199" anchorOffsetX="0" width="217" size="22" textColor="0xb2a2a2" fontFamily="Microsoft YaHei" bold="true"/>
 </e:Skin>

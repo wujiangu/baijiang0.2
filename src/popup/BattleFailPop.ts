@@ -133,7 +133,7 @@ class BattleFailPop extends PopupWindow {
         this.lab_killCount2.text = killCount.toString();
         this.lab_exp.text = modBattle.getExp().toString();
         this.lab_soul.text = modBattle.getSoul().toString();
-        this.img_heroIcon.source = `img_${GameData.curHero}1_png`;
+        this.img_heroIcon.source = `battle_res.img_${GameData.curHero}1`;
         this.img_upgrade.visible = false;
         this.img_upgrade.y = 0;
         let id = modHero.getIdFromKey(GameData.curHero);

@@ -12,7 +12,7 @@ class SignGoodsInfo extends eui.Group{
         this.txt_name = Common.CreateText("",18,0x00ffff,true, "Microsoft YaHei","center");
         this.txt_num = Common.CreateText("",18,0x706F6F,true, "Microsoft YaHei","center");
         this.img_goods = new egret.Bitmap();
-        this.img_hook = new egret.Bitmap(RES.getRes("hook_png"));
+        this.img_hook = new egret.Bitmap(RES.getRes("common_res.hook"));
 
         this.addChild(this.txt_title);
         this.addChild(this.txt_name);
@@ -30,7 +30,7 @@ class SignGoodsInfo extends eui.Group{
             let tempData:any = TcManager.GetInstance().GetTcEquipData(param.id);
             name = param.id == 25 ? "随机橙装" : tempData.name;
             textColor = param.id == 25 ? 0xab5515 : modEquip.GetEquipColorFromQuality(tempData.grade - 1).color;
-            strTexture = param.id == 25 ? "unknow_png" : `Sequip${25-param.id}_png`;
+            strTexture = param.id == 25 ? "common_res.unknow" : `equip_res.Sequip${25-param.id}`;
         }
         else if(param.type == 2)
         {
@@ -38,7 +38,7 @@ class SignGoodsInfo extends eui.Group{
                                  diamond:["钻石",0x2D6EA6],power:["天赋点",0xBC822B]};
             name = data_list[param.name][0];
             textColor = data_list[param.name][1];
-            strTexture = `basic_${param.name}_png`;
+            strTexture = `common_res.basic_${param.name}`;
         }
         else if(param.type == 3)
         {

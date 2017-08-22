@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="1136">
 	<e:Image source="pvp_0001_png" horizontalCenter="0" verticalCenter="0"/>
-	<e:Image source="crystal_0001_png" x="959.65" y="45.14"/>
+	<e:Image source="common_res.crystal_0001" x="959.65" y="45.14"/>
 	<e:Label id="lab_soul" text="99999" y="55.66" size="25" fontFamily="Microsoft YaHei" x="993.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="117" textAlign="right"/>
 
 	<e:Button id="btn_start" label="挑战" x="764" y="561">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0012_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0012" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="30" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
@@ -16,8 +16,8 @@
 	<e:Button id="btn_buy" label="100" x="764" y="561">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopGet_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Image source="crystal_0002_png" horizontalCenter="-60" verticalCenter="-8" width.down="36" height.down="36"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_shopGet" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image source="common_res.crystal_0002" horizontalCenter="-60" verticalCenter="-8" width.down="36" height.down="36"/>
 			<e:Label id="labelDisplay" horizontalCenter="20" verticalCenter="-8" bold="true" size.down="25"/>
 		</e:Skin>
 		</e:skinName>
@@ -36,13 +36,13 @@
 	<e:Button id="btn_close" label="" x="24.25" y="16">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0005" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
 	<e:Scroller width="457" height="317" x="669" y="160" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Group>
+		<e:Group id="rewardGroup">
 			<e:Label id="lab_content" text="" x="0" y="0" anchorOffsetY="0" anchorOffsetX="0" fontFamily="Microsoft YaHei" size="20" bold="true" verticalAlign="top" textColor="0x494949" scaleX="1" scaleY="1" width="457"/>
 		</e:Group>
 	</e:Scroller>

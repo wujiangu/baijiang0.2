@@ -6,7 +6,7 @@
 	<e:Button id="btn_close" label="" x="879" y="128">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png" source.down="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0009" source.down="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 		</e:Skin>
 		</e:skinName>
@@ -14,13 +14,13 @@
 	<e:Button id="btn_share" label="分享" x="618.36" y="406.69" scaleX="1" scaleY="1" width="168" height="76" anchorOffsetX="0" anchorOffsetY="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0024_png"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0024"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" text="" fontFamily="Microsoft YaHei" bold="true" size.down="25" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
 	<e:Label id="lab_share" text="分享可得" x="571" y="343" anchorOffsetX="0" width="344" textAlign="right" size="22" fontFamily="Microsoft YaHei" bold="true"/>
-	<e:Image id="img_goods" source="Sequip5_png" x="812" y="392"/>
+	<e:Image id="img_goods" source="equip_res.Sequip5" x="812" y="392"/>
 	<e:Label id="lab_content1" text="一骑当千！" x="548" y="232" anchorOffsetX="0" width="351" anchorOffsetY="0" height="45" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" size="45" textAlign="center" textColor="0xeda02d"/>
 	<e:Label id="lab_content2" text="真-三国无双！" x="652" y="285" anchorOffsetX="0" width="276" anchorOffsetY="0" height="37" textAlign="left" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" textColor="0xd35013"/>
 	<e:Label id="lab_content3" text="您已经超越了99%的玩家！" x="564" y="188" anchorOffsetX="0" width="355" anchorOffsetY="0" height="183" textAlign="center" verticalAlign="middle" textColor="0xbf6222" size="27" fontFamily="Microsoft YaHei" bold="true"/>

@@ -17,14 +17,15 @@ class EquipObject extends eui.Group{
         this.addChild(this.txt_lv);
 
         for(let i:number = 0; i < 6; i++){
-            this.img_list[i] = new egret.Bitmap(RES.getRes("point_00_png"));
+            this.img_list[i] = new egret.Bitmap(RES.getRes("equip_res.point_00"));
             this.addChild(this.img_list[i]);
         }
         Common.SetXY(this.txt_lv, 10, 10);
+        this.width = 100;this.height = 100;
     }
 
     public ChangeEquipSource(info:modEquip.EquipInfo):void{
-        this.img_weapon.texture = RES.getRes(`Sequip${25-info.Id}_png`);
+        this.img_weapon.texture = RES.getRes(`equip_res.Sequip${25-info.Id}`);
         Common.SetXY(this.img_bottom, this.img_weapon.width - this.img_bottom.width >> 1, this.img_weapon.height - this.img_bottom.height - 7);
         this.UpEquipData(info);
     }
@@ -34,7 +35,7 @@ class EquipObject extends eui.Group{
         let list = info.GetAttrType();
         let srcX = this.img_weapon.width - ((info.Quality + 1) * 10) - 7;
         for(let i:number = 0; i < 6; i++){
-            this.img_list[i].texture = RES.getRes(list.length > i ? modEquip.GetEquipColorFromQuality(list[i].Quality,0).img : "point_00_png");
+            this.img_list[i].texture = RES.getRes(list.length > i ? modEquip.GetEquipColorFromQuality(list[i].Quality,0).img : "equip_res.point_00");
             this.img_list[i].visible = info.Quality + 1 > i ? true : false;
             Common.SetXY(this.img_list[i], srcX + 10 * i, this.img_bottom.y + (this.img_bottom.height - 8 >> 1));
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
 	<e:Image source="hero_0001_png" x="0" y="0" width="1136" height="640"/>
-	<e:Image source="crystal_0001_png" x="959.65" y="45.14"/>
-	<e:Image source="sole_0001_png" x="785.98" y="45.14"/>
-	<e:Image source="exp_0001_png" x="604.16" y="45.14"/>
+	<e:Image source="common_res.crystal_0001" x="959.65" y="45.14"/>
+	<e:Image source="common_res.sole_0001" x="785.98" y="45.14"/>
+	<e:Image source="common_res.exp_0001" x="604.16" y="45.14"/>
 	<e:Label id="lab_diamond" text="99999" y="55.66" size="25" fontFamily="Microsoft YaHei" x="987.08" textColor="0x2D6EA6" bold="true" anchorOffsetX="0" width="123" textAlign="right"/>
 	<e:Label id="lab_soul" text="99999" y="55.66" size="25" fontFamily="Microsoft YaHei" x="816.86" bold="true" textColor="0x8B2EA5" anchorOffsetX="0" width="120" textAlign="right"/>
 	<e:Label id="lab_exp" text="99999" y="55.66" size="25" fontFamily="Microsoft YaHei" x="635.56" bold="true" textColor="0xBC822B" anchorOffsetX="0" width="119" textAlign="right"/>
@@ -11,7 +11,7 @@
 	<e:Button id="btn_back" label="" x="14" y="14" width="104" height="68">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0005" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 		</e:Skin>
 		</e:skinName>
@@ -21,7 +21,7 @@
 	<e:ToggleButton id="btn_skill" label="技能" x="727" y="100.1" anchorOffsetX="0" width="196" anchorOffsetY="0" height="52">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_ready_png" source.down="btn_ready_over_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_ready" source.down="button_res.btn_ready_over"/>
 			<e:Label id="labelDisplay" bold="true" textColor.down="0x000000" fontFamily="Microsoft YaHei" size="33" horizontalCenter="0" verticalCenter="-4" textColor="0x959185"/>
 		</e:Skin>
 		</e:skinName>
@@ -29,7 +29,7 @@
 	<e:ToggleButton id="btn_detail" label="武器" x="936" y="100" anchorOffsetX="0" width="196" anchorOffsetY="0" height="52">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_ready_png" source.down="btn_ready_over_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_ready" source.down="button_res.btn_ready_over"/>
 			<e:Label id="labelDisplay" bold="true" textColor.down="0x000000" fontFamily="Microsoft YaHei" size="33" verticalCenter="-4" horizontalCenter="0" textColor="0x959185"/>
 		</e:Skin>
 		</e:skinName>
@@ -37,7 +37,7 @@
 	<e:ToggleButton id="btn_upgrade" label="人物" x="520" y="100.1" anchorOffsetX="0" width="196" anchorOffsetY="0" height="52">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_ready_png" source.down="btn_ready_over_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_ready" source.down="button_res.btn_ready_over"/>
 			<e:Label id="labelDisplay" bold="true" textColor.down="0x000000" fontFamily="Microsoft YaHei" size="32" horizontalCenter="0" verticalCenter="-4" textColor="0x959185"/>
 			</e:Skin>
 		</e:skinName>
@@ -48,10 +48,10 @@
 		<e:Group id="biographyGroup" anchorOffsetX="0" width="612" anchorOffsetY="0" height="399" y="0.67" x="-1" visible="false">
 			<e:Image source="readDialog_png" x="17" y="21"/>
 			<e:Label text="升级需要消耗" x="70.23" y="356.35" anchorOffsetX="0" width="185" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" visible="false"/>
-			<e:Image source="exp_0002_png" x="219.91" y="347.35" visible="false"/>
+			<e:Image source="common_res.exp_0002" x="219.91" y="347.35" visible="false"/>
 			<e:Label id="txt_exp" text="100" y="356.58" anchorOffsetX="0" size="25" textAlign="right" textColor="0xF28B09" rotation="0.1" bold="true" fontFamily="Microsoft YaHei" right="252" width="104" visible="false"/>
 			<e:Label id="txt_sole" text="100" y="356.58" anchorOffsetX="0" size="25" textAlign="right" rotation="0.1" bold="true" textColor="0xC91EBB" fontFamily="Microsoft YaHei" right="94" width="105.99" visible="false"/>
-			<e:Image source="sole_0002_png" x="372.91" y="347.35" visible="false"/>
+			<e:Image source="common_res.sole_0002" x="372.91" y="347.35" visible="false"/>
 
 			<e:Label id="lab_lv" text="当前等级: Lv.1" y="37.98" anchorOffsetX="0" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" textAlign="center" horizontalCenter="-0.5" width="533" size="25" verticalAlign="middle"/>
 
@@ -60,7 +60,7 @@
 			<e:Button id="btn_up" label="升级" x="16" y="408" name="btn_change" scaleX="1" scaleY="1" visible="false">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="button_0022_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image width="100%" height="100%" source="button_res.button_0022" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 					<e:Label id="labelDisplay" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="32" y="16" size.down="29" horizontalCenter="0" textColor="0x202811"/>
 					</e:Skin>
 				</e:skinName>
@@ -71,16 +71,16 @@
 		<e:Group id="skillGroup" width="612" height="401" x="-2.01" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="false">
 			<e:Label text="技能" x="264" y="11.32" fontFamily="Microsoft YaHei" bold="true" size="36" textColor="0x0c0c0c" visible="false"/>
 
-			<e:Image source="skillICON_bg_png" x="55.12" y="26.33"/>
-			<e:Image source="skillICON_bg_png" x="248" y="25.33"/>
-			<e:Image source="skillICON_bg_png" x="441.88" y="25.33"/>
+			<e:Image source="battle_res.skillICON_bg" x="55.12" y="26.33"/>
+			<e:Image source="battle_res.skillICON_bg" x="248" y="25.33"/>
+			<e:Image source="battle_res.skillICON_bg" x="441.88" y="25.33"/>
 
-			<e:Image id="img_skill1Bg" x="63.12" y="33.33" source="buxiaoman_skillBg_png"/>
-			<e:Image id="img_skill2Bg" x="256" y="33.33" source="buxiaoman_skillBg_png"/>
-			<e:Image id="img_skill3Bg" x="449.88" y="33.33" source="buxiaoman_skillBg_png"/>
-			<e:Image id="img_skill1" x="63.12" y="34.33" source="skill_16_png"/>
-			<e:Image id="img_skill2" x="257" y="34.33" source="skill_17_png"/>
-			<e:Image id="img_skill3" x="449.88" y="34.33" source="skill_18_png"/>
+			<e:Image id="img_skill1Bg" x="63.12" y="33.33" source="battle_res.buxiaoman_skillBg"/>
+			<e:Image id="img_skill2Bg" x="256" y="33.33" source="battle_res.buxiaoman_skillBg"/>
+			<e:Image id="img_skill3Bg" x="449.88" y="33.33" source="battle_res.buxiaoman_skillBg"/>
+			<e:Image id="img_skill1" x="63.12" y="34.33" source="talAndSkill_res.skill_16"/>
+			<e:Image id="img_skill2" x="257" y="34.33" source="talAndSkill_res.skill_17"/>
+			<e:Image id="img_skill3" x="449.88" y="34.33" source="talAndSkill_res.skill_18"/>
 			<e:Label id="lab_skillname1" text="技能" y="153.32" fontFamily="Microsoft YaHei" anchorOffsetX="0" textAlign="center" horizontalCenter="-194" size="26" bold="true" textColor="0xb5b5b5"/>
 			<e:Label id="lab_skillname2" text="技能" y="153.32" fontFamily="Microsoft YaHei" horizontalCenter="2" size="26" bold="true" textColor="0xb5b5b5"/>
 			<e:Label id="lab_skillname3" text="技能" y="153.32" fontFamily="Microsoft YaHei" horizontalCenter="195" size="26" bold="true" textColor="0xb5b5b5"/>
@@ -92,7 +92,7 @@
 			<e:Label id="lab_detail3" text="" x="427.07" y="225.29" size="20" anchorOffsetX="0" width="155" anchorOffsetY="0" height="160" fontFamily="Microsoft YaHei" lineSpacing="5" textColor="0x676767" bold="true"/>
 			<e:Image source="hero_0006_png" x="201.01" y="14.5" anchorOffsetY="0" height="382.5"/>
 		</e:Group>
-		<e:Group id="detailGroup" width="620" height="402" x="0" y="0" anchorOffsetY="0" visible="false">
+		<e:Group id="detailGroup" width="620" height="402" x="0" y="0" anchorOffsetY="0">
 
 			<e:Image id="img_equip" x="68" y="13.34" width="468" height="384" source=""/>
 
@@ -102,16 +102,16 @@
 			<e:Button id="btn_change" label="装备" x="15" y="409" name="btn_change">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="button_0022_png" width.down="90%" height.down="90%" horizontalCenter="0"  verticalCenter="0"/>
+					<e:Image width="100%" height="100%" source="button_res.button_0022" width.down="90%" height.down="90%" horizontalCenter="0"  verticalCenter="0"/>
 					<e:Label id="labelDisplay" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="32" y="16" size.down="29" horizontalCenter="0" textColor="0x202811"/>
 					</e:Skin>
 				</e:skinName>
 
 			</e:Button>
-			<e:Button id="btn_change0" label="洗练" x="177.64" y="409" name="btn_change">
+			<e:Button id="btn_wash" label="洗练" x="177.64" y="409" name="btn_change">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="button_0013_png"/>
+					<e:Image width="100%" height="100%" source="button_res.button_0013" width.down="90%" height.down="90%" horizontalCenter="0"  verticalCenter="0"/>
 					<e:Label verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size="32" y="16" size.down="29" horizontalCenter="0" text="洗练" textColor="0x190d0b"/>
 					</e:Skin>
 				</e:skinName>
@@ -121,13 +121,13 @@
 	<e:Button id="btn_battle" label="开始战斗" x="862.18" y="555.67" height="76" width="260">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0012_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0012" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" bold="true" fontFamily="Microsoft YaHei" size="32" textColor="0x240404" size.down="29" verticalCenter="-8"/>
 			</e:Skin>
 		</e:skinName>
 
 	</e:Button>
-	<e:Image x="141.5" y="8" source="title_00012_png"/>
+	<e:Image x="141.5" y="8" source="title_res.title_0012"/>
 	<e:Scroller id="_scrollHero" width="492" height="88" x="11" y="542" anchorOffsetY="0" anchorOffsetX="0">
 	</e:Scroller>
 	<e:Image source="img_nameBox_png" x="12" y="106"/>

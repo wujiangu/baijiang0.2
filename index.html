@@ -3,12 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>百将斩</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="full-screen" content="true"/>
-    <meta name="screen-orientation" content="landscape"/>
-    <meta name="x5-fullscreen" content="true"/>
-    <meta name="360-fullscreen" content="true"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1.3, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+	<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+	<!-- 启用360浏览器的极速模式(webkit) -->
+	<meta name="renderer" content="webkit">
+	<!-- 避免IE使用兼容模式 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+	<meta name="HandheldFriendly" content="true">
+	<!-- 微软的老式浏览器 -->
+	<meta name="MobileOptimized" content="320">
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<!-- UC应用模式 -->
+	<meta name="browsermode" content="application">
+	<!-- QQ应用模式 -->
+	<meta name="x5-page-mode" content="app">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<!-- 适应移动端end -->
     <style>
         html, body {
             -ms-touch-action: none;
@@ -37,23 +54,24 @@
 	<script egret="lib" src="promise/promise.js"></script>
 	<!--modules_files_end-->
 	<script egret="lib" src="libs/av/av.js" src-release="libs/av/av-min.js"></script>
+	<script egret="lib" src="libs/WeixinAPI/WeixinAPI.js" src-release="libs/WeixinAPI/WeixinAPI.min.js"></script>
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
     
 
     <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
     <!--game_files_start-->
 	<script egret="lib" src="bin-debug/game/Object/BaseGameObject.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/Enermy.js"></script>
-	<script egret="lib" src="bin-debug/Base.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/BuffBase.js"></script>
+	<script egret="lib" src="bin-debug/Base.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Enermy.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Alliance.js"></script>
 	<script egret="lib" src="bin-debug/game/Machine/BaseStateMachine.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomBuff.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/Monster.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/SkillBase.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomItem.js"></script>
 	<script egret="lib" src="bin-debug/popup/PopupWindow.js"></script>
-	<script egret="lib" src="bin-debug/game/Skill/skills/TaijiPalm.js"></script>
-	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
-	<script egret="lib" src="bin-debug/game/Buff/BuffData.js"></script>
-	<script egret="lib" src="bin-debug/game/Buff/buffs/AddProperty.js"></script>
+	<script egret="lib" src="bin-debug/game/Skill/skills/Bristle.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/AddSources.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/ContinuousInjury.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/DeepFire.js"></script>
@@ -74,6 +92,23 @@
 	<script egret="lib" src="bin-debug/game/Buff/buffs/Unbending.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/WarSincere.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/WindBlessing.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/ArrowTube.js"></script>
+	<script egret="lib" src="bin-debug/Common.js"></script>
+	<script egret="lib" src="bin-debug/component/BattleSceneCom.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Blindness.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Blooding.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BrokeShield.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Explosive.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/FixedBody.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Hardening.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/InstanteKill.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Mirror.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Rocket.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Slow.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/SpeedUp.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/TempShield.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/violent.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/Weak.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/specialBuffs/Avatar.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/specialBuffs/BlowUp.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/specialBuffs/BuildWall.js"></script>
@@ -86,26 +121,30 @@
 	<script egret="lib" src="bin-debug/game/GameData.js"></script>
 	<script egret="lib" src="bin-debug/game/HeroData.js"></script>
 	<script egret="lib" src="bin-debug/game/Machine/BaseState.js"></script>
-	<script egret="lib" src="bin-debug/Common.js"></script>
+	<script egret="lib" src="bin-debug/component/EquipStarIR.js"></script>
 	<script egret="lib" src="bin-debug/game/Machine/IdleState.js"></script>
 	<script egret="lib" src="bin-debug/game/Machine/StateType.js"></script>
+	<script egret="lib" src="bin-debug/component/ScrollView.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/AvatarHero.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/AvatarMonster.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/BaseCharactorData.js"></script>
-	<script egret="lib" src="bin-debug/component/BattleSceneCom.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/Boss.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/EliteMonster.js"></script>
-	<script egret="lib" src="bin-debug/component/EquipStarIR.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/Hero.js"></script>
-	<script egret="lib" src="bin-debug/component/ScrollView.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/Stakes.js"></script>
 	<script egret="lib" src="bin-debug/component/shopItemIR.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Boss.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Chest.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/EliteMonster.js"></script>
+	<script egret="lib" src="bin-debug/component/TalentIR.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/EquipObject.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Hero.js"></script>
+	<script egret="lib" src="bin-debug/enterGameScene/EnterGameScene.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Stakes.js"></script>
+	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/SkillData.js"></script>
-	<script egret="lib" src="bin-debug/game/Skill/skills/Bristle.js"></script>
+	<script egret="lib" src="bin-debug/utils/utilsClass/ShakeTools.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/Imprisoned.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/SevenInOut.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/SolaCut.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/Summon.js"></script>
-	<script egret="lib" src="bin-debug/component/TalentIR.js"></script>
+	<script egret="lib" src="bin-debug/game/Skill/skills/TaijiPalm.js"></script>
 	<script egret="lib" src="bin-debug/heroInfo/heroInfoPanel.js"></script>
 	<script egret="lib" src="bin-debug/leanCloud/LeanCloud.js"></script>
 	<script egret="lib" src="bin-debug/LoadingUI.js"></script>
@@ -125,7 +164,9 @@
 	<script egret="lib" src="bin-debug/manager/GameLayerManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/ObjectPool.js"></script>
 	<script egret="lib" src="bin-debug/manager/PopupManager.js"></script>
+	<script egret="lib" src="bin-debug/manager/ResLoadManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/SceneManager.js"></script>
+	<script egret="lib" src="bin-debug/manager/StageManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/TcManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/TimerManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/UserData.js"></script>
@@ -134,11 +175,15 @@
 	<script egret="lib" src="bin-debug/model/modBuff.js"></script>
 	<script egret="lib" src="bin-debug/model/modEquip.js"></script>
 	<script egret="lib" src="bin-debug/model/modHero.js"></script>
+	<script egret="lib" src="bin-debug/model/modLogin.js"></script>
 	<script egret="lib" src="bin-debug/model/modPVP.js"></script>
 	<script egret="lib" src="bin-debug/model/modShop.js"></script>
 	<script egret="lib" src="bin-debug/model/modTalent.js"></script>
 	<script egret="lib" src="bin-debug/model/RankData.js"></script>
 	<script egret="lib" src="bin-debug/model/UserDataInfo.js"></script>
+	<script egret="lib" src="bin-debug/net/HttpRequest.js"></script>
+	<script egret="lib" src="bin-debug/net/modPay.js"></script>
+	<script egret="lib" src="bin-debug/net/modShare.js"></script>
 	<script egret="lib" src="bin-debug/net/NetConnect.js"></script>
 	<script egret="lib" src="bin-debug/net/NetUI.js"></script>
 	<script egret="lib" src="bin-debug/popup/BattleFailPop.js"></script>
@@ -148,13 +193,17 @@
 	<script egret="lib" src="bin-debug/popup/drawCardPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/EquipUpStarWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/EquipUpWindow.js"></script>
+	<script egret="lib" src="bin-debug/popup/GMWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/GoodsTipWindow.js"></script>
-	<script egret="lib" src="bin-debug/enterGameScene/EnterGameScene.js"></script>
+	<script egret="lib" src="bin-debug/popup/HangupPop.js"></script>
+	<script egret="lib" src="bin-debug/popup/HelpTipDialog.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/buffs/AddProperty.js"></script>
 	<script egret="lib" src="bin-debug/popup/PVPWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/QuickPurchaseWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/ResetEquipAttrWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/ShareWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/ShopItemPop.js"></script>
+	<script egret="lib" src="bin-debug/popup/SignDialog.js"></script>
 	<script egret="lib" src="bin-debug/popup/UnlockStarLvPop.js"></script>
 	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
 	<script egret="lib" src="bin-debug/utils/Animations.js"></script>
@@ -168,10 +217,12 @@
 	<script egret="lib" src="bin-debug/utils/Utils.js"></script>
 	<script egret="lib" src="bin-debug/utils/utilsClass/LEvent.js"></script>
 	<script egret="lib" src="bin-debug/utils/utilsClass/LListener.js"></script>
-	<script egret="lib" src="bin-debug/utils/utilsClass/ShakeTools.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/BuffData.js"></script>
 	<!--game_files_end-->
 	<!--<script src="https://rawgit.com/kawanet/msgpack-lite/master/dist/msgpack.min.js"></script>-->
 	<script src="http://api.egret-labs.org/games/www/static/egreth5sdk.js"></script>
+	<script src="https://pay.17m3.com/gamepay/dhpay.min.js"></script>
+	<script src="https://www.shandw.com/libs/js/sdwJs.min.js"></script>
 	<!-- 存储服务 -->
 	<!--/*<script src="//cdn1.lncld.net/static/js/3.0.0/av-min.js"></script>*/-->
 </head>
@@ -186,7 +237,7 @@
          data-content-height="640"
          data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="true" data-show-log="false"
+         data-show-fps="false" data-show-log="true"
          data-show-fps-style="x:0,y:0,size:10,textColor:0xffffff,bgAlpha:0.9">
     </div>
     <script>
@@ -203,15 +254,10 @@
         //  function unpack (data) {
         //      return msgpack.decode(data)
         //  }
-		var isDebug = false;
+		var isDebug = true;
 		var RESOURCE = "";
-		// var AV = AV || {};
-		// var APP_ID = 'onCULkQ8rWJmAJtnjfxtxrkr-gzGzoHsz';
-		// var APP_KEY = 'FGupyEUQyuw4kKkvrU7ohM06';
-		// AV.init({
-		// appId: APP_ID,
-		// appKey: APP_KEY
-		// });
+		var sdw = sdw || {};
+		var browser = browser || {};
         egret.runEgret({renderMode:"webgl", audioType:0});
     </script>
 </body>

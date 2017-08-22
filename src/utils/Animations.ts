@@ -255,7 +255,7 @@ namespace Animations {
 
         let ArrayStar:Array<egret.Bitmap> = []
         for (let i = 0; i < equipGrade+1; i++) {
-            let img_star:egret.Bitmap = Utils.createBitmap("star_00_png");
+            let img_star:egret.Bitmap = Utils.createBitmap("equip_res.star_00");
             ArrayStar.push(img_star);
             img_star.visible = false;
             img_star.x = 36 * i;
@@ -273,7 +273,7 @@ namespace Animations {
                     break;
                 }
             }
-            let img_affix:egret.Bitmap = Utils.createBitmap(`star_0${imgId}_png`);
+            let img_affix:egret.Bitmap = Utils.createBitmap(`equip_res.star_0${imgId}`);
             // img_affix.visible = false;
             img_affix.x = 36 * i;
             starGroup.addChild(img_affix);
@@ -455,5 +455,25 @@ namespace Animations {
                 ObjFadeEffect(obj);
             },this)
         },this);
+    }
+
+    let img:egret.Bitmap;
+    export function ShowLoadAnimation():void{
+        if(img == null){
+            img = new egret.Bitmap(RES.getRes("loading2_png"));
+            Common.SetXY(img, img.width / 2 + (Common.SCREEN_W - img.width >> 1) , img.height / 2 +(Common.SCREEN_H - img.height >> 1));
+            img.anchorOffsetX = img.width / 2;
+            img.anchorOffsetY = img.height / 2;
+        }
+        img.rotation = 0;
+        GameLayerManager.gameLayer().panelLayer.addChild(img);
+        egret.Tween.get(img, {loop:true}).to({rotation:360},1000);
+    }
+
+    export function HideLoadAnimation():void{
+        if(img){
+            egret.Tween.removeTweens(img);
+            GameLayerManager.gameLayer().panelLayer.removeChild(img);
+        }
     }
 }

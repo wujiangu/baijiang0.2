@@ -34,7 +34,6 @@ class EmailWindow extends PopupWindow{
         }
 
         this.img_click = new egret.Bitmap(RES.getRes("email_002_png"));
-        this._bottomGroup = new eui.Group();
     }
 
     public Show():void{
@@ -84,9 +83,9 @@ class EmailWindow extends PopupWindow{
         for(let i:number = 0; i < this._emailData.length; i++){
             if(this.group_list.length <= i ){
                 this.group_list[i] = new eui.Group();
-                this.img_list[i] = new egret.Bitmap(RES.getRes("email_status3_png"));
+                this.img_list[i] = new egret.Bitmap(RES.getRes("common_res.email_status3"));
                 this.img_bg_list[i] = new egret.Bitmap(RES.getRes("email_003_png"));
-                this.icon_list[i] = new egret.Bitmap(RES.getRes("email_new_png"));
+                this.icon_list[i] = new egret.Bitmap(RES.getRes("common_res.email_new"));
                 this.title_list[i] = Common.CreateText("",25, 0x858685,true, "Microsoft YaHei");
                 this.time_list[i] = Common.CreateText("",20, 0x858685,true, "Microsoft YaHei");
                 
@@ -102,11 +101,12 @@ class EmailWindow extends PopupWindow{
                 Common.SetXY(this.icon_list[i], this.img_list[i].x - this.icon_list[i].width / 2, this.img_list[i].y - 5);
 
                 this.img_bg_list[i].touchEnabled = true;
+                this.group_list[i].width = this.img_list[i].width;this.group_list[i].height = this.img_list[i].height;
             }
           
             this.title_list[i].text = this._emailData[i].title;
             this.time_list[i].text = this._emailData[i].date
-            this.img_list[i].texture = RES.getRes(`email_status${this._emailData[i].status}_png`);
+            this.img_list[i].texture = RES.getRes(`common_res.email_status${this._emailData[i].status}`);
             this.icon_list[i].visible = this._emailData[i].status == 3 ? true : false;
 
             this.img_bg_list[i]["index"] = i;
@@ -114,9 +114,6 @@ class EmailWindow extends PopupWindow{
             Common.SetXY(this.group_list[i], 0, i * 118 + 10);
             this.scrollGroup.addChild(this.group_list[i]);
         }
-
-        this.scrollGroup.addChild(this._bottomGroup);
-        Common.SetXY(this._bottomGroup, 0, this._eventNum *  118 + 10);
     }
 
     private onTouchImg(event:egret.TouchEvent):void{
@@ -218,7 +215,7 @@ class EmailWindow extends PopupWindow{
         else if(clickType == 2 && this._emailData[this._clickIndex].status == 2){
             this._emailData[this._clickIndex].status = 1;
         }
-        this.img_list[this._clickIndex].texture = RES.getRes(`email_status${this._emailData[this._clickIndex].status}_png`);
+        this.img_list[this._clickIndex].texture = RES.getRes(`common_res.email_status${this._emailData[this._clickIndex].status}`);
         this.showRewardGoodsColor();
         UserDataInfo.GetInstance().SetBasicData("email", this._emailData);
     }
@@ -249,7 +246,6 @@ class EmailWindow extends PopupWindow{
     private group_list:Array<eui.Group>;
     private scrollGroup:eui.Group;
     private emailGroup:eui.Group;
-    private _bottomGroup:eui.Group;
 
     /** other */
     private _emailData:any;

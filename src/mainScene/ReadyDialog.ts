@@ -23,7 +23,7 @@ class ReadyDialog extends PopupWindow {
         this._heroArmature = new Array();
         this._curAttr = new Array();
         this._tempAttr = new Array();
-        this._selectBox = Utils.createBitmap("img_selectHero_png");
+        this._selectBox = Utils.createBitmap("battle_res.img_selectHero");
         this._createHeroIcon();
         this._createAttr();
     }
@@ -182,6 +182,9 @@ class ReadyDialog extends PopupWindow {
                 pop.Show(this.equipId, this.equipTypeId);
                 pop.addEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
             break;
+            case this.btn_wash:
+                
+            break;
             case this.btn_up:
                 this.updateAttr(true);
             break;
@@ -213,8 +216,8 @@ class ReadyDialog extends PopupWindow {
                     this._skill[i][0].text = ConfigManager.tcSkill[j].name;
                     this._skill[i][1].text = ConfigManager.tcSkill[j].cd == 0 ? "被动" : `冷却：${ConfigManager.tcSkill[j].cd}秒`;
                     this._skill[i][2].text = ConfigManager.tcSkill[j].content;
-                    this._skill[i][3].source = `skill_${ConfigManager.tcSkill[j].image_id}_png`;
-                    this._skill[i][4].source = `${GameData.curHero}_skillBg_png`;
+                    this._skill[i][3].source = `talAndSkill_res.skill_${ConfigManager.tcSkill[j].image_id}`;
+                    this._skill[i][4].source = `battle_res.${GameData.curHero}_skillBg`;
                     break;
                 }
             }
@@ -241,7 +244,7 @@ class ReadyDialog extends PopupWindow {
 
         this.starGroup.removeChildren();
         for (let i = 0; i < equip.quality+1; i++) {
-            let img_star:egret.Bitmap = Utils.createBitmap("star_00_png");
+            let img_star:egret.Bitmap = Utils.createBitmap("equip_res.star_00");
             img_star.x = 36 * i;
             this.starGroup.addChild(img_star);
         }
@@ -351,7 +354,7 @@ class ReadyDialog extends PopupWindow {
         this.hero_sort_list = this.HeroSortFromIsLock();
         for(let key of this.hero_sort_list){
             let tempGroup:eui.Group = new eui.Group();
-            let img_head = Utils.createBitmap(`img_${key}1_png`);
+            let img_head = Utils.createBitmap(`battle_res.img_${key}1`);
             tempGroup.addChild(img_head);
             tempGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this._onSelete, this);
             tempGroup.x = count * 100;
@@ -360,7 +363,7 @@ class ReadyDialog extends PopupWindow {
             group.addChild(tempGroup);
             this._createArmature(key);
             
-            let img:egret.Bitmap = new egret.Bitmap(RES.getRes("heorLock_png"));
+            let img:egret.Bitmap = new egret.Bitmap(RES.getRes("battle_res.heorLock"));
             tempGroup.addChild(img);
             img.visible = HeroData.list[key] == null ? true : false;
         }
@@ -446,6 +449,8 @@ class ReadyDialog extends PopupWindow {
 	/*************************************************/
 
     private _focusBtn:eui.ToggleButton;
+    /**洗练按钮 */
+    private btn_wash:eui.Button;
     /**返回按钮 */
     private btn_back:eui.Button;
     /**出战按钮 */

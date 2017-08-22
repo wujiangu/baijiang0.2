@@ -22,12 +22,7 @@ class PVPWindow extends PopupWindow{
         let strs:Array<string> = modPVP.detailReward();
         this.lab_content.textFlow = <Array<egret.TextField>>[{text:"1、每日第一次挑战免费。",style:{"size":19}},{text:"\n",style:{"size":18}},
                                                              {text:"2、试炼场限时90秒，在规定时间内打出的伤害越高则获得的奖励越好",style:{"size":19}},{text:"\n",style:{"size":18}},
-                                                             {text:"3、试炼场结算时间为每晚21点。",style:{"size":19}},{text:"\n",style:{"size":18}},
-                                                             {text:"试炼场排名奖励"},{text:"\n",style:{"size":18}},{text:"第1名:"+strs[0],style:{"size":18}},{text:"\n",style:{"size":18}},
-                                                             {text:"第2名:"+strs[1],style:{"size":18}},{text:"\n",style:{"size":18}},
-                                                             {text:"第3名:"+strs[2],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"4-10名:"+strs[3],style:{"size":18}},{text:"\n",style:{"size":18}},
-                                                             {text:"11-50名:"+strs[4],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"51-200名:"+strs[5],style:{"size":18}},{text:"\n",style:{"size":18}},
-                                                             {text:"201-500名:"+strs[6],style:{"size":18}},{text:"\n",style:{"size":18}},{text:"501及以下:"+strs[7],style:{"size":18}},{text:"\n",style:{"size":18}}];
+                                                             {text:"3、试炼场结算时间为每晚21点。\n",style:{"size":19}},{text:"试炼场排名奖励"},{text:"\n",style:{"size":18}}];
 
         this.scrollGroup.addChild(this.img_bg);
         this.scrollGroup.addChild(this.txt_self);
@@ -50,16 +45,18 @@ class PVPWindow extends PopupWindow{
             this.damageList[i] = new DamageList();
             this.scrollGroup.addChild(this.damageList[i]);
         }
+
+        this.showRewardGoods();
     }
 
     /** 数据数据 */
     public Show():void{
         super.Show();
 
-        if(RankData.GetInstance().ChallengeNum == 0) this.show_and_hide_btn(true, false);
-        else this.show_and_hide_btn(false, true);
-
+        this.scrollGroup.scrollV = 0;
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+
+        this.show_and_hide_btn(RankData.GetInstance().ChallengeNum == 0, !(RankData.GetInstance().ChallengeNum == 0));
         this.showRankInfo();
         this.upDataTime();
         this._time.start();
@@ -85,9 +82,13 @@ class PVPWindow extends PopupWindow{
     }
 
     private onScrollChange(event:egret.Event):void{
-        if(this.scrollGroup.scrollV % 57 < 40 && this.scrollGroup.scrollV % 57 > 20) return; 
+        if(this.scrollGroup.scrollV <= 0){
+            this.changeRankInfo(0);
+            return;
+        } 
 
-        this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57));
+        if(Math.abs(this.scrollGroup.scrollV % 57 - 57) > 15 && Math.abs(this.scrollGroup.scrollV % 57 - 57) < 35) 
+            this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57) - 1);
     }
 
     /** 点击开始挑战按钮 */
@@ -125,14 +126,8 @@ class PVPWindow extends PopupWindow{
         let currHour = date.getHours();
         let currMinutes = date.getMinutes();
 
-        let hour:number, minuter:number;
-        if(currMinutes == 0){
-            hour = 21 - (currHour > 21 ? 21 - currHour : currHour);
-        }
-        else
-            hour = 20 - (currHour > 21 ? 21 - currHour : currHour);
-
-        minuter = 60 - currMinutes == 60 ? 0 : 60 - currMinutes;
+        let hour:number = (currMinutes == 0 ? 21 : 20) - (currHour > 21 ? 21 - currHour : currHour);
+        let minuter:number = 60 - currMinutes == 60 ? 0 : 60 - currMinutes;
         this.lab_time.text = "结算时间: " + hour + "时" + minuter + "分"; 
     }
 
@@ -145,7 +140,7 @@ class PVPWindow extends PopupWindow{
         this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:"我    "},{text:strRank, style:{"textColor":0x252525}}];
         this.txt_damage.text = `${UserData.rankDamage}`;
 
-        this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57))
+        this.changeRankInfo(0);
     }
 
     /** change rank info */
@@ -156,7 +151,7 @@ class PVPWindow extends PopupWindow{
         let index:number = 0;
         for(let i:number = num; i < num + 10; i++){
             this.damageList[index].ChangeData(data_list[i]["name"], Math.floor(data_list[i]["damage"]), i + 1);
-            Common.SetXY(this.damageList[index], 0, this.img_bg.y + this.img_bg.height + i * 57);
+            Common.SetXY(this.damageList[index], this.img_bg.x, this.img_bg.y + this.img_bg.height + i * 57);
             index++;
         }
     }
@@ -178,6 +173,54 @@ class PVPWindow extends PopupWindow{
         this.btn_buy.label = RankData.GetInstance().ChallengeNum * 20 >= 100 ? `${100}` : `${RankData.GetInstance().ChallengeNum * 20}`;
     }
 
+    /** create show goods */
+    private createRewardView(data:any, index:number):eui.Group{
+        let group = new eui.Group();
+        let goods_list:Array<any> = new Array();
+        let srcX:number = 457 - 104 * data.reward.length >> 1;
+        let txtName:egret.TextField = Common.CreateText(data.name, 16,index == 0 ? 0xC19536 : 0x858685, true,"Microsoft YaHei");
+        group.addChild(txtName);
+
+        for(let i:number = 0; i < data.reward.length; i++){
+            if(data.reward[i].type == 1){
+                let info = new modEquip.EquipInfo(data.reward[i].id, data.reward[i].star, 5);
+                info.AddAttrType(data.reward[i].star);
+                goods_list[i]= new EquipObject();
+                goods_list[i].ChangeEquipSource(info);
+            }
+            else
+            {
+                goods_list[i] = new egret.Bitmap(Common.GetTextureFromType(data.reward[i]));
+            }
+
+            group.addChild(goods_list[i]);
+
+            let txtNum:egret.TextField = Common.CreateText(data.reward[i].type == 1 ? "":Common.TranslateDigit(data.reward[i].count),16,0xE0E0E0,true,"Microsoft YaHei","right");
+            group.addChild(txtNum);
+            txtNum.width = goods_list[i].width - 10;
+            txtNum.stroke = 3;txtNum.strokeColor = 0x000000;
+
+            Common.SetXY(goods_list[i], srcX + i * 104, txtName.y + txtName.height + 5);
+            Common.SetXY(txtNum, goods_list[i].x , goods_list[i].y + goods_list[i].height - 25);
+        }
+        group.height = txtName.height + 5 + 105;
+    
+        return group;
+    }
+
+    /** show reward goods info */
+    private showRewardGoods():void{
+        let rewardData:any = TcManager.GetInstance().GetTcListFromIndex(6);
+        if(rewardData == null ) return;
+
+        let group_list:Array<eui.Group> = new Array();
+        for(let i:number = 0; i < rewardData.length; i++){
+            group_list[i] = this.createRewardView(rewardData[i], i);    
+            this.rewardGroup.addChild(group_list[i]);
+            Common.SetXY(group_list[i], this.lab_content.x, this.lab_content.y + this.lab_content.height + i * group_list[i].height);
+        }
+    }
+
     /** button */
     private btn_close:eui.Button;
     private btn_start:eui.Button;
@@ -194,6 +237,7 @@ class PVPWindow extends PopupWindow{
     /** Group */
     private scrollGroup:eui.Group;
     private scroller:eui.Scroller;
+    private rewardGroup:eui.Group;
 
     /** image */
     private img_bg:egret.Bitmap;
@@ -204,7 +248,6 @@ class PVPWindow extends PopupWindow{
     /** other */
     private _time:egret.Timer;
     private _startIndex:number;
-
 }
 
 class DamageList extends eui.Component{

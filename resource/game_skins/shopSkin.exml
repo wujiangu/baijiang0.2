@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="shop_0001_png" x="0" y="0" height="640"/>
-	<e:Image source="shop_0005_png" x="144.47" y="8.84"/>
-	<e:Image x="790.64" y="40" width="160" height="44" source="sole_0001_png"/>
-	<e:Image x="960.64" y="40" width="160" height="44" source="crystal_0001_png"/>
+	<e:Image source="shop_0001_png" x="0" y="0" height="640" locked="true"/>
+	<e:Image x="144.47" y="8.84" source="title_res.title_0014"/>
+	<e:Image x="790.64" y="40" width="160" height="44" source="common_res.sole_0001"/>
+	<e:Image x="960.64" y="40" width="160" height="44" source="common_res.crystal_0001"/>
 	<e:Label id="lab_soul" text="99999" y="50" size="25" fontFamily="Microsoft YaHei" bold="true" x="827.29" textColor="0x851a9b" anchorOffsetX="0" width="113" textAlign="right"/>
 	<e:Label id="lab_money" text="99999" y="50.66" size="25" fontFamily="Microsoft YaHei" bold="true" x="987.64" textColor="0x2d6ea6" anchorOffsetX="0" width="121" textAlign="right"/>
 	<e:Button id="btn_back" label="" x="14" y="14" width="104" height="68">
 		<e:skinName>
 		<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
-			<e:Image width="100%" height="100%" source="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0005" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 		</e:Skin>
 		</e:skinName>
@@ -17,7 +17,7 @@
 	<e:ToggleButton id="btn_soul" label="钻石&amp;魂石" x="28" y="93.6" width="232" height="52">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopChange_over_png" source.down="btn_shopChange_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_shopChange_over" source.down="button_res.btn_shopChange"/>
 			<e:Label id="labelDisplay" horizontalCenter="1.5" verticalCenter="-3.5" size="28" fontFamily="Microsoft YaHei" bold="true" textColor.down="0x000000" textColor="0x959185"/>
 			</e:Skin>
 		</e:skinName>
@@ -25,7 +25,7 @@
 	<e:ToggleButton id="btn_equip" label="武器" x="270" y="93.6" width="232" height="52">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopChange_over_png" source.down="btn_shopChange_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_shopChange_over" source.down="button_res.btn_shopChange"/>
 			<e:Label id="labelDisplay" horizontalCenter="1.5" verticalCenter="-3.5" size="32" fontFamily="Microsoft YaHei" bold="true" textColor.down="0x000000" textColor="0x959185"/>
 		</e:Skin>
 		</e:skinName>
@@ -33,7 +33,7 @@
 	<e:ToggleButton id="btn_reward" label="礼包" x="512" y="93.6" width="232" height="52">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopChange_over_png" source.down="btn_shopChange_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_shopChange_over" source.down="button_res.btn_shopChange"/>
 			<e:Label id="labelDisplay" horizontalCenter="0.5" verticalCenter="-3.5" size="32" fontFamily="Microsoft YaHei" bold="true" textColor.down="0x000000" textColor="0x959185"/>
 		</e:Skin>
 		</e:skinName>
@@ -41,7 +41,7 @@
 	<e:ToggleButton id="btn_hero" label="英雄" x="754" y="93.6" width="232" height="52">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_shopChange_over_png" source.down="btn_shopChange_png"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_shopChange_over" source.down="button_res.btn_shopChange"/>
 			<e:Label id="labelDisplay" horizontalCenter="0.5" verticalCenter="-3.5" size="32" fontFamily="Microsoft YaHei" bold="true" textColor.down="0x000000" textColor="0x959185"/>
 		</e:Skin>
 		</e:skinName>
@@ -53,8 +53,8 @@
 		<e:Group id="groupEquip" width="1116" height="483" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0">
 			<e:Image source="shop_0009_png" x="10" y="9.32" scaleX="1" scaleY="1"/>
 
-			<e:Label text="钻石抽取武器，10回必出紫色武器。" x="26.5" y="190.64" textColor="0x79725f" fontFamily="Microsoft YaHei" size="25" bold="true"/>
-			<e:Image source="shop_0010_png" x="17.5" y="235.82"/>
+			<e:Label text="钻石抽取武器，10回必出橙色武器。" x="26.5" y="190.64" textColor="0x79725f" fontFamily="Microsoft YaHei" size="25" bold="true"/>
+			<e:Image source="shop_0010_png" x="18.5" y="235.82" locked="true"/>
 			<e:Image source="shop_0010_png" x="568" y="235.82"/>
 			<e:Label text="获得武器数量" x="155" y="249.82" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true"/>
 			<e:Label text="x" x="358" y="249.82" textColor="0x2383a9" fontFamily="Microsoft YaHei" bold="true"/>
@@ -62,14 +62,25 @@
 			<e:Label text="获得武器数量" x="689" y="252.32" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true"/>
 			<e:Label text="x" x="892" y="252.32" textColor="0x2383A9" fontFamily="Microsoft YaHei" bold="true"/>
 			<e:Label text="10" x="916" y="247.32" fontFamily="Microsoft YaHei" bold="true" size="35"/>
-			<e:Label text="可获得：1-5星武器" x="167" y="317.32" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25"/>
-			<e:Label text="可获得：1-5星武器，" x="624" y="318.82" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25"/>
-			<e:Label text="必出一橙色武器" x="873" y="318.82" fontFamily="Microsoft YaHei" bold="true" size="25" textColor="0xca6e1a"/>
+			<e:Group width="262" height="25" x="153" y="317" anchorOffsetY="0" anchorOffsetX="0">
+				<e:Label text="可获得：      -       武器" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="白色" x="97" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xfcfaf9"/>
+				<e:Label text="橙色" x="157" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xca6e1a"/>
+			</e:Group>
+			<e:Group width="262" height="25" x="608" y="317" anchorOffsetY="0" anchorOffsetX="0">
+				<e:Label text="可获得：      -       武器，" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="白色" x="97" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xFCFAF9"/>
+				<e:Label text="橙色" x="157" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xCA6E1A"/>
+			</e:Group>
+
+
+
+			<e:Label text="必出一橙色武器" x="884" y="317" fontFamily="Microsoft YaHei" bold="true" size="25" textColor="0xca6e1a"/>
 			<e:Button id="btn_oneDraw" label="60" x="145.5" y="368">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-					<e:Image source="crystal_0002_png" width.down="36" height.down="36" horizontalCenter="-40" verticalCenter="-4"/>
+					<e:Image width="100%" height="100%" source="button_res.btn_shopBuy" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image source="common_res.crystal_0002" width.down="36" height.down="36" horizontalCenter="-40" verticalCenter="-4"/>
 					<e:Label id="labelDisplay" verticalCenter="-5.5" left="133" fontFamily="Microsoft YaHei" textColor="0x0a0003" bold="true" size.down="27"/>
 					</e:Skin>
 				</e:skinName>
@@ -77,8 +88,8 @@
 			<e:Button id="btn_tenDraw" label="490" x="696" y="368">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="btn_shopBuy_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-					<e:Image source="crystal_0002_png" horizontalCenter="-40" verticalCenter="-4" width.down="36" height.down="36"/>
+					<e:Image width="100%" height="100%" source="button_res.btn_shopBuy" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image source="common_res.crystal_0002" horizontalCenter="-40" verticalCenter="-4" width.down="36" height.down="36"/>
 					<e:Label id="labelDisplay" verticalCenter="-4.5" left="134" fontFamily="Microsoft YaHei" textColor="0x0a0003" bold="true" size.down="27"/>
 					</e:Skin>
 				</e:skinName>
@@ -89,7 +100,7 @@
 		<e:Scroller id="scrollHero" width="100%" height="100%" x="0" y="0">
 		</e:Scroller>
 	</e:ViewStack>
-	<e:Image source="exp_0001_png" x="620" y="40.32"/>
+	<e:Image source="common_res.exp_0001" x="620" y="40.32"/>
 	<e:Label id="lab_exp" text="9999999" x="656" y="49" anchorOffsetX="0" width="113" anchorOffsetY="0" height="21" size="25" verticalAlign="top" textAlign="right" textColor="0xe5a024" fontFamily="Microsoft YaHei" bold="true"/>
 	
 

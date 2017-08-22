@@ -6,7 +6,7 @@
 	<e:Button id="btn_back" label="" x="985" y="82">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -16,5 +16,5 @@
 	<e:Label id="lab_detail" text="" x="436" y="258" fontFamily="Microsoft YaHei" multiline="true" anchorOffsetX="0" width="512" anchorOffsetY="0" height="171" bold="true" size="26" lineSpacing="5" textColor="0x494949"/>
 
 
-	<e:Image x="496" y="82" source="title_0001_png"/>
+	<e:Image x="496" y="82" source="title_res.title_0001"/>
 </e:Skin>

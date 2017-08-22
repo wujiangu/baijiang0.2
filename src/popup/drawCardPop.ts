@@ -41,7 +41,7 @@ class DrawCardPop extends PopupWindow {
             Utils.setControlPosition(this.btn_get, 424, 483);
             Utils.setControlPosition(this.btn_back, 985, 73);
             for (let i = 0; i < infos.length; i++) {
-                let img_equip = Utils.createBitmap(`Sequip${25-infos[i].id}_png`);
+                let img_equip = Utils.createBitmap(`equip_res.Sequip${25-infos[i].id}`);
                 this.groupEquip.addChild(img_equip);
                 img_equip.x = 100 * i;
                 if (i >= 5) {
@@ -55,7 +55,7 @@ class DrawCardPop extends PopupWindow {
             Utils.setControlPosition(this.lab_title, 488, 138);
             Utils.setControlPosition(this.btn_get, 424, 399);
             Utils.setControlPosition(this.btn_back, 800, 128);
-            let img_equip = Utils.createBitmap(`Sequip${25-infos[0].id}_png`);
+            let img_equip = Utils.createBitmap(`equip_res.Sequip${25-infos[0].id}`);
             this.groupEquip.addChild(img_equip);
             Utils.setControlPosition(img_equip, 204, 44);
         }

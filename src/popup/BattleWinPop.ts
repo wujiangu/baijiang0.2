@@ -85,7 +85,7 @@ class BattleWinPop extends PopupWindow {
             group.x = 160 + (posCount + i) * 100;
             group.y = 30;
             this.resultGroup.addChild(group);
-            let image:egret.Bitmap = Utils.createBitmap("basic_"+reward[i]+"_png");
+            let image:egret.Bitmap = Utils.createBitmap("common_res.basic_"+reward[i]+"_png");
             group.addChild(image);
             let value:number = data[reward[i]];
             let str:string = value.toString();

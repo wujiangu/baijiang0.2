@@ -419,12 +419,12 @@ class Enermy extends BaseGameObject {
      * 创建经验和魂石的图片
      */
     public createExpAndSoul():void {
-        this.img_exp = Utils.createBitmap("img_fallExp_png");
+        this.img_exp = Utils.createBitmap("common_res.img_fallExp");
         this.img_exp.x = -10;
         this.img_exp.y = -20;
         this.img_exp.alpha = 0;
         this.addChild(this.img_exp);
-        this.img_soul = Utils.createBitmap("img_fallSoul_png");
+        this.img_soul = Utils.createBitmap("common_res.img_fallSoul");
         this.img_soul.x = 10;
         this.img_soul.y = -20;
         this.img_soul.alpha = 0;

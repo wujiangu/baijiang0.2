@@ -18,7 +18,7 @@ class ChangeEquipPop extends PopupWindow {
         for(let i:number = 0; i < 6; i++){
             if(i < 2) this.select_list[i] = 0;
             this.special_attr_list[i] = Common.CreateText("",20,0xff00ff,true,"Microsoft YaHei");
-            this.star_list[i] = new egret.Bitmap(RES.getRes("star_00_png"));
+            this.star_list[i] = new egret.Bitmap(RES.getRes("equip_res.star_00"));
             
             this.addChild(this.star_list[i]);
             this.addChild(this.special_attr_list[i]);
@@ -33,7 +33,7 @@ class ChangeEquipPop extends PopupWindow {
             } 
         }
 
-        this.img_selectBox = Utils.createBitmap("iconbg_0002_png");
+        this.img_selectBox = Utils.createBitmap("battle_res.iconbg_0002");
     }
 
     private onComplete():void {
@@ -43,6 +43,9 @@ class ChangeEquipPop extends PopupWindow {
     public Reset():void{
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
         this.btn_change.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
+         for(let i:number = 0; i < this.equip_object_list.length; i++){
+            this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onEquip, this);
+        }
     }
 
     public Close(){
@@ -53,7 +56,7 @@ class ChangeEquipPop extends PopupWindow {
         
         this.btn_back.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
         this.btn_change.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
-        for(let i:number = 0; i < this._eventNum; i++){
+        for(let i:number = 0; i < this.equip_object_list.length; i++){
             this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onEquip, this);
         }
     }
@@ -75,16 +78,15 @@ class ChangeEquipPop extends PopupWindow {
         super.Show();
 
        this.scrollGroup.removeChildren();
-
        let col, raw;
        let equip_list = modEquip.EquipData.GetInstance().GetEquipList();
-       this._eventNum = equip_list.length;
 
         for (let i = 0; i < equip_list.length; i++) {
             if(this.equip_object_list.length <= i){
                 this.equip_object_list[i] = new EquipObject();
+                this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onEquip, this);
             }
-            this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onEquip, this);
+
             this.equip_object_list[i].ChangeEquipSource(equip_list[i]);
             this.scrollGroup.addChild(this.equip_object_list[i]);
 
@@ -98,16 +100,14 @@ class ChangeEquipPop extends PopupWindow {
                 this.select_list[1] = typeId;
             }
         }
+
         this.scrollGroup.addChild(this.img_selectBox);
 
-        if (equip_list.length >= 1) {
-            if(id == 0){
-                this.select_list[0] = this.equip_object_list[0].GetId();
-                this.select_list[1] = this.equip_object_list[0].GetTypeId();
-                Common.SetXY(this.img_selectBox, this.equip_object_list[0].x, this.equip_object_list[0].y);
-            } 
-            this.img_selectBox.visible = true;
-        }
+        if(id == 0){
+            this.select_list[0] = this.equip_object_list[0].GetId();
+            this.select_list[1] = this.equip_object_list[0].GetTypeId();
+            Common.SetXY(this.img_selectBox, this.equip_object_list[0].x, this.equip_object_list[0].y);
+        } 
 
         this.showClickEquipInfo();
         Animations.PopupBackOut(this, 350);
@@ -119,7 +119,7 @@ class ChangeEquipPop extends PopupWindow {
         this.lab_lv.text = "等级："+ info.Lv + "/" + modEquip.EquipSource.EQUIPLV;
         this.lab_name.text = TcManager.GetInstance().GetTcEquipData(this.select_list[0]).name
         this.lab_name.textColor = modEquip.GetEquipColorFromQuality(info.Quality - 1).color;
-        this.img_weapon.source = `Sequip${25-this.select_list[0]}_png`;
+        this.img_weapon.source = `equip_res.Sequip${25-this.select_list[0]}`;
 
         let attr_name_list:any = [" 生命", " 护甲", " 攻击", " 暴击"];
         for(let i:number = 0; i < 4; i++){
@@ -130,7 +130,7 @@ class ChangeEquipPop extends PopupWindow {
         for(let i:number = 0; i < 6; i++){
             this.special_attr_list[i].text = special_list.length > i ? modEquip.GetAttrInfo(special_list[i].Type, special_list[i].Value) : "";
             this.special_attr_list[i].textColor = special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).color : 0xff00ff;
-            this.star_list[i].texture = RES.getRes(special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).img : "star_00_png");
+            this.star_list[i].texture = RES.getRes(special_list.length > i ? modEquip.GetEquipColorFromQuality(special_list[i].Quality).img : "equip_res.star_00");
             this.star_list[i].visible = info.Quality + 1 > i ? true : false;
         }
     }
@@ -166,6 +166,4 @@ class ChangeEquipPop extends PopupWindow {
     /**选中的图片索引 */
     private select_list:any;
     private star_list:Array<egret.Bitmap>;
-    private _eventNum:number;
-    
 }

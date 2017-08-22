@@ -9,7 +9,7 @@
 		<e:Button id="btn_close" label="" x="796" y="113">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+				<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 				</e:Skin>
 			</e:skinName>
@@ -24,7 +24,7 @@
 	<e:Button id="btn_leave" label="退出" x="340.04" y="379.9" width="168" height="76">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0014_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0014" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="27" size="28" textColor="0x1e0f0f"/>
 			</e:Skin>
 		</e:skinName>
@@ -33,7 +33,7 @@
 	<e:Button id="btn_continue" label="继续" x="627.71" y="379.9" height="76" width="168">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0024_png"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0024"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="27" size="28" textColor="0x260909"/>
 			</e:Skin>
 		</e:skinName>

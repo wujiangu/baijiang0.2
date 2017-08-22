@@ -7,7 +7,7 @@ class BattleSceneCom extends Base {
         super();
         this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
         this.skinName = "resource/game_skins/battleSkin.exml";
-        this.img_killCount = Utils.createBitmap("battle_0010_png");
+        this.img_killCount = Utils.createBitmap("battle_res.battle_0010");
         this.img_killCount.x = 350;
         this.img_killCount.y = 594;
         this.img_killCount.width = 414;
@@ -54,10 +54,10 @@ class BattleSceneCom extends Base {
         let tcStage = ConfigManager.tcStage[GameData.curStage-1];
         this.img_skillMask.visible = false;
         this.img_killCount.scaleX = 0;
-        this.img_skillBg.source = `${GameData.curHero}_skillBg_png`;
+        this.img_skillBg.source = `battle_res.${GameData.curHero}_skillBg`;
         let object:any = this.btn_skill.getChildAt(0);
         let skill = this._getActSkill();
-        object.source = `skill_${skill.image_id}_png`;
+        object.source = `talAndSkill_res.skill_${skill.image_id}`;
         this.img_hp.scaleX = 1.0;
         this.img_shield.scaleX = 0;
         this.cd_time = 0;

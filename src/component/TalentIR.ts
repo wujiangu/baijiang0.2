@@ -22,7 +22,7 @@ class TalentIR extends Base {
                 let id = 7*i+j-6;
                 this.iconGroup[id-1] = new eui.Group();
                 let iconImage:eui.Image = new eui.Image();
-                iconImage.source = `talent${i}_${j+1}_png`;
+                iconImage.source = `talAndSkill_res.talent${i}_${j+1}`;
                 this.iconGroup[id-1].addChild(iconImage);
 
                 let imgBottom:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_bottom_png"));

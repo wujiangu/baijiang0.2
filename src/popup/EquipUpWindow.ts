@@ -56,7 +56,7 @@ class EquipUpWindow extends PopupWindow{
         this.upLevelNum = 1;
 
         let equip_data = TcManager.GetInstance().GetTcEquipData(this.equip_info.Id);
-        this.img_weapon.source = RES.getRes(`Sequip${25-this.equip_info.Id}_png`)
+        this.img_weapon.source = RES.getRes(`equip_res.Sequip${25-this.equip_info.Id}`)
         this.txt_weapon.text   = equip_data.name;
         this.txt_weapon.textColor = modEquip.GetEquipColorFromQuality(equip_info.Quality - 1).color;
         
@@ -154,9 +154,9 @@ class EquipUpWindow extends PopupWindow{
         let attr:any = this.equip_info.GetEquipAttr();
 
         for(let i:number = 0; i < 4; i++){
-            this.txt_front_list[i].text = i < 3 ?`${Math.ceil(attr[i])}` : `${Math.ceil(attr[i] * 10) / 10}%`;
+            this.txt_front_list[i].text = i < 3 ?`${Math.ceil(attr[i])}` : `${parseFloat(attr[i].toFixed(2))}%`;
             let rearNum:number = modEquip.GetEquipUpAttr(this.equip_info, this.equip_info.Lv + this.upLevelNum, i);
-            this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? (i < 3 ? `${Math.ceil(rearNum)}`:`${Math.ceil(rearNum * 10) / 10}%`) : "";
+            this.txt_rear_list[i].text = this.equip_info.Lv < modEquip.EquipSource.EQUIPLV ? (i < 3 ? `${Math.ceil(rearNum)}`:`${parseFloat(rearNum.toFixed(2))}%`) : "";
         }
 
         if(this.equip_info.Lv < modEquip.EquipSource.EQUIPLV){
@@ -205,11 +205,11 @@ class EquipUpWindow extends PopupWindow{
 
      /** equip upgrade effect */
     private upgradeEffect():void{
-        let img_bg:egret.Bitmap = new egret.Bitmap(RES.getRes("wuqi_01_png"));
+        let img_bg:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_res.wuqi_01"));
         this.addChild(img_bg);
         Common.SetXY(img_bg, this.img_weapon.x + (this.img_weapon.width - img_bg.width >> 1), this.img_weapon.y + (this.img_weapon.height - img_bg.height >> 1));
         
-        let img_upArrow:egret.Bitmap = new egret.Bitmap(RES.getRes("wuqi_02_png"))
+        let img_upArrow:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_res.wuqi_02"))
         this.addChild(img_upArrow);
         Common.SetXY(img_upArrow, this.img_weapon.x + (this.img_weapon.width - img_upArrow.width >> 1), this.img_weapon.y + (this.img_weapon.height - img_upArrow.height >> 1));
 

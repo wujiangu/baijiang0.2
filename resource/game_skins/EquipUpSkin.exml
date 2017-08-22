@@ -3,27 +3,34 @@
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="equip_0004_png" horizontalCenter="0" verticalCenter="0"/>
 	<e:Label text="升级需要消耗" x="175.32" y="425" anchorOffsetX="0" width="185" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24"/>
-	<e:Image id="img_weapon" source="Sequip1_png" x="242" y="282"/>
+	<e:Image id="img_weapon" x="242" y="282" source="equip_res.Sequip1"/>
 	<e:Label id="txt_weapon" text="武器名称" x="132.5" y="180.48" size="28" anchorOffsetX="0" width="312" bold="true" fontFamily="Microsoft YaHei" textColor="0xb39e70" textAlign="center"/>
-	<e:Image id="btn_close" source="button_0009_png" x="980" y="79.99"/>
 	<e:Label id="curr_lv" text="Lv.1" x="472" y="179.66" anchorOffsetX="0" width="236" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
 	<e:Label id="next_lv" text="Lv.2" x="747.16" y="179.66" anchorOffsetX="0" width="230" bold="true" fontFamily="Microsoft YaHei" textColor="0x515151" size="24" textAlign="center"/>
-	<e:Image source="exp_0002_png" x="325" y="419"/>
+	<e:Image source="common_res.exp_0002" x="325" y="419"/>
 	<e:Label id="txt_exp" text="100" x="364" y="426.66" anchorOffsetX="0" width="101" size="22" textAlign="right" textColor="0xf28b09" rotation="0.1" bold="true" fontFamily="Microsoft YaHei"/>
 	<e:Label id="txt_sole" text="100" x="522.04" y="427.07" anchorOffsetX="0" width="101" size="22" textAlign="right" rotation="0.1" bold="true" textColor="0xc91ebb" fontFamily="Microsoft YaHei"/>
-	<e:Image source="sole_0002_png" x="478" y="416"/>
+	<e:Image source="common_res.sole_0002" x="478" y="416"/>
 	<e:Button id="btn_upLevel" label="升级" y="483" anchorOffsetX="0" width="288" horizontalCenter="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0011_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-10" bold="true" fontFamily="Microsoft YaHei" size="32" textColor="0x260303"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0011" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-10" bold="true" fontFamily="Microsoft YaHei" size="32" size.down="28.8" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Image source="title_0007_png" x="486" y="82" />
+	<e:Image x="486" y="82"  source="title_res.title_0007"/>
 	<e:Label id="lab_max" text="已满级" x="747" y="216" anchorOffsetX="0" width="232" anchorOffsetY="0" height="177" textAlign="center" verticalAlign="middle" size="28" fontFamily="Microsoft YaHei" bold="true" textColor="0xc1b897"/>
-	<e:Image id="img_bottom" source="select_2_png" x="835" y="420"/>
-	<e:Image id="img_click" source="select_1_png" x="843" y="428" touchEnabled="false"/>
+	<e:Image id="img_bottom" source="equip_res.select_2" x="835" y="420"/>
+	<e:Image id="img_click" source="equip_res.select_1" x="843" y="428" touchEnabled="false"/>
 	<e:Label id="lab_one" text="1次" x="790" y="426" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151"/>
 	<e:Label id="lab_ten" text="10次" x="958" y="427" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151"/>
+	<e:Button id="btn_close" label="" x="980" y="79.9">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

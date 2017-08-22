@@ -131,6 +131,17 @@ namespace modEquip {
             this.type_list.push(attrType);
         }
 
+        /** 增加洗练属性类型 
+         * @param num 洗脸属性的数量
+        */
+        public AddAttrType(num:number = 1):void{
+            if(this.type_list.length + num > 6) return;
+            for(let i:number = 0; i < num; i++){
+                let tempData:any = modEquip.GetResetEquipData(this);
+                this.type_list.push(new modEquip.AttrType(tempData.type, tempData.value, tempData.quality));
+            }
+        }
+
         public ChangeAttrType(index:number, type:number, value:number, quality:number):void{
             if(index < 0 || index > this.type_list.length) return;
             this.type_list[index].Type  = type;
@@ -323,7 +334,7 @@ namespace modEquip {
         if(type == AttrType.ATTACK) return "攻击+" + Math.ceil(value);
         else if(type == AttrType.DEFEND) return "护甲+" + Math.ceil(value);
         else if(type == AttrType.BLOOD) return "生命+" + Math.ceil(value);
-        else if(type == AttrType.CRIT) return "暴击+" + Math.ceil(value * 10) / 10 + "%";
+        else if(type == AttrType.CRIT) return "暴击+" + parseFloat(value.toFixed(2)) + "%";
         else if(type == AttrType.DODGE) return "闪避+" + Math.ceil(value) + "%";
     }
 
@@ -336,6 +347,16 @@ namespace modEquip {
         return successRate;
     }
 
+    /** 获得装备洗练的随机品质*/
+    function getEquipResetQuality():number{
+        let rand = Math.floor(Math.random() * 100) % 100;
+        if(rand < 35) return 0;
+        else if(rand >= 35 && rand < 60) return 1;
+        else if(rand >= 60 && rand < 80) return 2;
+        else if(rand >= 80 && rand < 95) return 3;
+        else if(rand >= 95) return 4;
+    }
+
     let reset_list:any = [[[150,250],[18,30],[150,250],[0,4]],[[200,280],[22,36],[200,280],[1,4]],[[250,320],[26,42],[250,320],[2,4]],
                  [[280,360],[31,45],[280,360],[2,5]],[[320,380],[35,48],[320,380],[3,5]]];
     let complete:any = [0.25,0.34,0.5,0.75,1]
@@ -343,8 +364,8 @@ namespace modEquip {
      * @param info 当前装备对象信息
      */
     export function GetResetEquipData(info:EquipInfo):any{
-        let type:number = Math.floor((Math.random() * 100) % 4), value:number = 0;
-        let quality:number = Math.floor(Math.random() * 100 % 5);
+        let type:number = Math.floor(Math.random() * 100) % 4, value:number = 0;
+        let quality:number = getEquipResetQuality();
         let tempList:any = reset_list[info.Quality - 1];
         let minNum:number = tempList[type][1] - tempList[type][0];
 
@@ -366,12 +387,12 @@ namespace modEquip {
     export function GetEquipColorFromQuality(quality:number,type:number = 1):any{
         let imgName:string = type == 1 ? "star" : "point";
 
-        if(quality == null || quality == -1) return {color:0x858685,img:imgName + "_00_png"};
-        if(quality == 0) return {color:0x858685,img:imgName + "_01_png"};
-        else if(quality == 1) return {color:0x5e972b,img:imgName + "_02_png"};
-        else if(quality == 2) return {color:0x2f76b0,img:imgName + "_03_png"};
-        else if(quality == 3) return {color:0x852f9b,img:imgName + "_04_png"};
-        else if(quality == 4) return {color:0xab5515,img:imgName + "_05_png"};
+        if(quality == null || quality == -1) return {color:0x858685,img:"equip_res." +imgName + "_00"};
+        if(quality == 0) return {color:0x858685,img:"equip_res." + imgName + "_01"};
+        else if(quality == 1) return {color:0x5e972b,img:"equip_res." + imgName + "_02"};
+        else if(quality == 2) return {color:0x2f76b0,img:"equip_res." + imgName + "_03"};
+        else if(quality == 3) return {color:0x852f9b,img:"equip_res." + imgName + "_04"};
+        else if(quality == 4) return {color:0xab5515,img:"equip_res." + imgName + "_05"};
     }
 
     let star_up_attr:any = [7.047,0.688,7.13,0.0291];
@@ -385,9 +406,8 @@ namespace modEquip {
         let value:number = 0;
         let upData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(info.Quality);
         let equipData:any = TcManager.GetInstance().GetTcEquipData(info.Id);
-        let attr_list:any = info.GetAttrType();
 
-        let first:number,second:number = 0,third:number = 0  
+        let first:number,second:number = 0;
         if(info.Star == 0) first = lv * upData.up[index] + info.GetOriginAttr()[index];
         else first = (lv + (info.Quality + info.Star) * 100) * star_up_attr[index] + star_init_attr[index];
 
@@ -397,25 +417,7 @@ namespace modEquip {
             second = upData.character[index] / 2 * (info.Star + 1) / upData.character[4];
         }
 
-       for(let i in attr_list){
-           if(index == 0 && attr_list[i].Type == AttrType.BLOOD){
-               third += attr_list[i].Value;
-           }
-           else if(index == 1 && attr_list[i].type == AttrType.DEFEND)
-           {
-               third += attr_list[i].Value;
-           }
-           else if(index == 2 && attr_list[i].type == AttrType.ATTACK)
-           {
-               third += attr_list[i].Value;
-           }
-           else if(index == 3 && attr_list[i].type == AttrType.CRIT)
-           {
-               third += attr_list[i].Value;
-           }
-       }
-
-       value = first + second + third;
+       value = first + second;
 
         return value;
     }

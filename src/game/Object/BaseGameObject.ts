@@ -16,7 +16,7 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         this.addChild(this.effectArmature);
         this.addChild(this.buffArmature);
         this.addChild(this.skillArmature);
-        this.shadow = Utils.createBitmap("shadow_png");
+        this.shadow = Utils.createBitmap("battle_res.shadow");
         this.shadow.y = -this.shadow.height/2;
         this.shadow.scaleX = 1.5;
         this.shadow.anchorOffsetX = this.shadow.width/2;

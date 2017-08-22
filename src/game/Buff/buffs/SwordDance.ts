@@ -26,10 +26,7 @@ class SwordDance extends BuffBase {
 
     /**开始 */
     public buffStart(target:any) {
-        // this.setPassiveEffect();
         this.AddEffect(target);
-        // let duration = this.buffData.cd * 1000;
-        // TimerManager.getInstance().doTimer(duration, 0, this.buffEnd, this);
     }
 
     /**
@@ -54,59 +51,11 @@ class SwordDance extends BuffBase {
         let newBuff = ObjectPool.pop(this.buffData.className);
         newBuff.buffInit(this.options);
         this.target.addBuff(newBuff);
-        // this.target.playMultiBuff();
         TimerManager.getInstance().remove(this.buffEnd, this);
-        // this.target.setPassiveRelease();
-        // this.passiveSumDeltaX = [];
-        // this.passiveSumDeltaY = [];
-        // for (let i = 0; i < 3; i++) {
-        //     this.passiveLight[i].visible = true;
-        //     this.passiveLight[i].x = this.target.x + this.passiveOffset[i][0];
-        //     this.passiveLight[i].y = this.target.y + this.passiveOffset[i][1];
-        //     this.passiveLight[i].rotation = this.passiveOffset[i][2];
-        //     this.passiveSumDeltaX[i] = 0;
-        //     this.passiveSumDeltaY[i] = 0;
-        // }
     }
 
     /**刷新数据 */
     public update() {
-        //发射3个光(弃用)
-        // for (let i = 0; i < 3; i++) {
-        //     if (Math.abs(this.passiveSumDeltaX[i]) > 150 || Math.abs(this.passiveSumDeltaY[i]) > 150) {
-        //         this.target.passiveRelease = false;
-        //         this.passiveLight[i].visible = false;
-        //     }
-        //     this.passiveLight[i].x = this.passiveLight[i].x + this.passiveDelta[i][0];
-        //     this.passiveLight[i].y = this.passiveLight[i].y + this.passiveDelta[i][1];
-        //     let radian = 0;
-        //     let centX = this.passiveLight[i].x + 50;
-        //     let centY = this.passiveLight[i].y + this.passiveLight[i].height/2;
-        //     switch (this.passiveLight[i].rotation) {
-        //         case -90:
-        //         radian = -Math.PI/2;
-        //         centX = this.passiveLight[i].x + this.passiveLight[i].height/2;
-        //         centY = this.passiveLight[i].y - 50;
-        //         break;
-        //         case 90:
-        //         radian = Math.PI/2;
-        //         centX = this.passiveLight[i].x - this.passiveLight[i].height/2;
-        //         centY = this.passiveLight[i].y + 50;
-        //         break;
-        //     }
-        //     this.passiveSumDeltaX[i] = this.passiveSumDeltaX[i] + this.passiveDelta[i][0];
-        //     this.passiveSumDeltaY[i] = this.passiveSumDeltaY[i] + this.passiveDelta[i][1];
-        //     this.target.setEnermy();
-        //     for (let i = 0; i < this.target.enermy.length; i++) {
-        //         let dis = MathUtils.getDistance(centX, centY, this.target.enermy[i].x, this.target.enermy[i].y);
-        //         let tempRadian = MathUtils.getRadian2(centX, centY, this.target.enermy[i].x, this.target.enermy[i].y);
-        //         let deltax = dis*Math.cos(tempRadian + radian);
-        //         let deltay = dis*Math.sin(tempRadian + radian);
-        //         if ((Math.abs(deltax) <= 65) && (Math.abs(deltay) <= 8)) {
-        //             this.target.enermy[i].gotoHurt();
-        //         }
-        //     }
-        // }
         if (this.isTimeOut) {
             this.isTimeOut = false;
             this.ShowEffect();
@@ -116,7 +65,7 @@ class SwordDance extends BuffBase {
             this.target.buff.splice(index, 1);
             ObjectPool.push(this);
             let duration = this.buffData.cd * 1000;
-            TimerManager.getInstance().doTimer(duration, 0, this.buffEnd, this);
+            TimerManager.getInstance().doTimer(duration, 1, this.buffEnd, this);
             this.target.setEnermy();
             let enermy = this.target.getEnermy();
             for (let i = 0; i < enermy.length; i++) {

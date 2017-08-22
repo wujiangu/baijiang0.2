@@ -19,8 +19,7 @@ class MainScene extends Base {
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_setting,this.btn_shop,this.btn_applicate,this.btn_close,
-                              this.btn_pvp,this.btn_email,this.btn_gm,this.btn_sign];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_gm,this.btn_sign];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -49,7 +48,7 @@ class MainScene extends Base {
         let starPosition = [[54,220],[75,42],[242,39],[622,80],[738,69],[958,110],[550,170],[1060,122],[1058,335],[1072,412]];
         let star_scale_list = [3, 2, 3, 2, 1, 2, 3, 2, 1, 1];
         for(let i:number = 0; i < 10; i++){
-            this.star_list[i] = new egret.Bitmap(RES.getRes("0_0000_yinghuochongda01_png"));
+            this.star_list[i] = new egret.Bitmap(RES.getRes("common_res.0_0000_yinghuochongda01"));
             this.addChild(this.star_list[i]);
             Common.SetXY(this.star_list[i], starPosition[i][0], starPosition[i][1]);
             this.star_list[i].scaleX = star_scale_list[i];
@@ -122,29 +121,22 @@ class MainScene extends Base {
 		switch (this._btnFocus) {
 			case this.btn_ready:
                 SceneManager.nextScene = "battleScene";
-                this.ShowPop("ReadyDialog");
+                ResLoadManager.GetInstance().LoadGroup("ready",()=>{this.ShowPop("ReadyDialog")});
 				break;
 			case this.btn_equip:
-                this.ShowPop("EquipDialog");
+                ResLoadManager.GetInstance().LoadGroup("equip",()=>{this.ShowPop("EquipDialog")});
 				break;
             case this.btn_pvp:
-                this.ShowPop("PVPWindow");
+                ResLoadManager.GetInstance().LoadGroup("pvp",()=>{this.ShowPop("PVPWindow")});
                 break;
 			case this.btn_talent:
-                this.ShowPop("TalentDialog");
-				break;
-			case this.btn_setting:
-				this.popupGroup.visible = true;
+                ResLoadManager.GetInstance().LoadGroup("talent",()=>{this.ShowPop("TalentDialog")});
 				break;
             case this.btn_shop:
-                // this.ShowPop("ShopDialog");
-                //大神!!!这个暂时不要再改回去了，报错了
-                this.shopDialog = WindowManager.GetInstance().GetWindow("ShopDialog");
-                this.shopDialog.Show();
-                Animations.fadeOut(this.shopDialog);
+                ResLoadManager.GetInstance().LoadGroup("shop",()=>{this.ShowPop("ShopDialog")});
                 break;
             case this.btn_email:
-                this.ShowPop("EmailWindow");
+                ResLoadManager.GetInstance().LoadGroup("email",()=>{this.ShowPop("EmailWindow")});
             break;
             case this.btn_gm:
                 WindowManager.GetInstance().GetWindow("GMWindow").Show();
@@ -152,9 +144,6 @@ class MainScene extends Base {
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();
             break;
-            case this.btn_applicate:
-                this.popupGroup.visible = false;
-                break;
 			default:
                 this.popupGroup.visible = false;
 				break;
@@ -168,7 +157,6 @@ class MainScene extends Base {
     }
 
      private onChangeData(event:egret.Event):void{
-
        if(event.data == null){
            GameLayerManager.gameLayer().panelLayer.removeChildren();
            this.addChild(this._shape);
@@ -203,15 +191,9 @@ class MainScene extends Base {
     /**天赋 */
     private btn_talent:eui.Button;
     public talentDialog:TalentDialog;
-    /**设置 */
-    private btn_setting:eui.Button;
-    /**应用 */
-    private btn_applicate:eui.Button;
     /**商城 */
     private btn_shop:eui.Button;
     public shopDialog:any;
-    /**退出弹窗 */
-    private btn_close:eui.Button;
 
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;

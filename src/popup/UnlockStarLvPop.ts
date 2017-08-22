@@ -24,9 +24,9 @@ class UnlockStarLvPop extends Base {
             this.equipGroup.push(equipGroup)
             this.scrollGroup.addChild(equipGroup);
             let bg1:eui.Image = new eui.Image();
-            bg1.source = "iconbg_0001_png";
+            bg1.source = "battle_res.iconbg_0001";
             let bg2:eui.Image = new eui.Image();
-            bg2.source = "iconbg_0002_png";
+            bg2.source = "battle_res.iconbg_0002";
             bg2.visible = false;
             equipGroup.addChild(bg1);
             equipGroup.addChild(bg2);

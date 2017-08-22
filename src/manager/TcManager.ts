@@ -1,7 +1,7 @@
 class TcManager{
     public constructor(){
         //(0)装备表 (1)升星配置表 (2)升级配置表
-        let str_list:Array<string> = ["TcEquip_json","TcEquipStarUp_json","TcEquipUp_json", "TcTalentUp_json", "TcEquipUpAttr_json","TcSign_json"];
+        let str_list:Array<string> = ["TcEquip_json","TcEquipStarUp_json","TcEquipUp_json", "TcTalentUp_json", "TcEquipUpAttr_json","TcSign_json","TcPVPReward_json"];
         this.tc_list = [];
         for(let i:number = 0; i < str_list.length; i++){
             this.tc_list[i] = RES.getRes(str_list[i]);

@@ -28,8 +28,8 @@ class ShareWindow extends PopupWindow{
 
         if(param.type == 1){            //pvp
             str = this.getPVPTitle(param.data);
-            if(param.data <= 3) this.show_lab_text("PVP战斗",str.substr(0,5), str.substr(5, 5));
-            else this.show_lab_text("PVP战斗","", "",str);
+            if(param.data <= 3) this.show_lab_text(`第${param.data}名`,str.substr(0,5), str.substr(5, 5));
+            else this.show_lab_text(`第${param.data}名`,"", "",str);
         }
         else if(param.type == 2)       //battle
         {
@@ -50,7 +50,7 @@ class ShareWindow extends PopupWindow{
             this.lab_share.textFlow = <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
                                                                   {text:equipName, style:{"textColor":0x910F9B}}];
         }
-        this.img_goods.texture = param.share == null ? null : RES.getRes(`Sequip${25-param.share}_png`);
+        this.img_goods.texture = param.share == null ? null : RES.getRes(`equip_res.Sequip${25-param.share}`);
     }
 
     private onEventManage(type:number = 0){

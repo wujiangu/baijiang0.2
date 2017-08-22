@@ -251,11 +251,11 @@ namespace Common {
      */
     export function GetTextureFromType(param):any{
         if(param.type == 1){
-            return RES.getRes(`Sequip${25-param.id}_png`);
+            return RES.getRes(`equip_res.Sequip${25-param.id}`);
         }
         else if(param.type == 2)
         {
-            return RES.getRes(`basic_${param.name}_png`);
+            return RES.getRes(`common_res.basic_${param.name}`);
         }
         else if(param.type == 3)
         {
@@ -317,5 +317,13 @@ namespace Common {
         let listener = event.target.listener;
         if(event.data == 1 && listener)
             listener();
+    }
+
+    /** 截屏的通用方法 */
+    export function GetSharePicture(obj:any):egret.Texture{
+        let rt = new egret.RenderTexture();
+        let rect = new egret.Rectangle(0, 0, SCREEN_W, SCREEN_W);
+        rt.drawToTexture(obj, rect);
+        return rt;
     }
 }

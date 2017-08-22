@@ -21,6 +21,7 @@ class EquipDialog extends PopupWindow {
         this.reset_btn_list = new Array();
         this.img_star_list = new Array();
         this.txt_attr_list = new Array();
+        this.img_bg_list = new Array();
         this.goods_index = 0;
 
         for(let i:number = 0; i < 6; i++){
@@ -28,17 +29,22 @@ class EquipDialog extends PopupWindow {
             this.resetScrollGroup.addChild(this.reset_list[i]);
             Common.SetXY(this.reset_list[i], this.resetGroup.width - 452 >> 1, 105 * i)
 
+            this.img_bg_list[i] = new egret.Bitmap(RES.getRes("equip_0005_png"));
             this.reset_btn_list[i] = new eui.Image();               
             this.img_star_list[i] = new egret.Bitmap();
             this.txt_attr_list[i] = Common.CreateText("", 25, 0xffffff, true, "Microsoft YaHei");
 
-            this.star_list[i] = new egret.Bitmap(RES.getRes("star_00_png"));
+            this.reset_list[i].addChild(this.img_bg_list[i]);
+            this.reset_list[i].addChild(this.reset_btn_list[i]);
+            this.reset_list[i].addChild(this.img_star_list[i]);
+            this.reset_list[i].addChild(this.txt_attr_list[i]);
+
+            this.star_list[i] = new egret.Bitmap(RES.getRes("equip_res.star_00"));
             this.equipGroup.addChild(this.star_list[i]);
             Common.SetXY(this.star_list[i], i * 32 + 10, 10);
         }
 
-        this.imgClick = new egret.Bitmap( RES.getRes("equip_0009_png"));
-        this.otherGroup = new eui.Group();
+        this.imgClick = new egret.Bitmap( RES.getRes("equip_res.equip_0009"));
     }
 
     /** 创建物品信息 */
@@ -47,12 +53,12 @@ class EquipDialog extends PopupWindow {
 
         this.setGroupStatus(true, false);
         this.show_label_data();
-        this.createEquips();
 
         let len = modEquip.EquipData.GetInstance().GetEquipNum();
         this.imgClick.visible = len > 0 ? true : false;
 
         if(len > 0){
+            this.createEquips();
             this.ShowGoodsInfo(0);
         } 
         else 
@@ -64,19 +70,29 @@ class EquipDialog extends PopupWindow {
     }
 
     private eventType(type:number = 0):void{
-        let obj_list:any = [this.btn_back, this.btn_change, this.btn_upgrade, this.btn_close,  this.img_weapon, this.img_detail, this.btn_help];
+        let obj_list:any = [this.btn_back, this.btn_change, this.btn_upgrade, this.btn_close,  this.img_weapon, this.btn_detail, this.btn_help];
         Common.ListenerAndRemoveEvent(obj_list, this.onTouchBtn, this, type);
         obj_list = [];
     }
 
     public Reset():void{
+        for(let i:number = 0; i < this.equip_object_list.length; i++){
+            this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchGoods, this);
+        }
+
+        for(let i:number = 0; i < 6; i++)
+            this.reset_btn_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickResetBtn, this);
+
        this.eventType(1);
     }
 
     public Close():void{
-        for(let i:number = 0; i < this.eventLen; i++){
+        for(let i:number = 0; i < this.equip_object_list.length; i++){
             this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchGoods, this);
         }
+
+        for(let i:number = 0; i < 6; i++)
+            this.reset_btn_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickResetBtn, this);
 
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
         this.eventType();
@@ -160,14 +176,14 @@ class EquipDialog extends PopupWindow {
     /** 显示装备星级 */
     private showEquipStar(star:number):void{
         for(let i:number = 0; i < 6; i++){
-            let strStar:string = star > i ? modEquip.GetEquipColorFromQuality(this.equip_info.GetPointTypeFromIndex(i).Quality).img : "star_00_png";
+            let strStar:string = star > i ? modEquip.GetEquipColorFromQuality(this.equip_info.GetPointTypeFromIndex(i).Quality).img : "equip_res.star_00";
             this.star_list[i].texture = RES.getRes(strStar);
             this.star_list[i].visible = this.equip_info.Quality >= i ? true : false;
         }
     }
 
     /** 创建洗练界面 */
-    private createResetView(group:eui.Group, index:number, isActive:boolean):void{
+    private createResetView(index:number, isActive:boolean):void{
         let strType:string, strImg:string;
         let quality:number = -1;
 
@@ -180,26 +196,19 @@ class EquipDialog extends PopupWindow {
         {
             strType = this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV ? "可升星" : "等级没满，不能升星";
         }
-        strImg = isActive ? "button_0016_png" : (this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV ? "button_0017_png" : "btn_upgradeStar_png");
-        
-        let imgBg:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_0005_png"));
-        group.addChild(imgBg);
+        strImg = isActive ? "button_res.button_0016" : (this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV ? "button_res.button_0017" : "button_res.btn_upgradeStar");
 
         let data = modEquip.GetEquipColorFromQuality(quality);
         this.img_star_list[index].texture = RES.getRes(data.img);
-        Common.SetXY(this.img_star_list[index], this.img_star_list[index].width - 7, imgBg.height - this.img_star_list[index].height >> 1);
-        group.addChild(this.img_star_list[index]);
+        Common.SetXY(this.img_star_list[index], this.img_star_list[index].width - 7, this.img_bg_list[index].height - this.img_star_list[index].height >> 1);
 
-        group.addChild(this.txt_attr_list[index]);
         this.txt_attr_list[index].text = strType;
         this.txt_attr_list[index].textColor = data.color;
-        Common.SetXY(this.txt_attr_list[index], imgBg.width - this.txt_attr_list[index].width >> 1, imgBg.height - this.txt_attr_list[index].height >> 1);
+        Common.SetXY(this.txt_attr_list[index], this.img_bg_list[index].width - this.txt_attr_list[index].width >> 1, this.img_bg_list[index].height - this.txt_attr_list[index].height >> 1);
 
         this.reset_btn_list[index].source = strImg;
         this.reset_btn_list[index].name = index + "";
-        group.addChild(this.reset_btn_list[index]);
-        Common.SetXY(this.reset_btn_list[index], imgBg.width - this.reset_btn_list[index].width - 20, imgBg.height - this.reset_btn_list[index].height >> 1);
-        this.reset_btn_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickResetBtn, this);
+        Common.SetXY(this.reset_btn_list[index], this.img_bg_list[index].width - this.reset_btn_list[index].width - 20, this.img_bg_list[index].height - this.reset_btn_list[index].height >> 1);
     }
 
     /** 点击洗练或者升星的按钮事件 */
@@ -249,10 +258,6 @@ class EquipDialog extends PopupWindow {
             this.showResetGroup();
         }
 
-        for(let i:number = 0; i < this.eventLen; i++){
-            this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchGoods, this);
-        }
-
         this.createEquips();
         this.show_label_data();
     }
@@ -279,18 +284,16 @@ class EquipDialog extends PopupWindow {
      /** 点击物品 */
     private onTouchGoods(event:egret.TouchEvent):void{
         let target = event.target;
-        let id = target.Index;
-        if(this.goods_index == id) return;
+        if(this.goods_index == target.Index) return;
 
-        this.ShowGoodsInfo(id);
+        this.ShowGoodsInfo(target.Index);
     }
 
     private createEquips():void{
 
         this.scrollGroup.removeChildren();
-        let raw, col;
         let equip_list = modEquip.EquipData.GetInstance().GetEquipList();
-        this.eventLen = equip_list.length;
+        let raw, col;
 
         for (let i = 0; i < equip_list.length; i++) {
             raw = Math.floor(i / 6);
@@ -299,12 +302,13 @@ class EquipDialog extends PopupWindow {
             //如果当前的长度小于总装备的长度则继续添加
             if(this.equip_object_list.length <= i){
                 this.equip_object_list[i] = new EquipObject();
+                this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchGoods, this);
             }
             
             this.equip_object_list[i].ChangeEquipSource(equip_list[i]);
             this.equip_object_list[i].Index = i;
             Common.SetXY(this.equip_object_list[i], 4 +104*col, 8 +104*raw);
-            this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchGoods, this);
+            this.scrollGroup.addChild(this.equip_object_list[i]); 
 
             //判断当前选择的物品再哪里 因为是重新创建所以要做一个判断
              if(this.equip_info){
@@ -313,22 +317,21 @@ class EquipDialog extends PopupWindow {
                     Common.SetXY(this.imgClick, this.equip_object_list[i].x, this.equip_object_list[i].y);
                 }
             }
-            this.scrollGroup.addChild(this.equip_object_list[i]); 
         }
 
         this.scrollGroup.addChild(this.imgClick);
-        this.scrollGroup.addChild(this.otherGroup);
-        Common.SetXY(this.otherGroup, 0, this.equip_object_list[this.eventLen - 1].y + 100);
     }
 
     /** 显示洗练的租 */
     private showResetGroup():void{
         let star = this.equip_info.Star == 6 ? 6 : this.equip_info.Star + 1
-        for(let i:number = 0; i < 6; i++) this.reset_list[i].removeChildren();
 
         for(let i:number = 0; i < star; i++){
-            this.createResetView(this.reset_list[i], i, this.equip_info.Star > i ? true : false);
-            this.reset_list[i].visible = this.equip_info.Quality >= i ? true : false;
+            this.createResetView(i, this.equip_info.Star > i ? true : false);
+        }
+
+        for(let i:number = 0; i < 6; i++){
+            this.reset_list[i].visible = this.equip_info.Quality + 1 > i ? (this.equip_info.Star + 1 > i ? true : false) : false;
         }
     }
 
@@ -344,7 +347,6 @@ class EquipDialog extends PopupWindow {
     private resetScrollGroup:eui.Group;
     
     private goods_index:number;
-    private eventLen:number;
 
     /** 按钮 */
     private btn_back:eui.Button;
@@ -356,7 +358,7 @@ class EquipDialog extends PopupWindow {
     /** 装备 */
     private imgClick:egret.Bitmap;
     private img_weapon:eui.Image;
-    private img_detail:eui.Image;
+    private btn_detail:eui.Image;
     private lab_name:eui.Label;
     private lab_lv:eui.Label;
     private lab_exp:eui.Label;
@@ -369,9 +371,9 @@ class EquipDialog extends PopupWindow {
     private img_star_list:Array<egret.Bitmap>;
     private txt_attr_list:Array<egret.TextField>;
     private reset_list:Array<eui.Group>;
+    private img_bg_list:Array<egret.Bitmap>;
 
     /** object */
     private equip_info:modEquip.EquipInfo;
     private equip_object_list:Array<EquipObject>;
-    private otherGroup:eui.Group;
 }

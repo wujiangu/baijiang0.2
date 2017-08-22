@@ -16,9 +16,8 @@ class EquipUpStarWindow extends PopupWindow{
         this.source_list = [this.img_source1, this.img_source2, this.img_source3];
 
         for(let i:number = 0; i < 3; i++){
-            this.icon_list[i] = new egret.Bitmap(RES.getRes("equip_0009_png"));
+            this.icon_list[i] = new egret.Bitmap(RES.getRes("equip_res.equip_0009"));
         }
-        this._bottomGroup = new eui.Group();
         
         this.initData();
     }
@@ -50,6 +49,10 @@ class EquipUpStarWindow extends PopupWindow{
         for(let i = 0; i < 3; i++){
             this.source_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchSource, this);
         }
+
+        for(let i:number = 0; i < this.equip_object_list.length; i++){
+            this.equip_object_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
+        }
     }
 
     public Close():void{
@@ -64,7 +67,7 @@ class EquipUpStarWindow extends PopupWindow{
             this.source_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchSource, this);
         }
 
-        for(let i:number = 0; i < this._eventNum; i++){
+        for(let i:number = 0; i < this.equip_object_list.length; i++){
             this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
         }
 
@@ -84,11 +87,6 @@ class EquipUpStarWindow extends PopupWindow{
             return;
         } 
 
-        //移除所有的监听 防止去除后又重复监听
-        for(let i:number = 0; i < this._eventNum; i++){
-            this.equip_object_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
-        }
-
         let equipData:Array<modEquip.EquipInfo> = [];
         for(let i:number = 0; i < this.click_list.length; i++){
             if(this.click_list[i] != 0){                //得到填入的装备槽的装备
@@ -104,9 +102,7 @@ class EquipUpStarWindow extends PopupWindow{
 
         //判断是否升星成功
         if(this.isUpStar(this.successNum)){
-            let tempData:any = modEquip.GetResetEquipData(this.equip_info);
-            let attrType:modEquip.AttrType = new modEquip.AttrType(tempData.type, tempData.value, tempData.quality);
-            this.equip_info.InsertAttrType(attrType);
+            this.equip_info.AddAttrType();
             this.equip_info.Lv = 1;
             this.equip_info.Star++;
             Animations.showTips("升星成功", 1);
@@ -154,12 +150,12 @@ class EquipUpStarWindow extends PopupWindow{
                 if((currHero.equip == list[i].Id && currHero["typeId"] != list[i].TypeID) || currHero.equip != list[i].Id){
                     if(this.equip_object_list.length <= index){
                         this.equip_object_list[index] = new EquipObject();
+                        this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
                     }
 
-                    this.scrollGroup.addChild(this.equip_object_list[index]); 
                     this.equip_object_list[index].ChangeEquipSource(list[i]);
                     this.equip_object_list[index].Index = i;
-                    this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
+                    this.scrollGroup.addChild(this.equip_object_list[index]); 
 
                     raw = Math.floor(index / 4);
                     col = index % 4;
@@ -168,11 +164,7 @@ class EquipUpStarWindow extends PopupWindow{
                 }
             }
         }
-
-        this._eventNum = index;
-        this.scrollGroup.addChild(this._bottomGroup);
-        Common.SetXY(this._bottomGroup, 0, this.equip_object_list[index - 1].y + 100);
-
+      
         for(let i:number = 0; i < 3; i++){
             this.scrollGroup.addChild(this.icon_list[i]);
         }
@@ -207,7 +199,7 @@ class EquipUpStarWindow extends PopupWindow{
 
         this.icon_list[index].visible = true;
         Common.SetXY(this.icon_list[index], target.x, target.y);
-        this.changeObjectStatus(this.source_list[index], `${target.Index}`, `Sequip${25-target.GetId()}_png`);
+        this.changeObjectStatus(this.source_list[index], `${target.Index}`, `equip_res.Sequip${25-target.GetId()}`);
         this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(target.Index), 1, true)
 
         if(this.isHaveEquip()) this.lab_sole.text = `${modEquip.EquipSource.UPSTARPRICE}`;
@@ -282,7 +274,6 @@ class EquipUpStarWindow extends PopupWindow{
     private btn_upStar:eui.Button;
 
     private scrollGroup:eui.Scroller;
-    private _bottomGroup:eui.Group;
     private icon_list:Array<egret.Bitmap>;
     private click_list:Array<number>;
     private source_list:any;
@@ -292,6 +283,5 @@ class EquipUpStarWindow extends PopupWindow{
     private equip_object_list:Array<EquipObject>;
 
     /** other */
-    private _eventNum:number;
     private successNum:number;
 }

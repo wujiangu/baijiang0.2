@@ -41,7 +41,7 @@ class EquipInfoDialog extends PopupWindow {
         let str_list:any = ["生命: ", "护甲: ", "攻击: ", "暴击: "];
 
         for(let i:number = 0; i < this.self_attr_list.length; i++){
-            this.self_attr_list[i].text = str_list[i] + ( i < 3 ? Math.ceil(info.GetEquipAttr()[i]) : Math.ceil(info.GetEquipAttr()[i] * 10) / 10 + "%");
+            this.self_attr_list[i].text = str_list[i] + ( i < 3 ? Math.ceil(info.GetEquipAttr()[i]) : parseFloat(info.GetEquipAttr()[i].toFixed(2)) + "%");
         }
 
        let attrData = info.GetAttrType();

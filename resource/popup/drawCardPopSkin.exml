@@ -5,7 +5,7 @@
 	<e:Button id="btn_get" label="获取" x="424" y="483">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btn_draw_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.btn_draw" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="1.5" size.down="27" textColor="0x242d00" fontFamily="Microsoft YaHei" bold="true" y="14"/>
 			</e:Skin>
 		</e:skinName>
@@ -13,12 +13,12 @@
 	<e:Button id="btn_back" label="" x="985" y="80">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
 	<e:Group id="groupEquip" width="500" height="200" x="318" y="205" anchorOffsetX="0" anchorOffsetY="0">
 	</e:Group>
-	<e:Image id="lab_title" source="title_0002_png" x="484" y="82"/>
+	<e:Image id="lab_title" x="484" y="82" source="title_res.title_0002"/>
 </e:Skin>

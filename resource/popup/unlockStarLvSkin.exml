@@ -2,10 +2,10 @@
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
     <e:Image source="popmenu_0002_png" x="65.5" y="44" height="548" width="996"/>
-	<e:Button id="btn_back" label="" x="979" y="72" height="60" width="56">
+	<e:Button id="btn_back" label="" x="978" y="73" height="60" width="56">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0009_png"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0009"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -17,7 +17,7 @@
 	<e:Button id="btn_unlock" label="解锁" x="419.5" y="480" height="76" width="288">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0011_png" source.down="button_0011_png"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0011" source.down="button_res.button_0011"/>
 	<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" textColor="0x240404" bold="true" fontFamily="Microsoft YaHei" size="30"/>
 			</e:Skin>
 		</e:skinName>

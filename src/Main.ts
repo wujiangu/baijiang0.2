@@ -54,6 +54,8 @@ class Main extends eui.UILayer {
         Common.mainStage = this;
         Common.SCREEN_W = this.stage.stageWidth;
         Common.SCREEN_H = this.stage.stageHeight;
+        // StageManager.stageResizeInitData();
+        // this.stage.setContentSize(StageManager.contentScaleFullWidth, StageManager.contentScaleFullHeight);
 		AV.init({
 		appId: APP_ID,
 		appKey: APP_KEY
@@ -112,6 +114,9 @@ class Main extends eui.UILayer {
                 this.loadingView = new LoadingUI();
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
                 break;
+            default:
+                ResLoadManager.GetInstance().Listener();
+            break;
         }
     }
     private createScene(){
@@ -156,9 +161,9 @@ class Main extends eui.UILayer {
         this.removeChild(this.bg);
         this.removeChild(this.logo);
         // RES.destroyRes("loading");
+        // modLogin.init();
+        // modLogin.reqLogin(this._onLogin);
         // this.test();
-        // var nodeGame = document.getElementById("game");
-        // Common.log(nodeGame);
         LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
         // SceneManager.battleScene = new BattleScene();
@@ -180,17 +185,12 @@ class Main extends eui.UILayer {
     }
 
     private test():void {
-        var info:any = {};
-        info.egretAppId = 91508;
-        info.version = 2;
-        info.debug = true;
-        nest.easyuser.startup(info, function(data:nest.core.ResultCallbackInfo) {
-            if (data.result == 0) {
-                Common.log("进入游戏成功");
-            }else{
-                Common.log("进入游戏失败");
-            }
-        })
+        let data:any = {};
+        data.title = "百将斩";
+        data.desc = "游戏";
+        data.link = "http://www.shandw.com/pc/game/";
+        data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/bg_0002.png";
+        modShare.share(data);
     }
 
     private bg:egret.Bitmap;

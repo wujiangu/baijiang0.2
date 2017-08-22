@@ -50,10 +50,10 @@ class TalentDialog extends PopupWindow {
         this._focusBtn = event.currentTarget;
         switch (this._focusBtn) {
             case this.btn_add:
-                this.show_pop_view("购买天赋", "title_0008_png",1);
+                this.show_pop_view("购买天赋", "title_res.title_0008",1);
             break;
             case this.btn_reset:
-                this.show_pop_view("重置天赋", "title_0009_png",2);
+                this.show_pop_view("重置天赋", "title_res.title_0009",2);
             break;
             default:
                 this.Close();
@@ -119,6 +119,7 @@ class TalentDialog extends PopupWindow {
     /** 点击解锁按钮 */
     private onTouchUnLock(event:egret.TouchEvent):void{
         if(this.allLv >= 71) Animations.showTips("天赋已点满", 1, true);
+        else if (this.curLevel >= this._curMaxLv) Animations.showTips("该天赋等级已达上限", 1, true);
         else
         {
             let strs = modTalent.getTips(this.curTalentId);
@@ -201,7 +202,7 @@ class TalentDialog extends PopupWindow {
         `<e:Group xmlns:e="http://ns.egret.com/eui">
                 <e:ToggleButton label="0">
                     <e:Skin states="up,down,disabled">
-                        <e:Image width="100%" height="100%" source="button_0006_png" source.down="button_0007_png"/>
+                        <e:Image width="100%" height="100%" source="button_res.button_0006" source.down="button_res.button_0007"/>
                         <e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor.down="0xFFFFFF" bold="true" fontFamily="Microsoft YaHei" textColor="0x111111"/>
                     </e:Skin>
                 </e:ToggleButton>

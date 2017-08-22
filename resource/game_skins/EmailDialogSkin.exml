@@ -4,7 +4,7 @@
 	<e:Button id="btn_back" label="" x="14" y="15">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0005_png" source.down="button_0005_png" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0005" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -15,19 +15,19 @@
 	<e:Button id="btn_getAll" label="一键收取" x="96.71" y="555.96" width="288" height="76">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_0011_png"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0011"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="25" textColor="0x260303"/>
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Image source="email_font_png" x="132" y="13"/>
+	<e:Image x="132" y="13" source="title_res.title_0013"/>
 	<e:Group id="emailGroup" width="639" height="538" x="489" y="99" anchorOffsetX="0" anchorOffsetY="0">
 		<e:Label id="lab_title" text="标题" y="0" anchorOffsetX="0" width="626" textAlign="center" verticalAlign="middle" anchorOffsetY="0" height="52" scaleX="1" scaleY="1" horizontalCenter="1.5" bold="true" fontFamily="Microsoft YaHei" textColor="0x9b958a"/>
 		<e:Label id="lab_content" text="内容" x="8.5" y="65.04" anchorOffsetX="0" width="632" anchorOffsetY="0" height="223.27" verticalAlign="top" textAlign="left" fontFamily="Microsoft YaHei" scaleX="1" scaleY="1" bold="true" size="24" textColor="0x54514d"/>
 		<e:Button id="btn_get" label="领取" x="462.64" y="451.9" width="168" height="76" scaleX="1" scaleY="1">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="button_0024_png"/>
+				<e:Image width="100%" height="100%" source="button_res.button_0024"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="25" textColor="0x270303"/>
 				</e:Skin>
 			</e:skinName>
@@ -35,7 +35,7 @@
 		<e:Button id="btn_delete" label="删除" x="287.94" y="451.9" width="168" height="76" scaleX="1" scaleY="1">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="button_0014_png"/>
+				<e:Image width="100%" height="100%" source="button_res.button_0014"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" size.down="25" textColor="0x0c0101"/>
 				</e:Skin>
 			</e:skinName>
