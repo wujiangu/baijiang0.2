@@ -60,5 +60,7 @@ declare class EquipUpStarSkin extends eui.Skin{
 }
 declare class ResetEquipAttrSkin extends eui.Skin{
 }
+declare class HelpDialogSkin extends eui.Skin{
+}
 declare class HeroDialogSkin extends eui.Skin{
 }

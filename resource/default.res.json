@@ -5,7 +5,7 @@
 			"name": "loading"
 		},
 		{
-			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_ske_dbbin,buxiaoman_tex_json,buxiaoman_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_ske_dbbin,diaochan_tex_json,diaochan_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,Elitemonster_skill_ske_dbbin,Elitemonster_skill_tex_json,Elitemonster_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_ske_dbbin,zhaoyun_tex_json,zhaoyun_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,curtain_png",
+			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png",
 			"name": "preload"
 		},
 		{
@@ -13,7 +13,7 @@
 			"name": "shop"
 		},
 		{
-			"keys": "equip1_png,equip10_png,equip11_png,equip12_png,equip13_png,equip14_png,equip15_png,equip16_png,equip17_png,equip18_png,equip19_png,equip2_png,equip20_png,equip21_png,equip22_png,equip23_png,equip24_png,equip3_png,equip4_png,equip5_png,equip6_png,equip7_png,equip8_png,equip9_png,equip_0001_png,equip_0003_png,equip_0004_png,equip_0005_png,equip_0006_png,equip_0008_png,equip_0010_png,equip_0011_png,equip_0012_png,equip_0013_png,equip_bottom_png,upArrow_png,upArrow_json",
+			"keys": "equip1_png,equip10_png,equip11_png,equip12_png,equip13_png,equip14_png,equip15_png,equip16_png,equip17_png,equip18_png,equip19_png,equip2_png,equip20_png,equip21_png,equip22_png,equip23_png,equip24_png,equip3_png,equip4_png,equip5_png,equip6_png,equip7_png,equip8_png,equip9_png,equip_0001_png,equip_0003_png,equip_0004_png,equip_0005_png,equip_0008_png,equip_0010_png,equip_0011_png,equip_0012_png,equip_0013_png,upArrow_png,upArrow_json",
 			"name": "equip"
 		},
 		{
@@ -21,7 +21,7 @@
 			"name": "pvp"
 		},
 		{
-			"keys": "hero_0001_png,hero_0002_png,hero_0003_png,hero_0004_png,hero_0005_png,hero_0006_png,popmenu_0002_png,ballParticle_json,ballParticle_png,firePot_png,newParticle_json,newParticle_png,bg_pvpfinish_png,bg_readyEquip_png,drawCardBg_png,shop_popupBg3_png,bg_readyAttr_png,combo_bg_png,goodsBg_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png,randomBuffIcon_json,randomBuffSheet_json,map1_png",
+			"keys": "hero_0001_png,hero_0002_png,hero_0003_png,hero_0004_png,hero_0005_png,hero_0006_png,popmenu_0002_png,ballParticle_json,ballParticle_png,firePot_png,newParticle_json,newParticle_png,bg_pvpfinish_png,bg_readyEquip_png,drawCardBg_png,shop_popupBg3_png,bg_readyAttr_png,combo_bg_png,map1_png,buxiaoman_ske_dbbin,buxiaoman_tex_json,buxiaoman_tex_png,diaochan_ske_dbbin,diaochan_tex_json,diaochan_tex_png,zhaoyun_ske_dbbin,zhaoyun_tex_json,zhaoyun_tex_png",
 			"name": "ready"
 		},
 		{
@@ -31,6 +31,10 @@
 		{
 			"keys": "tianfu_0001_png,talAndSkill_res",
 			"name": "talent"
+		},
+		{
+			"keys": "blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,Elitemonster_skill_ske_dbbin,Elitemonster_skill_tex_json,Elitemonster_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,goodsBg_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,randomBuffIcon_json,randomBuffSheet_json,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png",
+			"name": "battle"
 		}
 	],
 	"resources": [
@@ -1310,11 +1314,6 @@
 			"name": "equip_0013_png"
 		},
 		{
-			"url": "assets/tip/equip_bottom.png",
-			"type": "image",
-			"name": "equip_bottom_png"
-		},
-		{
 			"url": "assets/fntFile/blessFnt.png",
 			"type": "image",
 			"name": "blessFnt_png"
@@ -1690,7 +1689,7 @@
 			"url": "pack/equip_res.json",
 			"type": "sheet",
 			"name": "equip_res",
-			"subkeys": "Sequip1,Sequip10,Sequip11,Sequip12,Sequip13,Sequip14,Sequip15,Sequip16,Sequip17,Sequip18,Sequip19,Sequip2,Sequip20,Sequip21,Sequip22,Sequip23,Sequip24,Sequip3,Sequip4,Sequip5,Sequip6,Sequip7,Sequip8,Sequip9,equip_0009,point_00,point_01,point_02,point_03,point_04,point_05,select_1,select_2,star_00,star_01,star_02,star_03,star_04,star_05,wuqi_01,wuqi_02"
+			"subkeys": "Sequip1,Sequip10,Sequip11,Sequip12,Sequip13,Sequip14,Sequip15,Sequip16,Sequip17,Sequip18,Sequip19,Sequip2,Sequip20,Sequip21,Sequip22,Sequip23,Sequip24,Sequip3,Sequip4,Sequip5,Sequip6,Sequip7,Sequip8,Sequip9,equip_0009,equip_bottom,point_00,point_01,point_02,point_03,point_04,point_05,select_1,select_2,star_00,star_01,star_02,star_03,star_04,star_05,wuqi_01,wuqi_02"
 		},
 		{
 			"url": "pack/title_res.json",
@@ -1714,7 +1713,7 @@
 			"url": "pack/talAndSkill_res.json",
 			"type": "sheet",
 			"name": "talAndSkill_res",
-			"subkeys": "skill_1,skill_10,skill_11,skill_12,skill_13,skill_14,skill_15,skill_16,skill_17,skill_18,skill_2,skill_3,skill_4,skill_5,skill_6,skill_7,skill_8,skill_9,skill_mask,talent1_1,talent1_2,talent1_3,talent1_4,talent1_5,talent1_6,talent1_7,talent2_1,talent2_2,talent2_3,talent2_4,talent2_5,talent2_6,talent2_7,talent3_1,talent3_2,talent3_3,talent3_4,talent3_5,talent3_6,talent3_7"
+			"subkeys": "skill_1,skill_10,skill_11,skill_12,skill_13,skill_14,skill_15,skill_16,skill_17,skill_18,skill_2,skill_3,skill_4,skill_5,skill_6,skill_7,skill_8,skill_9,skill_mask,talent1_1,talent1_2,talent1_3,talent1_4,talent1_5,talent1_6,talent1_7,talent2_1,talent2_2,talent2_3,talent2_4,talent2_5,talent2_6,talent2_7,talent3_1,talent3_2,talent3_3,talent3_4,talent3_5,talent3_6,talent3_7,talentBox,talentLvBox,talentMaxBox"
 		},
 		{
 			"url": "config/TcPVPReward.json",

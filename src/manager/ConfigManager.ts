@@ -38,8 +38,8 @@ namespace ConfigManager {
     /**竞技场奖励配置文件 */
     export var tcRankReward:any;
     /**骨架数据 */
-    export var armatures:Array<string> = ["daoguang_effect", "diaochan", "enter_monster_01", "Boss01",
-        "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun", "zhaoyun_skill", "buxiaoman", "buxiaoman_skill", "buff",
+    export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "daoguang_effect", "enter_monster_01", "Boss01",
+        "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun_skill", "buxiaoman_skill", "buff",
         "monster02_skill", "Elitemonster_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
         "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "buffdiaoluo"];
     /**
@@ -59,9 +59,19 @@ namespace ConfigManager {
         tcTalentUp = RES.getRes("TcTalentUp_json");
         tcUnlockTalentPage = RES.getRes("TcUnlockTalentPage_json");
         tcRankReward = RES.getRes("TcRankReward_json");
-        initBattleDragonBones();
         loadHeroConfig();
         loadEnermyConfig();
+    }
+
+    /** init battle config */
+    export function InitBattleConfig(scene:string):void{
+         if(scene == "ready"){
+            initBattleDragonBones(0, 3);
+        }
+        else if(scene == "battle")
+        {
+            initBattleDragonBones(3, armatures.length);
+        }
     }
 
     /**加载英雄的配置文件 */
@@ -101,8 +111,8 @@ namespace ConfigManager {
     /**
      * 初始化骨骼的动画数据
      */
-    function initBattleDragonBones():void {
-        for (let i = 0; i < armatures.length; i++) {
+    function initBattleDragonBones(startIndex:number, endIndex:number):void {
+         for(let i:number = startIndex; i < endIndex; i++){
             let name:string = armatures[i];
             let skeletonData = RES.getRes(name+"_ske_dbbin");
             let textureData = RES.getRes(name+"_tex_json");

@@ -9,7 +9,7 @@ class EquipObject extends eui.Group{
 
         this.img_list = new Array();
         this.img_weapon = new egret.Bitmap();
-        this.img_bottom = new egret.Bitmap(RES.getRes("equip_bottom_png"));
+        this.img_bottom = new egret.Bitmap(RES.getRes("equip_res.equip_bottom"));
         this.txt_lv     = Common.CreateText("", 20,0xE58E0B, true,"Microsoft YaHei");
         
         this.addChild(this.img_weapon);

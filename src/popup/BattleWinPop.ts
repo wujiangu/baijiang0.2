@@ -75,7 +75,7 @@ class BattleWinPop extends PopupWindow {
         if (data.equip && data.equip.id > 0) {
             posCount ++;
             let id:number = 25 - data.equip.id;
-            let Image_equip:egret.Bitmap = Utils.createBitmap("Sequip"+id+"_png");
+            let Image_equip:egret.Bitmap = Utils.createBitmap("equip_res.Sequip"+id);
             Image_equip.x = 160;
             Image_equip.y = 30;
             this.resultGroup.addChild(Image_equip);
@@ -85,7 +85,7 @@ class BattleWinPop extends PopupWindow {
             group.x = 160 + (posCount + i) * 100;
             group.y = 30;
             this.resultGroup.addChild(group);
-            let image:egret.Bitmap = Utils.createBitmap("common_res.basic_"+reward[i]+"_png");
+            let image:egret.Bitmap = Utils.createBitmap("common_res.basic_"+reward[i]);
             group.addChild(image);
             let value:number = data[reward[i]];
             let str:string = value.toString();

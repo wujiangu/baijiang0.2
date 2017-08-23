@@ -22,34 +22,59 @@ module modShare {
 
         let systemType = Common.systemType();
         let platform = Common.platformType();
-        if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
-            //PC平台
-            //QQ空间
-            var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
-            window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
+        // if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
+        //     //PC平台
+        //     //QQ空间
+        //     var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
+        //     window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
 
-            // //疼讯微博
-            // var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
-            // window.open(shareqqstring,'newwindow','height=400,width=400,top=100,left=100');
+        //     // //疼讯微博
+        //     // var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
+        //     // window.open(shareqqstring,'newwindow','height=400,width=400,top=100,left=100');
 
-            // //新浪微博
-            // var sharesinastring:string='http://v.t.sina.com.cn/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
-            // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
-        }else{
+        //     // //新浪微博
+        //     // var sharesinastring:string='http://v.t.sina.com.cn/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
+        //     // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
+        // }else{
             //移动端平台
-            WeixinApi.ready((api:WeixinApi)=>{
-                var info:WeixinShareInfo = new WeixinShareInfo();
-                info.appId = modLogin.getBaseData("appid");
-                // info.appId = "1112169032";
-                info.title = params.title;
-                info.desc = params.desc;
-                info.link = params.link;
-                info.imgUrl = params.imgUrl;
-                egret.log("WeixinApi Ready", JSON.stringify(params));
-                api.shareToFriend(info);
-                api.shareToTimeline(info);
-                api.showOptionMenu()
-            });
-        }
+            egret.log("平台---->", platform);
+            if (platform == "micromessenger") {
+                send["success"] = success;
+                send["cancel"] = cancel;
+                send["fail"] = fail
+                window["sdw"].onSetShareOperate(send)
+            }
+            else if(platform == "qq") {
+                seajs.use('http://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js', function(setShareInfo) {
+                    setShareInfo({
+                        title:params.title,
+                        summary:params.desc,
+                        pic:params.imgUrl,
+                        url:"http://ggsporestudio.com/"
+                    });
+                });
+            }
+        // }
+    }
+
+    /**
+     * 分享成功
+     */
+    function success():void {
+        egret.log("分享成功");
+    }
+
+    /**
+     * 分享取消
+     */
+    function cancel():void {
+        egret.log("分享取消");
+    }
+
+    /**
+     * 分享失败
+     */
+    function fail():void {
+        egret.log("分享失败");
     }
 }

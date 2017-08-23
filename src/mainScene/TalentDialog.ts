@@ -32,10 +32,10 @@ class TalentDialog extends PopupWindow {
             this.createToggleBtn(i);
             this.addChild(this.topBtnSkin[i]);
         }
-        this.pageGroup.addChild(this.pages[this.curPage]);
+        if(this.pages[this.curPage]) this.pageGroup.addChild(this.pages[this.curPage]);
         Utils.toggleButtonStatus(this.topBtn, this.curPage);
         
-        this.allLv = talentPage[this.curPage].count == null ? 1 : talentPage[this.curPage].count;
+        this.allLv = talentPage.length >= 1 ? (talentPage[this.curPage].count == null ? 1 : talentPage[this.curPage].count) : 1;
         this.btn_add.x = 155 + 55 * talentPage.length;
     }
 

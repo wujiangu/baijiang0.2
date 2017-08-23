@@ -34,6 +34,7 @@ namespace modTalent {
     var talentPage:Array<any> = new Array();
     /**服务端获得数据 */
     export function initData(data:Array<any>):void {
+        Common.log(data);
         talentPage = data;
     }
     /**获取玩家天赋 */

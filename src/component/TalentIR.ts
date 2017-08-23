@@ -25,7 +25,7 @@ class TalentIR extends Base {
                 iconImage.source = `talAndSkill_res.talent${i}_${j+1}`;
                 this.iconGroup[id-1].addChild(iconImage);
 
-                let imgBottom:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_bottom_png"));
+                let imgBottom:egret.Bitmap = new egret.Bitmap(RES.getRes("equip_res.equip_bottom"));
                 this.iconGroup[id-1].addChild(imgBottom);
                 Common.SetXY(imgBottom, 0, 76);
 
@@ -94,12 +94,12 @@ class TalentIR extends Base {
             if(talent[1] > 0) this.iconGroup[id-1]["box"].visible = true;
 
             if(talent[1] == 1){
-                this.iconGroup[id-1]["box"].texture = RES.getRes("talentBox_png");
+                this.iconGroup[id-1]["box"].texture = RES.getRes("talAndSkill_res.talentBox");
             }
 
             if (talent[1] == this._maxLv[id-1]){
                 this.lvGroup[id-1].textColor = 0x91bd32;
-                this.iconGroup[id-1]["box"].texture = RES.getRes("talentMaxBox_png");
+                this.iconGroup[id-1]["box"].texture = RES.getRes("talAndSkill_res.talentMaxBox");
             }
         }
     }

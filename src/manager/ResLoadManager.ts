@@ -22,6 +22,7 @@ class ResLoadManager{
             RES.loadGroup(name);
             this.isLoad = true;
             this._listener = listener;
+            this._name     = name;
             Animations.ShowLoadAnimation();
         }
         else
@@ -31,6 +32,8 @@ class ResLoadManager{
     }
 
     public Listener():void{
+        if(this._name == "ready" || this._name == "battle") ConfigManager.InitBattleConfig(this._name);
+
         if(this._listener){
             Animations.HideLoadAnimation();
             this._listener();
@@ -48,4 +51,5 @@ class ResLoadManager{
     private isLoad:boolean = false;
     private load_list:any;
     private _listener:Function;
+    private _name:string;
 }

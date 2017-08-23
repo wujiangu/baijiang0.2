@@ -151,26 +151,28 @@ class ReadyDialog extends PopupWindow {
             break;
             case this.btn_battle:
                 this._stopTimer();
-                Animations.sceneTransition(()=>{
-                    GameLayerManager.gameLayer().sceneLayer.removeChildren();
-                    GameLayerManager.gameLayer().panelLayer.removeChildren();
-                    if (SceneManager.nextScene == "battleScene") {
-                        if (!SceneManager.battleScene) {
-                            SceneManager.battleScene = new BattleScene();
+                ResLoadManager.GetInstance().LoadGroup("battle",()=>{
+                     Animations.sceneTransition(()=>{
+                        GameLayerManager.gameLayer().sceneLayer.removeChildren();
+                        GameLayerManager.gameLayer().panelLayer.removeChildren();
+                        if (SceneManager.nextScene == "battleScene") {
+                            if (!SceneManager.battleScene) {
+                                SceneManager.battleScene = new BattleScene();
+                            }else{
+                                SceneManager.battleScene.init();
+                            }
+                            SceneManager.curScene = SceneManager.battleScene;
                         }else{
-                            SceneManager.battleScene.init();
+                            if (!SceneManager.pvpScene) {
+                                SceneManager.pvpScene = new PVPScene();
+                            }else{
+                                SceneManager.pvpScene.init();
+                            }
+                            SceneManager.curScene = SceneManager.pvpScene;
                         }
-                        SceneManager.curScene = SceneManager.battleScene;
-                    }else{
-                        if (!SceneManager.pvpScene) {
-                            SceneManager.pvpScene = new PVPScene();
-                        }else{
-                            SceneManager.pvpScene.init();
-                        }
-                        SceneManager.curScene = SceneManager.pvpScene;
-                    }
-                    GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.curScene);
-                });
+                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.curScene);
+                    });
+                })
             break;
             case this.btn_change:
                 if (modEquip.EquipData.GetInstance().GetEquipNum() == 0) {

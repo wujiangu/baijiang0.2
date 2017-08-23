@@ -163,8 +163,8 @@ class Main extends eui.UILayer {
         // RES.destroyRes("loading");
         // modLogin.init();
         // modLogin.reqLogin(this._onLogin);
-        // this.test();
-        LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
+        this.test();
+        // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
         // SceneManager.battleScene = new BattleScene();
         // SceneManager.curScene = SceneManager.battleScene;
@@ -188,7 +188,7 @@ class Main extends eui.UILayer {
         let data:any = {};
         data.title = "百将斩";
         data.desc = "游戏";
-        data.link = "http://www.shandw.com/pc/game/";
+        data.link = "http://www.shandw.com/pc/game/?gid=1112169032&channel=10000";
         data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/bg_0002.png";
         modShare.share(data);
     }

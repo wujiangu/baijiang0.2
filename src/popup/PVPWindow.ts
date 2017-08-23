@@ -35,11 +35,8 @@ class PVPWindow extends PopupWindow{
         Common.SetXY(this.txt_self, 80, this.img_bg.y + (this.img_bg.height - this.txt_self.height >> 1));
         Common.SetXY(this.txt_damage, this.img_bg.width - this.txt_damage.width, this.img_bg.y + (this.img_bg.height - this.txt_damage.height >> 1));
         Common.SetXY(this.txt_damage_info, this.txt_damage.x - this.txt_damage_info.width - 10, this.img_bg.y + (this.img_bg.height - this.txt_damage.height >> 1));
-        for(let i:number = 1; i < 100; i++){
-            let group = new eui.Group();
-            this.scrollGroup.addChild(group);
-            Common.SetXY(group, 0, i * 57);
-        }
+        this._bottomGroup = new eui.Group();
+        this.scrollGroup.addChild(this._bottomGroup);
 
         for(let i:number = 0; i < 10; i++){
             this.damageList[i] = new DamageList();
@@ -91,22 +88,25 @@ class PVPWindow extends PopupWindow{
             this.changeRankInfo(Math.floor(this.scrollGroup.scrollV / 57) - 1);
     }
 
-    /** 点击开始挑战按钮 */
-    private onTouchButton(event:egret.TouchEvent):void{
-        let target = event.target;
-        if(target == this.btn_start){
+    private onEnterReady():void{
+         ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
             this.Close();
             SceneManager.nextScene = "pvpScene";
             WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
             RankData.GetInstance().ChallengeNum++;
+        })
+    }
+
+    /** 点击开始挑战按钮 */
+    private onTouchButton(event:egret.TouchEvent):void{
+        let target = event.target;
+        if(target == this.btn_start){
+           this.onEnterReady();
         }
         else if(target == this.btn_buy){
             let pvpConsume:number = RankData.GetInstance().ChallengeNum * 20 >= 100 ? 100 : RankData.GetInstance().ChallengeNum * 20;
             if(UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume)){
-                this.Close();
-                SceneManager.nextScene = "pvpScene";
-                WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
-                RankData.GetInstance().ChallengeNum++;
+                this.onEnterReady();
             }
             else
             {
@@ -139,6 +139,7 @@ class PVPWindow extends PopupWindow{
         let strRank = rankNum != -1 ? "(第" + rankNum + "名)" : "(当前没有排名)";
         this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:"我    "},{text:strRank, style:{"textColor":0x252525}}];
         this.txt_damage.text = `${UserData.rankDamage}`;
+        this._bottomGroup.height = (this.img_bg.height + 8) * (data_list.length + 2);
 
         this.changeRankInfo(0);
     }
@@ -248,6 +249,7 @@ class PVPWindow extends PopupWindow{
     /** other */
     private _time:egret.Timer;
     private _startIndex:number;
+    private _bottomGroup:eui.Group;
 }
 
 class DamageList extends eui.Component{
