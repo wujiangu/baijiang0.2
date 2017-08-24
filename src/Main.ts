@@ -163,8 +163,9 @@ class Main extends eui.UILayer {
         // RES.destroyRes("loading");
         // modLogin.init();
         // modLogin.reqLogin(this._onLogin);
-        this.test();
-        // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
+        // this.test();
+        // this.addDesktop();
+        LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
         // SceneManager.battleScene = new BattleScene();
         // SceneManager.curScene = SceneManager.battleScene;
@@ -180,6 +181,7 @@ class Main extends eui.UILayer {
     private _onLogin() {
         SceneManager.enterGameScene = new EnterGameScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
+        RES.loadGroup("backstage");
         LeanCloud.GetInstance().InitData();
         GameData.isDebug = false;
     }
@@ -191,6 +193,22 @@ class Main extends eui.UILayer {
         data.link = "http://www.shandw.com/pc/game/?gid=1112169032&channel=10000";
         data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/bg_0002.png";
         modShare.share(data);
+    }
+
+    /**
+     * 添加桌面测试(只适用移动端)
+     */
+    private addDesktop():void {
+        let btn:egret.Bitmap = Utils.createBitmap("button_res.btn_draw");
+        btn.x = 550;
+        btn.y = 300;
+        btn.touchEnabled = true;
+        btn.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
+            egret.log("添加桌面");
+            window["sdw"].canAddDesktop = true;
+            window["sdw"].addDesktop();
+        }, this);
+        this.addChild(btn);
     }
 
     private bg:egret.Bitmap;

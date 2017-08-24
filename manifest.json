@@ -17,15 +17,15 @@
 	"game": [
 		"bin-debug/game/Object/BaseGameObject.js",
 		"bin-debug/game/Buff/BuffBase.js",
-		"bin-debug/Base.js",
 		"bin-debug/game/Object/Enermy.js",
-		"bin-debug/game/Object/Alliance.js",
+		"bin-debug/Base.js",
 		"bin-debug/game/Machine/BaseStateMachine.js",
+		"bin-debug/game/Object/Alliance.js",
+		"bin-debug/popup/PopupWindow.js",
 		"bin-debug/game/Buff/randomBuffs/BaseRandomBuff.js",
 		"bin-debug/game/Object/Monster.js",
 		"bin-debug/game/Skill/SkillBase.js",
 		"bin-debug/game/Buff/randomBuffs/BaseRandomItem.js",
-		"bin-debug/popup/PopupWindow.js",
 		"bin-debug/game/Skill/skills/Bristle.js",
 		"bin-debug/game/Buff/buffs/AddSources.js",
 		"bin-debug/game/Buff/buffs/ContinuousInjury.js",
@@ -94,7 +94,7 @@
 		"bin-debug/game/Object/Stakes.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/game/Skill/SkillData.js",
-		"bin-debug/utils/utilsClass/ShakeTools.js",
+		"bin-debug/game/Buff/BuffData.js",
 		"bin-debug/game/Skill/skills/Imprisoned.js",
 		"bin-debug/game/Skill/skills/SevenInOut.js",
 		"bin-debug/game/Skill/skills/SolaCut.js",
@@ -172,6 +172,6 @@
 		"bin-debug/utils/Utils.js",
 		"bin-debug/utils/utilsClass/LEvent.js",
 		"bin-debug/utils/utilsClass/LListener.js",
-		"bin-debug/game/Buff/BuffData.js"
+		"bin-debug/utils/utilsClass/ShakeTools.js"
 	]
 }

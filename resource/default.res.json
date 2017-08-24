@@ -5,7 +5,7 @@
 			"name": "loading"
 		},
 		{
-			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png",
+			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png,TcPower_json",
 			"name": "preload"
 		},
 		{
@@ -21,7 +21,7 @@
 			"name": "pvp"
 		},
 		{
-			"keys": "hero_0001_png,hero_0002_png,hero_0003_png,hero_0004_png,hero_0005_png,hero_0006_png,popmenu_0002_png,ballParticle_json,ballParticle_png,firePot_png,newParticle_json,newParticle_png,bg_pvpfinish_png,bg_readyEquip_png,drawCardBg_png,shop_popupBg3_png,bg_readyAttr_png,combo_bg_png,map1_png,buxiaoman_ske_dbbin,buxiaoman_tex_json,buxiaoman_tex_png,diaochan_ske_dbbin,diaochan_tex_json,diaochan_tex_png,zhaoyun_ske_dbbin,zhaoyun_tex_json,zhaoyun_tex_png",
+			"keys": "hero_0001_png,hero_0002_png,hero_0003_png,hero_0004_png,hero_0005_png,hero_0006_png,popmenu_0002_png,newParticle_json,newParticle_png,bg_pvpfinish_png,bg_readyEquip_png,drawCardBg_png,shop_popupBg3_png,bg_readyAttr_png,combo_bg_png,map1_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin",
 			"name": "ready"
 		},
 		{
@@ -33,8 +33,12 @@
 			"name": "talent"
 		},
 		{
-			"keys": "blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,Elitemonster_skill_ske_dbbin,Elitemonster_skill_tex_json,Elitemonster_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,goodsBg_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,randomBuffIcon_json,randomBuffSheet_json,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png",
+			"keys": "blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,Elitemonster_skill_ske_dbbin,Elitemonster_skill_tex_json,Elitemonster_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,goodsBg_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,randomBuffIcon_json,randomBuffSheet_json,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png,hurtFnt_fnt,hurtFnt_png,kill_0005_png,kill_0004_png,kill_0003_png,kill_0002_png,zhaoyun_skill01_02_png",
 			"name": "battle"
+		},
+		{
+			"keys": "share3_png,share2_png,share1_png",
+			"name": "backstage"
 		}
 	],
 	"resources": [
@@ -732,21 +736,6 @@
 			"url": "assets/Panel/header.png",
 			"type": "image",
 			"name": "header_png"
-		},
-		{
-			"url": "assets/particle/ballParticle.json",
-			"type": "json",
-			"name": "ballParticle_json"
-		},
-		{
-			"url": "assets/particle/ballParticle.png",
-			"type": "image",
-			"name": "ballParticle_png"
-		},
-		{
-			"url": "assets/particle/firePot.png",
-			"type": "image",
-			"name": "firePot_png"
 		},
 		{
 			"url": "assets/particle/newParticle.json",
@@ -1725,6 +1714,26 @@
 			"type": "sheet",
 			"name": "battle_res",
 			"subkeys": "battle_0001,battle_0002,battle_0003,battle_0004,battle_0005,battle_0010,battle_0011,battle_0012,battle_0013,battle_0014,battle_0015,battle_0018,buxiaoman_skillBg,buy_0001,diaochan_skillBg,heorLock,iconbg_0001,iconbg_0002,img_buxiaoman,img_buxiaoman1,img_diaochan,img_diaochan1,img_selectHero,img_zhaoyun,img_zhaoyun1,shadow,skillICON_bg,touxiang_0001,zhaoyun_skillBg"
+		},
+		{
+			"url": "config/TcPower.json",
+			"type": "json",
+			"name": "TcPower_json"
+		},
+		{
+			"url": "assets/bg/share3.png",
+			"type": "image",
+			"name": "share3_png"
+		},
+		{
+			"url": "assets/bg/share1.png",
+			"type": "image",
+			"name": "share1_png"
+		},
+		{
+			"url": "assets/bg/share2.png",
+			"type": "image",
+			"name": "share2_png"
 		}
 	]
 }

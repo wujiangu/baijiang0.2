@@ -22,22 +22,23 @@ module modShare {
 
         let systemType = Common.systemType();
         let platform = Common.platformType();
-        // if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
-        //     //PC平台
-        //     //QQ空间
-        //     var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
-        //     window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
+        if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
+            //PC平台
+            //QQ空间
+            var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
+            window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
 
-        //     // //疼讯微博
-        //     // var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
-        //     // window.open(shareqqstring,'newwindow','height=400,width=400,top=100,left=100');
+            // //疼讯微博
+            // var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
+            // window.open(shareqqstring,'newwindow','height=400,width=400,top=100,left=100');
 
-        //     // //新浪微博
-        //     // var sharesinastring:string='http://v.t.sina.com.cn/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
-        //     // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
-        // }else{
+            // //新浪微博
+            // var sharesinastring:string='http://v.t.sina.com.cn/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
+            // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
+        }else{
             //移动端平台
             egret.log("平台---->", platform);
+            window["show"]();
             if (platform == "micromessenger") {
                 send["success"] = success;
                 send["cancel"] = cancel;
@@ -50,11 +51,11 @@ module modShare {
                         title:params.title,
                         summary:params.desc,
                         pic:params.imgUrl,
-                        url:"http://ggsporestudio.com/"
+                        url:window.location.host
                     });
                 });
             }
-        // }
+        }
     }
 
     /**

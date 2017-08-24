@@ -51,7 +51,7 @@ class UserDataInfo{
     /** 判断是否有足够的物品 两件或者两件以上 */
     public IsHaveOhterGoods(name1:string, need1:number, name2:string, need2:number):boolean{
         if(this.basicData[name1] >= need1 && this.basicData[name2] >= need2){
-            this.SetBasicData(name1, this.basicData[name1] - need1);
+            this.SetBasicData(name1, this.basicData[name1] - need1, false);
             this.SetBasicData(name2, this.basicData[name2] - need2);
             return true;
         }

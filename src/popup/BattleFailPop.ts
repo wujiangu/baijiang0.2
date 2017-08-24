@@ -160,6 +160,15 @@ class BattleFailPop extends PopupWindow {
         }
         if (upLv > level){
             this._isUp = true;
+            this.img_power.visible = true;
+            this.lab_power.visible = true;
+            let count:number = upLv - level;
+            let addCount:number = 0;
+            for (let i = 0; i < count; i++) {
+                addCount += ConfigManager.tcPower[level+i-1].power;
+            }
+            this.lab_power.text = addCount.toString();
+            UserDataInfo.GetInstance().SetBasicData("power", UserDataInfo.GetInstance().GetBasicData("power")+addCount);
             HeroData.setHeroAttr(GameData.curHero, upLv);
         }
         this.lab_lv.text = `lv.${upLv.toString()}`;
@@ -180,6 +189,8 @@ class BattleFailPop extends PopupWindow {
         this.group_killCount2.visible = false;
         this.group_item.visible = false;
         this.group_hero.visible = false;
+        this.img_power.visible = false;
+        this.lab_power.visible = false;
         this.typeBtn1 = 0;
         this.typeBtn2 = 0;
     }
@@ -222,6 +233,8 @@ class BattleFailPop extends PopupWindow {
     private prog_killCount:eui.Image;
     /**进度图标 */
     private img_knife:eui.Image;
+    /**能量点图标 */
+    private img_power:eui.Image;
     /**当前击杀 */
     private lab_curKill:eui.Label;
     /**最大击杀 */
@@ -232,6 +245,8 @@ class BattleFailPop extends PopupWindow {
     private lab_exp:eui.Label;
     /**获得的魂石 */
     private lab_soul:eui.Label;
+    /**获得的能量点 */
+    private lab_power:eui.Label;
     /**英雄头像 */
     private img_heroIcon:eui.Image;
     /**英雄名字 */

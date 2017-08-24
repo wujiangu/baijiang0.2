@@ -33,6 +33,8 @@ namespace ConfigManager {
     export var tcTalent:any;
     /**天赋消耗配置文件 */
     export var tcTalentUp:any;
+    /**能量点获取配置文件 */
+    export var tcPower:any;
     /**解锁天赋页配置文件 */
     export var tcUnlockTalentPage:any;
     /**竞技场奖励配置文件 */
@@ -59,6 +61,7 @@ namespace ConfigManager {
         tcTalentUp = RES.getRes("TcTalentUp_json");
         tcUnlockTalentPage = RES.getRes("TcUnlockTalentPage_json");
         tcRankReward = RES.getRes("TcRankReward_json");
+        tcPower = RES.getRes("TcPower_json");
         loadHeroConfig();
         loadEnermyConfig();
     }

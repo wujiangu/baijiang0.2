@@ -1,7 +1,7 @@
 /** 窗口管理类 */
 class WindowManager{
     public constructor(){
-        this.obj_list = [];
+        this.obj_list = {};
     }
 
     public static Instance:WindowManager;
@@ -13,8 +13,8 @@ class WindowManager{
     }
 
     public getObjFromStr(strName:string):any{
-        for(let i:number = 0; i < this.obj_list.length; i++){
-            if(this.obj_list[i].str == strName) return this.obj_list[i].obj;
+        for(let key in this.obj_list){
+            if(key == strName) return this.obj_list[key];
         }
         return null;
     }
@@ -24,8 +24,7 @@ class WindowManager{
         if(result == null){
             result = this.GetClassName(strName);
             result.Init();
-            let data:any = {str:strName, obj:result};
-            this.obj_list.push(data);
+            this.obj_list[strName] = result;
         }
         result.Reset();
         this.lastPopupWindowName = strName;
@@ -33,15 +32,13 @@ class WindowManager{
     }
 
     public CloseAllWindow():void{
-        this.obj_list.foreach(e=>{
-            e.obj.Close();
-        })
+        for(let key in this.obj_list) this.obj_list[key].Close();
     }
 
     public CloseLastWindow():void{
-        for(let i:number = 0; i < this.obj_list.lengthl; i++){
-            if(this.lastPopupWindowName == this.obj_list[i].str){
-                this.obj_list[i].obj.Close();
+        for(let key in this.obj_list){
+            if(key == this.lastPopupWindowName){
+                this.obj_list[key].Close();
                 break;
             }
         }

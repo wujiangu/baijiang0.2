@@ -41,6 +41,8 @@
 			<e:Label id="lab_exp" text="100" y="104" fontFamily="Microsoft YaHei" textColor="0xe0e0e0" size="20" stroke="4" right="237" bold="true"/>
 			<e:Image x="103" y="34" source="common_res.basic_soul"/>
 			<e:Label id="lab_soul" text="100" y="104" fontFamily="Microsoft YaHei" textColor="0xE0E0E0" size="20" stroke="4" right="137" bold="true"/>
+			<e:Image id="img_power" source="common_res.basic_power" x="209" y="34"/>
+			<e:Label id="lab_power" text="100" y="104" fontFamily="Microsoft YaHei" textColor="0xE0E0E0" size="20" stroke="4" right="30" bold="true"/>
 		</e:Group>
 		<e:Group id="group_hero" width="200" height="120" x="186" y="274" anchorOffsetY="0">
 			<e:Image id="img_heroIcon" width="100" height="100" x="0" y="-1" anchorOffsetX="0" anchorOffsetY="0"/>
