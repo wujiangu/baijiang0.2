@@ -33,7 +33,7 @@
 			"name": "talent"
 		},
 		{
-			"keys": "blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,Elitemonster_skill_ske_dbbin,Elitemonster_skill_tex_json,Elitemonster_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,goodsBg_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,randomBuffIcon_json,randomBuffSheet_json,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png,hurtFnt_fnt,hurtFnt_png,kill_0005_png,kill_0004_png,kill_0003_png,kill_0002_png,zhaoyun_skill01_02_png",
+			"keys": "blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,Boss01_ske_dbbin,Boss01_tex_json,Boss01_tex_png,Boss01_effect01_ske_dbbin,Boss01_effect01_tex_json,Boss01_effect01_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster1_2_ske_dbbin,monster1_2_tex_json,monster1_2_tex_png,monster1_3_ske_dbbin,monster1_3_tex_json,monster1_3_tex_png,monster1_4_ske_dbbin,monster1_4_tex_json,monster1_4_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,monster2_2_ske_dbbin,monster2_2_tex_json,monster2_2_tex_png,monster2_3_ske_dbbin,monster2_3_tex_json,monster2_3_tex_png,monster2_4_ske_dbbin,monster2_4_tex_json,monster2_4_tex_png,monster3_1_ske_dbbin,monster3_1_tex_json,monster3_1_tex_png,monster3_2_ske_dbbin,monster3_2_tex_json,monster3_2_tex_png,monster3_3_ske_dbbin,monster3_3_tex_json,monster3_3_tex_png,monster3_4_ske_dbbin,monster3_4_tex_json,monster3_4_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,killTips1Clip_json,killTips1Clip_png,killTips2Clip_json,killTips2Clip_png,killTips3Clip_json,killTips3Clip_png,killTips4Clip_json,killTips4Clip_png,killTips5Clip_json,killTips5Clip_png,killTipsBgClip_json,killTipsBgClip_png,killFnt_fnt,killFnt_png,goodsBg_png,diaoClip_png,buClip_json,buClip1_png,diaoClip_json,buClip_png,Avatar_json,Avatar_png,BlowUp_json,BlowUp_png,BuildWall_json,BuildWall_png,randomBuffIcon_json,randomBuffSheet_json,Crack_json,Crack_png,Faster_json,Faster_png,Frost_json,Frost_png,hurtFnt_fnt,hurtFnt_png,kill_0005_png,kill_0004_png,kill_0003_png,kill_0002_png,zhaoyun_skill01_02_png",
 			"name": "battle"
 		},
 		{
@@ -46,11 +46,6 @@
 			"url": "assets/animation/monster1_1/monster1_1_ske.dbbin",
 			"type": "bin",
 			"name": "monster1_1_ske_dbbin"
-		},
-		{
-			"url": "assets/animation/Elitemonster_skill/Elitemonster_skill_ske.dbbin",
-			"type": "bin",
-			"name": "Elitemonster_skill_ske_dbbin"
 		},
 		{
 			"url": "assets/animation/blood_die/blood_die_ske.dbbin",
@@ -1146,16 +1141,6 @@
 			"url": "assets/testBattle/Elitemonster000.png",
 			"type": "image",
 			"name": "Elitemonster000_png"
-		},
-		{
-			"url": "assets/animation/Elitemonster_skill/Elitemonster_skill_tex.png",
-			"type": "image",
-			"name": "Elitemonster_skill_tex_png"
-		},
-		{
-			"url": "assets/animation/Elitemonster_skill/Elitemonster_skill_tex.json",
-			"type": "json",
-			"name": "Elitemonster_skill_tex_json"
 		},
 		{
 			"url": "assets/battle/zhaoyun_skill01_02.png",

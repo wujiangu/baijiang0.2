@@ -42,7 +42,7 @@ namespace ConfigManager {
     /**骨架数据 */
     export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "daoguang_effect", "enter_monster_01", "Boss01",
         "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun_skill", "buxiaoman_skill", "buff",
-        "monster02_skill", "Elitemonster_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
+        "monster02_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
         "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "buffdiaoluo"];
     /**
      * 加载配置文件
