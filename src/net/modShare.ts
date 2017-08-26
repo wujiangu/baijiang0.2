@@ -37,7 +37,7 @@ module modShare {
             // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
         }else{
             //移动端平台
-            egret.log("平台---->", platform);
+            egret.log("平台---->", platform, window.location.host);
             window["show"]();
             if (platform == "micromessenger") {
                 send["success"] = success;
@@ -51,7 +51,7 @@ module modShare {
                         title:params.title,
                         summary:params.desc,
                         pic:params.imgUrl,
-                        url:window.location.host
+                        url:"http://www.shandw.com/m/game/"
                     });
                 });
             }

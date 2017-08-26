@@ -151,7 +151,15 @@ class ReadyDialog extends PopupWindow {
             break;
             case this.btn_battle:
                 this._stopTimer();
-                ResLoadManager.GetInstance().LoadGroup("battle",()=>{
+                let groupName:string = ""
+                if (SceneManager.nextScene == "battleScene") {
+                    RES.createGroup("battleGroup", ["battleStage", "battleCommon"], true);
+                    groupName = "battleGroup";
+                }else{
+                    RES.createGroup("pvpGroup", ["battlePVP", "battleCommon"], true);
+                    groupName = "pvpGroup";
+                }
+                ResLoadManager.GetInstance().LoadGroup(groupName,()=>{
                      Animations.sceneTransition(()=>{
                         GameLayerManager.gameLayer().sceneLayer.removeChildren();
                         GameLayerManager.gameLayer().panelLayer.removeChildren();

@@ -17,6 +17,7 @@ class BattleScene extends Base {
         modBattle.createTimer();
     }
     protected createChildren(): void{
+        ResLoadManager.GetInstance().LoadGroup("battleBack", null);
         this.createMap();
         this.createComboGroup();
         this.createRewardCombo();

@@ -47,8 +47,12 @@ class Main extends eui.UILayer {
         this.addChild(GameLayerManager.gameLayer());
         // initialize the Resource loading library
         //初始化Resource资源加载库
-        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-        RES.loadConfig("resource/default.res.json", "resource/");
+        // RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        // RES.loadConfig("resource/default.res.json", "resource/");
+
+        ResLoadManager.GetInstance().addConfig("resource/default.res.json", "resource/");
+        ResLoadManager.GetInstance().addConfig("resource/battle.res.json", "resource/");
+        ResLoadManager.GetInstance().startLoadConfig(this.onConfigComplete, this);
 
         //获取舞台的宽度和高度
         Common.mainStage = this;

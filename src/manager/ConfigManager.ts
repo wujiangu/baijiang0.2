@@ -39,11 +39,11 @@ namespace ConfigManager {
     export var tcUnlockTalentPage:any;
     /**竞技场奖励配置文件 */
     export var tcRankReward:any;
-    /**骨架数据 */
-    export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "daoguang_effect", "enter_monster_01", "Boss01",
-        "Boss01_effect01", "blood_die", "diaochan_skill", "zhaoyun_skill", "buxiaoman_skill", "buff",
-        "monster02_skill", "monster1_1", "monster1_2", "monster1_3", "monster1_4", "monster2_1", "monster2_2",
-        "monster2_3", "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "buffdiaoluo"];
+    /**骨架数据(后续分组) */
+    export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "enter_monster_01", "blood_die", 
+        "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect",  "diaochan_skill", "zhaoyun_skill", 
+        "buxiaoman_skill", "buff", "buffdiaoluo", "monster1_2", "monster1_3", "monster1_4", "monster2_2", "monster2_3",
+        "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "Boss01", "Boss01_effect01"];
     /**
      * 加载配置文件
      */
@@ -68,12 +68,28 @@ namespace ConfigManager {
 
     /** init battle config */
     export function InitBattleConfig(scene:string):void{
-         if(scene == "ready"){
+        if(scene == "ready"){
             initBattleDragonBones(0, 3);
         }
-        else if(scene == "battle")
+        else if(scene == "battleGroup")
         {
-            initBattleDragonBones(3, armatures.length);
+            initBattleDragonBones(3, 8);
+            InitBattleCommon();
+        }
+        else if (scene == "pvpGroup") {
+            InitBattleCommon();
+        }
+        else if (scene == "battleBack") {
+            initBattleDragonBones(14, armatures.length);
+        }
+    }
+
+    var isCommon:boolean = false;
+    /**初始化战斗共同配置 */
+    function InitBattleCommon():void {
+        if (!isCommon) {
+            initBattleDragonBones(8, 14);
+            isCommon = true
         }
     }
 
