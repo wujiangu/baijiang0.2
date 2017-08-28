@@ -190,7 +190,7 @@ class EquipDialog extends PopupWindow {
         if(isActive){
             let attrType:modEquip.AttrType = this.equip_info.GetPointTypeFromIndex(index);
             strType = modEquip.GetAttrInfo(attrType.Type, attrType.Value);
-            quality = attrType.Quality
+            quality = attrType.Quality;
         }
         else
         {

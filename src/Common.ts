@@ -111,6 +111,45 @@ namespace Common {
         }
     }
 
+    /**
+     * json格式转换为url参数字符串
+     */
+    function parseParam(param, paramKey=null):string {
+        var str: string = "";
+        for (var key in param) {
+            let valueType: string = typeof (param[key]);
+            if (valueType == "string" || valueType == "number" || valueType == "boolean") {
+                let newKey = paramKey == null ? key : paramKey + "." + key;
+                str += (newKey + "=" + param[key] + "&");
+            } else {
+                if (param[key] instanceof Array) {
+                    for (let i = 0; i < param[key].length; i++) {
+                        let temp: string = typeof (param[key][i]);
+                        if (temp == "string" || temp == "number" || temp == "boolean") {
+                            str += key + "[" + i + "]=" + param[key][i] + "&";
+                        } else {
+                            str += key + "[" + i + "].";
+                            str += parseParam(param[key][i]);                            
+                        }
+
+                    }
+                } else {
+                    str += parseParam(param[key], key);
+                }
+            }        
+        }
+        return str
+    };
+
+    /**
+     * 获取url参数
+     */
+    export function getUrlParams(data:any):string {
+        let str = parseParam(data);
+        return str.substr(0, str.length-1);
+    }
+
+
 	//派发事件
 	export function dispatchEvent(type:string, obj:Object = null, bubbles:boolean = false, cancelable:boolean = false):void
 	{ 	

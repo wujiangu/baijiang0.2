@@ -86,7 +86,7 @@ class UserDataInfo{
         }
 
         if(date.getFullYear() == val[0] && date.getMonth() + 1 == val[1] && val[2] == date.getDate()) return false;
-        else if(date.getFullYear() != val[0] || date.getMonth() + 1 != val[1] && date.getDate() != val[2]){
+        else if(date.getFullYear() != val[0] || date.getMonth() + 1 != val[1] || date.getDate() != val[2]){
             this.login_time_list = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
         }
         return true;

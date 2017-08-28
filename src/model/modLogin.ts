@@ -9,27 +9,78 @@ namespace modLogin {
         decodeURL();
         userBase = {};
         saveBaseData();
+        heartTimer = new egret.Timer(15000, 0);
     }
 
     /**
      * 登陆请求
      */
     export function reqLogin(onSuccess:Function = null, onFail:Function = null):void {
-        let str:string = "";
-        for (var key in userBase) {
-            str += (key+"="+userBase[key]+"&");
-        }
-        str = str.substr(0, str.length-1);
-        HttpRequest.getInstance().send("POST", "login", str, (data)=>{
+        HttpRequest.getInstance().send("POST", "login", userBase, (data)=>{
             HttpRequest.getInstance().setToken(data.token);
-            modPay.preOrder({amount:1, subject:"钻石", memo:"111111"})
-            if (onSuccess) onSuccess();
+            // getUserDataFromSever(onSuccess);
+            modPay.preOrder({amount:1, subject:"钻石", memo:"111111"});
         }, modLogin);
+    }
 
+    /**
+     * 用户心跳包
+     */
+    export function sendHeartBeat():void {
         //心跳
-        // HttpRequest.getInstance().send("GET", "heartbeat", "", (data)=>{
-        //     egret.log("心跳---->", data);
-        // }, modLogin);
+        heartTimer.addEventListener(egret.TimerEvent.TIMER, ()=>{
+            HttpRequest.getInstance().send("GET", "heartbeat", {}, (data)=>{
+                // egret.log("心跳---->", data);
+            }, modLogin);
+        }, modLogin);
+        heartTimer.start();
+    }
+
+    /**
+     * 从服务器获取用户信息
+     */
+    function getUserDataFromSever(callBack:Function):void {
+        HttpRequest.getInstance().send("GET", "userinfo", {}, (data)=>{
+            egret.log("用户信息----->", JSON.stringify(data));
+            if (Object.keys(data.userInfo).length == 0) {
+                //新用户
+                newUserHandler(callBack);
+            }else{
+                UserDataInfo.GetInstance().SaveData(data.userInfo);
+                if (callBack) callBack();
+            }
+        }, modLogin);
+    }
+
+    /**
+     * 新用户处理
+     */
+    function newUserHandler(callBack:Function):void {
+        let data:any = {};
+        data["roleName"] = (userBase.nick) ? userBase.nick:userBase.uid
+        data["roleSex"] = (userBase.sex) ? userBase.sex:1;
+        data["lv"] = 1;
+        data["exp"] = 0;
+        data["soul"] = 0;
+        data["power"] = 0;
+        data["diamond"] = 0;
+        data["lucky"] = 0;
+        data["curTalentPage"] = 0;
+        data["stage"] = 1;
+        //复活次数
+        data["revivalCount"] = 0;
+        //挑战次数
+        data["sportCount"] = 0;
+        //竞技场伤害
+        data["damage"] = 0;
+
+        //这里存储数据到本地
+        UserDataInfo.GetInstance().SaveData(data);
+
+        HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
+            egret.log("创建新用户成功---->", result)
+            if (callBack) callBack();
+        }, modLogin)
     }
 
     /**
@@ -123,4 +174,5 @@ namespace modLogin {
 
     var iframeData:Array<string>;
     var userBase:any;
+    var heartTimer:egret.Timer;
 }

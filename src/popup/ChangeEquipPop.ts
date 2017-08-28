@@ -74,8 +74,11 @@ class ChangeEquipPop extends PopupWindow {
     }
 
     /**设置弹出的内容显示 */
-    public Show(id:number, typeId:number):void {
-        super.Show();
+    public Show(info:modEquip.EquipInfo):void {
+       super.Show();
+
+       let id:number = info == null ? 0 : info.Id;
+       let typeId:number = info == null ? 0 : info.TypeID;
 
        this.scrollGroup.removeChildren();
        let col, raw;

@@ -12,10 +12,6 @@ class ReadyDialog extends PopupWindow {
     }
 
     protected createChildren(): void{
-        this.starGroup = new eui.Group();
-        this.detailGroup.addChild(this.starGroup);
-        this.starGroup.x = 26;
-        this.starGroup.y = 16;
         this._armatureGroup = new eui.Group();
         this.addChild(this._armatureGroup);
         this._armatureGroup.x = 260;
@@ -55,6 +51,15 @@ class ReadyDialog extends PopupWindow {
         }
 
         this.set_label_text(hero);
+    }
+
+    public Init():void{
+        this.star_list = new Array();
+        for(let i:number = 0; i < 6; i++){
+            this.star_list[i] = new egret.Bitmap(RES.getRes("equip_res.star_00"));
+            this.detailGroup.addChild(this.star_list[i]);
+            Common.SetXY(this.star_list[i], 26 + i * 32, 16);
+        }
     }
 
     /**
@@ -121,20 +126,18 @@ class ReadyDialog extends PopupWindow {
         let id = modHero.getIdFromKey(GameData.curHero);
         this.showHero(id);
         let currHero = HeroData.getHeroData(GameData.curHero);
-        this.equipId = currHero.equip;
-        this.equipTypeId = currHero.typeId;
+        let equipId = currHero.equip;
+        let equipTypeId = currHero.typeId;
 
-        if (this.equipId != 0) {
-            let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
-            this.updateEquip(equip);
+        if (equipId != 0) {
+            this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromId(equipId, equipTypeId);
+            this.updateEquip(this.equip_info);
         }
     }
 
     private onTouchEquip(event:egret.TouchEvent):void{
-        if(this.equipId == -1) return;
-
-        let info = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
-        WindowManager.GetInstance().GetWindow("EquipInfoDialog").Show(info, GameData.curHero);
+        if(this.equip_info == null) return;
+        WindowManager.GetInstance().GetWindow("EquipInfoDialog").Show(this.equip_info);
     }
 
     private topBtnListener(event:egret.TouchEvent):void {
@@ -151,14 +154,8 @@ class ReadyDialog extends PopupWindow {
             break;
             case this.btn_battle:
                 this._stopTimer();
-                let groupName:string = ""
-                if (SceneManager.nextScene == "battleScene") {
-                    RES.createGroup("battleGroup", ["battleStage", "battleCommon"], true);
-                    groupName = "battleGroup";
-                }else{
-                    RES.createGroup("pvpGroup", ["battlePVP", "battleCommon"], true);
-                    groupName = "pvpGroup";
-                }
+                let groupName:string = SceneManager.nextScene == "battleScene" ? "battleGroup" : "pvpGroup";
+                RES.createGroup(groupName, SceneManager.nextScene == "battleScene" ? ["battleStage", "battleCommon"] : ["battlePVP", "battleCommon"],true);
                 ResLoadManager.GetInstance().LoadGroup(groupName,()=>{
                      Animations.sceneTransition(()=>{
                         GameLayerManager.gameLayer().sceneLayer.removeChildren();
@@ -189,11 +186,8 @@ class ReadyDialog extends PopupWindow {
                 }
 
                 let pop = WindowManager.GetInstance().GetWindow("ChangeEquipPop");
-                pop.Show(this.equipId, this.equipTypeId);
+                pop.Show(this.equip_info);
                 pop.addEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
-            break;
-            case this.btn_wash:
-                
             break;
             case this.btn_up:
                 this.updateAttr(true);
@@ -239,9 +233,9 @@ class ReadyDialog extends PopupWindow {
         // }
         this.btn_change.visible = true;
         let data = HeroData.list[GameData.curHero];
-        this.equipId = data.equip;
-        this.equipTypeId = data["typeId"] == null ? 0 : data["typeId"];
-        this.btn_change.label = this.equipId != 0 ? "替换" : "装备";
+        let equipId = data.equip;
+        let equipTypeId = data["typeId"] == null ? 0 : data["typeId"];
+        this.btn_change.label = equipId != 0 ? "替换" : "装备";
 
         HeroData.setCurHeroData(GameData.curHero);
     }
@@ -252,26 +246,17 @@ class ReadyDialog extends PopupWindow {
     public updateEquip(equip:any):void{
         if(equip == null) return ;
 
-        this.starGroup.removeChildren();
-        for (let i = 0; i < equip.quality+1; i++) {
-            let img_star:egret.Bitmap = Utils.createBitmap("equip_res.star_00");
-            img_star.x = 36 * i;
-            this.starGroup.addChild(img_star);
+        let tempList:any = equip.GetAttrType();
+        for (let i = 0; i < 6; i++) {
+            let img:any = tempList.length > i ? modEquip.GetEquipColorFromQuality(tempList[i].Quality).img : "equip_res.star_00";
+            this.star_list[i].texture = RES.getRes(img);
+            this.star_list[i].visible = equip.Quality >= i ? true : false;
         }
 
-        let tempList:any = equip.GetAttrType();
-        for (let i = 0; i < tempList.length; i++) {
-            let srcData:any = modEquip.GetEquipColorFromQuality(tempList[i].Quality);
-            let img_affix:egret.Bitmap = Utils.createBitmap(srcData.img);
-            img_affix.x = 36 * i;
-            this.starGroup.addChild(img_affix);
-        }
         this.btn_change.label = "替换";
         this.lab_equipLv.visible = true;
         this.lab_equipLv.text = `等级：${equip.lv}/100`;
         this.img_equip.source = `equip${25-equip.id}_png`;
-        this.equipId = equip.id;
-        this.starGroup.visible = true;
         this.img_equip.visible = true;
         this.updateEquipAttr(equip);
     }
@@ -292,17 +277,14 @@ class ReadyDialog extends PopupWindow {
     public updateUI(event:egret.Event):void {
         event.target.removeEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
 
-        this.equipId = event.data[0];
-        this.equipTypeId = event.data[1];
+        this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromId(event.data[0], event.data[1]);
 
         for (var key in HeroData.list) {
-            HeroData.list[key]["equip"] = this.equipId;
-            HeroData.list[key]["typeId"] = this.equipTypeId;
+            HeroData.list[key]["equip"] = this.equip_info.Id;
+            HeroData.list[key]["typeId"] = this.equip_info.TypeID;
         }
         HeroData.update();
-
-        let equip = modEquip.EquipData.GetInstance().GetEquipFromId(this.equipId, this.equipTypeId);
-        this.updateEquip(equip);
+        this.updateEquip(this.equip_info);
     }
 
     public Show():void{
@@ -444,8 +426,6 @@ class ReadyDialog extends PopupWindow {
     private biographyGroup:eui.Group;
     /**武器信息组 */
     private detailGroup:eui.Group;
-    /**星级组 */
-    private starGroup:eui.Group;
     /**人物骨架组 */
     private _armatureGroup:eui.Group;
     /**叠层 */
@@ -459,8 +439,6 @@ class ReadyDialog extends PopupWindow {
 	/*************************************************/
 
     private _focusBtn:eui.ToggleButton;
-    /**洗练按钮 */
-    private btn_wash:eui.Button;
     /**返回按钮 */
     private btn_back:eui.Button;
     /**出战按钮 */
@@ -512,9 +490,9 @@ class ReadyDialog extends PopupWindow {
     private lab_lv:eui.Label;
     private txt_exp:eui.Label;
     private txt_sole:eui.Label;
-    private equipId:number;
-    private equipTypeId:number;
 
     /** other */
     private hero_sort_list:any;
+    private equip_info:modEquip.EquipInfo;
+    private star_list:Array<egret.Bitmap>;
 }

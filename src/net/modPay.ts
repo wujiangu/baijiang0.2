@@ -18,19 +18,12 @@ module modPay {
         data["sdw_test"] = false;
         if (window["isDebug"]) data["sdw_test"] = true;
         // if (data["wxopenid"] == "") delete data.wxopenid;
-        let send:string = ""
-        for (var key in data) {
-            send += (key+"="+data[key]+"&");
-        }
-        send = send.substr(0, send.length-1);
-        HttpRequest.getInstance().send("POST", "pay", send, (result)=>{
+        HttpRequest.getInstance().send("POST", "pay", data, (result)=>{
             data["gameName"] = "百将斩";
             data["cpOrderId"] = result["order"];
             data["sign"] = result["signature"];
             data["timestamp"] = result["timestamp"];
             data["complete"] = complete;
-            // delete data.call_back_url;
-            // delete data.merchant_url;
             delete data.sdw_test;
             // egret.log("发送平台的数据---->", data);
             window["sdw"].chooseSDWPay(data);
@@ -50,13 +43,8 @@ module modPay {
      * 向服务器发起订单查询结果
      */
     function checkOrder(data:any):void {
-        let send:string = ""
-        for (var key in data) {
-            send += (key+"="+data[key]+"&");
-        }
-        send = send.substr(0, send.length-1);
-        HttpRequest.getInstance().send("GET", "order", send, (result)=>{
-            // egret.log("查询订单---->", result);
+        HttpRequest.getInstance().send("GET", "order", data, (result)=>{
+            egret.log("查询订单---->", result);
             window["sdw"].closeSDWPay();
             //此处客户端更新资源
         }, modPay);

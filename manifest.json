@@ -62,7 +62,7 @@
 		"bin-debug/game/Buff/randomBuffs/Slow.js",
 		"bin-debug/game/Buff/randomBuffs/SpeedUp.js",
 		"bin-debug/game/Buff/randomBuffs/TempShield.js",
-		"bin-debug/game/Buff/randomBuffs/Violent.js",
+		"bin-debug/game/Buff/randomBuffs/violent.js",
 		"bin-debug/game/Buff/randomBuffs/Weak.js",
 		"bin-debug/game/Buff/specialBuffs/Avatar.js",
 		"bin-debug/game/Buff/specialBuffs/BlowUp.js",

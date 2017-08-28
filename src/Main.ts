@@ -165,11 +165,11 @@ class Main extends eui.UILayer {
         this.removeChild(this.bg);
         this.removeChild(this.logo);
         // RES.destroyRes("loading");
-        // modLogin.init();
-        // modLogin.reqLogin(this._onLogin);
+        modLogin.init();
+        modLogin.reqLogin(this._onLogin);
         // this.test();
         // this.addDesktop();
-        LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
+        // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
         // SceneManager.battleScene = new BattleScene();
         // SceneManager.curScene = SceneManager.battleScene;
@@ -186,8 +186,10 @@ class Main extends eui.UILayer {
         SceneManager.enterGameScene = new EnterGameScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
         RES.loadGroup("backstage");
-        LeanCloud.GetInstance().InitData();
+        egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()))
         GameData.isDebug = false;
+        modLogin.sendHeartBeat();
+        // LeanCloud.GetInstance().InitData();
     }
 
     private test():void {
@@ -203,16 +205,37 @@ class Main extends eui.UILayer {
      * 添加桌面测试(只适用移动端)
      */
     private addDesktop():void {
-        let btn:egret.Bitmap = Utils.createBitmap("button_res.btn_draw");
+        let btn:egret.Bitmap = Utils.createBitmap("button_res.btn_reset");
         btn.x = 550;
         btn.y = 300;
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
-            egret.log("添加桌面");
-            window["sdw"].canAddDesktop = true;
-            window["sdw"].addDesktop();
+            // egret.log("添加桌面");
+            // window["sdw"].canAddDesktop = true;
+            // window["sdw"].addDesktop();
         }, this);
         this.addChild(btn);
+    }
+
+    /**
+     * http的使用
+     */
+    private httpUse():void {
+        //获取数据
+        HttpRequest.getInstance().send("GET", "heartbeat", {}, (data)=>{
+
+        }, this);
+
+        //创建和更新数据
+        //例如伤害
+        HttpRequest.getInstance().send("POST", "userinfo", {damage:1000, lv:3}, (data)=>{
+            
+        }, this);
+
+        //删除数据
+        HttpRequest.getInstance().send("DELETE", "equip", {equipId:4}, (data)=>{
+            
+        }, this);
     }
 
     private bg:egret.Bitmap;

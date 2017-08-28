@@ -31,7 +31,7 @@ class EquipInfoDialog extends PopupWindow {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
     }
 
-    public Show(info:modEquip.EquipInfo, name:string = "wu"):void{
+    public Show(info:modEquip.EquipInfo):void{
         super.Show();
 
         this.lab_name.text = TcManager.GetInstance().GetTcEquipData(info.Id).name;

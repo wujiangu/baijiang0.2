@@ -22,20 +22,22 @@ class HttpRequest {
      * @param funcObj: 回调函数的所属对象
      */
     public send(method:string, key:string, params:any, func:Function, funcObj:any):void {
+        let data = Common.getUrlParams(params);
+        // egret.log("参数------->"+key, data);
         let http:Http = ObjectPool.pop("Http");
         http.func = func;
         http.funcObj = funcObj;
         if (key == "login"){
-            http.open(this.urls[key]);
-            http.send(params);
+            http.open(this.urls[key], method);
+            http.send(data);
         }else{
             if (method == "GET"){
-                http.open(this.urls[key]+"?"+params, this.token, true);
+                http.open(this.urls[key]+"?"+data, method, this.token);
                 http.send();
             }else{
-                http.open(this.urls[key], this.token, false);
-                http.send(params);
-                egret.log("http--->"+this.urls[key], "token-->"+this.token, "参数--->"+params);
+                http.open(this.urls[key], method, this.token);
+                http.send(data);
+                // egret.log("http--->"+this.urls[key], "token-->"+this.token, "参数--->"+data);
             }
         }
     }
@@ -56,13 +58,25 @@ class HttpRequest {
     private urls:any = {
         //登陆
         "login":"http://116.62.214.75:5555/userinfo/login",
+        //用户信息
+        "userinfo":"http://116.62.214.75:5555/userinfo",
         // "login":"http://httpbin.org/post",
         //购买支付
         "pay":"http://116.62.214.75:5555/order/signature",
         //订单查询
-        "order":"",
+        "order":"http://116.62.214.75:5555/order/callback",
         //心跳
         "heartbeat":"http://116.62.214.75:5555/userinfo/heartbeat",
+        //排行榜
+        "rank":"http://116.62.214.75:5555/rank",
+        //英雄
+        "hero":"http://116.62.214.75:5555/hero",
+        //天赋
+        "talent":"http://116.62.214.75:5555/talent",
+        //装备
+        "equip":"http://116.62.214.75:5555/equip",
+        //邮件
+        "email":"http://116.62.214.75:5555/email",
     }
     /**token值 */
     private token:string;
@@ -88,14 +102,14 @@ class HttpRequest {
 //         }else{
 //             this.httpRequest.open(url, egret.HttpMethod.POST);
 //         }
-//         //设置响应头
-//         this.httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//         //设置token的值
+//        //设置token的值
 //         if (token){
 //             // let temp = "Bearer " + window.btoa(token);
-//             egret.log("添加token请求tou", token, typeof(token));
-//             this.httpRequest.setRequestHeader("Authorization-token", token);   
+//             // egret.log("添加token请/求tou", token, typeof(token));
+//             this.httpRequest.setRequestHeader("Authentication-token", token);   
 //         }
+//         //设置响应头
+//         this.httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 //         //加载完成，通过事件的respond属性获取返回的信息
 //         this.httpRequest.addEventListener(egret.Event.COMPLETE, this.onPostComplete, this);
 //         //加载失败
@@ -159,16 +173,15 @@ class HttpRequest {
 //     /**回调函数 */
 //     public func:Function;
 //     public funcObj:any;
-//     /**url */
-//     // private url:string = "http://httpbin.org/post";
-//     // private url:string = "http://116.62.214.75:5555/userinfo";
 //     /**http请求 */
 //     private httpRequest:egret.HttpRequest;
 // }
+
 class Http {
     public constructor(){
         this.httpRequest = new XMLHttpRequest();
         this.httpRequest.responseType = "text";
+        this.httpRequest.addEventListener("readystatechange", this.callBack.bind(this));
     }
 
     public send(params:any = null):void {
@@ -176,23 +189,21 @@ class Http {
         this.httpRequest.send(params);
     }
 
-    /**打开一个http请求 */
-    public open(url:string, token:string = null, isGET:boolean = false):void {
-        if (isGET){
-            this.httpRequest.open("GET", url);
-        }else{
-            this.httpRequest.open("POST", url);
-        }
+    /**
+     * 打开一个http请求
+     * @param url url路径
+     * @param token 用于服务端验证的token值
+     * @param method 请求方法(POST, GET, DELETE)
+     */
+    public open(url:string, method:string, token:string = null):void {
+        this.httpRequest.open(method, url);
         //设置token的值
         if (token){
-            egret.log("添加token请求tou", token, typeof(token));
+            // egret.log("添加token请求tou", token, typeof(token));
             this.httpRequest.setRequestHeader("Authentication-token", token);   
         }
         //设置响应头
         this.httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        this.httpRequest.addEventListener("readystatechange",()=>{
-            this.callBack();
-        });
     }
 
     //网络回调
@@ -205,11 +216,9 @@ class Http {
     //请求加载完成
     private onPostComplete():void {
         let request = this.httpRequest.responseText;
-        // egret.log("请求完成---->", request)
+        ObjectPool.push(this);
         let data = JSON.parse(request);
         this.func.call(this.funcObj, data);
-        egret.log("所有请求头---->", this.httpRequest.getAllResponseHeaders());
-        ObjectPool.push(this);
     }
 
     //请求失败
