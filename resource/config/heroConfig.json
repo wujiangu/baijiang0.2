@@ -1,9 +1,9 @@
 {
     "diaochan":{
-        "attr":[5,3,10,1,1,40,150,0],
+        "attr":[],
         "id":1,
         "exp":0,
-        "lv":90,
+        "lv":1,
         "equip":0,
         "typeId":0,
         "skill":"Imprisoned",
