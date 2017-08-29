@@ -142,10 +142,22 @@ namespace Common {
     };
 
     /**
+     * json格式转换为url参数字符串(不完全转化)
+     */
+    function parseParamIncomplete(param):string {
+        var str: string = "";
+        for (var key in param) {
+            str += (key + "=" + param[key] + "&");
+        }
+        return str;
+    }
+
+
+    /**
      * 获取url参数
      */
     export function getUrlParams(data:any):string {
-        let str = parseParam(data);
+        let str = parseParamIncomplete(data);
         return str.substr(0, str.length-1);
     }
 
