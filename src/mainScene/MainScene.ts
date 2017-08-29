@@ -169,9 +169,9 @@ class MainScene extends Base {
     }
 
     private showSignDialog():void{
-        if(UserDataInfo.GetInstance().GetBasicData("isSign")) return;
+        // if(UserDataInfo.GetInstance().GetBasicData("isSign")) return;
 
-        WindowManager.GetInstance().GetWindow("SignDialog").Show();
+        // WindowManager.GetInstance().GetWindow("SignDialog").Show();
     }
 
     public show_label_text():void{

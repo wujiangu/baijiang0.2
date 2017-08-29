@@ -158,17 +158,16 @@ class BattleFailPop extends PopupWindow {
                 break;
             }
         }
+        let addCount:number = 0;
         if (upLv > level){
             this._isUp = true;
             this.img_power.visible = true;
             this.lab_power.visible = true;
             let count:number = upLv - level;
-            let addCount:number = 0;
             for (let i = 0; i < count; i++) {
                 addCount += ConfigManager.tcPower[level+i-1].power;
             }
             this.lab_power.text = addCount.toString();
-            UserDataInfo.GetInstance().SetBasicData("power", UserDataInfo.GetInstance().GetBasicData("power")+addCount);
             HeroData.setHeroAttr(GameData.curHero, upLv);
         }
         this.lab_lv.text = `lv.${upLv.toString()}`;
@@ -177,6 +176,14 @@ class BattleFailPop extends PopupWindow {
         // this.img_exp.scaleX = upExp/tcHeroUp[upLv-1].exp;
         data["lv"] = upLv;
         data["exp"] = upExp;
+        let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + modBattle.getExp();
+        let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + modBattle.getSoul();
+        let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;
+        UserDataInfo.GetInstance().SetBasicData("exp", source_exp);
+        UserDataInfo.GetInstance().SetBasicData("soul", source_soul);
+        UserDataInfo.GetInstance().SetBasicData("power", source_power);
+        SceneManager.mainScene.show_label_text();
+        UserDataInfo.GetInstance().updata({exp:source_exp, soul:source_soul, power:source_power});
         if (isExit) this.rewardWindow();
     }
 

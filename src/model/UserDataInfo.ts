@@ -13,26 +13,28 @@ class UserDataInfo{
     }
 
     public SaveData(data:any):void{
-        this._userInfo = data;
+        this.basicData = data;
     }
 
     public getUserInfo():any {
-        return this._userInfo;
+        return this.basicData;
     }
 
     public SetBasicData(name:string, val:any, isSave:boolean = true):void{
-        if(val == null){
-            if(name == "diamond" || name == "exp" || name == "soul" || name == "power" || name == "sign" || name == "recharge") val = 0;
-            else if(name == "email") val = [];
-            else if(name == "isSign") val = false;
-        }
-
         this.basicData[name] = val;
-        if(isSave) LeanCloud.GetInstance().SaveRoleBasicData();
     }
 
     public GetBasicData(name:string):any{
         return this.basicData[name];
+    }
+
+    /**
+     * 更新服务端的用户数据
+     */
+    public updata(data:any, func:Function = null, objFunc:any = null):void {
+        HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
+            if (func && objFunc) func.call(objFunc)
+        }, this)
     }
 
     /** 判断是否有足够的物品
@@ -93,7 +95,6 @@ class UserDataInfo{
     }
 
     /**用户数据 */
-    private _userInfo:any;
     private basicData:any;
     private login_time_list:Array<number>;
 }

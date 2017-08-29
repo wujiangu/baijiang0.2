@@ -33,9 +33,12 @@ namespace modTalent {
     /**玩家天赋页数据 */
     var talentPage:Array<any> = new Array();
     /**服务端获得数据 */
-    export function initData(data:Array<any>):void {
-        Common.log(data);
-        talentPage = data;
+    export function initData(data:Array<any>=null):void {
+        HttpRequest.getInstance().send("GET", "talent", {}, (result)=>{
+            // egret.log("天赋---->", result);
+            talentPage = result.talent;
+        }, modTalent)
+        // talentPage = data;
     }
     /**获取玩家天赋 */
     export function getTalentData():Array<any> {
@@ -184,7 +187,15 @@ namespace modTalent {
         }
         if (!isExist) talentPage[curPage].talent.push([talentId, 1]);
         curTalent.count ++;
-        LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
+
+        let data:any = {};
+        data["talentPage"] = talentPage[curPage].talentPage;
+        data["talent"] = talentPage[curPage].talent;
+        data["count"] = talentPage[curPage].count;
+
+        egret.log("当前页天赋---->", curPage, data, talentPage[curPage]);
+        HttpRequest.getInstance().send("POST", "talent", data);
+        // LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
         setUnlock(curPage);
     }
 

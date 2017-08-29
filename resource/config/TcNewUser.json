@@ -1,0 +1,21 @@
+{
+    "user":{
+        "lv":1,
+        "exp":0,
+        "soul":0,
+        "power":0,
+        "diamond":0,
+        "lucky":0,
+        "curTalentPage":1,
+        "stage":1,
+        "revivalCount":0,
+        "sportCount":0,
+        "damage":0
+    },
+    "hero":{
+        "heroId":2,
+        "equipId":0,
+        "lv":1,
+        "exp":0
+    }
+}

@@ -236,6 +236,10 @@ class TalentDialog extends PopupWindow {
 
         this.show_lab_text();
 
+        let power:number = UserDataInfo.GetInstance().GetBasicData("power");
+        let diamond:number = UserDataInfo.GetInstance().GetBasicData("diamond");
+        UserDataInfo.GetInstance().updata({power:power, diamond:diamond});
+
         this.allLv++;
         this.curLevel ++;
         this.lab_lv.text = `${this.curLevel}/${this._curMaxLv}`;

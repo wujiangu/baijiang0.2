@@ -10,6 +10,7 @@ namespace modLogin {
         userBase = {};
         saveBaseData();
         heartTimer = new egret.Timer(15000, 0);
+        newUserData = RES.getRes("TcNewUser_json");
     }
 
     /**
@@ -18,8 +19,8 @@ namespace modLogin {
     export function reqLogin(onSuccess:Function = null, onFail:Function = null):void {
         HttpRequest.getInstance().send("POST", "login", userBase, (data)=>{
             HttpRequest.getInstance().setToken(data.token);
-            // getUserDataFromSever(onSuccess);
-            modPay.preOrder({amount:1, subject:"钻石", memo:"111111"});
+            getUserDataFromSever(onSuccess);
+            // modPay.preOrder({amount:1, subject:"钻石", memo:"111111"});
         }, modLogin);
     }
 
@@ -41,11 +42,14 @@ namespace modLogin {
      */
     function getUserDataFromSever(callBack:Function):void {
         HttpRequest.getInstance().send("GET", "userinfo", {}, (data)=>{
-            egret.log("用户信息----->", JSON.stringify(data));
-            if (Object.keys(data.userInfo).length == 0) {
+            // egret.log("用户信息----->", JSON.stringify(data));
+            // if (Object.keys(data.userInfo).length == 0) {
+            if (data.userInfo.roleName == null) {
                 //新用户
                 newUserHandler(callBack);
             }else{
+                data.userInfo["loginTime"] = new Date().getTime();
+                data.userInfo["isNew"] = false;
                 UserDataInfo.GetInstance().SaveData(data.userInfo);
                 if (callBack) callBack();
             }
@@ -56,30 +60,34 @@ namespace modLogin {
      * 新用户处理
      */
     function newUserHandler(callBack:Function):void {
-        let data:any = {};
+        let data:any = newUserData.user;
         data["roleName"] = (userBase.nick) ? userBase.nick:userBase.uid
         data["roleSex"] = (userBase.sex) ? userBase.sex:1;
-        data["lv"] = 1;
-        data["exp"] = 0;
-        data["soul"] = 0;
-        data["power"] = 0;
-        data["diamond"] = 0;
-        data["lucky"] = 0;
-        data["curTalentPage"] = 0;
-        data["stage"] = 1;
-        //复活次数
-        data["revivalCount"] = 0;
-        //挑战次数
-        data["sportCount"] = 0;
-        //竞技场伤害
-        data["damage"] = 0;
-
+        //本次登陆注册的时间
+        data["loginTime"] = new Date().getTime();
+        //新用户标志
+        data["isNew"] = true;
         //这里存储数据到本地
         UserDataInfo.GetInstance().SaveData(data);
-
+        delete data.isNew;
         HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
-            egret.log("创建新用户成功---->", result)
+            // egret.log("创建新用户成功---->", result);
+            initNewUserData(callBack);
+        }, modLogin)
+    }
+
+    /**
+     * 初始化新用户的数据(包括英雄，装备，天赋等)
+     */
+    function initNewUserData(callBack:Function):void {
+        let data:any = newUserData.hero;
+        // egret.log("传输数据---->", JSON.stringify(data));
+        HttpRequest.getInstance().send("POST", "hero", data, (result)=>{
+            // egret.log("新用户英雄数据创建成功--->", result);
             if (callBack) callBack();
+        }, modLogin);
+        HttpRequest.getInstance().send("POST", "talent", {talentPage:1,talent:[],count:1}, (result)=>{
+            // egret.log("新用户天赋数据创建成功--->", result);
         }, modLogin)
     }
 
@@ -172,6 +180,7 @@ namespace modLogin {
         iframeData = arr;
     }
 
+    var newUserData:any;
     var iframeData:Array<string>;
     var userBase:any;
     var heartTimer:egret.Timer;

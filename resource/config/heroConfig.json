@@ -1,29 +1,31 @@
 {
     "diaochan":{
         "attr":[],
-        "id":1,
+        "heroId":1,
         "exp":0,
         "lv":1,
-        "equip":0,
+        "equipId":0,
         "typeId":0,
         "skill":"Imprisoned",
         "buff":[4, 6]
     },
     "buxiaoman":{
         "attr":[],
-        "id":2,
+        "heroId":2,
         "exp":0,
         "lv":1,
-        "equip":0,
+        "equipId":0,
+        "typeId":0,
         "skill":"Bristle",
         "buff":[5, 9]
     },
     "zhaoyun":{
         "attr":[],
-        "id":3,
+        "heroId":3,
         "exp":0,
         "lv":1,
-        "equip":10,
+        "equipId":0,
+        "typeId":0,
         "skill":"SevenInOut",
         "buff":[7, 8]
     }

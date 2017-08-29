@@ -3,7 +3,7 @@
  */
 class HttpRequest {
     public constructor() {
-        
+        this._reqQueue = new Array();
     }
 
     public static getInstance() {
@@ -14,6 +14,13 @@ class HttpRequest {
     }
 
     /**
+     * 加入到请求队列
+     */
+    public addQueue(req:any):void {
+        this._reqQueue.push(req);
+    }
+
+    /**
      * 发送http请求
      * @param method: 网络请求方法 ("GET":GET方式, "POST":POST方式)
      * @param key: 具体的请求
@@ -21,7 +28,7 @@ class HttpRequest {
      * @param func: 请求成功或失败的回调
      * @param funcObj: 回调函数的所属对象
      */
-    public send(method:string, key:string, params:any, func:Function, funcObj:any):void {
+    public send(method:string, key:string, params:any, func:Function=null, funcObj:any=null):void {
         let data = Common.getUrlParams(params);
         // egret.log("参数------->"+key, data);
         let http:Http = ObjectPool.pop("Http");
@@ -29,17 +36,10 @@ class HttpRequest {
         http.funcObj = funcObj;
         if (key == "login"){
             http.open(this.urls[key], method);
-            http.send(data);
         }else{
-            if (method == "GET"){
-                http.open(this.urls[key]+"?"+data, method, this.token);
-                http.send();
-            }else{
-                http.open(this.urls[key], method, this.token);
-                http.send(data);
-                // egret.log("http--->"+this.urls[key], "token-->"+this.token, "参数--->"+data);
-            }
+            http.open(this.urls[key], method, this.token);
         }
+        http.send(data);
     }
 
     /**
@@ -80,6 +80,8 @@ class HttpRequest {
     }
     /**token值 */
     private token:string;
+    /**请求队列 */
+    private _reqQueue:Array<any>;
 }
 
 // class Http {
@@ -218,7 +220,7 @@ class Http {
         let request = this.httpRequest.responseText;
         ObjectPool.push(this);
         let data = JSON.parse(request);
-        this.func.call(this.funcObj, data);
+        if (this.func && this.funcObj) this.func.call(this.funcObj, data);
     }
 
     //请求失败

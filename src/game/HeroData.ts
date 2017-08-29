@@ -6,9 +6,24 @@ class HeroData {
     /**
      * 从服务器获取数据
      */
-    public static initData(hero:any):void {
-        HeroData.list = hero;
-        HeroData.addHeroAttr();
+    public static initData(hero:any=null):void {
+        //获取英雄列表
+        HttpRequest.getInstance().send("GET", "hero", {}, (result)=>{
+            for (let i = 0; i < result.hero.length; i++) {
+                let hero:any = result.hero[i];
+                for (let name in ConfigManager.heroConfig) {
+                    let curHeroConf = ConfigManager.heroConfig[name];
+                    if (hero.heroId == curHeroConf.heroId) {
+                        HeroData.list[name] = hero;
+                        HeroData.list[name]["buff"] = Utils.cloneObj(curHeroConf.buff);
+                        HeroData.list[name]["skill"] = curHeroConf.skill;
+                        break;
+                    }
+                }
+            }
+            HeroData.addHeroAttr();
+            // egret.log("英雄列表信息--->", JSON.stringify(HeroData.list))
+        }, this);
     }
 
     public static addHeroAttr():void {
@@ -61,7 +76,7 @@ class HeroData {
         let hero = data[name];
         HeroData.list[name] = hero;
         HeroData.list[name]["lv"] = 1; 
-        if (currentHero.equip != 0) HeroData.list[name]["equip"] = currentHero.equip;
+        if (currentHero.equipId != 0) HeroData.list[name]["equipId"] = currentHero.equipId;
         this.update();
     }
 
@@ -69,7 +84,7 @@ class HeroData {
     public static AddHero(name:string):void{
         let hero = ConfigManager.heroConfig[name];
         HeroData.list[name] = hero;
-        HeroData.list[name]["equip"] = HeroData.getHeroData(GameData.curHero).equip;
+        HeroData.list[name]["equipId"] = HeroData.getHeroData(GameData.curHero).equipId;
         HeroData.list[name]["typeId"] = HeroData.getHeroData(GameData.curHero).typeId;
         this.update();
     }
@@ -96,11 +111,11 @@ class HeroData {
      * 更新英雄的数据
      */
     public static update():void{
-        if (HeroData.list) LeanCloud.GetInstance().SaveRoleData("hero", HeroData.list);
+        // if (HeroData.list) LeanCloud.GetInstance().SaveRoleData("hero", HeroData.list);
     }
 
     /**数据表 */
-    public static list:any;
+    public static list:any = {};
     /**当前英雄数据 */
     private static _curHeroData:any;
 }

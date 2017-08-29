@@ -35,7 +35,7 @@ namespace modHero {
     export function getIdFromKey(name:string):number {
         let id:number = 1;
         let data = HeroData.getHeroData(name);
-        id = data.id;
+        id = data.heroId;
         return id;
     }
 

@@ -36,7 +36,7 @@ class Hero extends Alliance {
 
     public init(data:Array<any>, isPVP:boolean=false) {
         super.init(data);
-        let attr = modHero.addEquipAttr(data);      //test
+        // let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.originHP = this.attr.hp;

@@ -6,4 +6,10 @@ class Base extends eui.Component{
     public constructor() {
         super();
     }
+
+    /**初始话游戏数据 */
+    public initGameData():void {
+        HeroData.initData();
+        modTalent.initData();
+    }
 }
