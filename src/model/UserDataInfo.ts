@@ -1,6 +1,5 @@
 class UserDataInfo{
     public constructor(){
-        this.basicData = {};
         this.login_time_list = new Array();
     }
 
@@ -13,28 +12,28 @@ class UserDataInfo{
     }
 
     public SaveData(data:any):void{
-        this.basicData = data;
+        this.userData = data;
     }
 
     public getUserInfo():any {
-        return this.basicData;
+        return this.userData;
     }
 
-    public SetBasicData(name:string, val:any, isSave:boolean = true):void{
-        this.basicData[name] = val;
+    public SetBasicData(data:any):void{
+        for(let key in data){
+            this.userData[key] = data[key];
+        }
+        this.ReqUpdateData(data);
+    }
+
+    public DealUserData(name:string, val:number):void{
+        let tempData = {}
+        tempData[name] = val;
+        this.SetBasicData(tempData);
     }
 
     public GetBasicData(name:string):any{
-        return this.basicData[name];
-    }
-
-    /**
-     * 更新服务端的用户数据
-     */
-    public updata(data:any, func:Function = null, objFunc:any = null):void {
-        HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
-            if (func && objFunc) func.call(objFunc)
-        }, this)
+        return this.userData[name];
     }
 
     /** 判断是否有足够的物品
@@ -43,8 +42,8 @@ class UserDataInfo{
      * @param func 回调函数
      */
     public IsHaveGoods(name:string, needNum:number):boolean{
-        if(this.basicData[name] >= needNum){
-            this.SetBasicData(name, this.basicData[name] - needNum);
+        if(this.userData[name] >= needNum){
+            this.DealUserData(name, this.userData[name] - needNum);
             return true;
         }
         return false;
@@ -52,28 +51,33 @@ class UserDataInfo{
 
     /** 判断是否有足够的物品 两件或者两件以上 */
     public IsHaveOhterGoods(name1:string, need1:number, name2:string, need2:number):boolean{
-        if(this.basicData[name1] >= need1 && this.basicData[name2] >= need2){
-            this.SetBasicData(name1, this.basicData[name1] - need1, false);
-            this.SetBasicData(name2, this.basicData[name2] - need2);
+        if(this.userData[name1] >= need1 && this.userData[name2] >= need2){
+            let tempData = {};
+            tempData[name1] = this.userData[name1] - need1;
+            tempData[name2] = this.userData[name2] - need2;
+            this.SetBasicData(tempData);
             return true;
         }
         return false;
     }
 
+    private ReqUpdateData(data):void{
+        HttpRequest.getInstance().send("POST", "userinfo",data,()=>{},this);
+    }
+
     /** 移除想要删除的文件根据索引 */
     public RemoveEmailFromIndex(index:number):void{
-        if(index < 0 || index > this.basicData["email"].length) return;
+        if(index < 0 || index > this.userData["email"].length) return;
 
-        for(let i:number = 0; i < this.basicData["email"].length; i++){
+        for(let i:number = 0; i < this.userData["email"].length; i++){
             if(i == index){
-                for(let j:number = i + 1; j < this.basicData["email"].length; j++){
-                    this.basicData["email"][j - 1] = this.basicData["email"][j];
+                for(let j:number = i + 1; j < this.userData["email"].length; j++){
+                    this.userData["email"][j - 1] = this.userData["email"][j];
                 }
                 break;
             }
         }
-        this.basicData["email"].pop();
-        LeanCloud.GetInstance().SaveRoleBasicData();
+        this.userData["email"].pop();
     }
 
     public GetLastLoginTime():any{
@@ -95,6 +99,6 @@ class UserDataInfo{
     }
 
     /**用户数据 */
-    private basicData:any;
+    private userData:any;
     private login_time_list:Array<number>;
 }

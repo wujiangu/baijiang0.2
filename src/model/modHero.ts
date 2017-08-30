@@ -54,13 +54,13 @@ namespace modHero {
     export function addEquipAttr(data:any):any {
         let attr:any;
         let heroConfig = getHeroConfig(data[0]);
-        let equip:number = heroConfig.equip;
+        let equip:number = heroConfig.equipId;
         attr = data[1];
         if (equip == 0) {
             // attr = data[1];
         }else{
             // Common.log("人物属性---->", JSON.stringify(data[1]));
-            let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(equip, 0);
+            let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromEquipId(equip);
             // Common.log("装备信息----->", JSON.stringify(equipInfo));
             let equipAttr = equipInfo.GetEquipAttr();
             attr.hp += Math.ceil(equipAttr[0]);
@@ -105,6 +105,7 @@ namespace modHero {
     }
 
     export function handlerEquipData(equipInfo:modEquip.EquipInfo) {
+        if(equipInfo == null ) return [0, 0, 0, 0, 0, 0];
         let data:Array<number> = new Array();
         let equipAttr = equipInfo.GetEquipAttr();
         let attrType = equipInfo.GetAttrType();

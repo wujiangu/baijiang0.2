@@ -14,7 +14,6 @@ namespace UserData {
     export var Status:number;                  //账号状态
     export var offLineTime:string;             //玩家离线时间
     export var offLineEarning:string;          //玩家离线收益
-    export var rankDamage:number;              //排位伤害
     export var CHANGEDATA:string = "CHANGEDATA";
     export var PURCHASEDATA:string = "PURCHASEDATA";
 }

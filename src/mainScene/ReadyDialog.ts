@@ -30,9 +30,9 @@ class ReadyDialog extends PopupWindow {
     private _createAttr():void {
         let attr = ["生命", "攻击", "护甲", "闪避", "暴击", "攻速"];
         let hero:any = HeroData.getHeroData(GameData.curHero);
-        // let equip:number = hero.equip;
-        // let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromId(equip, 0);
-        // let equipAttr = modHero.handlerEquipData(equipInfo);
+        let equip:number = hero.equipId;
+        let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromEquipId(equip);
+        let equipAttr = modHero.handlerEquipData(equipInfo);
         for (let i = 0; i < attr.length; i++) {
             let leftText  = Common.CreateText(attr[i], 24, 0x858685, true, "Microsoft YaHei");
             this.biographyGroup.addChild(leftText);
@@ -44,22 +44,22 @@ class ReadyDialog extends PopupWindow {
             Common.SetXY(curAttr, leftText.x + leftText.width + 100, leftText.y);
             curAttr.width = 200;
 
-            // this._tempAttr[i] = Common.CreateText("+"+equipAttr[i].toString(), 24, Common.TextColors.green, true, "Microsoft YaHei","right");
-            // this.biographyGroup.addChild(this._tempAttr[i]);
-            // Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
-            // this._tempAttr[i].width = 160;
+            this._tempAttr[i] = Common.CreateText("+"+equipAttr[i].toString(), 24, Common.TextColors.green, true, "Microsoft YaHei","right");
+            this.biographyGroup.addChild(this._tempAttr[i]);
+            Common.SetXY(this._tempAttr[i], this.biographyGroup.width - 200, curAttr.y);
+            this._tempAttr[i].width = 160;
         }
 
         this.set_label_text(hero);
     }
 
     public Init():void{
-        // this.star_list = new Array();
-        // for(let i:number = 0; i < 6; i++){
-        //     this.star_list[i] = new egret.Bitmap(RES.getRes("equip_res.star_00"));
-        //     this.detailGroup.addChild(this.star_list[i]);
-        //     Common.SetXY(this.star_list[i], 26 + i * 32, 16);
-        // }
+        this.star_list = new Array();
+        for(let i:number = 0; i < 6; i++){
+            this.star_list[i] = new egret.Bitmap(RES.getRes("equip_res.star_00"));
+            this.detailGroup.addChild(this.star_list[i]);
+            Common.SetXY(this.star_list[i], 26 + i * 32, 16);
+        }
     }
 
     /**
@@ -125,14 +125,13 @@ class ReadyDialog extends PopupWindow {
     protected childrenCreated(): void{
         let id = modHero.getIdFromKey(GameData.curHero);
         this.showHero(id);
-        // let currHero = HeroData.getHeroData(GameData.curHero);
-        // let equipId = currHero.equip;
-        // let equipTypeId = currHero.typeId;
+        let currHero = HeroData.getHeroData(GameData.curHero);
+        let equipId = currHero.equipId;
 
-        // if (equipId != 0) {
-        //     this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromId(equipId, equipTypeId);
-        //     this.updateEquip(this.equip_info);
-        // }
+        if (equipId != 0) {
+            this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromEquipId(equipId);
+            this.updateEquip(this.equip_info);
+        }
     }
 
     private onTouchEquip(event:egret.TouchEvent):void{
@@ -180,14 +179,14 @@ class ReadyDialog extends PopupWindow {
                 })
             break;
             case this.btn_change:
-                // if (modEquip.EquipData.GetInstance().GetEquipNum() == 0) {
-                //     Animations.showTips("没有可以更换的武器", 1, true);
-                //     return;
-                // }
+                if (modEquip.EquipData.GetInstance().GetEquipNum() == 0) {
+                    Animations.showTips("没有可以更换的武器", 1, true);
+                    return;
+                }
 
-                // let pop = WindowManager.GetInstance().GetWindow("ChangeEquipPop");
-                // pop.Show(this.equip_info);
-                // pop.addEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
+                let pop = WindowManager.GetInstance().GetWindow("ChangeEquipPop");
+                pop.Show(this.equip_info);
+                pop.addEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
             break;
             case this.btn_up:
                 this.updateAttr(true);
@@ -227,11 +226,10 @@ class ReadyDialog extends PopupWindow {
             }
         }
         //武器
-        // this.btn_change.visible = true;
-        // let data = HeroData.list[GameData.curHero];
-        // let equipId = data.equip;
-        // let equipTypeId = data["typeId"] == null ? 0 : data["typeId"];
-        // this.btn_change.label = equipId != 0 ? "替换" : "装备";
+        this.btn_change.visible = true;
+        let data = HeroData.list[GameData.curHero];
+        let equipId = data.equip;
+        this.btn_change.label = equipId != 0 ? "替换" : "装备";
 
         HeroData.setCurHeroData(GameData.curHero);
     }
@@ -273,14 +271,17 @@ class ReadyDialog extends PopupWindow {
     public updateUI(event:egret.Event):void {
         event.target.removeEventListener(modEquip.EquipSource.CHANGEEQUIP, this.updateUI, this);
 
-        this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromId(event.data[0], event.data[1]);
+        this.equip_info = modEquip.EquipData.GetInstance().GetEquipFromEquipId(event.data);
 
         for (var key in HeroData.list) {
-            HeroData.list[key]["equip"] = this.equip_info.Id;
-            HeroData.list[key]["typeId"] = this.equip_info.TypeID;
+            HeroData.list[key]["equipId"] = this.equip_info.EquipId;
+            let heroId = HeroData.list[key].heroId;
+            let equipId = this.equip_info.EquipId;
+            HttpRequest.getInstance().send("POST", "hero", {heroId:heroId, equipId:equipId})
         }
         HeroData.update();
         this.updateEquip(this.equip_info);
+        
     }
 
     public Show():void{
@@ -289,6 +290,9 @@ class ReadyDialog extends PopupWindow {
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
         this.lab_diamond.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
         this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));
+
+        let currHeor = HeroData.getHeroData(GameData.curHero)
+        if(currHeor.equipId == 0) for(let star of this.star_list) star.visible = false;
     }
 
     /**

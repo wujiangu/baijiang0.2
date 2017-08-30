@@ -28,17 +28,24 @@ class HeroData {
 
     public static addHeroAttr():void {
         for (let key in HeroData.list) {
-            HeroData.list[key].attr = [];
-            let data = ConfigManager[`${key}Attr`];
-            let level:number = HeroData.list[key].lv;
-            let attr = Utils.cloneObj(data[level - 1]);
-            HeroData.list[key].attr.push(attr["hp"]);
-            HeroData.list[key].attr.push(attr["atk"]);
-            HeroData.list[key].attr.push(attr["def"]);
-            HeroData.list[key].attr.push(attr["avo"]);
-            HeroData.list[key].attr.push(attr["crt"]);
-            HeroData.list[key].attr.push(attr["wsp"]);
+            HeroData.addSingleHeroAttr(key);
         }
+    }
+
+    /**
+     * 加入单个英雄属性
+     */
+    public static addSingleHeroAttr(name:string):void {
+            HeroData.list[name].attr = [];
+            let data = ConfigManager[`${name}Attr`];
+            let level:number = HeroData.list[name].lv;
+            let attr = Utils.cloneObj(data[level - 1]);
+            HeroData.list[name].attr.push(attr["hp"]);
+            HeroData.list[name].attr.push(attr["atk"]);
+            HeroData.list[name].attr.push(attr["def"]);
+            HeroData.list[name].attr.push(attr["avo"]);
+            HeroData.list[name].attr.push(attr["crt"]);
+            HeroData.list[name].attr.push(attr["wsp"]);
     }
 
     /**
@@ -60,7 +67,7 @@ class HeroData {
      */
     public static getHeroData(name:string) {
         let data:any;
-        if (!HeroData.list){
+        if (Object.keys(HeroData.list).length == 0){
             data = ConfigManager.heroConfig[name];
         }else{
             data = HeroData.list[name];
@@ -71,12 +78,18 @@ class HeroData {
     /**
      * 添加新的英雄
      */
-    public static addHeroData(name:string, data:any) {
+    public static addHeroData(name:string) {
         let currentHero = HeroData.getHeroData(GameData.curHero);
-        let hero = data[name];
-        HeroData.list[name] = hero;
-        HeroData.list[name]["lv"] = 1; 
+        let hero = ConfigManager.heroConfig[name];
+        HeroData.list[name] = Utils.cloneObj(hero);
         if (currentHero.equipId != 0) HeroData.list[name]["equipId"] = currentHero.equipId;
+        let data:any = {};
+        data["heroId"] = HeroData.list[name].heroId;
+        data["equipId"] = HeroData.list[name].equipId;
+        data["exp"] = HeroData.list[name].exp;
+        data["lv"] = HeroData.list[name].lv;
+        HttpRequest.getInstance().send("POST", "hero", data);
+        HeroData.addSingleHeroAttr(name);
         this.update();
     }
 
@@ -85,7 +98,6 @@ class HeroData {
         let hero = ConfigManager.heroConfig[name];
         HeroData.list[name] = hero;
         HeroData.list[name]["equipId"] = HeroData.getHeroData(GameData.curHero).equipId;
-        HeroData.list[name]["typeId"] = HeroData.getHeroData(GameData.curHero).typeId;
         this.update();
     }
 

@@ -22,7 +22,6 @@ class RankData{
                 }
                 this.data_list[i]["damage"] = damage;
                 this.data_list[i]["name"] = damage + "";
-                LeanCloud.GetInstance().SaveRankData();
                 return true;
             }
         }
@@ -31,14 +30,13 @@ class RankData{
 
     public InsertData(damage:number):void{
        UserData.RoleName = "" + damage;
-       UserData.rankDamage = damage;
+       this.damage = damage;
        if(!this.isHighDamage(damage)){
            if(this.data_list.length < 100){
                 let len = this.data_list.length;
                 this.data_list[len] = {};
                 this.data_list[len]["name"] = "" + damage;
                 this.data_list[len]["damage"] = damage;
-                LeanCloud.GetInstance().SaveRankData();
            }
        }
     }
@@ -58,11 +56,11 @@ class RankData{
     }
 
     public FindDataFromId():any{
-        for(let i:number = 0; i < this.data_list.length; i++){
-            if(this.data_list[i]["ObjectId"] == LeanCloud.ObjectId){
-                return {index:(i + 1), data:this.data_list[i]};
-            }
-        }
+        // for(let i:number = 0; i < this.data_list.length; i++){
+        //     if(this.data_list[i]["ObjectId"] == LeanCloud.ObjectId){
+        //         return {index:(i + 1), data:this.data_list[i]};
+        //     }
+        // }
         return null;
     }
 
@@ -86,6 +84,15 @@ class RankData{
         return this.challengeNum;
     }
 
+    public set Damage(val:number){
+        this.damage = val;
+    }
+
+    public get Damage(){
+        return this.damage;
+    }
+
     private data_list:any;
     private challengeNum:number;
+    private damage:number;
 }

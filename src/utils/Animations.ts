@@ -329,8 +329,8 @@ namespace Animations {
                 egret.Tween.removeTweens(group);
                 egret.Tween.removeTweens(btn_Jump);
                 GameLayerManager.gameLayer().maskLayer.removeChildren();
-                let cards = SceneManager.mainScene.shopDialog.getCards();
-                SceneManager.mainScene.shopDialog.createEquipPop(cards, "ten");
+                let cards = ShopDialog.instance.getCards();
+                ShopDialog.instance.createEquipPop(cards, "ten");
             }, this);
         }
         //添加播放完成事件

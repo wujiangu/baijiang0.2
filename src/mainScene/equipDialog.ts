@@ -66,6 +66,7 @@ class EquipDialog extends PopupWindow {
             this.lab_lv.text = "";
             this.lab_name.text = "";
             this.img_weapon.source = "";
+            for(let i in this.star_list) this.star_list[i].visible = false;
         } 
     }
 
@@ -312,7 +313,7 @@ class EquipDialog extends PopupWindow {
 
             //判断当前选择的物品再哪里 因为是重新创建所以要做一个判断
              if(this.equip_info){
-                if(this.equip_info.Id == equip_list[i].Id && this.equip_info.TypeID == equip_list[i].TypeID){
+                if(this.equip_info.EquipId == equip_list[i].EquipId){
                     this.goods_index = i;
                     Common.SetXY(this.imgClick, this.equip_object_list[i].x, this.equip_object_list[i].y);
                 }

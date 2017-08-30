@@ -30,7 +30,7 @@ class HttpRequest {
      */
     public send(method:string, key:string, params:any, func:Function=null, funcObj:any=null):void {
         let data = Common.getUrlParams(params);
-        egret.log("参数------->"+key, data);
+        // egret.log("参数------->"+key, data);
         let http:Http = ObjectPool.pop("Http");
         http.func = func;
         http.funcObj = funcObj;

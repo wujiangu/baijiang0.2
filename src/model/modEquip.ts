@@ -70,12 +70,12 @@ namespace modEquip {
     /** 装备信息 */
    export class EquipInfo{
 
-       public constructor(id:number, star:number, quality:number, lv:number = 1){
+       public constructor(id:number, star:number, quality:number, lv:number = 1,equipId:number = modEquip.getRandEquipId()){
            this.id   = id;
            this.star = star;
            this.quality = quality;
            this.lv   = lv;
-           this.typeID = 0;
+           this.equipId = equipId;
            this.type_list = new Array();
            this.attr_list = new Array();
            this.origin_attr_list = new Array();
@@ -83,9 +83,17 @@ namespace modEquip {
            let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(quality);
            for(let i:number = 0; i < 4; i++){
                this.origin_attr_list[i] = tempData.init[i];
-               this.attr_list[i] = GetEquipUpAttr(this, 1, i);
+               this.attr_list[i] = GetEquipUpAttr(this, lv, i);
             }
        }
+
+        public set EquipId(val:number){
+            this.equipId = val;
+        }
+
+        public get EquipId(){
+            return this.equipId;
+        }
 
         public set Id(val:number){
             this.id = val;
@@ -107,24 +115,16 @@ namespace modEquip {
             this.star = val;
         }
 
-        public get Star(){
-            return this.star;
+        public set Quality(val:number){
+            this.quality = val;
         }
 
         public get Quality(){
             return this.quality;
         }
 
-        public set Quality(val:number){
-            this.quality = val;
-        }
-
-        public set TypeID(val:number){
-            this.typeID = val;
-        }
-
-        public get TypeID(){
-            return this.typeID;
+        public get Star(){
+            return this.star;
         }
 
         public InsertAttrType(attrType:AttrType):void{
@@ -147,6 +147,7 @@ namespace modEquip {
             this.type_list[index].Type  = type;
             this.type_list[index].Value = value;
             this.type_list[index].Quality = quality;
+            this.UpdateData();
         }
 
         public GetAttrType():any{
@@ -162,12 +163,6 @@ namespace modEquip {
             return this.attr_list;
         }
 
-        public SetEquipAttr(attrList:Array<number>):void{
-            for(let i:number = 0; i < 4; i++){
-                this.attr_list[i] = attrList[i];
-            }
-        }
-
         public GetOriginAttr():any{
             return this.origin_attr_list;
         }
@@ -179,11 +174,15 @@ namespace modEquip {
             }
         }
 
+        public UpdateData():void{
+            modEquip.ReqInsertAndUpEquip(this);
+        }
+
+        private equipId:number;                 //装备索引id
         private id:number;                      //装备id
         private lv:number;                      //装备等级
         private star:number;                    //装备星级
         private quality:number;                 //装备的品质
-        private typeID:number;                  //装备的类型id 主要是区别id一样的时候不同的typeid
         private attr_list:Array<number>;        //[1]生命[2]护甲[3]攻击[4]暴击[5]闪避
         private origin_attr_list:Array<number>;    //源氏的数据列表
         private type_list:Array<AttrType>;       //属性类型
@@ -193,9 +192,6 @@ namespace modEquip {
    export class EquipData{
         public constructor(){
             this.equip_list = [];
-            this.id_list = [];
-            this.lucky = 0;
-            for(let i:number = 1; i <= 24; i++) this.id_list[i] = 0;
         }
 
         public static instance:EquipData;
@@ -207,11 +203,10 @@ namespace modEquip {
             return this.instance;
         }
 
-        public Add(val:EquipInfo, type:number = 0):void{
-            val.TypeID = this.id_list[val.Id]++;
+        public Add(val:EquipInfo, isSave:boolean = true):void{
             this.equip_list.push(val);
             this.listSort();
-            if(type == 1) LeanCloud.GetInstance().SaveEquipData();
+            if(isSave) modEquip.ReqInsertAndUpEquip(val);
         }
 
         public Pop():void{
@@ -233,12 +228,11 @@ namespace modEquip {
             return this.equip_list[index];
         }
 
-        /** 根据指定的id获得武器 */
-        public GetEquipFromId(id:number, typeId:number):EquipInfo{
+        /** get equip from equipId */
+        public GetEquipFromEquipId(equipId:number):EquipInfo{
             for(let i in this.equip_list){
-                if(this.equip_list[i].Id == id && typeId == this.equip_list[i].TypeID) return this.equip_list[i];
+                if(this.equip_list[i].EquipId == equipId) return this.equip_list[i];
             }
-
             return null;
         }
 
@@ -249,11 +243,10 @@ namespace modEquip {
                 let attrType = new AttrType(equipInfo.affix[i].type, equipInfo.affix[i].value, 0);
                 info.InsertAttrType(attrType);
             }
-            info.TypeID = this.id_list[info.Id]++;
 
             this.equip_list.push(info);
             this.listSort();
-            LeanCloud.GetInstance().SaveEquipData();
+            modEquip.ReqInsertAndUpEquip(info);
         }
 
         public InsertEquipList(list:any):void{
@@ -263,13 +256,12 @@ namespace modEquip {
                 let info = new EquipInfo(i, 0, TcManager.GetInstance().GetTcEquipData(i).grade);
                 this.Add(info);
             }
-            LeanCloud.GetInstance().SaveEquipData();
         }
 
         /** 移除装备信息 */
         public RemoveEquipInfo(info:EquipInfo):void{
             for(let i:number = 0; i < this.equip_list.length; i++){
-                if(info.Id == this.equip_list[i].Id && info.TypeID == this.equip_list[i].TypeID){
+                if(info.EquipId == this.equip_list[i].EquipId){
                     for(let j:number = i; j < this.equip_list.length - 1; j++){
                         this.equip_list[j] = this.equip_list[j + 1];
                     }
@@ -277,35 +269,7 @@ namespace modEquip {
                 }
             }
             this.equip_list.pop();
-            this.changeIdListNumber(info);
-        }
-
-        private changeIdListNumber(info:EquipInfo):void{
-            let currHero = HeroData.getHeroData(GameData.curHero);
-
-            let info_list:Array<EquipInfo> = [];
-            for(let i in this.equip_list){
-                if(this.equip_list[i].Id == info.Id){
-                    info_list.push(this.equip_list[i]);
-                } 
-            }
-            this.id_list[info.Id] = info_list.length;
-            for(let i:number = 0; i < this.id_list[info.Id]; i++){
-                if(currHero.equip == info_list[i].Id && currHero["typeId"] == info_list[i].TypeID){
-                    currHero["typeId"] = i;
-                    HeroData.update();
-                }
-                info_list[i].TypeID = i;
-            }
-            info_list = [];
-        }
-
-        public set Lucky(val:number){
-            this.lucky = val;
-        }
-
-        public get Lucky(){
-            return this.lucky;
+            modEquip.ReqRemoveEquip(info);
         }
 
         private swapData(i:number, j:number):void{
@@ -325,8 +289,6 @@ namespace modEquip {
         }
 
         private equip_list:Array<EquipInfo>;
-        private lucky:number;
-        private id_list:Array<number>;
     }
 
     /** 根据对应的类型和值 来获得对应的字符信息 */
@@ -420,5 +382,53 @@ namespace modEquip {
        value = first + second;
 
         return value;
+    }
+    function isDiffEquipId(list:any, equipId:number):boolean{
+         for(let info of list){
+            if(info.EquipId == equipId)
+                  return false;
+          }
+         return true;
+    }
+
+   export function getRandEquipId():number{
+        let equipId:number = 0;
+        let list:any = EquipData.GetInstance().GetEquipList();
+        while(true){
+            equipId = Math.floor(Math.random() * 10000) % 10000;
+            if(isDiffEquipId(list, equipId))
+                break;
+        }
+
+        return equipId;
+    }
+
+    /** insert and update equip */
+    export function ReqInsertAndUpEquip(info:modEquip.EquipInfo):void{
+        let reset_list:any = [];
+        for(let i:number = 0; i < info.GetAttrType().length; i++){
+            let reset = info.GetAttrType()[i];
+            reset_list[i] = {type:reset.Type,value:reset.value,quality:reset.Quality};
+        }
+        let tempData:any = {star:info.Star,lv:info.Lv,quality:info.Quality,equipId:info.EquipId,categoryId:info.Id,resetAttrList:reset_list};
+        HttpRequest.getInstance().send("POST", "equip", tempData, ()=>{},this);
+    }
+
+    /** get equip */
+    export function ReqGetEquip():void{
+        HttpRequest.getInstance().send("GET", "equip", {},(data)=>{
+            let list:any = data.equip;
+            for(let i in list){
+                let info:EquipInfo = new EquipInfo(list[i].categoryId,list[i].star,list[i].quality,list[i].lv,list[i].equipId);
+                for(let reset of list[i].rest_attr_list) info.InsertAttrType(new AttrType(reset.type,reset.value,reset.quality));
+                EquipData.GetInstance().Add(info, false);
+            }
+
+        }, this)
+    } 
+
+    /** remove equip */
+    export function ReqRemoveEquip(info):void{
+        HttpRequest.getInstance().send("DELETE", "equip", {equipId:info.equipId},()=>{}, this);
     }
 }

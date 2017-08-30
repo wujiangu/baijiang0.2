@@ -34,9 +34,9 @@ class ResLoadManager{
 
     public Listener():void{
         // if(this._name == "ready" || this._name == "battle") ConfigManager.InitBattleConfig(this._name);
-    if(this._name == "ready" || this._name == "battleGroup" || this._name == "pvpGroup" || this._name == "battleBack") {
-            ConfigManager.InitBattleConfig(this._name);
-    }
+        if(this._name == "ready" || this._name == "battleGroup" || this._name == "pvpGroup" || this._name == "battleBack") {
+                ConfigManager.InitBattleConfig(this._name);
+        }
 
         if(this._listener){
             Animations.HideLoadAnimation();

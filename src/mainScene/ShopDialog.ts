@@ -7,6 +7,7 @@ class ShopDialog extends PopupWindow {
         this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
         this.skinName = "resource/game_skins/shopSkin.exml";
         this.tcShop = RES.getRes("TcShop_json");
+        ShopDialog.instance = this;
     }
 
     protected createChildren(): void{
@@ -69,7 +70,7 @@ class ShopDialog extends PopupWindow {
                     this.cards = [];
                     let cardInfo = modShop.drawOnce();
                     this.cards.push(cardInfo);
-                    Common.log(JSON.stringify(this.cards));
+                    egret.log("一抽--->", JSON.stringify(this.cards));
                     Animations.drawCard("once", cardInfo, ()=>{
                         this.createEquipPop(this.cards, "once")
                     });
@@ -148,6 +149,7 @@ class ShopDialog extends PopupWindow {
         Animations.PopupBackOut(pop, 500);
     }
 
+    public static instance:ShopDialog;
     /**商城的配置文件 */
     private tcShop:any;
     /**金币 */

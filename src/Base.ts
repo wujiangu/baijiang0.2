@@ -11,5 +11,6 @@ class Base extends eui.Component{
     public initGameData():void {
         HeroData.initData();
         modTalent.initData();
+        modEquip.ReqGetEquip();
     }
 }

@@ -165,8 +165,8 @@ class SignDialog extends PopupWindow{
         if(tcSign[signTime].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
 
         this.gooods_info_list[this._currIndex].ShowClickSignEffect();
-        UserDataInfo.GetInstance().SetBasicData("isSign", true, false);
-        UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);
+        // UserDataInfo.GetInstance().SetBasicData("isSign", true);
+        // UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);
         this.showSignStatus();
     }
 

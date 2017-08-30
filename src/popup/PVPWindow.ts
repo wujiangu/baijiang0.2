@@ -138,7 +138,7 @@ class PVPWindow extends PopupWindow{
         let rankNum = this.searchDamageRank(data_list);
         let strRank = rankNum != -1 ? "(第" + rankNum + "名)" : "(当前没有排名)";
         this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:"我    "},{text:strRank, style:{"textColor":0x252525}}];
-        this.txt_damage.text = `${UserData.rankDamage}`;
+        this.txt_damage.text = `${RankData.GetInstance().Damage}`;
         this._bottomGroup.height = (this.img_bg.height + 8) * (data_list.length + 2);
 
         this.changeRankInfo(0);
@@ -160,7 +160,7 @@ class PVPWindow extends PopupWindow{
     /** 寻找自己再第几名 如果结果为-1则没有排名 */
     private searchDamageRank(data_list:any):number{
         for(let i:number = 0; i < data_list.length; i++){
-            if(data_list[i].damage == UserData.rankDamage){
+            if(data_list[i].damage == RankData.GetInstance().Damage){
                 return i + 1;
             }
         }

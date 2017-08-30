@@ -150,13 +150,12 @@ class TalentDialog extends PopupWindow {
             this.curPage = len - 1;
             this.pages[len- 1] = new TalentIR(len - 1);
             this.pageGroup.addChild(this.pages[len - 1]);
-            LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
-            LeanCloud.GetInstance().SaveRoleData("curTalentPage", this.curPage + 1);
-
-             if (talentPage.length >= 5) {
+            if (talentPage.length >= 5) {
                  this.btn_add.visible = false;
             }
 
+            this.allLv = 1;
+            this.show_lab_text();
         }else{
             //重置天赋页
             if (talentPage[this.curPage].talent.length == 0) {
@@ -173,11 +172,10 @@ class TalentDialog extends PopupWindow {
             talentPage[this.curPage].talent = [];
             talentPage[this.curPage]["count"] = 1;
             this.pages[this.curPage].reset(this.curPage);
-            LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
 
+            this.allLv = 1;
             this.show_lab_text();
         }
-        this.allLv = 1;
     }
 
     /**
@@ -186,8 +184,7 @@ class TalentDialog extends PopupWindow {
     private pageBtnListener(event:egret.TouchEvent):void {
         let target = event.currentTarget;
         this.curPage = target.id;
-        UserDataInfo.GetInstance().SetBasicData("curTalentPage", this.curPage + 1);
-        LeanCloud.GetInstance().SaveRoleData("curTalentPage", this.curPage + 1);
+        UserDataInfo.GetInstance().DealUserData("curTalentPage", this.curPage + 1);
         // Common.log(target);
         modTalent.setUnlock(this.curPage);
         this.createTalentPage(target.id);
@@ -235,10 +232,6 @@ class TalentDialog extends PopupWindow {
     private update():void {
 
         this.show_lab_text();
-
-        let power:number = UserDataInfo.GetInstance().GetBasicData("power");
-        let diamond:number = UserDataInfo.GetInstance().GetBasicData("diamond");
-        UserDataInfo.GetInstance().updata({power:power, diamond:diamond});
 
         this.allLv++;
         this.curLevel ++;
@@ -363,7 +356,7 @@ class TalentDialog extends PopupWindow {
 
     private show_lab_text():void{
         this.lab_power.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("power"));
-        this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+        this.lab_diamond.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
     }
 
     private show_btn_text(isVisible:boolean):void{
@@ -394,7 +387,7 @@ class TalentDialog extends PopupWindow {
         for(let i:number = 0; i < this.allLv - 1; i++){
             allPower += tempList[i].power;
         }
-        UserDataInfo.GetInstance().SetBasicData("power", UserDataInfo.GetInstance().GetBasicData("power") + allPower);
+        UserDataInfo.GetInstance().DealUserData("power", UserDataInfo.GetInstance().GetBasicData("power") + allPower);
     }
 
     public static instance:TalentDialog;
@@ -433,7 +426,7 @@ class TalentDialog extends PopupWindow {
     /**能量点 */
     private lab_power:eui.Label;
 
-    private lab_soul:eui.Label;
+    private lab_diamond:eui.Label;
 
     /**天赋面板 */
     private pageGroup:eui.Group;

@@ -75,7 +75,7 @@ class Main extends eui.UILayer {
         //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
         let theme = new eui.Theme("resource/default.thm.json", this.stage);
         theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
-
+        
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
@@ -117,6 +117,8 @@ class Main extends eui.UILayer {
                 //设置加载进度界面
                 this.loadingView = new LoadingUI();
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
+                break;
+            case "battleBack":
                 break;
             default:
                 ResLoadManager.GetInstance().Listener();
@@ -168,12 +170,10 @@ class Main extends eui.UILayer {
         modLogin.init();
         modLogin.reqLogin(this._onLogin);
         // this.test();
+        // this.testBattle();
         // this.addDesktop();
         // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
         // NetConnect.send(11001, {}, ()=>{})
-        // SceneManager.battleScene = new BattleScene();
-        // SceneManager.curScene = SceneManager.battleScene;
-        // this.addChild(SceneManager.battleScene);
         // SceneManager.pvpScene = new PVPScene();
         // SceneManager.curScene = SceneManager.pvpScene;
         // this.addChild(SceneManager.pvpScene);
@@ -196,7 +196,7 @@ class Main extends eui.UILayer {
         let data:any = {};
         data.title = "百将斩";
         data.desc = "游戏";
-        data.link = "http://www.shandw.com/pc/game/?gid=1112169032&channel=10000";
+        data.link = encodeURIComponent("http://www.shandw.com/pc/game/?gid=1112169032&channel=10000");
         data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/bg_0002.png";
         modShare.share(data);
     }
@@ -205,7 +205,7 @@ class Main extends eui.UILayer {
      * 添加桌面测试(只适用移动端)
      */
     private addDesktop():void {
-        let btn:egret.Bitmap = Utils.createBitmap("button_res.btn_reset");
+        let btn:egret.Bitmap = Utils.createBitmap("button_res.btn_help");
         btn.x = 550;
         btn.y = 300;
         btn.touchEnabled = true;
@@ -236,6 +236,24 @@ class Main extends eui.UILayer {
         HttpRequest.getInstance().send("DELETE", "equip", {equipId:4}, (data)=>{
             
         }, this);
+    }
+
+    /**
+     * 战斗测试
+     */
+    private testBattle():void {
+        RES.createGroup("battleGroup", ["battleCommon"],true);
+        ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
+            ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
+                ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
+                    ResLoadManager.GetInstance().LoadGroup("battleBack", ()=>{
+                        SceneManager.battleScene = new BattleScene();
+                        SceneManager.curScene = SceneManager.battleScene;
+                        this.addChild(SceneManager.battleScene);
+                    })
+                })
+            })
+        })
     }
 
     private bg:egret.Bitmap;

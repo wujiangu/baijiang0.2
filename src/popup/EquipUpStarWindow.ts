@@ -98,7 +98,6 @@ class EquipUpStarWindow extends PopupWindow{
         for(let i:number = 0; i < equipData.length; i++){
             modEquip.EquipData.GetInstance().RemoveEquipInfo(equipData[i]);
         }
-        LeanCloud.GetInstance().SaveEquipData();
 
         //判断是否升星成功
         if(this.isUpStar(this.successNum)){
@@ -108,12 +107,13 @@ class EquipUpStarWindow extends PopupWindow{
             Animations.showTips("升星成功", 1);
             this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 1);
             modEquip.update(this.equip_info);
+            this.equip_info.UpdateData();
             this.Close();
         }
         else 
         {
-            for(let i:number = 0; i < equipData.length; i++) modEquip.EquipData.GetInstance().Lucky += equipData[i].Quality * 10;
-            if(modEquip.EquipData.GetInstance().Lucky >= 100) modEquip.EquipData.GetInstance().Lucky = 100;
+            for(let i:number = 0; i < equipData.length; i++) UserDataInfo.GetInstance().DealUserData("lucky", UserDataInfo.GetInstance().GetBasicData("lucky") + equipData[i].Quality * 10);
+            if(UserDataInfo.GetInstance().GetBasicData("lucky") >= 100) UserDataInfo.GetInstance().DealUserData("lucky", 100);
             
             Animations.showTips("升星失败", 1);
             this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 2);
@@ -143,25 +143,22 @@ class EquipUpStarWindow extends PopupWindow{
         let raw:number, col:number;
         let list:any = modEquip.EquipData.GetInstance().GetEquipList();
         let currHero = HeroData.getHeroData(GameData.curHero);
-        currHero["typeId"] = currHero["typeId"] != null ? currHero["typeId"] : 0;
 
         for(let i:number = 0; i < list.length; i++){
-            if( (list[i].Id == this.equip_info.Id && list[i].TypeID != this.equip_info.TypeID) || list[i].Id != this.equip_info.Id){
-                if((currHero.equip == list[i].Id && currHero["typeId"] != list[i].TypeID) || currHero.equip != list[i].Id){
-                    if(this.equip_object_list.length <= index){
-                        this.equip_object_list[index] = new EquipObject();
-                        this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
-                    }
-
-                    this.equip_object_list[index].ChangeEquipSource(list[i]);
-                    this.equip_object_list[index].Index = i;
-                    this.scrollGroup.addChild(this.equip_object_list[index]); 
-
-                    raw = Math.floor(index / 4);
-                    col = index % 4;
-                    Common.SetXY(this.equip_object_list[index], 4 + 104*col, 4 + 104*raw);
-                    index++;
+            if(list[i].EquipId != this.equip_info.EquipId && currHero.equip != list[i].EquipId ){
+                if(this.equip_object_list.length <= index){
+                    this.equip_object_list[index] = new EquipObject();
+                    this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);
                 }
+
+                this.equip_object_list[index].ChangeEquipSource(list[i]);
+                this.equip_object_list[index].Index = i;
+                this.scrollGroup.addChild(this.equip_object_list[index]); 
+
+                raw = Math.floor(index / 4);
+                col = index % 4;
+                Common.SetXY(this.equip_object_list[index], 4 + 104*col, 4 + 104*raw);
+                index++;
             }
         }
       

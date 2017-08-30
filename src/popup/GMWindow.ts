@@ -39,7 +39,7 @@ class GMWindow extends PopupWindow{
             let date = new Date();
             let strDate = "2017/" + date.getMonth() + "/" + date.getDay(); 
             tempData.push({status:3,title:"GM系统调试",content:"GM功能调试使用", reward:this.data_list,date:strDate,time:30});
-            UserDataInfo.GetInstance().SetBasicData("email", tempData);
+            // UserDataInfo.GetInstance().SetBasicData("email", tempData);
         }
     }
 

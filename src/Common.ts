@@ -114,29 +114,58 @@ namespace Common {
     /**
      * json格式转换为url参数字符串
      */
-    function parseParam(param, paramKey=null):string {
+    function parseParam(param, isChild=false):string {
         var str: string = "";
-        for (var key in param) {
-            let valueType: string = typeof (param[key]);
-            if (valueType == "string" || valueType == "number" || valueType == "boolean") {
-                let newKey = paramKey == null ? key : paramKey + "." + key;
-                str += (newKey + "=" + param[key] + "&");
-            } else {
-                if (param[key] instanceof Array) {
-                    for (let i = 0; i < param[key].length; i++) {
-                        let temp: string = typeof (param[key][i]);
-                        if (temp == "string" || temp == "number" || temp == "boolean") {
-                            str += key + "[" + i + "]=" + param[key][i] + "&";
-                        } else {
-                            str += key + "[" + i + "].";
-                            str += parseParam(param[key][i]);                            
-                        }
-
-                    }
+        let parseArray = function (obj, flag=false) {
+            for (let i = 0; i < obj.length; i++) {
+                let temp: string = typeof (obj[i]);
+                if (temp == "string" || temp == "number" || temp == "boolean") {
+                    str += obj[i] + ",";
                 } else {
-                    str += parseParam(param[key], key);
+                    str += parseParam(obj[i], true);
+                    if (!flag) str += ",";
                 }
-            }        
+            }
+            if (obj.length > 0) str = str.substr(0, str.length-1);
+        }
+        if ((Object.prototype.toString.call(param) == "[object Array]") && isChild) {
+            str += "[";
+            parseArray(param, true);
+            str += "]";
+        }
+
+        if ((Object.prototype.toString.call(param) == "[object Object]")) {
+            if (isChild) {
+                str += "{";
+                for (let key in param) {
+                    str += "\"" + key + "\"" + ":";
+                    if (typeof (param[key]) == "string" || typeof (param[key]) == "number" || typeof (param[key]) == "boolean") {
+                        str += param[key];
+                    } else {
+                        str += parseParam(param[key], true);
+                    }
+                    str += ",";
+                }
+                if (Object.keys(param).length > 0) str = str.substr(0, str.length-1);
+                str += "}";
+            } else {
+                for (var key in param) {
+                    let valueType: string = typeof (param[key]);
+                    if (valueType == "string" || valueType == "number" || valueType == "boolean") {
+                        str += (key + "=" + param[key] + "&");
+                    } else {
+                        if ((Object.prototype.toString.call(param[key]) == "[object Array]")) {
+                            str += key + "=[";
+                            parseArray(param[key], false)
+                            str += "]&";
+                        } else {
+                            str += key + "=";
+                            str += parseParam(param[key], true);
+                            str += "&";
+                        }
+                    }
+                }   
+            }
         }
         return str
     };
@@ -157,7 +186,7 @@ namespace Common {
      * 获取url参数
      */
     export function getUrlParams(data:any):string {
-        let str = parseParamIncomplete(data);
+        let str = parseParam(data);
         return str.substr(0, str.length-1);
     }
 
@@ -331,7 +360,7 @@ namespace Common {
             }
             else if(list[i].type == 2)
             {
-                UserDataInfo.GetInstance().SetBasicData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].count));
+                UserDataInfo.GetInstance().DealUserData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].count));
             }
             else if(list[i].type == 3)
             {

@@ -24,7 +24,7 @@ module modShare {
         let platform = Common.platformType();
         if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
             //PC平台
-            //QQ空间
+            // QQ空间
             var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
             window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
 
@@ -51,7 +51,7 @@ module modShare {
                         title:params.title,
                         summary:params.desc,
                         pic:params.imgUrl,
-                        url:"http://www.shandw.com/m/game/"
+                        url:params.link
                     });
                 });
             }

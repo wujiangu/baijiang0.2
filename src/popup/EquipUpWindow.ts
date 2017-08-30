@@ -137,7 +137,7 @@ class EquipUpWindow extends PopupWindow{
             }
             
             this.showUpgradeInfo();
-            LeanCloud.GetInstance().SaveEquipData();
+            this.equip_info.UpdateData();
         }
         else
         {

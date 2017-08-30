@@ -42,7 +42,7 @@ class EquipObject extends eui.Group{
 
         this.txt_lv.text = `${info.Lv}`;
         this.id = info.Id;
-        this.typeId = info.TypeID;
+        this.equipId = info.EquipId;
     }
     
     public set Index(val:number){
@@ -57,8 +57,8 @@ class EquipObject extends eui.Group{
         return this.id;
     }
 
-    public GetTypeId():number{
-        return this.typeId;
+    public GetEquipId():number{
+        return this.equipId;
     }
 
     /** image */
@@ -70,6 +70,6 @@ class EquipObject extends eui.Group{
     private txt_lv:egret.TextField;
 
     private index:number;
+    private equipId:number;
     private id:number;
-    private typeId:number;
 }

@@ -27,7 +27,7 @@ class BattleFailPop extends PopupWindow {
                         if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.value)){
                             this.count ++;
                             SceneManager.mainScene.show_label_text();
-                            UserDataInfo.GetInstance().SetBasicData("revivalCount", this.count);
+                            UserDataInfo.GetInstance().DealUserData("revivalCount", this.count);
                         }else{
                             Animations.showTips("钻石不足，无法复活", 1, true);
                             return;
@@ -179,11 +179,8 @@ class BattleFailPop extends PopupWindow {
         let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + modBattle.getExp();
         let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + modBattle.getSoul();
         let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;
-        UserDataInfo.GetInstance().SetBasicData("exp", source_exp);
-        UserDataInfo.GetInstance().SetBasicData("soul", source_soul);
-        UserDataInfo.GetInstance().SetBasicData("power", source_power);
         SceneManager.mainScene.show_label_text();
-        UserDataInfo.GetInstance().updata({exp:source_exp, soul:source_soul, power:source_power});
+        UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul, power:source_power});
         if (isExit) this.rewardWindow();
     }
 

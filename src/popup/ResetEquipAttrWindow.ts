@@ -53,20 +53,19 @@ class ResetEqiopAttrWindow extends PopupWindow{
         let value = data.value;
         let quality = data.quality;
 
-        if(modEquip.EquipData.GetInstance().Lucky == 100){
-            modEquip.EquipData.GetInstance().Lucky = 0;
+        if(UserDataInfo.GetInstance().GetBasicData("lucky") == 100){
+            UserDataInfo.GetInstance().DealUserData("lucky", 0);
             value = modEquip.GetQualityMaxValue(this.equip_info.Quality, type);
             quality = 4;
         }
         else
         {
-            modEquip.EquipData.GetInstance().Lucky += 2;
+            UserDataInfo.GetInstance().DealUserData("lucky", UserDataInfo.GetInstance().GetBasicData("lucky") + 2);
         } 
         this.equip_info.ChangeAttrType(this._index, type, value, quality);
         this.changeAttrInfo(type, value, quality);
         Animations.showTips("洗练成功", 1);
         this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index, quality:quality})
-        LeanCloud.GetInstance().SaveEquipData();
     }
 
     private changeAttrInfo(type:number, value:number, quality:number){
@@ -74,7 +73,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
         this.lab_attr.text = modEquip.GetAttrInfo(type, value);
         this.lab_attr.textColor = data.color;
         this.imgStar.source = data.img;
-        this.lab_lucky.text = "当前幸运值: " + modEquip.EquipData.GetInstance().Lucky;
+        this.lab_lucky.text = "当前幸运值: " + UserDataInfo.GetInstance().GetBasicData("lucky");
     }
 
     private imgStar:eui.Image;

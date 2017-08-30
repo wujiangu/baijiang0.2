@@ -164,7 +164,7 @@ class EmailWindow extends PopupWindow{
                 }
 
                 Common.DealReward(list);
-                UserDataInfo.GetInstance().SetBasicData("email", []);
+                // UserDataInfo.GetInstance().SetBasicData("email", []);
                 this.initData();
             break;
             case this.btn_delete:
@@ -186,12 +186,13 @@ class EmailWindow extends PopupWindow{
 
      private initData():boolean{
         let emailData:any = UserDataInfo.GetInstance().GetBasicData("email");
-        this._eventNum = emailData.length;
-        this.scrollGroup.removeChildren();
-        this.emailGroup.visible = emailData.length == 0 ? false : true;
-        this.lab_tip.visible = emailData.length == 0 ? true : false;
 
-        if(emailData.length == 0){
+        this._eventNum = emailData == null ? 0 : emailData.length;
+        this.scrollGroup.removeChildren();
+        this.emailGroup.visible = this._eventNum == 0 ? false : true;
+        this.lab_tip.visible = this._eventNum == 0 ? true : false;
+
+        if(this._eventNum == 0){
             return;
         }
         
@@ -217,7 +218,7 @@ class EmailWindow extends PopupWindow{
         }
         this.img_list[this._clickIndex].texture = RES.getRes(`common_res.email_status${this._emailData[this._clickIndex].status}`);
         this.showRewardGoodsColor();
-        UserDataInfo.GetInstance().SetBasicData("email", this._emailData);
+        // UserDataInfo.GetInstance().SetBasicData("email", this._emailData);
     }
 
     /** button */
