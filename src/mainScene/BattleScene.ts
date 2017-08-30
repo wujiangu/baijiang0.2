@@ -17,7 +17,6 @@ class BattleScene extends Base {
         modBattle.createTimer();
     }
     protected createChildren(): void{
-        RES.loadGroup("battleBack");
         this.createMap();
         this.createComboGroup();
         this.createRewardCombo();
@@ -25,6 +24,7 @@ class BattleScene extends Base {
     }
 
     protected childrenCreated(): void{
+        RES.loadGroup("battleBack");
         this.createParticle();
         this.init();
     }
@@ -144,7 +144,7 @@ class BattleScene extends Base {
         this.comboCount.scaleX = 2;
         this.comboCount.scaleY = 2;
         egret.Tween.get(this.comboCount).to({scaleX:1, scaleY:1}, 300, egret.Ease.bounceOut);
-        if (value%5 == 0) {
+        if (value%50 == 0) {
             this.updateRewardGroup(value);
         }
     }
@@ -225,8 +225,7 @@ class BattleScene extends Base {
 
     /**更新击杀奖励 */
     private updateRewardGroup(value:number):void {
-        let index:number = value/5;
-        egret.log("击杀索引--->", index, value);
+        let index:number = value/50;
         if (index > 5) return;
         this.killClip = Common.CreateMovieClip(`killTips${index}Clip`, true);
         this.killClip.anchorOffsetY = this.killClip.height/2;
@@ -236,7 +235,6 @@ class BattleScene extends Base {
         this.killClip.x = 50;
         this.killClip.y = 50;
         this.killTips.visible = true;
-        egret.log("开始播放---->", this.killTips)
         this.killTips.gotoAndPlay(1);
     }
     private onTipsBgComplete():void {

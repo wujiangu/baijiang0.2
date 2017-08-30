@@ -197,7 +197,7 @@ class Hero extends Alliance {
                         if (this.isCrit()) this._hurtValue *= 1.5;
                         if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
                         if (!this.isPVP && this.enermy[i]) {
-                            let state = this.enermy[i].getCurState();
+                            let state = this.enermy[i].curState;
                             if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
                         }
                     }
