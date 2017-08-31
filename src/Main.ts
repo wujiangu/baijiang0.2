@@ -26,9 +26,6 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-declare var AV;
-var APP_ID = 'onCULkQ8rWJmAJtnjfxtxrkr-gzGzoHsz';
-var APP_KEY = 'FGupyEUQyuw4kKkvrU7ohM06';
 class Main extends eui.UILayer {
     /**
      * 加载进度界面
@@ -60,10 +57,6 @@ class Main extends eui.UILayer {
         Common.SCREEN_H = this.stage.stageHeight;
         // StageManager.stageResizeInitData();
         // this.stage.setContentSize(StageManager.contentScaleFullWidth, StageManager.contentScaleFullHeight);
-		AV.init({
-		appId: APP_ID,
-		appKey: APP_KEY
-		});
     }
     /**
      * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
@@ -119,6 +112,7 @@ class Main extends eui.UILayer {
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
                 break;
             case "battleBack":
+                ConfigManager.InitBattleConfig("battleBack");
                 break;
             default:
                 ResLoadManager.GetInstance().Listener();
@@ -246,11 +240,13 @@ class Main extends eui.UILayer {
         ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
             ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                 ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
-                    ResLoadManager.GetInstance().LoadGroup("battleBack", ()=>{
+                    RES.loadGroup("battleBack");
+                    // ResLoadManager.GetInstance().LoadGroup("battleBack", ()=>{
+                        // ConfigManager.InitBattleConfig("battleBack");
                         SceneManager.battleScene = new BattleScene();
                         SceneManager.curScene = SceneManager.battleScene;
                         this.addChild(SceneManager.battleScene);
-                    })
+                    // })
                 })
             })
         })

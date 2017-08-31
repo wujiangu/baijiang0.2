@@ -1,6 +1,5 @@
 class UserDataInfo{
     public constructor(){
-        this.login_time_list = new Array();
     }
 
     public static instance:UserDataInfo;
@@ -19,11 +18,14 @@ class UserDataInfo{
         return this.userData;
     }
 
-    public SetBasicData(data:any):void{
+    public SetBasicData(data:any,callBack:Function = null):void{
         for(let key in data){
             this.userData[key] = data[key];
         }
-        this.ReqUpdateData(data);
+        
+        HttpRequest.getInstance().send("POST", "userinfo",data,()=>{
+            if(callBack) callBack();
+        },this);
     }
 
     public DealUserData(name:string, val:number):void{
@@ -61,8 +63,44 @@ class UserDataInfo{
         return false;
     }
 
-    private ReqUpdateData(data):void{
-        HttpRequest.getInstance().send("POST", "userinfo",data,()=>{},this);
+    private isDifferentTime():boolean{
+        let strOffTime:string = new Date(this.userData.lastOffLineTime * 1000).toLocaleDateString();
+        let loginTime:string = new Date(modLogin.getBaseData("time") * 1000).toLocaleDateString();
+        let off_list:any = strOffTime.split("/");
+        let login_list:any = loginTime.split("/");
+        if(off_list[0] != login_list[0] || off_list[1] != login_list[1] || off_list[2] != login_list[2]){
+            return true;
+        }
+        return false;
+    }
+
+    public InitSignData():void{
+        HttpRequest.getInstance().send("GET","checkin",{},(data)=>{
+            let checkData:any = data.checkIn;
+            this.isSign = checkData.isSign;
+            this.signNum = checkData.signNum;
+
+            if(this.isDifferentTime()){
+                if(this.isSign){
+                    this.isSign = false;
+                }
+                if(this.signNum >= 14){
+                    this.signNum = 7;
+                }
+                this.setSignData(this.signNum, this.isSign);
+                this.DealUserData("sportCount", 0);
+            }
+        },this);
+    }
+
+    public GetSignData(){
+        return {isSign:this.isSign, signNum:this.signNum};
+    }
+
+    public setSignData(signNum:number, isSign:boolean){
+        this.signNum = signNum;
+        this.isSign = isSign;
+        HttpRequest.getInstance().send("POST", "checkin", {signNum:signNum,isSign:isSign?1:0},()=>{}, this);
     }
 
     /** 移除想要删除的文件根据索引 */
@@ -80,25 +118,8 @@ class UserDataInfo{
         this.userData["email"].pop();
     }
 
-    public GetLastLoginTime():any{
-        return this.login_time_list;
-    }
-
-    public IsDifferenceDate(val:any):boolean{
-        let date = new Date();
-        if(val == null){
-            this.login_time_list = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
-            return true;
-        }
-
-        if(date.getFullYear() == val[0] && date.getMonth() + 1 == val[1] && val[2] == date.getDate()) return false;
-        else if(date.getFullYear() != val[0] || date.getMonth() + 1 != val[1] || date.getDate() != val[2]){
-            this.login_time_list = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
-        }
-        return true;
-    }
-
     /**用户数据 */
     private userData:any;
-    private login_time_list:Array<number>;
+    private isSign:boolean;
+    private signNum:number;
 }

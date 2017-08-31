@@ -4,7 +4,7 @@ class Enermy extends BaseGameObject {
         this.colorFlilter = new egret.ColorMatrixFilter(this.colorMatrix);
         this.defaultFlilter = new egret.ColorMatrixFilter(this.defaultMatrix);
         this.createExpAndSoul();
-        this.img_sigh = Utils.createBitmap("img_sigh_png");
+        this.img_sigh = Utils.createBitmap("battleComon.img_sigh");
         this.img_sigh.scaleX = 0.5;
         this.img_sigh.scaleY = 0.5;
         this.img_sigh.y = -100;

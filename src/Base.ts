@@ -12,5 +12,6 @@ class Base extends eui.Component{
         HeroData.initData();
         modTalent.initData();
         modEquip.ReqGetEquip();
+        UserDataInfo.GetInstance().InitSignData();
     }
 }

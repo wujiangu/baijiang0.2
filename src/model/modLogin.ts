@@ -86,9 +86,9 @@ namespace modLogin {
             // egret.log("新用户英雄数据创建成功--->", result);
             if (callBack) callBack();
         }, modLogin);
-        HttpRequest.getInstance().send("POST", "talent", {talentPage:1,talent:[],count:1}, (result)=>{
-            // egret.log("新用户天赋数据创建成功--->", result);
-        }, modLogin)
+        HttpRequest.getInstance().send("POST", "talent", {talentPage:1,talent:[],count:1})
+        //签到
+        HttpRequest.getInstance().send("POST", "checkin", {isSign:0, signNum:0});
     }
 
     /**

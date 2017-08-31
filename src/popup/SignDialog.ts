@@ -43,7 +43,7 @@ class SignGoodsInfo extends eui.Group{
         else if(param.type == 3)
         {
             let name_list = {diaochan:"貂蝉",zhaoyun:"赵云",buxiaoman:"布小蛮"};
-            strTexture = `img_${param.name}1_png`;
+            strTexture = `battle_res.img_${param.name}1`;
             name = name_list[param.name];
             textColor = 0xff00ff;
         }
@@ -110,8 +110,8 @@ class SignDialog extends PopupWindow{
 
         let day_list:any = ["第一天","第二天","第三天","第四天","第五天","第六天","第七天"];
         let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
-        let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
-        let num:number = signTime < 7 ? 0 : UserDataInfo.GetInstance().GetBasicData("isSign") && signTime - 7 == 0 ? 0 : 7;
+        let signData = UserDataInfo.GetInstance().GetSignData();
+        let num:number = signData.signNum < 7 ? 0 : signData.isSign && signData.signNum - 7 == 0 ? 0 : 7;
         let index:number = 0;
 
         for(let i:number = num; i < num + 7; i++){
@@ -122,7 +122,7 @@ class SignDialog extends PopupWindow{
             index++;
         }
 
-        this.img_click = new egret.Bitmap(RES.getRes("equip_0009_png"));
+        this.img_click = new egret.Bitmap(RES.getRes("equip_res.equip_0009"));
         this.addChild(this.img_click);
     }
 
@@ -148,38 +148,38 @@ class SignDialog extends PopupWindow{
     }
 
     private onSign(event:egret.TouchEvent):void{
-        if(UserDataInfo.GetInstance().GetBasicData("isSign")){
+        let signData:any = UserDataInfo.GetInstance().GetSignData();
+        let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
+
+        if(signData.isSign){
             Animations.showTips("您已经领取当天奖励！", 1, true);
             return;
         }
 
-        let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
-        let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
 
-        if(tcSign[signTime].type == 1 && tcSign[signTime].id == 25){
+        if(tcSign[signData.signNum].type == 1 && tcSign[signData.signNum].id == 25){
             let rand:number = Math.floor((Math.random() * 100) % 4) + 21;
-            Common.DealReward({type:tcSign[signTime].type, name:tcSign[signTime].name, count:tcSign[signTime].count, id:rand});
+            Common.DealReward({type:tcSign[signData.signNum].type, name:tcSign[signData.signNum].name, count:tcSign[signData.signNum].count, id:rand});
         }
-        else Common.DealReward(tcSign[signTime]);
+        else Common.DealReward(tcSign[signData.signNum]);
 
-        if(tcSign[signTime].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+        if(tcSign[signData.signNum].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
 
         this.gooods_info_list[this._currIndex].ShowClickSignEffect();
-        // UserDataInfo.GetInstance().SetBasicData("isSign", true);
-        // UserDataInfo.GetInstance().SetBasicData("sign", UserDataInfo.GetInstance().GetBasicData("sign") + 1);
+        UserDataInfo.GetInstance().setSignData(signData.signNum + 1, true);
         this.showSignStatus();
     }
 
     private showSignStatus():void{
-        let signTime:number = UserDataInfo.GetInstance().GetBasicData("sign");
-        signTime = signTime < 7 ? signTime : UserDataInfo.GetInstance().GetBasicData("isSign") && signTime - 7 == 0 ? 7 : signTime - 7;
+        let signData:any = UserDataInfo.GetInstance().GetSignData();
+        let signTime:number = signData.signNum < 7 ? signData.signNum : signData.isSign && signData.signNum - 7 == 0 ? 7 : signData.signNum - 7;
         this._currIndex = signTime;
 
         for(let i:number = 0; i < signTime; i++){
             this.gooods_info_list[i].ShowAndHideHook(true);
         }
 
-        this.img_click.visible = UserDataInfo.GetInstance().GetBasicData("isSign") == false && signTime < 7 ? true : false;
+        this.img_click.visible = signData.isSign == false && signTime < 7 ? true : false;
         if(signTime >= 7) return;
         Common.SetXY(this.img_click, this.gooods_info_list[signTime].x + (this.gooods_info_list[signTime].width - this.img_click.width >> 1), this.gooods_info_list[signTime].GetImgSrcY());
     }

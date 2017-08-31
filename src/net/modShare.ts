@@ -3,6 +3,20 @@
  */
 module modShare {
     /**
+     * 开始分享
+     * @param
+     */
+    export function startShare(title:string):void {
+        let data:any = {};
+        data.title = title;
+        data.desc = "百将斩";
+        data.link = encodeURIComponent("http://www.shandw.com/pc/game/?gid=1112169032&channel=10000");
+        let index:number = MathUtils.getRandom(1, 3);
+        data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/"+"share"+index+".png";
+        share(data);
+    }
+
+    /**
      * 分享
      * @params:
      *  title：分享的标题
@@ -37,9 +51,9 @@ module modShare {
             // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
         }else{
             //移动端平台
-            egret.log("平台---->", platform, window.location.host);
+            // egret.log("平台---->", platform);
             window["show"]();
-            if (platform == "micromessenger") {
+            if (platform == "micromessenger" || platform == "other") {
                 send["success"] = success;
                 send["cancel"] = cancel;
                 send["fail"] = fail
@@ -48,10 +62,17 @@ module modShare {
             else if(platform == "qq") {
                 seajs.use('http://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js', function(setShareInfo) {
                     setShareInfo({
-                        title:params.title,
-                        summary:params.desc,
-                        pic:params.imgUrl,
-                        url:params.link
+                        title:          params.title,
+                        summary:        params.desc,
+                        pic:            params.imgUrl,
+                        url:            params.link,
+                        WXconfig:       {
+                            swapTitleInWX: true,
+                            appId: '',
+                            timestamp:'',
+                            nonceStr: '',
+                            signature: ''
+                        }
                     });
                 });
             }

@@ -34,18 +34,7 @@
 			"name": "dragonBones"
 		},
 		{
-			"name": "md5",
-			"description": "md5",
-			"files": [
-				"md5.ts"
-			],
-			"root": "src"
-		},
-		{
 			"name": "particle"
-		},
-		{
-			"name": "nest"
 		},
 		{
 			"name": "promise",

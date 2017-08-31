@@ -49,11 +49,11 @@ class PVPWindow extends PopupWindow{
     /** 数据数据 */
     public Show():void{
         super.Show();
-
         this.scrollGroup.scrollV = 0;
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
 
-        this.show_and_hide_btn(RankData.GetInstance().ChallengeNum == 0, !(RankData.GetInstance().ChallengeNum == 0));
+        let isFirst:boolean = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;
+        this.show_and_hide_btn(isFirst, !isFirst);
         this.showRankInfo();
         this.upDataTime();
         this._time.start();
@@ -93,7 +93,7 @@ class PVPWindow extends PopupWindow{
             this.Close();
             SceneManager.nextScene = "pvpScene";
             WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
-            RankData.GetInstance().ChallengeNum++;
+            UserDataInfo.GetInstance().DealUserData("sportCount", UserDataInfo.GetInstance().GetBasicData("sportCount") + 1);
         })
     }
 
@@ -104,7 +104,7 @@ class PVPWindow extends PopupWindow{
            this.onEnterReady();
         }
         else if(target == this.btn_buy){
-            let pvpConsume:number = RankData.GetInstance().ChallengeNum * 20 >= 100 ? 100 : RankData.GetInstance().ChallengeNum * 20;
+            let pvpConsume:number = UserDataInfo.GetInstance().GetBasicData("sportCount") * 20 >= 100 ? 100 : UserDataInfo.GetInstance().GetBasicData("sportCount") * 20;
             if(UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume)){
                 this.onEnterReady();
             }
@@ -137,22 +137,24 @@ class PVPWindow extends PopupWindow{
         let data_list = RankData.GetInstance().GetDataList();
         let rankNum = this.searchDamageRank(data_list);
         let strRank = rankNum != -1 ? "(第" + rankNum + "名)" : "(当前没有排名)";
-        this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:"我    "},{text:strRank, style:{"textColor":0x252525}}];
-        this.txt_damage.text = `${RankData.GetInstance().Damage}`;
+        this.txt_self.textFlow = <Array<egret.ITextElement>>[{text:UserDataInfo.GetInstance().GetBasicData("roleName")},{text:strRank, style:{"textColor":0x252525}}];
+        this.txt_damage.text = `${UserDataInfo.GetInstance().GetBasicData("damage")}`;
         this._bottomGroup.height = (this.img_bg.height + 8) * (data_list.length + 2);
-
         this.changeRankInfo(0);
     }
 
     /** change rank info */
     private changeRankInfo(num:number):void{
-       if(num < 0 || num > RankData.GetInstance().GetDataList().length - 10) return;
+       let data_list = RankData.GetInstance().GetDataList();
+       if(data_list.length >= 10 && (num < 0 || num > RankData.GetInstance().GetDataList().length - 10)) return;
 
-        let data_list = RankData.GetInstance().GetDataList();
         let index:number = 0;
         for(let i:number = num; i < num + 10; i++){
-            this.damageList[index].ChangeData(data_list[i]["name"], Math.floor(data_list[i]["damage"]), i + 1);
-            Common.SetXY(this.damageList[index], this.img_bg.x, this.img_bg.y + this.img_bg.height + i * 57);
+            if(data_list.length > index){
+                this.damageList[index].ChangeData(data_list[i].roleName, Math.floor(data_list[i].damage), i + 1);
+                Common.SetXY(this.damageList[index], this.img_bg.x, this.img_bg.y + this.img_bg.height + i * 57);
+            }
+            this.damageList[index].visible = data_list.length > index ? true : false;
             index++;
         }
     }
@@ -160,7 +162,7 @@ class PVPWindow extends PopupWindow{
     /** 寻找自己再第几名 如果结果为-1则没有排名 */
     private searchDamageRank(data_list:any):number{
         for(let i:number = 0; i < data_list.length; i++){
-            if(data_list[i].damage == RankData.GetInstance().Damage){
+            if(data_list[i].damage == UserDataInfo.GetInstance().GetBasicData("damage")){
                 return i + 1;
             }
         }
@@ -171,7 +173,7 @@ class PVPWindow extends PopupWindow{
     private show_and_hide_btn(startStatus:boolean, buyStatus:boolean):void{
         this.btn_start.visible = startStatus;
         this.btn_buy.visible = buyStatus;
-        this.btn_buy.label = RankData.GetInstance().ChallengeNum * 20 >= 100 ? `${100}` : `${RankData.GetInstance().ChallengeNum * 20}`;
+        this.btn_buy.label = UserDataInfo.GetInstance().GetBasicData("sportCount") * 20 >= 100 ? `${100}` : `${UserDataInfo.GetInstance().GetBasicData("sportCount") * 20}`;
     }
 
     /** create show goods */

@@ -92,28 +92,28 @@ class Imprisoned extends SkillBase {
     private _createGroup():void {
         this._effectGroup = new egret.DisplayObjectContainer();
         SceneManager.curScene.addChild(this._effectGroup);
-        let mask:egret.Bitmap = Utils.createBitmap("imprisoned02_png");
+        let mask:egret.Bitmap = Utils.createBitmap("battleComon.imprisoned02");
         mask.width = Common.SCREEN_W;
         mask.height = Common.SCREEN_H;
         this._effectGroup.addChild(mask);
 
-        let topImage:egret.Bitmap = Utils.createBitmap("imprisoned01_png");
+        let topImage:egret.Bitmap = Utils.createBitmap("battleComon.imprisoned01");
         topImage.scaleX = 2;
         topImage.scaleY = 2;
         this._effectGroup.addChild(topImage);
 
-        let bottomImage:egret.Bitmap = Utils.createBitmap("imprisoned01_png");
+        let bottomImage:egret.Bitmap = Utils.createBitmap("battleComon.imprisoned01");
         bottomImage.scaleX = 2;
         bottomImage.scaleY = -2;
         bottomImage.y = Common.SCREEN_H;
         this._effectGroup.addChild(bottomImage);
 
-        let rightImage:egret.Bitmap = Utils.createBitmap("imprisoned01_png");
+        let rightImage:egret.Bitmap = Utils.createBitmap("battleComon.imprisoned01");
         rightImage.rotation = 90;
         rightImage.x = Common.SCREEN_W;
         this._effectGroup.addChild(rightImage);
 
-        let leftImage:egret.Bitmap = Utils.createBitmap("imprisoned01_png");
+        let leftImage:egret.Bitmap = Utils.createBitmap("battleComon.imprisoned01");
         leftImage.rotation = -90;
         leftImage.y = Common.SCREEN_H;
         this._effectGroup.addChild(leftImage);

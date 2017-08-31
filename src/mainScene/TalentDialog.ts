@@ -153,9 +153,6 @@ class TalentDialog extends PopupWindow {
             if (talentPage.length >= 5) {
                  this.btn_add.visible = false;
             }
-
-            this.allLv = 1;
-            this.show_lab_text();
         }else{
             //重置天赋页
             if (talentPage[this.curPage].talent.length == 0) {
@@ -172,10 +169,10 @@ class TalentDialog extends PopupWindow {
             talentPage[this.curPage].talent = [];
             talentPage[this.curPage]["count"] = 1;
             this.pages[this.curPage].reset(this.curPage);
-
-            this.allLv = 1;
-            this.show_lab_text();
         }
+
+        this.allLv = 1;
+        this.show_lab_text();
     }
 
     /**

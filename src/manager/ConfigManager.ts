@@ -133,6 +133,7 @@ namespace ConfigManager {
     function initBattleDragonBones(startIndex:number, endIndex:number):void {
          for(let i:number = startIndex; i < endIndex; i++){
             let name:string = armatures[i];
+            egret.log("加载骨骼动画组---->", name);
             let skeletonData = RES.getRes(name+"_ske_dbbin");
             let textureData = RES.getRes(name+"_tex_json");
             let texture = RES.getRes(name+"_tex_png");

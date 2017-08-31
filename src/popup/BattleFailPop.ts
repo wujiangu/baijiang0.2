@@ -172,15 +172,16 @@ class BattleFailPop extends PopupWindow {
         }
         this.lab_lv.text = `lv.${upLv.toString()}`;
         this._scaleX = upExp/tcHeroUp[upLv-1].exp;
-        Common.log("after等级---->", upLv, upExp)
+        egret.log("after等级---->", upLv, upExp)
         // this.img_exp.scaleX = upExp/tcHeroUp[upLv-1].exp;
         data["lv"] = upLv;
         data["exp"] = upExp;
+        HttpRequest.getInstance().send("POST", "hero", {heroId:data.heroId, lv:data.lv, exp:data.exp})
         let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + modBattle.getExp();
         let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + modBattle.getSoul();
         let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;
-        SceneManager.mainScene.show_label_text();
         UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul, power:source_power});
+        SceneManager.mainScene.show_label_text();
         if (isExit) this.rewardWindow();
     }
 

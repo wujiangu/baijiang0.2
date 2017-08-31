@@ -13,7 +13,7 @@ class SevenInOut extends SkillBase {
         this.copySkillArmature = [];
         this.isBindBuff = false;
         this.cd = 30;
-        this.mask = Utils.createBitmap("sevenInOut_png");
+        this.mask = Utils.createBitmap("battleComon.sevenInOut");
         this.mask.width = Common.SCREEN_W;
         this.mask.height = Common.SCREEN_H;
         this.mask.alpha = 0;

@@ -4,7 +4,7 @@
 class EliteMonster extends Monster {
     public constructor() {
         super();
-        this.img_halo = Utils.createBitmap("Elitemonster000_png");
+        this.img_halo = Utils.createBitmap("battleComon.Elitemonster000");
         this.img_halo.scaleX = 1.5;
         this.img_halo.scaleY = 1.5;
         this.img_halo.x = -30;
@@ -12,7 +12,7 @@ class EliteMonster extends Monster {
         this.addChild(this.img_halo);
         this.img_type = new Array();
         for (let i = 0; i < 3; i++) {
-            let img_type = Utils.createBitmap("Elitemonster001_png");
+            let img_type = Utils.createBitmap("battleComon.Elitemonster001");
             img_type.y = -100;
             this.addChild(img_type);
             img_type.visible = false;
@@ -21,29 +21,6 @@ class EliteMonster extends Monster {
 
         this.arrayBuffs = new Array();
         // this.createSpecialArmature();
-    }
-
-    /**
-     * 创建特殊龙骨动画
-     */
-    private createSpecialArmature():void {
-        this.specialArmature.register(DragonBonesFactory.getInstance().makeArmature("Elitemonster_skill", "Elitemonster_skill", 5), [
-            "skill01_01",
-            "skill01_02",
-            "skill02",
-            "skill03",
-            "skill04",
-            "skill05_01",
-            "skill05_02",
-            "skill05_03",
-            "skill06"
-        ]);
-        this.specialArmature.addFrameCallFunc(this.specialArmatureFrame, this);
-        //增加动画完成函数
-        this.specialArmature.addCompleteCallFunc(this.specialArmaturePlayEnd, this);
-
-        this.specialArmature.scaleX = 1.5;
-        this.specialArmature.scaleY = 1.5;
     }
 
     /**
@@ -82,7 +59,7 @@ class EliteMonster extends Monster {
             this.specialArmature.y = 0;
         }
         for (let i = 0; i < this.arrayBuffs.length; i++) {
-            let Image:string = `Elitemonster00${this.arrayBuffs[i]}_png`;
+            let Image:string = `battleComon.Elitemonster00${this.arrayBuffs[i]}`;
             this.img_type[i].x = -5 * (this.arrayBuffs.length - 1) + 10 * i;
             this.img_type[i].visible = true;
             this.img_type[i].texture = RES.getRes(Image);

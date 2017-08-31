@@ -170,14 +170,18 @@ class PVPScene extends Base {
      * 进入结算界面
      */
     public gotoFinish():void {
-        RankData.GetInstance().InsertData(this._curValue);
-        let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
-        if(rankIndex != -1){
-            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10},()=>{
-                WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
-            });  
-        }
-        else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+        let nick:string = UserDataInfo.GetInstance().GetBasicData("roleName");
+        UserDataInfo.GetInstance().SetBasicData({damage:this._curValue, roleName:nick}, ()=>{
+             RankData.GetInstance().ReqRankData(()=>{
+                let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
+                if(rankIndex != -1){
+                    WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10},()=>{
+                        WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+                    });  
+                }
+                else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+            });
+        })
     }
 
     private _onTimeComplete():void {

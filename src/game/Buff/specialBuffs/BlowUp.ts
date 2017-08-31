@@ -36,6 +36,7 @@ class BlowUp extends BuffBase {
     /**开始 */
     public buffStart(target:any) {
         this.target = target;
+        this._mc1.visible = false;
         this.target.addChild(this._mc1);
     }
 

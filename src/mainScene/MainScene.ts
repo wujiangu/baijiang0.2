@@ -13,13 +13,13 @@ class MainScene extends Base {
 
         this.onListener();
         this.createMainScene();
-        this.show_label_text();    
-        this.showSignDialog();
+        this.show_label_text();   
+        this.showSignDialog(); 
     }
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_gm,this.btn_sign];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_sign];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -127,7 +127,9 @@ class MainScene extends Base {
                 ResLoadManager.GetInstance().LoadGroup("equip",()=>{this.ShowPop("EquipDialog")});
 				break;
             case this.btn_pvp:
-                ResLoadManager.GetInstance().LoadGroup("pvp",()=>{this.ShowPop("PVPWindow")});
+                ResLoadManager.GetInstance().LoadGroup("pvp",()=>{
+                    RankData.GetInstance().ReqRankData(()=>{this.ShowPop("PVPWindow")});
+                });
                 break;
 			case this.btn_talent:
                 ResLoadManager.GetInstance().LoadGroup("talent",()=>{this.ShowPop("TalentDialog")});
@@ -137,9 +139,6 @@ class MainScene extends Base {
                 break;
             case this.btn_email:
                 ResLoadManager.GetInstance().LoadGroup("email",()=>{this.ShowPop("EmailWindow")});
-            break;
-            case this.btn_gm:
-                WindowManager.GetInstance().GetWindow("GMWindow").Show();
             break;
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();
@@ -169,9 +168,9 @@ class MainScene extends Base {
     }
 
     private showSignDialog():void{
-        // if(UserDataInfo.GetInstance().GetBasicData("isSign")) return;
+        if(UserDataInfo.GetInstance().GetSignData().isSign) return;
 
-        // WindowManager.GetInstance().GetWindow("SignDialog").Show();
+        WindowManager.GetInstance().GetWindow("SignDialog").Show();
     }
 
     public show_label_text():void{
@@ -197,7 +196,6 @@ class MainScene extends Base {
 
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;
-    private btn_gm:eui.Button;
     private btn_sign:eui.Button;
 
     private img_light:eui.Image;

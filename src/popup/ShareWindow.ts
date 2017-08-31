@@ -25,7 +25,8 @@ class ShareWindow extends PopupWindow{
         super.Show();
         let str:string;
         this.listener = func;
-
+        this._type = param.type;
+        this._data = param.data;
         if(param.type == 1){            //pvp
             str = this.getPVPTitle(param.data);
             if(param.data <= 3) this.show_lab_text(`第${param.data}名`,str.substr(0,5), str.substr(5, 5));
@@ -73,9 +74,11 @@ class ShareWindow extends PopupWindow{
        let target = event.target;
        switch(event.target){
            case this.btn_share:
+                modShare.startShare(this.getShareTitle(this._type));
+                egret.log("开始分享");          
            break;
            default:
-            this.Close();
+                this.Close();
            break;
        }
     }
@@ -102,6 +105,27 @@ class ShareWindow extends PopupWindow{
         else if(name == "diaochan") return "北方有佳人，遗世而独立，一顾倾人城，再顾倾人国！"
     }
 
+    /**
+     * 分享的标题
+     */
+    private getShareTitle(type:number):string {
+        let title:string = "";
+        switch (type) {
+            case 1:
+                title = "爽快淋漓！快来和我一起驰骋三国！";
+            break;
+            case 2:
+                title = "爽快淋漓！快来和我一起驰骋三国！";
+            break;
+            case 3:
+                title = this.getHeroStage(this._data);
+            break;
+            default:
+            break;
+        }
+        return title;
+    }
+
     /** button */
     private btn_share:eui.Button;
     private btn_close:eui.Button;
@@ -119,5 +143,9 @@ class ShareWindow extends PopupWindow{
 
     /** other */
     private listener:any;
-  
+
+    /** param */
+    private _type:number;
+    private _data:string;
+    private _title:string;
 }

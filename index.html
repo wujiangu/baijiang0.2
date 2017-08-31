@@ -58,13 +58,9 @@
 	<script egret="lib" src="libs/modules/tween/tween.js"></script>
 	<script egret="lib" src="libs/modules/socket/socket.js"></script>
 	<script egret="lib" src="libs/modules/dragonBones/dragonBones.js"></script>
-	<script egret="lib" src="libs/modules/md5/md5.js"></script>
 	<script egret="lib" src="libs/modules/particle/particle.js"></script>
-	<script egret="lib" src="libs/modules/nest/nest.js"></script>
 	<script egret="lib" src="promise/promise.js"></script>
 	<!--modules_files_end-->
-	<script egret="lib" src="libs/av/av.js" src-release="libs/av/av-min.js"></script>
-	<script egret="lib" src="libs/WeixinAPI/WeixinAPI.js" src-release="libs/WeixinAPI/WeixinAPI.min.js"></script>
 	<script egret="lib" src="libs/sea/sea.js" src-release="libs/sea/sea.min.js"></script>
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
     
@@ -75,14 +71,14 @@
 	<script egret="lib" src="bin-debug/game/Buff/BuffBase.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/Enermy.js"></script>
 	<script egret="lib" src="bin-debug/Base.js"></script>
-	<script egret="lib" src="bin-debug/game/Machine/BaseStateMachine.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/Alliance.js"></script>
-	<script egret="lib" src="bin-debug/popup/PopupWindow.js"></script>
-	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomBuff.js"></script>
-	<script egret="lib" src="bin-debug/game/Object/Monster.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/SkillBase.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomBuff.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomItem.js"></script>
-	<script egret="lib" src="bin-debug/game/Skill/SkillData.js"></script>
+	<script egret="lib" src="bin-debug/game/Object/Monster.js"></script>
+	<script egret="lib" src="bin-debug/game/Machine/BaseStateMachine.js"></script>
+	<script egret="lib" src="bin-debug/popup/PopupWindow.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/buffs/AddProperty.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/AddSources.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/ContinuousInjury.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/DeepFire.js"></script>
@@ -149,7 +145,7 @@
 	<script egret="lib" src="bin-debug/enterGameScene/EnterGameScene.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/Stakes.js"></script>
 	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
-	<script egret="lib" src="bin-debug/game/Buff/BuffData.js"></script>
+	<script egret="lib" src="bin-debug/game/Skill/SkillData.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/Bristle.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/Imprisoned.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/SevenInOut.js"></script>
@@ -194,8 +190,6 @@
 	<script egret="lib" src="bin-debug/net/HttpRequest.js"></script>
 	<script egret="lib" src="bin-debug/net/modPay.js"></script>
 	<script egret="lib" src="bin-debug/net/modShare.js"></script>
-	<script egret="lib" src="bin-debug/net/NetConnect.js"></script>
-	<script egret="lib" src="bin-debug/net/NetUI.js"></script>
 	<script egret="lib" src="bin-debug/popup/BattleFailPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/BattlePausePop.js"></script>
 	<script egret="lib" src="bin-debug/popup/BattleWinPop.js"></script>
@@ -207,7 +201,7 @@
 	<script egret="lib" src="bin-debug/popup/GoodsTipWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/HangupPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/HelpTipDialog.js"></script>
-	<script egret="lib" src="bin-debug/game/Buff/buffs/AddProperty.js"></script>
+	<script egret="lib" src="bin-debug/game/Buff/BuffData.js"></script>
 	<script egret="lib" src="bin-debug/popup/PVPWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/QuickPurchaseWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/ResetEquipAttrWindow.js"></script>
@@ -259,12 +253,6 @@
          * "antialias": //WebGL模式下是否开启抗锯齿，true:开启，false:关闭，默认为false
          * }
          **/
-        //  function pack (data) {
-        //      return msgpack.encode(data)
-        //  }
-        //  function unpack (data) {
-        //      return msgpack.decode(data)
-        //  }
 		var isDebug = true;
 		var RESOURCE = "";
 		var sdw = sdw || {};

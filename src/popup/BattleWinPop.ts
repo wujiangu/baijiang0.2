@@ -28,6 +28,16 @@ class BattleWinPop extends PopupWindow {
                 if (this.popType == 1) {
 
                 }else{
+                    //排名获得资源
+                    let exp:number = UserDataInfo.GetInstance().GetBasicData("exp") + this.reward.exp;
+                    let soul:number = UserDataInfo.GetInstance().GetBasicData("soul") + this.reward.soul;
+                    let diamond:number = UserDataInfo.GetInstance().GetBasicData("diamond") + this.reward.diamond;
+                    UserDataInfo.GetInstance().SetBasicData({exp:exp, soul:soul, diamond:diamond});
+                    SceneManager.mainScene.show_label_text();
+                    //这里获得装备
+                    //this.reward.equip = {"id":0, "star":0},有装备是id为装备id, 没有装备是id为0, star为装备星级
+                    //装备数据需要加入服务端
+
                     this.parent.removeChildren();
                     Animations.sceneTransition(()=>{
                         SceneManager.curScene.cleanChildren();
@@ -58,9 +68,9 @@ class BattleWinPop extends PopupWindow {
             this.btn_continue.label = "继续";
             this.lab_hurt.text = params.value.toString();
             this.lab_rank.text = params.rank.toString();
-            let data = modPVP.getCurReward(params.rank);
-            // Common.log("当前获得的奖励------>", data);
-            this.createReward(data);
+            this.reward = modPVP.getCurReward(params.rank);
+            egret.log("当前获得的奖励------>", JSON.stringify(this.reward));
+            this.createReward(this.reward);
 
         }
         Animations.PopupBackOut(this, 500);
@@ -109,6 +119,7 @@ class BattleWinPop extends PopupWindow {
         super.Close();
     }
 
+    private reward:any;
     /**分享 */
     private btn_share:eui.Button;
     /**继续 */

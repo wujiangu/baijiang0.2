@@ -38,7 +38,7 @@ class Alliance extends BaseGameObject {
         this.buffArmature.scaleY = 1.5;
         this.armature.scaleX = 1.5;
         this.armature.scaleY = 1.5;
-        this.img_swordLight.texture = RES.getRes(`${name}-pugong_png`);
+        this.img_swordLight.texture = RES.getRes(`battleComon.${name}-pugong`);
     }
 
     public init(data:Array<any>):void {
@@ -238,7 +238,7 @@ class Alliance extends BaseGameObject {
      * 创建剑光
      */
     public createSwordLight():void {
-        this.img_swordLight = Utils.createBitmap("diaochan-pugong_png");
+        this.img_swordLight = Utils.createBitmap("battleComon.diaochan-pugong");
         this.img_swordLight.anchorOffsetX = this.img_swordLight.width;
         this.img_swordLight.anchorOffsetY = this.img_swordLight.height/2;
         this.img_swordLight.visible = false;

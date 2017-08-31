@@ -58,6 +58,8 @@ class HttpRequest {
     private urls:any = {
         //登陆
         "login":"http://116.62.214.75:5555/userinfo/login",
+        //签到
+        "checkin":"http://116.62.214.75:5555/userinfo/checkin",
         //用户信息
         "userinfo":"http://116.62.214.75:5555/userinfo",
         // "login":"http://httpbin.org/post",

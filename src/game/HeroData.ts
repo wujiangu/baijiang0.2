@@ -90,7 +90,7 @@ class HeroData {
         data["lv"] = HeroData.list[name].lv;
         HttpRequest.getInstance().send("POST", "hero", data);
         HeroData.addSingleHeroAttr(name);
-        this.update();
+        // this.update();
     }
 
     /** up same */
