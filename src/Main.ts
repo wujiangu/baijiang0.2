@@ -161,16 +161,11 @@ class Main extends eui.UILayer {
         this.removeChild(this.bg);
         this.removeChild(this.logo);
         // RES.destroyRes("loading");
-        modLogin.init();
-        modLogin.reqLogin(this._onLogin);
+        // modLogin.init();
+        // modLogin.reqLogin(this._onLogin);
         // this.test();
-        // this.testBattle();
+        this.testBattle();
         // this.addDesktop();
-        // LeanCloud.GetInstance().Login("wujiangu", "112345", this._onLogin);
-        // NetConnect.send(11001, {}, ()=>{})
-        // SceneManager.pvpScene = new PVPScene();
-        // SceneManager.curScene = SceneManager.pvpScene;
-        // this.addChild(SceneManager.pvpScene);
     }
 
     /**
@@ -180,7 +175,7 @@ class Main extends eui.UILayer {
         SceneManager.enterGameScene = new EnterGameScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
         RES.loadGroup("backstage");
-        egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()))
+        egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
         GameData.isDebug = false;
         modLogin.sendHeartBeat();
         // LeanCloud.GetInstance().InitData();
@@ -204,9 +199,9 @@ class Main extends eui.UILayer {
         btn.y = 300;
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
-            // egret.log("添加桌面");
-            // window["sdw"].canAddDesktop = true;
-            // window["sdw"].addDesktop();
+            egret.log("添加桌面");
+            window["sdw"].canAddDesktop = true;
+            window["sdw"].addDesktop();
         }, this);
         this.addChild(btn);
     }
@@ -236,20 +231,27 @@ class Main extends eui.UILayer {
      * 战斗测试
      */
     private testBattle():void {
-        RES.createGroup("battleGroup", ["battleCommon"],true);
+        RES.createGroup("battleGroup", ["battleCommon", "battlePVP"],true);
         ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
             ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                 ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
                     RES.loadGroup("battleBack");
-                    // ResLoadManager.GetInstance().LoadGroup("battleBack", ()=>{
-                        // ConfigManager.InitBattleConfig("battleBack");
-                        SceneManager.battleScene = new BattleScene();
-                        SceneManager.curScene = SceneManager.battleScene;
-                        this.addChild(SceneManager.battleScene);
-                    // })
+                    SceneManager.battleScene = new BattleScene();
+                    SceneManager.curScene = SceneManager.battleScene;
+                    this.addChild(SceneManager.battleScene);
+                    // SceneManager.pvpScene = new PVPScene();
+                    // SceneManager.curScene = SceneManager.pvpScene;
+                    // this.addChild(SceneManager.pvpScene);
                 })
             })
         })
+    }
+
+    /**
+     * 竞技场模式
+     */
+    private testPVP():void {
+
     }
 
     private bg:egret.Bitmap;

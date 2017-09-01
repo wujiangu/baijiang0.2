@@ -166,22 +166,31 @@ class PVPScene extends Base {
         this.lab_cdTime.text = `${this._cdTime}`;
     }
 
+    public showPopView(isHigh:boolean):void{
+        let rankIndex = RankData.GetInstance().GetIndexFromDamage();
+        if(isHigh){
+            if(rankIndex != -1){
+                WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex},()=>{
+                    WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+                });  
+            }
+            else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+        }
+        else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
+    }
+
     /**
      * 进入结算界面
      */
     public gotoFinish():void {
-        let nick:string = UserDataInfo.GetInstance().GetBasicData("roleName");
-        UserDataInfo.GetInstance().SetBasicData({damage:this._curValue, roleName:nick}, ()=>{
-             RankData.GetInstance().ReqRankData(()=>{
-                let rankIndex = RankData.GetInstance().GetIndexFromDamage(this._curValue);
-                if(rankIndex != -1){
-                    WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:1,data:rankIndex,share:10},()=>{
-                        WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
-                    });  
-                }
-                else WindowManager.GetInstance().GetWindow("BattleWinPop").Show({value:this._curValue, rank:rankIndex});
-            });
-        })
+        if(RankData.GetInstance().IsHighOriginDamage(this._curValue)){
+            UserDataInfo.GetInstance().SetBasicData({damage:this._curValue}, ()=>{
+                RankData.GetInstance().ReqRankData(()=>{
+                    this.showPopView(true);
+                });
+            })
+        }
+        else this.showPopView(false);
     }
 
     private _onTimeComplete():void {
@@ -199,7 +208,8 @@ class PVPScene extends Base {
         GameData.heros.push(this._hero);
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
-        let attr = data[0];
+        let level:number = HeroData.getHeroData(GameData.curHero).lv
+        let attr = Utils.cloneObj(data[level - 1]);
         this._hero.init([GameData.curHero, attr], true);
         this._hero.x = Common.SCREEN_W/2;
         this._hero.y = Common.SCREEN_H/2;

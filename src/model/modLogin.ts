@@ -61,8 +61,8 @@ namespace modLogin {
      */
     function newUserHandler(callBack:Function):void {
         let data:any = newUserData.user;
-        data["roleName"] = (userBase.nick) ? userBase.nick:userBase.uid
-        data["roleSex"] = (userBase.sex) ? userBase.sex:1;
+        data["roleName"] = (userBase.nick == "null") ? userBase.uid:userBase.nick
+        data["roleSex"] = (userBase.sex == "null") ? 1:userBase.sex;
         //本次登陆注册的时间
         data["loginTime"] = new Date().getTime();
         //新用户标志
@@ -70,6 +70,7 @@ namespace modLogin {
         //这里存储数据到本地
         UserDataInfo.GetInstance().SaveData(data);
         delete data.isNew;
+        // egret.log("发送服务器的数据--->", JSON.stringify(data), userBase.sex);
         HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
             // egret.log("创建新用户成功---->", result);
             initNewUserData(callBack);

@@ -42,16 +42,9 @@ class ShareWindow extends PopupWindow{
             this.show_lab_text(name_list[param.data],"","","",this.getHeroStage(param.data));
         }
 
-        if(param.share == null){
-            this.lab_share.text = "";
-        } 
-        else
-        {
-            let equipName:string = TcManager.GetInstance().GetTcEquipData(param.share).name;
-            this.lab_share.textFlow = <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
-                                                                  {text:equipName, style:{"textColor":0x910F9B}}];
-        }
-        this.img_goods.texture = param.share == null ? null : RES.getRes(`equip_res.Sequip${25-param.share}`);
+        this.lab_share.textFlow = <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
+                                                                {text:"30钻石", style:{"textColor":0x2D6EA6}}];
+        this.img_goods.texture = RES.getRes("common_res.basic_diamond");
     }
 
     private onEventManage(type:number = 0){

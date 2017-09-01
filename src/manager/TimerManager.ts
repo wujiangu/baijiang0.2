@@ -38,6 +38,7 @@ class TimerManager {
         if (target && target.length != 0) {
             for (let i = 0; i < target.length; i++) {
                 this._object.push(target[i]);
+                SceneManager.curScene.battleLayer.addChild(target[i]);
             }
         }
     }

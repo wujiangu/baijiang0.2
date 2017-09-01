@@ -320,6 +320,7 @@ class Enermy extends BaseGameObject {
     public effectArmaturePlayEnd():void {
         if (this.curState == BaseGameObject.Action_Enter) {
             this.effectArmature.visible = false;
+            this.shadow.visible = true;
             if (this.isElite) {
                 this.setBuff();
                 if (this.isExistBuff(55, true)) this.isFaster = true;

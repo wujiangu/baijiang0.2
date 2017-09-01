@@ -145,7 +145,7 @@ class EquipUpStarWindow extends PopupWindow{
         let currHero = HeroData.getHeroData(GameData.curHero);
 
         for(let i:number = 0; i < list.length; i++){
-            if(list[i].EquipId != this.equip_info.EquipId && currHero.equip != list[i].EquipId ){
+            if(list[i].EquipId != this.equip_info.EquipId && currHero.equipId != list[i].EquipId ){
                 if(this.equip_object_list.length <= index){
                     this.equip_object_list[index] = new EquipObject();
                     this.equip_object_list[index].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchEquip, this);

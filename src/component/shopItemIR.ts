@@ -62,7 +62,7 @@ class shopItemIR extends Base {
                             if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
                                 WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
                             }
-                            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:"zhaoyun",share:10});
+                            WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:"zhaoyun"});
                             GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
                         }
                         else Animations.showTips("钻石不足，无法购买", 1);

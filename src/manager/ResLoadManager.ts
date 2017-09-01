@@ -25,6 +25,7 @@ class ResLoadManager{
             this._listener = listener;
             this._name     = name;
             Animations.ShowLoadAnimation();
+            GameLayerManager.gameLayer().loadLayer.addChild(Common.globalMask);
         }
         else
         {
@@ -40,6 +41,7 @@ class ResLoadManager{
 
         if(this._listener){
             Animations.HideLoadAnimation();
+            GameLayerManager.gameLayer().loadLayer.removeChild(Common.globalMask);
             this._listener();
         } 
     }

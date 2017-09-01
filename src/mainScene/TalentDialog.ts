@@ -141,9 +141,10 @@ class TalentDialog extends PopupWindow {
             }
 
             this.pageGroup.removeChildren();
-            let talent = {"name":"", "count":1, "talent":[]};
+            let talent = {"name":"", "count":1, "talent":[], "talentPage":talentPage.length+1};
             talentPage.push(talent);
             let len = talentPage.length;
+            HttpRequest.getInstance().send("POST", "talent", {count:talent.count, talent:talent.talent, talentPage:len});
             this.createToggleBtn(len-1);
             this.btn_add.x = 155 + 55 * len;
             Utils.toggleButtonStatus(this.topBtn, len - 1);

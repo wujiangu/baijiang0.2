@@ -54,13 +54,17 @@ class ContinuousInjury extends BuffBase {
         this.bloodTips.x = this.target.x;
         // this.bloodTips.y = this.target.buffArmature.y + this.target.y;
         this.bloodTips.y = this.target.y;
-        SceneManager.battleScene.effectLayer.addChild(this.bloodTips);
+        SceneManager.curScene.effectLayer.addChild(this.bloodTips);
         var step2:Function = function(){
-            this.target.attr.hp -= this.damage;
-            if (this.target.attr.hp <= 0){
-                TimerManager.getInstance().remove(this.update, this);
-                this.target.gotoDead();
-                this.target.updateKillCount();
+            if (this.target.isPVP) {
+                SceneManager.pvpScene.updateValue(this.damage);
+            }else{
+                this.target.attr.hp -= this.damage;
+                if (this.target.attr.hp <= 0){
+                    TimerManager.getInstance().remove(this.update, this);
+                    this.target.gotoDead();
+                    this.target.updateKillCount();
+                }
             }
         };
         var step1:Function = function(){

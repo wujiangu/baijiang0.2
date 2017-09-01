@@ -339,7 +339,7 @@ namespace Common {
         }
         else if(param.type == 3)
         {
-            return RES.getRes(`img_${param.name}1_png`);
+            return RES.getRes(`battle_res.img_${param.name}1`);
         }
     }
 
@@ -369,11 +369,11 @@ namespace Common {
                  }
                  else
                  {
-                    HeroData.AddHero(list[i].name);
+                    HeroData.addHeroData(list[i].name);
                     if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
                         WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
                     }
-                    WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:list[i].name,share:10});  
+                    WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:list[i].name});  
                  }
             }
         }

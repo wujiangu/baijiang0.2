@@ -193,9 +193,7 @@ namespace modTalent {
         data["talent"] = talentPage[curPage].talent;
         data["count"] = talentPage[curPage].count;
 
-        egret.log("当前页天赋---->", curPage, data, talentPage[curPage]);
         HttpRequest.getInstance().send("POST", "talent", data);
-        // LeanCloud.GetInstance().SaveRoleData("talentPage", talentPage);
         setUnlock(curPage);
     }
 

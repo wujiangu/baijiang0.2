@@ -22,6 +22,7 @@ class UserDataInfo{
         for(let key in data){
             this.userData[key] = data[key];
         }
+        data["roleName"] = this.userData.roleName;
         
         HttpRequest.getInstance().send("POST", "userinfo",data,()=>{
             if(callBack) callBack();
@@ -88,7 +89,6 @@ class UserDataInfo{
                     this.signNum = 7;
                 }
                 this.setSignData(this.signNum, this.isSign);
-                this.DealUserData("sportCount", 0);
             }
         },this);
     }

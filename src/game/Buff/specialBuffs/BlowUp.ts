@@ -48,7 +48,8 @@ class BlowUp extends BuffBase {
     }
 
     private onComplete(event:egret.MotionEvent) {
-        // this._mc1.visible = false;
+        this._mc1.visible = false;
+        this.target.shadow.visible = false;
     }
 
     /**结束 */

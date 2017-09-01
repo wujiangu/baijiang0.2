@@ -84,6 +84,8 @@ module modShare {
      */
     function success():void {
         egret.log("分享成功");
+        UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + 30});
+        GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
     }
 
     /**
