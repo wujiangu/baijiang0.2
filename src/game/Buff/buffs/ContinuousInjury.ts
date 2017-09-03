@@ -118,6 +118,13 @@ class ContinuousInjury extends BuffBase {
         this.target.buffArmature.visible = false;
     }
 
+    /**回收buff类 */
+    public recycleBuff() {
+        super.recycleBuff();
+        TimerManager.getInstance().remove(this.update, this);
+        TimerManager.getInstance().removeComplete(this.buffEnd, this);
+    }
+
     private target:any;
     private bloodTips:egret.TextField;
 }
