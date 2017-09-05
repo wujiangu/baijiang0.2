@@ -43,7 +43,7 @@ class ShareWindow extends PopupWindow{
         }
 
         this.lab_share.textFlow = <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
-                                                                {text:"30钻石", style:{"textColor":0x2D6EA6}}];
+                                                                {text:`${Common.GetShareDiamond()}钻石`, style:{"textColor":0x2D6EA6}}];
         this.img_goods.texture = RES.getRes("common_res.basic_diamond");
     }
 
@@ -61,14 +61,15 @@ class ShareWindow extends PopupWindow{
         super.Close();
         this.onEventManage();
         if(this.listener) this.listener();
+
     }
 
     private onTouchBtn(event:egret.TouchEvent):void{
        let target = event.target;
        switch(event.target){
            case this.btn_share:
-                modShare.startShare(this.getShareTitle(this._type));
                 egret.log("开始分享");          
+                modShare.startShare(this.getShareTitle(this._type));
            break;
            default:
                 this.Close();

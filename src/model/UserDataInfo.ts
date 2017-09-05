@@ -103,21 +103,6 @@ class UserDataInfo{
         HttpRequest.getInstance().send("POST", "checkin", {signNum:signNum,isSign:isSign?1:0},()=>{}, this);
     }
 
-    /** 移除想要删除的文件根据索引 */
-    public RemoveEmailFromIndex(index:number):void{
-        if(index < 0 || index > this.userData["email"].length) return;
-
-        for(let i:number = 0; i < this.userData["email"].length; i++){
-            if(i == index){
-                for(let j:number = i + 1; j < this.userData["email"].length; j++){
-                    this.userData["email"][j - 1] = this.userData["email"][j];
-                }
-                break;
-            }
-        }
-        this.userData["email"].pop();
-    }
-
     /**用户数据 */
     private userData:any;
     private isSign:boolean;

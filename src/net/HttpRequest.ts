@@ -57,130 +57,34 @@ class HttpRequest {
      */
     private urls:any = {
         //登陆
-        "login":"http://116.62.214.75:5555/userinfo/login",
+        "login": window["RESOURCE"] + "userinfo/login",
         //签到
-        "checkin":"http://116.62.214.75:5555/userinfo/checkin",
+        "checkin": window["RESOURCE"] + "userinfo/checkin",
         //用户信息
-        "userinfo":"http://116.62.214.75:5555/userinfo",
+        "userinfo": window["RESOURCE"] + "userinfo",
         // "login":"http://httpbin.org/post",
         //购买支付
-        "pay":"http://116.62.214.75:5555/order/signature",
+        "pay": window["RESOURCE"] + "order/signature",
         //订单查询
-        "order":"http://116.62.214.75:5555/order/callback",
+        "order": window["RESOURCE"] + "order/callback",
         //心跳
-        "heartbeat":"http://116.62.214.75:5555/userinfo/heartbeat",
+        "heartbeat": window["RESOURCE"] + "userinfo/heartbeat",
         //排行榜
-        "rank":"http://116.62.214.75:5555/rank",
+        "rank": window["RESOURCE"] + "rank",
         //英雄
-        "hero":"http://116.62.214.75:5555/hero",
+        "hero": window["RESOURCE"] + "hero",
         //天赋
-        "talent":"http://116.62.214.75:5555/talent",
+        "talent": window["RESOURCE"] + "talent",
         //装备
-        "equip":"http://116.62.214.75:5555/equip",
+        "equip": window["RESOURCE"] + "equip",
         //邮件
-        "email":"http://116.62.214.75:5555/email",
+        "email": window["RESOURCE"] + "email",
     }
     /**token值 */
     private token:string;
     /**请求队列 */
     private _reqQueue:Array<any>;
 }
-
-// class Http {
-//     public constructor(){
-//         this.httpRequest = new egret.HttpRequest();
-//         // this.httpRequest.withCredentials = true;
-//         this.httpRequest.responseType = egret.HttpResponseType.TEXT;
-//         // this.open(this.url)
-//     }
-
-//     public send(params:any = null):void {
-//         // this.dataProcess(params);
-//         this.httpRequest.send(params);
-//     }
-
-//     /**打开一个http请求 */
-//     public open(url:string, token:string = null, isGET:boolean = false):void {
-//         if (isGET){
-//             this.httpRequest.open(url, egret.HttpMethod.GET);
-//         }else{
-//             this.httpRequest.open(url, egret.HttpMethod.POST);
-//         }
-//        //设置token的值
-//         if (token){
-//             // let temp = "Bearer " + window.btoa(token);
-//             // egret.log("添加token请/求tou", token, typeof(token));
-//             this.httpRequest.setRequestHeader("Authentication-token", token);   
-//         }
-//         //设置响应头
-//         this.httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//         //加载完成，通过事件的respond属性获取返回的信息
-//         this.httpRequest.addEventListener(egret.Event.COMPLETE, this.onPostComplete, this);
-//         //加载失败
-//         this.httpRequest.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onPostIOError, this);
-//         //加载进度
-//         this.httpRequest.addEventListener(egret.ProgressEvent.PROGRESS, this.onPostProgress, this);
-//         //关闭http请求
-//         this.httpRequest.addEventListener(egret.Event.CLOSE, this.onPostClose, this);
-//     }
-
-//     //发送请求前的数据处理(加密)
-//     private dataProcess(data) {
-//         var msg;
-//         let time = Math.floor(new Date().getTime()/1000);
-//         var token = ""
-//         token = new md5().hex_md5(token);
-//         msg = token;
-//         return msg;
-//     }
-
-//     //请求加载完成
-//     private onPostComplete(event:egret.Event):void {
-//         let request = <egret.HttpRequest>event.currentTarget;
-//         let data = JSON.parse(request.response);
-//         this.func.call(this.funcObj, data);
-//         ObjectPool.push(this);
-//         this.removeEventListener();
-//     }
-
-//     //请求失败
-//     private onPostIOError():void {
-//         Common.log("get Error");
-//         this.func.call(this.funcObj);
-//         ObjectPool.push(this);
-//         this.removeEventListener();
-//     }
-
-//     //请求进度(可通过event.bytesLoaded和event.bytesTotal统计进度信息)
-//     private onPostProgress(event:egret.ProgressEvent):void {
-//         Common.log("get progress : " + Math.floor(100*event.bytesLoaded/event.bytesTotal) + "%");
-//     }
-
-//     //关闭http请求
-//     private onPostClose():void {
-//         ObjectPool.push(this);
-//         this.removeEventListener();
-//     }
-
-//     //关闭监听
-//     private removeEventListener():void {
-//         //加载完成，通过事件的respond属性获取返回的信息
-//         this.httpRequest.removeEventListener(egret.Event.COMPLETE, this.onPostComplete, this);
-//         //加载失败
-//         this.httpRequest.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.onPostIOError, this);
-//         //加载进度
-//         this.httpRequest.removeEventListener(egret.ProgressEvent.PROGRESS, this.onPostProgress, this);
-//         //关闭http请求
-//         this.httpRequest.removeEventListener(egret.Event.CLOSE, this.onPostClose, this);
-//     }
-
-//     /**回调函数 */
-//     public func:Function;
-//     public funcObj:any;
-//     /**http请求 */
-//     private httpRequest:egret.HttpRequest;
-// }
-
 class Http {
     public constructor(){
         this.httpRequest = new XMLHttpRequest();

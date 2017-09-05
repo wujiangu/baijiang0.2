@@ -120,9 +120,9 @@ class ContinuousInjury extends BuffBase {
 
     /**回收buff类 */
     public recycleBuff() {
-        super.recycleBuff();
         TimerManager.getInstance().remove(this.update, this);
         TimerManager.getInstance().removeComplete(this.buffEnd, this);
+        super.recycleBuff();
     }
 
     private target:any;

@@ -14,7 +14,7 @@ class MainScene extends Base {
         this.onListener();
         this.createMainScene();
         this.show_label_text();   
-        this.showSignDialog(); 
+        this.showSignDialog();
     }
 
     /** 事件监听 */
@@ -138,7 +138,9 @@ class MainScene extends Base {
                 ResLoadManager.GetInstance().LoadGroup("shop",()=>{this.ShowPop("ShopDialog")});
                 break;
             case this.btn_email:
-                ResLoadManager.GetInstance().LoadGroup("email",()=>{this.ShowPop("EmailWindow")});
+                ResLoadManager.GetInstance().LoadGroup("email",()=>{
+                    ModEmail.ReqGetEmail(()=>{this.ShowPop("EmailWindow");});
+                });
             break;
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();

@@ -51,7 +51,7 @@ module modShare {
             // window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
         }else{
             //移动端平台
-            // egret.log("平台---->", platform);
+            // egret.log("平台---->", platform, "url-->", window.location.host, "encode---->", encodeURIComponent(window.location.host));
             window["show"]();
             if (platform == "micromessenger" || platform == "other") {
                 send["success"] = success;
@@ -66,13 +66,6 @@ module modShare {
                         summary:        params.desc,
                         pic:            params.imgUrl,
                         url:            params.link,
-                        WXconfig:       {
-                            swapTitleInWX: true,
-                            appId: '',
-                            timestamp:'',
-                            nonceStr: '',
-                            signature: ''
-                        }
                     });
                 });
             }
@@ -82,10 +75,11 @@ module modShare {
     /**
      * 分享成功
      */
-    function success():void {
+   function success():void {
         egret.log("分享成功");
-        UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + 30});
-        GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
+        WindowManager.GetInstance().GetWindow("ShareWindow").Close();
+        UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + Common.GetShareDiamond(),shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
+        GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
     }
 
     /**

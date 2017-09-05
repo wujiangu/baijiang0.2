@@ -238,7 +238,7 @@ class Main extends eui.UILayer {
                     RES.loadGroup("battleBack");
                     SceneManager.battleScene = new BattleScene();
                     SceneManager.curScene = SceneManager.battleScene;
-                    this.addChild(SceneManager.battleScene);
+                    GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
                     // SceneManager.pvpScene = new PVPScene();
                     // SceneManager.curScene = SceneManager.pvpScene;
                     // this.addChild(SceneManager.pvpScene);

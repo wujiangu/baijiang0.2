@@ -88,6 +88,7 @@ class BattleFailPop extends PopupWindow {
         Animations.popupOut(this.group_fail, 300, ()=>{
             if (this._isUp) {
                 this.img_upgrade.visible = true;
+                ReadyDialog.instance.updateAttr();
                 // let data = HeroData.getHeroData(GameData.curHero);
                 // Common.log("英雄的数据---->", data);
                 egret.Tween.get(this.img_upgrade).to({y:this.img_upgrade.y - 100, alpha:0}, 800).call(()=>{

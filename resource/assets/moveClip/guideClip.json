@@ -1,0 +1,35 @@
+{"mc":{
+	"guideClip":{
+		"frameRate":6,
+		"labels":[
+			{"name":"guideClip","frame":1,"end":3}
+			
+			],
+		"events":[
+			{"name":"click_down","frame":3}
+			],
+		"frames":[
+			{
+			"res":"guide_03",
+			"x":0,
+			"y":0
+			},
+			{
+			"res":"guide_02",
+			"x":2,
+			"y":2
+			},
+			{
+			"res":"guide_01",
+			"x":5,
+			"y":5
+			}
+			]
+        }
+    },
+	"res":{
+        "guide_01":{"x":123,"y":145,"w":110,"h":140},
+        "guide_02":{"x":123,"y":0,"w":116,"h":143},
+        "guide_03":{"x":0,"y":0,"w":121,"h":145}
+    }
+}

@@ -9,6 +9,7 @@ class ReadyDialog extends PopupWindow {
         this.skinName = "resource/game_skins/readyWindowSkin.exml";
         this.viewStack.selectedIndex = 1;
         this.btn_skill.selected = true;
+        ReadyDialog.instance = this;
     }
 
     protected createChildren(): void{
@@ -67,30 +68,8 @@ class ReadyDialog extends PopupWindow {
      */
     public updateAttr(isUpgrade:boolean=false):void {
         let hero = HeroData.getHeroData(GameData.curHero);
-        if(isUpgrade){
-            if(hero["lv"] >= 100){
-                Animations.showTips("当前角色等级已满");
-                return;
-            } 
-
-            if(UserDataInfo.GetInstance().IsHaveOhterGoods("exp", hero["lv"] * 100, "soul", hero["lv"] * 100)){
-                hero["lv"]++;
-                this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
-                this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));
-                Animations.showTips("升级成功", 1);
-            }
-            else 
-            {
-                if(!UserDataInfo.GetInstance().IsHaveGoods("exp", hero["lv"] * 100)) Animations.showTips("经验不足，无法升级");
-                else if(!UserDataInfo.GetInstance().IsHaveGoods("soul", hero["lv"] * 100)) Animations.showTips("魂力不足，无法升级");
-                return;
-            }
-        }
-
+        HeroData.setHeroAttr(GameData.curHero, hero.lv);
         for (let i = 0; i < 6; i++) {
-            if (isUpgrade) {
-                hero.attr[i] ++;
-            }
             let attr = hero.attr[i];
             this._curAttr[i].text = attr
         }
@@ -418,7 +397,7 @@ class ReadyDialog extends PopupWindow {
         this.txt_sole.text = hero["lv"] * 100 + "";
     }
 
-    // public static instance:ReadyDialog;
+    public static instance:ReadyDialog;
     private _isPVP:boolean;
     private _curAttr:Array<egret.TextField>;
     private _tempAttr:Array<egret.TextField>;

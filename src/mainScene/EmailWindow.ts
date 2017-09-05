@@ -19,18 +19,14 @@ class EmailWindow extends PopupWindow{
         this.group_list = new Array();
         this.img_list   = new Array();
         this.title_list  = new Array();
-        this.img_reward_list = new Array();
+        this.obj_list = new Array();
         this.img_bg_list = new Array();
         this.time_list = new Array();
         this.icon_list = new Array();
-        this.digit_list = new Array();
 
         for(let i:number = 0; i < 5; i++){
-            this.img_reward_list[i] = new egret.Bitmap();
-            this.digit_list[i] = Common.CreateText("",20,0xff00ff,true,"Microsoft YaHei","right");
-            this.emailGroup.addChild(this.img_reward_list[i]);
-            this.emailGroup.addChild(this.digit_list[i]);
-            this.digit_list[i].width = 92;
+            this.obj_list[i] = new EquipObject();
+            this.emailGroup.addChild(this.obj_list[i]);
         }
 
         this.img_click = new egret.Bitmap(RES.getRes("email_002_png"));
@@ -64,18 +60,31 @@ class EmailWindow extends PopupWindow{
        this.setEmailStatus(1);
        
        let tempData:any = this._emailData[this._clickIndex];
-       this.lab_title.text = tempData.title;
-       this.lab_content.text = tempData.content;
-       this.lab_time.text = `剩余${tempData.time}天`;
+       let contentInfo:any = this.getEmailContentInfo(tempData.emailType);
+       let reward:any = TcManager.GetInstance().GetTcPVPReward(tempData.rank);
+       this.lab_title.text = contentInfo.title;
+       this.lab_content.text = contentInfo.content;
+       this.lab_time.text = `剩余${Common.CountSurlTime(this._emailData[this._clickIndex].date, 30)}天`;
        let height:number = this.btn_get.y - this.lab_time.y - this.lab_time.height;
-       let len = tempData.reward.length;
+       let len = reward == null ? 0 : reward.length;
        let srcX = this.emailGroup.width - 105 * len >> 1
 
        for(let i:number = 0; i < 5; i++){
-           this.img_reward_list[i].texture = len > i ? Common.GetTextureFromType(tempData.reward[i]) : null;
-           this.digit_list[i].text = len > i ? Common.TranslateDigit(tempData.reward[i].count) : "";
-           Common.SetXY(this.img_reward_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.img_reward_list[i].height >> 1));
-           Common.SetXY(this.digit_list[i], this.img_reward_list[i].x, this.btn_get.y - 40);
+           if(len > i){
+                if(reward[i].type == 1){
+                    let star = reward[i].star == null ? 0 : reward[i].star;
+                    let info:any = new modEquip.EquipInfo(reward[i].id, star, TcManager.GetInstance().GetTcEquipData(reward[i].id).grade);
+                    info.AddAttrType(reward[i].star);
+                    this.obj_list[i].ChangeEquipSource(info);
+                }
+                else if(reward[i].type == 2)
+                {
+                    this.obj_list[i].ChangeObjSource(Common.GetTextureFromType(reward[i]), reward[i].count);
+                }
+           }
+           else this.obj_list[i].ChangeObjSource(null, 0);
+         
+           Common.SetXY(this.obj_list[i], 3 + srcX + i * 105, this.lab_time.y + this.lab_time.height + (height - this.obj_list[i].height >> 1));
        }
    }
 
@@ -104,8 +113,8 @@ class EmailWindow extends PopupWindow{
                 this.group_list[i].width = this.img_list[i].width;this.group_list[i].height = this.img_list[i].height;
             }
           
-            this.title_list[i].text = this._emailData[i].title;
-            this.time_list[i].text = this._emailData[i].date
+            this.title_list[i].text = this.getEmailContentInfo(this._emailData[i].emailType).title;
+            this.time_list[i].text = new Date(this._emailData[i].date).toLocaleDateString();
             this.img_list[i].texture = RES.getRes(`common_res.email_status${this._emailData[i].status}`);
             this.icon_list[i].visible = this._emailData[i].status == 3 ? true : false;
 
@@ -132,8 +141,9 @@ class EmailWindow extends PopupWindow{
             strName = "gray";
         }
 
-        for(let i:number = 0; i < this._emailData[this._clickIndex].reward.length; i++){
-            Common.ChangeImgMatrixFilter(this.img_reward_list[i], strName);
+        let reward:any = TcManager.GetInstance().GetTcPVPReward(this._emailData[this._clickIndex].rank);
+        for(let i:number = 0; i < 5; i++){
+            this.obj_list[i].ChangeImgMatrixFilter(strName);
         }
     }
 
@@ -145,15 +155,19 @@ class EmailWindow extends PopupWindow{
                     return;
                 } 
 
-                Common.DealReward(this._emailData[this._clickIndex].reward);
+                let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[this._clickIndex].rank);
+                Common.DealReward(reward);
                 this.setEmailStatus(2);
             break;
             case this.btn_getAll:
                 let list:any = [];
                 for(let i in this._emailData){
                     if(this._emailData[i].status != 1){
-                        for(let j in this._emailData[i].reward){
-                            list.push(this._emailData[i].reward[j]);
+                        let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[i].rank);
+                        if(reward){
+                            for(let j in reward){
+                                list.push(reward[j]);
+                            }
                         }
                     }
                 }
@@ -164,7 +178,7 @@ class EmailWindow extends PopupWindow{
                 }
 
                 Common.DealReward(list);
-                // UserDataInfo.GetInstance().SetBasicData("email", []);
+                ModEmail.DealAllEmailData();
                 this.initData();
             break;
             case this.btn_delete:
@@ -173,7 +187,7 @@ class EmailWindow extends PopupWindow{
                     return;
                 }
 
-                UserDataInfo.GetInstance().RemoveEmailFromIndex(this._clickIndex);
+                ModEmail.DelEmailData(this._emailData[this._clickIndex]);
                 this._clickIndex = this._clickIndex - 1 >= 0 ? this._clickIndex - 1 : 0;
                 for(let i:number = 0; i < this._eventNum; i++) this.img_bg_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
                 this.initData();
@@ -185,7 +199,7 @@ class EmailWindow extends PopupWindow{
     }
 
      private initData():boolean{
-        let emailData:any = UserDataInfo.GetInstance().GetBasicData("email");
+        let emailData:any = ModEmail.GetEmailData();
 
         this._eventNum = emailData == null ? 0 : emailData.length;
         this.scrollGroup.removeChildren();
@@ -218,7 +232,17 @@ class EmailWindow extends PopupWindow{
         }
         this.img_list[this._clickIndex].texture = RES.getRes(`common_res.email_status${this._emailData[this._clickIndex].status}`);
         this.showRewardGoodsColor();
-        // UserDataInfo.GetInstance().SetBasicData("email", this._emailData);
+    }
+
+    private getEmailContentInfo(emailType:number):any{
+        switch(emailType){
+            case 1:                         //PVP战斗的信息
+                return {title:"PVP排名奖励",content:"PVP战斗排名奖励"};
+            case 2:                        //版本奖励
+                return {title:"版本更新奖励",content:"更新版本，对应的补偿奖励"};
+            case 3:                        //bug修复补偿
+                return {title:"bug修复补偿",content:"bug导致不愉快的游戏体验，给予相应的补偿"};
+        }
     }
 
     /** button */
@@ -234,11 +258,9 @@ class EmailWindow extends PopupWindow{
     private lab_time:eui.Label;
     private title_list:Array<egret.TextField>;
     private time_list:Array<egret.TextField>;
-    private digit_list:Array<egret.TextField>;
 
     /** image */
     private img_list:Array<egret.Bitmap>;
-    private img_reward_list:Array<egret.Bitmap>;
     private img_click:egret.Bitmap;
     private img_bg_list:Array<egret.Bitmap>;
     private icon_list:Array<egret.Bitmap>;
@@ -252,4 +274,5 @@ class EmailWindow extends PopupWindow{
     private _emailData:any;
     private _clickIndex:number;
     private _eventNum:number;
+    private obj_list:Array<EquipObject>;
 }

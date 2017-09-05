@@ -80,7 +80,7 @@ class Bristle extends SkillBase {
                         case 2:
                         break;
                     }
-                    enermy[i].addBuff(this.buff);   
+                    enermy[i].addBuff(this.buff);
                 }
             }
         }

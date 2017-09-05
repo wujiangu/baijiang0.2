@@ -61,5 +61,15 @@ class TcManager{
         return this.tc_list[5][signTime];
     }
 
+    /** 根据排名来获得pvp的奖励 */
+    public GetTcPVPReward(rankNum:number):any{
+        for(let data of this.tc_list[6]){
+            if(rankNum <= data.rankNum){
+                return data.reward;
+            }
+        }
+        return null;
+    }
+
     private tc_list:any;
 }

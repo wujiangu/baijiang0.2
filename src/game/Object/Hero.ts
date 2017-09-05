@@ -454,6 +454,7 @@ class Hero extends Alliance {
                 this.canMove = true;
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
                 else SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
+                SceneManager.battleScene.createGuide();
                 Common.log(JSON.stringify(this.attr));
             break;
         }

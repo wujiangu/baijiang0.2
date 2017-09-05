@@ -249,13 +249,14 @@ namespace modEquip {
             modEquip.ReqInsertAndUpEquip(info);
         }
 
-        public InsertEquipList(list:any):void{
-            if(list.length == 0) return;
+        /** insert equip  from reward  */
+        public InsertEquipFromReward(reward:any):void{
+            if(reward == null) return;
 
-            for(let i of list){
-                let info = new EquipInfo(i, 0, TcManager.GetInstance().GetTcEquipData(i).grade);
-                this.Add(info);
-            }
+            let star:number = reward.star == null ? 0 : reward.star;
+            let info = new EquipInfo(reward.id, star, TcManager.GetInstance().GetTcEquipData(reward.id).grade);
+            info.AddAttrType(star);
+            this.Add(info);
         }
 
         /** 移除装备信息 */
@@ -383,6 +384,7 @@ namespace modEquip {
 
         return value;
     }
+
     function isDiffEquipId(list:any, equipId:number):boolean{
          for(let info of list){
             if(info.EquipId == equipId)

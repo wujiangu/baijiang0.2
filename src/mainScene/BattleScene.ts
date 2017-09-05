@@ -27,6 +27,7 @@ class BattleScene extends Base {
         RES.loadGroup("battleBack");
         this.createParticle();
         this.init();
+        // this.createGuide();
     }
     public init():void {
         TimerManager.getInstance().startTimer();
@@ -414,6 +415,14 @@ class BattleScene extends Base {
         system.start();
         //将例子系统添加到舞台
         this.particleLayer.addChild(system);
+    }
+
+    /**
+     * 创建新手引导
+     */
+    public createGuide():void {
+        let guide = new guideDialog();
+        GameLayerManager.gameLayer().maskLayer.addChild(guide);
     }
 
     /**

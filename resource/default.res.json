@@ -1726,6 +1726,16 @@
 			"type": "sheet",
 			"name": "battleComon",
 			"subkeys": "Elitemonster000,Elitemonster001,Elitemonster002,Elitemonster003,Elitemonster004,Elitemonster005,Elitemonster006,buxiaoman-pugong,diaochan-pugong,img_sigh,imprisoned01,imprisoned02,sevenInOut,swordDance,zhaoyun-pugong"
+		},
+		{
+			"url": "assets/moveClip/guideClip.json",
+			"type": "json",
+			"name": "guideClip_json"
+		},
+		{
+			"url": "assets/moveClip/guideClip.png",
+			"type": "image",
+			"name": "guideClip_png"
 		}
 	]
 }

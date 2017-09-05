@@ -60,7 +60,7 @@ class SolaCut extends SkillBase {
     }
 
     private _release():void {
-        if (this.target.hp <= 0) return;
+        if (this.target.attr.hp <= 0) return;
         if (this.target.curState == "attack") return;
         this.target.gotoSkill();
     }

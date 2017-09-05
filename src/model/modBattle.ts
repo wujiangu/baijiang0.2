@@ -26,7 +26,7 @@ namespace modBattle {
         soul = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
-        timer.start();
+        // timer.start();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modBattle);
     }
 

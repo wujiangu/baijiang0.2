@@ -63,6 +63,7 @@ namespace modLogin {
         let data:any = newUserData.user;
         data["roleName"] = (userBase.nick == "null") ? userBase.uid:userBase.nick
         data["roleSex"] = (userBase.sex == "null") ? 1:userBase.sex;
+        data["shareNum"] = 0;
         //本次登陆注册的时间
         data["loginTime"] = new Date().getTime();
         //新用户标志

@@ -234,6 +234,7 @@ class Enermy extends BaseGameObject {
 
     /**死亡 */
     public gotoDead() {
+        if (this.curState == Enermy.Action_Dead) return;
         this.curState = Enermy.Action_Dead;
         this.armature.play(Enermy.Action_Dead, 1);
         Common.dispatchEvent(GameEvents.EVT_PRODUCEMONSTER, this);

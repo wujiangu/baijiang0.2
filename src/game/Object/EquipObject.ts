@@ -20,14 +20,37 @@ class EquipObject extends eui.Group{
             this.img_list[i] = new egret.Bitmap(RES.getRes("equip_res.point_00"));
             this.addChild(this.img_list[i]);
         }
-        Common.SetXY(this.txt_lv, 10, 10);
         this.width = 100;this.height = 100;
+        this.txt_lv.width = 95;
     }
 
+    /** 改变装备资源
+     * @param  info 资源对象
+     */
     public ChangeEquipSource(info:modEquip.EquipInfo):void{
+        this.show_and_hide(true);
         this.img_weapon.texture = RES.getRes(`equip_res.Sequip${25-info.Id}`);
         Common.SetXY(this.img_bottom, this.img_weapon.width - this.img_bottom.width >> 1, this.img_weapon.height - this.img_bottom.height - 7);
+        Common.SetXY(this.txt_lv, 10, 10);
         this.UpEquipData(info);
+    }
+
+    /** 改变对象资源 只是单纯的改变纹理和字体 以及字体对应的位置
+     * @param texture 图片纹理
+     * @param num     字体数量
+     */
+    public ChangeObjSource(texture:egret.Texture, num:number){
+        this.show_and_hide(false);
+        this.img_weapon.texture = texture;
+        this.txt_lv.text = num > 0 ? Common.TranslateDigit(num) : "";
+        Common.SetXY(this.txt_lv, 0, this.img_weapon.height - this.txt_lv.height - 7);
+    }
+    
+    private show_and_hide(isShow):void{
+        this.img_bottom.visible = isShow;
+        for(let i in this.img_list) this.img_list[i].visible = false;
+        this.txt_lv.textAlign = isShow ? "left" : "right";
+        this.txt_lv.textColor = isShow ? 0xE58E0B : 0xffffff;
     }
 
     public UpEquipData(info:modEquip.EquipInfo):void{
@@ -43,6 +66,10 @@ class EquipObject extends eui.Group{
         this.txt_lv.text = `${info.Lv}`;
         this.id = info.Id;
         this.equipId = info.EquipId;
+    }
+
+    public ChangeImgMatrixFilter(strName):void{
+        Common.ChangeImgMatrixFilter(this.img_weapon, strName);
     }
     
     public set Index(val:number){

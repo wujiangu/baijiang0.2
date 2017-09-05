@@ -356,7 +356,7 @@ namespace Common {
 
         for(let i in list){
             if(list[i].type == 1){
-                modEquip.EquipData.GetInstance().InsertEquipList([list[i].id]);
+                modEquip.EquipData.GetInstance().InsertEquipFromReward(list[i]);
             }
             else if(list[i].type == 2)
             {
@@ -405,5 +405,30 @@ namespace Common {
         let rect = new egret.Rectangle(0, 0, SCREEN_W, SCREEN_W);
         rt.drawToTexture(obj, rect);
         return rt;
+    }
+
+    /** 根据分享次数来获得对应的分享数量 */
+    export function GetShareDiamond():number{
+        let num:number = UserDataInfo.GetInstance().GetBasicData("shareNum");
+        let money_list:any = [50, 30, 30, 30];
+        return num == null ? 100 : num >= money_list.length ? 5 : money_list[num];
+    }
+
+     /** count surl time */
+    export function CountSurlTime(date:string, distanceDay:number):number{
+        let currTime:string = new Date(modLogin.getBaseData("time") * 1000).toLocaleDateString();
+        let getTime:string = new Date(date).toLocaleDateString();
+        let curr_list:any = currTime.split("/");
+        let get_list:any = getTime.split("/");
+        let month_list:any = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        if(parseInt(curr_list[0]) > parseInt(get_list[0])) return 0;
+
+        let currDay:number = 0, getDay:number = 0;
+        for(let i:number = 0; i < parseInt(curr_list[1]); i++) currDay += month_list[i];
+        for(let i:number = 0; i < parseInt(get_list[1]); i++) getDay += month_list[i];
+        currDay += parseInt(curr_list[2]);
+        getDay += parseInt(get_list[2]);
+        
+        return currDay - getDay >= distanceDay ? 0 : distanceDay - (currDay - getDay);
     }
 }

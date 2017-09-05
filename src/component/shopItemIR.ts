@@ -28,7 +28,8 @@ class shopItemIR extends Base {
             break;
             case this.btn_buy:
                 if(this.btn_buy.name == "diamond"){
-                    Animations.showTips("无法购买，现金充值尚未开放", 1, true);
+                    modPay.preOrder({amount:1, subject:"钻石", memo:"111111"});
+                    // Animations.showTips("无法购买，现金充值尚未开放", 1, true);
                 }
                 else if(this.btn_buy.name == "packs"){
                     if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price)){
