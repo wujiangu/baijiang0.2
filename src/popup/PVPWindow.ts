@@ -22,7 +22,7 @@ class PVPWindow extends PopupWindow{
         let strs:Array<string> = modPVP.detailReward();
         this.lab_content.textFlow = <Array<egret.TextField>>[{text:"1、每日第一次挑战免费。",style:{"size":19}},{text:"\n",style:{"size":18}},
                                                              {text:"2、试炼场限时90秒，在规定时间内打出的伤害越高则获得的奖励越好",style:{"size":19}},{text:"\n",style:{"size":18}},
-                                                             {text:"3、试炼场结算时间为每晚21点。\n",style:{"size":19}},{text:"试炼场排名奖励"},{text:"\n",style:{"size":18}}];
+                                                             {text:"3、试炼场奖励每周一凌晨0：00点结算。\n",style:{"size":19}},{text:"试炼场排名奖励"},{text:"\n",style:{"size":18}}];
 
         this.scrollGroup.addChild(this.img_bg);
         this.scrollGroup.addChild(this.txt_self);
@@ -125,10 +125,11 @@ class PVPWindow extends PopupWindow{
         let date = new Date();
         let currHour = date.getHours();
         let currMinutes = date.getMinutes();
+        let surlDay:number = 7 - date.getDay() - 1 >= 0 ? 7 - date.getDay() - 1 : 0;
 
-        let hour:number = (currMinutes == 0 ? 21 : 20) - (currHour > 21 ? 21 - currHour : currHour);
+        let hour:number = (currMinutes == 0 ? 24 : 23) - currHour;
         let minuter:number = 60 - currMinutes == 60 ? 0 : 60 - currMinutes;
-        this.lab_time.text = "结算时间: " + hour + "时" + minuter + "分"; 
+        this.lab_time.text = "结算时间: " + surlDay + "天" + hour + "时" + minuter + "分"; 
     }
 
     /** 显示排名的奖励 */

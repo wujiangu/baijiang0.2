@@ -26,7 +26,7 @@ namespace modBattle {
         soul = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
-        // timer.start();
+        if (SceneManager.battleScene.guideStage == 0) timer.start();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modBattle);
     }
 
@@ -178,24 +178,21 @@ namespace modBattle {
         // SceneManager.battleScene.battleSceneCom.update();
     }
 
-    /**
-     * 回收宝箱
-     */
-    function recycleChests():void {
-        let count = GameData.chests.length;
-        for (let i = 0; i < count; i++) {
-            let chest:Chest = GameData.chests[i];
-            chest.recycle();
-            if (chest && chest.parent && chest.parent.removeChild) chest.parent.removeChild(chest);
-            ObjectPool.push(chest);
+    export function getEnermyData(id:number):any {
+        let enermyConf:any;
+        for (let j = 0; j < ConfigManager.enermyConfig.length; j++) {
+            if (ConfigManager.enermyConfig[j].id == id) {
+                enermyConf = ConfigManager.enermyConfig[j];
+                break;
+            }
         }
-        for (let i = 0; i < count; i++) GameData.chests.pop();
+        return enermyConf;
     }
 
     /**
      * 设置小兵的配置数据
      */
-    function setMonsterData(id:number, lv:number, isBoss:boolean = false, k_hp:number = 1, k_atk:number = 1):any {
+    export function setMonsterData(id:number, lv:number, isBoss:boolean = false, k_hp:number = 1, k_atk:number = 1):any {
         let colorId:number = Math.ceil(GameData.curStage/5) % 4;
         if (colorId == 0) colorId = 4;
         let type:string = `monster${id}_${colorId}`;
@@ -210,10 +207,10 @@ namespace modBattle {
             //简单随机排序
             let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
             originArray.sort(function(){ return 0.5 - Math.random(); });
-            for (let i = 0; i < buffCount; i++) {
-                arrayBuff.push(originArray[i]);
-                // let id:number = 4;
-                // arrayBuff.push(id);
+            for (let i = 0; i < 1; i++) {
+                // arrayBuff.push(originArray[i]);
+                let id:number = 4;
+                arrayBuff.push(id);
             }
             data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
             data["arrayBuff"] = arrayBuff;
@@ -223,6 +220,20 @@ namespace modBattle {
         data["attr"].hp *= k_hp;
         data["attr"].atk *= k_atk;
         return [type, data];
+    }
+
+    /**
+     * 回收宝箱
+     */
+    function recycleChests():void {
+        let count = GameData.chests.length;
+        for (let i = 0; i < count; i++) {
+            let chest:Chest = GameData.chests[i];
+            chest.recycle();
+            if (chest && chest.parent && chest.parent.removeChild) chest.parent.removeChild(chest);
+            ObjectPool.push(chest);
+        }
+        for (let i = 0; i < count; i++) GameData.chests.pop();
     }
 
     /**
@@ -265,12 +276,17 @@ namespace modBattle {
         getSurviveCount();
         if (obj.isSummon && surviveCount > 0) return;
         if (obj.isBoss && surviveCount > 0) return;
-        sumDead ++;
-        if (sumDead <= tcStage.count){
-            SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count);
+        if (SceneManager.battleScene.guideStage == 0) {
+            sumDead ++;
+            if (sumDead <= tcStage.count){
+                SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count);
+            }else{
+                if (obj.isSummon && surviveCount == 0) sumDead = 0;
+                SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count, true);
+            }
         }else{
-            if (obj.isSummon && surviveCount == 0) sumDead = 0;
-            SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count, true);
+            SceneManager.battleScene.guideStage = 0;
+            HttpRequest.getInstance().send("POST", "userinfo", {stage:1});
         }
         timer.reset();
         productRule();
@@ -324,6 +340,7 @@ namespace modBattle {
             if (surviveCount > 0) return;
             GameData.curStage ++;
             if (GameData.curStage > ConfigManager.tcStage.length) GameData.curStage = 1;
+            HttpRequest.getInstance().send("POST", "userinfo", {stage:GameData.curStage});
             getEnermyDistribute(GameData.curStage);
             productCount = 0;
             sumDead = 0;
@@ -369,17 +386,6 @@ namespace modBattle {
         }
         timer.repeatCount = 1;
         timer.start();
-    }
-
-    function getEnermyData(id:number):any {
-        let enermyConf:any;
-        for (let j = 0; j < ConfigManager.enermyConfig.length; j++) {
-            if (ConfigManager.enermyConfig[j].id == id) {
-                enermyConf = ConfigManager.enermyConfig[j];
-                break;
-            }
-        }
-        return enermyConf;
     }
 
     /**获取小怪的索引 */

@@ -106,7 +106,7 @@
 		"bin-debug/mainScene/EmailWindow.js",
 		"bin-debug/mainScene/equipDialog.js",
 		"bin-debug/mainScene/equipInfoDialog.js",
-		"bin-debug/mainScene/guideDialog.js",
+		"bin-debug/mainScene/GuideDialog.js",
 		"bin-debug/mainScene/MainScene.js",
 		"bin-debug/mainScene/PVPScene.js",
 		"bin-debug/mainScene/ReadyDialog.js",

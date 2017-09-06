@@ -5,7 +5,7 @@
 			"name": "loading"
 		},
 		{
-			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png,TcPower_json,goodsBg_png,TcNewUser_json,battleComon",
+			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png,TcPower_json,goodsBg_png,TcNewUser_json,battleComon,TcEmailContent_json",
 			"name": "preload"
 		},
 		{
@@ -1736,6 +1736,11 @@
 			"url": "assets/moveClip/guideClip.png",
 			"type": "image",
 			"name": "guideClip_png"
+		},
+		{
+			"name": "TcEmailContent_json",
+			"type": "json",
+			"url": "config/TcEmailContent.json"
 		}
 	]
 }

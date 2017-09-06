@@ -30,6 +30,9 @@ class BattleScene extends Base {
         // this.createGuide();
     }
     public init():void {
+        // if (UserDataInfo.GetInstance().GetBasicData("stage") == 0) this.guideStage = 1;
+        // else this.guideStage = 0;
+        this.guideStage = 0;
         TimerManager.getInstance().startTimer();
         GameLayerManager.gameLayer().panelLayer.removeChildren();
         if (!this.battleSceneCom) this.battleSceneCom = new BattleSceneCom();
@@ -45,6 +48,7 @@ class BattleScene extends Base {
         this.createHero();
         this.x = 0;
         this.y = 0;
+        if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
     }
 
     /**加入连击的显示层 */
@@ -247,7 +251,7 @@ class BattleScene extends Base {
             this.killClip.y = -20;
             let value = modBattle.getSumkill();
             this.rewardGroup["count"].visible = true;
-            this.rewardGroup["count"].text = "击杀数 " + value + "!";
+            this.rewardGroup["count"].text = "击杀数 " + Math.floor(value/50)*50 + "!";
         }
     }
     private onComplete():void {
@@ -371,8 +375,13 @@ class BattleScene extends Base {
         GameData.monsters.push(this.monster);
         // Common.log("怪物的数据---->", data);
         this.monster.init(data, isElite, isSummon);
-        this.monster.x = MathUtils.getRandom(100, 1050);
-        this.monster.y = MathUtils.getRandom(100, 550);
+        if (this.guideStage == 2) {
+            this.monster.x = 900;
+            this.monster.y = 350;
+        }else{
+            this.monster.x = MathUtils.getRandom(100, 1050);
+            this.monster.y = MathUtils.getRandom(100, 550);
+        }
         // this.monster.anchorOffsetY = -33;
         this.monster.anchorOffsetY = -50;
         this.battleLayer.addChild(this.monster);
@@ -421,9 +430,57 @@ class BattleScene extends Base {
      * 创建新手引导
      */
     public createGuide():void {
-        let guide = new guideDialog();
-        GameLayerManager.gameLayer().maskLayer.addChild(guide);
+        this.guideDialog = new GuideDialog();
+        GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
     }
+
+    /**
+     * 创建引导标记
+     */
+    public createGuideMov():void {
+        let arrow:egret.Bitmap = Utils.createBitmap("battle_res.battle_0015");
+        arrow.x = 800;
+        arrow.y = 300;
+        this.otherLayer.addChild(arrow);
+        Animations.flyObj(arrow, 1000, 20);
+        let shadow:egret.Bitmap = Utils.createBitmap("battle_res.shadow");
+        shadow.x = arrow.x;
+        shadow.y = arrow.y + 80;
+        this.otherLayer.addChild(shadow);
+    }
+
+    /**
+     * 清除引导标记
+     */
+    public clearGuide(num:number):void {
+        switch (num) {
+            case 1:
+                //移动引导
+                egret.Tween.removeTweens(this.otherLayer);
+                this.otherLayer.removeChildren();
+                this.guideDialog.createAttackGuide();
+                GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
+                let data = modBattle.setMonsterData(1, 1);
+                this.createSingleMonster(data);
+            break;
+            case 2:
+                //攻击引导
+                this.hero.canMove = true;
+                this.hero.isComplete = true;
+            break;
+            case 3:
+                //技能引导
+                this.battleSceneCom.btnStatus(true);
+                this.guideDialog.createSkillGuide();
+                this.hero.canMove = false;
+                GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
+            break;
+            case 4:
+                this.hero.canMove = true;
+            break;
+        }
+    }
+
 
     /**
      * 清除子对象
@@ -479,6 +536,9 @@ class BattleScene extends Base {
         return this.areaCollison;
     }
 
+    /**是否新手引导 */
+    public guideStage:number;
+    private guideDialog:GuideDialog;
     /**鼠标或者点击的位置 */
     private mouseX:number;
     private mouseY:number;

@@ -25,12 +25,14 @@ class BattleSceneCom extends Base {
 
     /**暂停监听 */
     private onPause(event:egret.TouchEvent):void {
-        TimerManager.getInstance().stopTimer();
-        modBattle.stop();
-        modBuff.randomBuffStop(GameData.heros[0]);
-        let pop = WindowManager.GetInstance().GetWindow("BattlePausePop");
-        pop.Show();
-        Animations.fadeOut(pop);
+        if (SceneManager.battleScene.guideStage == 0) {
+            TimerManager.getInstance().stopTimer();
+            modBattle.stop();
+            modBuff.randomBuffStop(GameData.heros[0]);
+            let pop = WindowManager.GetInstance().GetWindow("BattlePausePop");
+            pop.Show();
+            Animations.fadeOut(pop);
+        }
     }
 
     /**失败弹窗 */
@@ -233,6 +235,11 @@ class BattleSceneCom extends Base {
             }
         }
         return status;
+    }
+
+    /**隐藏按钮 */
+    public btnStatus(status:boolean):void {
+        this.group_btn.visible = status;
     }
 
     public group_top:eui.Group;

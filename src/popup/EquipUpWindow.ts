@@ -42,10 +42,10 @@ class EquipUpWindow extends PopupWindow{
             Common.SetXY(this.txt_rear_list[i], this.txt_rear_title[i].x + this.txt_rear_title[i].width, 0);
         }
 
-        this.starGroup = new eui.Group();
-        this.addChild(this.starGroup);
-
-        for(let i:number = 0; i < 6; i++) this.imgStar_list[i] = new egret.Bitmap();
+        for(let i:number = 0; i < 6; i++) {
+             this.imgStar_list[i] = new egret.Bitmap();
+             this.addChild(this.imgStar_list[i]);
+        }
     }
 
     public Show(equip_info:modEquip.EquipInfo):void{
@@ -190,17 +190,13 @@ class EquipUpWindow extends PopupWindow{
     }
 
     private showStar():void{
-        this.starGroup.removeChildren();
-        let quality:number;
-
-        for(let i:number = 0; i < this.equip_info.Quality + 1; i++){
-            quality = this.equip_info.GetAttrType().length > i ? this.equip_info.GetAttrType()[i].Quality:-1;
-            this.imgStar_list[i].texture = RES.getRes(modEquip.GetEquipColorFromQuality(quality).img);
-            this.starGroup.addChild(this.imgStar_list[i]);
-            Common.SetXY(this.imgStar_list[i], i * 32, 0);
+        let srcX:number = this.img_weapon.x + (this.img_weapon.width - (this.equip_info.Quality + 1) * 32 >> 1);
+        for(let i:number = 0; i < 6; i++){
+            let quality:number = this.equip_info.GetAttrType().length > i ? this.equip_info.GetAttrType()[i].Quality:-1;
+            this.imgStar_list[i].texture =  RES.getRes(modEquip.GetEquipColorFromQuality(quality).img);
+            this.imgStar_list[i].visible = this.equip_info.Quality + 1 > i ? true : false;
+            Common.SetXY(this.imgStar_list[i], srcX + i * 32, this.img_weapon.y - 45);
         }
-        this.starGroup.width = this.equip_info.Quality * 32;
-        Common.SetXY(this.starGroup, this.img_weapon.x + (this.img_weapon.width - this.starGroup.width) / 2 - 20, this.img_weapon.y - 45);
     }
 
      /** equip upgrade effect */
@@ -250,7 +246,6 @@ class EquipUpWindow extends PopupWindow{
 
     /** Group */
     private group_list:Array<eui.Group>;
-    private starGroup:eui.Group;
 
     /** button */
     private btn_close:eui.Button;

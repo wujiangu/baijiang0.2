@@ -1,8 +1,8 @@
 [
   {
     "stage": 1,
-    "count": 20,
-    "wave": 4,
+    "count": 10,
+    "wave": 2,
     "monster": [
       1,
       2
@@ -20,8 +20,8 @@
   },
   {
     "stage": 2,
-    "count": 20,
-    "wave": 4,
+    "count": 10,
+    "wave": 2,
     "monster": [
       1,
       2
@@ -39,8 +39,8 @@
   },
   {
     "stage": 3,
-    "count": 20,
-    "wave": 4,
+    "count": 10,
+    "wave": 2,
     "monster": [
       1,
       2
@@ -58,8 +58,8 @@
   },
   {
     "stage": 4,
-    "count": 20,
-    "wave": 4,
+    "count": 10,
+    "wave": 2,
     "monster": [
       1,
       2
@@ -77,8 +77,8 @@
   },
   {
     "stage": 5,
-    "count": 20,
-    "wave": 4,
+    "count": 10,
+    "wave": 2,
     "monster": [
       1,
       2

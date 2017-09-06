@@ -2,6 +2,8 @@
  * email click window
  * @auto hong
  * @date 2017/7/25
+ * @last date 2017/9/5
+ * @content add not and change code
  */
 
 class EmailWindow extends PopupWindow{
@@ -48,11 +50,12 @@ class EmailWindow extends PopupWindow{
 
     public Reset():void{
         this.onEventManager(1);
+        for(let i:number = 0; i < this.img_bg_list.length; i++) this.img_bg_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
     }
 
     public Close():void{
         this.onEventManager();
-        for(let i:number = 0; i < this._eventNum; i++) this.img_bg_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
+        for(let i:number = 0; i < this.img_bg_list.length; i++) this.img_bg_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
     }
 
@@ -60,10 +63,10 @@ class EmailWindow extends PopupWindow{
        this.setEmailStatus(1);
        
        let tempData:any = this._emailData[this._clickIndex];
-       let contentInfo:any = this.getEmailContentInfo(tempData.emailType);
+       let contentInfo:any = TcManager.GetInstance().GetTcEmailContent(tempData.emailType);
        let reward:any = TcManager.GetInstance().GetTcPVPReward(tempData.rank);
        this.lab_title.text = contentInfo.title;
-       this.lab_content.text = contentInfo.content;
+       this.lab_content.textFlow = <Array<egret.ITextElement>>[{text:contentInfo.content},{text:"\n",style:{"size":30}}];
        this.lab_time.text = `剩余${Common.CountSurlTime(this._emailData[this._clickIndex].date, 30)}天`;
        let height:number = this.btn_get.y - this.lab_time.y - this.lab_time.height;
        let len = reward == null ? 0 : reward.length;
@@ -103,38 +106,40 @@ class EmailWindow extends PopupWindow{
                 this.group_list[i].addChild(this.icon_list[i]);
                 this.group_list[i].addChild(this.title_list[i]);
                 this.group_list[i].addChild(this.time_list[i]);
+                
+                this.img_bg_list[i].touchEnabled = true;
+                this.img_bg_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
+                this.group_list[i].width = this.img_list[i].width;this.group_list[i].height = this.img_list[i].height;
 
                 Common.SetXY(this.img_list[i], 15, this.img_bg_list[i].height - this.img_list[i].height >> 1);
                 Common.SetXY(this.title_list[i], this.img_list[i].width + this.img_list[i].x + 10, this.img_list[i].y + 10);
                 Common.SetXY(this.time_list[i], this.title_list[i].x, this.img_list[i].y + this.img_list[i].height - 20);
                 Common.SetXY(this.icon_list[i], this.img_list[i].x - this.icon_list[i].width / 2, this.img_list[i].y - 5);
-
-                this.img_bg_list[i].touchEnabled = true;
-                this.group_list[i].width = this.img_list[i].width;this.group_list[i].height = this.img_list[i].height;
+                Common.SetXY(this.group_list[i], 0, i * 118 + 10);
             }
           
-            this.title_list[i].text = this.getEmailContentInfo(this._emailData[i].emailType).title;
+            this.title_list[i].text = TcManager.GetInstance().GetTcEmailContent(this._emailData[i].emailType).title;
             this.time_list[i].text = new Date(this._emailData[i].date).toLocaleDateString();
             this.img_list[i].texture = RES.getRes(`common_res.email_status${this._emailData[i].status}`);
             this.icon_list[i].visible = this._emailData[i].status == 3 ? true : false;
 
             this.img_bg_list[i]["index"] = i;
-            this.img_bg_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
-            Common.SetXY(this.group_list[i], 0, i * 118 + 10);
             this.scrollGroup.addChild(this.group_list[i]);
         }
     }
 
+    /** click touch img */
     private onTouchImg(event:egret.TouchEvent):void{
-        let target = event.target;
+        let index:number = event.target.index;          //goods curr index
 
-        if(this._clickIndex == target.index) return;
+        if(this._clickIndex == index) return;           //if curr index than clickIndex == return;
 
-        this._clickIndex = target.index;
-        Common.SetXY(this.img_click, this.group_list[target.index].x, this.group_list[target.index].y);
+        this._clickIndex = index;
+        Common.SetXY(this.img_click, this.group_list[index].x, this.group_list[index].y);
         this.showClickInfo();
     }
 
+    /** show reward goods color if get show gray color don't get show origin color */
     private showRewardGoodsColor():void{
         let strName:string = "";
         if(this._emailData[this._clickIndex].status == 1){
@@ -147,31 +152,40 @@ class EmailWindow extends PopupWindow{
         }
     }
 
+    private getListIndex(list:any, name):number{
+        for(let i:number = 0; i < list.length; i++){
+            if(list[i].name == name) return i;
+        }
+        return -1;
+    }
+
+    private getAllReward():any{
+        let list:any = [];
+        for(let i in this._emailData){
+            if(this._emailData[i].status != 1){
+                let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[i].rank);
+                if(reward == null) continue; 
+                for(let j in reward){
+                    if(reward[j].name != "equip" && reward[j].name != "hero"){
+                        let tempIndex:number = this.getListIndex(list, reward[j].name);
+                        if(tempIndex != -1){
+                            list[tempIndex].count += reward[j].count;
+                        }
+                        else list.push(reward[j]);
+                    }
+                    else list.push(reward[j]);
+                }
+            }
+        }
+        return list;
+    }
+
+    /** click touch button */
     private onTouchBtn(event:egret.TouchEvent):void{
         switch(event.target){
-            case this.btn_get:
-                if(this._emailData[this._clickIndex].status == 1){
-                    Animations.showTips("您已经领取过该奖励", 1, true);
-                    return;
-                } 
-
-                let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[this._clickIndex].rank);
-                Common.DealReward(reward);
-                this.setEmailStatus(2);
-            break;
-            case this.btn_getAll:
-                let list:any = [];
-                for(let i in this._emailData){
-                    if(this._emailData[i].status != 1){
-                        let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[i].rank);
-                        if(reward){
-                            for(let j in reward){
-                                list.push(reward[j]);
-                            }
-                        }
-                    }
-                }
-
+            case this.btn_getAll:       //get All and del all
+                
+                let list = this.getAllReward();
                 if(list.length == 0){
                     Animations.showTips("暂无邮件", 1, true);
                     return;
@@ -181,32 +195,34 @@ class EmailWindow extends PopupWindow{
                 ModEmail.DealAllEmailData();
                 this.initData();
             break;
-            case this.btn_delete:
-                if(this._emailData[this._clickIndex].status != 1){
+            case this.btn_back:
+                this.Close();
+            break;
+            default:
+                if(event.target == this.btn_delete && this._emailData[this._clickIndex].status != 1){
                     Animations.showTips("该邮件暂未领取，不能删除",1, true);
                     return;
                 }
 
+                let reward:any = TcManager.GetInstance().GetTcPVPReward(this._emailData[this._clickIndex].rank);
+                Common.DealReward(reward);
                 ModEmail.DelEmailData(this._emailData[this._clickIndex]);
                 this._clickIndex = this._clickIndex - 1 >= 0 ? this._clickIndex - 1 : 0;
-                for(let i:number = 0; i < this._eventNum; i++) this.img_bg_list[i].removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
                 this.initData();
-            break;
-            default:
-                this.Close();
             break;
         }
     }
 
+    /** init data */
      private initData():boolean{
-        let emailData:any = ModEmail.GetEmailData();
-
-        this._eventNum = emailData == null ? 0 : emailData.length;
         this.scrollGroup.removeChildren();
-        this.emailGroup.visible = this._eventNum == 0 ? false : true;
-        this.lab_tip.visible = this._eventNum == 0 ? true : false;
 
-        if(this._eventNum == 0){
+        let emailData:any = ModEmail.GetEmailData();
+        let emailNum:number = emailData == null ? 0 : emailData.length == 0 ? 0 : emailData.length;
+        this.emailGroup.visible = emailNum == 0 ? false : true;
+        this.lab_tip.visible = emailNum == 0 ? true : false;
+
+        if(emailNum == 0){
             return;
         }
         
@@ -232,17 +248,6 @@ class EmailWindow extends PopupWindow{
         }
         this.img_list[this._clickIndex].texture = RES.getRes(`common_res.email_status${this._emailData[this._clickIndex].status}`);
         this.showRewardGoodsColor();
-    }
-
-    private getEmailContentInfo(emailType:number):any{
-        switch(emailType){
-            case 1:                         //PVP战斗的信息
-                return {title:"PVP排名奖励",content:"PVP战斗排名奖励"};
-            case 2:                        //版本奖励
-                return {title:"版本更新奖励",content:"更新版本，对应的补偿奖励"};
-            case 3:                        //bug修复补偿
-                return {title:"bug修复补偿",content:"bug导致不愉快的游戏体验，给予相应的补偿"};
-        }
     }
 
     /** button */
@@ -273,6 +278,5 @@ class EmailWindow extends PopupWindow{
     /** other */
     private _emailData:any;
     private _clickIndex:number;
-    private _eventNum:number;
     private obj_list:Array<EquipObject>;
 }

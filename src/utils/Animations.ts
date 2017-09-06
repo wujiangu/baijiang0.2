@@ -75,6 +75,24 @@ namespace Animations {
         animate();
     }
 
+    /**
+    * 显示对象上下浮动特效
+    * obj           对象
+    * time          浮动时间 毫秒
+    * space         浮动高度
+    */
+    export function flyObj(obj, time, space: number = 50): void {
+        var onComplete1: Function = function () {
+            if (obj != null) {
+                var onComplete2: Function = function () {
+                    egret.Tween.get(obj).to({ y: obj.y - space }, time).call(onComplete1, this);
+                };
+                egret.Tween.get(obj).to({ y: obj.y + space }, time).call(onComplete2, this);
+            }
+        };
+        onComplete1();
+    }
+
     //淡出
     export function fadeOut(target:any, time:number = 500, func:Function = null, completeFunc:Function = null):void {
         target.alpha = 0;

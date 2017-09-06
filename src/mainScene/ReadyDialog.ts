@@ -379,8 +379,8 @@ class ReadyDialog extends PopupWindow {
         let target = event.currentTarget;
 
         if(HeroData.list[target.name] == null){
-            if(target.name == "zhaoyun") Animations.showTips("赵云需要再商城购买才能使用!", 1, true);
-            else if(target.name == "diaochan") Animations.showTips("貂蝉需要签到才能使用!", 1, true);
+            if(target.name == "zhaoyun") Animations.showTips("通过商城购买可获得英雄赵云!", 1, true);
+            else if(target.name == "diaochan") Animations.showTips("连续签到两天可获得英雄貂蝉!", 1, true);
             return;
         }
 
