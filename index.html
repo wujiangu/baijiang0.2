@@ -29,7 +29,7 @@
     <style>
         html, body {
             -ms-touch-action: none;
-            background: #888888;
+            background: #000000;
             padding: 0;
             border: 0;
             margin: 0;
@@ -78,7 +78,7 @@
 	<script egret="lib" src="bin-debug/game/Object/Monster.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/SkillBase.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/randomBuffs/BaseRandomItem.js"></script>
-	<script egret="lib" src="bin-debug/game/Skill/SkillData.js"></script>
+	<script egret="lib" src="bin-debug/game/Skill/skills/Bristle.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/AddSources.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/ContinuousInjury.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/buffs/DeepFire.js"></script>
@@ -145,8 +145,8 @@
 	<script egret="lib" src="bin-debug/enterGameScene/EnterGameScene.js"></script>
 	<script egret="lib" src="bin-debug/game/Object/Stakes.js"></script>
 	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
+	<script egret="lib" src="bin-debug/game/Skill/SkillData.js"></script>
 	<script egret="lib" src="bin-debug/game/Buff/BuffData.js"></script>
-	<script egret="lib" src="bin-debug/game/Skill/skills/Bristle.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/Imprisoned.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/SevenInOut.js"></script>
 	<script egret="lib" src="bin-debug/game/Skill/skills/SolaCut.js"></script>
@@ -214,6 +214,7 @@
 	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
 	<script egret="lib" src="bin-debug/utils/Animations.js"></script>
 	<script egret="lib" src="bin-debug/utils/MathUtils.js"></script>
+	<script egret="lib" src="bin-debug/utils/md5.js"></script>
 	<script egret="lib" src="bin-debug/utils/MovieClipManager.js"></script>
 	<script egret="lib" src="bin-debug/utils/NativeApi.js"></script>
 	<script egret="lib" src="bin-debug/utils/sensitiveWords/Dictionary.js"></script>
@@ -244,7 +245,7 @@
          data-content-height="640"
          data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="false" data-show-log="false"
+         data-show-fps="true" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:10,textColor:0xffffff,bgAlpha:0.9">
     </div>
     <script>
@@ -257,6 +258,8 @@
          **/
 		var isDebug = true;
 		var RESOURCE = "http://116.62.214.75:5555/";
+		
+		// var RESOURCE = "http://211.159.150.186:5555/";
 		var sdw = sdw || {};
 		var browser = browser || {};
         egret.runEgret({renderMode:"webgl", audioType:0});

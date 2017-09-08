@@ -354,11 +354,6 @@
 			"name": "on_png"
 		},
 		{
-			"url": "assets/egret_icon.png",
-			"type": "image",
-			"name": "egret_icon_png"
-		},
-		{
 			"url": "assets/battle/battle_0007.png",
 			"type": "image",
 			"name": "battle_0007_png"
@@ -1738,9 +1733,9 @@
 			"name": "guideClip_png"
 		},
 		{
-			"name": "TcEmailContent_json",
+			"url": "config/TcEmailContent.json",
 			"type": "json",
-			"url": "config/TcEmailContent.json"
+			"name": "TcEmailContent_json"
 		}
 	]
 }

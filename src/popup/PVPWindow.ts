@@ -125,7 +125,7 @@ class PVPWindow extends PopupWindow{
         let date = new Date();
         let currHour = date.getHours();
         let currMinutes = date.getMinutes();
-        let surlDay:number = 7 - date.getDay() - 1 >= 0 ? 7 - date.getDay() - 1 : 0;
+        let surlDay:number = 7 - date.getDay();
 
         let hour:number = (currMinutes == 0 ? 24 : 23) - currHour;
         let minuter:number = 60 - currMinutes == 60 ? 0 : 60 - currMinutes;

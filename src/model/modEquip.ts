@@ -78,11 +78,8 @@ namespace modEquip {
            this.equipId = equipId;
            this.type_list = new Array();
            this.attr_list = new Array();
-           this.origin_attr_list = new Array();
 
-           let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(quality);
            for(let i:number = 0; i < 4; i++){
-               this.origin_attr_list[i] = tempData.init[i];
                this.attr_list[i] = GetEquipUpAttr(this, lv, i);
             }
        }
@@ -163,10 +160,6 @@ namespace modEquip {
             return this.attr_list;
         }
 
-        public GetOriginAttr():any{
-            return this.origin_attr_list;
-        }
-
         /** 更新基本属性 */
         public UpdataBaseAttr():void{
             for(let i:number = 0; i < 4; i++){
@@ -184,7 +177,6 @@ namespace modEquip {
         private star:number;                    //装备星级
         private quality:number;                 //装备的品质
         private attr_list:Array<number>;        //[1]生命[2]护甲[3]攻击[4]暴击[5]闪避
-        private origin_attr_list:Array<number>;    //源氏的数据列表
         private type_list:Array<AttrType>;       //属性类型
     }
 
@@ -358,8 +350,6 @@ namespace modEquip {
         else if(quality == 4) return {color:0xab5515,img:"equip_res." + imgName + "_05"};
     }
 
-    let star_up_attr:any = [7.047,0.688,7.13,0.0291];
-    let star_init_attr:any = [300,50,200,0];
     /** 获得装备的属性值
      * @param info 当前装备对象
      * @param lv 当前装备需要的等级
@@ -371,8 +361,13 @@ namespace modEquip {
         let equipData:any = TcManager.GetInstance().GetTcEquipData(info.Id);
 
         let first:number,second:number = 0;
-        if(info.Star == 0) first = lv * upData.up[index] + info.GetOriginAttr()[index];
-        else first = (lv + (info.Quality + info.Star) * 100) * star_up_attr[index] + star_init_attr[index];
+        if(info.Star == 0){
+            first = lv * upData.up[index] + upData.init[index];
+        } 
+        else{
+            let tempData:any = TcManager.GetInstance().GetEquipUpAttrFromGrade(1);
+            first = (lv + (info.Quality + info.Star) * 100) * tempData.up[index] + tempData.init[index];
+        } 
 
         if(equipData.attr[index] == 1) second = upData.character[index] * (info.Star + 1) / upData.character[4];
 
@@ -425,7 +420,6 @@ namespace modEquip {
                 for(let reset of list[i].rest_attr_list) info.InsertAttrType(new AttrType(reset.type,reset.value,reset.quality));
                 EquipData.GetInstance().Add(info, false);
             }
-
         }, this)
     } 
 

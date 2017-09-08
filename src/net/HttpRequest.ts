@@ -66,7 +66,7 @@ class HttpRequest {
         //购买支付
         "pay": window["RESOURCE"] + "order/signature",
         //订单查询
-        "order": window["RESOURCE"] + "order/callback",
+        "order": window["RESOURCE"] + "order",
         //心跳
         "heartbeat": window["RESOURCE"] + "userinfo/heartbeat",
         //排行榜

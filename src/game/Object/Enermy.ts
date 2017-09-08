@@ -252,11 +252,11 @@ class Enermy extends BaseGameObject {
      * 更新击杀数
      */
     public updateKillCount():void {
-        if (SceneManager.battleScene.guideStage == 0) {
+        // if (SceneManager.battleScene.guideStage == 0) {
             modBattle.addSumkill();
             let killCount:number = modBattle.getSumkill();
             SceneManager.battleScene.update(killCount);
-        }
+        // }
     }
     /**
      * 设置状态
@@ -332,16 +332,17 @@ class Enermy extends BaseGameObject {
         }
         else if (this.curState == BaseGameObject.Action_Hurt) {
             this.effectArmature.visible = false;
-            if (SceneManager.battleScene.guideStage == 2) {
-                SceneManager.battleScene.guideStage = 3;
-                SceneManager.battleScene.clearGuide(3);
-            }
+            // if (SceneManager.battleScene.guideStage == 2) {
+            //     SceneManager.battleScene.guideStage = 3;
+            //     SceneManager.battleScene.clearGuide(3);
+            // }
         }
         if (this.attr.hp <= 0) {
             this.gotoDead();
         }else{
-            if (SceneManager.battleScene.guideStage == 2 || SceneManager.battleScene.guideStage == 3) this.gotoIdle();
-            else this.gotoRun();
+            // if (SceneManager.battleScene.guideStage == 2 || SceneManager.battleScene.guideStage == 3) this.gotoIdle();
+            // else this.gotoRun();
+            this.gotoRun();
             // this.gotoIdle();
         }
     }

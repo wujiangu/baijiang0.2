@@ -13,7 +13,7 @@ class GuideDialog extends Base {
         this.tipsText.strokeColor = 0x274045;
         this.tipsText.fontFamily = "KaiTi";
         this.fingerMov = Common.CreateMovieClip("guideClip", true);
-        this.fingerMov.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
+        // this.fingerMov.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
         this.fingerMov.x = this.tipsText.x + 50;
         this.fingerMov.y = this.tipsText.y - 160;
         this.beginX = this.fingerMov.x;
@@ -25,11 +25,13 @@ class GuideDialog extends Base {
     protected createChildren(): void{
         this.isMove = false;
         this.count = 0;
-        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        // this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
     }
 
     protected childrenCreated(): void{
-        this.createMoveGuide();
+        // this.createMoveGuide();
+        // this.createAttackGuide();
+        SceneManager.battleScene.clearGuide(1);
     }
 
     /**
@@ -78,7 +80,7 @@ class GuideDialog extends Base {
     }
 
     private onClick():void {
-        if (this.count >= 3) {
+        if (this.count >= 1) {
             this.parent.removeChild(this);
             this.count = 0;
             this.fingerMov.stop();

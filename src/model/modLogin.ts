@@ -83,6 +83,8 @@ namespace modLogin {
      */
     function initNewUserData(callBack:Function):void {
         let data:any = newUserData.hero;
+        let equipId:number = modEquip.getRandEquipId();
+        data.equipId = equipId;
         // egret.log("传输数据---->", JSON.stringify(data));
         HttpRequest.getInstance().send("POST", "hero", data, (result)=>{
             // egret.log("新用户英雄数据创建成功--->", result);
@@ -91,6 +93,10 @@ namespace modLogin {
         HttpRequest.getInstance().send("POST", "talent", {talentPage:1,talent:[],count:1})
         //签到
         HttpRequest.getInstance().send("POST", "checkin", {isSign:0, signNum:0});
+
+        //武器
+        let info:modEquip.EquipInfo = new modEquip.EquipInfo(14,0,3,1,equipId);
+        modEquip.ReqInsertAndUpEquip(info);
     }
 
     /**

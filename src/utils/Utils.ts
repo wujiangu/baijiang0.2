@@ -82,11 +82,11 @@ namespace Utils {
     /**
      * 创建位图字体
      */
-    export function createBitmapText(name:string, parent:any):egret.BitmapText {
+    export function createBitmapText(name:string, parent:any = null):egret.BitmapText {
         let bitmapText:egret.BitmapText = new egret.BitmapText();
         let font = RES.getRes(name);
         bitmapText.font = font;
-        parent.addChild(bitmapText);
+        if (parent) parent.addChild(bitmapText);
         return bitmapText;
     }
 

@@ -36,7 +36,7 @@ class Hero extends Alliance {
 
     public init(data:Array<any>, isPVP:boolean=false) {
         super.init(data);
-        // let attr = modHero.addEquipAttr(data);      //test
+        let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.originHP = this.attr.hp;
@@ -101,11 +101,11 @@ class Hero extends Alliance {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
-        let talent:Array<any> = GameData.testTalent.talent;     //test
-        // let buff = HeroData.list[this.name].buff;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        // let talent:Array<any> = GameData.testTalent.talent;     //test
+        let buff = HeroData.list[this.name].buff;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -129,9 +129,9 @@ class Hero extends Alliance {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        // HeroData.list[this.name].buff.splice(2);         //test
-        // let data:any = HeroData.getHeroData(GameData.curHero);
-        // HeroData.update();
+        HeroData.list[this.name].buff.splice(2);         //test
+        let data:any = HeroData.getHeroData(GameData.curHero);
+        HeroData.update();
     }
 
     /**
@@ -158,11 +158,11 @@ class Hero extends Alliance {
         let gotoX = this.x + this.deltaX;
         let gotoY = this.y + this.deltaY;
         if (!this.isPVP) {
-            if (SceneManager.battleScene.guideStage == 1 && this.x > 810 && this.x < 830 && this.y > 330 && this.y < 350) {
-                this.gotoIdle();
-                this.canMove = false;
-                SceneManager.battleScene.clearGuide(1);
-            }
+            // if (SceneManager.battleScene.guideStage == 1 && this.x > 810 && this.x < 830 && this.y > 330 && this.y < 350) {
+            //     this.gotoIdle();
+            //     this.canMove = false;
+            //     SceneManager.battleScene.clearGuide(1);
+            // }
             let isMove:boolean = this.isCollison(gotoX, gotoY);
             if (!isMove) return;
         }
@@ -200,11 +200,11 @@ class Hero extends Alliance {
                             modBuff.isAttackBuff(this, this.enermy[i]);
                         }
                         if (this.isCrit()) this._hurtValue *= 1.5;
-                        if (!this.isPVP && SceneManager.battleScene.guideStage == 2) this._hurtValue = 100;
+                        // if (!this.isPVP && SceneManager.battleScene.guideStage == 2) this._hurtValue = 100;
                         if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
                         if (!this.isPVP && this.enermy[i]) {
                             let state = this.enermy[i].curState;
-                            if (this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
+                            if (this.enermy[i].attr && this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
                         }
                     }
                 }
@@ -374,7 +374,7 @@ class Hero extends Alliance {
      */
     public gotoSkill() {
         this.img_swordLight.visible = false;
-        if (!this.isPVP && SceneManager.battleScene.guideStage == 3) this.canMove = true;
+        // if (!this.isPVP && SceneManager.battleScene.guideStage == 3) this.canMove = true;
         if (!this.canMove) return;
         if (this.curState != BaseGameObject.Action_Idle) return;
         this.skillArmature.visible = true;
@@ -462,9 +462,9 @@ class Hero extends Alliance {
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
                 else {
                     SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
-                    if (SceneManager.battleScene.guideStage == 1) {
+                    if (SceneManager.battleScene.guideStage == 2) {
                         SceneManager.battleScene.createGuide();
-                        this.isComplete = false;
+                        // this.isComplete = false;
                     }
                 }
             break;

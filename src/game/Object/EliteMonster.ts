@@ -42,7 +42,8 @@ class EliteMonster extends Monster {
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
         super.init(data, isElite, isSummon);
         this.arrayBuffs = data[1].arrayBuff;
-        this._data = data;
+        this._type = data[0];
+        this._data = Utils.cloneObj(data[1]);
         this._groupIndex = 0;
         this.isFaster = false;
         if (this._isAvatar && this.direction) {
@@ -283,7 +284,7 @@ class EliteMonster extends Monster {
                 });
                 this.createAvatar();
                 GameData.monsters.push(this._avatar);
-                this._avatar.init(this._data);
+                this._avatar.init([this._type, this._data]);
                 SceneManager.battleScene.battleLayer.addChild(this._avatar);
             break;
             case "blowup":
@@ -307,7 +308,7 @@ class EliteMonster extends Monster {
         this._avatar.alpha = 1.0;
         this._avatar.visible = true;
         this._avatar.anchorOffsetY = -50;
-        this._data[1]["isAvatar"] = true;
+        this._data["isAvatar"] = true;
     }
 
     /**
@@ -327,9 +328,9 @@ class EliteMonster extends Monster {
             });
         }
         this.createAvatar();
-        this._data[1]["direction"] = avatarPos;
+        this._data["direction"] = avatarPos;
         GameData.monsters.push(this._avatar);
-        this._avatar.init(this._data);
+        this._avatar.init([this._type, this._data]);
         SceneManager.battleScene.battleLayer.addChild(this._avatar);
     }
 
@@ -397,7 +398,7 @@ class EliteMonster extends Monster {
         this._fasterBuff.releaseBegin(num);
     }.bind(this);
 
-
+    private _type:string;
     private _data:any;
     private _avatar:EliteMonster;
     private _groupIndex:number;

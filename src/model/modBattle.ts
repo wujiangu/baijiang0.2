@@ -26,7 +26,8 @@ namespace modBattle {
         soul = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
-        if (SceneManager.battleScene.guideStage == 0) timer.start();
+        timer.start();
+        // if (SceneManager.battleScene.guideStage == 2) timer.start();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modBattle);
     }
 
@@ -207,10 +208,10 @@ namespace modBattle {
             //简单随机排序
             let originArray:Array<number> = [1, 2, 3, 4, 5, 6];
             originArray.sort(function(){ return 0.5 - Math.random(); });
-            for (let i = 0; i < 1; i++) {
-                // arrayBuff.push(originArray[i]);
-                let id:number = 4;
-                arrayBuff.push(id);
+            for (let i = 0; i < buffCount; i++) {
+                arrayBuff.push(originArray[i]);
+                // let id:number = 4;
+                // arrayBuff.push(id);
             }
             data["attr"] = Utils.cloneObj(ConfigManager.monsters[id-1][lv-1]);
             data["arrayBuff"] = arrayBuff;
@@ -276,7 +277,7 @@ namespace modBattle {
         getSurviveCount();
         if (obj.isSummon && surviveCount > 0) return;
         if (obj.isBoss && surviveCount > 0) return;
-        if (SceneManager.battleScene.guideStage == 0) {
+        // if (SceneManager.battleScene.guideStage == 0) {
             sumDead ++;
             if (sumDead <= tcStage.count){
                 SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count);
@@ -284,10 +285,10 @@ namespace modBattle {
                 if (obj.isSummon && surviveCount == 0) sumDead = 0;
                 SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count, true);
             }
-        }else{
-            SceneManager.battleScene.guideStage = 0;
-            HttpRequest.getInstance().send("POST", "userinfo", {stage:1});
-        }
+        // }else{
+        //     SceneManager.battleScene.guideStage = 0;
+        //     HttpRequest.getInstance().send("POST", "userinfo", {stage:1});
+        // }
         timer.reset();
         productRule();
     }

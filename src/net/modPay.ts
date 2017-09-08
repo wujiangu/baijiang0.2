@@ -43,9 +43,9 @@ module modPay {
      * 向服务器发起订单查询结果
      */
     function checkOrder(data:any):void {
-        HttpRequest.getInstance().send("POST", "order", {}, (result)=>{
+        HttpRequest.getInstance().send("GET", "order", {}, (result)=>{
             egret.log("查询订单---->", result);
-            window["sdw"].closeSDWPay();
+            // window["sdw"].closeSDWPay();
             //此处客户端更新资源
         }, modPay);
     }

@@ -161,10 +161,11 @@ class Main extends eui.UILayer {
         this.removeChild(this.bg);
         this.removeChild(this.logo);
         // RES.destroyRes("loading");
-        // modLogin.init();
-        // modLogin.reqLogin(this._onLogin);
+        modLogin.init();
+        modLogin.reqLogin(this._onLogin);
+        // modShare.startShare("dfdsf");
         // this.test();
-        this.testBattle();
+        // this.testBattle();
         // this.addDesktop();
     }
 

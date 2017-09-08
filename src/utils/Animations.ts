@@ -382,7 +382,7 @@ namespace Animations {
     /**
      * 伤害弹出并消失
      */
-    export function hurtTips(target:any, offset:number = 50) {
+    export function hurtTips(target:any, offset:number = 50, callBack:Function = null) {
         target.alpha = 0;
         // if (target.parent.contains(target)) {
         //     target.parent.removeChild(target);
@@ -390,6 +390,7 @@ namespace Animations {
         // }
         var step2:Function = function() {
             target = null;
+            if (callBack) callBack();
         }
 
         var step1:Function = function() {

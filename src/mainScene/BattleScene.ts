@@ -32,7 +32,7 @@ class BattleScene extends Base {
     public init():void {
         // if (UserDataInfo.GetInstance().GetBasicData("stage") == 0) this.guideStage = 1;
         // else this.guideStage = 0;
-        this.guideStage = 0;
+        this.guideStage = 2;
         TimerManager.getInstance().startTimer();
         GameLayerManager.gameLayer().panelLayer.removeChildren();
         if (!this.battleSceneCom) this.battleSceneCom = new BattleSceneCom();
@@ -48,7 +48,7 @@ class BattleScene extends Base {
         this.createHero();
         this.x = 0;
         this.y = 0;
-        if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
+        // if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
     }
 
     /**加入连击的显示层 */
@@ -375,13 +375,13 @@ class BattleScene extends Base {
         GameData.monsters.push(this.monster);
         // Common.log("怪物的数据---->", data);
         this.monster.init(data, isElite, isSummon);
-        if (this.guideStage == 2) {
-            this.monster.x = 900;
-            this.monster.y = 350;
-        }else{
+        // if (this.guideStage == 2) {
+        //     this.monster.x = 900;
+        //     this.monster.y = 350;
+        // }else{
             this.monster.x = MathUtils.getRandom(100, 1050);
             this.monster.y = MathUtils.getRandom(100, 550);
-        }
+        // }
         // this.monster.anchorOffsetY = -33;
         this.monster.anchorOffsetY = -50;
         this.battleLayer.addChild(this.monster);
@@ -456,12 +456,12 @@ class BattleScene extends Base {
         switch (num) {
             case 1:
                 //移动引导
-                egret.Tween.removeTweens(this.otherLayer);
-                this.otherLayer.removeChildren();
+                // egret.Tween.removeTweens(this.otherLayer);
+                // this.otherLayer.removeChildren();
                 this.guideDialog.createAttackGuide();
-                GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
-                let data = modBattle.setMonsterData(1, 1);
-                this.createSingleMonster(data);
+                // GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
+                // let data = modBattle.setMonsterData(1, 1);
+                // this.createSingleMonster(data);
             break;
             case 2:
                 //攻击引导
