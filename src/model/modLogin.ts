@@ -50,8 +50,14 @@ namespace modLogin {
             }else{
                 data.userInfo["loginTime"] = new Date().getTime();
                 data.userInfo["isNew"] = false;
-                UserDataInfo.GetInstance().SaveData(data.userInfo);
-                if (callBack) callBack();
+                //获取钻石
+                HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
+                    data.userInfo["diamond"] = result.diamond;
+                    UserDataInfo.GetInstance().SaveData(data.userInfo);
+                    //测试
+                    HttpRequest.getInstance().send("POST", "userinfo", {diamond:result.diamond});
+                    if (callBack) callBack();
+                }, modLogin)
             }
         }, modLogin);
     }
@@ -68,13 +74,18 @@ namespace modLogin {
         data["loginTime"] = new Date().getTime();
         //新用户标志
         data["isNew"] = true;
-        //这里存储数据到本地
-        UserDataInfo.GetInstance().SaveData(data);
-        delete data.isNew;
-        // egret.log("发送服务器的数据--->", JSON.stringify(data), userBase.sex);
-        HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
-            // egret.log("创建新用户成功---->", result);
-            initNewUserData(callBack);
+        //获取钻石
+        HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
+            data["diamond"] = result.diamond;
+            //这里存储数据到本地
+            UserDataInfo.GetInstance().SaveData(data);
+            delete data.isNew;
+            // delete data.diamond;
+            // egret.log("发送服务器的数据--->", JSON.stringify(data), userBase.sex);
+            HttpRequest.getInstance().send("POST", "userinfo", data, (result)=>{
+                // egret.log("创建新用户成功---->", result);
+                initNewUserData(callBack);
+            }, modLogin)
         }, modLogin)
     }
 

@@ -28,6 +28,7 @@ class EnterGameScene extends Base {
         let array = RES.getRes("sensitiveWords_json");
         SensitiveWordFilter.GetInstance().regSensitiveWords(array);
         this.initGameData();
+        ResAsynLoadManager.LoadMainScene();
     }
 
     /**

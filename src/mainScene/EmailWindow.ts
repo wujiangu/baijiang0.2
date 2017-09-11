@@ -121,7 +121,7 @@ class EmailWindow extends PopupWindow{
             this.title_list[i].text = TcManager.GetInstance().GetTcEmailContent(this._emailData[i].emailType).title;
             this.time_list[i].text = new Date(this._emailData[i].date).toLocaleDateString();
             this.img_list[i].texture = RES.getRes(`common_res.email_status${this._emailData[i].status}`);
-            this.icon_list[i].visible = this._emailData[i].status == 3 ? true : false;
+            this.icon_list[i].visible = this._emailData[i].status == 1 ? true : false;
 
             this.img_bg_list[i]["index"] = i;
             this.scrollGroup.addChild(this.group_list[i]);
@@ -142,7 +142,7 @@ class EmailWindow extends PopupWindow{
     /** show reward goods color if get show gray color don't get show origin color */
     private showRewardGoodsColor():void{
         let strName:string = "";
-        if(this._emailData[this._clickIndex].status == 1){
+        if(this._emailData[this._clickIndex].status == 3){
             strName = "gray";
         }
 
@@ -162,7 +162,7 @@ class EmailWindow extends PopupWindow{
     private getAllReward():any{
         let list:any = [];
         for(let i in this._emailData){
-            if(this._emailData[i].status != 1){
+            if(this._emailData[i].status != 3){
                 let reward = TcManager.GetInstance().GetTcPVPReward(this._emailData[i].rank);
                 if(reward == null) continue; 
                 for(let j in reward){
@@ -199,7 +199,7 @@ class EmailWindow extends PopupWindow{
                 this.Close();
             break;
             default:
-                if(event.target == this.btn_delete && this._emailData[this._clickIndex].status != 1){
+                if(event.target == this.btn_delete && this._emailData[this._clickIndex].status != 3){
                     Animations.showTips("该邮件暂未领取，不能删除",1, true);
                     return;
                 }
@@ -239,12 +239,12 @@ class EmailWindow extends PopupWindow{
      */
     private setEmailStatus(clickType:number):void{
         //if status is three can trantion status to 2
-        if(clickType == 1 && this._emailData[this._clickIndex].status == 3){
+        if(clickType == 1 && this._emailData[this._clickIndex].status == 1){
             this._emailData[this._clickIndex].status = 2;
-            this.icon_list[this._clickIndex].visible = this._emailData[this._clickIndex].status == 3 ? true : false;
+            this.icon_list[this._clickIndex].visible = this._emailData[this._clickIndex].status == 1 ? true : false;
         }
         else if(clickType == 2 && this._emailData[this._clickIndex].status == 2){
-            this._emailData[this._clickIndex].status = 1;
+            this._emailData[this._clickIndex].status = 3;
         }
         this.img_list[this._clickIndex].texture = RES.getRes(`common_res.email_status${this._emailData[this._clickIndex].status}`);
         this.showRewardGoodsColor();

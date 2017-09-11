@@ -28,7 +28,7 @@ class shopItemIR extends Base {
             break;
             case this.btn_buy:
                 if(this.btn_buy.name == "diamond"){
-                    modPay.preOrder({amount:1, subject:"钻石", memo:"111111"});
+                    modPay.preOrder({amount:1, subject:"钻石", diamond:100});
                     // Animations.showTips("无法购买，现金充值尚未开放", 1, true);
                 }
                 else if(this.btn_buy.name == "packs"){

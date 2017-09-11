@@ -15,6 +15,7 @@ module modPay {
         data["merchant_url"] = modLogin.getBaseData("cburl");
         data["subject"] = params.subject;
         data["channel"] = modLogin.getBaseData("channel");
+        data["diamond"] = params.diamond;
         data["sdw_test"] = false;
         if (window["isDebug"]) data["sdw_test"] = true;
         // if (data["wxopenid"] == "") delete data.wxopenid;
@@ -25,6 +26,7 @@ module modPay {
             data["timestamp"] = result["timestamp"];
             data["complete"] = complete;
             delete data.sdw_test;
+            delete data.diamond;
             // egret.log("发送平台的数据---->", data);
             window["sdw"].chooseSDWPay(data);
         }, modPay);
@@ -34,7 +36,7 @@ module modPay {
      * 关闭支付窗口
      */
     function complete(res) {
-        egret.log("关闭支付窗口------->", res);
+        // egret.log("关闭支付窗口------->", res);
         checkOrder(res);
         // window["sdw"].closeSDWPay();
     }
@@ -44,9 +46,14 @@ module modPay {
      */
     function checkOrder(data:any):void {
         HttpRequest.getInstance().send("GET", "order", {}, (result)=>{
-            egret.log("查询订单---->", result);
-            // window["sdw"].closeSDWPay();
+            // egret.log("查询订单---->", result);
+            window["sdw"].closeSDWPay();
             //此处客户端更新资源
+            HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
+                UserDataInfo.GetInstance().SetBasicData({diamond:result.diamond});
+                SceneManager.mainScene.show_label_text();
+                ShopDialog.instance.show_label_text();
+            }, modPay)
         }, modPay);
     }
 }

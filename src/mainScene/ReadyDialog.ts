@@ -80,6 +80,7 @@ class ReadyDialog extends PopupWindow {
 
     private uiCompleteHandler():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this);
+        ResAsynLoadManager.LoadReadyScene();
 
         this.topBtn = [this.btn_upgrade, this.btn_skill, this.btn_detail];
         //每个人物的三个技能属性

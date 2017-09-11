@@ -46,7 +46,14 @@ class UserDataInfo{
      */
     public IsHaveGoods(name:string, needNum:number):boolean{
         if(this.userData[name] >= needNum){
-            this.DealUserData(name, this.userData[name] - needNum);
+            if (name == "diamond") {
+                HttpRequest.getInstance().buy({diamond:needNum}, ()=>{
+                    this.DealUserData(name, this.userData[name] - needNum);
+                })
+            }else{
+                this.DealUserData(name, this.userData[name] - needNum);
+            }
+            // this.DealUserData(name, this.userData[name] - needNum);
             return true;
         }
         return false;

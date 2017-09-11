@@ -5,15 +5,16 @@
 			"name": "loading"
 		},
 		{
-			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,equip_res,button_res,common_res,0_0075_di_png,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,loginSword_png,loginSword_json,title_res,mask_png,battle_res,help_tip_png,signBg_png,share_0001_png,popmenu_0001_png,equip_0006_png,curtain_png,TcPower_json,goodsBg_png,TcNewUser_json,battleComon,TcEmailContent_json",
+			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,button_res,common_res,loginSword_png,loginSword_json,mask_png,battle_res,TcPower_json,TcNewUser_json,battleComon,TcEmailContent_json,equip_res,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png",
 			"name": "preload"
 		},
 		{
 			"keys": "shop_0014_png,shop_0010_png,shop_0009_png,shop_0008_png,shop_0001_png,panel_shop_png,drawCard01_png,drawCard02_png,drawCard03_png,drawCard04_png,drawCard05_png,drawCardClip_png,drawCardClip_json,drawCard_png,drawCard_json,drawCardBg_png",
+			"keys": "shop_0014_png,shop_0010_png,shop_0009_png,shop_0008_png,shop_0001_png,panel_shop_png",
 			"name": "shop"
 		},
 		{
-			"keys": "equip1_png,equip10_png,equip11_png,equip12_png,equip13_png,equip14_png,equip15_png,equip16_png,equip17_png,equip18_png,equip19_png,equip2_png,equip20_png,equip21_png,equip22_png,equip23_png,equip24_png,equip3_png,equip4_png,equip5_png,equip6_png,equip7_png,equip8_png,equip9_png,equip_0001_png,equip_0008_png,equip_0010_png,equip_0011_png,equip_0013_png,upArrow_png,upArrow_json,equip_0003_png,equip_0004_png,equip_0005_png,equip_0012_png",
+			"keys": "equip1_png,equip10_png,equip11_png,equip12_png,equip13_png,equip14_png,equip15_png,equip16_png,equip17_png,equip18_png,equip19_png,equip2_png,equip20_png,equip21_png,equip22_png,equip23_png,equip24_png,equip3_png,equip4_png,equip5_png,equip6_png,equip7_png,equip8_png,equip9_png,upArrow_png,upArrow_json,equip_0005_png",
 			"name": "equip"
 		},
 		{
@@ -21,7 +22,7 @@
 			"name": "pvp"
 		},
 		{
-			"keys": "hero_0001_png,hero_0002_png,hero_0003_png,hero_0004_png,hero_0005_png,hero_0006_png,popmenu_0002_png,newParticle_json,newParticle_png,bg_readyEquip_png,shop_popupBg3_png,bg_readyAttr_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin",
+			"keys": "newParticle_json,newParticle_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin",
 			"name": "ready"
 		},
 		{
@@ -35,6 +36,10 @@
 		{
 			"keys": "share3_png,share2_png,share1_png,map1_png",
 			"name": "backstage"
+		},
+		{
+			"keys": "drawCard01_png,drawCard02_png,drawCard03_png,drawCard04_png,drawCard05_png,drawCardClip_png,drawCardBg_png,drawCardClip_json",
+			"name": "shopback"
 		}
 	],
 	"resources": [
@@ -674,16 +679,6 @@
 			"name": "selected_png"
 		},
 		{
-			"url": "assets/moveClip/drawCard.json",
-			"type": "json",
-			"name": "drawCard_json"
-		},
-		{
-			"url": "assets/moveClip/drawCard.png",
-			"type": "image",
-			"name": "drawCard_png"
-		},
-		{
 			"url": "assets/moveClip/stakes.json",
 			"type": "json",
 			"name": "stakes_json"
@@ -1319,11 +1314,6 @@
 			"name": "drawCardClip_png"
 		},
 		{
-			"url": "assets/moveClip/drawCardClip.json",
-			"type": "json",
-			"name": "drawCardClip_json"
-		},
-		{
 			"url": "assets/moveClip/killFnt.fnt",
 			"type": "font",
 			"name": "killFnt_fnt"
@@ -1736,6 +1726,11 @@
 			"url": "config/TcEmailContent.json",
 			"type": "json",
 			"name": "TcEmailContent_json"
+		},
+		{
+			"url": "assets/moveClip/drawCardClip.json",
+			"type": "json",
+			"name": "drawCardClip_json"
 		}
 	]
 }

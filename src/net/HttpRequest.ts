@@ -43,6 +43,45 @@ class HttpRequest {
     }
 
     /**
+     * 钻石消费
+     */
+    public buy(data:any, func:Function = null):void {
+        let sendData:any = {};
+        sendData["diamond"] = data.diamond;
+        sendData["amount"] = data.amount ? data.amount : 1;
+        sendData["itemId"] = data.itemid ? data.itemid : 1;
+        sendData["itemName"] = data.name ? data.name : "";
+        sendData["timestamp"] = Math.floor(new Date().getTime()/1000);
+        let t = this.token;
+        let MD5 = new md5();
+        let str = "amount="+sendData.amount+"&itemid="+sendData.itemId+"&name="+sendData.itemName+"&timestamp="+sendData.timestamp+"&t="+t;
+        sendData["signature"] = MD5.hex_md5(str);
+        egret.log("发送的数据===>", JSON.stringify(sendData))
+        this.send("POST", "buy", sendData, (result)=>{
+            if (func) func();
+        }, this);
+    }
+
+    /**
+     * 奖励（获取钻石）
+     */
+    public award(data:any, func:Function = null):void {
+        let sendData:any = {};
+        // action  ('shareKills', 'shareRank', 'shareHero')
+        sendData["action"] = "shareKills";
+        sendData["award"] = data.diamond;
+        sendData["timestamp"] = Math.floor(new Date().getTime()/1000);
+        let str = "action="+sendData.action+"&timestamp="+sendData.timestamp+"&award="+sendData.award+this.token;
+        let MD5 = new md5();
+        sendData["signature"] = MD5.hex_md5(str);
+        egret.log("发送的数据===>", JSON.stringify(sendData));
+        this.send("POST", "award", sendData, (result)=>{
+            egret.log("奖励----->", JSON.stringify(result));
+            if (func) func();
+        }, this);
+    }
+
+    /**
      * 设置token的值
      */
     public setToken(value:string):void {
@@ -79,6 +118,14 @@ class HttpRequest {
         "equip": window["RESOURCE"] + "equip",
         //邮件
         "email": window["RESOURCE"] + "email",
+        //商店购买
+        "buy": window["RESOURCE"] + "shop/buy",
+        //获取钻石
+        "diamond": window["RESOURCE"] + "userinfo/money",
+        //购买列表
+        "buylist": window["RESOURCE"] + "shop/list",
+        //奖励获取
+        "award": window["RESOURCE"] + "award"
     }
     /**token值 */
     private token:string;

@@ -12,9 +12,10 @@ class MainScene extends Base {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
 
         this.onListener();
+        ResAsynLoadManager.LoadMainScene();
+        this.showSignDialog();
         this.createMainScene();
         this.show_label_text();   
-        this.showSignDialog();
     }
 
     /** 事件监听 */
@@ -43,6 +44,7 @@ class MainScene extends Base {
 
     /***  创建主场景的精灵动画 包含人物动作 火光 猩猩 */
     private createMainScene():void{
+
         //星星列表
         this.star_list = [];                                                                                                        
         let starPosition = [[54,220],[75,42],[242,39],[622,80],[738,69],[958,110],[550,170],[1060,122],[1058,335],[1072,412]];
@@ -145,9 +147,6 @@ class MainScene extends Base {
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();
             break;
-			default:
-                this.popupGroup.visible = false;
-				break;
 		}
     }
 
@@ -182,38 +181,34 @@ class MainScene extends Base {
         this.lab_power.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("power"));
     }
 
-    private _btnFocus:eui.Button;
-    /**准备出战 */
-    private btn_ready:eui.Button;
-    public readyDialog:ReadyDialog;
-    /**装备 */
-    private btn_equip:eui.Button;
-    public equipDialog:EquipDialog;
-    /**天赋 */
-    private btn_talent:eui.Button;
-    public talentDialog:TalentDialog;
-    /**商城 */
-    private btn_shop:eui.Button;
-    public shopDialog:any;
 
+    /** button */
+    private btn_shop:eui.Button;
     private btn_email:eui.Button;
     private btn_pvp:eui.Button;
     private btn_sign:eui.Button;
+    private btn_talent:eui.Button;
+    private btn_ready:eui.Button;
+    private btn_equip:eui.Button;
+    private _btnFocus:eui.Button;
 
-    private img_light:eui.Image;
-    private star_list:Array<egret.Bitmap>;
-
+    /** label */
     private lab_exp:eui.Label;
     private lab_soul:eui.Label;
     private lab_diamond:eui.Label;
     private lab_power:eui.Label;
 
+    /** image */
     private img_exp:eui.Image;
     private img_soul:eui.Image;
     private img_diamond:eui.Image;
     private img_power:eui.Image;
+    private img_light:eui.Image;
 
     /**设置弹出 */
-    private popupGroup:eui.Group;
     private _shape:egret.Shape;
+    private star_list:Array<egret.Bitmap>;
+
+    /** dialog */
+    public readyDialog:ReadyDialog;
 }

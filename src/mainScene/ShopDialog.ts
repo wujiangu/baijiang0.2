@@ -17,6 +17,7 @@ class ShopDialog extends PopupWindow {
     }
 
     protected childrenCreated(): void{
+        RES.loadGroup("shopback");
         this.createContent(this.scrollDiamond, this.tcShop.diamond, "diamond");
         this.createContent(this.scrollReward, this.tcShop.packs, "packs");
         this.createContent(this.scrollHero, this.tcShop.heros, "heros");
@@ -127,7 +128,7 @@ class ShopDialog extends PopupWindow {
         return false;
     }
 
-    private show_label_text():void{
+    public show_label_text():void{
         this.lab_soul.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("soul"));
         this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
         this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));

@@ -77,9 +77,12 @@ module modShare {
      */
    function success():void {
         egret.log("分享成功");
-        WindowManager.GetInstance().GetWindow("ShareWindow").Close();
-        UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + Common.GetShareDiamond(),shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
-        GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+        HttpRequest.getInstance().award({diamond:Common.GetShareDiamond()}, ()=>{
+            WindowManager.GetInstance().GetWindow("ShareWindow").Close();
+            UserDataInfo.GetInstance().SetBasicData({shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
+            GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+        });
+        // UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + Common.GetShareDiamond(),shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
     }
 
     /**
