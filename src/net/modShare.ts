@@ -2,6 +2,9 @@
  * 分享模块
  */
 module modShare {
+
+    export var isFirstShare:boolean = false;     //判断是否是首次分享
+
     /**
      * 开始分享
      * @param
@@ -39,9 +42,9 @@ module modShare {
         if (systemType == "windows" || systemType == "linux" || systemType == "mac") {
             //PC平台
             // QQ空间
-            var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+params.link+'&pics='+params.imgUrl;
+            let link = encodeURIComponent(params.link);
+            var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title='+params.title+'&url='+link+'&pics='+params.imgUrl;
             window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
-
             // //疼讯微博
             // var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+params.title+'&url='+params.link+'&pic='+params.imgUrl;
             // window.open(shareqqstring,'newwindow','height=400,width=400,top=100,left=100');
@@ -77,12 +80,12 @@ module modShare {
      */
    function success():void {
         egret.log("分享成功");
-        HttpRequest.getInstance().award({diamond:Common.GetShareDiamond()}, ()=>{
-            WindowManager.GetInstance().GetWindow("ShareWindow").Close();
-            UserDataInfo.GetInstance().SetBasicData({shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
-            GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
-        });
-        // UserDataInfo.GetInstance().SetBasicData({diamond:UserDataInfo.GetInstance().GetBasicData("diamond") + Common.GetShareDiamond(),shareNum:UserDataInfo.GetInstance().GetBasicData("shareNum") + 1});
+        WindowManager.GetInstance().GetWindow("ShareWindow").Close();
+        UserDataInfo.GetInstance().DealAllData("diamond",Common.GetShareDiamond(),ModBasic.GET,()=>{
+            let share_num:number = modShare.isFirstShare ? UserDataInfo.GetInstance().GetBasicData("shareNum") : UserDataInfo.GetInstance().GetBasicData("shareNum") + 1;
+            UserDataInfo.GetInstance().SetBasicData({shareNum:share_num});
+            modShare.isFirstShare = false;
+        })
     }
 
     /**
@@ -97,5 +100,11 @@ module modShare {
      */
     function fail():void {
         egret.log("分享失败");
+    }
+
+    export function GetShareNum():void{
+        HttpRequest.getInstance().send("GET","share",{},(data)=>{
+            isFirstShare = data.shareNum == 0 ? true : false;
+        },this);
     }
 }

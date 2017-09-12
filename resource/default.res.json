@@ -9,12 +9,11 @@
 			"name": "preload"
 		},
 		{
-			"keys": "shop_0014_png,shop_0010_png,shop_0009_png,shop_0008_png,shop_0001_png,panel_shop_png,drawCard01_png,drawCard02_png,drawCard03_png,drawCard04_png,drawCard05_png,drawCardClip_png,drawCardClip_json,drawCard_png,drawCard_json,drawCardBg_png",
-			"keys": "shop_0014_png,shop_0010_png,shop_0009_png,shop_0008_png,shop_0001_png,panel_shop_png",
+			"keys": "shop_0014_png",
 			"name": "shop"
 		},
 		{
-			"keys": "equip1_png,equip10_png,equip11_png,equip12_png,equip13_png,equip14_png,equip15_png,equip16_png,equip17_png,equip18_png,equip19_png,equip2_png,equip20_png,equip21_png,equip22_png,equip23_png,equip24_png,equip3_png,equip4_png,equip5_png,equip6_png,equip7_png,equip8_png,equip9_png,upArrow_png,upArrow_json,equip_0005_png",
+			"keys": "upArrow_png,upArrow_json,equip_0005_png",
 			"name": "equip"
 		},
 		{

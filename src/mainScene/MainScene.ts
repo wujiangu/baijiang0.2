@@ -12,7 +12,6 @@ class MainScene extends Base {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
 
         this.onListener();
-        ResAsynLoadManager.LoadMainScene();
         this.showSignDialog();
         this.createMainScene();
         this.show_label_text();   

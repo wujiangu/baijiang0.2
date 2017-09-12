@@ -42,21 +42,43 @@ class UserDataInfo{
     /** 判断是否有足够的物品
      * @param name 当前物品名字
      * @param needNum 当前物品需要的量
-     * @param func 回调函数
+     * @param callType 回调类型
      */
-    public IsHaveGoods(name:string, needNum:number):boolean{
+    public IsHaveGoods(name:string, needNum:number,callBack:Function = null):boolean{
         if(this.userData[name] >= needNum){
-            if (name == "diamond") {
-                HttpRequest.getInstance().buy({diamond:needNum}, ()=>{
-                    this.DealUserData(name, this.userData[name] - needNum);
-                })
-            }else{
-                this.DealUserData(name, this.userData[name] - needNum);
-            }
-            // this.DealUserData(name, this.userData[name] - needNum);
+            this.DealAllData(name, needNum,ModBasic.BUY, callBack);
             return true;
         }
         return false;
+    }
+
+    /** deal all data 
+     * @param name goods name 
+     * @param, goodsNum  goods number
+     * @param Type  comsume type  1 buy 2 awward
+     */
+    public DealAllData(name:string, goodsNum:number, Type:number = ModBasic.BUY,callBack:Function = null):void{
+        if(name == "diamond"){
+            if(Type == ModBasic.BUY){                  //purchase
+                HttpRequest.getInstance().buy({diamond:goodsNum}, ()=>{
+                    this.DealUserData(name, this.userData[name] - goodsNum);
+                    if(callBack) callBack();
+                })
+            }
+            else if(Type == ModBasic.GET)                         //get
+            {
+                HttpRequest.getInstance().award({diamond:goodsNum}, ()=>{
+                    this.DealUserData(name, this.userData[name] + goodsNum);
+                    if(callBack) callBack();
+                    GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+                });
+            }
+        }
+        else
+        {
+            if(Type == ModBasic.BUY) this.DealUserData(name, this.userData[name] - goodsNum);
+            else if(Type == ModBasic.GET) this.DealUserData(name, this.userData[name] + goodsNum);
+        }
     }
 
     /** 判断是否有足够的物品 两件或者两件以上 */

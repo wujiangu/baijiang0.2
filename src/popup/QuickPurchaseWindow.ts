@@ -47,11 +47,13 @@ class QuickPurchaseWindow extends PopupWindow{
     }
 
     private onTouchPurchase(event:egret.TouchEvent):void{
-        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", 100)){
+        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", ModBasic.QUICKPURCHASE,()=>{
             Common.DealReward(this.goods_list);
             this.Close(1);
+        }))
+        {
+           Animations.showTips("钻石不足，无法购买", 1, true);
         }
-        else Animations.showTips("钻石不足，无法购买", 1, true);
     }
 
     /** button */

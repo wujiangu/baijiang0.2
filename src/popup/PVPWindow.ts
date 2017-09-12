@@ -105,10 +105,9 @@ class PVPWindow extends PopupWindow{
         }
         else if(target == this.btn_buy){
             let pvpConsume:number = UserDataInfo.GetInstance().GetBasicData("sportCount") * 20 >= 100 ? 100 : UserDataInfo.GetInstance().GetBasicData("sportCount") * 20;
-            if(UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume)){
+            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume,()=>{
                 this.onEnterReady();
-            }
-            else
+            }))
             {
                 Animations.showTips("钻石不足，无法挑战", 1, true);
             }

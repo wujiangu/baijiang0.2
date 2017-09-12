@@ -32,23 +32,25 @@ class shopItemIR extends Base {
                     // Animations.showTips("无法购买，现金充值尚未开放", 1, true);
                 }
                 else if(this.btn_buy.name == "packs"){
-                    if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price)){
+                    if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price,()=>{
                         Animations.showTips("购买礼包成功", 1);
                         if(this.content.type == "pack"){
                             let info = new modEquip.EquipInfo(20, 0, 5);
                             modEquip.EquipData.GetInstance().Add(info);
-                            let soul:number = UserDataInfo.GetInstance().GetBasicData("soul") + 1000;
-                            let exp:number = UserDataInfo.GetInstance().GetBasicData("exp") + 20000;
-                            let diamond:number = UserDataInfo.GetInstance().GetBasicData("diamond") + 50;
-                            UserDataInfo.GetInstance().SetBasicData({soul:soul,exp:exp,diamond:diamond});
+                            let soul:number = UserDataInfo.GetInstance().GetBasicData("soul") + ModBasic.PACKSOUL;
+                            let exp:number = UserDataInfo.GetInstance().GetBasicData("exp") + ModBasic.PACKEXP;
+                            UserDataInfo.GetInstance().SetBasicData({soul:soul,exp:exp});
+                            UserDataInfo.GetInstance().DealAllData("diamond", ModBasic.PACKDIAMOND, ModBasic.GET);
                         }
                         else if(this.content.type == "exp" || this.content.type == "soul")
                         {
-                            UserDataInfo.GetInstance().DealUserData(this.content.type, UserDataInfo.GetInstance().GetBasicData(this.content.type) + this.content.count);
+                            UserDataInfo.GetInstance().DealAllData(this.content.type, this.content.count, ModBasic.GET);
                         }
                         GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
+                    }))
+                    {
+                        Animations.showTips("钻石不足，无法购买", 1,true);
                     }
-                    else Animations.showTips("钻石不足，无法购买", 1,true);
                 }
                 else if(this.btn_buy.name == "heros")
                 {
@@ -57,7 +59,7 @@ class shopItemIR extends Base {
                     }
                     else
                     {
-                        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price)){
+                        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price,()=>{
                             Animations.showTips(`购买英雄${this.content.name}成功`, 1);
                             HeroData.addHeroData(this.content.key);
                             if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
@@ -65,8 +67,10 @@ class shopItemIR extends Base {
                             }
                             WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:3,data:"zhaoyun"});
                             GameLayerManager.gameLayer().dispatchEventWith(UserData.PURCHASEDATA);
+                        }))
+                        {
+                            Animations.showTips("钻石不足，无法购买", 1);
                         }
-                        else Animations.showTips("钻石不足，无法购买", 1);
                     }
                 }
             break;

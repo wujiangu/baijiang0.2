@@ -80,7 +80,7 @@ class EquipUpStarWindow extends PopupWindow{
             return;
         }
 
-        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",modEquip.EquipSource.UPSTARPRICE)){
+        if(!UserDataInfo.GetInstance().IsHaveGoods("soul",ModBasic.UPSTARSOUL)){
             Common.ShowLackDataPopup("soul", ()=>{
                 this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 0);
             })
@@ -106,7 +106,6 @@ class EquipUpStarWindow extends PopupWindow{
             this.equip_info.Star++;
             Animations.showTips("升星成功", 1);
             this.dispatchEventWith(modEquip.EquipSource.UPSTAR, false, 1);
-            modEquip.update(this.equip_info);
             this.equip_info.UpdateData();
             this.Close();
         }
@@ -199,7 +198,7 @@ class EquipUpStarWindow extends PopupWindow{
         this.changeObjectStatus(this.source_list[index], `${target.Index}`, `equip_res.Sequip${25-target.GetId()}`);
         this.showEquipSusscess(modEquip.EquipData.GetInstance().GetEquipFromIndex(target.Index), 1, true)
 
-        if(this.isHaveEquip()) this.lab_sole.text = `${modEquip.EquipSource.UPSTARPRICE}`;
+        if(this.isHaveEquip()) this.lab_sole.text = `${ModBasic.UPSTARSOUL}`;
     }
 
     /** 获得当前没满的索引  */

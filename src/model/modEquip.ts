@@ -3,21 +3,9 @@
  */
 namespace modEquip {
 
-    /**
-     * 更新各个装备信息
-     * 
-     */
-    export function update(equip:any) {
-        if (SceneManager.mainScene.readyDialog){
-            SceneManager.mainScene.readyDialog.updateEquip(equip);
-        }
-    }
-
     /**装备的通用资源 */
     export class EquipSource{
         public static EQUIPLV:number = 100;             //武器最大等级
-        public static UPSTARPRICE:number = 10000;       //武器升星价格
-        public static RESETPRICE:number = 20;           //武器洗练价格
         public static RESETATTR:string = "RESETATTR";
         public static UPSTAR:string = "UPSTAR";
         public static UPGRADE:string = "UPGRADE";

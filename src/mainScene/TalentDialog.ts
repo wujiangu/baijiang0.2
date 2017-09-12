@@ -90,8 +90,8 @@ class TalentDialog extends PopupWindow {
                 else Animations.showTips("能力不足，不能升级天赋",1,true);
             }else if(type == "diamond")
             {
-                if(UserDataInfo.GetInstance().IsHaveGoods("diamond", TcManager.GetInstance().GetDataFromLv(3, this.allLv).diamond)) this.update();
-                else Animations.showTips("钻石不足，不能升级天赋",1,true);
+                if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", TcManager.GetInstance().GetDataFromLv(3, this.allLv).diamond,()=>{this.update()}))
+                    Animations.showTips("钻石不足，不能升级天赋",1,true);
             }
 
         }
@@ -135,7 +135,10 @@ class TalentDialog extends PopupWindow {
         if (type == 1) {
             //购买天赋页
 
-            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", 50)){
+            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", ModBasic.PURCHASETALENT,()=>{
+                this.show_lab_text();
+            }))
+            {
                 Animations.showTips("钻石不足，无法购买天赋页", 1, true);
                 return;
             }
@@ -161,7 +164,10 @@ class TalentDialog extends PopupWindow {
                 return;
             }
 
-            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", 50)){
+            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", ModBasic.RESETTALENT,()=>{
+                this.show_lab_text();
+            }))
+            {
                 Animations.showTips("钻石不足，无法重置", 1, true);
                 return;
             }
@@ -171,9 +177,7 @@ class TalentDialog extends PopupWindow {
             talentPage[this.curPage]["count"] = 1;
             this.pages[this.curPage].reset(this.curPage);
         }
-
         this.allLv = 1;
-        this.show_lab_text();
     }
 
     /**

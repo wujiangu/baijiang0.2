@@ -126,9 +126,6 @@ class EquipUpWindow extends PopupWindow{
             this.upgradeEffect();
             Animations.showTips("升级成功", 1);
 
-            let data = HeroData.list[GameData.curHero];
-            let equipId = data.equip;
-            if (equipId != 0 && equipId == this.equip_info.Id) modEquip.update(this.equip_info);
             this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, 1);
 
             if(this.upLevelNum == 10 && this.equip_info.Lv + this.upLevelNum > modEquip.EquipSource.EQUIPLV){

@@ -56,7 +56,6 @@ class HttpRequest {
         let MD5 = new md5();
         let str = "amount="+sendData.amount+"&itemid="+sendData.itemId+"&name="+sendData.itemName+"&timestamp="+sendData.timestamp+"&t="+t;
         sendData["signature"] = MD5.hex_md5(str);
-        egret.log("发送的数据===>", JSON.stringify(sendData))
         this.send("POST", "buy", sendData, (result)=>{
             if (func) func();
         }, this);

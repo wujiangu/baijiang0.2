@@ -25,6 +25,7 @@ class ShopDialog extends PopupWindow {
 
     private onComplete():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
+        ResAsynLoadManager.LoadShopScene();
 
         this.btn_soul.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_equip.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
@@ -120,8 +121,10 @@ class ShopDialog extends PopupWindow {
     private haveEnoughDiamond(num:number):boolean{
         let value:number = 60;
         if (num == 10) value = 490;
-        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", value)){
+        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", value,()=>{
             this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
+        }))
+        {
             return true;
         }
         else Animations.showTips("钻石不足，无法开启", 1, true);

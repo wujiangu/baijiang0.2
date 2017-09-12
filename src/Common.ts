@@ -360,7 +360,7 @@ namespace Common {
             }
             else if(list[i].type == 2)
             {
-                UserDataInfo.GetInstance().DealUserData(list[i].name, (UserDataInfo.GetInstance().GetBasicData(list[i].name) + list[i].count));
+                UserDataInfo.GetInstance().DealAllData(list[i].name, list[i].count, ModBasic.GET);
             }
             else if(list[i].type == 3)
             {
@@ -409,9 +409,11 @@ namespace Common {
 
     /** 根据分享次数来获得对应的分享数量 */
     export function GetShareDiamond():number{
+        if(modShare.isFirstShare) return 100;
+
         let num:number = UserDataInfo.GetInstance().GetBasicData("shareNum");
         let money_list:any = [50, 30, 30, 30];
-        return num == null ? 100 : num >= money_list.length ? 5 : money_list[num];
+        return num >= money_list.length ? 5 : money_list[num];
     }
 
      /** count surl time */

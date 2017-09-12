@@ -271,8 +271,10 @@ class ReadyDialog extends PopupWindow {
         this.lab_diamond.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
         this.lab_exp.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("exp"));
 
-        let currHeor = HeroData.getHeroData(GameData.curHero)
-        if(currHeor.equipId == 0) for(let star of this.star_list) star.visible = false;
+        let currHeor = HeroData.getHeroData(GameData.curHero);
+        let equipInfo:modEquip.EquipInfo = modEquip.EquipData.GetInstance().GetEquipFromEquipId(currHeor.equipId);
+        if(equipInfo) this.updateEquip(equipInfo);
+        else for(let star of this.star_list) star.visible = false;
     }
 
     /**

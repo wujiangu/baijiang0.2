@@ -24,11 +24,12 @@ class BattleFailPop extends PopupWindow {
             case this.btn_reavival:
                 if (this.typeBtn2 == 0) {
                     if (!GameData.isDebug) {
-                        if(UserDataInfo.GetInstance().IsHaveGoods("diamond", this.value)){
+                        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", this.value,()=>{
                             this.count ++;
                             SceneManager.mainScene.show_label_text();
                             UserDataInfo.GetInstance().DealUserData("revivalCount", this.count);
-                        }else{
+                        }))
+                        {
                             Animations.showTips("钻石不足，无法复活", 1, true);
                             return;
                         }

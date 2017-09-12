@@ -43,29 +43,30 @@ class ResetEqiopAttrWindow extends PopupWindow{
 
     private onTouchReset(event:egret.TouchEvent):void{
 
-        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", modEquip.EquipSource.RESETPRICE)){
+        if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", ModBasic.RESETDIAMOND,()=>{
+            let data = modEquip.GetResetEquipData(this.equip_info);
+            let type = data.type
+            let value = data.value;
+            let quality = data.quality;
+
+            if(UserDataInfo.GetInstance().GetBasicData("lucky") == 100){
+                UserDataInfo.GetInstance().DealUserData("lucky", 0);
+                value = modEquip.GetQualityMaxValue(this.equip_info.Quality, type);
+                quality = 4;
+            }
+            else
+            {
+                UserDataInfo.GetInstance().DealUserData("lucky", UserDataInfo.GetInstance().GetBasicData("lucky") + 2);
+            } 
+            this.equip_info.ChangeAttrType(this._index, type, value, quality);
+            this.changeAttrInfo(type, value, quality);
+            Animations.showTips("洗练成功", 1);
+            this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index, quality:quality});
+        }))
+        {
             Animations.showTips("钻石不足，无法洗练", 1, true);
             return;
         }
-
-        let data = modEquip.GetResetEquipData(this.equip_info);
-        let type = data.type
-        let value = data.value;
-        let quality = data.quality;
-
-        if(UserDataInfo.GetInstance().GetBasicData("lucky") == 100){
-            UserDataInfo.GetInstance().DealUserData("lucky", 0);
-            value = modEquip.GetQualityMaxValue(this.equip_info.Quality, type);
-            quality = 4;
-        }
-        else
-        {
-            UserDataInfo.GetInstance().DealUserData("lucky", UserDataInfo.GetInstance().GetBasicData("lucky") + 2);
-        } 
-        this.equip_info.ChangeAttrType(this._index, type, value, quality);
-        this.changeAttrInfo(type, value, quality);
-        Animations.showTips("洗练成功", 1);
-        this.dispatchEventWith(modEquip.EquipSource.RESETATTR, false, {type:type,value:value,index:this._index, quality:quality})
     }
 
     private changeAttrInfo(type:number, value:number, quality:number){
