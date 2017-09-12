@@ -125,7 +125,9 @@ class HttpRequest {
         //购买列表
         "buylist": window["RESOURCE"] + "shop/list",
         //奖励获取
-        "award": window["RESOURCE"] + "award"
+        "award": window["RESOURCE"] + "award",
+        //获取分享次数
+        "share": window["RESOURCE"] + "userinfo/share",
     }
     /**token值 */
     private token:string;
