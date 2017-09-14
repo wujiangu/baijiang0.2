@@ -41,7 +41,7 @@ class BattleSceneCom extends Base {
         TimerManager.getInstance().stopTimer();
         modBattle.stop();
 
-        if(modBattle.getSumkill() >= ShareWindow.KILLREQUIRE){
+        if(modBattle.getSumkill() >= ModBasic.KILLNUM){
             WindowManager.GetInstance().GetWindow("ShareWindow").Show({type:2, data:0}, ()=>{
                 WindowManager.GetInstance().GetWindow("BattleFailPop").Show(isExit);
             });

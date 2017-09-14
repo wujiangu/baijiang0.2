@@ -56,22 +56,14 @@ namespace modHero {
         let heroConfig = getHeroConfig(data[0]);
         let equip:number = heroConfig.equipId;
         attr = data[1];
-        if (equip == 0) {
-            // attr = data[1];
-        }else{
-            // Common.log("人物属性---->", JSON.stringify(data[1]));
-            let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromEquipId(equip);
-            // Common.log("装备信息----->", JSON.stringify(equipInfo));
+        let equipInfo = modEquip.EquipData.GetInstance().GetEquipFromEquipId(equip);
+        if(equipInfo){
             let equipAttr = equipInfo.GetEquipAttr();
             attr.hp += Math.ceil(equipAttr[0]);
             attr.def += Math.ceil(equipAttr[1]);
             attr.atk += Math.ceil(equipAttr[2]);
             let crt = parseFloat(equipAttr[3].toFixed(2));
             attr.crt += crt;
-            // let attrType = equipInfo.GetAttrType();
-            // if (attrType.length > 0) {
-            //     addWashAttr(attrType, attr);
-            // }
         }
         // Common.log("装备后属性----->", JSON.stringify(attr));
         return attr;
@@ -98,7 +90,6 @@ namespace modHero {
                     attr.crt += crt;
                 break;
                 case 4:
-                    // attr.avo += 
                 break;
             }
         }

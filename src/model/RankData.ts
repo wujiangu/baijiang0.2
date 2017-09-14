@@ -18,7 +18,7 @@ class RankData{
      /** 根据伤害值获得伤害索引 */
     public GetIndexFromDamage():number{
          for(let i:number = 0; i < this.data_list.length; i++){
-            if(this.data_list[i].roleName == UserDataInfo.GetInstance().GetBasicData("roleName")){
+            if(this.data_list[i].userId == UserData.UserId){
                 return i + 1;
             }
         }
@@ -29,7 +29,7 @@ class RankData{
     public IsHighOriginDamage(currDamage:number):boolean{
         let oriDamage:number = 0;
         for(let temp of this.data_list){
-            if(temp.roleName == UserDataInfo.GetInstance().GetBasicData("roleName")){
+            if(temp.userId == UserData.UserId){
                 oriDamage = temp.damage;
                 break;
             }

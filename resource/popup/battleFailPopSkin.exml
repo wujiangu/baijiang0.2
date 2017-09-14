@@ -20,6 +20,7 @@
 			</e:Skin>
 			</e:skinName>
 		</e:Button>
+		<e:Image id="img_diamond" width="40" height="40" x="300" y="434.24" source="common_res.crystal_0002" touchEnabled="false"/>
 		<e:Group id="group_killCount1" width="301" height="52" x="307.5" y="264" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1" visible="false">
 			<e:Label text="击杀：" x="4" y="15" textColor="0x9e6d49" bold="true" fontFamily="Microsoft YaHei" size="34"/>
 			<e:Label id="lab_killCount1" text="1334" x="112" y="3" fontFamily="Microsoft YaHei" textColor="0xcf802c" bold="true" size="50"/>

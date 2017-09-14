@@ -21,7 +21,7 @@
 	<e:Button id="btn_share" label="分享" x="276.77" y="436.3" width="167" height="76">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_res.button_0014"/>
+			<e:Image width="100%" height="100%" source="button_res.button_0024"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" bold="true" fontFamily="Microsoft YaHei" textColor="0x19100e" size="28"/>
 			</e:Skin>
 		</e:skinName>
@@ -39,6 +39,7 @@
 
 
 	</e:Button>
+	<e:Image id="img_diamond" width="40" height="40" x="392.5" y="448.3" source="common_res.crystal_0002" touchEnabled="false"/>
 
 
 </e:Skin>

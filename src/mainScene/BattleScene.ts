@@ -430,7 +430,8 @@ class BattleScene extends Base {
      * 创建新手引导
      */
     public createGuide():void {
-        this.guideDialog = new GuideDialog();
+
+        this.guideDialog = ObjectPool.pop("GuideDialog");
         GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
     }
 
@@ -467,6 +468,7 @@ class BattleScene extends Base {
                 //攻击引导
                 this.hero.canMove = true;
                 this.hero.isComplete = true;
+                modBattle.start();
             break;
             case 3:
                 //技能引导

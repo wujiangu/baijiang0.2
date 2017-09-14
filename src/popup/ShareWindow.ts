@@ -6,8 +6,6 @@
 
 class ShareWindow extends PopupWindow{
 
-    public static KILLREQUIRE:number = 1000;
-
     public constructor(){
         super();
         this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
@@ -42,9 +40,10 @@ class ShareWindow extends PopupWindow{
             this.show_lab_text(name_list[param.data],"","","",this.getHeroStage(param.data));
         }
 
-        this.lab_share.textFlow = <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
-                                                                {text:`${Common.GetShareDiamond()}钻石`, style:{"textColor":0x2D6EA6}}];
-        this.img_goods.texture = RES.getRes("common_res.basic_diamond");
+        let diamondNum:number = Common.GetShareDiamond();
+        this.img_goods.texture = diamondNum == -1 ? null : RES.getRes("common_res.basic_diamond");
+        this.lab_share.textFlow = diamondNum == -1 ? <Array<egret.ITextElement>>[] : <Array<egret.ITextElement>>[{text:"分享即可获得：",style:{"textColor":0x4C4C4C}},
+                                                                                     {text:`${diamondNum}钻石`, style:{"textColor":0x2D6EA6}}];
     }
 
     private onEventManage(type:number = 0){

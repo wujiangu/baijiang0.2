@@ -21,6 +21,7 @@ class GuideDialog extends Base {
         this.addChild(this.masks);
         this.addChild(this.tipsText);
         this.addChild(this.fingerMov);
+        this.fingerMov.addEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
     }
     protected createChildren(): void{
         this.isMove = false;
@@ -31,6 +32,7 @@ class GuideDialog extends Base {
     protected childrenCreated(): void{
         // this.createMoveGuide();
         // this.createAttackGuide();
+        this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
         SceneManager.battleScene.clearGuide(1);
     }
 
@@ -64,8 +66,8 @@ class GuideDialog extends Base {
         this.fingerMov.x = this.beginX;
         this.fingerMov.y = this.beginY;
         this.fingerMov.gotoAndPlay("guideClip", -1);
-        this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
-        this.fingerMov.addEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
+        // this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
+        // this.fingerMov.addEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
         SceneManager.battleScene.guideStage = 2;
     }
 
@@ -81,6 +83,7 @@ class GuideDialog extends Base {
 
     private onClick():void {
         if (this.count >= 1) {
+            ObjectPool.push(this);
             this.parent.removeChild(this);
             this.count = 0;
             this.fingerMov.stop();

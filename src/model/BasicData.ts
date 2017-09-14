@@ -18,4 +18,6 @@ module ModBasic{
     /** other */
     export var BUY:number = 1;          //buy goods
     export var GET:number = 2;          //get goods
+
+    export var KILLNUM:number = 1000;       //杀敌数量
 }

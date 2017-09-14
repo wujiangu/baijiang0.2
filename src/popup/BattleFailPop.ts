@@ -38,26 +38,21 @@ class BattleFailPop extends PopupWindow {
                     egret.setTimeout(()=>{
                         SceneManager.battleScene.battleSceneCom.clearBuffIcon();
                         SceneManager.battleScene.effectLayer.removeChildren();
-                        SceneManager.battleScene.createHero();
+                        SceneManager.battleScene.createHero(true);
                         TimerManager.getInstance().startTimer();
                         SceneManager.battleScene.battleSceneCom.onRevive();
                     }, this, 200);
                     this.parent.removeChild(this);
-                }else{
-                    Animations.sceneTransition(()=>{
-                        SceneManager.battleScene.cleanChildren();
-                        GameData.curStage = 1;
-                        DragonBonesFactory.getInstance().removeTimer();
-                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
-                    });
-                    this.parent.removeChild(this);
+                }
+                else{
+                    this.Close();
                 }
             break;
             default:
                 if (this.typeBtn1 == 0) {
                     this.toRewardWindow();
                 }else{
-                    Common.log("分享");
+                    modShare.startShare("爽快淋漓！快来和我一起驰骋三国！");
                 }
             break;
         }
@@ -86,6 +81,7 @@ class BattleFailPop extends PopupWindow {
         this.btn_reavival.label = "返回主界面";
         this.typeBtn1 = 1;
         this.typeBtn2 = 1;
+        this.img_diamond.visible = Common.GetShareDiamond() == -1 ? false : true;
         Animations.popupOut(this.group_fail, 300, ()=>{
             if (this._isUp) {
                 this.img_upgrade.visible = true;
@@ -108,14 +104,11 @@ class BattleFailPop extends PopupWindow {
         super.Show();
         //阵亡界面内容
         this.img_bg.source = "battle_0008_png";
-        let maxCount:number = 0;
+        this.img_diamond.visible = false;
         let killCount:number = modBattle.getSumkill();
         this.lab_killCount1.text = killCount.toString();
         this.lab_curKill.text = killCount.toString();
-        if (killCount <= 50) maxCount = 50;
-        else{
-            maxCount = Math.ceil(killCount/50) * 50;
-        }
+        let maxCount = killCount <= 50 ? 50 : Math.ceil(killCount/50) * 50;
         this.lab_maxKill.text = maxCount.toString();
         this.prog_killCount.scaleX = killCount/maxCount;
         this.img_knife.x = 112 + 450 * (killCount/maxCount);
@@ -187,9 +180,6 @@ class BattleFailPop extends PopupWindow {
         if (isExit) this.rewardWindow();
     }
 
-    public Init():void {
-
-    }
     public Reset():void{
         this.group_killCount1.visible = true;
         this.group_killProg.visible = true;
@@ -200,6 +190,16 @@ class BattleFailPop extends PopupWindow {
         this.lab_power.visible = false;
         this.typeBtn1 = 0;
         this.typeBtn2 = 0;
+    }
+
+    public Close():void{
+        super.Close();
+        Animations.sceneTransition(()=>{
+            SceneManager.battleScene.cleanChildren();
+            GameData.curStage = 1;
+            DragonBonesFactory.getInstance().removeTimer();
+            GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+        });
     }
     /**离开 */
     private btn_giveup:eui.Button;
@@ -264,4 +264,7 @@ class BattleFailPop extends PopupWindow {
     private img_exp:eui.Image;
     /**升级图片 */
     private img_upgrade:eui.Image;
+
+    /**image */
+    private img_diamond:eui.Image;
 }

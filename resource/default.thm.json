@@ -49,7 +49,6 @@
     "resource/game_skins/skillupPopSkin.exml",
     "resource/game_skins/talentSkinIR.exml",
     "resource/game_skins/talentWindowSkin.exml",
-    "resource/popup/GMWindowSkin.exml",
     "resource/popup/HelpDialogSkin.exml",
     "resource/popup/PVPWindow.exml",
     "resource/popup/QuickPurchaseDialogSkin.exml",
@@ -61,7 +60,6 @@
     "resource/popup/changeEquipSkin.exml",
     "resource/popup/drawCardPopSkin.exml",
     "resource/popup/hangupPopSkin.exml",
-    "resource/popup/shopItemPopSkin.exml",
-    "resource/popup/unlockStarLvSkin.exml"
+    "resource/popup/shopItemPopSkin.exml"
   ]
 }

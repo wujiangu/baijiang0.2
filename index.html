@@ -26,6 +26,8 @@
 	<!-- windows phone 点击无高光 -->
 	<meta name="msapplication-tap-highlight" content="no">
 	<!-- 适应移动端end -->
+	<meta itemprop="image" content="http://ggsporestudio.com/resource/assets/bg/share1.png" />
+	<meta name="description" itemprop="description" content="这是要分享的内容" />
     <style>
         html, body {
             -ms-touch-action: none;
@@ -62,6 +64,7 @@
 	<script egret="lib" src="promise/promise.js"></script>
 	<!--modules_files_end-->
 	<script egret="lib" src="libs/sea/sea.js" src-release="libs/sea/sea.min.js"></script>
+	<script egret="lib" src="libs/require/require.js" src-release="libs/require/require.js"></script>
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
     
 
@@ -171,6 +174,7 @@
 	<script egret="lib" src="bin-debug/manager/GameLayerManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/ObjectPool.js"></script>
 	<script egret="lib" src="bin-debug/manager/PopupManager.js"></script>
+	<script egret="lib" src="bin-debug/manager/ResAsynLoadManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/ResLoadManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/SceneManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/StageManager.js"></script>
@@ -178,6 +182,7 @@
 	<script egret="lib" src="bin-debug/manager/TimerManager.js"></script>
 	<script egret="lib" src="bin-debug/manager/UserData.js"></script>
 	<script egret="lib" src="bin-debug/manager/WindowManager.js"></script>
+	<script egret="lib" src="bin-debug/model/BasicData.js"></script>
 	<script egret="lib" src="bin-debug/model/modBattle.js"></script>
 	<script egret="lib" src="bin-debug/model/modBuff.js"></script>
 	<script egret="lib" src="bin-debug/model/ModEmail.js"></script>
@@ -199,7 +204,6 @@
 	<script egret="lib" src="bin-debug/popup/drawCardPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/EquipUpStarWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/EquipUpWindow.js"></script>
-	<script egret="lib" src="bin-debug/popup/GMWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/GoodsTipWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/HangupPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/HelpTipDialog.js"></script>
@@ -210,7 +214,6 @@
 	<script egret="lib" src="bin-debug/popup/ShareWindow.js"></script>
 	<script egret="lib" src="bin-debug/popup/ShopItemPop.js"></script>
 	<script egret="lib" src="bin-debug/popup/SignDialog.js"></script>
-	<script egret="lib" src="bin-debug/popup/UnlockStarLvPop.js"></script>
 	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
 	<script egret="lib" src="bin-debug/utils/Animations.js"></script>
 	<script egret="lib" src="bin-debug/utils/MathUtils.js"></script>
@@ -235,7 +238,6 @@
 	<!--/*<script src="//cdn1.lncld.net/static/js/3.0.0/av-min.js"></script>*/-->
 </head>
 <body>
-
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="landscape"
@@ -245,7 +247,7 @@
          data-content-height="640"
          data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="false" data-show-log="false"
+         data-show-fps="false" data-show-log="true"
          data-show-fps-style="x:0,y:0,size:10,textColor:0xffffff,bgAlpha:0.9">
     </div>
     <script>

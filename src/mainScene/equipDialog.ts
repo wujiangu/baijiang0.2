@@ -10,7 +10,6 @@ class EquipDialog extends PopupWindow {
 
     private onComplete():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
-        ResAsynLoadManager.LoadEquipScene();
     }
 
     /** 初始化数据 */

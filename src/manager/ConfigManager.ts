@@ -63,13 +63,13 @@ namespace ConfigManager {
         tcRankReward = RES.getRes("TcRankReward_json");
         tcPower = RES.getRes("TcPower_json");
         loadHeroConfig();
-        loadEnermyConfig();
     }
 
     /** init battle config */
     export function InitBattleConfig(scene:string):void{
         if(scene == "ready"){
             initBattleDragonBones(0, 3);
+            loadEnermyConfig();
         }
         else if(scene == "battleGroup")
         {

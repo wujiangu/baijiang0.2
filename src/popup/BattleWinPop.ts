@@ -8,17 +8,8 @@ class BattleWinPop extends PopupWindow {
         this.skinName = "resource/popup/battleWinPopSkin.exml";
     }
 
-    protected childrenCreated():void {
-        
-    }
-
     private onComplete():void {
-        this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
-        this.btn_continue.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
-    }
-
-    public Init():void{
-
+        this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
     }
 
     /**按钮监听 */
@@ -28,16 +19,11 @@ class BattleWinPop extends PopupWindow {
                 if (this.popType == 1) {
 
                 }else{
-                    this.parent.removeChildren();
-                    Animations.sceneTransition(()=>{
-                        SceneManager.curScene.cleanChildren();
-                        DragonBonesFactory.getInstance().removeTimer();
-                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
-                    });
+                    this.Close();
                 }
             break;
             default:
-
+                modShare.startShare("爽快淋漓！快来和我一起驰骋三国！");
             break;
         }
     }
@@ -46,6 +32,7 @@ class BattleWinPop extends PopupWindow {
     public Show(params:any):void {
         super.Show();
 
+        this.img_diamond.visible = Common.GetShareDiamond() == -1 ? false : true;
         // let continueObj:any = this.btn_continue.getChildAt(1);
         if (SceneManager.curScene == SceneManager.battleScene){
             this.popType = 1;
@@ -103,11 +90,21 @@ class BattleWinPop extends PopupWindow {
     }
 
     public Reset():void{
-
+        this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
+        this.btn_continue.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
     }
 
     public Close():void{
         super.Close();
+
+        this.btn_share.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
+        this.btn_continue.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
+
+        Animations.sceneTransition(()=>{
+            SceneManager.curScene.cleanChildren();
+            DragonBonesFactory.getInstance().removeTimer();
+            GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+        });
     }
 
     private reward:any;
@@ -129,4 +126,7 @@ class BattleWinPop extends PopupWindow {
     private lab_hurt:eui.Label;
     /**当前排名 */
     private lab_rank:eui.Label;
+
+    /** image */
+    private img_diamond:eui.Image;
 }

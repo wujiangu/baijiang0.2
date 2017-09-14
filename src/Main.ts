@@ -105,6 +105,7 @@ class Main extends eui.UILayer {
                 this.addChild(this.logo);
                 Common.createGlobleMask();
                 this.createScene();
+                // ResAsynLoadManager.LoadMainScene();
                 break;
             case "loading":
                 //设置加载进度界面
@@ -119,6 +120,7 @@ class Main extends eui.UILayer {
             break;
         }
     }
+
     private createScene(){
         if(this.isThemeLoadEnd && this.isResourceLoadEnd){
             //加载配置文件
@@ -158,12 +160,13 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+
         this.removeChild(this.bg);
         this.removeChild(this.logo);
         // RES.destroyRes("loading");
         modLogin.init();
         modLogin.reqLogin(this._onLogin);
-        // modShare.startShare("dfdsf");
+        modShare.activeShare("百将斩", false, true);
         // this.test();
         // this.testBattle();
         // this.addDesktop();
@@ -175,20 +178,19 @@ class Main extends eui.UILayer {
     private _onLogin() {
         SceneManager.enterGameScene = new EnterGameScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
-        RES.loadGroup("backstage");
+        ResAsynLoadManager.LoadMainScene();
         egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
         GameData.isDebug = false;
         modLogin.sendHeartBeat();
-        // LeanCloud.GetInstance().InitData();
     }
 
     private test():void {
         let data:any = {};
         data.title = "百将斩";
         data.desc = "游戏";
-        data.link = encodeURIComponent("http://www.shandw.com/pc/game/?gid=1112169032&channel=10000");
-        data.imgUrl = "http://ggsporestudio.com/resource/assets/bg/bg_0002.png";
-        modShare.share(data);
+        data.link = "http://192.168.188.116:3000/index.html";
+        data.imgUrl = "http://192.168.188.116:3000/resource/assets/loading/loading2.png";
+        modShare.share(data, true);
     }
 
     /**
@@ -233,6 +235,7 @@ class Main extends eui.UILayer {
      */
     private testBattle():void {
         RES.createGroup("battleGroup", ["battleCommon", "battlePVP"],true);
+        // ResAsynLoadManager.LoadMainScene();
         ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
             ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                 ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{

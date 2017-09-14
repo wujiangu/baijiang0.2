@@ -25,7 +25,6 @@ class ShopDialog extends PopupWindow {
 
     private onComplete():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
-        ResAsynLoadManager.LoadShopScene();
 
         this.btn_soul.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_equip.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);

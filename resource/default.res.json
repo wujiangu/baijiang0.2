@@ -5,7 +5,7 @@
 			"name": "loading"
 		},
 		{
-			"keys": "description_json,enermyConfig_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,buffConfig_json,TcBoss01_json,TcMonster01_json,TcMonster02_json,TcMonster03_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,button_res,common_res,loginSword_png,loginSword_json,mask_png,battle_res,TcPower_json,TcNewUser_json,battleComon,TcEmailContent_json,equip_res,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png",
+			"keys": "description_json,enermyConfig_json,buffConfig_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,loginSword_png,loginSword_json,mask_png,TcPower_json,TcNewUser_json,battleComon,TcEmailContent_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json",
 			"name": "preload"
 		},
 		{
@@ -33,12 +33,16 @@
 			"name": "talent"
 		},
 		{
-			"keys": "share3_png,share2_png,share1_png,map1_png",
-			"name": "backstage"
-		},
-		{
 			"keys": "drawCard01_png,drawCard02_png,drawCard03_png,drawCard04_png,drawCard05_png,drawCardClip_png,drawCardBg_png,drawCardClip_json",
 			"name": "shopback"
+		},
+		{
+			"keys": "share3_png,share2_png,share1_png",
+			"name": "share"
+		},
+		{
+			"keys": "button_res,common_res,battle_res,equip_res,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,0_0075_di_png",
+			"name": "mainscene"
 		}
 	],
 	"resources": [

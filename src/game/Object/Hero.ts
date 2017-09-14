@@ -45,6 +45,7 @@ class Hero extends Alliance {
         this.skill_status = false;
         this.lastKill = 0;
         this.skill.skillData.skill_range = 150;
+        this._isRevival = data[2];
         this.visible = false;
         egret.setTimeout(()=>{
             this.visible = true;
@@ -462,8 +463,9 @@ class Hero extends Alliance {
                 if (this.isPVP) SceneManager.pvpScene.createCountDown();
                 else {
                     SceneManager.battleScene.battleSceneCom.setShieldProgress(this._shieldCount);
-                    if (SceneManager.battleScene.guideStage == 2) {
+                    if (SceneManager.battleScene.guideStage == 2 && !this._isRevival) {
                         SceneManager.battleScene.createGuide();
+                        modBattle.stop();
                         // this.isComplete = false;
                     }
                 }
@@ -491,6 +493,8 @@ class Hero extends Alliance {
         this.effectArmature.removeCompleteCallFunc(this.effectArmaturePlayEnd, this);
     }
 
+    /**是否复活 */
+    private _isRevival:boolean;
     /**上次击杀 */
     private lastKill:number;
     /**技能状态 0:没有释放 1:开始释放 */

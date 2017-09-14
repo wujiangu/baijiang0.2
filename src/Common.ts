@@ -413,7 +413,7 @@ namespace Common {
 
         let num:number = UserDataInfo.GetInstance().GetBasicData("shareNum");
         let money_list:any = [50, 30, 30, 30];
-        return num >= money_list.length ? 5 : money_list[num];
+        return num >= money_list.length ? -1 : money_list[num];
     }
 
      /** count surl time */

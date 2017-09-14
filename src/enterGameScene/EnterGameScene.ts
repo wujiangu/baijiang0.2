@@ -28,7 +28,6 @@ class EnterGameScene extends Base {
         let array = RES.getRes("sensitiveWords_json");
         SensitiveWordFilter.GetInstance().regSensitiveWords(array);
         this.initGameData();
-        ResAsynLoadManager.LoadMainScene();
     }
 
     /**
@@ -39,15 +38,17 @@ class EnterGameScene extends Base {
         egret.Tween.removeTweens(this.lab_enter);
         this.removeChild(this.lab_enter);
 
-        let mc:egret.MovieClip = Common.CreateMovieClip("loginSword");
-        this.addChild(mc);
-        mc.play(1);
+        ResLoadManager.GetInstance().LoadGroup("mainscene", ()=>{
+            let mc:egret.MovieClip = Common.CreateMovieClip("loginSword");
+            this.addChild(mc);
+            mc.play(1);
 
-        mc.width = mc.width * 2.5; mc.height = mc.height * 2.5;
-        mc.scaleX = 2.5; mc.scaleY = 2.5;
-        Common.SetXY(mc, this.width - mc.width >> 1, this.height - mc.height >> 1);
+            mc.width = mc.width * 2.5; mc.height = mc.height * 2.5;
+            mc.scaleX = 2.5; mc.scaleY = 2.5;
+            Common.SetXY(mc, this.width - mc.width >> 1, this.height - mc.height >> 1);
 
-        mc.addEventListener(egret.Event.COMPLETE, this.onEnterGame, this);
+            mc.addEventListener(egret.Event.COMPLETE, this.onEnterGame, this);
+        })
     }
 
     private onEnterGame(event:egret.Event):void{
