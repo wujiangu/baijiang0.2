@@ -3,6 +3,10 @@
 		"frameRate":20,
 		"labels":[
 			{"name":"killTipsBgClip","frame":1,"end":2}
+			
+			],
+		"events":[
+			
 			],
 		"frames":[
 			
@@ -19,6 +23,6 @@
 			]
 }},
 	"res":{
-        "jishatishi6_01":{"x":561,"y":0,"w":248,"h":29},
+        "jishatishi6_01":{"x":0,"y":110,"w":248,"h":29},
         "jishatishi6_02":{"x":0,"y":0,"w":559,"h":108}
 	}}

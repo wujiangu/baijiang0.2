@@ -101,6 +101,7 @@ class BattleWinPop extends PopupWindow {
         this.btn_continue.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
 
         Animations.sceneTransition(()=>{
+            // ResLoadManager.GetInstance().destroyGroup("pvpGroup");
             SceneManager.curScene.cleanChildren();
             DragonBonesFactory.getInstance().removeTimer();
             GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);

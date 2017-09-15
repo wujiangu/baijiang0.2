@@ -33,6 +33,15 @@ class ResLoadManager{
         }
     }
 
+    /**
+     * 销毁已存在的资源组
+     */
+    public destroyGroup(name:string):void {
+        if(!!this.load_list[name]){
+            if (RES.destroyRes(name, true)) this.load_list[name] = null;
+        }
+    }
+
     public Listener():void{
         if(this._name == "ready" || this._name == "battleGroup" || this._name == "pvpGroup") {
                 ConfigManager.InitBattleConfig(this._name);

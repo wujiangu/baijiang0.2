@@ -45,13 +45,14 @@ class Hero extends Alliance {
         this.skill_status = false;
         this.lastKill = 0;
         this.skill.skillData.skill_range = 150;
-        this._isRevival = data[2];
+        this._isRevival = data[2] > 0 ? true : false;
+        this._revivalType = data[2];
         this.visible = false;
         egret.setTimeout(()=>{
             this.visible = true;
             this.gotoEnter();
         }, this, 500);
-        if (data[2]) this.attr.hp = data[3];
+        if (this._revivalType == 2) this.attr.hp = data[3];
         this.armature.addCompleteCallFunc(this.armaturePlayEnd, this);
         if (!isPVP){
             SceneManager.battleScene.showComboLayer();
@@ -116,6 +117,7 @@ class Hero extends Alliance {
             let buffConfig = modBuff.getBuff(buff[i]);
             let newBuff = ObjectPool.pop(buffConfig.className);
             newBuff.buffInit(buffConfig);
+            if (buff[i] == 28 && this._revivalType == 1) newBuff.reset();
             this.addBuff(newBuff);
         }
     }
@@ -495,6 +497,7 @@ class Hero extends Alliance {
 
     /**是否复活 */
     private _isRevival:boolean;
+    private _revivalType:number;
     /**上次击杀 */
     private lastKill:number;
     /**技能状态 0:没有释放 1:开始释放 */

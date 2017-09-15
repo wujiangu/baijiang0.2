@@ -21,10 +21,10 @@
 	</e:Button>
 	<e:Image x="486" y="82"  source="title_res.title_0007"/>
 	<e:Label id="lab_max" text="已满级" x="747" y="216" anchorOffsetX="0" width="232" anchorOffsetY="0" height="177" textAlign="center" verticalAlign="middle" size="28" fontFamily="Microsoft YaHei" bold="true" textColor="0xc1b897"/>
-	<e:Image id="img_bottom" source="equip_res.select_2" x="835" y="420"/>
+	<e:Image id="img_bottom" source="equip_res.select_2" x="835" y="420" touchEnabled="false"/>
 	<e:Image id="img_click" source="equip_res.select_1" x="843" y="428" touchEnabled="false"/>
-	<e:Label id="lab_one" text="1次" x="790" y="426" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151"/>
-	<e:Label id="lab_ten" text="10次" x="958" y="427" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151"/>
+	<e:Label id="lab_one" text="1次" x="790" y="426" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151" touchEnabled="false"/>
+	<e:Label id="lab_ten" text="10次" x="958" y="427" size="20" fontFamily="Microsoft YaHei" bold="true" textColor="0x515151" touchEnabled="false"/>
 	<e:Button id="btn_close" label="" x="980" y="79.9">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

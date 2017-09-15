@@ -38,7 +38,7 @@ class BattleFailPop extends PopupWindow {
                     egret.setTimeout(()=>{
                         SceneManager.battleScene.battleSceneCom.clearBuffIcon();
                         SceneManager.battleScene.effectLayer.removeChildren();
-                        SceneManager.battleScene.createHero(true);
+                        SceneManager.battleScene.createHero(1);
                         TimerManager.getInstance().startTimer();
                         SceneManager.battleScene.battleSceneCom.onRevive();
                     }, this, 200);
@@ -195,6 +195,7 @@ class BattleFailPop extends PopupWindow {
     public Close():void{
         super.Close();
         Animations.sceneTransition(()=>{
+            // ResLoadManager.GetInstance().destroyGroup("battleGroup");
             SceneManager.battleScene.cleanChildren();
             GameData.curStage = 1;
             DragonBonesFactory.getInstance().removeTimer();

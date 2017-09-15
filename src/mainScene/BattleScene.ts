@@ -48,6 +48,7 @@ class BattleScene extends Base {
         this.createHero();
         this.x = 0;
         this.y = 0;
+        if (RES.hasRes("monster1_1_tex_png")) egret.log("存在这个资源");
         // if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
     }
 
@@ -327,7 +328,7 @@ class BattleScene extends Base {
     /**
      * 创建英雄
      */
-    public createHero(isRevival:boolean = false, hp:number = 1):void {
+    public createHero(revivalType:number = 0, hp:number = 0):void {
         this.hero = ObjectPool.pop("Hero");
         GameData.heros.push(this.hero);
         //测试
@@ -335,7 +336,7 @@ class BattleScene extends Base {
         let level:number = HeroData.getHeroData(GameData.curHero).lv
         let attr = Utils.cloneObj(data[level - 1]);
         //数据结构后续优化
-        this.hero.init([GameData.curHero, attr, isRevival, hp]);
+        this.hero.init([GameData.curHero, attr, revivalType, hp]);
         this.hero.x = Common.SCREEN_W/2;
         this.hero.y = Common.SCREEN_H/2;
         // this.hero.anchorOffsetY = -33;
@@ -430,8 +431,8 @@ class BattleScene extends Base {
      * 创建新手引导
      */
     public createGuide():void {
-
         this.guideDialog = ObjectPool.pop("GuideDialog");
+        this.guideDialog.init();
         GameLayerManager.gameLayer().maskLayer.addChild(this.guideDialog);
     }
 

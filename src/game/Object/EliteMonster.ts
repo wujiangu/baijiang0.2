@@ -331,6 +331,7 @@ class EliteMonster extends Monster {
         this._data["direction"] = avatarPos;
         GameData.monsters.push(this._avatar);
         this._avatar.init([this._type, this._data]);
+        Common.log("分身的数据---->", this._data);
         SceneManager.battleScene.battleLayer.addChild(this._avatar);
     }
 

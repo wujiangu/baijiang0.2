@@ -46,6 +46,11 @@ class EquipUpWindow extends PopupWindow{
              this.imgStar_list[i] = new egret.Bitmap();
              this.addChild(this.imgStar_list[i]);
         }
+
+        this.img_mask = Common.CreateShape(0, 0, 190, 48);
+        this.img_mask.touchEnabled = true;
+        this.addChildAt(this.img_mask, this.getChildIndex(this.img_bottom) - 1);
+        Common.SetXY(this.img_mask, this.img_bottom.x + (108 - this.img_mask.width >> 1), this.img_bottom.y + (32 - this.img_mask.height >> 1));
     }
 
     public Show(equip_info:modEquip.EquipInfo):void{
@@ -69,7 +74,7 @@ class EquipUpWindow extends PopupWindow{
     public Reset():void{
         this.btn_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upLevel.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpGrade, this);
-        this.img_bottom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
+        this.img_mask.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
     }
 
     public Close():void{
@@ -79,7 +84,7 @@ class EquipUpWindow extends PopupWindow{
 
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upLevel.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpGrade, this);
-        this.img_bottom.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
+        this.img_mask.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
         this.dispatchEventWith(modEquip.EquipSource.UPGRADE, false, -1);
     }
 
@@ -226,6 +231,7 @@ class EquipUpWindow extends PopupWindow{
     private imgStar_list:Array<egret.Bitmap>;
     private img_bottom:eui.Image;
     private img_click:eui.Image;
+    private img_mask:egret.Shape;
  
     /** label */
     private txt_weapon:eui.Label;

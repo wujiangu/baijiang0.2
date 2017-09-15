@@ -3,6 +3,7 @@
 		"frameRate":20,
 		"labels":[
 			{"name":"killTips1Clip","frame":1,"end":3}
+			
 			],
 		"events":[
 			{"name":"@move","frame":2}
@@ -23,11 +24,11 @@
 			"res":"jishatishi1_01",
 			"x":21,
 			"y":15
-			}        
+			}  
 			]
 }},
 	"res":{
+		"jishatishi1_03":{"x":0,"y":230,"w":368,"h":31},
         "jishatishi1_02":{"x":0,"y":123,"w":330,"h":105},
-        "jishatishi1_03":{"x":0,"y":230,"w":368,"h":31},
         "jishatishi1_01":{"x":0,"y":0,"w":346,"h":121}
 	}}

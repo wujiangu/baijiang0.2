@@ -73,11 +73,17 @@ namespace ConfigManager {
         }
         else if(scene == "battleGroup")
         {
-            initBattleDragonBones(3, 8);
-            InitBattleCommon();
+            if (!b_armatures) {
+                initBattleDragonBones(3, 8);
+                InitBattleCommon();
+                b_armatures = true;
+            }
         }
         else if (scene == "pvpGroup") {
-            InitBattleCommon();
+            if (!p_armatures) {
+                InitBattleCommon();
+                p_armatures = true;
+            }
         }
         else if (scene == "battleBack") {
             initBattleDragonBones(14, armatures.length);
@@ -139,4 +145,9 @@ namespace ConfigManager {
             DragonBonesFactory.getInstance().initDragonBonesArmatureFile(skeletonData, textureData, texture);
         }
     }
+
+    /**battle armatures status */
+    var b_armatures:boolean = false;
+    /**pvp armatures status */
+    var p_armatures:boolean = false;
 }

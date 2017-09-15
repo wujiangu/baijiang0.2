@@ -37,6 +37,13 @@ class GuideDialog extends Base {
     }
 
     /**
+     * 初始化
+     */
+    public init():void {
+        this.fingerMov.play(-1);
+    }
+
+    /**
      * 拖动监听
      */
     private onTouchMove():void {
@@ -65,7 +72,7 @@ class GuideDialog extends Base {
         this.tipsText.text = "点击屏幕进行攻击";
         this.fingerMov.x = this.beginX;
         this.fingerMov.y = this.beginY;
-        this.fingerMov.gotoAndPlay("guideClip", -1);
+        // this.fingerMov.gotoAndPlay("guideClip", -1);
         // this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
         // this.fingerMov.addEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
         SceneManager.battleScene.guideStage = 2;
@@ -88,10 +95,10 @@ class GuideDialog extends Base {
             this.count = 0;
             this.fingerMov.stop();
             if (SceneManager.battleScene.guideStage == 2) SceneManager.battleScene.clearGuide(2);
-            else {
-                this.fingerMov.removeEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
-                this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
-            }
+            // else {
+            //     this.fingerMov.removeEventListener(egret.Event.LOOP_COMPLETE, this.onComplete, this);
+            //     this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
+            // }
         }
     }
 

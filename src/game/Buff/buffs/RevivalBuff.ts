@@ -49,7 +49,7 @@ class RevivalBuff extends BuffBase {
             SceneManager.battleScene.battleSceneCom.clearBuffIcon();
             SceneManager.battleScene.effectLayer.removeChildren();
             let value:number = Math.floor(this.target.originHP * talentValue/100);
-            SceneManager.battleScene.createHero(true, value);
+            SceneManager.battleScene.createHero(2, value);
             SceneManager.battleScene.battleSceneCom.onRevive(true, value);
             isRevival = true;
         }
