@@ -63,14 +63,21 @@
 			<e:Label text="x" x="892" y="252.32" textColor="0x2383A9" fontFamily="Microsoft YaHei" bold="true"/>
 			<e:Label text="10" x="916" y="247.32" fontFamily="Microsoft YaHei" bold="true" size="35"/>
 			<e:Group width="262" height="25" x="153" y="317" anchorOffsetY="0" anchorOffsetX="0">
-				<e:Label text="可获得：      -       武器" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
-				<e:Label text="白色" x="97" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xfcfaf9"/>
-				<e:Label text="橙色" x="157" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xca6e1a"/>
+				<e:Label text="可获得：" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="武器" x="211" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="白色" x="96" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0xfcfaf9"/>
+				<e:Label text="~橙色" x="143" fontFamily="Microsoft YaHei" size="25" bold="true" y="0" textColor="0xca6e1a"/>
+
+
 			</e:Group>
 			<e:Group width="262" height="25" x="608" y="317" anchorOffsetY="0" anchorOffsetX="0">
-				<e:Label text="可获得：      -       武器，" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
-				<e:Label text="白色" x="97" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xFCFAF9"/>
-				<e:Label text="橙色" x="157" y="0" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1" textColor="0xCA6E1A"/>
+				<e:Label text="可获得：" x="0" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="武器，" x="211" y="0" textColor="0x606060" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetX="0" scaleX="1" scaleY="1"/>
+				<e:Label text="白色" x="97" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0xFCFAF9" y="0" scaleX="1" scaleY="1"/>
+				<e:Label text="~橙色" x="143" fontFamily="Microsoft YaHei" size="25" bold="true" textColor="0xCA6E1A" y="0" scaleX="1" scaleY="1"/>
+
+
+
 			</e:Group>
 
 

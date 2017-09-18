@@ -124,6 +124,7 @@
 		"bin-debug/manager/TcManager.js",
 		"bin-debug/manager/TimerManager.js",
 		"bin-debug/manager/UserData.js",
+		"bin-debug/manager/VersionController.js",
 		"bin-debug/manager/WindowManager.js",
 		"bin-debug/model/BasicData.js",
 		"bin-debug/model/modBattle.js",

@@ -46,7 +46,7 @@ class Main extends eui.UILayer {
         //初始化Resource资源加载库
         // RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         // RES.loadConfig("resource/default.res.json", "resource/");
-
+        egret.log("开始执行main---->");
         ResLoadManager.GetInstance().addConfig("resource/default.res.json", "resource/");
         ResLoadManager.GetInstance().addConfig("resource/battle.res.json", "resource/");
         ResLoadManager.GetInstance().startLoadConfig(this.onConfigComplete, this);
@@ -73,6 +73,7 @@ class Main extends eui.UILayer {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
+        // VersionController.modifiedVersion();
         RES.loadGroup("loading", 1);
     }
     private isThemeLoadEnd: boolean = false;
@@ -163,6 +164,7 @@ class Main extends eui.UILayer {
 
         this.removeChild(this.bg);
         this.removeChild(this.logo);
+        egret.log("等级----->", ConfigManager.tcStage[0].lv)
         // RES.destroyRes("loading");
         modLogin.init();
         modLogin.reqLogin(this._onLogin);
@@ -179,7 +181,7 @@ class Main extends eui.UILayer {
         SceneManager.enterGameScene = new EnterGameScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.enterGameScene);
         ResAsynLoadManager.LoadMainScene();
-        egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
+        // egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
         GameData.isDebug = false;
         modLogin.sendHeartBeat();
     }

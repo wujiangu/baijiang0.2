@@ -146,11 +146,11 @@ class PVPWindow extends PopupWindow{
     /** change rank info */
     private changeRankInfo(num:number):void{
        let data_list = RankData.GetInstance().GetDataList();
-       if(data_list.length >= 10 && (num < 0 || num > RankData.GetInstance().GetDataList().length - 10)) return;
+       if(num < 0 || (data_list.length >= 10 &&  num > RankData.GetInstance().GetDataList().length - 10)) return;
 
         let index:number = 0;
         for(let i:number = num; i < num + 10; i++){
-            if(data_list.length > index){
+            if(data_list.length > index && i < data_list.length){
                 this.damageList[index].ChangeData(data_list[i].roleName, Math.floor(data_list[i].damage), i + 1);
                 Common.SetXY(this.damageList[index], this.img_bg.x, this.img_bg.y + this.img_bg.height + i * 57);
             }
