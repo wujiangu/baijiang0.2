@@ -245,6 +245,11 @@ class Alliance extends BaseGameObject {
         this.addChild(this.img_swordLight);
     }
 
+    /**回收技能类 */
+    public recycleSkill():void {
+        
+    }
+
     /*************************************************************************************/
 
     /**动作 */

@@ -3,19 +3,6 @@
 */
 
 namespace Common {
-    /**测试数据 */
-    export var userData = {
-        "selectHero":1,
-        "equip":[],
-        "speed":10,
-        "distance":400,
-        "money":0,
-        "soul":0,
-        "power":0,
-        "talentPage":[
-            {"name":"pvp", "count":0, "talent":[]}
-        ],
-    };
     /**舞台的宽度 */
     export var SCREEN_W:number;
     /**舞台的高度 */

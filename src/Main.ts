@@ -46,7 +46,6 @@ class Main extends eui.UILayer {
         //初始化Resource资源加载库
         // RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         // RES.loadConfig("resource/default.res.json", "resource/");
-        egret.log("开始执行main---->");
         ResLoadManager.GetInstance().addConfig("resource/default.res.json", "resource/");
         ResLoadManager.GetInstance().addConfig("resource/battle.res.json", "resource/");
         ResLoadManager.GetInstance().startLoadConfig(this.onConfigComplete, this);
@@ -164,7 +163,6 @@ class Main extends eui.UILayer {
 
         this.removeChild(this.bg);
         this.removeChild(this.logo);
-        egret.log("等级----->", ConfigManager.tcStage[0].lv)
         // RES.destroyRes("loading");
         modLogin.init();
         modLogin.reqLogin(this._onLogin);
@@ -209,27 +207,6 @@ class Main extends eui.UILayer {
             window["sdw"].addDesktop();
         }, this);
         this.addChild(btn);
-    }
-
-    /**
-     * http的使用
-     */
-    private httpUse():void {
-        //获取数据
-        HttpRequest.getInstance().send("GET", "heartbeat", {}, (data)=>{
-
-        }, this);
-
-        //创建和更新数据
-        //例如伤害
-        HttpRequest.getInstance().send("POST", "userinfo", {damage:1000, lv:3}, (data)=>{
-            
-        }, this);
-
-        //删除数据
-        HttpRequest.getInstance().send("DELETE", "equip", {equipId:4}, (data)=>{
-            
-        }, this);
     }
 
     /**

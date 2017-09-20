@@ -15,7 +15,6 @@ class Crack extends BuffBase {
         this._mc1.anchorOffsetY = 100;
         this._mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL, this.onMovie, this);
         this._mc1.addEventListener(egret.Event.COMPLETE, this.onComplete, this);
-        SceneManager.battleScene.otherLayer.addChild(this._mc1);
     }
 
     /**初始化 */
@@ -103,6 +102,7 @@ class Crack extends BuffBase {
         this.type = 3;
         // this.target.specialArmature.play("skill02", 1);
         this._mc1.visible = true;
+        SceneManager.battleScene.otherLayer.addChild(this._mc1);
         this._mc1.gotoAndPlay("skill02", 1);
         SceneManager.battleScene.addCollison(this);
         TimerManager.getInstance().doTimer(this.buffData.duration*1000, 1, this.onWallDisappear, this);

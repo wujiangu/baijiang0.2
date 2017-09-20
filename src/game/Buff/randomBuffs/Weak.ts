@@ -51,6 +51,7 @@ class Weak extends BaseRandomBuff {
         super.addProperty();
         if (this._extraValue == 0){
             this._extraValue = Math.floor(GameData.heros[0].attr.atk * 0.5);
+            egret.log("虚弱减少---->", this._extraValue);
             GameData.heros[0].attr.atk -= this._extraValue;
         }
     }

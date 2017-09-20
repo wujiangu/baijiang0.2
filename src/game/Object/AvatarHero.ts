@@ -222,6 +222,13 @@ class AvatarHero extends Alliance {
         }
     }
 
+    /**
+     * 停止动画
+     */
+    public removeComplete():void {
+        this.effectArmature.removeCompleteCallFunc(this.effectArmaturePlayEnd, this);
+    }
+
     /*************************************************************************************/
     /**锁定的敌人 */
     private lockTarget:Array<any>;

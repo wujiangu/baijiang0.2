@@ -42,8 +42,9 @@ class FreshBlood extends BuffBase {
         if (!this._isFirst) {
             this._isFirst = true;
             let hurtValue:number = this.target.getHurtValue() * (value/100+1);
+            if (target.isBoss) hurtValue *= 0.75;
             this.target.setHurtValue(hurtValue);
-            Common.log("新鲜血液", hurtValue, this.target.getHurtValue());
+            // Common.log("新鲜血液", target.isBoss, hurtValue, this.target.getHurtValue());
             // target.gotoHurt(hurtValue);
             let index = this.target.buff.indexOf(this);
             this.target.buff.splice(index, 1);

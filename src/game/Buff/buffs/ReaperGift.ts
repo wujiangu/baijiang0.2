@@ -52,6 +52,7 @@ class ReaperGift extends BuffBase {
             this.isFirst = true;
             let extraHurt:number = target.originHP * (value/100);
             let hurtValue:number = this.target.getHurtValue() + extraHurt;
+            if (target.isBoss) hurtValue -= extraHurt;
             this.target.setHurtValue(hurtValue);
             // Common.log("死神的赠礼开启", hurtValue, this.target.getHurtValue());
             let index = this.target.buff.indexOf(this);

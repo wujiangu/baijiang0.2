@@ -24,7 +24,7 @@ class Mirror extends BaseRandomItem {
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target, ()=>{
-            this.target.setItemStatus(true);
+            // this.target.setItemStatus(true);
             let name = GameData.heros[0].name;
             let attr = Utils.cloneObj(GameData.heros[0].attr);
             attr["atk"] = Math.floor(attr["atk"] * 0.25);

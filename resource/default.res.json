@@ -159,7 +159,7 @@
 		{
 			"name":"TcSkill_json",
 			"type":"json",
-			"url":"config/TcSkill.json"
+			"url":"config/TcSkill.json?v=1.0.0"
 		},
 		{
 			"name":"TcStage_json",

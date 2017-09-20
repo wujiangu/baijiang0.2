@@ -51,6 +51,7 @@ class Violent extends BaseRandomBuff {
         super.addProperty();
         if (this._extraValue == 0){
             this._extraValue = GameData.heros[0].attr.atk;
+            egret.log("狂暴增加---->", this._extraValue);
             GameData.heros[0].attr.atk += this._extraValue;
         }
     }
