@@ -28,7 +28,7 @@ class shopItemIR extends Base {
             break;
             case this.btn_buy:
                 if(this.btn_buy.name == "diamond"){
-                    modPay.preOrder({amount:1, subject:"钻石", diamond:100});
+                    modPay.preOrder({amount:1, subject:"钻石", diamond:this.content.count});
                     // Animations.showTips("无法购买，现金充值尚未开放", 1, true);
                 }
                 else if(this.btn_buy.name == "packs"){
@@ -86,7 +86,7 @@ class shopItemIR extends Base {
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
         
-        if(type == "diamond") this.set_label_Text("",content.price, "首冲送" + this.content.count + "钻石", false, true);
+        if(type == "diamond") this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", false, true);
         else if(content.discount == 1){
             this.set_label_Text(content.price,"", "限时折扣：    折",true, true);
             this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;

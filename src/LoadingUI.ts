@@ -31,11 +31,17 @@ class LoadingUI extends eui.Component {
 
     public constructor() {
         super();
-        this.addEventListener(eui.UIEvent.COMPLETE, ()=>{
-            Common.log("LoadingSkin is load complete");
-            RES.loadGroup("preload");
-        }, this);
+        this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete,this);
         this.skinName = "resource/game_skins/loading.exml";
+    }
+
+    private onComplete():void{
+        this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete,this);
+        this.loadMask = Common.CreateShape(0, this.loadingImg.y, 742, 16);
+        this.addChild(this.loadMask);
+        this.loadingImg.mask = this.loadMask;
+        this.loadMask.x = -(this.loadingImg.width - this.loadingImg.x);
+        RES.loadGroup("preload");
     }
 
     protected createChildren(): void{
@@ -47,10 +53,10 @@ class LoadingUI extends eui.Component {
     }
 
     public setProgress(current:number, total:number):void {
-        this.loadingImg.scaleX = current/total;
-        this.persent.text = `${Math.floor((current/total) * 100)}%`
+        this.loadMask.x = Math.floor((current / total) * this.loadingImg.width) - (this.loadingImg.width - this.loadingImg.x);
     }
 
     private loadingImg:eui.Image;
     private persent:eui.Label;
+    private loadMask:egret.Shape;
 }

@@ -97,15 +97,8 @@ class Main extends eui.UILayer {
                 GameLayerManager.gameLayer().loadLayer.removeChild(this.loadingView);
                 // 清除缓存中存在的loading界面资源
                 // RES.destroyRes("loading");
-                this.bg = Utils.createBitmap("bg_0001_png");
-                this.logo = Utils.createBitmap("logo_png");
-                this.logo.x = 276.74;
-                this.logo.y = 29.77;
-                this.addChild(this.bg);
-                this.addChild(this.logo);
                 Common.createGlobleMask();
                 this.createScene();
-                // ResAsynLoadManager.LoadMainScene();
                 break;
             case "loading":
                 //设置加载进度界面

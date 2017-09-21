@@ -1,7 +1,7 @@
 {
 	"groups":[
 		{
-			"keys":"denglu_0004_png,denglu_0005_png,enterProgress_png,enterProgressBg_png,loading2_png,loading_0001_png,loading_0002_png,loading_0003_png,toast-bg_png,bg_0001_png",
+			"keys":"load_res,bg_0001_png",
 			"name":"loading"
 		},
 		{
@@ -154,7 +154,7 @@
 		{
 			"name":"TcShop_json",
 			"type":"json",
-			"url":"config/TcShop.json"
+			"url":"config/TcShop.json?v=1.0.2"
 		},
 		{
 			"name":"TcSkill_json",
@@ -170,51 +170,6 @@
 			"name":"TcTalent_json",
 			"type":"json",
 			"url":"config/TcTalent.json"
-		},
-		{
-			"name":"denglu_0004_png",
-			"type":"image",
-			"url":"assets/loading/denglu_0004.png"
-		},
-		{
-			"name":"denglu_0005_png",
-			"type":"image",
-			"url":"assets/loading/denglu_0005.png"
-		},
-		{
-			"name":"enterProgress_png",
-			"type":"image",
-			"url":"assets/loading/enterProgress.png"
-		},
-		{
-			"name":"enterProgressBg_png",
-			"type":"image",
-			"url":"assets/loading/enterProgressBg.png"
-		},
-		{
-			"name":"loading2_png",
-			"type":"image",
-			"url":"assets/loading/loading2.png"
-		},
-		{
-			"name":"loading_0001_png",
-			"type":"image",
-			"url":"assets/loading/loading_0001.png"
-		},
-		{
-			"name":"loading_0002_png",
-			"type":"image",
-			"url":"assets/loading/loading_0002.png"
-		},
-		{
-			"name":"loading_0003_png",
-			"type":"image",
-			"url":"assets/loading/loading_0003.png"
-		},
-		{
-			"name":"toast-bg_png",
-			"type":"image",
-			"url":"assets/loading/toast-bg.png"
 		},
 		{
 			"name":"drawCard01_png",
@@ -1714,6 +1669,12 @@
 			"name":"drawCardClip_json",
 			"type":"json",
 			"url":"assets/moveClip/drawCardClip.json"
+		},
+		{
+			"name":"load_res",
+			"subkeys":"loading2,loading_0002,loading_0003,logo",
+			"type":"sheet",
+			"url":"pack/load_res.json"
 		}
 	]
 }

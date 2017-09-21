@@ -34,7 +34,15 @@ class AddSources extends BuffBase {
 
     /**刷新数据 */
     public update(target:any, callBack:Function = null) {
-        
+        let value = this.getTalentValue();
+        switch (this.buffData.id) {
+            //符能亲和
+            case 27:
+                
+            break;
+            default:
+            break;
+        }
     }
 
     /**增加特效 */

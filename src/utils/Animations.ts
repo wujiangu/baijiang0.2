@@ -479,7 +479,7 @@ namespace Animations {
     let img:egret.Bitmap;
     export function ShowLoadAnimation():void{
         if(img == null){
-            img = new egret.Bitmap(RES.getRes("loading2_png"));
+            img = new egret.Bitmap(RES.getRes("load_res.loading2"));
             Common.SetXY(img, img.width / 2 + (Common.SCREEN_W - img.width >> 1) , img.height / 2 +(Common.SCREEN_H - img.height >> 1));
             img.anchorOffsetX = img.width / 2;
             img.anchorOffsetY = img.height / 2;

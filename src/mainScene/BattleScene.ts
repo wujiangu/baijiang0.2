@@ -48,7 +48,6 @@ class BattleScene extends Base {
         this.createHero();
         this.x = 0;
         this.y = 0;
-        if (RES.hasRes("monster1_1_tex_png")) egret.log("存在这个资源");
         // if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
     }
 

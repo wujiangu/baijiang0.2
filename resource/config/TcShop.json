@@ -1,7 +1,7 @@
 {
     "diamond":[
-        {"name":"购买300钻石", "type":"rmb", "count":300, "price":"￥30", "imgItem":"common_res.shop_0012", "detail":"内有300钻石"},
-        {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":"￥128", "imgItem":"common_res.shop_0013", "detail":"内有1280钻石"}
+        {"name":"购买300钻石", "type":"rmb", "count":300, "price":30, "money":3000, "imgItem":"common_res.shop_0012", "detail":"内有300钻石"},
+        {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":128, "money":12800,  "imgItem":"common_res.shop_0013", "detail":"内有1280钻石"}
     ],
     "packs":[
         {"name":"新手礼包", "type":"pack", "count":1, "initPrice":500, "discount":0, "price":500, "imgItem":"common_res.shop_0015", "detail":"礼包内有方天画戟x1、魂石x1000、经验x20000、钻石x50"},
