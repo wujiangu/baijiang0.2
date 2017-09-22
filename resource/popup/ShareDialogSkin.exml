@@ -24,5 +24,5 @@
 	<e:Label id="lab_content1" text="一骑当千！" x="548" y="232" anchorOffsetX="0" width="351" anchorOffsetY="0" height="45" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" size="45" textAlign="center" textColor="0xeda02d"/>
 	<e:Label id="lab_content2" text="真-三国无双！" x="652" y="285" anchorOffsetX="0" width="276" anchorOffsetY="0" height="37" textAlign="left" verticalAlign="top" fontFamily="Microsoft YaHei" bold="true" textColor="0xd35013"/>
 	<e:Label id="lab_content3" text="您已经超越了99%的玩家！" x="564" y="188" anchorOffsetX="0" width="355" anchorOffsetY="0" height="183" textAlign="center" verticalAlign="middle" textColor="0xbf6222" size="27" fontFamily="Microsoft YaHei" bold="true"/>
-	<e:Label id="lab_content4" text="Label" x="568" y="232" anchorOffsetX="0" width="338" anchorOffsetY="0" height="87" textColor="0xba8b53" verticalAlign="top" textAlign="left" fontFamily="Microsoft YaHei" bold="true"/>
+	<e:Label id="lab_content4" text="Label" x="568" y="232" anchorOffsetX="0" width="338" anchorOffsetY="0" height="101" textColor="0xba8b53" verticalAlign="top" textAlign="left" fontFamily="Microsoft YaHei" bold="true"/>
 </e:Skin>

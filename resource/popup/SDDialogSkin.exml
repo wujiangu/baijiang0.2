@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SDDialogSkin" width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="mask_png" x="0" width="1136" height="640"/>
+	<e:Image id="img_bg" source="equip_0012_png" anchorOffsetX="0" width="382" horizontalCenter="0" scaleY="1" y="164"/>
+	<e:Label text="提示" x="384" y="172.5" anchorOffsetX="0" width="371" anchorOffsetY="0" height="51" textAlign="center" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" textColor="0xb2aeae"/>
+	<e:Button id="btn_ok" label="确认" scaleX="1" scaleY="1" width="137" height="57" anchorOffsetX="0" anchorOffsetY="0" x="399.5" y="414">
+		<e:skinName>
+		<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
+			<e:Image width="100%" height="100%" source="button_res.button_0024"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" text="" fontFamily="Microsoft YaHei" bold="true" size.down="25" textColor="0x260303"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="btn_cancel" label="取消" scaleX="1" scaleY="1" width="137" height="57" anchorOffsetX="0" anchorOffsetY="0" x="599" y="414">
+		<e:skinName>
+		<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
+			<e:Image width="100%" height="100%" source="button_res.button_0024"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" text="" fontFamily="Microsoft YaHei" bold="true" size.down="25" textColor="0x260303"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="btn_close" label="" x="704" y="178.5">
+		<e:skinName>
+		<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
+			<e:Image width="100%" height="100%" source="button_res.button_0009" source.down="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Label id="lab_content" text="11111111111" anchorOffsetX="0" width="355" anchorOffsetY="0" height="111" fontFamily="Microsoft YaHei" bold="true" size="22" horizontalCenter="0.5" verticalCenter="11.5" textColor="0xbf2424"/>
+</e:Skin>

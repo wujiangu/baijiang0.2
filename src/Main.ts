@@ -104,6 +104,7 @@ class Main extends eui.UILayer {
                 //设置加载进度界面
                 this.loadingView = new LoadingUI();
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
+                // ResAsynLoadManager.LoadMainScene();
                 break;
             case "battleBack":
                 ConfigManager.InitBattleConfig("battleBack");
@@ -154,8 +155,8 @@ class Main extends eui.UILayer {
      */
     protected startCreateScene(): void {
 
-        this.removeChild(this.bg);
-        this.removeChild(this.logo);
+        // this.removeChild(this.bg);
+        // this.removeChild(this.logo);
         // RES.destroyRes("loading");
         modLogin.init();
         modLogin.reqLogin(this._onLogin);
@@ -211,13 +212,13 @@ class Main extends eui.UILayer {
         ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
             ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                 ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
-                    RES.loadGroup("battleBack");
-                    SceneManager.battleScene = new BattleScene();
-                    SceneManager.curScene = SceneManager.battleScene;
-                    GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
-                    // SceneManager.pvpScene = new PVPScene();
-                    // SceneManager.curScene = SceneManager.pvpScene;
-                    // this.addChild(SceneManager.pvpScene);
+                    // RES.loadGroup("battleBack");
+                    // SceneManager.battleScene = new BattleScene();
+                    // SceneManager.curScene = SceneManager.battleScene;
+                    // GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
+                    SceneManager.pvpScene = new PVPScene();
+                    SceneManager.curScene = SceneManager.pvpScene;
+                    this.addChild(SceneManager.pvpScene);
                 })
             })
         })

@@ -62,5 +62,7 @@ declare class ResetEquipAttrSkin extends eui.Skin{
 }
 declare class HelpDialogSkin extends eui.Skin{
 }
+declare class SDDialogSkin extends eui.Skin{
+}
 declare class HeroDialogSkin extends eui.Skin{
 }

@@ -87,7 +87,7 @@ class TalentDialog extends PopupWindow {
 
             if (type == "power") {
                 if(UserDataInfo.GetInstance().IsHaveGoods("power", TcManager.GetInstance().GetDataFromLv(3, this.allLv).power)) this.update();
-                else Animations.showTips("能力不足，不能升级天赋",1,true);
+                else Animations.showTips("天赋点不足，不能升级天赋",1,true);
             }else if(type == "diamond")
             {
                 if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", TcManager.GetInstance().GetDataFromLv(3, this.allLv).diamond,()=>{this.update()}))

@@ -148,6 +148,7 @@ class Hero extends Alliance {
             this.addVictim(GameData.chests);
         }else{
             this.addVictim(GameData.stakes);
+            SceneManager.pvpScene.updateBattleLayer();
         }
     }
 

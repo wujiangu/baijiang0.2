@@ -52,6 +52,7 @@
     "resource/popup/HelpDialogSkin.exml",
     "resource/popup/PVPWindow.exml",
     "resource/popup/QuickPurchaseDialogSkin.exml",
+    "resource/popup/SDDialogSkin.exml",
     "resource/popup/ShareDialogSkin.exml",
     "resource/popup/SignDialogSkin.exml",
     "resource/popup/battleFailPopSkin.exml",

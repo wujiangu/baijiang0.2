@@ -80,15 +80,15 @@ class shopItemIR extends Base {
     /**
      * 显示
      */
-    public Show(content:any, type:string, index:number):void {
+    public Show(content:any, type:string, index:number, isShowGroup:boolean=true):void {
         this.content = content;
         this.lab_name.text = content.name;
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
         
-        if(type == "diamond") this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", false, true);
+        if(type == "diamond") this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", false, isShowGroup);
         else if(content.discount == 1){
-            this.set_label_Text(content.price,"", "限时折扣：    折",true, true);
+            this.set_label_Text(content.price,"", "限时折扣：    折",true, isShowGroup);
             this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;
             this.lab_discount.visible = true;
             this.lab_discount.text = `${(content.price / content.initPrice) * 10}`;

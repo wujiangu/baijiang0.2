@@ -18,7 +18,18 @@ class ShopDialog extends PopupWindow {
 
     protected childrenCreated(): void{
         RES.loadGroup("shopback");
-        this.createContent(this.scrollDiamond, this.tcShop.diamond, "diamond");
+        HttpRequest.getInstance().send("GET", "order", {}, (result)=>{
+            let isFirst:boolean = true;
+            if (result.order.length > 0) {
+                for (let i = 0; i < result.order.length; i++) {
+                    if (result.order[i].status == "s") {
+                        isFirst = false;
+                        break;
+                    }
+                }
+            }
+            this.createContent(this.scrollDiamond, this.tcShop.diamond, "diamond", isFirst);
+        }, this);
         this.createContent(this.scrollReward, this.tcShop.packs, "packs");
         this.createContent(this.scrollHero, this.tcShop.heros, "heros");
     }
@@ -106,11 +117,11 @@ class ShopDialog extends PopupWindow {
     /**
      * 创建显示内容
      */
-    private createContent(scroller:eui.Scroller, content:Array<any>, type:string):void {
+    private createContent(scroller:eui.Scroller, content:Array<any>, type:string, isShowGroup:boolean=true):void {
         let group = new eui.Group();
         for (let i = 0; i < content.length; i++) {
             let panel:shopItemIR = new shopItemIR();
-            panel.Show(content[i], type, i);
+            panel.Show(content[i], type, i, isShowGroup);
             panel.x = 290 * i;
             group.addChild(panel);
         }

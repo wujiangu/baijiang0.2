@@ -33,13 +33,13 @@ class Stakes extends egret.DisplayObjectContainer {
         this.buffArmature.scaleY = 1.5;
     }
 
-    public gotoHurt(hurtValue:number = 1):void {
+    public gotoHurt(hurtValue:number = 1, isSkill:boolean = false):void {
         if (this.attr.hp <= 0) return;
         if (this.curState == "hurt") return;
         // ShakeTool.getInstance().shakeObj(SceneManager.pvpScene, 1, 5, 5);
         this.curState = "hurt";
         this._mc.gotoAndPlay("stakes", 1);
-        this.attr.hp --;
+        if (!isSkill) this.attr.hp --;
         hurtValue = Math.floor(hurtValue);
         this.hurtText.text = `-${hurtValue.toString()}`;
         this.hurtText.anchorOffsetX = this.hurtText.width/2;

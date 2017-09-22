@@ -30,6 +30,17 @@ class PVPScene extends Base {
         this.lab_value.text = `${this._curValue}`;
         this._createHero();
         DragonBonesFactory.getInstance().startTimer();
+        let id = modHero.getIdFromKey(GameData.curHero);
+        let index = modHero.getIndextFromId(id);
+        let object:any = this.btn_skill.getChildAt(0);
+        let skill_id = ConfigManager.tcHero[index].skill[2];
+        for (let j = 0; j < ConfigManager.tcSkill.length; j++) {
+            if (ConfigManager.tcSkill[j].id == skill_id) {
+                object.source = `talAndSkill_res.skill_${ConfigManager.tcSkill[j].image_id}`;
+                break;
+            }
+        }
+        this.img_skillBg.source = `battle_res.${GameData.curHero}_skillBg`;
     }
 
     /**
@@ -55,12 +66,18 @@ class PVPScene extends Base {
         this._stake = ObjectPool.pop("Stakes");
         this.battleLayer.addChild(this._stake);
         GameData.stakes.push(this._stake);
-        // Common.log("长度------>", GameData.stakes.length)
         this._stake.init();
         this._stake.x = MathUtils.getRandom(100, 1050);
         this._stake.y = MathUtils.getRandom(100, 550);
         this._stake.anchorOffsetX = this._stake.width/2;
         this._stake.anchorOffsetY = this._stake.height/2;
+    }
+
+    public updateBattleLayer():void {
+       this.battleLayer.removeChildren();
+       for (let i = 0; i < GameData.stakes.length; i++) {
+           this.battleLayer.addChild(GameData.stakes[i]);
+       }
     }
 
     /**

@@ -169,7 +169,7 @@
 		{
 			"name":"TcTalent_json",
 			"type":"json",
-			"url":"config/TcTalent.json"
+			"url":"config/TcTalent.json?v=1.0.0"
 		},
 		{
 			"name":"drawCard01_png",
@@ -849,12 +849,12 @@
 		{
 			"name":"TcManAttr_json",
 			"type":"json",
-			"url":"config/hero/TcManAttr.json"
+			"url":"config/hero/TcManAttr.json?v=1.0.3"
 		},
 		{
 			"name":"TcYunAttr_json",
 			"type":"json",
-			"url":"config/hero/TcYunAttr.json"
+			"url":"config/hero/TcYunAttr.json?v=1.0.3"
 		},
 		{
 			"name":"TcChanAttr_json",

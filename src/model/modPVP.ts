@@ -128,7 +128,9 @@ namespace modPVP {
             GameData.stakes[i].clearList();
             i --;
         }
+        // getSurviveCount();
         curWave ++;
+        // Common.log("时间到达---->", surviveCount, curWave, GameData.stakes.length);
         productRule();
     }
 
@@ -158,9 +160,8 @@ namespace modPVP {
         if (surviveCount <= 0) {
             timer.reset();
             curWave ++;
+            // Common.log("全部死亡---->", surviveCount, curWave, GameData.stakes.length);
             productRule();
-        }else{
-            timer.start();
         }
     }
 
@@ -169,12 +170,9 @@ namespace modPVP {
      */
     function production(count:number):void{
         //每次生产的数量
-        Common.log("生产的个数----->", count);
+        // Common.log("生产的个数----->", count);
         for (let i = 0; i < count; i++){
-            // egret.setTimeout(()=>{
-                SceneManager.pvpScene.createSingleStake();
-            // }, this, (i+1)*10);
-            // productCount ++;
+            SceneManager.pvpScene.createSingleStake();
         }
         isProduct = false;
     }

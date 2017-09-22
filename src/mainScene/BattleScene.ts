@@ -35,6 +35,7 @@ class BattleScene extends Base {
         this.guideStage = 2;
         TimerManager.getInstance().startTimer();
         GameLayerManager.gameLayer().panelLayer.removeChildren();
+        this.battleLayer.removeChildren();
         if (!this.battleSceneCom) this.battleSceneCom = new BattleSceneCom();
         this.battleSceneCom.show();
         this.topLayer.addChild(this.battleSceneCom.group_top);

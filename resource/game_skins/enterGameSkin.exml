@@ -33,5 +33,5 @@
 <e:Image x="196" y="567" source="load_res.loading_0002"/>
 <e:Image id="loadingImg" x="197" y="567" anchorOffsetX="0" width="742" source="load_res.loading_0003"/>
 <e:Label text="抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活" x="142" y="589" fontFamily="Microsoft YaHei" size="17" bold="true" textColor="0x595959"/>
-	<e:Label id="lab_enter" text="点击进入游戏" x="441" y="385.92" textColor="0x8d7c5e" anchorOffsetX="0" width="228" textAlign="center" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" size="25"/>
+	<e:Label id="lab_enter" text="点击进入游戏" y="367.92" textColor="0x8d7c5e" anchorOffsetX="0" width="327" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" size="25" anchorOffsetY="0" height="82" horizontalCenter="0" textAlign="center"/>
 </e:Skin>

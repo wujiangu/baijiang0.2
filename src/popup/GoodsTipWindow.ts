@@ -61,7 +61,7 @@ class GoodsTipWindow extends egret.DisplayObjectContainer{
     }
 
      private getTypeString(type:number):any{
-        if(type == 0) return {source:"common_res.power_0002",name:"能力",content:"通过对战获得，可升级天赋"};
+        if(type == 0) return {source:"common_res.power_0002",name:"天赋点",content:"通过对战获得，可升级天赋"};
         else if(type == 1) return {source:"common_res.exp_0002",name:"经验",content:"通过对战获得，可升级人物和装备"};
         else if(type == 2) return {source:"common_res.sole_0002",name:"魂石",content:"通过战斗获得，可升级装备"};
         else if(type == 3) return {source:"common_res.crystal_0002",name:"钻石",content:"通过充值或者奖励获得"};

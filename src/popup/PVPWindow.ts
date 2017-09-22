@@ -105,11 +105,16 @@ class PVPWindow extends PopupWindow{
         }
         else if(target == this.btn_buy){
             let pvpConsume:number = UserDataInfo.GetInstance().GetBasicData("sportCount") * 20 >= 100 ? 100 : UserDataInfo.GetInstance().GetBasicData("sportCount") * 20;
-            if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume,()=>{
-                this.onEnterReady();
-            }))
+            if(UserDataInfo.GetInstance().GetBasicData("diamond") >= pvpConsume){
+                let strData:any = [{text:"需要花费",style:{"textColor":0x7F7676}},{text:`${pvpConsume}钻石`,style:{"textColor":0x2D6EA6}},
+                                   {text:"才能挑战，点击确认后钻石不返还！",style:{"textColor":0x7F7676}},{text:"\n",style:{"size":30}}];
+                WindowManager.GetInstance().GetWindow("SDDialog").Show(strData,()=>{
+                    UserDataInfo.GetInstance().IsHaveGoods("diamond", pvpConsume,()=>{this.onEnterReady();});
+                })
+            }
+            else
             {
-                Animations.showTips("钻石不足，无法挑战", 1, true);
+                 Animations.showTips("钻石不足，无法挑战", 1, true);
             }
         }
     }
