@@ -96,8 +96,13 @@ class BaseGameObject extends egret.DisplayObjectContainer {
         return this.curState;
     }
 
+    /**敌人受到伤害 */
+    public enermyHurt(range:number, isAvatar:boolean = false):void {
+
+    }
+
     /**障碍物判断 */
-    public isCollison(gotoX:number, gotoY:number):boolean {
+    public isCollison(gotoX:number, gotoY:number, isAvatar:boolean = false):boolean {
         let collison = SceneManager.battleScene.getCollison();
         let isMove:boolean = true;
         if (collison.length > 0) {
@@ -115,6 +120,9 @@ class BaseGameObject extends egret.DisplayObjectContainer {
                         let value:number = Math.floor(this.originHP * 0.1);
                         this.setInvincible(false);
                         this.hurtHandler(value);
+                        let disQ:number = this.sumDeltaX * this.sumDeltaX + this.sumDeltaY * this.sumDeltaY;
+                        let dis:number = 1/(MathUtils.InvSqrt(disQ));
+                        this.enermyHurt(dis, isAvatar);
                     }
                 }
             }

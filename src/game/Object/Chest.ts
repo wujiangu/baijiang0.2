@@ -143,7 +143,7 @@ class Chest extends egret.DisplayObjectContainer {
     private itemArmatureFrame(event:dragonBones.FrameEvent):void {
         let evt:string = event.frameLabel;
         if (evt == "explosion") {
-            GameData.heros[0].setEnermy();
+            GameData.heros[0].setLiveEnermy();
             let object:Array<any> = GameData.heros[0].getEnermy();
             for (let i = 0; i < GameData.heros.length; i++) {
                 object.push(GameData.heros[i]);

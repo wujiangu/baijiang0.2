@@ -74,14 +74,14 @@ class Alliance extends BaseGameObject {
         
     }
 
-    public state_attack(time:number):void {
+    public state_attack(time:number, isAvatar:boolean = false):void {
         if (Math.abs(this.sumDeltaX)>this.atk_rangeX/3){
             this.img_swordLight.visible = true;
         }
         let gotoX = this.x + this.deltaX;
         let gotoY = this.y + this.deltaY;
         if (!this.isPVP) {
-            let isMove:boolean = this.isCollison(gotoX, gotoY);
+            let isMove:boolean = this.isCollison(gotoX, gotoY, isAvatar);
             if (!isMove) {
                 let buffConfig = modBuff.getBuff(2);
                 let extraBuff = ObjectPool.pop(buffConfig.className);
@@ -94,6 +94,10 @@ class Alliance extends BaseGameObject {
                 this.addBuff(extraBuff);
                 this.armature.play(BaseGameObject.Action_Hurt, 0);
                 this.img_swordLight.visible = false;
+                this.curState = "xuanyun";
+                let disQ:number = this.sumDeltaX * this.sumDeltaX + this.sumDeltaY * this.sumDeltaY;
+                let dis:number = 1/(MathUtils.InvSqrt(disQ));
+                this.enermyHurt(dis, isAvatar);
                 return;
             }
         }
@@ -248,6 +252,64 @@ class Alliance extends BaseGameObject {
     /**回收技能类 */
     public recycleSkill():void {
         
+    }
+
+    /**敌人受到伤害 */
+    public enermyHurt(range:number, isAvatar:boolean = false):void {
+        if (!isAvatar) {
+            let count:number = 0;
+            //怪物到中点的距离
+            for (let i = 0; i < this.enermy.length; i++) {
+                let radian = MathUtils.getRadian2(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
+                let dis = MathUtils.getDistance(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
+                let angle = Math.abs(this.atk_radian - radian);
+                let dx = dis*Math.cos(angle);
+                let dy = dis*Math.sin(angle);
+                if ((Math.abs(dx) <= range/2) && (Math.abs(dy) <= 40)) {
+                    if (this.enermy[i].type == 0) {
+                        //道具或宝箱
+                        this.enermy[i].gotoHurt();
+                    }
+                    else if(this.enermy[i].type == 1 && this.enermy[i].attr.hp > 0) {
+                        this.setHurtValue(this.attr.atk);
+                        if (!this.isPVP && this.enermy[i]) {
+                            let state = this.enermy[i].curState;
+                            modBuff.isAttackBuff(this, this.enermy[i]);
+                        }
+                        if (this.isCrit()) this._hurtValue *= 1.5;
+                        // if (!this.isPVP && SceneManager.battleScene.guideStage == 2) this._hurtValue = 100;
+                        if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
+                        if (!this.isPVP && this.enermy[i]) {
+                            let state = this.enermy[i].curState;
+                            if (this.enermy[i].attr && this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
+                        }
+                    }
+                }
+            }
+            if (!this.isPVP && count > 0){
+                if (count >= 2) {
+                    SceneManager.battleScene.updateInstantKill(count);
+                }
+            }
+        }else{
+            //怪物到中点的距离
+            for (let i = 0; i < this.enermy.length; i++) {
+                let radian = MathUtils.getRadian2(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
+                let dis = MathUtils.getDistance(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
+                let angle = Math.abs(this.atk_radian - radian);
+                let dx = dis*Math.cos(angle);
+                let dy = dis*Math.sin(angle);
+                if ((Math.abs(dx) <= range/2) && (Math.abs(dy) <= 40)) {
+                    if(this.enermy[i].type == 1 && this.enermy[i].attr.hp > 0) {
+                        this.setHurtValue(this.attr.atk);
+                        if (this.isCrit()) this._hurtValue *= 1.5;
+                        if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
+                    }
+                }
+            }
+        }
+        this.sumDeltaX = 0;
+        this.sumDeltaY = 0;
     }
 
     /*************************************************************************************/

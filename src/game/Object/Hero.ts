@@ -184,40 +184,7 @@ class Hero extends Alliance {
             this.gotoIdle();
             this.img_swordLight.visible = false;
             this.setInvincible(false);
-            let count:number = 0;
-            //怪物到中点的距离
-            for (let i = 0; i < this.enermy.length; i++) {
-                let radian = MathUtils.getRadian2(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
-                let dis = MathUtils.getDistance(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
-                let angle = Math.abs(this.atk_radian - radian);
-                let dx = dis*Math.cos(angle);
-                let dy = dis*Math.sin(angle);
-                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 40)) {
-                    if (this.enermy[i].type == 0) {
-                        //道具或宝箱
-                        this.enermy[i].gotoHurt();
-                    }
-                    else if(this.enermy[i].type == 1 && this.enermy[i].attr.hp > 0) {
-                        this.setHurtValue(this.attr.atk);
-                        if (!this.isPVP && this.enermy[i]) {
-                            let state = this.enermy[i].curState;
-                            modBuff.isAttackBuff(this, this.enermy[i]);
-                        }
-                        if (this.isCrit()) this._hurtValue *= 1.5;
-                        // if (!this.isPVP && SceneManager.battleScene.guideStage == 2) this._hurtValue = 100;
-                        if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
-                        if (!this.isPVP && this.enermy[i]) {
-                            let state = this.enermy[i].curState;
-                            if (this.enermy[i].attr && this.enermy[i].attr.hp <= 0 && state != Enermy.Action_Dead) count ++;
-                        }
-                    }
-                }
-            }
-            if (!this.isPVP && count > 0){
-                if (count >= 2) {
-                    SceneManager.battleScene.updateInstantKill(count);
-                }
-            }
+            this.enermyHurt(this.atk_range);
             return;
         }
         super.state_attack(time);

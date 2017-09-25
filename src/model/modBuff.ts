@@ -48,6 +48,7 @@ namespace modBuff {
      * 是否盲目
      */
     export function isBlind(obj:Hero):boolean {
+        if (!obj || !obj.buff) return false;
         for (let i = 0; i < obj.buff.length; i++) {
             //必杀
             if (obj.buff[i].buffData.id == 78) {
@@ -63,6 +64,7 @@ namespace modBuff {
      * 是否技能冷却缩短
      */
     export function isCdShorten(obj:Hero):boolean {
+        if (!obj || !obj.buff) return false;
         for (let i = 0; i < obj.buff.length; i++) {
             //智谋
             if (obj.buff[i].buffData.id == 32) {
@@ -77,6 +79,7 @@ namespace modBuff {
      * 反弹伤害的buff
      */
     export function reflection(obj:Hero):void {
+        if (!obj || !obj.buff) return ;
         for (let i = 0; i < obj.buff.length; i++) {
             //圆波剑舞
             if (obj.buff[i].buffData.id == 6) {
@@ -89,6 +92,7 @@ namespace modBuff {
      * 检测是否有免疫伤害的buff或者反弹伤害的buff
      */
     export function isImmuneBuff(obj:Hero):boolean {
+        if (!obj || !obj.buff) return false;
         for (let i = 0; i < obj.buff.length; i++) {
             //护盾
             if (obj.buff[i].buffData.id == 4 || obj.buff[i].buffData.id == 73) {
@@ -165,7 +169,7 @@ namespace modBuff {
     /**
      * 检测是否有普通攻击的buff
      */
-    export function isAttackBuff(obj:Hero, target:any):boolean {
+    export function isAttackBuff(obj:Alliance, target:any):boolean {
         let status:boolean = false;
         // let len:number = obj.buff.length;
         for (let i = 0; i < obj.buff.length; i++) {

@@ -53,6 +53,9 @@ class TimerManager {
         this.addObject(GameData.chests);
 
         this._object.sort(function(a, b){return a.y > b.y ? 1:-1;});
+        for (let index = 0; index < this._object.length; index ++) {
+            SceneManager.curScene.battleLayer.setChildIndex(this._object[index], index);
+        }
         this._object = [];
     }
 

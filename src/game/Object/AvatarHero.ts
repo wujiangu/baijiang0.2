@@ -40,24 +40,10 @@ class AvatarHero extends Alliance {
             this.gotoRun();
             this.img_swordLight.visible = false;
             this.setInvincible(false);
-            //怪物到中点的距离
-            for (let i = 0; i < this.enermy.length; i++) {
-                let radian = MathUtils.getRadian2(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
-                let dis = MathUtils.getDistance(this.centerX, this.centerY, this.enermy[i].x, this.enermy[i].y);
-                let angle = Math.abs(this.atk_radian - radian);
-                let dx = dis*Math.cos(angle);
-                let dy = dis*Math.sin(angle);
-                if ((Math.abs(dx) <= this.atk_range/2) && (Math.abs(dy) <= 40)) {
-                    if(this.enermy[i].type == 1 && this.enermy[i].attr.hp > 0) {
-                        this.setHurtValue(this.attr.atk);
-                        if (this.isCrit()) this._hurtValue *= 1.5;
-                        if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
-                    }
-                }
-            }
+            this.enermyHurt(this.atk_range, true);
             return;
         }
-        super.state_attack(time);
+        super.state_attack(time, true);
     }
     /**
      * 奔跑状态
