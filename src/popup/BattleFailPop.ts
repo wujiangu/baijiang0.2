@@ -196,6 +196,10 @@ class BattleFailPop extends PopupWindow {
         super.Close();
         Animations.sceneTransition(()=>{
             // ResLoadManager.GetInstance().destroyGroup("battleGroup");
+            let killCount = modBattle.getSumkill();
+            if (!GameData.isDebug && (UserDataInfo.GetInstance().GetBasicData("lv") < killCount)) {
+                UserDataInfo.GetInstance().SetBasicData({lv:killCount});
+            }
             SceneManager.battleScene.cleanChildren();
             GameData.curStage = 1;
             DragonBonesFactory.getInstance().removeTimer();

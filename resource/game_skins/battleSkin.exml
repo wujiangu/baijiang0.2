@@ -6,9 +6,11 @@
 		<e:Image id="img_hp" x="69" y="54" anchorOffsetX="0" width="128" anchorOffsetY="0" height="8" rotation="360" source="battle_res.battle_0011" scaleX="1" scaleY="1"/>
 		<e:Image id="img_shield" source="battle_res.battle_0012" y="54" height="8" left="69" x="69" scaleX="1" scaleY="1"/>
 		<e:Image source="battle_res.battle_0005" x="761.5" y="582.26" anchorOffsetX="0" width="44" anchorOffsetY="0" height="40" rotation="360" scaleX="1" scaleY="1"/>
-		<e:Label id="lab_killCount" text="50/50" x="536.5" y="566.5" fontFamily="Microsoft YaHei" size="24" bold="true" textColor="0xfcf5e8" scaleX="1" scaleY="1"/>
+		<e:Label id="lab_killCount" text="50/50" x="629" y="566.5" fontFamily="Microsoft YaHei" size="24" bold="true" textColor="0xfcf5e8" scaleX="1" scaleY="1"/>
 		<e:Label id="lab_name" text="貂蝉" y="23.2" fontFamily="Microsoft YaHei" size="23" bold="true" textColor="0xfffadc" left="73" x="73" scaleX="1" scaleY="1"/>
-		<e:Label id="lab_stage" text="第一关" y="62.5" bold="true" fontFamily="Microsoft YaHei" size="40" horizontalCenter="0" textColor="0xfff8ea" x="508" scaleX="1" scaleY="1"/>
+		<e:Label text="历史最高：" y="27" fontFamily="Microsoft YaHei" size="20" bold="true" x="153" scaleX="1" scaleY="1" textColor="0x37ed15"/>
+		<e:Label id="lab_max" text="1000" y="27" fontFamily="Microsoft YaHei" size="20" bold="true" x="254" scaleX="1" scaleY="1" textColor="0x37ed15"/>
+		<e:Label id="lab_stage" text="第一关" y="566.5" bold="true" fontFamily="Microsoft YaHei" size="24" horizontalCenter="-83" textColor="0xfff8ea" x="508" scaleX="1" scaleY="1"/>
 		<e:Image id="img_headIcon" source="battle_res.img_buxiaoman" x="1" y="1.18" scaleX="1" scaleY="1"/>
 		<e:Image source="common_res.exp_0001" x="704" y="14" pixelHitTest="true" touchEnabled="true" scaleX="1" scaleY="1"/>
 		<e:Image source="common_res.sole_0001" x="883" y="14" scaleX="1" scaleY="1"/>

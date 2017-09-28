@@ -54,6 +54,15 @@ class EliteMonster extends Monster {
                 this.scaleX = -1;
                 egret.Tween.get(this).to({x:this.x+100}, 50);
             }
+            egret.setTimeout(()=>{
+                if (this.arrayBuffs && this.arrayBuffs.length > 0) {
+                    for (let i = 0; i < this.arrayBuffs.length; i++) {
+                        if (this.arrayBuffs[i] == 5) {
+                            this.isFaster = true;
+                        }
+                    }
+                }
+            }, this, 50);
         }else{
             this.addChild(this.specialArmature);
             this.specialArmature.x = 0;
@@ -91,7 +100,7 @@ class EliteMonster extends Monster {
      * 走路巡逻状态
      */
     public state_run(time:number):void {
-        if (this._isAvatar) super.state_run(time);
+        if (this._isAvatar) super.state_run(time, this.setFasterEffect);
         else{
             super.state_run(time, this.setFasterEffect);
             let distance:number = MathUtils.getDistance(GameData.heros[0].x, GameData.heros[0].y, this.x, this.y);
@@ -158,6 +167,11 @@ class EliteMonster extends Monster {
             this.attr.hp = 0;
             Animations.fadeIn(this, 500, ()=>{
                 this.disappear();
+                for (let i = 0; i < this.buff.length; i++) {
+                    if (this.buff[i].buffData.id == 55) {
+                        this.buff[i].recycleBuff();
+                    }
+                }
             });
             let enermy = GameData.heros[0].getEnermy();
             for (let i = 0; i < enermy.length; i++) {
@@ -331,7 +345,17 @@ class EliteMonster extends Monster {
         this._data["direction"] = avatarPos;
         GameData.monsters.push(this._avatar);
         this._avatar.init([this._type, this._data]);
-        Common.log("分身的数据---->", this._data);
+        // Common.log("分身的数据---->", this._data);
+        if (this._data.arrayBuff && this._data.arrayBuff.length > 0) {
+            for (let i = 0; i < this._data.arrayBuff.length; i++) {
+                if (this._data.arrayBuff[i] == 5) {
+                    let buffConfig = modBuff.getBuff(55);
+                    let newBuff = ObjectPool.pop(buffConfig.className);
+                    newBuff.buffInit(buffConfig)
+                    this._avatar.addBuff(newBuff);
+                }
+            }
+        }
         SceneManager.battleScene.battleLayer.addChild(this._avatar);
     }
 

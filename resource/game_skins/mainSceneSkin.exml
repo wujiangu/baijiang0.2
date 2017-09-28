@@ -83,4 +83,12 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Button id="btn_addDesk" label="" x="1018.71" y="87.31" anchorOffsetX="0" width="64" anchorOffsetY="0" height="64">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_res.button_0008" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

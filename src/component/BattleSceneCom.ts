@@ -66,7 +66,8 @@ class BattleSceneCom extends Base {
         this.lab_cdTime.visible = false;
         this.lab_killCount.text = `0/${tcStage.count}`;
         this.lab_stage.text = `第${GameData.curStage}关`;
-        this.lab_stage.alpha = 0;
+        if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv");
+        // this.lab_stage.alpha = 0;
         this.lab_exp.text = "0";
         this.lab_soul.text = "0";
         let id = modHero.getIdFromKey(GameData.curHero);
@@ -79,7 +80,7 @@ class BattleSceneCom extends Base {
         let attr = data[level - 1];
         // let attr = data[0];
         this._sumHP = attr.hp;
-        Animations.fadeOutIn(this.lab_stage);
+        // Animations.fadeOutIn(this.lab_stage);
         this.arrayBuff = [];
     }
 
@@ -106,8 +107,8 @@ class BattleSceneCom extends Base {
             }
             sum = ConfigManager.tcStage[curStage-1].count;
             this.lab_stage.text = `第${curStage}关`;
-            this.lab_stage.alpha = 0;
-            Animations.fadeOutIn(this.lab_stage);
+            // this.lab_stage.alpha = 0;
+            // Animations.fadeOutIn(this.lab_stage);
         }
         this.lab_killCount.text = `${num}/${sum}`;
     }
@@ -268,4 +269,5 @@ class BattleSceneCom extends Base {
     private img_skillBg:eui.Image;
     private lab_exp:eui.Label;
     private lab_soul:eui.Label;
+    private lab_max:eui.Label;
 }

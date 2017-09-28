@@ -19,7 +19,7 @@ class MainScene extends Base {
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_sign];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_sign,this.btn_addDesk];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -146,6 +146,9 @@ class MainScene extends Base {
             case this.btn_sign:
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();
             break;
+            case this.btn_addDesk:
+                if (window["sdw"].canAddDesktop) window["sdw"].addDesktop();
+            break;
 		}
     }
 
@@ -189,6 +192,7 @@ class MainScene extends Base {
     private btn_talent:eui.Button;
     private btn_ready:eui.Button;
     private btn_equip:eui.Button;
+    private btn_addDesk:eui.Button;
     private _btnFocus:eui.Button;
 
     /** label */

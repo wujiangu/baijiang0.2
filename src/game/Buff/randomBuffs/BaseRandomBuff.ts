@@ -14,6 +14,9 @@ class BaseRandomBuff extends BuffBase {
         let text:egret.Bitmap = Utils.createBitmap("randomBuffSheet_json."+strText);
         text.x = 50;
         text.y = 2;
+        this.countDown = Utils.createText("10", 10, text.y, 30, Common.TextColors.red);
+        this.textGroup.addChild(this.countDown);
+        this.countDown.visible = false;
         this.textGroup.addChild(text);
     }
 
@@ -23,6 +26,7 @@ class BaseRandomBuff extends BuffBase {
         this.buffData.duration = options.duration;
         this._extraValue = 0;
         if (this.buffData.duration > 0) {
+            this.countDown.visible = true;
             let count = 25 * this.buffData.duration;
             if (!this._tempTimer){
                 this._tempTimer = new egret.Timer(40, 1);
@@ -36,6 +40,9 @@ class BaseRandomBuff extends BuffBase {
 
     /**开始 */
     public buffStart(target:any) {
+        this.count = 0;
+        this.value = 10;
+        this.countDown.text = this.value.toString();
         this.target = target;
     }
 
@@ -57,6 +64,13 @@ class BaseRandomBuff extends BuffBase {
             this._tempTimer.reset();
             this._tempTimer.start();
             this._isReset = false;
+        }else{
+            this.count ++;
+            if (this.count == 25) {
+                this.count = 0;
+                this.value --;
+                this.countDown.text = this.value.toString();
+            }
         }
     }
 
@@ -65,6 +79,8 @@ class BaseRandomBuff extends BuffBase {
      */
     public _onComplete(event:egret.TimerEvent) {
         this.afterRemoveBuff();
+        this.value = 0;
+        this.countDown.text = this.value.toString();
         Common.log("buff时间到");
     }
 
@@ -111,6 +127,9 @@ class BaseRandomBuff extends BuffBase {
 
     public addProperty():void {
         this._isReset = true;
+        this.count = 0;
+        this.value = 10;
+        this.countDown.text = this.value.toString();
         if (this.buffData.duration > 0) this._tempTimer.start();
     }
 
@@ -145,6 +164,12 @@ class BaseRandomBuff extends BuffBase {
     public iconName:string;
     /**buff图标 */
     public icon:egret.Bitmap;
+    /**buff倒计时 */
+    public countDown:egret.TextField;
+    /**计数 */
+    public count:number;
+    /**倒计时数值 */
+    public value:number;
     /**buff文字组 */
     public textGroup:egret.DisplayObjectContainer;
     /**附加的值 */
