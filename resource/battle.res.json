@@ -5,7 +5,7 @@
 			"name":"battleStage"
 		},
 		{
-			"keys":"buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,buClip_json,buClip_png,buClip1_png,diaoClip_json,diaoClip_png,zhaoyun_skill01_02_png,hurtFnt_fnt",
+			"keys":"buffdiaoluo_ske_dbbin,buffdiaoluo_tex_json,buffdiaoluo_tex_png,buff_ske_dbbin,buff_tex_json,buff_tex_png,buxiaoman_skill_ske_dbbin,buxiaoman_skill_tex_json,buxiaoman_skill_tex_png,diaochan_skill_ske_dbbin,diaochan_skill_tex_json,diaochan_skill_tex_png,zhaoyun_skill_ske_dbbin,zhaoyun_skill_tex_json,zhaoyun_skill_tex_png,daoguang_effect_ske_dbbin,daoguang_effect_tex_json,daoguang_effect_tex_png,buClip_json,buClip_png,buClip1_png,diaoClip_json,diaoClip_png,zhaoyun_skill01_02_png,hurtFnt_fnt,sunluban_skill_ske_dbbin,sunluban_skill_tex_json,sunluban_skill_tex_png",
 			"name":"battleCommon"
 		},
 		{
@@ -579,6 +579,21 @@
 			"name":"guideClip_png",
 			"type":"image",
 			"url":"assets/moveClip/guideClip.png"
+		},
+		{
+			"name":"sunluban_skill_ske_dbbin",
+			"type":"bin",
+			"url":"assets/animation/sunluban_skill/sunluban_skill_ske.dbbin"
+		},
+		{
+			"name":"sunluban_skill_tex_json",
+			"type":"json",
+			"url":"assets/animation/sunluban_skill/sunluban_skill_tex.json"
+		},
+		{
+			"name":"sunluban_skill_tex_png",
+			"type":"image",
+			"url":"assets/animation/sunluban_skill/sunluban_skill_tex.png"
 		}
 	]
 }

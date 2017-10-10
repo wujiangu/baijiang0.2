@@ -133,6 +133,9 @@ class ReadyDialog extends PopupWindow {
             break;
             case this.btn_battle:
                 this._stopTimer();
+                AudioManager.GetIns().Stop(AudioManager.MAIN_BG_MUSIC);
+                AudioManager.GetIns().PlayMusic(AudioManager.START_MUSIC);
+
                 let groupName:string = SceneManager.nextScene == "battleScene" ? "battleGroup" : "pvpGroup";
                 RES.createGroup(groupName, SceneManager.nextScene == "battleScene" ? ["battleStage", "battleCommon"] : ["battlePVP", "battleCommon"],true);
                 ResLoadManager.GetInstance().LoadGroup(groupName,()=>{
@@ -287,6 +290,7 @@ class ReadyDialog extends PopupWindow {
     }
 
     public Close():void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLOSE_MUSIC);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
 
         this._stopTimer();

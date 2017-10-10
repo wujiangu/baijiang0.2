@@ -48,6 +48,7 @@ class TalentDialog extends PopupWindow {
      */
     private topBtnListener(event:egret.TouchEvent):void {
         this._focusBtn = event.currentTarget;
+        AudioManager.GetIns().PlayMusic(event.currentTarget == this.btn_back ? AudioManager.CLOSE_MUSIC : AudioManager.CLICK_MUSIC);
         switch (this._focusBtn) {
             case this.btn_add:
                 this.show_pop_view("购买天赋", "title_res.title_0008",1);
@@ -101,6 +102,7 @@ class TalentDialog extends PopupWindow {
      * 技能弹窗按钮回调
      */
     private onSkillPop(event:egret.TouchEvent):void {
+        AudioManager.GetIns().PlayMusic(event.currentTarget == this.btn_closeDetail ? AudioManager.CLOSE_MUSIC : AudioManager.CLICK_MUSIC);
         switch (event.currentTarget) {
             case this.btn_upPower:
                 this._unLockTalent("power");
@@ -331,6 +333,7 @@ class TalentDialog extends PopupWindow {
     }
 
     private onHelp(event:egret.TouchEvent):void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
         WindowManager.GetInstance().GetWindow("HelpTipDialog").Show(0);
     }
 

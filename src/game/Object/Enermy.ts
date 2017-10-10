@@ -184,6 +184,7 @@ class Enermy extends BaseGameObject {
         /**攻击的弧度 */
         this.radian = MathUtils.getRadian2(this.originX, this.originY, GameData.heros[0].x, GameData.heros[0].y);
         this.reverse(this, this.radian);
+        AudioManager.GetIns().PlayMusic(AudioManager.ATTACK_MUSIC);
     }
 
     /**
@@ -222,6 +223,7 @@ class Enermy extends BaseGameObject {
         this.attr.hp -= hurtValue;
         this.beAttackCount ++;
         this.hurtAnimate(hurtValue);
+        AudioManager.GetIns().PlayMusic(AudioManager.HIT_MUSIC);
     }
 
     /**蓄力 */
@@ -244,6 +246,7 @@ class Enermy extends BaseGameObject {
         GameData.heros[0].killBuff();
         this.recycle();
         TimerManager.getInstance().doTimer(5000, 0, this.disappear, this);
+        AudioManager.GetIns().PlayMusic(AudioManager.DEAD_MUSIC);
     }
     /****************************************************/
 

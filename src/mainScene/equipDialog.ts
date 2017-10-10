@@ -122,6 +122,8 @@ class EquipDialog extends PopupWindow {
 
     private onTouchBtn(event:egret.TouchEvent):void{
         let target = event.target;
+        let strType:string = (target == this.btn_back || target == this.btn_close) ?AudioManager.CLOSE_MUSIC : AudioManager.CLICK_MUSIC;
+        AudioManager.GetIns().PlayMusic(strType);
 
         switch(target){
             case this.btn_change:                                                           //点击洗脸按钮

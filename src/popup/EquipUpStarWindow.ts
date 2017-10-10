@@ -56,9 +56,7 @@ class EquipUpStarWindow extends PopupWindow{
     }
 
     public Close():void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
+        super.Close(1);
         
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upStar.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpStar, this);
@@ -75,6 +73,7 @@ class EquipUpStarWindow extends PopupWindow{
     }
 
     private onTouchUpStar(event:egret.TouchEvent):void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
         if(!this.isHaveEquip()){         //如果当前没有装备 则不能点击升级
             Animations.showTips("装备不足，无法升星", 1, true);
             return;

@@ -10,11 +10,13 @@ class MainScene extends Base {
 
     private uiCompleteHandler():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
-
+        this.btn_addDesk.visible = false;
+        if (window["sdw"].canAddDesktop) this.btn_addDesk.visible = true;
         this.onListener();
         this.showSignDialog();
         this.createMainScene();
         this.show_label_text();   
+        AudioManager.GetIns().PlayMusic(AudioManager.MAIN_BG_MUSIC);
     }
 
     /** 事件监听 */
@@ -118,6 +120,7 @@ class MainScene extends Base {
      */
     private onButtonHandler(event:egret.TouchEvent):void {
         this._btnFocus = event.currentTarget;
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
 
 		switch (this._btnFocus) {
 			case this.btn_ready:

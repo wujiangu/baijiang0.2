@@ -120,6 +120,7 @@ class Alliance extends BaseGameObject {
         if (this.isInvincible) return;
         //回避
         if (this.isDodge()) return;
+        AudioManager.GetIns().PlayMusic(AudioManager.HIT_MUSIC);
     }
 
     /**攻击 */
@@ -176,6 +177,7 @@ class Alliance extends BaseGameObject {
         this.img_swordLight.x = this.offset[this.offsetIndex][0];
         this.img_swordLight.y = this.offset[this.offsetIndex][1];
         this.armature.play(animation["posName"], 0);
+        AudioManager.GetIns().PlayMusic(AudioManager.ATTACK_MUSIC);
     }
 
     /************************************其他函数******************************************/

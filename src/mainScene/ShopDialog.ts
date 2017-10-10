@@ -62,6 +62,12 @@ class ShopDialog extends PopupWindow {
         GameLayerManager.gameLayer().addEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
     }
 
+    public Close(){
+        AudioManager.GetIns().PlayMusic(AudioManager.CLOSE_MUSIC);
+        GameLayerManager.gameLayer().removeEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
+        GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
+    }
+
     private onButtonHandler(event:egret.TouchEvent) {
         let target = event.currentTarget;
         switch (target) {
@@ -108,8 +114,7 @@ class ShopDialog extends PopupWindow {
               }
             break;
             default:
-                GameLayerManager.gameLayer().removeEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
-                GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
+                this.Close();
             break;
         }
     }

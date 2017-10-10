@@ -39,6 +39,7 @@ class EnterGameScene extends Base {
         this.removeChild(this.lab_enter);
 
         ResLoadManager.GetInstance().LoadGroup("mainscene", ()=>{
+            AudioManager.GetIns().PlayMusic(AudioManager.ATTACK_MUSIC);
             let mc:egret.MovieClip = Common.CreateMovieClip("loginSword");
             this.addChild(mc);
             mc.play(1);

@@ -194,6 +194,7 @@ class BattleFailPop extends PopupWindow {
 
     public Close():void{
         super.Close();
+        AudioManager.GetIns().Stop(AudioManager.BATTLE_BG_MUSIC);
         Animations.sceneTransition(()=>{
             // ResLoadManager.GetInstance().destroyGroup("battleGroup");
             let killCount = modBattle.getSumkill();
@@ -204,6 +205,7 @@ class BattleFailPop extends PopupWindow {
             GameData.curStage = 1;
             DragonBonesFactory.getInstance().removeTimer();
             GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+            AudioManager.GetIns().PlayMusic(AudioManager.MAIN_BG_MUSIC);
         });
     }
     /**离开 */

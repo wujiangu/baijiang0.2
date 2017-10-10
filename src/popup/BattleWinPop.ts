@@ -99,12 +99,13 @@ class BattleWinPop extends PopupWindow {
 
         this.btn_share.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
         this.btn_continue.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
-
+        AudioManager.GetIns().Stop(AudioManager.BATTLE_BG_MUSIC);
         Animations.sceneTransition(()=>{
             // ResLoadManager.GetInstance().destroyGroup("pvpGroup");
             SceneManager.curScene.cleanChildren();
             DragonBonesFactory.getInstance().removeTimer();
             GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);
+            AudioManager.GetIns().PlayMusic(AudioManager.MAIN_BG_MUSIC);
         });
     }
 

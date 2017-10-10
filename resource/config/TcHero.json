@@ -1,5 +1,6 @@
 [
     {"hero_id":1, "icon":"battle_res.img_diaochan", "name":"貂蝉", "biography":1, "attr":[200,100,50,50,50], "skill":[1,2,3]},
     {"hero_id":2, "icon":"battle_res.img_buxiaoman", "name":"布小蛮", "biography":2, "attr":[200,110,40,45,45], "skill":[4,5,6]},
-    {"hero_id":3, "icon":"battle_res.img_zhaoyun", "name":"赵云", "biography":3, "attr":[200,120,35,45,40], "skill":[7,8,9]}
+    {"hero_id":3, "icon":"battle_res.img_zhaoyun", "name":"赵云", "biography":3, "attr":[200,120,35,45,40], "skill":[7,8,9]},
+    {"hero_id":4, "icon":"battle_res.img_zhaoyun", "name":"孙鲁班", "biography":4, "attr":[200,120,35,45,40], "skill":[7,8,9]}
 ]

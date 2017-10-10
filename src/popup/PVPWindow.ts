@@ -68,6 +68,7 @@ class PVPWindow extends PopupWindow{
     }
 
     public Close():void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLOSE_MUSIC);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
 
         this._time.stop();

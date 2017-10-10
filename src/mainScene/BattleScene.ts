@@ -50,6 +50,7 @@ class BattleScene extends Base {
         this.x = 0;
         this.y = 0;
         // if (this.guideStage != 0) this.battleSceneCom.btnStatus(false);
+        AudioManager.GetIns().PlayMusic(AudioManager.BATTLE_BG_MUSIC);
     }
 
     /**加入连击的显示层 */

@@ -37,9 +37,7 @@ class QuickPurchaseWindow extends PopupWindow{
 
     /** type 根据类型来判断是关闭还是更新并且关闭数据 默认是关闭 */
     public Close(type:number = 0):void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
+        super.Close(1);
 
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_purchase.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchPurchase, this);

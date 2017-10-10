@@ -41,6 +41,7 @@ class PVPScene extends Base {
             }
         }
         this.img_skillBg.source = `battle_res.${GameData.curHero}_skillBg`;
+        AudioManager.GetIns().PlayMusic(AudioManager.BATTLE_BG_MUSIC);
     }
 
     /**

@@ -47,11 +47,7 @@ class ChangeEquipPop extends PopupWindow {
     }
 
     public Close(){
-
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
-        
+        super.Close(1);
         this.btn_back.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
         this.btn_change.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnHandler, this);
         for(let i:number = 0; i < this.equip_object_list.length; i++){

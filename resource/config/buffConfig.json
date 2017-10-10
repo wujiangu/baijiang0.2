@@ -8,6 +8,8 @@
     {"id":7, "className":"Stunned", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":8, "className":"AddProperty", "cd":0, "duration":5, "damage":0, "name":""},
     {"id":9, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":""},
+    {"id":10, "className":"Swallow", "cd":0, "duration":0, "damage":0, "name":"飞燕刺"},
+    {"id":11, "className":"FightAir", "cd":5, "duration":0, "damage":0, "name":"国术斗气"},
     {"id":20, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":21, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":22, "className":"FreshBlood", "cd":45, "duration":0, "damage":0, "name":""},

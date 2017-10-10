@@ -62,11 +62,7 @@ class DrawCardPop extends PopupWindow {
     }
 
     public Close():void{
-
-        Animations.PopupBackIn(this, 350, ()=>{
-            super.Close();
-        })
-
+        super.Close(1);
         this.btn_get.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_back.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
     }

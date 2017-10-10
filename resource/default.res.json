@@ -5,7 +5,7 @@
 			"name":"loading"
 		},
 		{
-			"keys":"description_json,enermyConfig_json,buffConfig_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,loginSword_png,loginSword_json,mask_png,TcPower_json,TcNewUser_json,battleComon,TcEmailContent_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json",
+			"keys":"description_json,enermyConfig_json,buffConfig_json,heroConfig_json,sensitiveWords_json,TcBiography_json,TcEquip_json,TcEquipStarUp_json,TcEquipUp_json,TcEquipUpAttr_json,TcHero_json,TcHeroUp_json,TcPVPReward_json,TcRankReward_json,TcShop_json,TcSign_json,TcSkill_json,TcStage_json,TcTalent_json,TcTalentUp_json,TcUnlockTalentPage_json,loginSword_png,loginSword_json,mask_png,TcPower_json,TcNewUser_json,battleComon,TcEmailContent_json,TcChanAttr_json,TcManAttr_json,TcYunAttr_json,TcSunAttr_json,TcGuanAttr_json,TcMengAttr_json",
 			"name":"preload"
 		},
 		{
@@ -21,7 +21,7 @@
 			"name":"pvp"
 		},
 		{
-			"keys":"newParticle_json,newParticle_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin",
+			"keys":"newParticle_json,newParticle_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin,sunluban_ske_dbbin,sunluban_tex_json,sunluban_tex_png",
 			"name":"ready"
 		},
 		{
@@ -1646,7 +1646,7 @@
 		},
 		{
 			"name":"battleComon",
-			"subkeys":"Elitemonster000,Elitemonster001,Elitemonster002,Elitemonster003,Elitemonster004,Elitemonster005,Elitemonster006,buxiaoman-pugong,diaochan-pugong,img_sigh,imprisoned01,imprisoned02,sevenInOut,swordDance,zhaoyun-pugong",
+			"subkeys":"Elitemonster000,Elitemonster001,Elitemonster002,Elitemonster003,Elitemonster004,Elitemonster005,Elitemonster006,buxiaoman-pugong,diaochan-pugong,guanyu-pugong,guanyu_skill01_01,guanyu_skill02_01,img_sigh,imprisoned01,imprisoned02,menglingtong-pugong,menglingtong_skill01_01,menglingtong_skill01_02,menglingtong_skill01_04,sevenInOut,sunluban-pugong,sunluban_skill01_01,sunluban_skill01_02,swordDance,zhaoyun-pugong",
 			"type":"sheet",
 			"url":"pack/battleComon.json"
 		},
@@ -1675,6 +1675,36 @@
 			"subkeys":"loading2,loading_0002,loading_0003,logo",
 			"type":"sheet",
 			"url":"pack/load_res.json"
+		},
+		{
+			"name":"TcSunAttr_json",
+			"type":"json",
+			"url":"config/hero/TcSunAttr.json"
+		},
+		{
+			"name":"TcGuanAttr_json",
+			"type":"json",
+			"url":"config/hero/TcGuanAttr.json"
+		},
+		{
+			"name":"TcMengAttr_json",
+			"type":"json",
+			"url":"config/hero/TcMengAttr.json"
+		},
+		{
+			"name":"sunluban_ske_dbbin",
+			"type":"bin",
+			"url":"assets/animation/sunluban/sunluban_ske.dbbin"
+		},
+		{
+			"name":"sunluban_tex_json",
+			"type":"json",
+			"url":"assets/animation/sunluban/sunluban_tex.json"
+		},
+		{
+			"name":"sunluban_tex_png",
+			"type":"image",
+			"url":"assets/animation/sunluban/sunluban_tex.png"
 		}
 	]
 }

@@ -65,8 +65,8 @@ class BattleSceneCom extends Base {
         this.cd_time = 0;
         this.lab_cdTime.visible = false;
         this.lab_killCount.text = `0/${tcStage.count}`;
-        this.lab_stage.text = `第${GameData.curStage}关`;
-        if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv");
+        this.lab_stage.text = this.stageStr(GameData.curStage);
+        if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv")+"斩";
         // this.lab_stage.alpha = 0;
         this.lab_exp.text = "0";
         this.lab_soul.text = "0";
@@ -106,7 +106,7 @@ class BattleSceneCom extends Base {
                 curStage = 1;
             }
             sum = ConfigManager.tcStage[curStage-1].count;
-            this.lab_stage.text = `第${curStage}关`;
+            this.lab_stage.text = this.stageStr(curStage)
             // this.lab_stage.alpha = 0;
             // Animations.fadeOutIn(this.lab_stage);
         }
@@ -241,6 +241,36 @@ class BattleSceneCom extends Base {
     /**隐藏按钮 */
     public btnStatus(status:boolean):void {
         this.group_btn.visible = status;
+    }
+
+    /**关卡标识 */
+    private stageStr(stage:number):string {
+        let hanzi:Array<string> = ["壹","贰","叁","肆","伍","陆","柒","捌","玖","拾"];
+        let str: string = "";
+        var stageArr = stage.toString().split('');
+        if (stage <= 10) {
+            str = "第"+hanzi[stage-1]+"关";
+        }
+        else if (stage > 10 && stage < 100) {
+            let ten: number = parseInt(stageArr[stageArr.length - 2]);
+            let bit: number = parseInt(stageArr[stageArr.length - 1]);
+            if (ten == 1) {
+                str = "第拾"+hanzi[bit-1]+"关";
+            } else {
+                if (bit == 0) str = "第" + hanzi[ten - 1] + "拾关";
+                else str = "第" + hanzi[ten - 1] + "拾" + hanzi[bit - 1] + "关";
+            }
+        }
+        else {
+            let hun: number = parseInt(stageArr[stageArr.length - 3]);
+            let ten: number = parseInt(stageArr[stageArr.length - 2]);
+            let bit: number = parseInt(stageArr[stageArr.length - 1]);
+            if (ten == 0 && bit == 0) str = "第" + hanzi[hun - 1] + "佰关";
+            else if (ten == 0 && bit > 0) str = "第" + hanzi[hun - 1] + "佰零" + hanzi[bit - 1] + "关";
+            else if (bit == 0 && ten > 0) str = "第" + hanzi[hun - 1] + "佰" + hanzi[ten - 1] + "拾关";
+            else str = "第" + hanzi[hun - 1] + "佰" + hanzi[ten - 1] + "拾" + hanzi[bit - 1] + "关";
+        }
+        return str;
     }
 
     public group_top:eui.Group;

@@ -32,10 +32,7 @@ class ShopItemPop extends PopupWindow {
 
     public Close():void{
 
-        Animations.PopupBackIn(this, 350, ()=>{
-            super.Close();
-        })
-
+        super.Close(1);
         this.btn_back.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
     }
 

@@ -139,15 +139,13 @@ class SignDialog extends PopupWindow{
     }
 
     public Close():void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
-
+        super.Close(1);
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_sign.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onSign, this);
     }
 
     private onSign(event:egret.TouchEvent):void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
         let signData:any = UserDataInfo.GetInstance().GetSignData();
         let tcSign:any = TcManager.GetInstance().GetTcListFromIndex(5);
 

@@ -182,9 +182,9 @@ class EmailWindow extends PopupWindow{
 
     /** click touch button */
     private onTouchBtn(event:egret.TouchEvent):void{
+        AudioManager.GetIns().PlayMusic(event.target == this.btn_back ? AudioManager.CLOSE_MUSIC : AudioManager.CLICK_MUSIC);
         switch(event.target){
             case this.btn_getAll:       //get All and del all
-                
                 let list = this.getAllReward();
                 if(list.length == 0){
                     Animations.showTips("暂无邮件", 1, true);

@@ -31,9 +31,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
     }
 
     public Close():void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
+        super.Close(1);
 
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_reset.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchReset, this);
@@ -43,6 +41,7 @@ class ResetEqiopAttrWindow extends PopupWindow{
 
     private onTouchReset(event:egret.TouchEvent):void{
 
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
         if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", ModBasic.RESETDIAMOND,()=>{
             let data = modEquip.GetResetEquipData(this.equip_info);
             let type = data.type

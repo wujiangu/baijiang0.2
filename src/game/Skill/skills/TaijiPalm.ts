@@ -5,17 +5,26 @@
 class TaijiPalm extends SkillBase {
     public constructor() {
         super();
+        this.img_effect = Utils.createBitmap("buClip1_png");
+        this.img_effect.anchorOffsetX = this.img_effect.width/2;
+        this.img_effect.anchorOffsetY = this.img_effect.height/2;
+        this.img_effect.x = Common.SCREEN_W/2;
+        this.img_effect.y = Common.SCREEN_H/2;
+        this.img_effect.visible = false;
+        SceneManager.curScene.addChild(this.img_effect);
     }
 
     public init() {
         super.init();
         this.push_range = 100;
-        this.cd = 300;
+        this.cd = 30;
     }
 
     public start(animation:string, target:any) {
         super.start(animation, target);
-        target.armature.play(animation, 1);
+        this.target = target;
+        target.setInvincible(true);
+        target.skillArmature.play(animation, 1);
     }
 
     public update(target:any) {
@@ -59,7 +68,8 @@ class TaijiPalm extends SkillBase {
     }
 
     private buff:UnableMove;
-
+    private target:any;
     /**震开距离 */
     private push_range:number;
+    private img_effect:egret.Bitmap;
 }

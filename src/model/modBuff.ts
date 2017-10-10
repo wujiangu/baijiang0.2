@@ -181,6 +181,14 @@ namespace modBuff {
                     status = true;
                 }
             }
+            //飞燕刺
+            else if (obj.buff[i].buffData.id == 10) {
+                let random = MathUtils.getRandom(1, 100);
+                if (random <= obj.buff[i].buffData.probability) {
+                    obj.buff[i].update(target);
+                    status = true;
+                }
+            }
             //新鲜血液
             else if (obj.buff[i].buffData.id == 22) {
                 obj.buff[i].update(target);

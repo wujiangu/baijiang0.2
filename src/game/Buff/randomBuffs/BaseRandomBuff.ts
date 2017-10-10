@@ -14,7 +14,9 @@ class BaseRandomBuff extends BuffBase {
         let text:egret.Bitmap = Utils.createBitmap("randomBuffSheet_json."+strText);
         text.x = 50;
         text.y = 2;
-        this.countDown = Utils.createText("10", 10, text.y, 30, Common.TextColors.red);
+        this.countDown = Utils.createText("10", 10, text.y, 30, 0xFAFAFA);
+        this.countDown.fontFamily = "Microsoft YaHei";
+        this.countDown.bold = true;
         this.textGroup.addChild(this.countDown);
         this.countDown.visible = false;
         this.textGroup.addChild(text);

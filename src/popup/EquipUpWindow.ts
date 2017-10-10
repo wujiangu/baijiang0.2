@@ -78,10 +78,7 @@ class EquipUpWindow extends PopupWindow{
     }
 
     public Close():void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
-
+        super.Close(1);
         this.btn_close.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.Close, this);
         this.btn_upLevel.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchUpGrade, this);
         this.img_mask.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
@@ -118,6 +115,7 @@ class EquipUpWindow extends PopupWindow{
     }
 
     private onTouchUpGrade(event:egret.TouchEvent):void{
+        AudioManager.GetIns().PlayMusic(AudioManager.CLICK_MUSIC);
          //如果当前等级到达最大级的时候返回
         if(this.equip_info.Lv >= modEquip.EquipSource.EQUIPLV){
             Animations.showTips("等级已满", 1, true);

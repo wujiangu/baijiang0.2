@@ -28,5 +28,15 @@
         "typeId":0,
         "skill":"SevenInOut",
         "buff":[7, 8]
-    }
+    },
+    "sunluban":{
+        "attr":[],
+        "heroId":4,
+        "exp":0,
+        "lv":1,
+        "equipId":0,
+        "typeId":0,
+        "skill":"SevenInOut",
+        "buff":[10, 11]
+    }    
 }

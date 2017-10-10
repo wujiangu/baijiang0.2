@@ -28,7 +28,7 @@ class Unbending extends BuffBase {
         this.target = target;
         let value:number = this.getTalentValue();
         let shieldCount:number = Math.floor(this.target.originHP * (value/100));
-        this.target.setShieldCount(shieldCount);
+        this.target.setShieldCount(this.target.getShieldCount()+shieldCount);
         this.AddEffect(target);
     }
 

@@ -32,9 +32,7 @@ class SDDialog extends PopupWindow
    }
 
     public Close():void{
-        Animations.PopupBackIn(this, 350,  ()=>{
-            super.Close();
-        });
+        super.Close(1);
         this.onEventManager();
     }
 
