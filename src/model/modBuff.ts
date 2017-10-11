@@ -189,6 +189,16 @@ namespace modBuff {
                     status = true;
                 }
             }
+            //青龙劈空斩
+            else if (obj.buff[i].buffData.id == 13) {
+                obj.buff[i].update(target);
+                status = true;
+            }
+            //灵羽探云手
+            else if (obj.buff[i].buffData.id == 14) {
+                obj.buff[i].update(target);
+                status = true;
+            }
             //新鲜血液
             else if (obj.buff[i].buffData.id == 22) {
                 obj.buff[i].update(target);

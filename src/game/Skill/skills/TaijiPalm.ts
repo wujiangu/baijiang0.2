@@ -15,25 +15,27 @@ class TaijiPalm extends SkillBase {
         this.img_effect.anchorOffsetY = this.img_effect.height/2;
         this.img_effect.x = Common.SCREEN_W/2;
         this.img_effect.y = Common.SCREEN_H/2;
-        this.img_effect.visible = false;
+        this.img_effect.alpha = 0;
         
         this.img_bagua = Utils.createBitmap("battleComon.sunluban_skill01_02");
         this.img_bagua.anchorOffsetX = this.img_bagua.width/2;
         this.img_bagua.anchorOffsetY = this.img_bagua.height/2;
         this.img_bagua.x = Common.SCREEN_W/2;
         this.img_bagua.y = Common.SCREEN_H/2;
-        this.img_bagua.visible = false;
+        this.img_bagua.alpha = 0;
 
         SceneManager.curScene.addChild(this.img_bagua);
         SceneManager.curScene.addChild(this.img_effect);
 
-        this.skillData.skill_range = 150;
+        this.skillData.skill_range = 200;
     }
 
     public init() {
         super.init();
         this.push_range = 100;
         this.cd = 30;
+        this.img_effect.alpha = 0;
+        this.img_bagua.alpha = 0;
     }
 
     public start(animation:string, target:any) {
@@ -45,21 +47,19 @@ class TaijiPalm extends SkillBase {
     }
 
     public update(target:any) {
-        this.img_effect.visible = true;
-        this.img_bagua.visible = true;
+        this.img_effect.alpha = 1;
+        this.img_bagua.alpha = 1;
         this.img_effect.scaleX = 0;
         this.img_effect.scaleY = 0;
         this.img_bagua.scaleX = 0;
         this.img_bagua.scaleY = 0;
-        egret.Tween.get(this.img_bagua).to({scaleX:3.0, scaleY:3.0}, 400, egret.Ease.circIn).call(()=>{
-            this.img_bagua.visible = false;
+        egret.Tween.get(this.img_bagua).to({scaleX:2.0, scaleY:2.0}, 400, egret.Ease.quartOut).call(()=>{
+            Animations.fadeIn(this.img_bagua, 200, ()=>{
+                Animations.fadeIn(this.img_effect, 800);
+            });
         });
-        egret.Tween.get(this.img_effect).to({scaleX:1.0, scaleY:1.0}, 500, egret.Ease.quadOut).call(()=>{
-            this.img_effect.visible = false;
-        });
-        Animations.fadeOut(this.mask, 500, null, ()=>{
-            Animations.fadeIn(this.mask, 200);
-        });
+        egret.Tween.get(this.img_effect).to({scaleX:1.0, scaleY:1.0}, 300, egret.Ease.elasticOut);
+        Animations.fadeIn(this.mask, 800);
         target.setEnermy();
         let enermy = target.getEnermy();
         let damage:number = target.attr.skd;

@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="group_top" width="1136" height="640" x="0" y="0" touchThrough="true">
+
+		<e:Image source="battle_res.zhanji_11" x="6" y="68"/>
+		<e:Image source="battle_res.guanqian_00" x="473.5" y="8"/>
+		<e:Group id="group_history" width="200" height="35" x="139" y="73" anchorOffsetY="0"/>
+		<e:Group id="group_stage" width="14" height="63" y="10.5" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0"/>
 		<e:Image source="battle_res.battle_0004" x="349.5" y="594.26" anchorOffsetX="0" width="456" anchorOffsetY="0" height="16" scaleX="1" scaleY="1"/>
-		<e:Image x="13" y="14" anchorOffsetX="0" width="196" anchorOffsetY="0" height="52" rotation="360" source="battle_res.battle_0003" scaleX="1" scaleY="1"/>
+		<e:Image x="13" y="14" anchorOffsetX="0" width="196" anchorOffsetY="0" height="52" rotation="360" scaleX="1" scaleY="1" source="battle_res.battle_0003"/>
+
 		<e:Image id="img_hp" x="69" y="54" anchorOffsetX="0" width="128" anchorOffsetY="0" height="8" rotation="360" source="battle_res.battle_0011" scaleX="1" scaleY="1"/>
 		<e:Image id="img_shield" source="battle_res.battle_0012" y="54" height="8" left="69" x="69" scaleX="1" scaleY="1"/>
 		<e:Image source="battle_res.battle_0005" x="761.5" y="582.26" anchorOffsetX="0" width="44" anchorOffsetY="0" height="40" rotation="360" scaleX="1" scaleY="1"/>
 		<e:Label id="lab_killCount" text="50/50" x="629" y="566.5" fontFamily="Microsoft YaHei" size="24" bold="true" textColor="0xfcf5e8" scaleX="1" scaleY="1" visible="false"/>
 		<e:Label id="lab_name" text="貂蝉" y="23.2" fontFamily="Microsoft YaHei" size="23" bold="true" textColor="0xfffadc" left="73" x="73" scaleX="1" scaleY="1"/>
-		<e:Label text="最强战绩：" y="70" fontFamily="Microsoft YaHei" size="20" bold="true" x="19" scaleX="1" scaleY="1" textColor="0x37ed15"/>
-		<e:Label id="lab_max" text="1000" y="70" fontFamily="Microsoft YaHei" size="20" bold="true" x="120" scaleX="1" scaleY="1" textColor="0x37ed15"/>
-		<e:Label id="lab_stage" text="第一关" y="22" bold="true" fontFamily="Microsoft YaHei" size="30" horizontalCenter="0" textColor="0xfff8ea" x="508" scaleX="1" scaleY="1"/>
+
+
+
 		<e:Image id="img_headIcon" source="battle_res.img_buxiaoman" x="1" y="1.18" scaleX="1" scaleY="1"/>
 		<e:Image source="common_res.exp_0001" x="704" y="14" pixelHitTest="true" touchEnabled="true" scaleX="1" scaleY="1"/>
 		<e:Image source="common_res.sole_0001" x="883" y="14" scaleX="1" scaleY="1"/>

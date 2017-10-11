@@ -12,6 +12,11 @@ class BattleSceneCom extends Base {
         this.img_killCount.y = 594;
         this.img_killCount.width = 414;
         this.group_top.addChild(this.img_killCount);
+        this.lab_max = Utils.createBitmapText("battleFnt_fnt", this.group_history);
+        this.lab_max.letterSpacing = -5;
+        this.lab_stage = Utils.createBitmapText("battleFnt_fnt", this.group_stage);
+        this.lab_stage.letterSpacing = -10;
+        this.lab_stage.textAlign = "center";
     }
 
     private onComplete():void {
@@ -58,7 +63,10 @@ class BattleSceneCom extends Base {
         this.img_killCount.scaleX = 0;
         this.img_skillBg.source = `battle_res.${GameData.curHero}_skillBg`;
         let object:any = this.btn_skill.getChildAt(0);
+        let id = modHero.getIdFromKey(GameData.curHero);
+        Common.log("英雄---->", id)
         let skill = this._getActSkill();
+        Common.log("技能-->", skill)
         object.source = `talAndSkill_res.skill_${skill.image_id}`;
         this.img_hp.scaleX = 1.0;
         this.img_shield.scaleX = 0;
@@ -66,11 +74,12 @@ class BattleSceneCom extends Base {
         this.lab_cdTime.visible = false;
         this.lab_killCount.text = `0/${tcStage.count}`;
         this.lab_stage.text = this.stageStr(GameData.curStage);
-        if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv")+"斩";
+        this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
+        if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv").toString()+"斩";
+        else this.lab_max.text = "1000斩";
         // this.lab_stage.alpha = 0;
         this.lab_exp.text = "0";
         this.lab_soul.text = "0";
-        let id = modHero.getIdFromKey(GameData.curHero);
         let index = modHero.getIndextFromId(id);
         this.lab_name.text = ConfigManager.tcHero[index].name;
         this.img_headIcon.source = ConfigManager.tcHero[index].icon;
@@ -106,7 +115,8 @@ class BattleSceneCom extends Base {
                 curStage = 1;
             }
             sum = ConfigManager.tcStage[curStage-1].count;
-            this.lab_stage.text = this.stageStr(curStage)
+            this.lab_stage.text = this.stageStr(curStage);
+            this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
             // this.lab_stage.alpha = 0;
             // Animations.fadeOutIn(this.lab_stage);
         }
@@ -245,7 +255,7 @@ class BattleSceneCom extends Base {
 
     /**关卡标识 */
     private stageStr(stage:number):string {
-        let hanzi:Array<string> = ["壹","贰","叁","肆","伍","陆","柒","捌","玖","拾"];
+        let hanzi:Array<string> = ["一","二","三","四","五","六","七","八","九","十"];
         let str: string = "";
         var stageArr = stage.toString().split('');
         if (stage <= 10) {
@@ -255,20 +265,20 @@ class BattleSceneCom extends Base {
             let ten: number = parseInt(stageArr[stageArr.length - 2]);
             let bit: number = parseInt(stageArr[stageArr.length - 1]);
             if (ten == 1) {
-                str = "第拾"+hanzi[bit-1]+"关";
+                str = "第十"+hanzi[bit-1]+"关";
             } else {
-                if (bit == 0) str = "第" + hanzi[ten - 1] + "拾关";
-                else str = "第" + hanzi[ten - 1] + "拾" + hanzi[bit - 1] + "关";
+                if (bit == 0) str = "第" + hanzi[ten - 1] + "十关";
+                else str = "第" + hanzi[ten - 1] + "十" + hanzi[bit - 1] + "关";
             }
         }
         else {
             let hun: number = parseInt(stageArr[stageArr.length - 3]);
             let ten: number = parseInt(stageArr[stageArr.length - 2]);
             let bit: number = parseInt(stageArr[stageArr.length - 1]);
-            if (ten == 0 && bit == 0) str = "第" + hanzi[hun - 1] + "佰关";
-            else if (ten == 0 && bit > 0) str = "第" + hanzi[hun - 1] + "佰零" + hanzi[bit - 1] + "关";
-            else if (bit == 0 && ten > 0) str = "第" + hanzi[hun - 1] + "佰" + hanzi[ten - 1] + "拾关";
-            else str = "第" + hanzi[hun - 1] + "佰" + hanzi[ten - 1] + "拾" + hanzi[bit - 1] + "关";
+            if (ten == 0 && bit == 0) str = "第" + hanzi[hun - 1] + "百关";
+            else if (ten == 0 && bit > 0) str = "第" + hanzi[hun - 1] + "百零" + hanzi[bit - 1] + "关";
+            else if (bit == 0 && ten > 0) str = "第" + hanzi[hun - 1] + "百" + hanzi[ten - 1] + "十关";
+            else str = "第" + hanzi[hun - 1] + "百" + hanzi[ten - 1] + "十" + hanzi[bit - 1] + "关";
         }
         return str;
     }
@@ -277,6 +287,10 @@ class BattleSceneCom extends Base {
     public group_btn:eui.Group;
     /**buff组 */
     private buffGroup:eui.Group;
+    /**历史战绩组 */
+    private group_history:eui.Group;
+    /**关卡 */
+    private group_stage:eui.Group;
     /**buff图标组 */
     private arrayBuff:Array<egret.DisplayObjectContainer>
     private _sumHP:number;
@@ -295,9 +309,9 @@ class BattleSceneCom extends Base {
     private lab_killCount:eui.Label;
     private lab_cdTime:eui.Label;
     private img_skillMask:eui.Image;
-    private lab_stage:eui.Label;
+    private lab_stage:egret.BitmapText;
     private img_skillBg:eui.Image;
     private lab_exp:eui.Label;
     private lab_soul:eui.Label;
-    private lab_max:eui.Label;
+    private lab_max:egret.BitmapText;
 }

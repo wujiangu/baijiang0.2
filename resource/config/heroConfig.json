@@ -38,5 +38,25 @@
         "typeId":0,
         "skill":"TaijiPalm",
         "buff":[10, 11]
-    }    
+    },
+    "guanyu":{
+        "attr":[],
+        "heroId":5,
+        "exp":0,
+        "lv":1,
+        "equipId":0,
+        "typeId":0,
+        "skill":"DragonFly",
+        "buff":[12, 13]
+    },
+    "menglingtong":{
+        "attr":[],
+        "heroId":6,
+        "exp":0,
+        "lv":1,
+        "equipId":0,
+        "typeId":0,
+        "skill":"DragonFly",
+        "buff":[14, 15]
+    }
 }

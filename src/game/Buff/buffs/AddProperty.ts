@@ -42,6 +42,10 @@ class AddProperty extends BuffBase {
             case 9:
                 this.target.attr.crt += 20;
             break;
+            //青龙偃月斩
+            case 12:
+                this.target.dis_akt_multiple = 1.5;
+            break;
             //狂怒
             case 20:
                 this.target.attr.wsp *= (1 - value/100);

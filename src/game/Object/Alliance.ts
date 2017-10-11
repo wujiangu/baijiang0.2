@@ -51,6 +51,8 @@ class Alliance extends BaseGameObject {
         this.speed = 40;
         this.atk_range = 200;
         this.atk_speed = 150;
+        this.dis_akt_multiple = 1.0;
+        this.atk_count = 0;
         this.isEnemy = false;
         this.isPlay = false;
         this.enermy = [];
@@ -150,6 +152,8 @@ class Alliance extends BaseGameObject {
         let dis_atk:number = MathUtils.getDistance(this.originX, this.originY, this.endX, this.endY);
         if (dis_atk > this.atk_range) dis_atk = 200;
         else if (dis_atk <= 100) dis_atk = 100;
+        dis_atk *= this.dis_akt_multiple;
+        useSpeed *= this.dis_akt_multiple;
         this.img_swordLight.scaleX = dis_atk/280;
         //实际角度
         let trueAngle:number = Math.floor(MathUtils.getAngle(this.atk_radian));
@@ -258,6 +262,7 @@ class Alliance extends BaseGameObject {
 
     /**敌人受到伤害 */
     public enermyHurt(range:number, isAvatar:boolean = false):void {
+        range *= this.dis_akt_multiple;
         if (!isAvatar) {
             let count:number = 0;
             //怪物到中点的距离
@@ -279,6 +284,17 @@ class Alliance extends BaseGameObject {
                             modBuff.isAttackBuff(this, this.enermy[i]);
                         }
                         if (this.isCrit()) this._hurtValue *= 1.5;
+                        if (!this.isPVP && this.atk_count >= 5) {
+                            this.atk_count = 0;
+                            let recoverCount:number = this._hurtValue * 0.2;
+                            let afterRecover:number = this.attr.hp + recoverCount;
+                            if (afterRecover > this.originHP) {
+                                let overFlow:number = afterRecover - this.originHP;
+                                recoverCount -= overFlow;
+                            }
+                            this.attr.hp += recoverCount;
+                            SceneManager.battleScene.battleSceneCom.setHpProgress(this.attr.hp);
+                        }
                         // if (!this.isPVP && SceneManager.battleScene.guideStage == 2) this._hurtValue = 100;
                         if (this.enermy[i] && this.enermy[i].gotoHurt) this.enermy[i].gotoHurt(this._hurtValue);
                         if (!this.isPVP && this.enermy[i]) {
@@ -335,4 +351,8 @@ class Alliance extends BaseGameObject {
     public atk_radian:number;
     public isPVP:boolean;
     public isBuffLoop:boolean;
+    /**攻击距离倍率 */
+    public dis_akt_multiple:number;
+    /**击中敌人次数 */
+    public atk_count:number;
 }

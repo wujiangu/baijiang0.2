@@ -445,7 +445,7 @@ namespace Animations {
     /**
      * 盖章效果
      */
-    export function stamp(target:any, timeStamp:number, timeDisappear:number, b_scale:number = 2, a_scale:number = 1, func:Function = null):void {
+    export function stamp(target:any, timeStamp:number, timeDisappear:number, b_scale:number = 2, a_scale:number = 1, func:Function = null, func1:Function=null):void {
         target.scaleX = b_scale;
         target.scaleY = b_scale;
         target.alpha = 1.0;
@@ -457,6 +457,7 @@ namespace Animations {
         var step1 = function () {
             egret.Tween.get(target).to({scaleX:a_scale, scaleY:a_scale}, timeStamp, egret.Ease.bounceOut).call(()=>{
                 step2();
+                if (func1) func1();
             })
         }
         step1();

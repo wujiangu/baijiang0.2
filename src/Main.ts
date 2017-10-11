@@ -105,6 +105,7 @@ class Main extends eui.UILayer {
                 this.loadingView = new LoadingUI();
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
                 ResAsynLoadManager.LoadMainScene();
+                ResAsynLoadManager.LoadReadyScene();
                 break;
             case "battleBack":
                 ConfigManager.InitBattleConfig("battleBack");
@@ -209,16 +210,18 @@ class Main extends eui.UILayer {
     private testBattle():void {
         RES.createGroup("battleGroup", ["battleCommon", "battlePVP"],true);
         // ResAsynLoadManager.LoadMainScene();
-        ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
-            ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
-                ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
-                    RES.loadGroup("battleBack");
-                    SceneManager.battleScene = new BattleScene();
-                    SceneManager.curScene = SceneManager.battleScene;
-                    GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
-                    // SceneManager.pvpScene = new PVPScene();
-                    // SceneManager.curScene = SceneManager.pvpScene;
-                    // this.addChild(SceneManager.pvpScene);
+        ResLoadManager.GetInstance().LoadGroup("mainscene", ()=>{
+            ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
+                ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
+                    ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
+                        RES.loadGroup("battleBack");
+                        SceneManager.battleScene = new BattleScene();
+                        SceneManager.curScene = SceneManager.battleScene;
+                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
+                        // SceneManager.pvpScene = new PVPScene();
+                        // SceneManager.curScene = SceneManager.pvpScene;
+                        // this.addChild(SceneManager.pvpScene);
+                    })
                 })
             })
         })

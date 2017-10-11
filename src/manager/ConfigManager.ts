@@ -18,6 +18,10 @@ namespace ConfigManager {
     export var zhaoyunAttr:any;
     /**孙鲁班属性配置 */
     export var sunlubanAttr:any;
+    /**关羽属性配置 */
+    export var guanyuAttr:any;
+    /**梦凌统属性配置 */
+    export var menglingtongAttr:any;
     /**小兵的属性配置 */
     export var monsters:Array<any> = new Array();
     /**boss的属性配置 */
@@ -42,10 +46,11 @@ namespace ConfigManager {
     /**竞技场奖励配置文件 */
     export var tcRankReward:any;
     /**骨架数据(后续分组) */
-    export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "sunluban", "enter_monster_01", "blood_die", 
-        "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect",  "diaochan_skill", "zhaoyun_skill", "buxiaoman_skill",
-        "sunluban_skill", "buff", "buffdiaoluo", "monster1_2", "monster1_3", "monster1_4", "monster2_2", "monster2_3",
-        "monster2_4", "monster3_1", "monster3_2", "monster3_3", "monster3_4", "Boss01", "Boss01_effect01"];
+    export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "sunluban", "guanyu", "menglingtong",
+        "enter_monster_01", "blood_die", "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect", "diaochan_skill",
+        "zhaoyun_skill", "buxiaoman_skill", "sunluban_skill", "guanyu_skill", "menglingtong_skill", "buff",
+        "buffdiaoluo", "monster1_2", "monster1_3", "monster1_4", "monster2_2", "monster2_3", "monster2_4", "monster3_1",
+        "monster3_2", "monster3_3", "monster3_4", "Boss01", "Boss01_effect01"];
     /**
      * 加载配置文件
      */
@@ -70,13 +75,13 @@ namespace ConfigManager {
     /** init battle config */
     export function InitBattleConfig(scene:string):void{
         if(scene == "ready"){
-            initBattleDragonBones(0, 4);
+            initBattleDragonBones(0, 6);
             loadEnermyConfig();
         }
         else if(scene == "battleGroup")
         {
             if (!b_armatures) {
-                initBattleDragonBones(4, 9);
+                initBattleDragonBones(6, 11);
                 InitBattleCommon();
                 b_armatures = true;
             }
@@ -88,7 +93,7 @@ namespace ConfigManager {
             }
         }
         else if (scene == "battleBack") {
-            initBattleDragonBones(16, armatures.length);
+            initBattleDragonBones(20, armatures.length);
         }
     }
 
@@ -96,7 +101,7 @@ namespace ConfigManager {
     /**初始化战斗共同配置 */
     function InitBattleCommon():void {
         if (!isCommon) {
-            initBattleDragonBones(9, 16);
+            initBattleDragonBones(11, 20);
             isCommon = true
         }
     }
@@ -107,6 +112,8 @@ namespace ConfigManager {
         buxiaomanAttr = RES.getRes("TcManAttr_json");
         zhaoyunAttr = RES.getRes("TcYunAttr_json");
         sunlubanAttr = RES.getRes("TcSunAttr_json");
+        guanyuAttr = RES.getRes("TcGuanAttr_json");
+        menglingtongAttr = RES.getRes("TcMengAttr_json");
     }
 
     /**加载敌方的配置文件(暂定) */
