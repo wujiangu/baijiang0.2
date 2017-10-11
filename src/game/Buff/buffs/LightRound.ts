@@ -5,7 +5,7 @@
 class LightRound extends BuffBase {
     public constructor() {
         super();
-        // this.buffInit();
+        this.range = 200;
     }
 
     /**初始化 */
@@ -26,6 +26,7 @@ class LightRound extends BuffBase {
     /**开始 */
     public buffStart(target:any) {
         this.AddEffect(target);
+        if (this.target.isPVP) return;
         let duration = this.buffData.cd * 1000;
         TimerManager.getInstance().doTimer(duration, 0, this.update, this);
     }
@@ -46,7 +47,16 @@ class LightRound extends BuffBase {
     public update() {
         this.ShowEffect();
         this.target.skillArmature.play(this.effectName, 1, 1, 0, 5);
-        
+        egret.setTimeout(()=>{
+            this.target.setLiveEnermy();
+            let enermy = this.target.getEnermy();
+            for (let i = 0; i < enermy.length; i++) {
+                if (enermy[i].type == 1) {
+                    let dis = MathUtils.getDistance(this.target.x, this.target.y, enermy[i].x, enermy[i].y);
+                    if (dis <= this.range) enermy[i].gotoHurt(this.target.attr.atk/2, true);
+                }
+            }
+        }, this, 100);
     }
 
     /**动画播放完成监听 */
@@ -87,4 +97,5 @@ class LightRound extends BuffBase {
     }
 
     private target:any;
+    private range:number;
 }
