@@ -8,7 +8,7 @@ class Fairy extends SkillBase {
         this.mask = Utils.createBitmap("battleComon.sevenInOut");
         this.mask.width = Common.SCREEN_W;
         this.mask.height = Common.SCREEN_H;
-        this.mask.alpha = 0;
+        this.mask.visible = false;
         SceneManager.curScene.addChild(this.mask);
         this.img_effect = Utils.createBitmap("battleComon.menglingtong_skill01_04");
         this.img_effect.anchorOffsetX = this.img_effect.width/2;
@@ -19,6 +19,7 @@ class Fairy extends SkillBase {
         SceneManager.curScene.addChild(this.img_effect);
 
         this.skillData.skill_range = 200;
+        this.mirrors = new Array();
     }
 
     public init() {
@@ -30,12 +31,46 @@ class Fairy extends SkillBase {
     public start(animation:string, target:any) {
         super.start(animation, target);
         this.target = target;
-        
+        target.setInvincible(true);
+        this.mask.visible = true;
+        this.img_effect.visible = true;
+        Animations.fadeIn(this.mask, 800);
+        Animations.stamp(this.img_effect, 200, 600, 5, 1, null, ()=>{
+            this.target.skillEndHandle();
+            if (this.mirrors.length > 0) this.disappear();
+            let name:string = this.target.name;
+            let attr = Utils.cloneObj(this.target.attr);
+            attr["atk"] = Math.floor(attr["atk"]);
+            for (let i = 0; i < 2; i++) {
+                let mirror = SceneManager.battleScene.createMirror([name, attr]);
+                this.mirrors.push(mirror);
+            }
+            TimerManager.getInstance().doTimer(10000, 1, this.disappear, this);
+        });
+    }
+
+    /**
+     * 镜像消失
+     */
+    private disappear():void {
+        for (let i = 0; i < this.mirrors.length; i++) {
+            Common.log(i, this.mirrors[i]);
+            this.mirrors[i].gotoIdle();
+            this.mirrors[i].curState = "";
+            let index:number = GameData.heros.indexOf(this.mirrors[i]);
+            GameData.heros.splice(index, 1);
+            ObjectPool.push(this.mirrors[i]);
+            if (this.mirrors[i] && this.mirrors[i].parent && this.mirrors[i].parent.removeChild) {
+                this.mirrors[i].parent.removeChild(this.mirrors[i]);
+                this.mirrors.splice(i, 1);
+                i -- ;
+            }
+        }
+        TimerManager.getInstance().remove(this.disappear, this);
     }
 
     public update(target:any) {
-        this.img_effect.visible = true;
-        
+
     }
 
     public end() {
@@ -46,4 +81,5 @@ class Fairy extends SkillBase {
     private target:any;
     private img_effect:egret.Bitmap;
     private mask:egret.Bitmap;
+    private mirrors:Array<AvatarHero>;
 }

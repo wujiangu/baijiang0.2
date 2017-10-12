@@ -4,6 +4,10 @@
 class Hero extends Alliance {
     public constructor() {
         super();
+        this.buffIcon = Utils.createBitmap("randomBuffIcon1_json.sbuff_liuxue");
+        this.addChild(this.buffIcon);
+        this.buffIcon.y = -100;
+        this.buffIcon.x = -18;
     }
 
     public initDragonBonesArmature(name:string):void {
@@ -36,7 +40,8 @@ class Hero extends Alliance {
 
     public init(data:Array<any>, isPVP:boolean=false) {
         super.init(data);
-        // let attr = modHero.addEquipAttr(data);      //test
+        this.buffIcon.visible = false;
+        let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.originHP = this.attr.hp;
@@ -103,11 +108,11 @@ class Hero extends Alliance {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
-        let talent:Array<any> = GameData.testTalent.talent;     //test
-        // let buff = HeroData.list[this.name].buff;
-        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        // let talent:Array<any> = modTalent.getData(curPage).talent;
+        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        // let talent:Array<any> = GameData.testTalent.talent;     //test
+        let buff = HeroData.list[this.name].buff;
+        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -132,9 +137,9 @@ class Hero extends Alliance {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        // HeroData.list[this.name].buff.splice(2);         //test
-        // let data:any = HeroData.getHeroData(GameData.curHero);
-        // HeroData.update();
+        HeroData.list[this.name].buff.splice(2);         //test
+        let data:any = HeroData.getHeroData(GameData.curHero);
+        HeroData.update();
     }
 
     /**
@@ -449,10 +454,7 @@ class Hero extends Alliance {
 
     private skillArmaturePlayEnd():void {
         if (this.name != "zhaoyun") this.setInvincible(false);
-        this.skill_status = false;
-        this.skillArmature.visible = false;
-        this.armature.visible = true;
-        this.gotoIdle();
+        this.skillEndHandle();
     }
 
     private buffArmaturePlayEnd():void {
@@ -467,6 +469,16 @@ class Hero extends Alliance {
         this.effectArmature.removeCompleteCallFunc(this.effectArmaturePlayEnd, this);
     }
 
+    /**
+     * 技能完成处理
+     */
+    public skillEndHandle():void {
+        this.skill_status = false;
+        this.skillArmature.visible = false;
+        this.armature.visible = true;
+        this.gotoIdle();
+    }
+
     /**是否复活 */
     private _isRevival:boolean;
     private _revivalType:number;
@@ -477,6 +489,8 @@ class Hero extends Alliance {
 
     public skillEffect:any;
     public skillEffectArmature:Array<DragonBonesArmatureContainer>;
+    /**buff图标 */
+    public buffIcon:egret.Bitmap;
 
     /*************英雄的动作***************/
     private static Action_Skill:string = "skill";

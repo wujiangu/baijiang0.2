@@ -7,16 +7,21 @@ class BattleSceneCom extends Base {
         super();
         this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
         this.skinName = "resource/game_skins/battleSkin.exml";
-        this.img_killCount = Utils.createBitmap("battle_res.battle_0010");
-        this.img_killCount.x = 350;
-        this.img_killCount.y = 594;
-        this.img_killCount.width = 414;
-        this.group_top.addChild(this.img_killCount);
+        // this.img_killCount = Utils.createBitmap("battle_res.battle_0010");
+        // this.img_killCount.x = 350;
+        // this.img_killCount.y = 594;
+        // this.img_killCount.width = 414;
+        // this.group_top.addChild(this.img_killCount);
         this.lab_max = Utils.createBitmapText("battleFnt_fnt", this.group_history);
         this.lab_max.letterSpacing = -5;
         this.lab_stage = Utils.createBitmapText("battleFnt_fnt", this.group_stage);
         this.lab_stage.letterSpacing = -10;
         this.lab_stage.textAlign = "center";
+        this.img_boss = new Array();
+        this.img_boss.push(this.img_boss1);
+        this.img_boss.push(this.img_boss2);
+        this.img_boss.push(this.img_boss3);
+        this.img_boss.push(this.img_boss4);
     }
 
     private onComplete():void {
@@ -64,15 +69,13 @@ class BattleSceneCom extends Base {
         this.img_skillBg.source = `battle_res.${GameData.curHero}_skillBg`;
         let object:any = this.btn_skill.getChildAt(0);
         let id = modHero.getIdFromKey(GameData.curHero);
-        Common.log("英雄---->", id)
         let skill = this._getActSkill();
-        Common.log("技能-->", skill)
         object.source = `talAndSkill_res.skill_${skill.image_id}`;
         this.img_hp.scaleX = 1.0;
         this.img_shield.scaleX = 0;
         this.cd_time = 0;
         this.lab_cdTime.visible = false;
-        this.lab_killCount.text = `0/${tcStage.count}`;
+        this.lab_killCount.text = `0/${modBattle.getCurChapterSum(GameData.curStage)}`;
         this.lab_stage.text = this.stageStr(GameData.curStage);
         this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
         if (!GameData.isDebug) this.lab_max.text = UserDataInfo.GetInstance().GetBasicData("lv").toString()+"斩";
@@ -91,6 +94,7 @@ class BattleSceneCom extends Base {
         this._sumHP = attr.hp;
         // Animations.fadeOutIn(this.lab_stage);
         this.arrayBuff = [];
+        this.resetIcon();
     }
 
     /**设置经验魂石的值 */
@@ -114,11 +118,13 @@ class BattleSceneCom extends Base {
             if (GameData.curStage == ConfigManager.tcStage.length){
                 curStage = 1;
             }
-            sum = ConfigManager.tcStage[curStage-1].count;
+            sum = modBattle.getCurChapterSum(curStage);
+            // sum = ConfigManager.tcStage[curStage-1].count;
             this.lab_stage.text = this.stageStr(curStage);
             this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
             // this.lab_stage.alpha = 0;
             // Animations.fadeOutIn(this.lab_stage);
+            this.resetIcon();
         }
         this.lab_killCount.text = `${num}/${sum}`;
     }
@@ -175,9 +181,10 @@ class BattleSceneCom extends Base {
     }
 
     /**增加buff图标 */
-    public addBuffIcon(group:egret.DisplayObjectContainer, name:string):void {
+    public addBuffIcon(group:egret.DisplayObjectContainer, name:string, type:number=1):void {
         if (this._isExistBuff(name)) return;
         // let icon:egret.DisplayObjectContainer = group;
+        group["type"] = type;
         group.name = name;
         group.x = group.width;
         group.y = this.arrayBuff.length * 40;
@@ -205,6 +212,17 @@ class BattleSceneCom extends Base {
     public clearBuffIcon():void {
         this.arrayBuff = [];
         this.buffGroup.removeChildren();
+    }
+
+    /**获取buff的数量 */
+    public getBuffCount():number {
+        let count:number = 0;
+        if (this.arrayBuff.length > 0) {
+            for (let i = 0; i < this.arrayBuff.length; i++) {
+                if (this.arrayBuff[i]["type"] == 1) count ++;
+            }
+        }
+        return count;
     }
 
     /**复活 */
@@ -283,6 +301,22 @@ class BattleSceneCom extends Base {
         return str;
     }
 
+    /**
+     * 精英怪图标变化
+     */
+    public changeEliteIcon(num:number):void {
+        this.img_boss[num-1].source = "battle_res.battle_0016";
+        let curStage = GameData.curStage + 1;
+        this.lab_stage.text = this.stageStr(curStage);
+        this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
+    }
+    /**重置图标 */
+    public resetIcon():void {
+        for (let i = 0; i < this.img_boss.length; i++) {
+            this.img_boss[i].source = "battle_res.battle_0005";
+        }
+    }
+
     public group_top:eui.Group;
     public group_btn:eui.Group;
     /**buff组 */
@@ -305,7 +339,8 @@ class BattleSceneCom extends Base {
     private lab_name:eui.Label;
     private img_hp:eui.Image;
     private img_shield:eui.Image;
-    private img_killCount:egret.Bitmap;
+    // private img_killCount:egret.Bitmap;
+    private img_killCount:eui.Image;
     private lab_killCount:eui.Label;
     private lab_cdTime:eui.Label;
     private img_skillMask:eui.Image;
@@ -314,4 +349,10 @@ class BattleSceneCom extends Base {
     private lab_exp:eui.Label;
     private lab_soul:eui.Label;
     private lab_max:egret.BitmapText;
+    /**精英怪图标 */
+    private img_boss:Array<eui.Image>;
+    private img_boss1:eui.Image;
+    private img_boss2:eui.Image;
+    private img_boss3:eui.Image;
+    private img_boss4:eui.Image;
 }

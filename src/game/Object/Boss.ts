@@ -59,6 +59,7 @@ class Boss extends Enermy {
         this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.skillArmature.addCompleteCallFunc(this.skillArmaturePlayEnd, this);
         this.gotoEnter();
+        this.hurtState = 0;
     }
 
     /**
@@ -171,6 +172,7 @@ class Boss extends Enermy {
         }
         // this.filters = [this.defaultFlilter];
         this.skillArmature.visible = false;
+        this.bloodTip();
     }
 
     /**蓄力 */
@@ -252,6 +254,8 @@ class Boss extends Enermy {
     /**死亡 */
     public gotoDead() {
         super.gotoDead();
+        egret.Tween.removeTweens(this.armature);
+        this.armature.filters = [this.defaultFlilter];
         if (this._skill) {
             for (let i = 0; i < this._skill.length; i++) {
                 this._skill[i].end();
@@ -353,9 +357,33 @@ class Boss extends Enermy {
         this.armature.removeCompleteCallFunc(this.armaturePlayEnd, this);
     }
 
+    /**血量提示 */
+    public bloodTip():void {
+        if (this.attr.hp <= 0.5 * this.originHP &&　this.attr.hp > 0.25 * this.originHP && this.hurtState == 0) {
+            egret.log("半血状态");
+            this.hurtState = 1;
+            this.flashTime = 1000;
+            this.objFadeEffect();
+        }
+        else if (this.attr.hp <= 0.25 * this.originHP && this.hurtState == 1) {
+            egret.log("残血状态");
+            this.hurtState = 2;
+            this.flashTime = 500;
+        }
+    }
+
+    private objFadeEffect():void{
+        this.armature.filters = [this.colorFlilter];
+        egret.Tween.get(this.armature).to({}, this.flashTime).call(()=>{
+            this.armature.filters = [this.defaultFlilter];
+            egret.Tween.get(this.armature).to({}, this.flashTime).call(this.objFadeEffect, this);
+        },this)
+    }
 
     /**技能 */
     private _skill:Array<any>;
+    private hurtState:number;
+    private flashTime:number;
     public isSkillHurt:boolean;
     /**远程技能位移 */
     private _remote:boolean;

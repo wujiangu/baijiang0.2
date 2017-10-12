@@ -47,7 +47,7 @@ class EquipUpWindow extends PopupWindow{
              this.addChild(this.imgStar_list[i]);
         }
 
-        this.img_mask = Common.CreateShape(0, 0, 190, 48);
+        this.img_mask = Common.CreateShape(0, 0, 230, 48);
         this.img_mask.touchEnabled = true;
         this.addChildAt(this.img_mask, this.getChildIndex(this.img_bottom) - 1);
         Common.SetXY(this.img_mask, this.img_bottom.x + (108 - this.img_mask.width >> 1), this.img_bottom.y + (32 - this.img_mask.height >> 1));
@@ -169,8 +169,8 @@ class EquipUpWindow extends PopupWindow{
         }
 
         this.curr_lv.text = "Lv." + this.equip_info.Lv;
-        this.lab_one.textFlow = <Array<egret.ITextElement>>[{text:"1",style:{"textColor":this.upLevelNum == 1 ? 0xE2B428 : 0x515151}},{text:"次"}];
-        this.lab_ten.textFlow = <Array<egret.ITextElement>>[{text:"10",style:{"textColor":this.upLevelNum == 10 ? 0xE2B428 : 0x515151}},{text:"次"}];
+        this.lab_one.textFlow = <Array<egret.ITextElement>>[{text:"1次",style:{"textColor":this.upLevelNum == 1 ? 0xff8b1a : 0x9b9b9a}}];
+        this.lab_ten.textFlow = <Array<egret.ITextElement>>[{text:"10次",style:{"textColor":this.upLevelNum == 10 ? 0xff8b1a : 0x9b9b9a}}];
     }
 
     /** show equip lv info 

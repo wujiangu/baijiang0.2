@@ -1,0 +1,11 @@
+{"file":"randomBuffIcon1.png","frames":{
+"sbuff_bisha":{"x":90,"y":44,"w":28,"h":18,"offX":0,"offY":2,"sourceW":28,"sourceH":22},
+"sbuff_chihuan":{"x":90,"y":22,"w":28,"h":20,"offX":0,"offY":1,"sourceW":28,"sourceH":22},
+"sbuff_hudun":{"x":60,"y":22,"w":28,"h":20,"offX":0,"offY":1,"sourceW":28,"sourceH":22},
+"sbuff_jiasu":{"x":90,"y":0,"w":28,"h":20,"offX":0,"offY":1,"sourceW":28,"sourceH":22},
+"sbuff_kuangbao":{"x":30,"y":0,"w":28,"h":22,"offX":0,"offY":0,"sourceW":28,"sourceH":22},
+"sbuff_liuxue":{"x":0,"y":24,"w":28,"h":22,"offX":0,"offY":0,"sourceW":28,"sourceH":22},
+"sbuff_mangmu":{"x":60,"y":44,"w":28,"h":18,"offX":0,"offY":2,"sourceW":28,"sourceH":22},
+"sbuff_xuruo":{"x":0,"y":0,"w":28,"h":22,"offX":0,"offY":0,"sourceW":28,"sourceH":22},
+"sbuff_yinghua":{"x":30,"y":24,"w":28,"h":20,"offX":0,"offY":1,"sourceW":28,"sourceH":22},
+"sbuff_yishang":{"x":60,"y":0,"w":28,"h":20,"offX":0,"offY":1,"sourceW":28,"sourceH":22}}}

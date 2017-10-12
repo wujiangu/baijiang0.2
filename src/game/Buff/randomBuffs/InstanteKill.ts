@@ -43,6 +43,7 @@ class InstanteKill extends BaseRandomBuff {
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target);
+        GameData.heros[0].buffIcon.texture = RES.getRes("randomBuffIcon1_json.sbuff_bisha");
         SceneManager.battleScene.effectLayer.addChild(this.icon);
         SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, "randomBuffIcon_json.buff_bisha");
     }

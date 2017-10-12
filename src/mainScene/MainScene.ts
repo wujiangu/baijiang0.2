@@ -11,17 +11,22 @@ class MainScene extends Base {
     private uiCompleteHandler():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
         this.btn_addDesk.visible = false;
-        if (window["sdw"].canAddDesktop) this.btn_addDesk.visible = true;
+        this.btn_fullscene.visible = false;
+        if (window["sdw"].canAddDesktop) {
+            this.btn_addDesk.visible = true;
+            this.btn_fullscene.visible = true;
+        }
         this.onListener();
         this.showSignDialog();
         this.createMainScene();
         this.show_label_text();   
         AudioManager.GetIns().PlayMusic(AudioManager.MAIN_BG_MUSIC);
+        this.isFull = false;
     }
 
     /** 事件监听 */
     private onListener():void{
-        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_sign,this.btn_addDesk];
+        let event_list:any = [this.btn_ready,this.btn_equip,this.btn_talent,this.btn_shop,this.btn_pvp,this.btn_email,this.btn_sign,this.btn_addDesk,this.btn_fullscene];
         for(let i in event_list) event_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
         let img_list:any = [this.img_power,this.img_exp, this.img_soul, this.img_diamond];
@@ -152,6 +157,18 @@ class MainScene extends Base {
             case this.btn_addDesk:
                 if (window["sdw"].canAddDesktop) window["sdw"].addDesktop();
             break;
+            case this.btn_fullscene:
+                if (!this.isFull && window["sdw"].requestFullScreen) {
+                    this.isFull = true;
+                    // this.btn_fullscene["img_up"].source = "battle_res.quanping_01";
+                    window["sdw"].requestFullScreen();
+                }
+                else if (this.isFull && window["sdw"].exitFullScreen) {
+                    // this.btn_fullscene["img_up"].source = "battle_res.quanping_02";
+                    this.isFull = false;
+                    window["sdw"].exitFullScreen();
+                }
+            break;
 		}
     }
 
@@ -196,6 +213,7 @@ class MainScene extends Base {
     private btn_ready:eui.Button;
     private btn_equip:eui.Button;
     private btn_addDesk:eui.Button;
+    private btn_fullscene:eui.Button;
     private _btnFocus:eui.Button;
 
     /** label */
@@ -217,4 +235,5 @@ class MainScene extends Base {
 
     /** dialog */
     public readyDialog:ReadyDialog;
+    private isFull:boolean;
 }

@@ -224,6 +224,21 @@ namespace modBattle {
     }
 
     /**
+     * 获取当前章节的总小兵数
+     */
+    export function getCurChapterSum(curStage:number):number {
+        let sum:number = 0;
+        let baseNum:number = Math.ceil(curStage/5);
+        let count:number = baseNum * 5;
+        for (let i = count; i > count - 5; i--) {
+            let tempCount = ConfigManager.tcStage[i-1].count;
+            Common.log("tempCount--->", tempCount);
+            sum += tempCount;
+        }
+        return sum;
+    }
+
+    /**
      * 回收宝箱
      */
     function recycleChests():void {
@@ -267,6 +282,8 @@ namespace modBattle {
         let stageId:number = Math.ceil(GameData.curStage/5) % 3;
         if (stageId == 0) stageId = 3;
         SceneManager.battleScene.changeBg(stageId);
+        curChapterSum = getCurChapterSum(stage);
+        Common.log("当前章节总数----->", curChapterSum);
     }
 
     /**
@@ -277,18 +294,18 @@ namespace modBattle {
         getSurviveCount();
         if (obj.isSummon && surviveCount > 0) return;
         if (obj.isBoss && surviveCount > 0) return;
-        // if (SceneManager.battleScene.guideStage == 0) {
+        if (obj.isElite) {
+            SceneManager.battleScene.battleSceneCom.changeEliteIcon(GameData.curStage%5);
+        }else{
             sumDead ++;
-            if (sumDead <= tcStage.count){
-                SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count);
+            if (sumDead <= curChapterSum){
+                SceneManager.battleScene.battleSceneCom.update(sumDead, curChapterSum);
             }else{
                 if (obj.isSummon && surviveCount == 0) sumDead = 0;
-                SceneManager.battleScene.battleSceneCom.update(sumDead, tcStage.count, true);
+                if (obj.isBoss && surviveCount == 0) sumDead = 0;
+                SceneManager.battleScene.battleSceneCom.update(sumDead, curChapterSum, true);
             }
-        // }else{
-        //     SceneManager.battleScene.guideStage = 0;
-        //     HttpRequest.getInstance().send("POST", "userinfo", {stage:1});
-        // }
+        }
         timer.reset();
         productRule();
     }
@@ -344,7 +361,7 @@ namespace modBattle {
             HttpRequest.getInstance().send("POST", "userinfo", {stage:GameData.curStage});
             getEnermyDistribute(GameData.curStage);
             productCount = 0;
-            sumDead = 0;
+            // sumDead = 0;
             isBoss = false;
         }else{
             if (curWave == tcStage.wave - 1) {
@@ -424,6 +441,8 @@ namespace modBattle {
     var maxEachWave:Array<number>;
     /**当前的波数 */
     var curWave:number;
+    /**当前章节的总数 */
+    var curChapterSum:number;
     /**boss标记 */
     var isBoss:boolean;
     /**定时器 */

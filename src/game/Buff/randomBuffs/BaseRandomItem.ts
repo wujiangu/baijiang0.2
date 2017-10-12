@@ -40,7 +40,7 @@ class BaseRandomItem extends egret.DisplayObjectContainer {
             if (!this.isAction) this.recycle();
         });
         SceneManager.battleScene.effectLayer.addChild(this.icon);
-        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, this.iconName);
+        SceneManager.battleScene.battleSceneCom.addBuffIcon(this.textGroup, this.iconName, 2);
     }
 
     /**回收 */

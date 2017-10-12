@@ -76,6 +76,7 @@ class UnableMove extends BuffBase {
             case 1:
                 //禁锢
                 this.target.armature.filters = [this.target.colorFlilter];
+                this.target.isImprison = true;
             break;
             case 2:
                 this.target.buffArmature.visible = true;
@@ -89,6 +90,7 @@ class UnableMove extends BuffBase {
             case 1:
                 //禁锢
                 this.target.armature.filters = [this.target.defaultFlilter];
+                this.target.isImprison = false;
             break;
             case 2:
                 this.target.buffArmature.visible = false;

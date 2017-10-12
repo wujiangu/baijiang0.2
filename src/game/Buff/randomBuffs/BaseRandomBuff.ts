@@ -94,6 +94,7 @@ class BaseRandomBuff extends BuffBase {
         let index = GameData.heros[0].buff.indexOf(this);
         GameData.heros[0].buff.splice(index, 1);
         ObjectPool.push(this);
+        if (SceneManager.battleScene.battleSceneCom.getBuffCount() == 0) GameData.heros[0].buffIcon.visible = false;
     }
 
     /**
@@ -113,6 +114,7 @@ class BaseRandomBuff extends BuffBase {
     /**增加特效 */
     public AddEffect(target:any) {
         super.AddEffect(target);
+        GameData.heros[0].buffIcon.visible = true;
         this.icon.x = target.x - 5;
         this.icon.y = target.y - 20;
         this.icon.scaleX = 1.5;

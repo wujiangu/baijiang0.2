@@ -43,8 +43,8 @@ namespace modHero {
      * 获取英雄的配置
      */
     export function getHeroConfig(name:string) {
-        // let heroConfig = HeroData.list[name];
-        let heroConfig = ConfigManager.heroConfig[name];
+        let heroConfig = HeroData.list[name];
+        // let heroConfig = ConfigManager.heroConfig[name];
         return heroConfig;
     }
 

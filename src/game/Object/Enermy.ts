@@ -64,6 +64,7 @@ class Enermy extends BaseGameObject {
         this.isRemote = data[1].isRemote;
         this.originHP = this.attr.hp;
         this.beAttackCount = 0;
+        this.isImprison = false;
     }
 
     public update(time:number):void {
@@ -524,6 +525,8 @@ class Enermy extends BaseGameObject {
     public isReadSkill:boolean;
     /**经验图片 */
     public img_exp:egret.Bitmap;
+    /**是否禁锢 */
+    public isImprison:boolean;
     /**魂石图片 */
     public img_soul:egret.Bitmap;
     /**经验和魂石的移动 */
