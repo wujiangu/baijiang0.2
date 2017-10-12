@@ -13,6 +13,9 @@
         {"name":"魂石礼包(大)", "type":"soul", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"common_res.shop_0025", "detail":"礼包中含有1500000魂石"}
     ],
     "heros":[
-        {"key":"zhaoyun", "name":"赵云", "type":"soul", "count":1, "price":1280, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"}
+        {"key":"zhaoyun", "name":"赵云", "type":"soul", "count":1, "price":1280, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
+        {"key":"sunluban", "name":"孙鲁班", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
+        {"key":"guanyu", "name":"关羽", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
+        {"key":"menglingtong", "name":"梦凌统", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"}
     ]
 }
