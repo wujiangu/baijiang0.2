@@ -13,7 +13,7 @@
     {"id":12, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":"青龙偃月斩"},
     {"id":13, "className":"HackSolaCut", "cd":0, "duration":0, "damage":0, "name":"青龙劈空斩"},
     {"id":14, "className":"AddSources", "cd":0, "duration":0, "damage":0, "name":"灵羽探云手"},
-    {"id":15, "className":"LightRound", "cd":5, "duration":0, "damage":0, "name":"灵光绕射"},
+    {"id":15, "className":"LightRound", "cd":20, "duration":0, "damage":0, "name":"灵光绕射"},
     {"id":20, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":21, "className":"AddProperty", "cd":0, "duration":0, "damage":0, "name":""},
     {"id":22, "className":"FreshBlood", "cd":45, "duration":0, "damage":0, "name":""},

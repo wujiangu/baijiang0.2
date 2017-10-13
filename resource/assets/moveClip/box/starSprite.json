@@ -1,0 +1,36 @@
+{"mc":{
+	"starSprite":{
+		"frameRate":8,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"kaibaoxiang_09_01",
+			"x":79,
+			"y":55
+			},
+			{
+			"res":"kaibaoxiang_09_02",
+			"x":46,
+			"y":33
+			},
+			{
+			"res":"kaibaoxiang_09_03",
+			"x":14,
+			"y":7
+			},
+			{
+			"res":"kaibaoxiang_09_04",
+			"x":0,
+			"y":0
+			}
+			]
+}},
+	"res":{
+		"kaibaoxiang_09_01":{"x":0,"y":199,"w":332,"h":122},
+		"kaibaoxiang_09_02":{"x":494,"y":189,"w":402,"h":149},
+		"kaibaoxiang_09_03":{"x":494,"y":0,"w":467,"h":187},
+		"kaibaoxiang_09_04":{"x":0,"y":0,"w":492,"h":197}
+	}}

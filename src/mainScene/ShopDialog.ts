@@ -134,8 +134,8 @@ class ShopDialog extends PopupWindow {
     }
 
     private haveEnoughDiamond(num:number):boolean{
-        let value:number = 60;
-        if (num == 10) value = 490;
+        let value:number = this.tcShop.cards[0];
+        if (num == 10) value = this.tcShop.cards[1];
         if(UserDataInfo.GetInstance().IsHaveGoods("diamond", value,()=>{
             this.lab_money.text = Common.TranslateDigit(UserDataInfo.GetInstance().GetBasicData("diamond"));
         }))

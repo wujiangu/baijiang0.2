@@ -496,4 +496,117 @@ namespace Animations {
             GameLayerManager.gameLayer().panelLayer.removeChild(img);
         }
     }
+
+    function CreateRewardsGoods(data:any):egret.Sprite{
+        if(data == null) return;
+
+        let group:egret.Sprite = new egret.Sprite();
+        let bg:egret.Bitmap = new egret.Bitmap(RES.getRes("kaibaoxiang_10_png"));
+        group.addChild(bg);
+
+        let img:egret.Bitmap = new egret.Bitmap(Common.GetTextureFromType(data));
+        group.addChild(img);
+
+        let text:egret.TextField = Common.CreateText(`${data.count}`,25,0xffffff,true,"Microsoft YaHei","right");
+        text.width = img.width - 10;
+        group.addChild(text);
+
+        group.width = bg.width;
+        Common.SetXY(img, bg.width - img.width >> 1, bg.height - img.height >> 1);
+        Common.SetXY(text, img.x + 5, img.y + img.height - text.height - 5);
+
+        return group;
+    }
+
+    function onShowBoxLight(event:egret.Event):void{
+        let target = event.target;
+        target.removeEventListener(egret.Event.COMPLETE, onShowBoxLight, this);
+        egret.Tween.get(target).to({alpha:0},150).call(()=>{
+            egret.Tween.removeTweens(target);
+        })
+    }
+    /**
+     * @params: let data = [{name:"diamond",id:0,count:100,type:2},{name:"equip",id:1,count:1,type:1}]
+     */
+    export function ShowOpenBoxEffect(list:any):void{
+        if(list == null) return;
+
+        if(list.length == null){
+            let tempData = list;
+            list = [tempData];
+        }
+
+        let sprite = new egret.Sprite();
+        GameLayerManager.gameLayer().maskLayer.addChild(sprite);
+
+        let box = new egret.Bitmap(RES.getRes("kaibaoxiang_01_png"));
+        let boxLight = new egret.Bitmap(RES.getRes("kaibaoxiang_05_png"));
+        sprite.addChild(box);
+        sprite.addChild(boxLight);
+        sprite.width = box.width;sprite.height = box.height;
+        sprite.anchorOffsetX = sprite.width / 2;sprite.anchorOffsetY = sprite.height / 2;
+        
+        Common.SetXY(sprite, (Common.SCREEN_W - sprite.width >> 1) + sprite.width / 2, Common.SCREEN_H / 2);
+        Common.SetXY(boxLight, box.x + (box.width - boxLight.width >> 1) - 1,box.y + 57);
+
+        boxLight.visible = false;
+        sprite.scaleX = 2;sprite.scaleY = 2;
+        egret.Tween.get(sprite).to({scaleX:0.8,scaleY:0.8},150).to({scaleX:1.2,scaleY:1.2},80).to({scaleX:1,scaleY:1},80).wait(100).call(()=>{
+            boxLight.visible = true;
+            egret.Tween.get(sprite).to({rotation:3},100).to({rotation:-3},100).to({rotation:3},100).to({rotation:-3},100).to({rotation:0},100).call(()=>{
+                sprite.visible = false;
+                egret.Tween.removeTweens(sprite);
+
+                //boxMC
+                let boxMc = Common.CreateMovieClip("box",true);
+                GameLayerManager.gameLayer().maskLayer.addChild(boxMc);
+                boxMc.play(1);
+                Common.SetXY(boxMc, sprite.x - sprite.width / 2, sprite.y - sprite.height / 2);
+
+                // //starMc
+                let starBgMc = Common.CreateMovieClip("starSprite",true);
+                GameLayerManager.gameLayer().maskLayer.addChild(starBgMc);
+                starBgMc.play(1);
+                Common.SetXY(starBgMc, boxMc.x - sprite.width / 4 - 10, boxMc.y + (boxMc.height - starBgMc.height >> 1));
+                starBgMc.addEventListener(egret.Event.COMPLETE, onShowBoxLight, this);
+
+                // //imgLight
+                let imgLight = new egret.Bitmap(RES.getRes("kaibaoxiang_06_png"));
+                Common.SetXY(imgLight, boxMc.x + (boxMc.width - imgLight.width >> 1), boxMc.y + (boxMc.height - imgLight.height >> 1));
+                GameLayerManager.gameLayer().maskLayer.addChild(imgLight);
+                egret.Tween.get(imgLight).wait(50).call(()=>{
+                    let boxBgLightMc = Common.CreateMovieClip("boxBgLight",true);
+                    GameLayerManager.gameLayer().maskLayer.addChild(boxBgLightMc);
+                    boxBgLightMc.play(-1);
+                    Common.SetXY(boxBgLightMc, boxMc.x + (boxMc.width - boxBgLightMc.width >> 1) - 5, boxMc.y - 80);
+
+                    for(let i:number = 0; i < list.length; i++){
+                        egret.setTimeout(()=>{
+                            let rewardGroup= CreateRewardsGoods(list[i]);
+                            GameLayerManager.gameLayer().maskLayer.addChild(rewardGroup);
+                            Common.SetXY(rewardGroup, boxMc.x + (sprite.width - rewardGroup.width >> 1) , imgLight.y + 50);
+                            egret.Tween.get(rewardGroup).to({y:imgLight.y - 100,alpha:0},300).call(()=>{
+                                egret.Tween.removeTweens(rewardGroup);
+                                if(rewardGroup.parent){
+                                    rewardGroup.parent.removeChild(rewardGroup);
+                                    rewardGroup = null;
+                                } 
+                            })
+                        },null,i*500)
+                    }
+
+                    egret.setTimeout(()=>{
+                        let obj_list:any = [box,boxLight,boxMc,starBgMc,imgLight,boxBgLightMc,sprite];
+                        for(let obj of obj_list){
+                            if(obj.parent){
+                                obj.parent.removeChild(obj);
+                                obj = null;
+                            }
+                        }
+                        obj_list = [];
+                    },null, 500 * list.length)
+                }).to({alpha:0},300)
+            });
+        })
+    }
 }

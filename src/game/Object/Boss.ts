@@ -360,15 +360,14 @@ class Boss extends Enermy {
     /**血量提示 */
     public bloodTip():void {
         if (this.attr.hp <= 0.5 * this.originHP &&　this.attr.hp > 0.25 * this.originHP && this.hurtState == 0) {
-            egret.log("半血状态");
             this.hurtState = 1;
             this.flashTime = 1000;
             this.objFadeEffect();
         }
-        else if (this.attr.hp <= 0.25 * this.originHP && this.hurtState == 1) {
-            egret.log("残血状态");
+        else if (this.attr.hp <= 0.25 * this.originHP) {
             this.hurtState = 2;
             this.flashTime = 500;
+            if (this.hurtState == 0) this.objFadeEffect();
         }
     }
 

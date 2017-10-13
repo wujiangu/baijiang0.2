@@ -46,8 +46,8 @@ class Main extends eui.UILayer {
         //初始化Resource资源加载库
         // RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         // RES.loadConfig("resource/default.res.json", "resource/");
-        ResLoadManager.GetInstance().addConfig("resource/default.res.json", "resource/");
-        ResLoadManager.GetInstance().addConfig("resource/battle.res.json", "resource/");
+        ResLoadManager.GetInstance().addConfig("resource/default.res.json?v="+window["VERSION"], "resource/");
+        ResLoadManager.GetInstance().addConfig("resource/battle.res.json?v="+window["VERSION"], "resource/");
         ResLoadManager.GetInstance().startLoadConfig(this.onConfigComplete, this);
 
         //获取舞台的宽度和高度
@@ -65,7 +65,7 @@ class Main extends eui.UILayer {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         // load skin theme configuration file, you can manually modify the file. And replace the default skin.
         //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
-        let theme = new eui.Theme("resource/default.thm.json", this.stage);
+        let theme = new eui.Theme("resource/default.thm.json?v="+window["VERSION"], this.stage);
         theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
         
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
@@ -106,6 +106,7 @@ class Main extends eui.UILayer {
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
                 // ResAsynLoadManager.LoadMainScene();
                 // ResAsynLoadManager.LoadReadyScene();
+                // ResAsynLoadManager.LoadCurHeroSource(GameData.curHero);
                 break;
             case "battleBack":
                 ConfigManager.InitBattleConfig("battleBack");
@@ -209,9 +210,10 @@ class Main extends eui.UILayer {
      */
     private testBattle():void {
         RES.createGroup("battleGroup", ["battleCommon", "battlePVP"],true);
-        // ResAsynLoadManager.LoadMainScene();
+        
         ResLoadManager.GetInstance().LoadGroup("mainscene", ()=>{
             ResLoadManager.GetInstance().LoadGroup("ready", ()=>{
+                
                 ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                     ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
                         RES.loadGroup("battleBack");

@@ -1,21 +1,23 @@
 {
     "diamond":[
-        {"name":"购买300钻石", "type":"rmb", "count":300, "price":30, "money":3000, "imgItem":"common_res.shop_0012", "detail":"内有300钻石"},
-        {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":128, "money":12800,  "imgItem":"common_res.shop_0013", "detail":"内有1280钻石"}
+        {"name":"购买10钻石", "type":"rmb", "count":10, "price":1, "money":100, "imgItem":"common_res.shop_0012", "detail":"内有10钻石,首次购买送倚天剑,目前赠送暂未开启"},
+        {"name":"购买60钻石", "type":"rmb", "count":60, "price":6, "money":600, "imgItem":"common_res.shop_0013", "detail":"内有60钻石,首次购买送关羽,目前赠送暂未开启"},        
+        {"name":"购买300钻石", "type":"rmb", "count":300, "price":30, "money":3000, "imgItem":"common_res.shop_0029", "detail":"内有300钻石"},
+        {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":128, "money":12800,  "imgItem":"common_res.shop_0030", "detail":"内有1280钻石"}
     ],
     "packs":[
-        {"name":"新手礼包", "type":"pack", "count":1, "initPrice":500, "discount":0, "price":500, "imgItem":"common_res.shop_0015", "detail":"礼包内有方天画戟x1、魂石x1000、经验x20000、钻石x50"},
-        {"name":"经验礼包(小)", "type":"exp", "count":15000, "initPrice":100, "discount":0, "price":100, "imgItem":"common_res.shop_0020", "detail":"礼包中含有15000经验"},
-        {"name":"经验礼包(中)", "type":"exp", "count":150000, "initPrice":1000, "discount":1, "price":800, "imgItem":"common_res.shop_0021", "detail":"礼包中含有150000经验"},
-        {"name":"经验礼包(大)", "type":"exp", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"common_res.shop_0022", "detail":"礼包中含有1500000经验"},
-        {"name":"魂石礼包(小)", "type":"soul", "count":15000, "initPrice":100, "discount":0, "price":100, "imgItem":"common_res.shop_0023", "detail":"礼包中含有15000魂石"},
-        {"name":"魂石礼包(中)", "type":"soul", "count":150000, "initPrice":1000, "discount":1, "price":800, "imgItem":"common_res.shop_0024", "detail":"礼包中含有150000魂石"},
-        {"name":"魂石礼包(大)", "type":"soul", "count":1500000, "initPrice":10000, "discount":1, "price":6000, "imgItem":"common_res.shop_0025", "detail":"礼包中含有1500000魂石"}
+        {"name":"经验礼包(小)", "type":"exp", "count":15000, "initPrice":10, "discount":0, "price":10, "imgItem":"common_res.shop_0020", "detail":"礼包中含有15000经验"},
+        {"name":"经验礼包(中)", "type":"exp", "count":150000, "initPrice":80, "discount":1, "price":80, "imgItem":"common_res.shop_0021", "detail":"礼包中含有150000经验"},
+        {"name":"经验礼包(大)", "type":"exp", "count":1500000, "initPrice":600, "discount":1, "price":600, "imgItem":"common_res.shop_0022", "detail":"礼包中含有1500000经验"},
+        {"name":"魂石礼包(小)", "type":"soul", "count":15000, "initPrice":10, "discount":0, "price":10, "imgItem":"common_res.shop_0023", "detail":"礼包中含有15000魂石"},
+        {"name":"魂石礼包(中)", "type":"soul", "count":150000, "initPrice":80, "discount":1, "price":80, "imgItem":"common_res.shop_0024", "detail":"礼包中含有150000魂石"},
+        {"name":"魂石礼包(大)", "type":"soul", "count":1500000, "initPrice":600, "discount":1, "price":600, "imgItem":"common_res.shop_0025", "detail":"礼包中含有1500000魂石"}
     ],
     "heros":[
-        {"key":"zhaoyun", "name":"赵云", "type":"soul", "count":1, "price":1280, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
-        {"key":"sunluban", "name":"孙鲁班", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
-        {"key":"guanyu", "name":"关羽", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"},
-        {"key":"menglingtong", "name":"梦凌统", "type":"soul", "count":1, "price":1, "imgItem":"shop_0014_png", "detail":"快速的在敌阵中穿梭，拥有更高的攻击力和灵巧的移动速度.主动技能：七进七出--对全屏的敌人造成7次伤害"}
-    ]
+        {"key":"zhaoyun", "name":"赵云", "type":"soul", "count":1, "price":100, "imgItem":"common_res.shop_0014", "detail":"蜀汉五虎上将之一，常以孤军而战百万雄师。赵云枪法了得，于险恶战场中来去自如，亦可瞬间震敌于千里之外，更可化枪劲为无形横扫千军力挽狂澜"},
+        {"key":"sunluban", "name":"孙鲁班", "type":"soul", "count":1, "price":100, "imgItem":"common_res.shop_0028", "detail":"出生时因预言所说被孙权送走，之后意外获得了两地力量合铸而成的武器“阳煞双握”。这对神奇的武器使她领悟出太极之道，阴阳二力使她徘徊于正邪之间"},
+        {"key":"guanyu", "name":"关羽", "type":"soul", "count":1, "price":100, "imgItem":"common_res.shop_0026", "detail":"蜀汉五虎上将之首，更有“武圣”之名。使得一把青龙偃月刀，于万军之中取敌将首级犹如反掌之易，更有一夫当关万夫莫开的气魄"},
+        {"key":"menglingtong", "name":"梦凌统", "type":"soul", "count":1, "price":100, "imgItem":"common_res.shop_0027", "detail":"神皇将仙鹤战袍赐给了十分喜爱的大将凌统，他穿上后就会变身为仙鹤童子；他对一切都充满了新鲜感，贪玩调皮，闯祸了就会变出幻影逃跑，让人无可奈何"}
+    ],
+    "cards":[20, 150]
 }

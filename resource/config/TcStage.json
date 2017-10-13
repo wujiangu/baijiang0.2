@@ -26,7 +26,7 @@
       1,
       2
     ],
-    "lv": 3,
+    "lv": 2,
     "boss": [
       2,
       10,
@@ -45,7 +45,7 @@
       1,
       2
     ],
-    "lv": 5,
+    "lv": 3,
     "boss": [
       3,
       10,
@@ -64,7 +64,7 @@
       1,
       2
     ],
-    "lv": 7,
+    "lv": 4,
     "boss": [
       1,
       10,
@@ -83,7 +83,7 @@
       1,
       2
     ],
-    "lv": 9,
+    "lv": 5,
     "boss": [
       100,
       1,
@@ -102,7 +102,7 @@
       1,
       2
     ],
-    "lv": 11,
+    "lv": 6,
     "boss": [
       1,
       10,
@@ -121,7 +121,7 @@
       1,
       2
     ],
-    "lv": 13,
+    "lv": 7,
     "boss": [
       2,
       10,
@@ -140,7 +140,7 @@
       1,
       2
     ],
-    "lv": 15,
+    "lv": 8,
     "boss": [
       3,
       10,
@@ -159,7 +159,7 @@
       1,
       2
     ],
-    "lv": 17,
+    "lv": 9,
     "boss": [
       2,
       10,
@@ -178,7 +178,7 @@
       1,
       2
     ],
-    "lv": 19,
+    "lv": 10,
     "boss": [
       100,
       1,
@@ -198,7 +198,7 @@
       2,
       3
     ],
-    "lv": 21,
+    "lv": 11,
     "boss": [
       1,
       10,
@@ -218,7 +218,7 @@
       2,
       3
     ],
-    "lv": 23,
+    "lv": 12,
     "boss": [
       2,
       10,
@@ -238,7 +238,7 @@
       2,
       3
     ],
-    "lv": 25,
+    "lv": 13,
     "boss": [
       3,
       10,
@@ -258,7 +258,7 @@
       2,
       3
     ],
-    "lv": 27,
+    "lv": 14,
     "boss": [
       3,
       10,
@@ -278,7 +278,7 @@
       2,
       3
     ],
-    "lv": 29,
+    "lv": 15,
     "boss": [
       100,
       1,
@@ -298,7 +298,7 @@
       2,
       3
     ],
-    "lv": 31,
+    "lv": 16,
     "boss": [
       1,
       10,
@@ -318,7 +318,7 @@
       2,
       3
     ],
-    "lv": 33,
+    "lv": 17,
     "boss": [
       2,
       10,
@@ -338,7 +338,7 @@
       2,
       3
     ],
-    "lv": 35,
+    "lv": 18,
     "boss": [
       3,
       10,
@@ -358,7 +358,7 @@
       2,
       3
     ],
-    "lv": 37,
+    "lv": 19,
     "boss": [
       1,
       10,
@@ -378,7 +378,7 @@
       2,
       3
     ],
-    "lv": 39,
+    "lv": 20,
     "boss": [
       100,
       1,
@@ -398,7 +398,7 @@
       2,
       3
     ],
-    "lv": 41,
+    "lv": 21,
     "boss": [
       1,
       10,
@@ -418,7 +418,7 @@
       2,
       3
     ],
-    "lv": 43,
+    "lv": 22,
     "boss": [
       2,
       10,
@@ -438,7 +438,7 @@
       2,
       3
     ],
-    "lv": 45,
+    "lv": 23,
     "boss": [
       3,
       10,
@@ -458,7 +458,7 @@
       2,
       3
     ],
-    "lv": 47,
+    "lv": 24,
     "boss": [
       2,
       10,
@@ -478,7 +478,7 @@
       2,
       3
     ],
-    "lv": 49,
+    "lv": 25,
     "boss": [
       100,
       1,
@@ -498,7 +498,7 @@
       2,
       3
     ],
-    "lv": 51,
+    "lv": 26,
     "boss": [
       1,
       10,
@@ -518,7 +518,7 @@
       2,
       3
     ],
-    "lv": 53,
+    "lv": 27,
     "boss": [
       2,
       10,
@@ -538,7 +538,7 @@
       2,
       3
     ],
-    "lv": 55,
+    "lv": 28,
     "boss": [
       3,
       10,
@@ -558,7 +558,7 @@
       2,
       3
     ],
-    "lv": 57,
+    "lv": 29,
     "boss": [
       3,
       10,
@@ -578,7 +578,7 @@
       2,
       3
     ],
-    "lv": 59,
+    "lv": 30,
     "boss": [
       100,
       1,
@@ -598,7 +598,7 @@
       2,
       3
     ],
-    "lv": 61,
+    "lv": 31,
     "boss": [
       1,
       10,
@@ -607,7 +607,7 @@
     ],
     "exp": 79,
     "hangupExp": 29375,
-    "hangupSoul": 235
+    "hangupSoul": 255
   },
   {
     "stage": 32,
@@ -618,7 +618,7 @@
       2,
       3
     ],
-    "lv": 63,
+    "lv": 32,
     "boss": [
       2,
       10,
@@ -627,7 +627,7 @@
     ],
     "exp": 80,
     "hangupExp": 30000,
-    "hangupSoul": 240
+    "hangupSoul": 260
   },
   {
     "stage": 33,
@@ -638,7 +638,7 @@
       2,
       3
     ],
-    "lv": 65,
+    "lv": 33,
     "boss": [
       3,
       10,
@@ -647,7 +647,7 @@
     ],
     "exp": 82,
     "hangupExp": 30625,
-    "hangupSoul": 245
+    "hangupSoul": 265
   },
   {
     "stage": 34,
@@ -658,7 +658,7 @@
       2,
       3
     ],
-    "lv": 67,
+    "lv": 34,
     "boss": [
       1,
       10,
@@ -667,7 +667,7 @@
     ],
     "exp": 84,
     "hangupExp": 31250,
-    "hangupSoul": 250
+    "hangupSoul": 270
   },
   {
     "stage": 35,
@@ -678,7 +678,7 @@
       2,
       3
     ],
-    "lv": 69,
+    "lv": 35,
     "boss": [
       100,
       1,
@@ -687,7 +687,7 @@
     ],
     "exp": 85,
     "hangupExp": 31875,
-    "hangupSoul": 255
+    "hangupSoul": 275
   },
   {
     "stage": 36,
@@ -698,7 +698,7 @@
       2,
       3
     ],
-    "lv": 71,
+    "lv": 36,
     "boss": [
       1,
       10,
@@ -707,7 +707,7 @@
     ],
     "exp": 87,
     "hangupExp": 32500,
-    "hangupSoul": 260
+    "hangupSoul": 280
   },
   {
     "stage": 37,
@@ -718,7 +718,7 @@
       2,
       3
     ],
-    "lv": 73,
+    "lv": 37,
     "boss": [
       2,
       10,
@@ -727,7 +727,7 @@
     ],
     "exp": 89,
     "hangupExp": 33125,
-    "hangupSoul": 265
+    "hangupSoul": 285
   },
   {
     "stage": 38,
@@ -738,7 +738,7 @@
       2,
       3
     ],
-    "lv": 75,
+    "lv": 38,
     "boss": [
       3,
       10,
@@ -747,7 +747,7 @@
     ],
     "exp": 90,
     "hangupExp": 33750,
-    "hangupSoul": 270
+    "hangupSoul": 290
   },
   {
     "stage": 39,
@@ -758,7 +758,7 @@
       2,
       3
     ],
-    "lv": 77,
+    "lv": 39,
     "boss": [
       2,
       10,
@@ -767,7 +767,7 @@
     ],
     "exp": 92,
     "hangupExp": 34375,
-    "hangupSoul": 275
+    "hangupSoul": 295
   },
   {
     "stage": 40,
@@ -778,7 +778,7 @@
       2,
       3
     ],
-    "lv": 79,
+    "lv": 40,
     "boss": [
       100,
       1,
@@ -787,7 +787,7 @@
     ],
     "exp": 94,
     "hangupExp": 35000,
-    "hangupSoul": 280
+    "hangupSoul": 300
   },
   {
     "stage": 41,
@@ -798,7 +798,7 @@
       2,
       3
     ],
-    "lv": 81,
+    "lv": 41,
     "boss": [
       1,
       10,
@@ -807,7 +807,7 @@
     ],
     "exp": 95,
     "hangupExp": 35625,
-    "hangupSoul": 285
+    "hangupSoul": 305
   },
   {
     "stage": 42,
@@ -818,7 +818,7 @@
       2,
       3
     ],
-    "lv": 83,
+    "lv": 42,
     "boss": [
       2,
       10,
@@ -827,7 +827,7 @@
     ],
     "exp": 97,
     "hangupExp": 36250,
-    "hangupSoul": 290
+    "hangupSoul": 310
   },
   {
     "stage": 43,
@@ -838,7 +838,7 @@
       2,
       3
     ],
-    "lv": 85,
+    "lv": 43,
     "boss": [
       3,
       10,
@@ -847,7 +847,7 @@
     ],
     "exp": 99,
     "hangupExp": 36875,
-    "hangupSoul": 295
+    "hangupSoul": 315
   },
   {
     "stage": 44,
@@ -858,7 +858,7 @@
       2,
       3
     ],
-    "lv": 87,
+    "lv": 44,
     "boss": [
       3,
       10,
@@ -867,7 +867,7 @@
     ],
     "exp": 100,
     "hangupExp": 37500,
-    "hangupSoul": 300
+    "hangupSoul": 320
   },
   {
     "stage": 45,
@@ -878,7 +878,7 @@
       2,
       3
     ],
-    "lv": 89,
+    "lv": 45,
     "boss": [
       100,
       1,
@@ -887,7 +887,7 @@
     ],
     "exp": 102,
     "hangupExp": 38125,
-    "hangupSoul": 305
+    "hangupSoul": 325
   },
   {
     "stage": 46,
@@ -898,7 +898,7 @@
       2,
       3
     ],
-    "lv": 91,
+    "lv": 46,
     "boss": [
       1,
       10,
@@ -907,7 +907,7 @@
     ],
     "exp": 104,
     "hangupExp": 38750,
-    "hangupSoul": 310
+    "hangupSoul": 330
   },
   {
     "stage": 47,
@@ -918,7 +918,7 @@
       2,
       3
     ],
-    "lv": 93,
+    "lv": 47,
     "boss": [
       2,
       10,
@@ -927,7 +927,7 @@
     ],
     "exp": 105,
     "hangupExp": 39375,
-    "hangupSoul": 315
+    "hangupSoul": 335
   },
   {
     "stage": 48,
@@ -938,7 +938,7 @@
       2,
       3
     ],
-    "lv": 95,
+    "lv": 48,
     "boss": [
       3,
       10,
@@ -947,7 +947,7 @@
     ],
     "exp": 107,
     "hangupExp": 40000,
-    "hangupSoul": 320
+    "hangupSoul": 340
   },
   {
     "stage": 49,
@@ -958,7 +958,7 @@
       2,
       3
     ],
-    "lv": 97,
+    "lv": 49,
     "boss": [
       1,
       10,
@@ -967,7 +967,7 @@
     ],
     "exp": 109,
     "hangupExp": 40625,
-    "hangupSoul": 325
+    "hangupSoul": 345
   },
   {
     "stage": 50,
@@ -978,7 +978,7 @@
       2,
       3
     ],
-    "lv": 99,
+    "lv": 50,
     "boss": [
       100,
       1,
@@ -987,7 +987,7 @@
     ],
     "exp": 110,
     "hangupExp": 41250,
-    "hangupSoul": 330
+    "hangupSoul": 350
   },
   {
     "stage": 51,
@@ -998,7 +998,7 @@
       2,
       3
     ],
-    "lv": 101,
+    "lv": 51,
     "boss": [
       1,
       10,
@@ -1007,7 +1007,7 @@
     ],
     "exp": 112,
     "hangupExp": 41875,
-    "hangupSoul": 335
+    "hangupSoul": 355
   },
   {
     "stage": 52,
@@ -1018,7 +1018,7 @@
       2,
       3
     ],
-    "lv": 103,
+    "lv": 52,
     "boss": [
       2,
       10,
@@ -1027,7 +1027,7 @@
     ],
     "exp": 114,
     "hangupExp": 42500,
-    "hangupSoul": 340
+    "hangupSoul": 360
   },
   {
     "stage": 53,
@@ -1038,7 +1038,7 @@
       2,
       3
     ],
-    "lv": 105,
+    "lv": 53,
     "boss": [
       3,
       10,
@@ -1047,7 +1047,7 @@
     ],
     "exp": 115,
     "hangupExp": 43125,
-    "hangupSoul": 345
+    "hangupSoul": 365
   },
   {
     "stage": 54,
@@ -1058,7 +1058,7 @@
       2,
       3
     ],
-    "lv": 107,
+    "lv": 54,
     "boss": [
       2,
       10,
@@ -1067,7 +1067,7 @@
     ],
     "exp": 117,
     "hangupExp": 43750,
-    "hangupSoul": 350
+    "hangupSoul": 370
   },
   {
     "stage": 55,
@@ -1078,7 +1078,7 @@
       2,
       3
     ],
-    "lv": 109,
+    "lv": 55,
     "boss": [
       100,
       1,
@@ -1087,7 +1087,7 @@
     ],
     "exp": 119,
     "hangupExp": 44375,
-    "hangupSoul": 355
+    "hangupSoul": 375
   },
   {
     "stage": 56,
@@ -1098,7 +1098,7 @@
       2,
       3
     ],
-    "lv": 111,
+    "lv": 56,
     "boss": [
       1,
       10,
@@ -1107,7 +1107,7 @@
     ],
     "exp": 120,
     "hangupExp": 45000,
-    "hangupSoul": 360
+    "hangupSoul": 380
   },
   {
     "stage": 57,
@@ -1118,7 +1118,7 @@
       2,
       3
     ],
-    "lv": 113,
+    "lv": 57,
     "boss": [
       2,
       10,
@@ -1127,7 +1127,7 @@
     ],
     "exp": 122,
     "hangupExp": 45625,
-    "hangupSoul": 365
+    "hangupSoul": 385
   },
   {
     "stage": 58,
@@ -1138,7 +1138,7 @@
       2,
       3
     ],
-    "lv": 115,
+    "lv": 58,
     "boss": [
       3,
       10,
@@ -1147,7 +1147,7 @@
     ],
     "exp": 124,
     "hangupExp": 46250,
-    "hangupSoul": 370
+    "hangupSoul": 390
   },
   {
     "stage": 59,
@@ -1158,7 +1158,7 @@
       2,
       3
     ],
-    "lv": 117,
+    "lv": 59,
     "boss": [
       3,
       10,
@@ -1167,7 +1167,7 @@
     ],
     "exp": 125,
     "hangupExp": 46875,
-    "hangupSoul": 375
+    "hangupSoul": 395
   },
   {
     "stage": 60,
@@ -1178,7 +1178,7 @@
       2,
       3
     ],
-    "lv": 119,
+    "lv": 60,
     "boss": [
       100,
       1,
@@ -1187,7 +1187,7 @@
     ],
     "exp": 127,
     "hangupExp": 47500,
-    "hangupSoul": 380
+    "hangupSoul": 400
   },
   {
     "stage": 61,
@@ -1198,7 +1198,7 @@
       2,
       3
     ],
-    "lv": 121,
+    "lv": 61,
     "boss": [
       1,
       10,
@@ -1207,7 +1207,7 @@
     ],
     "exp": 129,
     "hangupExp": 48125,
-    "hangupSoul": 385
+    "hangupSoul": 405
   },
   {
     "stage": 62,
@@ -1218,7 +1218,7 @@
       2,
       3
     ],
-    "lv": 123,
+    "lv": 62,
     "boss": [
       2,
       10,
@@ -1227,7 +1227,7 @@
     ],
     "exp": 130,
     "hangupExp": 48750,
-    "hangupSoul": 390
+    "hangupSoul": 410
   },
   {
     "stage": 63,
@@ -1238,7 +1238,7 @@
       2,
       3
     ],
-    "lv": 125,
+    "lv": 63,
     "boss": [
       3,
       10,
@@ -1247,7 +1247,7 @@
     ],
     "exp": 132,
     "hangupExp": 49375,
-    "hangupSoul": 395
+    "hangupSoul": 415
   },
   {
     "stage": 64,
@@ -1258,7 +1258,7 @@
       2,
       3
     ],
-    "lv": 127,
+    "lv": 64,
     "boss": [
       1,
       10,
@@ -1267,7 +1267,7 @@
     ],
     "exp": 134,
     "hangupExp": 50000,
-    "hangupSoul": 400
+    "hangupSoul": 420
   },
   {
     "stage": 65,
@@ -1278,7 +1278,7 @@
       2,
       3
     ],
-    "lv": 129,
+    "lv": 65,
     "boss": [
       100,
       1,
@@ -1287,7 +1287,7 @@
     ],
     "exp": 135,
     "hangupExp": 50625,
-    "hangupSoul": 405
+    "hangupSoul": 425
   },
   {
     "stage": 66,
@@ -1298,7 +1298,7 @@
       2,
       3
     ],
-    "lv": 131,
+    "lv": 66,
     "boss": [
       1,
       10,
@@ -1307,7 +1307,7 @@
     ],
     "exp": 137,
     "hangupExp": 51250,
-    "hangupSoul": 410
+    "hangupSoul": 430
   },
   {
     "stage": 67,
@@ -1318,7 +1318,7 @@
       2,
       3
     ],
-    "lv": 133,
+    "lv": 67,
     "boss": [
       2,
       10,
@@ -1327,7 +1327,7 @@
     ],
     "exp": 139,
     "hangupExp": 51875,
-    "hangupSoul": 415
+    "hangupSoul": 435
   },
   {
     "stage": 68,
@@ -1338,7 +1338,7 @@
       2,
       3
     ],
-    "lv": 135,
+    "lv": 68,
     "boss": [
       3,
       10,
@@ -1347,7 +1347,7 @@
     ],
     "exp": 140,
     "hangupExp": 52500,
-    "hangupSoul": 420
+    "hangupSoul": 440
   },
   {
     "stage": 69,
@@ -1358,7 +1358,7 @@
       2,
       3
     ],
-    "lv": 137,
+    "lv": 69,
     "boss": [
       2,
       10,
@@ -1367,7 +1367,7 @@
     ],
     "exp": 142,
     "hangupExp": 53125,
-    "hangupSoul": 425
+    "hangupSoul": 445
   },
   {
     "stage": 70,
@@ -1378,7 +1378,7 @@
       2,
       3
     ],
-    "lv": 139,
+    "lv": 70,
     "boss": [
       100,
       1,
@@ -1387,7 +1387,7 @@
     ],
     "exp": 144,
     "hangupExp": 53750,
-    "hangupSoul": 430
+    "hangupSoul": 450
   },
   {
     "stage": 71,
@@ -1398,7 +1398,7 @@
       2,
       3
     ],
-    "lv": 141,
+    "lv": 71,
     "boss": [
       1,
       10,
@@ -1407,7 +1407,7 @@
     ],
     "exp": 145,
     "hangupExp": 54375,
-    "hangupSoul": 435
+    "hangupSoul": 455
   },
   {
     "stage": 72,
@@ -1418,7 +1418,7 @@
       2,
       3
     ],
-    "lv": 143,
+    "lv": 72,
     "boss": [
       2,
       10,
@@ -1427,7 +1427,7 @@
     ],
     "exp": 147,
     "hangupExp": 55000,
-    "hangupSoul": 440
+    "hangupSoul": 460
   },
   {
     "stage": 73,
@@ -1438,7 +1438,7 @@
       2,
       3
     ],
-    "lv": 145,
+    "lv": 73,
     "boss": [
       3,
       10,
@@ -1447,7 +1447,7 @@
     ],
     "exp": 149,
     "hangupExp": 55625,
-    "hangupSoul": 445
+    "hangupSoul": 465
   },
   {
     "stage": 74,
@@ -1458,7 +1458,7 @@
       2,
       3
     ],
-    "lv": 147,
+    "lv": 74,
     "boss": [
       3,
       10,
@@ -1467,7 +1467,7 @@
     ],
     "exp": 150,
     "hangupExp": 56250,
-    "hangupSoul": 450
+    "hangupSoul": 470
   },
   {
     "stage": 75,
@@ -1478,7 +1478,7 @@
       2,
       3
     ],
-    "lv": 149,
+    "lv": 75,
     "boss": [
       100,
       1,
@@ -1487,7 +1487,7 @@
     ],
     "exp": 152,
     "hangupExp": 56875,
-    "hangupSoul": 455
+    "hangupSoul": 475
   },
   {
     "stage": 76,
@@ -1498,7 +1498,7 @@
       2,
       3
     ],
-    "lv": 151,
+    "lv": 76,
     "boss": [
       1,
       10,
@@ -1507,7 +1507,7 @@
     ],
     "exp": 154,
     "hangupExp": 57500,
-    "hangupSoul": 460
+    "hangupSoul": 480
   },
   {
     "stage": 77,
@@ -1518,7 +1518,7 @@
       2,
       3
     ],
-    "lv": 153,
+    "lv": 77,
     "boss": [
       2,
       10,
@@ -1527,7 +1527,7 @@
     ],
     "exp": 155,
     "hangupExp": 58125,
-    "hangupSoul": 465
+    "hangupSoul": 485
   },
   {
     "stage": 78,
@@ -1538,7 +1538,7 @@
       2,
       3
     ],
-    "lv": 155,
+    "lv": 78,
     "boss": [
       3,
       10,
@@ -1547,7 +1547,7 @@
     ],
     "exp": 157,
     "hangupExp": 58750,
-    "hangupSoul": 470
+    "hangupSoul": 490
   },
   {
     "stage": 79,
@@ -1558,7 +1558,7 @@
       2,
       3
     ],
-    "lv": 157,
+    "lv": 79,
     "boss": [
       1,
       10,
@@ -1567,7 +1567,7 @@
     ],
     "exp": 159,
     "hangupExp": 59375,
-    "hangupSoul": 475
+    "hangupSoul": 495
   },
   {
     "stage": 80,
@@ -1578,7 +1578,7 @@
       2,
       3
     ],
-    "lv": 159,
+    "lv": 80,
     "boss": [
       100,
       1,
@@ -1587,7 +1587,7 @@
     ],
     "exp": 160,
     "hangupExp": 60000,
-    "hangupSoul": 480
+    "hangupSoul": 500
   },
   {
     "stage": 81,
@@ -1598,7 +1598,7 @@
       2,
       3
     ],
-    "lv": 161,
+    "lv": 81,
     "boss": [
       1,
       10,
@@ -1607,7 +1607,7 @@
     ],
     "exp": 162,
     "hangupExp": 60625,
-    "hangupSoul": 485
+    "hangupSoul": 505
   },
   {
     "stage": 82,
@@ -1618,7 +1618,7 @@
       2,
       3
     ],
-    "lv": 163,
+    "lv": 82,
     "boss": [
       2,
       10,
@@ -1627,7 +1627,7 @@
     ],
     "exp": 164,
     "hangupExp": 61250,
-    "hangupSoul": 490
+    "hangupSoul": 510
   },
   {
     "stage": 83,
@@ -1638,7 +1638,7 @@
       2,
       3
     ],
-    "lv": 165,
+    "lv": 83,
     "boss": [
       3,
       10,
@@ -1647,7 +1647,7 @@
     ],
     "exp": 165,
     "hangupExp": 61875,
-    "hangupSoul": 495
+    "hangupSoul": 515
   },
   {
     "stage": 84,
@@ -1658,7 +1658,7 @@
       2,
       3
     ],
-    "lv": 167,
+    "lv": 84,
     "boss": [
       2,
       10,
@@ -1667,7 +1667,7 @@
     ],
     "exp": 167,
     "hangupExp": 62500,
-    "hangupSoul": 500
+    "hangupSoul": 520
   },
   {
     "stage": 85,
@@ -1678,7 +1678,7 @@
       2,
       3
     ],
-    "lv": 169,
+    "lv": 85,
     "boss": [
       100,
       1,
@@ -1687,7 +1687,7 @@
     ],
     "exp": 169,
     "hangupExp": 63125,
-    "hangupSoul": 505
+    "hangupSoul": 525
   },
   {
     "stage": 86,
@@ -1698,7 +1698,7 @@
       2,
       3
     ],
-    "lv": 171,
+    "lv": 86,
     "boss": [
       1,
       10,
@@ -1707,7 +1707,7 @@
     ],
     "exp": 170,
     "hangupExp": 63750,
-    "hangupSoul": 510
+    "hangupSoul": 530
   },
   {
     "stage": 87,
@@ -1718,7 +1718,7 @@
       2,
       3
     ],
-    "lv": 173,
+    "lv": 87,
     "boss": [
       2,
       10,
@@ -1727,7 +1727,7 @@
     ],
     "exp": 172,
     "hangupExp": 64375,
-    "hangupSoul": 515
+    "hangupSoul": 535
   },
   {
     "stage": 88,
@@ -1738,7 +1738,7 @@
       2,
       3
     ],
-    "lv": 175,
+    "lv": 88,
     "boss": [
       3,
       10,
@@ -1747,7 +1747,7 @@
     ],
     "exp": 174,
     "hangupExp": 65000,
-    "hangupSoul": 520
+    "hangupSoul": 540
   },
   {
     "stage": 89,
@@ -1758,7 +1758,7 @@
       2,
       3
     ],
-    "lv": 177,
+    "lv": 89,
     "boss": [
       3,
       10,
@@ -1767,7 +1767,7 @@
     ],
     "exp": 175,
     "hangupExp": 65625,
-    "hangupSoul": 525
+    "hangupSoul": 545
   },
   {
     "stage": 90,
@@ -1778,7 +1778,7 @@
       2,
       3
     ],
-    "lv": 179,
+    "lv": 90,
     "boss": [
       100,
       1,
@@ -1787,7 +1787,7 @@
     ],
     "exp": 177,
     "hangupExp": 66250,
-    "hangupSoul": 530
+    "hangupSoul": 550
   },
   {
     "stage": 91,
@@ -1798,7 +1798,7 @@
       2,
       3
     ],
-    "lv": 181,
+    "lv": 91,
     "boss": [
       1,
       10,
@@ -1807,7 +1807,7 @@
     ],
     "exp": 179,
     "hangupExp": 66875,
-    "hangupSoul": 535
+    "hangupSoul": 555
   },
   {
     "stage": 92,
@@ -1818,7 +1818,7 @@
       2,
       3
     ],
-    "lv": 183,
+    "lv": 92,
     "boss": [
       2,
       10,
@@ -1827,7 +1827,7 @@
     ],
     "exp": 180,
     "hangupExp": 67500,
-    "hangupSoul": 540
+    "hangupSoul": 560
   },
   {
     "stage": 93,
@@ -1838,7 +1838,7 @@
       2,
       3
     ],
-    "lv": 185,
+    "lv": 93,
     "boss": [
       3,
       10,
@@ -1847,7 +1847,7 @@
     ],
     "exp": 182,
     "hangupExp": 68125,
-    "hangupSoul": 545
+    "hangupSoul": 565
   },
   {
     "stage": 94,
@@ -1858,7 +1858,7 @@
       2,
       3
     ],
-    "lv": 187,
+    "lv": 94,
     "boss": [
       1,
       10,
@@ -1867,7 +1867,7 @@
     ],
     "exp": 184,
     "hangupExp": 68750,
-    "hangupSoul": 550
+    "hangupSoul": 570
   },
   {
     "stage": 95,
@@ -1878,7 +1878,7 @@
       2,
       3
     ],
-    "lv": 189,
+    "lv": 95,
     "boss": [
       100,
       1,
@@ -1887,7 +1887,7 @@
     ],
     "exp": 185,
     "hangupExp": 69375,
-    "hangupSoul": 555
+    "hangupSoul": 575
   },
   {
     "stage": 96,
@@ -1898,7 +1898,7 @@
       2,
       3
     ],
-    "lv": 191,
+    "lv": 96,
     "boss": [
       1,
       10,
@@ -1907,7 +1907,7 @@
     ],
     "exp": 187,
     "hangupExp": 70000,
-    "hangupSoul": 560
+    "hangupSoul": 580
   },
   {
     "stage": 97,
@@ -1918,7 +1918,7 @@
       2,
       3
     ],
-    "lv": 193,
+    "lv": 97,
     "boss": [
       2,
       10,
@@ -1927,7 +1927,7 @@
     ],
     "exp": 189,
     "hangupExp": 70625,
-    "hangupSoul": 565
+    "hangupSoul": 585
   },
   {
     "stage": 98,
@@ -1938,7 +1938,7 @@
       2,
       3
     ],
-    "lv": 195,
+    "lv": 98,
     "boss": [
       3,
       10,
@@ -1947,7 +1947,7 @@
     ],
     "exp": 190,
     "hangupExp": 71250,
-    "hangupSoul": 570
+    "hangupSoul": 590
   },
   {
     "stage": 99,
@@ -1958,7 +1958,7 @@
       2,
       3
     ],
-    "lv": 197,
+    "lv": 99,
     "boss": [
       2,
       10,
@@ -1967,7 +1967,7 @@
     ],
     "exp": 192,
     "hangupExp": 71875,
-    "hangupSoul": 575
+    "hangupSoul": 595
   },
   {
     "stage": 100,
@@ -1978,7 +1978,7 @@
       2,
       3
     ],
-    "lv": 199,
+    "lv": 100,
     "boss": [
       100,
       1,
@@ -1987,6 +1987,6006 @@
     ],
     "exp": 194,
     "hangupExp": 72500,
-    "hangupSoul": 580
+    "hangupSoul": 600
+  },
+  {
+    "stage": 101,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 101,
+    "boss": [
+      1,
+      10,
+      2,
+      101
+    ],
+    "exp": 195,
+    "hangupExp": 73125,
+    "hangupSoul": 605
+  },
+  {
+    "stage": 102,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 102,
+    "boss": [
+      2,
+      10,
+      2,
+      102
+    ],
+    "exp": 197,
+    "hangupExp": 73750,
+    "hangupSoul": 610
+  },
+  {
+    "stage": 103,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 103,
+    "boss": [
+      3,
+      10,
+      2,
+      103
+    ],
+    "exp": 199,
+    "hangupExp": 74375,
+    "hangupSoul": 615
+  },
+  {
+    "stage": 104,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 104,
+    "boss": [
+      1,
+      10,
+      2,
+      104
+    ],
+    "exp": 200,
+    "hangupExp": 75000,
+    "hangupSoul": 620
+  },
+  {
+    "stage": 105,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 105,
+    "boss": [
+      100,
+      1,
+      1,
+      105
+    ],
+    "exp": 202,
+    "hangupExp": 75625,
+    "hangupSoul": 625
+  },
+  {
+    "stage": 106,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 106,
+    "boss": [
+      1,
+      10,
+      2,
+      106
+    ],
+    "exp": 204,
+    "hangupExp": 76250,
+    "hangupSoul": 630
+  },
+  {
+    "stage": 107,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 107,
+    "boss": [
+      2,
+      10,
+      2,
+      107
+    ],
+    "exp": 205,
+    "hangupExp": 76875,
+    "hangupSoul": 635
+  },
+  {
+    "stage": 108,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 108,
+    "boss": [
+      3,
+      10,
+      2,
+      108
+    ],
+    "exp": 207,
+    "hangupExp": 77500,
+    "hangupSoul": 640
+  },
+  {
+    "stage": 109,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 109,
+    "boss": [
+      2,
+      10,
+      2,
+      109
+    ],
+    "exp": 209,
+    "hangupExp": 78125,
+    "hangupSoul": 645
+  },
+  {
+    "stage": 110,
+    "count": 110,
+    "wave": 9,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 110,
+    "boss": [
+      100,
+      1,
+      1,
+      110
+    ],
+    "exp": 210,
+    "hangupExp": 78750,
+    "hangupSoul": 650
+  },
+  {
+    "stage": 111,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 111,
+    "boss": [
+      1,
+      10,
+      2,
+      111
+    ],
+    "exp": 212,
+    "hangupExp": 79375,
+    "hangupSoul": 655
+  },
+  {
+    "stage": 112,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 112,
+    "boss": [
+      2,
+      10,
+      2,
+      112
+    ],
+    "exp": 214,
+    "hangupExp": 80000,
+    "hangupSoul": 660
+  },
+  {
+    "stage": 113,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 113,
+    "boss": [
+      3,
+      10,
+      2,
+      113
+    ],
+    "exp": 215,
+    "hangupExp": 80625,
+    "hangupSoul": 665
+  },
+  {
+    "stage": 114,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 114,
+    "boss": [
+      3,
+      10,
+      2,
+      114
+    ],
+    "exp": 217,
+    "hangupExp": 81250,
+    "hangupSoul": 670
+  },
+  {
+    "stage": 115,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 115,
+    "boss": [
+      100,
+      1,
+      1,
+      115
+    ],
+    "exp": 219,
+    "hangupExp": 81875,
+    "hangupSoul": 675
+  },
+  {
+    "stage": 116,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 116,
+    "boss": [
+      1,
+      10,
+      2,
+      116
+    ],
+    "exp": 220,
+    "hangupExp": 82500,
+    "hangupSoul": 680
+  },
+  {
+    "stage": 117,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 117,
+    "boss": [
+      2,
+      10,
+      2,
+      117
+    ],
+    "exp": 222,
+    "hangupExp": 83125,
+    "hangupSoul": 685
+  },
+  {
+    "stage": 118,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 118,
+    "boss": [
+      3,
+      10,
+      2,
+      118
+    ],
+    "exp": 224,
+    "hangupExp": 83750,
+    "hangupSoul": 690
+  },
+  {
+    "stage": 119,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 119,
+    "boss": [
+      1,
+      10,
+      2,
+      119
+    ],
+    "exp": 225,
+    "hangupExp": 84375,
+    "hangupSoul": 695
+  },
+  {
+    "stage": 120,
+    "count": 110,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 120,
+    "boss": [
+      100,
+      1,
+      1,
+      120
+    ],
+    "exp": 227,
+    "hangupExp": 85000,
+    "hangupSoul": 700
+  },
+  {
+    "stage": 121,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 121,
+    "boss": [
+      1,
+      10,
+      2,
+      121
+    ],
+    "exp": 229,
+    "hangupExp": 85625,
+    "hangupSoul": 705
+  },
+  {
+    "stage": 122,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 122,
+    "boss": [
+      2,
+      10,
+      2,
+      122
+    ],
+    "exp": 230,
+    "hangupExp": 86250,
+    "hangupSoul": 710
+  },
+  {
+    "stage": 123,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 123,
+    "boss": [
+      3,
+      10,
+      2,
+      123
+    ],
+    "exp": 232,
+    "hangupExp": 86875,
+    "hangupSoul": 715
+  },
+  {
+    "stage": 124,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 124,
+    "boss": [
+      2,
+      10,
+      2,
+      124
+    ],
+    "exp": 234,
+    "hangupExp": 87500,
+    "hangupSoul": 720
+  },
+  {
+    "stage": 125,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 125,
+    "boss": [
+      100,
+      1,
+      1,
+      125
+    ],
+    "exp": 235,
+    "hangupExp": 88125,
+    "hangupSoul": 725
+  },
+  {
+    "stage": 126,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 126,
+    "boss": [
+      1,
+      10,
+      2,
+      126
+    ],
+    "exp": 237,
+    "hangupExp": 88750,
+    "hangupSoul": 730
+  },
+  {
+    "stage": 127,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 127,
+    "boss": [
+      2,
+      10,
+      2,
+      127
+    ],
+    "exp": 239,
+    "hangupExp": 89375,
+    "hangupSoul": 735
+  },
+  {
+    "stage": 128,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 128,
+    "boss": [
+      3,
+      10,
+      2,
+      128
+    ],
+    "exp": 240,
+    "hangupExp": 90000,
+    "hangupSoul": 740
+  },
+  {
+    "stage": 129,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 129,
+    "boss": [
+      3,
+      10,
+      2,
+      129
+    ],
+    "exp": 242,
+    "hangupExp": 90625,
+    "hangupSoul": 745
+  },
+  {
+    "stage": 130,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 130,
+    "boss": [
+      100,
+      1,
+      1,
+      130
+    ],
+    "exp": 244,
+    "hangupExp": 91250,
+    "hangupSoul": 750
+  },
+  {
+    "stage": 131,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 131,
+    "boss": [
+      1,
+      10,
+      2,
+      131
+    ],
+    "exp": 245,
+    "hangupExp": 91875,
+    "hangupSoul": 755
+  },
+  {
+    "stage": 132,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 132,
+    "boss": [
+      2,
+      10,
+      2,
+      132
+    ],
+    "exp": 247,
+    "hangupExp": 92500,
+    "hangupSoul": 760
+  },
+  {
+    "stage": 133,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 133,
+    "boss": [
+      3,
+      10,
+      2,
+      133
+    ],
+    "exp": 249,
+    "hangupExp": 93125,
+    "hangupSoul": 765
+  },
+  {
+    "stage": 134,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 134,
+    "boss": [
+      1,
+      10,
+      2,
+      134
+    ],
+    "exp": 250,
+    "hangupExp": 93750,
+    "hangupSoul": 770
+  },
+  {
+    "stage": 135,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 135,
+    "boss": [
+      100,
+      1,
+      1,
+      135
+    ],
+    "exp": 252,
+    "hangupExp": 94375,
+    "hangupSoul": 775
+  },
+  {
+    "stage": 136,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 136,
+    "boss": [
+      1,
+      10,
+      2,
+      136
+    ],
+    "exp": 254,
+    "hangupExp": 95000,
+    "hangupSoul": 780
+  },
+  {
+    "stage": 137,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 137,
+    "boss": [
+      2,
+      10,
+      2,
+      137
+    ],
+    "exp": 255,
+    "hangupExp": 95625,
+    "hangupSoul": 785
+  },
+  {
+    "stage": 138,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 138,
+    "boss": [
+      3,
+      10,
+      2,
+      138
+    ],
+    "exp": 257,
+    "hangupExp": 96250,
+    "hangupSoul": 790
+  },
+  {
+    "stage": 139,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 139,
+    "boss": [
+      2,
+      10,
+      2,
+      139
+    ],
+    "exp": 259,
+    "hangupExp": 96875,
+    "hangupSoul": 795
+  },
+  {
+    "stage": 140,
+    "count": 120,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 140,
+    "boss": [
+      100,
+      1,
+      1,
+      140
+    ],
+    "exp": 260,
+    "hangupExp": 97500,
+    "hangupSoul": 800
+  },
+  {
+    "stage": 141,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 141,
+    "boss": [
+      1,
+      10,
+      2,
+      141
+    ],
+    "exp": 262,
+    "hangupExp": 98125,
+    "hangupSoul": 805
+  },
+  {
+    "stage": 142,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 142,
+    "boss": [
+      2,
+      10,
+      2,
+      142
+    ],
+    "exp": 264,
+    "hangupExp": 98750,
+    "hangupSoul": 810
+  },
+  {
+    "stage": 143,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 143,
+    "boss": [
+      3,
+      10,
+      2,
+      143
+    ],
+    "exp": 265,
+    "hangupExp": 99375,
+    "hangupSoul": 815
+  },
+  {
+    "stage": 144,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 144,
+    "boss": [
+      3,
+      10,
+      2,
+      144
+    ],
+    "exp": 267,
+    "hangupExp": 100000,
+    "hangupSoul": 820
+  },
+  {
+    "stage": 145,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 145,
+    "boss": [
+      100,
+      1,
+      1,
+      145
+    ],
+    "exp": 269,
+    "hangupExp": 100625,
+    "hangupSoul": 825
+  },
+  {
+    "stage": 146,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 146,
+    "boss": [
+      1,
+      10,
+      2,
+      146
+    ],
+    "exp": 270,
+    "hangupExp": 101250,
+    "hangupSoul": 830
+  },
+  {
+    "stage": 147,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 147,
+    "boss": [
+      2,
+      10,
+      2,
+      147
+    ],
+    "exp": 272,
+    "hangupExp": 101875,
+    "hangupSoul": 835
+  },
+  {
+    "stage": 148,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 148,
+    "boss": [
+      3,
+      10,
+      2,
+      148
+    ],
+    "exp": 274,
+    "hangupExp": 102500,
+    "hangupSoul": 840
+  },
+  {
+    "stage": 149,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 149,
+    "boss": [
+      1,
+      10,
+      2,
+      149
+    ],
+    "exp": 275,
+    "hangupExp": 103125,
+    "hangupSoul": 845
+  },
+  {
+    "stage": 150,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 150,
+    "boss": [
+      100,
+      1,
+      1,
+      150
+    ],
+    "exp": 277,
+    "hangupExp": 103750,
+    "hangupSoul": 850
+  },
+  {
+    "stage": 151,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 151,
+    "boss": [
+      1,
+      10,
+      2,
+      151
+    ],
+    "exp": 279,
+    "hangupExp": 104375,
+    "hangupSoul": 855
+  },
+  {
+    "stage": 152,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 152,
+    "boss": [
+      2,
+      10,
+      2,
+      152
+    ],
+    "exp": 280,
+    "hangupExp": 105000,
+    "hangupSoul": 860
+  },
+  {
+    "stage": 153,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 153,
+    "boss": [
+      3,
+      10,
+      2,
+      153
+    ],
+    "exp": 282,
+    "hangupExp": 105625,
+    "hangupSoul": 865
+  },
+  {
+    "stage": 154,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 154,
+    "boss": [
+      2,
+      10,
+      2,
+      154
+    ],
+    "exp": 284,
+    "hangupExp": 106250,
+    "hangupSoul": 870
+  },
+  {
+    "stage": 155,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 155,
+    "boss": [
+      100,
+      1,
+      1,
+      155
+    ],
+    "exp": 285,
+    "hangupExp": 106875,
+    "hangupSoul": 875
+  },
+  {
+    "stage": 156,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 156,
+    "boss": [
+      1,
+      10,
+      2,
+      156
+    ],
+    "exp": 287,
+    "hangupExp": 107500,
+    "hangupSoul": 880
+  },
+  {
+    "stage": 157,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 157,
+    "boss": [
+      2,
+      10,
+      2,
+      157
+    ],
+    "exp": 289,
+    "hangupExp": 108125,
+    "hangupSoul": 885
+  },
+  {
+    "stage": 158,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 158,
+    "boss": [
+      3,
+      10,
+      2,
+      158
+    ],
+    "exp": 290,
+    "hangupExp": 108750,
+    "hangupSoul": 890
+  },
+  {
+    "stage": 159,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 159,
+    "boss": [
+      3,
+      10,
+      2,
+      159
+    ],
+    "exp": 292,
+    "hangupExp": 109375,
+    "hangupSoul": 895
+  },
+  {
+    "stage": 160,
+    "count": 130,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 160,
+    "boss": [
+      100,
+      1,
+      1,
+      160
+    ],
+    "exp": 294,
+    "hangupExp": 110000,
+    "hangupSoul": 900
+  },
+  {
+    "stage": 161,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 161,
+    "boss": [
+      1,
+      10,
+      2,
+      161
+    ],
+    "exp": 295,
+    "hangupExp": 110625,
+    "hangupSoul": 905
+  },
+  {
+    "stage": 162,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 162,
+    "boss": [
+      2,
+      10,
+      2,
+      162
+    ],
+    "exp": 297,
+    "hangupExp": 111250,
+    "hangupSoul": 910
+  },
+  {
+    "stage": 163,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 163,
+    "boss": [
+      3,
+      10,
+      2,
+      163
+    ],
+    "exp": 299,
+    "hangupExp": 111875,
+    "hangupSoul": 915
+  },
+  {
+    "stage": 164,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 164,
+    "boss": [
+      1,
+      10,
+      2,
+      164
+    ],
+    "exp": 300,
+    "hangupExp": 112500,
+    "hangupSoul": 920
+  },
+  {
+    "stage": 165,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 165,
+    "boss": [
+      100,
+      1,
+      1,
+      165
+    ],
+    "exp": 302,
+    "hangupExp": 113125,
+    "hangupSoul": 925
+  },
+  {
+    "stage": 166,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 166,
+    "boss": [
+      1,
+      10,
+      2,
+      166
+    ],
+    "exp": 304,
+    "hangupExp": 113750,
+    "hangupSoul": 930
+  },
+  {
+    "stage": 167,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 167,
+    "boss": [
+      2,
+      10,
+      2,
+      167
+    ],
+    "exp": 305,
+    "hangupExp": 114375,
+    "hangupSoul": 935
+  },
+  {
+    "stage": 168,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 168,
+    "boss": [
+      3,
+      10,
+      2,
+      168
+    ],
+    "exp": 307,
+    "hangupExp": 115000,
+    "hangupSoul": 940
+  },
+  {
+    "stage": 169,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 169,
+    "boss": [
+      2,
+      10,
+      2,
+      169
+    ],
+    "exp": 309,
+    "hangupExp": 115625,
+    "hangupSoul": 945
+  },
+  {
+    "stage": 170,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 170,
+    "boss": [
+      100,
+      1,
+      1,
+      170
+    ],
+    "exp": 310,
+    "hangupExp": 116250,
+    "hangupSoul": 950
+  },
+  {
+    "stage": 171,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 171,
+    "boss": [
+      1,
+      10,
+      2,
+      171
+    ],
+    "exp": 312,
+    "hangupExp": 116875,
+    "hangupSoul": 955
+  },
+  {
+    "stage": 172,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 172,
+    "boss": [
+      2,
+      10,
+      2,
+      172
+    ],
+    "exp": 314,
+    "hangupExp": 117500,
+    "hangupSoul": 960
+  },
+  {
+    "stage": 173,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 173,
+    "boss": [
+      3,
+      10,
+      2,
+      173
+    ],
+    "exp": 315,
+    "hangupExp": 118125,
+    "hangupSoul": 965
+  },
+  {
+    "stage": 174,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 174,
+    "boss": [
+      3,
+      10,
+      2,
+      174
+    ],
+    "exp": 317,
+    "hangupExp": 118750,
+    "hangupSoul": 970
+  },
+  {
+    "stage": 175,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 175,
+    "boss": [
+      100,
+      1,
+      1,
+      175
+    ],
+    "exp": 319,
+    "hangupExp": 119375,
+    "hangupSoul": 975
+  },
+  {
+    "stage": 176,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 176,
+    "boss": [
+      1,
+      10,
+      2,
+      176
+    ],
+    "exp": 320,
+    "hangupExp": 120000,
+    "hangupSoul": 980
+  },
+  {
+    "stage": 177,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 177,
+    "boss": [
+      2,
+      10,
+      2,
+      177
+    ],
+    "exp": 322,
+    "hangupExp": 120625,
+    "hangupSoul": 985
+  },
+  {
+    "stage": 178,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 178,
+    "boss": [
+      3,
+      10,
+      2,
+      178
+    ],
+    "exp": 324,
+    "hangupExp": 121250,
+    "hangupSoul": 990
+  },
+  {
+    "stage": 179,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 179,
+    "boss": [
+      1,
+      10,
+      2,
+      179
+    ],
+    "exp": 325,
+    "hangupExp": 121875,
+    "hangupSoul": 995
+  },
+  {
+    "stage": 180,
+    "count": 140,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 180,
+    "boss": [
+      100,
+      1,
+      1,
+      180
+    ],
+    "exp": 327,
+    "hangupExp": 122500,
+    "hangupSoul": 1000
+  },
+  {
+    "stage": 181,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 181,
+    "boss": [
+      1,
+      10,
+      2,
+      181
+    ],
+    "exp": 329,
+    "hangupExp": 123125,
+    "hangupSoul": 1005
+  },
+  {
+    "stage": 182,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 182,
+    "boss": [
+      2,
+      10,
+      2,
+      182
+    ],
+    "exp": 330,
+    "hangupExp": 123750,
+    "hangupSoul": 1010
+  },
+  {
+    "stage": 183,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 183,
+    "boss": [
+      3,
+      10,
+      2,
+      183
+    ],
+    "exp": 332,
+    "hangupExp": 124375,
+    "hangupSoul": 1015
+  },
+  {
+    "stage": 184,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 184,
+    "boss": [
+      2,
+      10,
+      2,
+      184
+    ],
+    "exp": 334,
+    "hangupExp": 125000,
+    "hangupSoul": 1020
+  },
+  {
+    "stage": 185,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 185,
+    "boss": [
+      100,
+      1,
+      1,
+      185
+    ],
+    "exp": 335,
+    "hangupExp": 125625,
+    "hangupSoul": 1025
+  },
+  {
+    "stage": 186,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 186,
+    "boss": [
+      1,
+      10,
+      2,
+      186
+    ],
+    "exp": 337,
+    "hangupExp": 126250,
+    "hangupSoul": 1030
+  },
+  {
+    "stage": 187,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 187,
+    "boss": [
+      2,
+      10,
+      2,
+      187
+    ],
+    "exp": 339,
+    "hangupExp": 126875,
+    "hangupSoul": 1035
+  },
+  {
+    "stage": 188,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 188,
+    "boss": [
+      3,
+      10,
+      2,
+      188
+    ],
+    "exp": 340,
+    "hangupExp": 127500,
+    "hangupSoul": 1040
+  },
+  {
+    "stage": 189,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 189,
+    "boss": [
+      3,
+      10,
+      2,
+      189
+    ],
+    "exp": 342,
+    "hangupExp": 128125,
+    "hangupSoul": 1045
+  },
+  {
+    "stage": 190,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 190,
+    "boss": [
+      100,
+      1,
+      1,
+      190
+    ],
+    "exp": 344,
+    "hangupExp": 128750,
+    "hangupSoul": 1050
+  },
+  {
+    "stage": 191,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 191,
+    "boss": [
+      1,
+      10,
+      2,
+      191
+    ],
+    "exp": 345,
+    "hangupExp": 129375,
+    "hangupSoul": 1055
+  },
+  {
+    "stage": 192,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 192,
+    "boss": [
+      2,
+      10,
+      2,
+      192
+    ],
+    "exp": 347,
+    "hangupExp": 130000,
+    "hangupSoul": 1060
+  },
+  {
+    "stage": 193,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 193,
+    "boss": [
+      3,
+      10,
+      2,
+      193
+    ],
+    "exp": 349,
+    "hangupExp": 130625,
+    "hangupSoul": 1065
+  },
+  {
+    "stage": 194,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 194,
+    "boss": [
+      1,
+      10,
+      2,
+      194
+    ],
+    "exp": 350,
+    "hangupExp": 131250,
+    "hangupSoul": 1070
+  },
+  {
+    "stage": 195,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 195,
+    "boss": [
+      100,
+      1,
+      1,
+      195
+    ],
+    "exp": 352,
+    "hangupExp": 131875,
+    "hangupSoul": 1075
+  },
+  {
+    "stage": 196,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 196,
+    "boss": [
+      1,
+      10,
+      2,
+      196
+    ],
+    "exp": 354,
+    "hangupExp": 132500,
+    "hangupSoul": 1080
+  },
+  {
+    "stage": 197,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 197,
+    "boss": [
+      2,
+      10,
+      2,
+      197
+    ],
+    "exp": 355,
+    "hangupExp": 133125,
+    "hangupSoul": 1085
+  },
+  {
+    "stage": 198,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 198,
+    "boss": [
+      3,
+      10,
+      2,
+      198
+    ],
+    "exp": 357,
+    "hangupExp": 133750,
+    "hangupSoul": 1090
+  },
+  {
+    "stage": 199,
+    "count": 150,
+    "wave": 10,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 199,
+    "boss": [
+      2,
+      10,
+      2,
+      199
+    ],
+    "exp": 359,
+    "hangupExp": 134375,
+    "hangupSoul": 1095
+  },
+  {
+    "stage": 200,
+    "count": 150,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 200,
+    "boss": [
+      100,
+      1,
+      1,
+      200
+    ],
+    "exp": 360,
+    "hangupExp": 135000,
+    "hangupSoul": 1100
+  },
+  {
+    "stage": 201,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 201,
+    "boss": [
+      1,
+      10,
+      2,
+      201
+    ],
+    "exp": 362,
+    "hangupExp": 135625,
+    "hangupSoul": 1105
+  },
+  {
+    "stage": 202,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 202,
+    "boss": [
+      2,
+      10,
+      2,
+      202
+    ],
+    "exp": 364,
+    "hangupExp": 136250,
+    "hangupSoul": 1110
+  },
+  {
+    "stage": 203,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 203,
+    "boss": [
+      3,
+      10,
+      2,
+      203
+    ],
+    "exp": 365,
+    "hangupExp": 136875,
+    "hangupSoul": 1115
+  },
+  {
+    "stage": 204,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 204,
+    "boss": [
+      1,
+      10,
+      2,
+      204
+    ],
+    "exp": 367,
+    "hangupExp": 137500,
+    "hangupSoul": 1120
+  },
+  {
+    "stage": 205,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 205,
+    "boss": [
+      100,
+      1,
+      1,
+      205
+    ],
+    "exp": 369,
+    "hangupExp": 138125,
+    "hangupSoul": 1125
+  },
+  {
+    "stage": 206,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 206,
+    "boss": [
+      1,
+      10,
+      2,
+      206
+    ],
+    "exp": 370,
+    "hangupExp": 138750,
+    "hangupSoul": 1130
+  },
+  {
+    "stage": 207,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 207,
+    "boss": [
+      2,
+      10,
+      2,
+      207
+    ],
+    "exp": 372,
+    "hangupExp": 139375,
+    "hangupSoul": 1135
+  },
+  {
+    "stage": 208,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 208,
+    "boss": [
+      3,
+      10,
+      2,
+      208
+    ],
+    "exp": 374,
+    "hangupExp": 140000,
+    "hangupSoul": 1140
+  },
+  {
+    "stage": 209,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 209,
+    "boss": [
+      2,
+      10,
+      2,
+      209
+    ],
+    "exp": 375,
+    "hangupExp": 140625,
+    "hangupSoul": 1145
+  },
+  {
+    "stage": 210,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 210,
+    "boss": [
+      100,
+      1,
+      1,
+      210
+    ],
+    "exp": 377,
+    "hangupExp": 141250,
+    "hangupSoul": 1150
+  },
+  {
+    "stage": 211,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 211,
+    "boss": [
+      1,
+      10,
+      2,
+      211
+    ],
+    "exp": 379,
+    "hangupExp": 141875,
+    "hangupSoul": 1155
+  },
+  {
+    "stage": 212,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 212,
+    "boss": [
+      2,
+      10,
+      2,
+      212
+    ],
+    "exp": 380,
+    "hangupExp": 142500,
+    "hangupSoul": 1160
+  },
+  {
+    "stage": 213,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 213,
+    "boss": [
+      3,
+      10,
+      2,
+      213
+    ],
+    "exp": 382,
+    "hangupExp": 143125,
+    "hangupSoul": 1165
+  },
+  {
+    "stage": 214,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 214,
+    "boss": [
+      3,
+      10,
+      2,
+      214
+    ],
+    "exp": 384,
+    "hangupExp": 143750,
+    "hangupSoul": 1170
+  },
+  {
+    "stage": 215,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 215,
+    "boss": [
+      100,
+      1,
+      1,
+      215
+    ],
+    "exp": 385,
+    "hangupExp": 144375,
+    "hangupSoul": 1175
+  },
+  {
+    "stage": 216,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 216,
+    "boss": [
+      1,
+      10,
+      2,
+      216
+    ],
+    "exp": 387,
+    "hangupExp": 145000,
+    "hangupSoul": 1180
+  },
+  {
+    "stage": 217,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 217,
+    "boss": [
+      2,
+      10,
+      2,
+      217
+    ],
+    "exp": 389,
+    "hangupExp": 145625,
+    "hangupSoul": 1185
+  },
+  {
+    "stage": 218,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 218,
+    "boss": [
+      3,
+      10,
+      2,
+      218
+    ],
+    "exp": 390,
+    "hangupExp": 146250,
+    "hangupSoul": 1190
+  },
+  {
+    "stage": 219,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 219,
+    "boss": [
+      1,
+      10,
+      2,
+      219
+    ],
+    "exp": 392,
+    "hangupExp": 146875,
+    "hangupSoul": 1195
+  },
+  {
+    "stage": 220,
+    "count": 160,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 220,
+    "boss": [
+      100,
+      1,
+      1,
+      220
+    ],
+    "exp": 394,
+    "hangupExp": 147500,
+    "hangupSoul": 1200
+  },
+  {
+    "stage": 221,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 221,
+    "boss": [
+      1,
+      10,
+      2,
+      221
+    ],
+    "exp": 395,
+    "hangupExp": 148125,
+    "hangupSoul": 1205
+  },
+  {
+    "stage": 222,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 222,
+    "boss": [
+      2,
+      10,
+      2,
+      222
+    ],
+    "exp": 397,
+    "hangupExp": 148750,
+    "hangupSoul": 1210
+  },
+  {
+    "stage": 223,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 223,
+    "boss": [
+      3,
+      10,
+      2,
+      223
+    ],
+    "exp": 399,
+    "hangupExp": 149375,
+    "hangupSoul": 1215
+  },
+  {
+    "stage": 224,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 224,
+    "boss": [
+      2,
+      10,
+      2,
+      224
+    ],
+    "exp": 400,
+    "hangupExp": 150000,
+    "hangupSoul": 1220
+  },
+  {
+    "stage": 225,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 225,
+    "boss": [
+      100,
+      1,
+      1,
+      225
+    ],
+    "exp": 402,
+    "hangupExp": 150625,
+    "hangupSoul": 1225
+  },
+  {
+    "stage": 226,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 226,
+    "boss": [
+      1,
+      10,
+      2,
+      226
+    ],
+    "exp": 404,
+    "hangupExp": 151250,
+    "hangupSoul": 1230
+  },
+  {
+    "stage": 227,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 227,
+    "boss": [
+      2,
+      10,
+      2,
+      227
+    ],
+    "exp": 405,
+    "hangupExp": 151875,
+    "hangupSoul": 1235
+  },
+  {
+    "stage": 228,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 228,
+    "boss": [
+      3,
+      10,
+      2,
+      228
+    ],
+    "exp": 407,
+    "hangupExp": 152500,
+    "hangupSoul": 1240
+  },
+  {
+    "stage": 229,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 229,
+    "boss": [
+      3,
+      10,
+      2,
+      229
+    ],
+    "exp": 409,
+    "hangupExp": 153125,
+    "hangupSoul": 1245
+  },
+  {
+    "stage": 230,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 230,
+    "boss": [
+      100,
+      1,
+      1,
+      230
+    ],
+    "exp": 410,
+    "hangupExp": 153750,
+    "hangupSoul": 1250
+  },
+  {
+    "stage": 231,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 231,
+    "boss": [
+      1,
+      10,
+      2,
+      231
+    ],
+    "exp": 412,
+    "hangupExp": 154375,
+    "hangupSoul": 1255
+  },
+  {
+    "stage": 232,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 232,
+    "boss": [
+      2,
+      10,
+      2,
+      232
+    ],
+    "exp": 414,
+    "hangupExp": 155000,
+    "hangupSoul": 1260
+  },
+  {
+    "stage": 233,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 233,
+    "boss": [
+      3,
+      10,
+      2,
+      233
+    ],
+    "exp": 415,
+    "hangupExp": 155625,
+    "hangupSoul": 1265
+  },
+  {
+    "stage": 234,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 234,
+    "boss": [
+      1,
+      10,
+      2,
+      234
+    ],
+    "exp": 417,
+    "hangupExp": 156250,
+    "hangupSoul": 1270
+  },
+  {
+    "stage": 235,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 235,
+    "boss": [
+      100,
+      1,
+      1,
+      235
+    ],
+    "exp": 419,
+    "hangupExp": 156875,
+    "hangupSoul": 1275
+  },
+  {
+    "stage": 236,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 236,
+    "boss": [
+      1,
+      10,
+      2,
+      236
+    ],
+    "exp": 420,
+    "hangupExp": 157500,
+    "hangupSoul": 1280
+  },
+  {
+    "stage": 237,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 237,
+    "boss": [
+      2,
+      10,
+      2,
+      237
+    ],
+    "exp": 422,
+    "hangupExp": 158125,
+    "hangupSoul": 1285
+  },
+  {
+    "stage": 238,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 238,
+    "boss": [
+      3,
+      10,
+      2,
+      238
+    ],
+    "exp": 424,
+    "hangupExp": 158750,
+    "hangupSoul": 1290
+  },
+  {
+    "stage": 239,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 239,
+    "boss": [
+      2,
+      10,
+      2,
+      239
+    ],
+    "exp": 425,
+    "hangupExp": 159375,
+    "hangupSoul": 1295
+  },
+  {
+    "stage": 240,
+    "count": 170,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 240,
+    "boss": [
+      100,
+      1,
+      1,
+      240
+    ],
+    "exp": 427,
+    "hangupExp": 160000,
+    "hangupSoul": 1300
+  },
+  {
+    "stage": 241,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 241,
+    "boss": [
+      1,
+      10,
+      2,
+      241
+    ],
+    "exp": 429,
+    "hangupExp": 160625,
+    "hangupSoul": 1305
+  },
+  {
+    "stage": 242,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 242,
+    "boss": [
+      2,
+      10,
+      2,
+      242
+    ],
+    "exp": 430,
+    "hangupExp": 161250,
+    "hangupSoul": 1310
+  },
+  {
+    "stage": 243,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 243,
+    "boss": [
+      3,
+      10,
+      2,
+      243
+    ],
+    "exp": 432,
+    "hangupExp": 161875,
+    "hangupSoul": 1315
+  },
+  {
+    "stage": 244,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 244,
+    "boss": [
+      3,
+      10,
+      2,
+      244
+    ],
+    "exp": 434,
+    "hangupExp": 162500,
+    "hangupSoul": 1320
+  },
+  {
+    "stage": 245,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 245,
+    "boss": [
+      100,
+      1,
+      1,
+      245
+    ],
+    "exp": 435,
+    "hangupExp": 163125,
+    "hangupSoul": 1325
+  },
+  {
+    "stage": 246,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 246,
+    "boss": [
+      1,
+      10,
+      2,
+      246
+    ],
+    "exp": 437,
+    "hangupExp": 163750,
+    "hangupSoul": 1330
+  },
+  {
+    "stage": 247,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 247,
+    "boss": [
+      2,
+      10,
+      2,
+      247
+    ],
+    "exp": 439,
+    "hangupExp": 164375,
+    "hangupSoul": 1335
+  },
+  {
+    "stage": 248,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 248,
+    "boss": [
+      3,
+      10,
+      2,
+      248
+    ],
+    "exp": 440,
+    "hangupExp": 165000,
+    "hangupSoul": 1340
+  },
+  {
+    "stage": 249,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 249,
+    "boss": [
+      1,
+      10,
+      2,
+      249
+    ],
+    "exp": 442,
+    "hangupExp": 165625,
+    "hangupSoul": 1345
+  },
+  {
+    "stage": 250,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 250,
+    "boss": [
+      100,
+      1,
+      1,
+      250
+    ],
+    "exp": 444,
+    "hangupExp": 166250,
+    "hangupSoul": 1350
+  },
+  {
+    "stage": 251,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 251,
+    "boss": [
+      1,
+      10,
+      2,
+      251
+    ],
+    "exp": 445,
+    "hangupExp": 166875,
+    "hangupSoul": 1355
+  },
+  {
+    "stage": 252,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 252,
+    "boss": [
+      2,
+      10,
+      2,
+      252
+    ],
+    "exp": 447,
+    "hangupExp": 167500,
+    "hangupSoul": 1360
+  },
+  {
+    "stage": 253,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 253,
+    "boss": [
+      3,
+      10,
+      2,
+      253
+    ],
+    "exp": 449,
+    "hangupExp": 168125,
+    "hangupSoul": 1365
+  },
+  {
+    "stage": 254,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 254,
+    "boss": [
+      2,
+      10,
+      2,
+      254
+    ],
+    "exp": 450,
+    "hangupExp": 168750,
+    "hangupSoul": 1370
+  },
+  {
+    "stage": 255,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 255,
+    "boss": [
+      100,
+      1,
+      1,
+      255
+    ],
+    "exp": 452,
+    "hangupExp": 169375,
+    "hangupSoul": 1375
+  },
+  {
+    "stage": 256,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 256,
+    "boss": [
+      1,
+      10,
+      2,
+      256
+    ],
+    "exp": 454,
+    "hangupExp": 170000,
+    "hangupSoul": 1380
+  },
+  {
+    "stage": 257,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 257,
+    "boss": [
+      2,
+      10,
+      2,
+      257
+    ],
+    "exp": 455,
+    "hangupExp": 170625,
+    "hangupSoul": 1385
+  },
+  {
+    "stage": 258,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 258,
+    "boss": [
+      3,
+      10,
+      2,
+      258
+    ],
+    "exp": 457,
+    "hangupExp": 171250,
+    "hangupSoul": 1390
+  },
+  {
+    "stage": 259,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 259,
+    "boss": [
+      3,
+      10,
+      2,
+      259
+    ],
+    "exp": 459,
+    "hangupExp": 171875,
+    "hangupSoul": 1395
+  },
+  {
+    "stage": 260,
+    "count": 180,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 260,
+    "boss": [
+      100,
+      1,
+      1,
+      260
+    ],
+    "exp": 460,
+    "hangupExp": 172500,
+    "hangupSoul": 1400
+  },
+  {
+    "stage": 261,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 261,
+    "boss": [
+      1,
+      10,
+      2,
+      261
+    ],
+    "exp": 462,
+    "hangupExp": 173125,
+    "hangupSoul": 1405
+  },
+  {
+    "stage": 262,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 262,
+    "boss": [
+      2,
+      10,
+      2,
+      262
+    ],
+    "exp": 464,
+    "hangupExp": 173750,
+    "hangupSoul": 1410
+  },
+  {
+    "stage": 263,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 263,
+    "boss": [
+      3,
+      10,
+      2,
+      263
+    ],
+    "exp": 465,
+    "hangupExp": 174375,
+    "hangupSoul": 1415
+  },
+  {
+    "stage": 264,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 264,
+    "boss": [
+      1,
+      10,
+      2,
+      264
+    ],
+    "exp": 467,
+    "hangupExp": 175000,
+    "hangupSoul": 1420
+  },
+  {
+    "stage": 265,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 265,
+    "boss": [
+      100,
+      1,
+      1,
+      265
+    ],
+    "exp": 469,
+    "hangupExp": 175625,
+    "hangupSoul": 1425
+  },
+  {
+    "stage": 266,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 266,
+    "boss": [
+      1,
+      10,
+      2,
+      266
+    ],
+    "exp": 470,
+    "hangupExp": 176250,
+    "hangupSoul": 1430
+  },
+  {
+    "stage": 267,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 267,
+    "boss": [
+      2,
+      10,
+      2,
+      267
+    ],
+    "exp": 472,
+    "hangupExp": 176875,
+    "hangupSoul": 1435
+  },
+  {
+    "stage": 268,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 268,
+    "boss": [
+      3,
+      10,
+      2,
+      268
+    ],
+    "exp": 474,
+    "hangupExp": 177500,
+    "hangupSoul": 1440
+  },
+  {
+    "stage": 269,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 269,
+    "boss": [
+      2,
+      10,
+      2,
+      269
+    ],
+    "exp": 475,
+    "hangupExp": 178125,
+    "hangupSoul": 1445
+  },
+  {
+    "stage": 270,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 270,
+    "boss": [
+      100,
+      1,
+      1,
+      270
+    ],
+    "exp": 477,
+    "hangupExp": 178750,
+    "hangupSoul": 1450
+  },
+  {
+    "stage": 271,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 271,
+    "boss": [
+      1,
+      10,
+      2,
+      271
+    ],
+    "exp": 479,
+    "hangupExp": 179375,
+    "hangupSoul": 1455
+  },
+  {
+    "stage": 272,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 272,
+    "boss": [
+      2,
+      10,
+      2,
+      272
+    ],
+    "exp": 480,
+    "hangupExp": 180000,
+    "hangupSoul": 1460
+  },
+  {
+    "stage": 273,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 273,
+    "boss": [
+      3,
+      10,
+      2,
+      273
+    ],
+    "exp": 482,
+    "hangupExp": 180625,
+    "hangupSoul": 1465
+  },
+  {
+    "stage": 274,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 274,
+    "boss": [
+      3,
+      10,
+      2,
+      274
+    ],
+    "exp": 484,
+    "hangupExp": 181250,
+    "hangupSoul": 1470
+  },
+  {
+    "stage": 275,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 275,
+    "boss": [
+      100,
+      1,
+      1,
+      275
+    ],
+    "exp": 485,
+    "hangupExp": 181875,
+    "hangupSoul": 1475
+  },
+  {
+    "stage": 276,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 276,
+    "boss": [
+      1,
+      10,
+      2,
+      276
+    ],
+    "exp": 487,
+    "hangupExp": 182500,
+    "hangupSoul": 1480
+  },
+  {
+    "stage": 277,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 277,
+    "boss": [
+      2,
+      10,
+      2,
+      277
+    ],
+    "exp": 489,
+    "hangupExp": 183125,
+    "hangupSoul": 1485
+  },
+  {
+    "stage": 278,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 278,
+    "boss": [
+      3,
+      10,
+      2,
+      278
+    ],
+    "exp": 490,
+    "hangupExp": 183750,
+    "hangupSoul": 1490
+  },
+  {
+    "stage": 279,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 279,
+    "boss": [
+      1,
+      10,
+      2,
+      279
+    ],
+    "exp": 492,
+    "hangupExp": 184375,
+    "hangupSoul": 1495
+  },
+  {
+    "stage": 280,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 280,
+    "boss": [
+      100,
+      1,
+      1,
+      280
+    ],
+    "exp": 494,
+    "hangupExp": 185000,
+    "hangupSoul": 1500
+  },
+  {
+    "stage": 281,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 281,
+    "boss": [
+      1,
+      10,
+      2,
+      281
+    ],
+    "exp": 495,
+    "hangupExp": 185625,
+    "hangupSoul": 1505
+  },
+  {
+    "stage": 282,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 282,
+    "boss": [
+      2,
+      10,
+      2,
+      282
+    ],
+    "exp": 497,
+    "hangupExp": 186250,
+    "hangupSoul": 1510
+  },
+  {
+    "stage": 283,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 283,
+    "boss": [
+      3,
+      10,
+      2,
+      283
+    ],
+    "exp": 499,
+    "hangupExp": 186875,
+    "hangupSoul": 1515
+  },
+  {
+    "stage": 284,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 284,
+    "boss": [
+      2,
+      10,
+      2,
+      284
+    ],
+    "exp": 500,
+    "hangupExp": 187500,
+    "hangupSoul": 1520
+  },
+  {
+    "stage": 285,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 285,
+    "boss": [
+      100,
+      1,
+      1,
+      285
+    ],
+    "exp": 502,
+    "hangupExp": 188125,
+    "hangupSoul": 1525
+  },
+  {
+    "stage": 286,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 286,
+    "boss": [
+      1,
+      10,
+      2,
+      286
+    ],
+    "exp": 504,
+    "hangupExp": 188750,
+    "hangupSoul": 1530
+  },
+  {
+    "stage": 287,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 287,
+    "boss": [
+      2,
+      10,
+      2,
+      287
+    ],
+    "exp": 505,
+    "hangupExp": 189375,
+    "hangupSoul": 1535
+  },
+  {
+    "stage": 288,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 288,
+    "boss": [
+      3,
+      10,
+      2,
+      288
+    ],
+    "exp": 507,
+    "hangupExp": 190000,
+    "hangupSoul": 1540
+  },
+  {
+    "stage": 289,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 289,
+    "boss": [
+      3,
+      10,
+      2,
+      289
+    ],
+    "exp": 509,
+    "hangupExp": 190625,
+    "hangupSoul": 1545
+  },
+  {
+    "stage": 290,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 290,
+    "boss": [
+      100,
+      1,
+      1,
+      290
+    ],
+    "exp": 510,
+    "hangupExp": 191250,
+    "hangupSoul": 1550
+  },
+  {
+    "stage": 291,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 291,
+    "boss": [
+      1,
+      10,
+      2,
+      291
+    ],
+    "exp": 512,
+    "hangupExp": 191875,
+    "hangupSoul": 1555
+  },
+  {
+    "stage": 292,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 292,
+    "boss": [
+      2,
+      10,
+      2,
+      292
+    ],
+    "exp": 514,
+    "hangupExp": 192500,
+    "hangupSoul": 1560
+  },
+  {
+    "stage": 293,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 293,
+    "boss": [
+      3,
+      10,
+      2,
+      293
+    ],
+    "exp": 515,
+    "hangupExp": 193125,
+    "hangupSoul": 1565
+  },
+  {
+    "stage": 294,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 294,
+    "boss": [
+      1,
+      10,
+      2,
+      294
+    ],
+    "exp": 517,
+    "hangupExp": 193750,
+    "hangupSoul": 1570
+  },
+  {
+    "stage": 295,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 295,
+    "boss": [
+      100,
+      1,
+      1,
+      295
+    ],
+    "exp": 519,
+    "hangupExp": 194375,
+    "hangupSoul": 1575
+  },
+  {
+    "stage": 296,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 296,
+    "boss": [
+      1,
+      10,
+      2,
+      296
+    ],
+    "exp": 520,
+    "hangupExp": 195000,
+    "hangupSoul": 1580
+  },
+  {
+    "stage": 297,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 297,
+    "boss": [
+      2,
+      10,
+      2,
+      297
+    ],
+    "exp": 522,
+    "hangupExp": 195625,
+    "hangupSoul": 1585
+  },
+  {
+    "stage": 298,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 298,
+    "boss": [
+      3,
+      10,
+      2,
+      298
+    ],
+    "exp": 524,
+    "hangupExp": 196250,
+    "hangupSoul": 1590
+  },
+  {
+    "stage": 299,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 299,
+    "boss": [
+      2,
+      10,
+      2,
+      299
+    ],
+    "exp": 525,
+    "hangupExp": 196875,
+    "hangupSoul": 1595
+  },
+  {
+    "stage": 300,
+    "count": 190,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 300,
+    "boss": [
+      100,
+      1,
+      1,
+      300
+    ],
+    "exp": 527,
+    "hangupExp": 197500,
+    "hangupSoul": 1600
+  },
+  {
+    "stage": 301,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 301,
+    "boss": [
+      1,
+      10,
+      2,
+      301
+    ],
+    "exp": 529,
+    "hangupExp": 198125,
+    "hangupSoul": 1605
+  },
+  {
+    "stage": 302,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 302,
+    "boss": [
+      2,
+      10,
+      2,
+      302
+    ],
+    "exp": 530,
+    "hangupExp": 198750,
+    "hangupSoul": 1610
+  },
+  {
+    "stage": 303,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 303,
+    "boss": [
+      3,
+      10,
+      2,
+      303
+    ],
+    "exp": 532,
+    "hangupExp": 199375,
+    "hangupSoul": 1615
+  },
+  {
+    "stage": 304,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 304,
+    "boss": [
+      1,
+      10,
+      2,
+      304
+    ],
+    "exp": 534,
+    "hangupExp": 200000,
+    "hangupSoul": 1620
+  },
+  {
+    "stage": 305,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 305,
+    "boss": [
+      100,
+      1,
+      1,
+      305
+    ],
+    "exp": 535,
+    "hangupExp": 200625,
+    "hangupSoul": 1625
+  },
+  {
+    "stage": 306,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 306,
+    "boss": [
+      1,
+      10,
+      2,
+      306
+    ],
+    "exp": 537,
+    "hangupExp": 201250,
+    "hangupSoul": 1630
+  },
+  {
+    "stage": 307,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 307,
+    "boss": [
+      2,
+      10,
+      2,
+      307
+    ],
+    "exp": 539,
+    "hangupExp": 201875,
+    "hangupSoul": 1635
+  },
+  {
+    "stage": 308,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 308,
+    "boss": [
+      3,
+      10,
+      2,
+      308
+    ],
+    "exp": 540,
+    "hangupExp": 202500,
+    "hangupSoul": 1640
+  },
+  {
+    "stage": 309,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 309,
+    "boss": [
+      2,
+      10,
+      2,
+      309
+    ],
+    "exp": 542,
+    "hangupExp": 203125,
+    "hangupSoul": 1645
+  },
+  {
+    "stage": 310,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 310,
+    "boss": [
+      100,
+      1,
+      1,
+      310
+    ],
+    "exp": 544,
+    "hangupExp": 203750,
+    "hangupSoul": 1650
+  },
+  {
+    "stage": 311,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 311,
+    "boss": [
+      1,
+      10,
+      2,
+      311
+    ],
+    "exp": 545,
+    "hangupExp": 204375,
+    "hangupSoul": 1655
+  },
+  {
+    "stage": 312,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 312,
+    "boss": [
+      2,
+      10,
+      2,
+      312
+    ],
+    "exp": 547,
+    "hangupExp": 205000,
+    "hangupSoul": 1660
+  },
+  {
+    "stage": 313,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 313,
+    "boss": [
+      3,
+      10,
+      2,
+      313
+    ],
+    "exp": 549,
+    "hangupExp": 205625,
+    "hangupSoul": 1665
+  },
+  {
+    "stage": 314,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 314,
+    "boss": [
+      3,
+      10,
+      2,
+      314
+    ],
+    "exp": 550,
+    "hangupExp": 206250,
+    "hangupSoul": 1670
+  },
+  {
+    "stage": 315,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 315,
+    "boss": [
+      100,
+      1,
+      1,
+      315
+    ],
+    "exp": 552,
+    "hangupExp": 206875,
+    "hangupSoul": 1675
+  },
+  {
+    "stage": 316,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 316,
+    "boss": [
+      1,
+      10,
+      2,
+      316
+    ],
+    "exp": 554,
+    "hangupExp": 207500,
+    "hangupSoul": 1680
+  },
+  {
+    "stage": 317,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 317,
+    "boss": [
+      2,
+      10,
+      2,
+      317
+    ],
+    "exp": 555,
+    "hangupExp": 208125,
+    "hangupSoul": 1685
+  },
+  {
+    "stage": 318,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 318,
+    "boss": [
+      3,
+      10,
+      2,
+      318
+    ],
+    "exp": 557,
+    "hangupExp": 208750,
+    "hangupSoul": 1690
+  },
+  {
+    "stage": 319,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 319,
+    "boss": [
+      1,
+      10,
+      2,
+      319
+    ],
+    "exp": 559,
+    "hangupExp": 209375,
+    "hangupSoul": 1695
+  },
+  {
+    "stage": 320,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 320,
+    "boss": [
+      100,
+      1,
+      1,
+      320
+    ],
+    "exp": 560,
+    "hangupExp": 210000,
+    "hangupSoul": 1700
+  },
+  {
+    "stage": 321,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 321,
+    "boss": [
+      1,
+      10,
+      2,
+      321
+    ],
+    "exp": 562,
+    "hangupExp": 210625,
+    "hangupSoul": 1705
+  },
+  {
+    "stage": 322,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 322,
+    "boss": [
+      2,
+      10,
+      2,
+      322
+    ],
+    "exp": 564,
+    "hangupExp": 211250,
+    "hangupSoul": 1710
+  },
+  {
+    "stage": 323,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 323,
+    "boss": [
+      3,
+      10,
+      2,
+      323
+    ],
+    "exp": 565,
+    "hangupExp": 211875,
+    "hangupSoul": 1715
+  },
+  {
+    "stage": 324,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 324,
+    "boss": [
+      2,
+      10,
+      2,
+      324
+    ],
+    "exp": 567,
+    "hangupExp": 212500,
+    "hangupSoul": 1720
+  },
+  {
+    "stage": 325,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 325,
+    "boss": [
+      100,
+      1,
+      1,
+      325
+    ],
+    "exp": 569,
+    "hangupExp": 213125,
+    "hangupSoul": 1725
+  },
+  {
+    "stage": 326,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 326,
+    "boss": [
+      1,
+      10,
+      2,
+      326
+    ],
+    "exp": 570,
+    "hangupExp": 213750,
+    "hangupSoul": 1730
+  },
+  {
+    "stage": 327,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 327,
+    "boss": [
+      2,
+      10,
+      2,
+      327
+    ],
+    "exp": 572,
+    "hangupExp": 214375,
+    "hangupSoul": 1735
+  },
+  {
+    "stage": 328,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 328,
+    "boss": [
+      3,
+      10,
+      2,
+      328
+    ],
+    "exp": 574,
+    "hangupExp": 215000,
+    "hangupSoul": 1740
+  },
+  {
+    "stage": 329,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 329,
+    "boss": [
+      3,
+      10,
+      2,
+      329
+    ],
+    "exp": 575,
+    "hangupExp": 215625,
+    "hangupSoul": 1745
+  },
+  {
+    "stage": 330,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 330,
+    "boss": [
+      100,
+      1,
+      1,
+      330
+    ],
+    "exp": 577,
+    "hangupExp": 216250,
+    "hangupSoul": 1750
+  },
+  {
+    "stage": 331,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 331,
+    "boss": [
+      1,
+      10,
+      2,
+      331
+    ],
+    "exp": 579,
+    "hangupExp": 216875,
+    "hangupSoul": 1755
+  },
+  {
+    "stage": 332,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 332,
+    "boss": [
+      2,
+      10,
+      2,
+      332
+    ],
+    "exp": 580,
+    "hangupExp": 217500,
+    "hangupSoul": 1760
+  },
+  {
+    "stage": 333,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 333,
+    "boss": [
+      3,
+      10,
+      2,
+      333
+    ],
+    "exp": 582,
+    "hangupExp": 218125,
+    "hangupSoul": 1765
+  },
+  {
+    "stage": 334,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 334,
+    "boss": [
+      1,
+      10,
+      2,
+      334
+    ],
+    "exp": 584,
+    "hangupExp": 218750,
+    "hangupSoul": 1770
+  },
+  {
+    "stage": 335,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 335,
+    "boss": [
+      100,
+      1,
+      1,
+      335
+    ],
+    "exp": 585,
+    "hangupExp": 219375,
+    "hangupSoul": 1775
+  },
+  {
+    "stage": 336,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 336,
+    "boss": [
+      1,
+      10,
+      2,
+      336
+    ],
+    "exp": 587,
+    "hangupExp": 220000,
+    "hangupSoul": 1780
+  },
+  {
+    "stage": 337,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 337,
+    "boss": [
+      2,
+      10,
+      2,
+      337
+    ],
+    "exp": 589,
+    "hangupExp": 220625,
+    "hangupSoul": 1785
+  },
+  {
+    "stage": 338,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 338,
+    "boss": [
+      3,
+      10,
+      2,
+      338
+    ],
+    "exp": 590,
+    "hangupExp": 221250,
+    "hangupSoul": 1790
+  },
+  {
+    "stage": 339,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 339,
+    "boss": [
+      2,
+      10,
+      2,
+      339
+    ],
+    "exp": 592,
+    "hangupExp": 221875,
+    "hangupSoul": 1795
+  },
+  {
+    "stage": 340,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 340,
+    "boss": [
+      100,
+      1,
+      1,
+      340
+    ],
+    "exp": 594,
+    "hangupExp": 222500,
+    "hangupSoul": 1800
+  },
+  {
+    "stage": 341,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 341,
+    "boss": [
+      1,
+      10,
+      2,
+      341
+    ],
+    "exp": 595,
+    "hangupExp": 223125,
+    "hangupSoul": 1805
+  },
+  {
+    "stage": 342,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 342,
+    "boss": [
+      2,
+      10,
+      2,
+      342
+    ],
+    "exp": 597,
+    "hangupExp": 223750,
+    "hangupSoul": 1810
+  },
+  {
+    "stage": 343,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 343,
+    "boss": [
+      3,
+      10,
+      2,
+      343
+    ],
+    "exp": 599,
+    "hangupExp": 224375,
+    "hangupSoul": 1815
+  },
+  {
+    "stage": 344,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 344,
+    "boss": [
+      3,
+      10,
+      2,
+      344
+    ],
+    "exp": 600,
+    "hangupExp": 225000,
+    "hangupSoul": 1820
+  },
+  {
+    "stage": 345,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 345,
+    "boss": [
+      100,
+      1,
+      1,
+      345
+    ],
+    "exp": 602,
+    "hangupExp": 225625,
+    "hangupSoul": 1825
+  },
+  {
+    "stage": 346,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 346,
+    "boss": [
+      1,
+      10,
+      2,
+      346
+    ],
+    "exp": 604,
+    "hangupExp": 226250,
+    "hangupSoul": 1830
+  },
+  {
+    "stage": 347,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 347,
+    "boss": [
+      2,
+      10,
+      2,
+      347
+    ],
+    "exp": 605,
+    "hangupExp": 226875,
+    "hangupSoul": 1835
+  },
+  {
+    "stage": 348,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 348,
+    "boss": [
+      3,
+      10,
+      2,
+      348
+    ],
+    "exp": 607,
+    "hangupExp": 227500,
+    "hangupSoul": 1840
+  },
+  {
+    "stage": 349,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 349,
+    "boss": [
+      1,
+      10,
+      2,
+      349
+    ],
+    "exp": 609,
+    "hangupExp": 228125,
+    "hangupSoul": 1845
+  },
+  {
+    "stage": 350,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 350,
+    "boss": [
+      100,
+      1,
+      1,
+      350
+    ],
+    "exp": 610,
+    "hangupExp": 228750,
+    "hangupSoul": 1850
+  },
+  {
+    "stage": 351,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 351,
+    "boss": [
+      1,
+      10,
+      2,
+      351
+    ],
+    "exp": 612,
+    "hangupExp": 229375,
+    "hangupSoul": 1855
+  },
+  {
+    "stage": 352,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 352,
+    "boss": [
+      2,
+      10,
+      2,
+      352
+    ],
+    "exp": 614,
+    "hangupExp": 230000,
+    "hangupSoul": 1860
+  },
+  {
+    "stage": 353,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 353,
+    "boss": [
+      3,
+      10,
+      2,
+      353
+    ],
+    "exp": 615,
+    "hangupExp": 230625,
+    "hangupSoul": 1865
+  },
+  {
+    "stage": 354,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 354,
+    "boss": [
+      2,
+      10,
+      2,
+      354
+    ],
+    "exp": 617,
+    "hangupExp": 231250,
+    "hangupSoul": 1870
+  },
+  {
+    "stage": 355,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 355,
+    "boss": [
+      100,
+      1,
+      1,
+      355
+    ],
+    "exp": 619,
+    "hangupExp": 231875,
+    "hangupSoul": 1875
+  },
+  {
+    "stage": 356,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 356,
+    "boss": [
+      1,
+      10,
+      2,
+      356
+    ],
+    "exp": 620,
+    "hangupExp": 232500,
+    "hangupSoul": 1880
+  },
+  {
+    "stage": 357,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 357,
+    "boss": [
+      2,
+      10,
+      2,
+      357
+    ],
+    "exp": 622,
+    "hangupExp": 233125,
+    "hangupSoul": 1885
+  },
+  {
+    "stage": 358,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 358,
+    "boss": [
+      3,
+      10,
+      2,
+      358
+    ],
+    "exp": 624,
+    "hangupExp": 233750,
+    "hangupSoul": 1890
+  },
+  {
+    "stage": 359,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 359,
+    "boss": [
+      3,
+      10,
+      2,
+      359
+    ],
+    "exp": 625,
+    "hangupExp": 234375,
+    "hangupSoul": 1895
+  },
+  {
+    "stage": 360,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 360,
+    "boss": [
+      100,
+      1,
+      1,
+      360
+    ],
+    "exp": 627,
+    "hangupExp": 235000,
+    "hangupSoul": 1900
+  },
+  {
+    "stage": 361,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 361,
+    "boss": [
+      1,
+      10,
+      2,
+      361
+    ],
+    "exp": 629,
+    "hangupExp": 235625,
+    "hangupSoul": 1905
+  },
+  {
+    "stage": 362,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 362,
+    "boss": [
+      2,
+      10,
+      2,
+      362
+    ],
+    "exp": 630,
+    "hangupExp": 236250,
+    "hangupSoul": 1910
+  },
+  {
+    "stage": 363,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 363,
+    "boss": [
+      3,
+      10,
+      2,
+      363
+    ],
+    "exp": 632,
+    "hangupExp": 236875,
+    "hangupSoul": 1915
+  },
+  {
+    "stage": 364,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 364,
+    "boss": [
+      1,
+      10,
+      2,
+      364
+    ],
+    "exp": 634,
+    "hangupExp": 237500,
+    "hangupSoul": 1920
+  },
+  {
+    "stage": 365,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 365,
+    "boss": [
+      100,
+      1,
+      1,
+      365
+    ],
+    "exp": 635,
+    "hangupExp": 238125,
+    "hangupSoul": 1925
+  },
+  {
+    "stage": 366,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 366,
+    "boss": [
+      1,
+      10,
+      2,
+      366
+    ],
+    "exp": 637,
+    "hangupExp": 238750,
+    "hangupSoul": 1930
+  },
+  {
+    "stage": 367,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 367,
+    "boss": [
+      2,
+      10,
+      2,
+      367
+    ],
+    "exp": 639,
+    "hangupExp": 239375,
+    "hangupSoul": 1935
+  },
+  {
+    "stage": 368,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 368,
+    "boss": [
+      3,
+      10,
+      2,
+      368
+    ],
+    "exp": 640,
+    "hangupExp": 240000,
+    "hangupSoul": 1940
+  },
+  {
+    "stage": 369,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 369,
+    "boss": [
+      2,
+      10,
+      2,
+      369
+    ],
+    "exp": 642,
+    "hangupExp": 240625,
+    "hangupSoul": 1945
+  },
+  {
+    "stage": 370,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 370,
+    "boss": [
+      100,
+      1,
+      1,
+      370
+    ],
+    "exp": 644,
+    "hangupExp": 241250,
+    "hangupSoul": 1950
+  },
+  {
+    "stage": 371,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 371,
+    "boss": [
+      1,
+      10,
+      2,
+      371
+    ],
+    "exp": 645,
+    "hangupExp": 241875,
+    "hangupSoul": 1955
+  },
+  {
+    "stage": 372,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 372,
+    "boss": [
+      2,
+      10,
+      2,
+      372
+    ],
+    "exp": 647,
+    "hangupExp": 242500,
+    "hangupSoul": 1960
+  },
+  {
+    "stage": 373,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 373,
+    "boss": [
+      3,
+      10,
+      2,
+      373
+    ],
+    "exp": 649,
+    "hangupExp": 243125,
+    "hangupSoul": 1965
+  },
+  {
+    "stage": 374,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 374,
+    "boss": [
+      3,
+      10,
+      2,
+      374
+    ],
+    "exp": 650,
+    "hangupExp": 243750,
+    "hangupSoul": 1970
+  },
+  {
+    "stage": 375,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 375,
+    "boss": [
+      100,
+      1,
+      1,
+      375
+    ],
+    "exp": 652,
+    "hangupExp": 244375,
+    "hangupSoul": 1975
+  },
+  {
+    "stage": 376,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 376,
+    "boss": [
+      1,
+      10,
+      2,
+      376
+    ],
+    "exp": 654,
+    "hangupExp": 245000,
+    "hangupSoul": 1980
+  },
+  {
+    "stage": 377,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 377,
+    "boss": [
+      2,
+      10,
+      2,
+      377
+    ],
+    "exp": 655,
+    "hangupExp": 245625,
+    "hangupSoul": 1985
+  },
+  {
+    "stage": 378,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 378,
+    "boss": [
+      3,
+      10,
+      2,
+      378
+    ],
+    "exp": 657,
+    "hangupExp": 246250,
+    "hangupSoul": 1990
+  },
+  {
+    "stage": 379,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 379,
+    "boss": [
+      1,
+      10,
+      2,
+      379
+    ],
+    "exp": 659,
+    "hangupExp": 246875,
+    "hangupSoul": 1995
+  },
+  {
+    "stage": 380,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 380,
+    "boss": [
+      100,
+      1,
+      1,
+      380
+    ],
+    "exp": 660,
+    "hangupExp": 247500,
+    "hangupSoul": 2000
+  },
+  {
+    "stage": 381,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 381,
+    "boss": [
+      1,
+      10,
+      2,
+      381
+    ],
+    "exp": 662,
+    "hangupExp": 248125,
+    "hangupSoul": 2005
+  },
+  {
+    "stage": 382,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 382,
+    "boss": [
+      2,
+      10,
+      2,
+      382
+    ],
+    "exp": 664,
+    "hangupExp": 248750,
+    "hangupSoul": 2010
+  },
+  {
+    "stage": 383,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 383,
+    "boss": [
+      3,
+      10,
+      2,
+      383
+    ],
+    "exp": 665,
+    "hangupExp": 249375,
+    "hangupSoul": 2015
+  },
+  {
+    "stage": 384,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 384,
+    "boss": [
+      2,
+      10,
+      2,
+      384
+    ],
+    "exp": 667,
+    "hangupExp": 250000,
+    "hangupSoul": 2020
+  },
+  {
+    "stage": 385,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 385,
+    "boss": [
+      100,
+      1,
+      1,
+      385
+    ],
+    "exp": 669,
+    "hangupExp": 250625,
+    "hangupSoul": 2025
+  },
+  {
+    "stage": 386,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 386,
+    "boss": [
+      1,
+      10,
+      2,
+      386
+    ],
+    "exp": 670,
+    "hangupExp": 251250,
+    "hangupSoul": 2030
+  },
+  {
+    "stage": 387,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 387,
+    "boss": [
+      2,
+      10,
+      2,
+      387
+    ],
+    "exp": 672,
+    "hangupExp": 251875,
+    "hangupSoul": 2035
+  },
+  {
+    "stage": 388,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 388,
+    "boss": [
+      3,
+      10,
+      2,
+      388
+    ],
+    "exp": 674,
+    "hangupExp": 252500,
+    "hangupSoul": 2040
+  },
+  {
+    "stage": 389,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 389,
+    "boss": [
+      3,
+      10,
+      2,
+      389
+    ],
+    "exp": 675,
+    "hangupExp": 253125,
+    "hangupSoul": 2045
+  },
+  {
+    "stage": 390,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 390,
+    "boss": [
+      100,
+      1,
+      1,
+      390
+    ],
+    "exp": 677,
+    "hangupExp": 253750,
+    "hangupSoul": 2050
+  },
+  {
+    "stage": 391,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 391,
+    "boss": [
+      1,
+      10,
+      2,
+      391
+    ],
+    "exp": 679,
+    "hangupExp": 254375,
+    "hangupSoul": 2055
+  },
+  {
+    "stage": 392,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 392,
+    "boss": [
+      2,
+      10,
+      2,
+      392
+    ],
+    "exp": 680,
+    "hangupExp": 255000,
+    "hangupSoul": 2060
+  },
+  {
+    "stage": 393,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 393,
+    "boss": [
+      3,
+      10,
+      2,
+      393
+    ],
+    "exp": 682,
+    "hangupExp": 255625,
+    "hangupSoul": 2065
+  },
+  {
+    "stage": 394,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 394,
+    "boss": [
+      1,
+      10,
+      2,
+      394
+    ],
+    "exp": 684,
+    "hangupExp": 256250,
+    "hangupSoul": 2070
+  },
+  {
+    "stage": 395,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 395,
+    "boss": [
+      100,
+      1,
+      1,
+      395
+    ],
+    "exp": 685,
+    "hangupExp": 256875,
+    "hangupSoul": 2075
+  },
+  {
+    "stage": 396,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 396,
+    "boss": [
+      1,
+      10,
+      2,
+      396
+    ],
+    "exp": 687,
+    "hangupExp": 257500,
+    "hangupSoul": 2080
+  },
+  {
+    "stage": 397,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 397,
+    "boss": [
+      2,
+      10,
+      2,
+      397
+    ],
+    "exp": 689,
+    "hangupExp": 258125,
+    "hangupSoul": 2085
+  },
+  {
+    "stage": 398,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 398,
+    "boss": [
+      3,
+      10,
+      2,
+      398
+    ],
+    "exp": 690,
+    "hangupExp": 258750,
+    "hangupSoul": 2090
+  },
+  {
+    "stage": 399,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 399,
+    "boss": [
+      2,
+      10,
+      2,
+      399
+    ],
+    "exp": 692,
+    "hangupExp": 259375,
+    "hangupSoul": 2095
+  },
+  {
+    "stage": 400,
+    "count": 200,
+    "wave": 11,
+    "monster": [
+      1,
+      2,
+      3
+    ],
+    "lv": 400,
+    "boss": [
+      100,
+      1,
+      1,
+      400
+    ],
+    "exp": 694,
+    "hangupExp": 260000,
+    "hangupSoul": 2100
   }
 ]

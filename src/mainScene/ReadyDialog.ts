@@ -132,32 +132,16 @@ class ReadyDialog extends PopupWindow {
                 Utils.viewStackStatus(this.viewStack, this.topBtn, 2);
             break;
             case this.btn_battle:
-                this._stopTimer();
                 AudioManager.GetIns().Stop(AudioManager.MAIN_BG_MUSIC);
                 AudioManager.GetIns().PlayMusic(AudioManager.START_MUSIC);
-
+                ResAsynLoadManager.LoadCurHeroSource(GameData.curHero);
                 let groupName:string = SceneManager.nextScene == "battleScene" ? "battleGroup" : "pvpGroup";
                 RES.createGroup(groupName, SceneManager.nextScene == "battleScene" ? ["battleStage", "battleCommon"] : ["battlePVP", "battleCommon"],true);
                 ResLoadManager.GetInstance().LoadGroup(groupName,()=>{
                      Animations.sceneTransition(()=>{
+                        TimerManager.getInstance().doTimer(20, 0, this.enterBattle, this);
                         GameLayerManager.gameLayer().sceneLayer.removeChildren();
                         GameLayerManager.gameLayer().panelLayer.removeChildren();
-                        if (SceneManager.nextScene == "battleScene") {
-                            if (!SceneManager.battleScene) {
-                                SceneManager.battleScene = new BattleScene();
-                            }else{
-                                SceneManager.battleScene.init();
-                            }
-                            SceneManager.curScene = SceneManager.battleScene;
-                        }else{
-                            if (!SceneManager.pvpScene) {
-                                SceneManager.pvpScene = new PVPScene();
-                            }else{
-                                SceneManager.pvpScene.init();
-                            }
-                            SceneManager.curScene = SceneManager.pvpScene;
-                        }
-                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.curScene);
                     });
                 })
             break;
@@ -178,6 +162,31 @@ class ReadyDialog extends PopupWindow {
                 this.Close();
             break;
         }
+    }
+
+    /**
+     * 进入战斗
+     */
+    private enterBattle():void {
+        if (!ResAsynLoadManager.isLoaded) return;
+        TimerManager.getInstance().remove(this.enterBattle, this);
+        this._stopTimer();
+        if (SceneManager.nextScene == "battleScene") {
+            if (!SceneManager.battleScene) {
+                SceneManager.battleScene = new BattleScene();
+            }else{
+                SceneManager.battleScene.init();
+            }
+            SceneManager.curScene = SceneManager.battleScene;
+        }else{
+            if (!SceneManager.pvpScene) {
+                SceneManager.pvpScene = new PVPScene();
+            }else{
+                SceneManager.pvpScene.init();
+            }
+            SceneManager.curScene = SceneManager.pvpScene;
+        }
+        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.curScene);
     }
 
     /**
@@ -326,6 +335,8 @@ class ReadyDialog extends PopupWindow {
     public updateList():void {
         let group:eui.Group = new eui.Group();
         let count = 0;
+        let tempWidth:number = 0;
+
         this._heroArmature = [];
         this._armatureGroup.removeChildren();
 
@@ -343,11 +354,22 @@ class ReadyDialog extends PopupWindow {
             
             let img:egret.Bitmap = new egret.Bitmap(RES.getRes("battle_res.heorLock"));
             tempGroup.addChild(img);
+            tempWidth = tempGroup.width;
             img.visible = HeroData.list[key] == null ? true : false;
         }
-
+        this.insertGroup(group, tempWidth, count * 100);
         this._scrollHero.viewport = group;
-        this._scrollHero.addChild(this._selectBox);
+        group.addChild(this._selectBox);
+        // this._scrollHero.addChild(this._selectBox);
+    }
+
+    /**插入一个空的组 */
+    private insertGroup(parent:eui.Group, width:number, x:number = 0, y:number = 0):void {
+        let tempGroup:eui.Group = new eui.Group();
+        tempGroup.width = width;
+        tempGroup.x = x;
+        tempGroup.y = y;
+        parent.addChild(tempGroup);
     }
 
     private _startTimer():void {

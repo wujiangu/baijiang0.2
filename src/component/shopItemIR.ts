@@ -86,7 +86,10 @@ class shopItemIR extends Base {
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
         
-        if(type == "diamond") this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", false, isShowGroup);
+        if(type == "diamond") {
+            this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", true, isShowGroup);
+            this.img_diamond.visible = false;
+        }
         else if(content.discount == 1){
             this.set_label_Text(content.price,"", "限时折扣：    折",true, isShowGroup);
             this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;

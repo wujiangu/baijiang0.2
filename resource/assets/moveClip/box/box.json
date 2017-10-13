@@ -1,0 +1,29 @@
+{"mc":{
+	"box":{
+		"frameRate":6,
+		"events":[
+			
+			],
+		"frames":[
+			{
+			"res":"kaibaoxiang_02",
+			"x":0,
+			"y":0
+			},
+			{
+			"res":"kaibaoxiang_03",
+			"x":0,
+			"y":25
+			},
+			{
+			"res":"kaibaoxiang_04",
+			"x":0,
+			"y":31
+			}
+			]
+}},
+	"res":{
+		"kaibaoxiang_04":{"x":616,"y":0,"w":306,"h":264},
+		"kaibaoxiang_02":{"x":0,"y":0,"w":306,"h":288},
+		"kaibaoxiang_03":{"x":308,"y":0,"w":306,"h":270}
+	}}

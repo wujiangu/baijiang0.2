@@ -95,7 +95,10 @@ class ShareWindow extends PopupWindow{
     private getHeroStage(name:string):string{
         if(name == "buxiaoman") return "从没想过，曾经威慑四方、天下第一的吕布，竟是她爹！";
         else if(name == "zhaoyun") return "七进七出！吾乃常山赵子龙是也！";
-        else if(name == "diaochan") return "北方有佳人，遗世而独立，一顾倾人城，再顾倾人国！"
+        else if(name == "diaochan") return "北方有佳人，遗世而独立，一顾倾人城，再顾倾人国！";
+        else if(name == "sunluban") return "我乃长公主！逆贼哪里跑，看拳！";
+        else if(name == "guanyu") return "唯以义处世，方心昭明月，义薄云天！";
+        else if(name == "menglingtong") return "不要叫我长羽毛的臭小子！";
     }
 
     /**

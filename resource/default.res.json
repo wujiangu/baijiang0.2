@@ -43,6 +43,10 @@
 		{
 			"keys":"button_res,common_res,equip_res,buxiaoman_json,buxiaoman_png,diaochan_json,diaochan_png,fire_json,fire_png,guanyu_json,guanyu_png,hair_json,hair_png,long_json,long_png,sunluban_json,sunluban_png,zhaoyun_json,zhaoyun_png,0_0075_di_png,battle_res",
 			"name":"mainscene"
+		},
+		{
+			"keys":"box_json,box_png,boxBgLight_json,boxBgLight_png,starSprite_json,starSprite_png,kaibaoxiang_01_png,kaibaoxiang_05_png,kaibaoxiang_06_png,kaibaoxiang_10_png",
+			"name":"box"
 		}
 	],
 	"resources":[
@@ -154,7 +158,7 @@
 		{
 			"name":"TcShop_json",
 			"type":"json",
-			"url":"config/TcShop.json?v=1.0.3"
+			"url":"config/TcShop.json?v=1.0.1"
 		},
 		{
 			"name":"TcSkill_json",
@@ -164,7 +168,7 @@
 		{
 			"name":"TcStage_json",
 			"type":"json",
-			"url":"config/TcStage.json?v=1.0.0"
+			"url":"config/TcStage.json?v=1.0.1"
 		},
 		{
 			"name":"TcTalent_json",
@@ -844,7 +848,7 @@
 		{
 			"name":"buffConfig_json",
 			"type":"json",
-			"url":"config/buffConfig.json"
+			"url":"config/buffConfig.json?v=1.0.0"
 		},
 		{
 			"name":"TcManAttr_json",
@@ -1598,7 +1602,7 @@
 		},
 		{
 			"name":"common_res",
-			"subkeys":"0_0000_yinghuochongda01,0_0021_kaorou,0_0022_huoguang01,basic_diamond,basic_exp,basic_power,basic_soul,crystal_0001,crystal_0002,email_new,email_status1,email_status2,email_status3,exp_0001,exp_0002,hook,img_fallExp,img_fallSoul,power_0001,power_0002,setting_0001,setting_0002,shop_0011,shop_0012,shop_0013,shop_0015,shop_0019,shop_0020,shop_0021,shop_0022,shop_0023,shop_0024,shop_0025,sole_0001,sole_0002,unknow",
+			"subkeys":"0_0000_yinghuochongda01,0_0021_kaorou,0_0022_huoguang01,basic_diamond,basic_exp,basic_power,basic_soul,crystal_0001,crystal_0002,email_new,email_status1,email_status2,email_status3,exp_0001,exp_0002,hook,img_fallExp,img_fallSoul,power_0001,power_0002,setting_0001,setting_0002,shop_0011,shop_0012,shop_0013,shop_0014,shop_0015,shop_0019,shop_0020,shop_0021,shop_0022,shop_0023,shop_0024,shop_0025,shop_0026,shop_0027,shop_0028,shop_0029,shop_0030,sole_0001,sole_0002,unknow",
 			"type":"sheet",
 			"url":"pack/common_res.json"
 		},
@@ -1735,6 +1739,56 @@
 			"subkeys":"battle_0001,battle_0002,battle_0003,battle_0004,battle_0005,battle_0010,battle_0011,battle_0012,battle_0013,battle_0014,battle_0015,battle_0016,battle_0017,battle_0018,battle_0019,buxiaoman_skillBg,buy_0001,diaochan_skillBg,guanqian_00,guanyu_skill01_02,guanyu_skillBg,heorLock,iconbg_0001,iconbg_0002,img_buxiaoman,img_buxiaoman1,img_diaochan,img_diaochan1,img_guanyu,img_guanyu1,img_menglingtong,img_menglingtong1,img_selectHero,img_sunluban,img_sunluban1,img_zhaoyun,img_zhaoyun1,menglingtong_skillBg,quanping_01,quanping_02,red_point,shadow,skillICON_bg,sunluban_skillBg,tianjian_01,touxiang_0001,zhanji_11,zhaoyun_skillBg",
 			"type":"sheet",
 			"url":"pack/battle_res.json"
+		},
+		{
+			"name":"box_json",
+			"type":"json",
+			"url":"assets/moveClip/box/box.json"
+		},
+		{
+			"name":"box_png",
+			"type":"image",
+			"url":"assets/moveClip/box/box.png"
+		},
+		{
+			"name":"boxBgLight_json",
+			"type":"json",
+			"url":"assets/moveClip/box/boxBgLight.json"
+		},
+		{
+			"name":"boxBgLight_png",
+			"type":"image",
+			"url":"assets/moveClip/box/boxBgLight.png"
+		},
+		{
+			"name":"starSprite_json",
+			"type":"json",
+			"url":"assets/moveClip/box/starSprite.json"
+		},
+		{
+			"name":"starSprite_png",
+			"type":"image",
+			"url":"assets/moveClip/box/starSprite.png"
+		},
+		{
+			"name":"kaibaoxiang_01_png",
+			"type":"image",
+			"url":"assets/other/kaibaoxiang_01.png"
+		},
+		{
+			"name":"kaibaoxiang_05_png",
+			"type":"image",
+			"url":"assets/other/kaibaoxiang_05.png"
+		},
+		{
+			"name":"kaibaoxiang_06_png",
+			"type":"image",
+			"url":"assets/other/kaibaoxiang_06.png"
+		},
+		{
+			"name":"kaibaoxiang_10_png",
+			"type":"image",
+			"url":"assets/other/kaibaoxiang_10.png"
 		}
 	]
 }

@@ -46,9 +46,13 @@ namespace ConfigManager {
     /**竞技场奖励配置文件 */
     export var tcRankReward:any;
     /**骨架数据(后续分组) */
+    // export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "sunluban", "guanyu", "menglingtong",
+    //     "enter_monster_01", "blood_die", "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect", "diaochan_skill",
+    //     "zhaoyun_skill", "buxiaoman_skill", "sunluban_skill", "guanyu_skill", "menglingtong_skill", "buff",
+    //     "buffdiaoluo", "monster1_2", "monster1_3", "monster1_4", "monster2_2", "monster2_3", "monster2_4", "monster3_1",
+    //     "monster3_2", "monster3_3", "monster3_4", "Boss01", "Boss01_effect01"];
     export var armatures:Array<string> = ["diaochan", "zhaoyun", "buxiaoman", "sunluban", "guanyu", "menglingtong",
-        "enter_monster_01", "blood_die", "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect", "diaochan_skill",
-        "zhaoyun_skill", "buxiaoman_skill", "sunluban_skill", "guanyu_skill", "menglingtong_skill", "buff",
+        "enter_monster_01", "blood_die", "monster2_1", "monster02_skill", "monster1_1", "daoguang_effect", "buff",
         "buffdiaoluo", "monster1_2", "monster1_3", "monster1_4", "monster2_2", "monster2_3", "monster2_4", "monster3_1",
         "monster3_2", "monster3_3", "monster3_4", "Boss01", "Boss01_effect01"];
     /**
@@ -93,7 +97,7 @@ namespace ConfigManager {
             }
         }
         else if (scene == "battleBack") {
-            initBattleDragonBones(20, armatures.length);
+            initBattleDragonBones(14, armatures.length);
         }
     }
 
@@ -101,7 +105,7 @@ namespace ConfigManager {
     /**初始化战斗共同配置 */
     function InitBattleCommon():void {
         if (!isCommon) {
-            initBattleDragonBones(11, 20);
+            initBattleDragonBones(11, 14);
             isCommon = true
         }
     }
