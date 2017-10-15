@@ -41,7 +41,7 @@ class Hero extends Alliance {
     public init(data:Array<any>, isPVP:boolean=false) {
         super.init(data);
         this.buffIcon.visible = false;
-        let attr = modHero.addEquipAttr(data);      //test
+        // let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.originHP = this.attr.hp;
@@ -108,11 +108,11 @@ class Hero extends Alliance {
      * 设置buff或被动技能
      */
     public setBuff():void {
-        // let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
-        // let talent:Array<any> = GameData.testTalent.talent;     //test
-        let buff = HeroData.list[this.name].buff;
-        let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
-        let talent:Array<any> = modTalent.getData(curPage).talent;
+        let buff:Array<number> = ConfigManager.heroConfig[this.name].buff;  //test
+        let talent:Array<any> = GameData.testTalent.talent;     //test
+        // let buff = HeroData.list[this.name].buff;
+        // let curPage:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+        // let talent:Array<any> = modTalent.getData(curPage).talent;
         // Common.log("talent---->", JSON.stringify(talent));
         for (let i = 0; i < talent.length; i++) {
             let id = talent[i][0] + 19;
@@ -137,9 +137,9 @@ class Hero extends Alliance {
             }
         }
         ConfigManager.heroConfig[this.name].buff.splice(2);
-        HeroData.list[this.name].buff.splice(2);         //test
-        let data:any = HeroData.getHeroData(GameData.curHero);
-        HeroData.update();
+        // HeroData.list[this.name].buff.splice(2);         //test
+        // let data:any = HeroData.getHeroData(GameData.curHero);
+        // HeroData.update();
     }
 
     /**
