@@ -406,12 +406,6 @@ namespace Animations {
      * @param list 数组列表 指定武器对应的id目前只支持武器id
     */
     export function ShowGoodsPopEffect(list:any):void{
-        if(list == null) return;
-
-        if(list.length == null){
-            let tempData = list;
-            list = [tempData];
-        }
 
         for(let i in img_list) egret.Tween.removeTweens(img_list[i]);
         for(let i in txt_list) egret.Tween.removeTweens(txt_list[i]);
@@ -501,7 +495,7 @@ namespace Animations {
         if(data == null) return;
 
         let group:egret.Sprite = new egret.Sprite();
-        let bg:egret.Bitmap = new egret.Bitmap(RES.getRes("kaibaoxiang_10_png"));
+        let bg:egret.Bitmap = new egret.Bitmap(RES.getRes("box_res.goodsLight"));
         group.addChild(bg);
 
         let img:egret.Bitmap = new egret.Bitmap(Common.GetTextureFromType(data));
@@ -511,8 +505,14 @@ namespace Animations {
         text.width = img.width - 10;
         group.addChild(text);
 
-        group.width = bg.width;
-        Common.SetXY(img, bg.width - img.width >> 1, bg.height - img.height >> 1);
+        let str:string = "恭喜获得" + (data.type == 1 ? TcManager.GetInstance().GetTcEquipData(data.id).name : ModBasic.BasicNameList[data.name]);
+        let szTitle:egret.TextField = Common.CreateText(str,25,0xff0000,true,"Microsoft YaHei","right");
+        group.addChild(szTitle);
+
+        group.width = bg.width + szTitle.width;
+        Common.SetXY(szTitle, 0, szTitle.y + (bg.height - szTitle.height >> 1));
+        Common.SetXY(bg, szTitle.x + szTitle.width, 0);
+        Common.SetXY(img, bg.x + (bg.width - img.width >> 1), bg.height - img.height >> 1);
         Common.SetXY(text, img.x + 5, img.y + img.height - text.height - 5);
 
         return group;
@@ -528,83 +528,108 @@ namespace Animations {
     /**
      * @params: let data = [{name:"diamond",id:0,count:100,type:2},{name:"equip",id:1,count:1,type:1}]
      */
-    export function ShowOpenBoxEffect(list:any):void{
-        if(list == null) return;
+    function getBoxPosition(x1,y1,x2,y2,x3,y3):any{
+        return {lightX:x1,lightY:y1,mcX:x2,mcY:y2,lightMcX:x3,lightMcY:y3};
+    }
 
-        if(list.length == null){
-            let tempData = list;
-            list = [tempData];
+    // show open box Animation
+    export function ShowOpenBoxAnimation(list:any,boxType:number,listener:Function = null):void{
+
+        let mainGroup = new egret.Sprite();
+        GameLayerManager.gameLayer().maskLayer.addChild(mainGroup);
+
+        let mask = Common.CreateShape(0, 0, Common.SCREEN_W, Common.SCREEN_H);
+        mainGroup.addChild(mask);
+        mask.alpha = 0.35;mask.touchEnabled = true;
+
+        let boxGroup = new egret.Sprite();
+        let goodsGroup = new egret.Sprite();
+
+        mainGroup.addChild(boxGroup)
+        mainGroup.addChild(goodsGroup);
+
+        let str:string = "";
+        let position:any;
+        if(boxType == ModBasic.IRONBOX){
+            str = "iron";
+            position = getBoxPosition(-1,65,35,0,25,-80);
+        }
+        else if(boxType == ModBasic.SILVERBOX){
+            str = "silver";
+            position = getBoxPosition(-2,77,0,0,0,-70);
+        }
+        else if(boxType == ModBasic.GOLDBOX){
+            str = "gold";
+            position = getBoxPosition(-1,57,0,0,-5,-80);
         }
 
-        let sprite = new egret.Sprite();
-        GameLayerManager.gameLayer().maskLayer.addChild(sprite);
-
-        let box = new egret.Bitmap(RES.getRes("kaibaoxiang_01_png"));
-        let boxLight = new egret.Bitmap(RES.getRes("kaibaoxiang_05_png"));
-        sprite.addChild(box);
-        sprite.addChild(boxLight);
-        sprite.width = box.width;sprite.height = box.height;
-        sprite.anchorOffsetX = sprite.width / 2;sprite.anchorOffsetY = sprite.height / 2;
+        let box = new egret.Bitmap(RES.getRes(`box_res.${str}Box`));
+        let boxLight = new egret.Bitmap(RES.getRes(`box_res.${str}Light`));
+        boxGroup.addChild(box);
+        boxGroup.addChild(boxLight);
+        boxGroup.width = box.width;boxGroup.height = box.height;
+        boxGroup.anchorOffsetX = boxGroup.width / 2;boxGroup.anchorOffsetY = boxGroup.height / 2;
         
-        Common.SetXY(sprite, (Common.SCREEN_W - sprite.width >> 1) + sprite.width / 2, Common.SCREEN_H / 2);
-        Common.SetXY(boxLight, box.x + (box.width - boxLight.width >> 1) - 1,box.y + 57);
+        Common.SetXY(boxGroup, (Common.SCREEN_W - boxGroup.width >> 1) + boxGroup.width / 2, Common.SCREEN_H / 2);
+        Common.SetXY(boxLight, box.x + (box.width - boxLight.width >> 1) + position.lightX,box.y + position.lightY);
 
         boxLight.visible = false;
-        sprite.scaleX = 2;sprite.scaleY = 2;
-        egret.Tween.get(sprite).to({scaleX:0.8,scaleY:0.8},150).to({scaleX:1.2,scaleY:1.2},80).to({scaleX:1,scaleY:1},80).wait(100).call(()=>{
+        boxGroup.scaleX = 2;boxGroup.scaleY = 2;
+        egret.Tween.get(boxGroup).to({scaleX:0.8,scaleY:0.8},150).to({scaleX:1.2,scaleY:1.2},80).to({scaleX:1,scaleY:1},80).wait(100).call(()=>{
             boxLight.visible = true;
-            egret.Tween.get(sprite).to({rotation:3},100).to({rotation:-3},100).to({rotation:3},100).to({rotation:-3},100).to({rotation:0},100).call(()=>{
-                sprite.visible = false;
-                egret.Tween.removeTweens(sprite);
+            egret.Tween.get(boxGroup).to({rotation:3},100).to({rotation:-3},100).to({rotation:3},100).to({rotation:-3},100).to({rotation:0},100).call(()=>{
+                boxGroup.visible = false;
+                egret.Tween.removeTweens(boxGroup);
 
                 //boxMC
-                let boxMc = Common.CreateMovieClip("box",true);
-                GameLayerManager.gameLayer().maskLayer.addChild(boxMc);
+                let boxMc = Common.CreateMovieClip(`${str}Movie`,true);
+                goodsGroup.addChild(boxMc);
                 boxMc.play(1);
-                Common.SetXY(boxMc, sprite.x - sprite.width / 2, sprite.y - sprite.height / 2);
+                Common.SetXY(boxMc, boxGroup.x - boxGroup.width / 2, boxGroup.y - boxGroup.height / 2);
 
                 // //starMc
                 let starBgMc = Common.CreateMovieClip("starSprite",true);
-                GameLayerManager.gameLayer().maskLayer.addChild(starBgMc);
+                goodsGroup.addChild(starBgMc);
                 starBgMc.play(1);
-                Common.SetXY(starBgMc, boxMc.x - sprite.width / 4 - 10, boxMc.y + (boxMc.height - starBgMc.height >> 1));
+                Common.SetXY(starBgMc, boxMc.x - boxGroup.width / 4 - 10, boxMc.y + (boxMc.height - starBgMc.height >> 1));
                 starBgMc.addEventListener(egret.Event.COMPLETE, onShowBoxLight, this);
 
                 // //imgLight
-                let imgLight = new egret.Bitmap(RES.getRes("kaibaoxiang_06_png"));
-                Common.SetXY(imgLight, boxMc.x + (boxMc.width - imgLight.width >> 1), boxMc.y + (boxMc.height - imgLight.height >> 1));
-                GameLayerManager.gameLayer().maskLayer.addChild(imgLight);
+                let imgLight = new egret.Bitmap(RES.getRes("box_res.bgLight"));
+                Common.SetXY(imgLight, boxMc.x + (boxMc.width - imgLight.width >> 1) + position.mcX, boxMc.y + (boxMc.height - imgLight.height >> 1));
+                
+                goodsGroup.addChild(imgLight);
                 egret.Tween.get(imgLight).wait(50).call(()=>{
                     let boxBgLightMc = Common.CreateMovieClip("boxBgLight",true);
-                    GameLayerManager.gameLayer().maskLayer.addChild(boxBgLightMc);
+                    goodsGroup.addChild(boxBgLightMc);
                     boxBgLightMc.play(-1);
-                    Common.SetXY(boxBgLightMc, boxMc.x + (boxMc.width - boxBgLightMc.width >> 1) - 5, boxMc.y - 80);
+                    Common.SetXY(boxBgLightMc, boxMc.x + (boxMc.width - boxBgLightMc.width >> 1) + position.lightMcX, boxMc.y + position.lightMcY);
 
-                    for(let i:number = 0; i < list.length; i++){
-                        egret.setTimeout(()=>{
-                            let rewardGroup= CreateRewardsGoods(list[i]);
-                            GameLayerManager.gameLayer().maskLayer.addChild(rewardGroup);
-                            Common.SetXY(rewardGroup, boxMc.x + (sprite.width - rewardGroup.width >> 1) , imgLight.y + 50);
-                            egret.Tween.get(rewardGroup).to({y:imgLight.y - 100,alpha:0},300).call(()=>{
-                                egret.Tween.removeTweens(rewardGroup);
-                                if(rewardGroup.parent){
-                                    rewardGroup.parent.removeChild(rewardGroup);
-                                    rewardGroup = null;
-                                } 
-                            })
-                        },null,i*500)
-                    }
+                    let rewardGroup= CreateRewardsGoods(list[0]);
+                    goodsGroup.addChild(rewardGroup);
+                    rewardGroup.alpha = 0;rewardGroup.scaleX = 0.5;rewardGroup.scaleY = 0.5;
+                    rewardGroup.anchorOffsetX = rewardGroup.width / 2;
+                    Common.SetXY(rewardGroup, boxMc.x + (boxGroup.width - rewardGroup.width >> 1) + rewardGroup.anchorOffsetX , imgLight.y + 150);
+                    egret.Tween.get(rewardGroup).to({alpha:1,y:imgLight.y,scaleX:1,scaleY:1},150);
 
-                    egret.setTimeout(()=>{
-                        let obj_list:any = [box,boxLight,boxMc,starBgMc,imgLight,boxBgLightMc,sprite];
+                    let szContent = Common.CreateText("点击任意位置继续",35,0xffff00,true,"Microsoft YaHei");
+                    goodsGroup.addChild(szContent);
+                    Common.SetXY(szContent, Common.SCREEN_W - szContent.width >> 1, Common.SCREEN_H - 100);
+
+                    mask.addEventListener(egret.TouchEvent.TOUCH_TAP, ()=>{
+                        let obj_list:any = [box,boxLight,boxMc,starBgMc,imgLight,boxBgLightMc,rewardGroup,szContent,boxGroup,goodsGroup,mask,mainGroup];
                         for(let obj of obj_list){
+                            egret.Tween.removeTweens(obj);
                             if(obj.parent){
                                 obj.parent.removeChild(obj);
                                 obj = null;
                             }
                         }
                         obj_list = [];
-                    },null, 500 * list.length)
+
+                        if(listener) listener()
+
+                    }, this)
                 }).to({alpha:0},300)
             });
         })

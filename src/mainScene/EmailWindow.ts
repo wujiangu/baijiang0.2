@@ -194,6 +194,7 @@ class EmailWindow extends PopupWindow{
                 Common.DealReward(list);
                 ModEmail.DealAllEmailData();
                 this.initData();
+                GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
             break;
             case this.btn_back:
                 this.Close();
@@ -209,6 +210,7 @@ class EmailWindow extends PopupWindow{
                 ModEmail.DelEmailData(this._emailData[this._clickIndex]);
                 this._clickIndex = this._clickIndex - 1 >= 0 ? this._clickIndex - 1 : 0;
                 this.initData();
+                GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
             break;
         }
     }

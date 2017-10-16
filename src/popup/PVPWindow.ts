@@ -95,6 +95,7 @@ class PVPWindow extends PopupWindow{
             SceneManager.nextScene = "pvpScene";
             WindowManager.GetInstance().GetWindow("ReadyDialog").Show();
             UserDataInfo.GetInstance().DealUserData("sportCount", UserDataInfo.GetInstance().GetBasicData("sportCount") + 1);
+            GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
         })
     }
 

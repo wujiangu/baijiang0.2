@@ -45,1750 +45,1756 @@
 			"name": "mainscene"
 		},
 		{
-			"keys": "box_json,box_png,boxBgLight_json,boxBgLight_png,starSprite_json,starSprite_png,kaibaoxiang_01_png,kaibaoxiang_05_png,kaibaoxiang_06_png,kaibaoxiang_10_png",
+			"keys": "boxBgLight_json,boxBgLight_png,starSprite_json,starSprite_png,silverMovie_json,silverMovie_png,goldMovie_json,goldMovie_png,box_res,ironMovie_json,ironMovie_png",
 			"name": "box"
 		}
 	],
 	"resources": [
 		{
-			"name": "monster1_1_ske_dbbin",
+			"url": "assets/animation/monster1_1/monster1_1_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster1_1/monster1_1_ske.dbbin"
+			"name": "monster1_1_ske_dbbin"
 		},
 		{
-			"name": "blood_die_ske_dbbin",
+			"url": "assets/animation/blood_die/blood_die_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/blood_die/blood_die_ske.dbbin"
+			"name": "blood_die_ske_dbbin"
 		},
 		{
-			"name": "Boss01_ske_dbbin",
+			"url": "assets/animation/Boss01/Boss01_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/Boss01/Boss01_ske.dbbin"
+			"name": "Boss01_ske_dbbin"
 		},
 		{
-			"name": "Boss01_effect01_ske_dbbin",
+			"url": "assets/animation/Boss01_effect01/Boss01_effect01_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/Boss01_effect01/Boss01_effect01_ske.dbbin"
+			"name": "Boss01_effect01_ske_dbbin"
 		},
 		{
-			"name": "buff_ske_dbbin",
+			"url": "assets/animation/buff/buff_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/buff/buff_ske.dbbin"
+			"name": "buff_ske_dbbin"
 		},
 		{
-			"name": "buxiaoman_ske_dbbin",
+			"url": "assets/animation/buxiaoman/buxiaoman_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/buxiaoman/buxiaoman_ske.dbbin"
+			"name": "buxiaoman_ske_dbbin"
 		},
 		{
-			"name": "buxiaoman_skill_ske_dbbin",
+			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_ske.dbbin"
+			"name": "buxiaoman_skill_ske_dbbin"
 		},
 		{
-			"name": "daoguang_effect_ske_dbbin",
+			"url": "assets/animation/daoguang_effect/daoguang_effect_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/daoguang_effect/daoguang_effect_ske.dbbin"
+			"name": "daoguang_effect_ske_dbbin"
 		},
 		{
-			"name": "diaochan_ske_dbbin",
+			"url": "assets/animation/diaochan/diaochan_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/diaochan/diaochan_ske.dbbin"
+			"name": "diaochan_ske_dbbin"
 		},
 		{
-			"name": "diaochan_skill_ske_dbbin",
+			"url": "assets/animation/diaochan_skill/diaochan_skill_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/diaochan_skill/diaochan_skill_ske.dbbin"
+			"name": "diaochan_skill_ske_dbbin"
 		},
 		{
-			"name": "enter_monster_01_ske_dbbin",
+			"url": "assets/animation/enter_monster_01/enter_monster_01_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/enter_monster_01/enter_monster_01_ske.dbbin"
+			"name": "enter_monster_01_ske_dbbin"
 		},
 		{
-			"name": "monster02_skill_ske_dbbin",
+			"url": "assets/animation/monster02_skill/monster02_skill_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster02_skill/monster02_skill_ske.dbbin"
+			"name": "monster02_skill_ske_dbbin"
 		},
 		{
-			"name": "zhaoyun_ske_dbbin",
+			"url": "assets/animation/zhaoyun/zhaoyun_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/zhaoyun/zhaoyun_ske.dbbin"
+			"name": "zhaoyun_ske_dbbin"
 		},
 		{
-			"name": "zhaoyun_skill_ske_dbbin",
+			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_ske.dbbin"
+			"name": "zhaoyun_skill_ske_dbbin"
 		},
 		{
-			"name": "description_json",
+			"url": "config/description.json",
 			"type": "json",
-			"url": "config/description.json"
+			"name": "description_json"
 		},
 		{
-			"name": "enermyConfig_json",
+			"url": "config/enermyConfig.json",
 			"type": "json",
-			"url": "config/enermyConfig.json"
+			"name": "enermyConfig_json"
 		},
 		{
-			"name": "heroConfig_json",
+			"url": "config/heroConfig.json",
 			"type": "json",
-			"url": "config/heroConfig.json"
+			"name": "heroConfig_json"
 		},
 		{
-			"name": "sensitiveWords_json",
+			"url": "config/sensitiveWords.json",
 			"type": "json",
-			"url": "config/sensitiveWords.json"
+			"name": "sensitiveWords_json"
 		},
 		{
-			"name": "TcBiography_json",
+			"url": "config/TcBiography.json",
 			"type": "json",
-			"url": "config/TcBiography.json"
+			"name": "TcBiography_json"
 		},
 		{
-			"name": "TcEquip_json",
+			"url": "config/TcEquip.json",
 			"type": "json",
-			"url": "config/TcEquip.json"
+			"name": "TcEquip_json"
 		},
 		{
-			"name": "TcHero_json",
+			"url": "config/TcHero.json",
 			"type": "json",
-			"url": "config/TcHero.json"
+			"name": "TcHero_json"
 		},
 		{
-			"name": "TcShop_json",
+			"url": "config/TcShop.json?v=1.0.1",
 			"type": "json",
-			"url": "config/TcShop.json?v=1.0.1"
+			"name": "TcShop_json"
 		},
 		{
-			"name": "TcSkill_json",
+			"url": "config/TcSkill.json?v=1.0.0",
 			"type": "json",
-			"url": "config/TcSkill.json?v=1.0.0"
+			"name": "TcSkill_json"
 		},
 		{
-			"name": "TcStage_json",
+			"url": "config/TcStage.json?v=1.0.1",
 			"type": "json",
-			"url": "config/TcStage.json?v=1.0.1"
+			"name": "TcStage_json"
 		},
 		{
-			"name": "TcTalent_json",
+			"url": "config/TcTalent.json?v=1.0.0",
 			"type": "json",
-			"url": "config/TcTalent.json?v=1.0.0"
+			"name": "TcTalent_json"
 		},
 		{
-			"name": "drawCard01_png",
+			"url": "assets/shop/drawCard/drawCard01.png",
 			"type": "image",
-			"url": "assets/shop/drawCard/drawCard01.png"
+			"name": "drawCard01_png"
 		},
 		{
-			"name": "drawCard02_png",
+			"url": "assets/shop/drawCard/drawCard02.png",
 			"type": "image",
-			"url": "assets/shop/drawCard/drawCard02.png"
+			"name": "drawCard02_png"
 		},
 		{
-			"name": "drawCard03_png",
+			"url": "assets/shop/drawCard/drawCard03.png",
 			"type": "image",
-			"url": "assets/shop/drawCard/drawCard03.png"
+			"name": "drawCard03_png"
 		},
 		{
-			"name": "drawCard04_png",
+			"url": "assets/shop/drawCard/drawCard04.png",
 			"type": "image",
-			"url": "assets/shop/drawCard/drawCard04.png"
+			"name": "drawCard04_png"
 		},
 		{
-			"name": "drawCard05_png",
+			"url": "assets/shop/drawCard/drawCard05.png",
 			"type": "image",
-			"url": "assets/shop/drawCard/drawCard05.png"
+			"name": "drawCard05_png"
 		},
 		{
-			"name": "panel_shop_png",
+			"url": "assets/shop/panel_shop.png",
 			"type": "image",
-			"url": "assets/shop/panel_shop.png"
+			"name": "panel_shop_png"
 		},
 		{
-			"name": "shop_0001_png",
+			"url": "assets/shop/shop_0001.png",
 			"type": "image",
-			"url": "assets/shop/shop_0001.png"
+			"name": "shop_0001_png"
 		},
 		{
-			"name": "shop_0004_png",
+			"url": "assets/shop/shop_0004.png",
 			"type": "image",
-			"url": "assets/shop/shop_0004.png"
+			"name": "shop_0004_png"
 		},
 		{
-			"name": "shop_0008_png",
+			"url": "assets/shop/shop_0008.png",
 			"type": "image",
-			"url": "assets/shop/shop_0008.png"
+			"name": "shop_0008_png"
 		},
 		{
-			"name": "shop_0009_png",
+			"url": "assets/shop/shop_0009.png",
 			"type": "image",
-			"url": "assets/shop/shop_0009.png"
+			"name": "shop_0009_png"
 		},
 		{
-			"name": "shop_0010_png",
+			"url": "assets/shop/shop_0010.png",
 			"type": "image",
-			"url": "assets/shop/shop_0010.png"
+			"name": "shop_0010_png"
 		},
 		{
-			"name": "shop_0014_png",
+			"url": "assets/shop/shop_0014.png",
 			"type": "image",
-			"url": "assets/shop/shop_0014.png"
+			"name": "shop_0014_png"
 		},
 		{
-			"name": "thumb_png",
+			"url": "assets/Slider/thumb.png",
 			"type": "image",
-			"url": "assets/Slider/thumb.png"
+			"name": "thumb_png"
 		},
 		{
-			"name": "track_png",
+			"url": "assets/Slider/track.png",
 			"type": "image",
-			"url": "assets/Slider/track.png"
+			"name": "track_png"
 		},
 		{
-			"name": "tracklight_png",
+			"url": "assets/Slider/tracklight.png",
 			"type": "image",
-			"url": "assets/Slider/tracklight.png"
+			"name": "tracklight_png"
 		},
 		{
-			"name": "talentLvBox_png",
+			"url": "assets/talent/talentLvBox.png",
 			"type": "image",
-			"url": "assets/talent/talentLvBox.png"
+			"name": "talentLvBox_png"
 		},
 		{
-			"name": "tianfu_0001_png",
+			"url": "assets/talent/tianfu_0001.png",
 			"type": "image",
-			"url": "assets/talent/tianfu_0001.png"
+			"name": "tianfu_0001_png"
 		},
 		{
-			"name": "blood_0001_png",
+			"url": "assets/testBattle/blood_0001.png",
 			"type": "image",
-			"url": "assets/testBattle/blood_0001.png"
+			"name": "blood_0001_png"
 		},
 		{
-			"name": "imprisoned01_png",
+			"url": "assets/testBattle/imprisoned01.png",
 			"type": "image",
-			"url": "assets/testBattle/imprisoned01.png"
+			"name": "imprisoned01_png"
 		},
 		{
-			"name": "imprisoned02_png",
+			"url": "assets/testBattle/imprisoned02.png",
 			"type": "image",
-			"url": "assets/testBattle/imprisoned02.png"
+			"name": "imprisoned02_png"
 		},
 		{
-			"name": "jiantou_png",
+			"url": "assets/testBattle/jiantou.png",
 			"type": "image",
-			"url": "assets/testBattle/jiantou.png"
+			"name": "jiantou_png"
 		},
 		{
-			"name": "sevenInOut_png",
+			"url": "assets/testBattle/sevenInOut.png",
 			"type": "image",
-			"url": "assets/testBattle/sevenInOut.png"
+			"name": "sevenInOut_png"
 		},
 		{
-			"name": "swordDance_png",
+			"url": "assets/testBattle/swordDance.png",
 			"type": "image",
-			"url": "assets/testBattle/swordDance.png"
+			"name": "swordDance_png"
 		},
 		{
-			"name": "pvp_0001_png",
+			"url": "assets/tip/pvp_0001.png",
 			"type": "image",
-			"url": "assets/tip/pvp_0001.png"
+			"name": "pvp_0001_png"
 		},
 		{
-			"name": "pvp_0002_png",
+			"url": "assets/tip/pvp_0002.png",
 			"type": "image",
-			"url": "assets/tip/pvp_0002.png"
+			"name": "pvp_0002_png"
 		},
 		{
-			"name": "pvp_0003_png",
+			"url": "assets/tip/pvp_0003.png",
 			"type": "image",
-			"url": "assets/tip/pvp_0003.png"
+			"name": "pvp_0003_png"
 		},
 		{
-			"name": "handle_png",
+			"url": "assets/ToggleSwitch/handle.png",
 			"type": "image",
-			"url": "assets/ToggleSwitch/handle.png"
+			"name": "handle_png"
 		},
 		{
-			"name": "off_png",
+			"url": "assets/ToggleSwitch/off.png",
 			"type": "image",
-			"url": "assets/ToggleSwitch/off.png"
+			"name": "off_png"
 		},
 		{
-			"name": "on_png",
+			"url": "assets/ToggleSwitch/on.png",
 			"type": "image",
-			"url": "assets/ToggleSwitch/on.png"
+			"name": "on_png"
 		},
 		{
-			"name": "battle_0007_png",
+			"url": "assets/battle/battle_0007.png",
 			"type": "image",
-			"url": "assets/battle/battle_0007.png"
+			"name": "battle_0007_png"
 		},
 		{
-			"name": "battle_0008_png",
+			"url": "assets/battle/battle_0008.png",
 			"type": "image",
-			"url": "assets/battle/battle_0008.png"
+			"name": "battle_0008_png"
 		},
 		{
-			"name": "battle_0009_png",
+			"url": "assets/battle/battle_0009.png",
 			"type": "image",
-			"url": "assets/battle/battle_0009.png"
+			"name": "battle_0009_png"
 		},
 		{
-			"name": "0_0075_di_png",
+			"url": "assets/bg/0_0075_di.png",
 			"type": "image",
-			"url": "assets/bg/0_0075_di.png"
+			"name": "0_0075_di_png"
 		},
 		{
-			"name": "bg_0001_png",
+			"url": "assets/bg/bg_0001.png",
 			"type": "image",
-			"url": "assets/bg/bg_0001.png"
+			"name": "bg_0001_png"
 		},
 		{
-			"name": "bg_pvp01_png",
+			"url": "assets/bg/bg_pvp01.png",
 			"type": "image",
-			"url": "assets/bg/bg_pvp01.png"
+			"name": "bg_pvp01_png"
 		},
 		{
-			"name": "bg_readyAttr_png",
+			"url": "assets/bg/bg_readyAttr.png",
 			"type": "image",
-			"url": "assets/bg/bg_readyAttr.png"
+			"name": "bg_readyAttr_png"
 		},
 		{
-			"name": "bg_readyEquip_png",
+			"url": "assets/bg/bg_readyEquip.png",
 			"type": "image",
-			"url": "assets/bg/bg_readyEquip.png"
+			"name": "bg_readyEquip_png"
 		},
 		{
-			"name": "combo_bg_png",
+			"url": "assets/bg/combo_bg.png",
 			"type": "image",
-			"url": "assets/bg/combo_bg.png"
+			"name": "combo_bg_png"
 		},
 		{
-			"name": "drawCardBg_png",
+			"url": "assets/bg/drawCardBg.png",
 			"type": "image",
-			"url": "assets/bg/drawCardBg.png"
+			"name": "drawCardBg_png"
 		},
 		{
-			"name": "img_nameBox_png",
+			"url": "assets/bg/img_nameBox.png",
 			"type": "image",
-			"url": "assets/bg/img_nameBox.png"
+			"name": "img_nameBox_png"
 		},
 		{
-			"name": "shop_popupBg1_png",
+			"url": "assets/bg/shop_popupBg1.png",
 			"type": "image",
-			"url": "assets/bg/shop_popupBg1.png"
+			"name": "shop_popupBg1_png"
 		},
 		{
-			"name": "shop_popupBg3_png",
+			"url": "assets/bg/shop_popupBg3.png",
 			"type": "image",
-			"url": "assets/bg/shop_popupBg3.png"
+			"name": "shop_popupBg3_png"
 		},
 		{
-			"name": "tipBg_png",
+			"url": "assets/bg/tipBg.png",
 			"type": "image",
-			"url": "assets/bg/tipBg.png"
+			"name": "tipBg_png"
 		},
 		{
-			"name": "checkbox_select_disabled_png",
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
 			"type": "image",
-			"url": "assets/CheckBox/checkbox_select_disabled.png"
+			"name": "checkbox_select_disabled_png"
 		},
 		{
-			"name": "checkbox_select_down_png",
+			"url": "assets/CheckBox/checkbox_select_down.png",
 			"type": "image",
-			"url": "assets/CheckBox/checkbox_select_down.png"
+			"name": "checkbox_select_down_png"
 		},
 		{
-			"name": "checkbox_select_up_png",
+			"url": "assets/CheckBox/checkbox_select_up.png",
 			"type": "image",
-			"url": "assets/CheckBox/checkbox_select_up.png"
+			"name": "checkbox_select_up_png"
 		},
 		{
-			"name": "checkbox_unselect_png",
+			"url": "assets/CheckBox/checkbox_unselect.png",
 			"type": "image",
-			"url": "assets/CheckBox/checkbox_unselect.png"
+			"name": "checkbox_unselect_png"
 		},
 		{
-			"name": "mask_png",
+			"url": "assets/common/mask.png",
 			"type": "image",
-			"url": "assets/common/mask.png"
+			"name": "mask_png"
 		},
 		{
-			"name": "popmenu_0001_png",
+			"url": "assets/common/popmenu_0001.png",
 			"type": "image",
-			"url": "assets/common/popmenu_0001.png"
+			"name": "popmenu_0001_png"
 		},
 		{
-			"name": "popmenu_0002_png",
+			"url": "assets/common/popmenu_0002.png",
 			"type": "image",
-			"url": "assets/common/popmenu_0002.png"
+			"name": "popmenu_0002_png"
 		},
 		{
-			"name": "tips_png",
+			"url": "assets/common/tips.png",
 			"type": "image",
-			"url": "assets/common/tips.png"
+			"name": "tips_png"
 		},
 		{
-			"name": "equip_0001_png",
+			"url": "assets/equip/equip_0001.png",
 			"type": "image",
-			"url": "assets/equip/equip_0001.png"
+			"name": "equip_0001_png"
 		},
 		{
-			"name": "equip_0003_png",
+			"url": "assets/equip/equip_0003.png",
 			"type": "image",
-			"url": "assets/equip/equip_0003.png"
+			"name": "equip_0003_png"
 		},
 		{
-			"name": "equip_0004_png",
+			"url": "assets/equip/equip_0004.png",
 			"type": "image",
-			"url": "assets/equip/equip_0004.png"
+			"name": "equip_0004_png"
 		},
 		{
-			"name": "equip_0005_png",
+			"url": "assets/equip/equip_0005.png",
 			"type": "image",
-			"url": "assets/equip/equip_0005.png"
+			"name": "equip_0005_png"
 		},
 		{
-			"name": "equip_0006_png",
+			"url": "assets/equip/equip_0006.png",
 			"type": "image",
-			"url": "assets/equip/equip_0006.png"
+			"name": "equip_0006_png"
 		},
 		{
-			"name": "equip_0007_png",
+			"url": "assets/equip/equip_0007.png",
 			"type": "image",
-			"url": "assets/equip/equip_0007.png"
+			"name": "equip_0007_png"
 		},
 		{
-			"name": "equip_0008_png",
+			"url": "assets/equip/equip_0008.png",
 			"type": "image",
-			"url": "assets/equip/equip_0008.png"
+			"name": "equip_0008_png"
 		},
 		{
-			"name": "equip_0010_png",
+			"url": "assets/equip/equip_0010.png",
 			"type": "image",
-			"url": "assets/equip/equip_0010.png"
+			"name": "equip_0010_png"
 		},
 		{
-			"name": "equip_0011_png",
+			"url": "assets/equip/equip_0011.png",
 			"type": "image",
-			"url": "assets/equip/equip_0011.png"
+			"name": "equip_0011_png"
 		},
 		{
-			"name": "combo_fnt",
+			"url": "assets/fntFile/combo.fnt",
 			"type": "font",
-			"url": "assets/fntFile/combo.fnt"
+			"name": "combo_fnt"
 		},
 		{
-			"name": "hero_0001_png",
+			"url": "assets/hero/hero_0001.png",
 			"type": "image",
-			"url": "assets/hero/hero_0001.png"
+			"name": "hero_0001_png"
 		},
 		{
-			"name": "hero_0002_png",
+			"url": "assets/hero/hero_0002.png",
 			"type": "image",
-			"url": "assets/hero/hero_0002.png"
+			"name": "hero_0002_png"
 		},
 		{
-			"name": "hero_0003_png",
+			"url": "assets/hero/hero_0003.png",
 			"type": "image",
-			"url": "assets/hero/hero_0003.png"
+			"name": "hero_0003_png"
 		},
 		{
-			"name": "hero_0004_png",
+			"url": "assets/hero/hero_0004.png",
 			"type": "image",
-			"url": "assets/hero/hero_0004.png"
+			"name": "hero_0004_png"
 		},
 		{
-			"name": "hero_0005_png",
+			"url": "assets/hero/hero_0005.png",
 			"type": "image",
-			"url": "assets/hero/hero_0005.png"
+			"name": "hero_0005_png"
 		},
 		{
-			"name": "hero_0006_png",
+			"url": "assets/hero/hero_0006.png",
 			"type": "image",
-			"url": "assets/hero/hero_0006.png"
+			"name": "hero_0006_png"
 		},
 		{
-			"name": "equip1_png",
+			"url": "assets/icon/weapon/equip1.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip1.png"
+			"name": "equip1_png"
 		},
 		{
-			"name": "equip10_png",
+			"url": "assets/icon/weapon/equip10.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip10.png"
+			"name": "equip10_png"
 		},
 		{
-			"name": "equip11_png",
+			"url": "assets/icon/weapon/equip11.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip11.png"
+			"name": "equip11_png"
 		},
 		{
-			"name": "equip12_png",
+			"url": "assets/icon/weapon/equip12.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip12.png"
+			"name": "equip12_png"
 		},
 		{
-			"name": "equip13_png",
+			"url": "assets/icon/weapon/equip13.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip13.png"
+			"name": "equip13_png"
 		},
 		{
-			"name": "equip14_png",
+			"url": "assets/icon/weapon/equip14.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip14.png"
+			"name": "equip14_png"
 		},
 		{
-			"name": "equip15_png",
+			"url": "assets/icon/weapon/equip15.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip15.png"
+			"name": "equip15_png"
 		},
 		{
-			"name": "equip16_png",
+			"url": "assets/icon/weapon/equip16.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip16.png"
+			"name": "equip16_png"
 		},
 		{
-			"name": "equip17_png",
+			"url": "assets/icon/weapon/equip17.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip17.png"
+			"name": "equip17_png"
 		},
 		{
-			"name": "equip18_png",
+			"url": "assets/icon/weapon/equip18.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip18.png"
+			"name": "equip18_png"
 		},
 		{
-			"name": "equip19_png",
+			"url": "assets/icon/weapon/equip19.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip19.png"
+			"name": "equip19_png"
 		},
 		{
-			"name": "equip2_png",
+			"url": "assets/icon/weapon/equip2.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip2.png"
+			"name": "equip2_png"
 		},
 		{
-			"name": "equip20_png",
+			"url": "assets/icon/weapon/equip20.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip20.png"
+			"name": "equip20_png"
 		},
 		{
-			"name": "equip21_png",
+			"url": "assets/icon/weapon/equip21.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip21.png"
+			"name": "equip21_png"
 		},
 		{
-			"name": "equip22_png",
+			"url": "assets/icon/weapon/equip22.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip22.png"
+			"name": "equip22_png"
 		},
 		{
-			"name": "equip23_png",
+			"url": "assets/icon/weapon/equip23.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip23.png"
+			"name": "equip23_png"
 		},
 		{
-			"name": "equip24_png",
+			"url": "assets/icon/weapon/equip24.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip24.png"
+			"name": "equip24_png"
 		},
 		{
-			"name": "equip3_png",
+			"url": "assets/icon/weapon/equip3.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip3.png"
+			"name": "equip3_png"
 		},
 		{
-			"name": "equip4_png",
+			"url": "assets/icon/weapon/equip4.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip4.png"
+			"name": "equip4_png"
 		},
 		{
-			"name": "equip5_png",
+			"url": "assets/icon/weapon/equip5.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip5.png"
+			"name": "equip5_png"
 		},
 		{
-			"name": "equip6_png",
+			"url": "assets/icon/weapon/equip6.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip6.png"
+			"name": "equip6_png"
 		},
 		{
-			"name": "equip7_png",
+			"url": "assets/icon/weapon/equip7.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip7.png"
+			"name": "equip7_png"
 		},
 		{
-			"name": "equip8_png",
+			"url": "assets/icon/weapon/equip8.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip8.png"
+			"name": "equip8_png"
 		},
 		{
-			"name": "equip9_png",
+			"url": "assets/icon/weapon/equip9.png",
 			"type": "image",
-			"url": "assets/icon/weapon/equip9.png"
+			"name": "equip9_png"
 		},
 		{
-			"name": "selected_png",
+			"url": "assets/ItemRenderer/selected.png",
 			"type": "image",
-			"url": "assets/ItemRenderer/selected.png"
+			"name": "selected_png"
 		},
 		{
-			"name": "stakes_json",
+			"url": "assets/moveClip/stakes.json",
 			"type": "json",
-			"url": "assets/moveClip/stakes.json"
+			"name": "stakes_json"
 		},
 		{
-			"name": "stakes_png",
+			"url": "assets/moveClip/stakes.png",
 			"type": "image",
-			"url": "assets/moveClip/stakes.png"
+			"name": "stakes_png"
 		},
 		{
-			"name": "curtain_png",
+			"url": "assets/other/curtain.png",
 			"type": "image",
-			"url": "assets/other/curtain.png"
+			"name": "curtain_png"
 		},
 		{
-			"name": "img_readyLine_png",
+			"url": "assets/other/img_readyLine.png",
 			"type": "image",
-			"url": "assets/other/img_readyLine.png"
+			"name": "img_readyLine_png"
 		},
 		{
-			"name": "logo_png",
+			"url": "assets/other/logo.png",
 			"type": "image",
-			"url": "assets/other/logo.png"
+			"name": "logo_png"
 		},
 		{
-			"name": "stakes2_png",
+			"url": "assets/other/stakes.png",
 			"type": "image",
-			"url": "assets/other/stakes.png"
+			"name": "stakes2_png"
 		},
 		{
-			"name": "border_png",
+			"url": "assets/Panel/border.png",
 			"type": "image",
-			"url": "assets/Panel/border.png"
+			"name": "border_png"
 		},
 		{
-			"name": "header_png",
+			"url": "assets/Panel/header.png",
 			"type": "image",
-			"url": "assets/Panel/header.png"
+			"name": "header_png"
 		},
 		{
-			"name": "newParticle_json",
+			"url": "assets/particle/newParticle.json",
 			"type": "json",
-			"url": "assets/particle/newParticle.json"
+			"name": "newParticle_json"
 		},
 		{
-			"name": "newParticle_png",
+			"url": "assets/particle/newParticle.png",
 			"type": "image",
-			"url": "assets/particle/newParticle.png"
+			"name": "newParticle_png"
 		},
 		{
-			"name": "thumb_pb_png",
+			"url": "assets/ProgressBar/thumb_pb.png",
 			"type": "image",
-			"url": "assets/ProgressBar/thumb_pb.png"
+			"name": "thumb_pb_png"
 		},
 		{
-			"name": "track_pb_png",
+			"url": "assets/ProgressBar/track_pb.png",
 			"type": "image",
-			"url": "assets/ProgressBar/track_pb.png"
+			"name": "track_pb_png"
 		},
 		{
-			"name": "radiobutton_select_disabled_png",
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
 			"type": "image",
-			"url": "assets/RadioButton/radiobutton_select_disabled.png"
+			"name": "radiobutton_select_disabled_png"
 		},
 		{
-			"name": "radiobutton_select_down_png",
+			"url": "assets/RadioButton/radiobutton_select_down.png",
 			"type": "image",
-			"url": "assets/RadioButton/radiobutton_select_down.png"
+			"name": "radiobutton_select_down_png"
 		},
 		{
-			"name": "radiobutton_select_up_png",
+			"url": "assets/RadioButton/radiobutton_select_up.png",
 			"type": "image",
-			"url": "assets/RadioButton/radiobutton_select_up.png"
+			"name": "radiobutton_select_up_png"
 		},
 		{
-			"name": "radiobutton_unselect_png",
+			"url": "assets/RadioButton/radiobutton_unselect.png",
 			"type": "image",
-			"url": "assets/RadioButton/radiobutton_unselect.png"
+			"name": "radiobutton_unselect_png"
 		},
 		{
-			"name": "roundthumb_png",
+			"url": "assets/ScrollBar/roundthumb.png",
 			"type": "image",
-			"url": "assets/ScrollBar/roundthumb.png"
+			"name": "roundthumb_png"
 		},
 		{
-			"name": "track_sb_png",
+			"url": "assets/ScrollBar/track_sb.png",
 			"type": "image",
-			"url": "assets/ScrollBar/track_sb.png"
+			"name": "track_sb_png"
 		},
 		{
-			"name": "buxiaoman_json",
+			"url": "assets/moveClip/mainScene/buxiaoman.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/buxiaoman.json"
+			"name": "buxiaoman_json"
 		},
 		{
-			"name": "buxiaoman_png",
+			"url": "assets/moveClip/mainScene/buxiaoman.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/buxiaoman.png"
+			"name": "buxiaoman_png"
 		},
 		{
-			"name": "diaochan_json",
+			"url": "assets/moveClip/mainScene/diaochan.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/diaochan.json"
+			"name": "diaochan_json"
 		},
 		{
-			"name": "diaochan_png",
+			"url": "assets/moveClip/mainScene/diaochan.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/diaochan.png"
+			"name": "diaochan_png"
 		},
 		{
-			"name": "fire_json",
+			"url": "assets/moveClip/mainScene/fire.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/fire.json"
+			"name": "fire_json"
 		},
 		{
-			"name": "fire_png",
+			"url": "assets/moveClip/mainScene/fire.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/fire.png"
+			"name": "fire_png"
 		},
 		{
-			"name": "guanyu_json",
+			"url": "assets/moveClip/mainScene/guanyu.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/guanyu.json"
+			"name": "guanyu_json"
 		},
 		{
-			"name": "guanyu_png",
+			"url": "assets/moveClip/mainScene/guanyu.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/guanyu.png"
+			"name": "guanyu_png"
 		},
 		{
-			"name": "hair_json",
+			"url": "assets/moveClip/mainScene/hair.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/hair.json"
+			"name": "hair_json"
 		},
 		{
-			"name": "hair_png",
+			"url": "assets/moveClip/mainScene/hair.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/hair.png"
+			"name": "hair_png"
 		},
 		{
-			"name": "long_json",
+			"url": "assets/moveClip/mainScene/long.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/long.json"
+			"name": "long_json"
 		},
 		{
-			"name": "long_png",
+			"url": "assets/moveClip/mainScene/long.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/long.png"
+			"name": "long_png"
 		},
 		{
-			"name": "sunluban_png",
+			"url": "assets/moveClip/mainScene/sunluban.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/sunluban.png"
+			"name": "sunluban_png"
 		},
 		{
-			"name": "zhaoyun_json",
+			"url": "assets/moveClip/mainScene/zhaoyun.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/zhaoyun.json"
+			"name": "zhaoyun_json"
 		},
 		{
-			"name": "zhaoyun_png",
+			"url": "assets/moveClip/mainScene/zhaoyun.png",
 			"type": "image",
-			"url": "assets/moveClip/mainScene/zhaoyun.png"
+			"name": "zhaoyun_png"
 		},
 		{
-			"name": "sunluban_json",
+			"url": "assets/moveClip/mainScene/sunluban.json",
 			"type": "json",
-			"url": "assets/moveClip/mainScene/sunluban.json"
+			"name": "sunluban_json"
 		},
 		{
-			"name": "TcEquipUp_json",
+			"url": "config/TcEquipUp.json",
 			"type": "json",
-			"url": "config/TcEquipUp.json"
+			"name": "TcEquipUp_json"
 		},
 		{
-			"name": "bg_pvpfinish_png",
+			"url": "assets/bg/bg_pvpfinish.png",
 			"type": "image",
-			"url": "assets/bg/bg_pvpfinish.png"
+			"name": "bg_pvpfinish_png"
 		},
 		{
-			"name": "TcTalentUp_json",
+			"url": "config/TcTalentUp.json",
 			"type": "json",
-			"url": "config/TcTalentUp.json"
+			"name": "TcTalentUp_json"
 		},
 		{
-			"name": "TcUnlockTalentPage_json",
+			"url": "config/TcUnlockTalentPage.json",
 			"type": "json",
-			"url": "config/TcUnlockTalentPage.json"
+			"name": "TcUnlockTalentPage_json"
 		},
 		{
-			"name": "TcEquipStarUp_json",
+			"url": "config/TcEquipStarUp.json",
 			"type": "json",
-			"url": "config/TcEquipStarUp.json"
+			"name": "TcEquipStarUp_json"
 		},
 		{
-			"name": "readDialog_png",
+			"url": "assets/tip/readDialog.png",
 			"type": "image",
-			"url": "assets/tip/readDialog.png"
+			"name": "readDialog_png"
 		},
 		{
-			"name": "talentMaxBox_png",
+			"url": "assets/talent/talentMaxBox.png",
 			"type": "image",
-			"url": "assets/talent/talentMaxBox.png"
+			"name": "talentMaxBox_png"
 		},
 		{
-			"name": "hurtFnt_fnt",
+			"url": "assets/fntFile/hurtFnt.fnt",
 			"type": "font",
-			"url": "assets/fntFile/hurtFnt.fnt"
+			"name": "hurtFnt_fnt"
 		},
 		{
-			"name": "buffConfig_json",
+			"url": "config/buffConfig.json?v=1.0.0",
 			"type": "json",
-			"url": "config/buffConfig.json?v=1.0.0"
+			"name": "buffConfig_json"
 		},
 		{
-			"name": "TcManAttr_json",
+			"url": "config/hero/TcManAttr.json?v=1.0.3",
 			"type": "json",
-			"url": "config/hero/TcManAttr.json?v=1.0.3"
+			"name": "TcManAttr_json"
 		},
 		{
-			"name": "TcYunAttr_json",
+			"url": "config/hero/TcYunAttr.json?v=1.0.3",
 			"type": "json",
-			"url": "config/hero/TcYunAttr.json?v=1.0.3"
+			"name": "TcYunAttr_json"
 		},
 		{
-			"name": "TcChanAttr_json",
+			"url": "config/hero/TcChanAttr.json",
 			"type": "json",
-			"url": "config/hero/TcChanAttr.json"
+			"name": "TcChanAttr_json"
 		},
 		{
-			"name": "TcMonster03_json",
+			"url": "config/enermy/TcMonster03.json",
 			"type": "json",
-			"url": "config/enermy/TcMonster03.json"
+			"name": "TcMonster03_json"
 		},
 		{
-			"name": "TcBoss01_json",
+			"url": "config/enermy/TcBoss01.json",
 			"type": "json",
-			"url": "config/enermy/TcBoss01.json"
+			"name": "TcBoss01_json"
 		},
 		{
-			"name": "TcMonster01_json",
+			"url": "config/enermy/TcMonster01.json",
 			"type": "json",
-			"url": "config/enermy/TcMonster01.json"
+			"name": "TcMonster01_json"
 		},
 		{
-			"name": "TcMonster02_json",
+			"url": "config/enermy/TcMonster02.json",
 			"type": "json",
-			"url": "config/enermy/TcMonster02.json"
+			"name": "TcMonster02_json"
 		},
 		{
-			"name": "equip_0012_png",
+			"url": "assets/equip/equip_0012.png",
 			"type": "image",
-			"url": "assets/equip/equip_0012.png"
+			"name": "equip_0012_png"
 		},
 		{
-			"name": "goodsBg_png",
+			"url": "assets/bg/goodsBg.png",
 			"type": "image",
-			"url": "assets/bg/goodsBg.png"
+			"name": "goodsBg_png"
 		},
 		{
-			"name": "img_sigh_png",
+			"url": "assets/testBattle/img_sigh.png",
 			"type": "image",
-			"url": "assets/testBattle/img_sigh.png"
+			"name": "img_sigh_png"
 		},
 		{
-			"name": "zhaoyun-pugong_png",
+			"url": "assets/testBattle/zhaoyun-pugong.png",
 			"type": "image",
-			"url": "assets/testBattle/zhaoyun-pugong.png"
+			"name": "zhaoyun-pugong_png"
 		},
 		{
-			"name": "buxiaoman-pugong_png",
+			"url": "assets/testBattle/buxiaoman-pugong.png",
 			"type": "image",
-			"url": "assets/testBattle/buxiaoman-pugong.png"
+			"name": "buxiaoman-pugong_png"
 		},
 		{
-			"name": "diaochan-pugong_png",
+			"url": "assets/testBattle/diaochan-pugong.png",
 			"type": "image",
-			"url": "assets/testBattle/diaochan-pugong.png"
+			"name": "diaochan-pugong_png"
 		},
 		{
-			"name": "buff_tex_json",
+			"url": "assets/animation/buff/buff_tex.json",
 			"type": "json",
-			"url": "assets/animation/buff/buff_tex.json"
+			"name": "buff_tex_json"
 		},
 		{
-			"name": "buff_tex_png",
+			"url": "assets/animation/buff/buff_tex.png",
 			"type": "image",
-			"url": "assets/animation/buff/buff_tex.png"
+			"name": "buff_tex_png"
 		},
 		{
-			"name": "buxiaoman_tex_json",
+			"url": "assets/animation/buxiaoman/buxiaoman_tex.json",
 			"type": "json",
-			"url": "assets/animation/buxiaoman/buxiaoman_tex.json"
+			"name": "buxiaoman_tex_json"
 		},
 		{
-			"name": "buxiaoman_tex_png",
+			"url": "assets/animation/buxiaoman/buxiaoman_tex.png",
 			"type": "image",
-			"url": "assets/animation/buxiaoman/buxiaoman_tex.png"
+			"name": "buxiaoman_tex_png"
 		},
 		{
-			"name": "buxiaoman_skill_tex_json",
+			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_tex.json",
 			"type": "json",
-			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_tex.json"
+			"name": "buxiaoman_skill_tex_json"
 		},
 		{
-			"name": "buxiaoman_skill_tex_png",
+			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_tex.png",
 			"type": "image",
-			"url": "assets/animation/buxiaoman_skill/buxiaoman_skill_tex.png"
+			"name": "buxiaoman_skill_tex_png"
 		},
 		{
-			"name": "daoguang_effect_tex_json",
+			"url": "assets/animation/daoguang_effect/daoguang_effect_tex.json",
 			"type": "json",
-			"url": "assets/animation/daoguang_effect/daoguang_effect_tex.json"
+			"name": "daoguang_effect_tex_json"
 		},
 		{
-			"name": "daoguang_effect_tex_png",
+			"url": "assets/animation/daoguang_effect/daoguang_effect_tex.png",
 			"type": "image",
-			"url": "assets/animation/daoguang_effect/daoguang_effect_tex.png"
+			"name": "daoguang_effect_tex_png"
 		},
 		{
-			"name": "diaochan_tex_json",
+			"url": "assets/animation/diaochan/diaochan_tex.json",
 			"type": "json",
-			"url": "assets/animation/diaochan/diaochan_tex.json"
+			"name": "diaochan_tex_json"
 		},
 		{
-			"name": "diaochan_tex_png",
+			"url": "assets/animation/diaochan/diaochan_tex.png",
 			"type": "image",
-			"url": "assets/animation/diaochan/diaochan_tex.png"
+			"name": "diaochan_tex_png"
 		},
 		{
-			"name": "diaochan_skill_tex_json",
+			"url": "assets/animation/diaochan_skill/diaochan_skill_tex.json",
 			"type": "json",
-			"url": "assets/animation/diaochan_skill/diaochan_skill_tex.json"
+			"name": "diaochan_skill_tex_json"
 		},
 		{
-			"name": "diaochan_skill_tex_png",
+			"url": "assets/animation/diaochan_skill/diaochan_skill_tex.png",
 			"type": "image",
-			"url": "assets/animation/diaochan_skill/diaochan_skill_tex.png"
+			"name": "diaochan_skill_tex_png"
 		},
 		{
-			"name": "enter_monster_01_tex_json",
+			"url": "assets/animation/enter_monster_01/enter_monster_01_tex.json",
 			"type": "json",
-			"url": "assets/animation/enter_monster_01/enter_monster_01_tex.json"
+			"name": "enter_monster_01_tex_json"
 		},
 		{
-			"name": "enter_monster_01_tex_png",
+			"url": "assets/animation/enter_monster_01/enter_monster_01_tex.png",
 			"type": "image",
-			"url": "assets/animation/enter_monster_01/enter_monster_01_tex.png"
+			"name": "enter_monster_01_tex_png"
 		},
 		{
-			"name": "monster02_skill_tex_json",
+			"url": "assets/animation/monster02_skill/monster02_skill_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster02_skill/monster02_skill_tex.json"
+			"name": "monster02_skill_tex_json"
 		},
 		{
-			"name": "monster02_skill_tex_png",
+			"url": "assets/animation/monster02_skill/monster02_skill_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster02_skill/monster02_skill_tex.png"
+			"name": "monster02_skill_tex_png"
 		},
 		{
-			"name": "zhaoyun_tex_json",
+			"url": "assets/animation/zhaoyun/zhaoyun_tex.json",
 			"type": "json",
-			"url": "assets/animation/zhaoyun/zhaoyun_tex.json"
+			"name": "zhaoyun_tex_json"
 		},
 		{
-			"name": "zhaoyun_tex_png",
+			"url": "assets/animation/zhaoyun/zhaoyun_tex.png",
 			"type": "image",
-			"url": "assets/animation/zhaoyun/zhaoyun_tex.png"
+			"name": "zhaoyun_tex_png"
 		},
 		{
-			"name": "zhaoyun_skill_tex_json",
+			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_tex.json",
 			"type": "json",
-			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_tex.json"
+			"name": "zhaoyun_skill_tex_json"
 		},
 		{
-			"name": "zhaoyun_skill_tex_png",
+			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_tex.png",
 			"type": "image",
-			"url": "assets/animation/zhaoyun_skill/zhaoyun_skill_tex.png"
+			"name": "zhaoyun_skill_tex_png"
 		},
 		{
-			"name": "blood_die_tex_json",
+			"url": "assets/animation/blood_die/blood_die_tex.json",
 			"type": "json",
-			"url": "assets/animation/blood_die/blood_die_tex.json"
+			"name": "blood_die_tex_json"
 		},
 		{
-			"name": "blood_die_tex_png",
+			"url": "assets/animation/blood_die/blood_die_tex.png",
 			"type": "image",
-			"url": "assets/animation/blood_die/blood_die_tex.png"
+			"name": "blood_die_tex_png"
 		},
 		{
-			"name": "Boss01_tex_json",
+			"url": "assets/animation/Boss01/Boss01_tex.json",
 			"type": "json",
-			"url": "assets/animation/Boss01/Boss01_tex.json"
+			"name": "Boss01_tex_json"
 		},
 		{
-			"name": "Boss01_tex_png",
+			"url": "assets/animation/Boss01/Boss01_tex.png",
 			"type": "image",
-			"url": "assets/animation/Boss01/Boss01_tex.png"
+			"name": "Boss01_tex_png"
 		},
 		{
-			"name": "Boss01_effect01_tex_json",
+			"url": "assets/animation/Boss01_effect01/Boss01_effect01_tex.json",
 			"type": "json",
-			"url": "assets/animation/Boss01_effect01/Boss01_effect01_tex.json"
+			"name": "Boss01_effect01_tex_json"
 		},
 		{
-			"name": "Boss01_effect01_tex_png",
+			"url": "assets/animation/Boss01_effect01/Boss01_effect01_tex.png",
 			"type": "image",
-			"url": "assets/animation/Boss01_effect01/Boss01_effect01_tex.png"
+			"name": "Boss01_effect01_tex_png"
 		},
 		{
-			"name": "Elitemonster001_png",
+			"url": "assets/testBattle/Elitemonster001.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster001.png"
+			"name": "Elitemonster001_png"
 		},
 		{
-			"name": "Elitemonster002_png",
+			"url": "assets/testBattle/Elitemonster002.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster002.png"
+			"name": "Elitemonster002_png"
 		},
 		{
-			"name": "Elitemonster003_png",
+			"url": "assets/testBattle/Elitemonster003.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster003.png"
+			"name": "Elitemonster003_png"
 		},
 		{
-			"name": "Elitemonster004_png",
+			"url": "assets/testBattle/Elitemonster004.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster004.png"
+			"name": "Elitemonster004_png"
 		},
 		{
-			"name": "Elitemonster005_png",
+			"url": "assets/testBattle/Elitemonster005.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster005.png"
+			"name": "Elitemonster005_png"
 		},
 		{
-			"name": "Elitemonster006_png",
+			"url": "assets/testBattle/Elitemonster006.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster006.png"
+			"name": "Elitemonster006_png"
 		},
 		{
-			"name": "Elitemonster000_png",
+			"url": "assets/testBattle/Elitemonster000.png",
 			"type": "image",
-			"url": "assets/testBattle/Elitemonster000.png"
+			"name": "Elitemonster000_png"
 		},
 		{
-			"name": "zhaoyun_skill01_02_png",
+			"url": "assets/battle/zhaoyun_skill01_02.png",
 			"type": "image",
-			"url": "assets/battle/zhaoyun_skill01_02.png"
+			"name": "zhaoyun_skill01_02_png"
 		},
 		{
-			"name": "email_002_png",
+			"url": "assets/tip/email_002.png",
 			"type": "image",
-			"url": "assets/tip/email_002.png"
+			"name": "email_002_png"
 		},
 		{
-			"name": "email_003_png",
+			"url": "assets/tip/email_003.png",
 			"type": "image",
-			"url": "assets/tip/email_003.png"
+			"name": "email_003_png"
 		},
 		{
-			"name": "email_001_png",
+			"url": "assets/tip/email_001.png",
 			"type": "image",
-			"url": "assets/tip/email_001.png"
+			"name": "email_001_png"
 		},
 		{
-			"name": "share_0001_png",
+			"url": "assets/tip/share_0001.png",
 			"type": "image",
-			"url": "assets/tip/share_0001.png"
+			"name": "share_0001_png"
 		},
 		{
-			"name": "upArrow_json",
+			"url": "assets/moveClip/upArrow.json",
 			"type": "json",
-			"url": "assets/moveClip/upArrow.json"
+			"name": "upArrow_json"
 		},
 		{
-			"name": "upArrow_png",
+			"url": "assets/moveClip/upArrow.png",
 			"type": "image",
-			"url": "assets/moveClip/upArrow.png"
+			"name": "upArrow_png"
 		},
 		{
-			"name": "battle_0006_png",
+			"url": "assets/battle/battle_0006.png",
 			"type": "image",
-			"url": "assets/battle/battle_0006.png"
+			"name": "battle_0006_png"
 		},
 		{
-			"name": "buy_0001_png",
+			"url": "assets/battle/buy_0001.png",
 			"type": "image",
-			"url": "assets/battle/buy_0001.png"
+			"name": "buy_0001_png"
 		},
 		{
-			"name": "kill_0002_png",
+			"url": "assets/battle/kill_0002.png",
 			"type": "image",
-			"url": "assets/battle/kill_0002.png"
+			"name": "kill_0002_png"
 		},
 		{
-			"name": "kill_0003_png",
+			"url": "assets/battle/kill_0003.png",
 			"type": "image",
-			"url": "assets/battle/kill_0003.png"
+			"name": "kill_0003_png"
 		},
 		{
-			"name": "kill_0004_png",
+			"url": "assets/battle/kill_0004.png",
 			"type": "image",
-			"url": "assets/battle/kill_0004.png"
+			"name": "kill_0004_png"
 		},
 		{
-			"name": "kill_0005_png",
+			"url": "assets/battle/kill_0005.png",
 			"type": "image",
-			"url": "assets/battle/kill_0005.png"
+			"name": "kill_0005_png"
 		},
 		{
-			"name": "talentBox_png",
+			"url": "assets/talent/talentBox.png",
 			"type": "image",
-			"url": "assets/talent/talentBox.png"
+			"name": "talentBox_png"
 		},
 		{
-			"name": "TcHeroUp_json",
+			"url": "config/TcHeroUp.json",
 			"type": "json",
-			"url": "config/TcHeroUp.json"
+			"name": "TcHeroUp_json"
 		},
 		{
-			"name": "BuildWall_png",
+			"url": "assets/moveClip/eliteMonster/BuildWall.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/BuildWall.png"
+			"name": "BuildWall_png"
 		},
 		{
-			"name": "BuildWall_json",
+			"url": "assets/moveClip/eliteMonster/BuildWall.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/BuildWall.json"
+			"name": "BuildWall_json"
 		},
 		{
-			"name": "Crack_png",
+			"url": "assets/moveClip/eliteMonster/Crack.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/Crack.png"
+			"name": "Crack_png"
 		},
 		{
-			"name": "Crack_json",
+			"url": "assets/moveClip/eliteMonster/Crack.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/Crack.json"
+			"name": "Crack_json"
 		},
 		{
-			"name": "Frost_png",
+			"url": "assets/moveClip/eliteMonster/Frost.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/Frost.png"
+			"name": "Frost_png"
 		},
 		{
-			"name": "Frost_json",
+			"url": "assets/moveClip/eliteMonster/Frost.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/Frost.json"
+			"name": "Frost_json"
 		},
 		{
-			"name": "Avatar_png",
+			"url": "assets/moveClip/eliteMonster/Avatar.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/Avatar.png"
+			"name": "Avatar_png"
 		},
 		{
-			"name": "Avatar_json",
+			"url": "assets/moveClip/eliteMonster/Avatar.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/Avatar.json"
+			"name": "Avatar_json"
 		},
 		{
-			"name": "Faster_png",
+			"url": "assets/moveClip/eliteMonster/Faster.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/Faster.png"
+			"name": "Faster_png"
 		},
 		{
-			"name": "Faster_json",
+			"url": "assets/moveClip/eliteMonster/Faster.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/Faster.json"
+			"name": "Faster_json"
 		},
 		{
-			"name": "BlowUp_png",
+			"url": "assets/moveClip/eliteMonster/BlowUp.png",
 			"type": "image",
-			"url": "assets/moveClip/eliteMonster/BlowUp.png"
+			"name": "BlowUp_png"
 		},
 		{
-			"name": "BlowUp_json",
+			"url": "assets/moveClip/eliteMonster/BlowUp.json",
 			"type": "json",
-			"url": "assets/moveClip/eliteMonster/BlowUp.json"
+			"name": "BlowUp_json"
 		},
 		{
-			"name": "TcEquipUpAttr_json",
+			"url": "config/TcEquipUpAttr.json",
 			"type": "json",
-			"url": "config/TcEquipUpAttr.json"
+			"name": "TcEquipUpAttr_json"
 		},
 		{
-			"name": "equip_0013_png",
+			"url": "assets/equip/equip_0013.png",
 			"type": "image",
-			"url": "assets/equip/equip_0013.png"
+			"name": "equip_0013_png"
 		},
 		{
-			"name": "blessFnt_fnt",
+			"url": "assets/fntFile/blessFnt.fnt",
 			"type": "font",
-			"url": "assets/fntFile/blessFnt.fnt"
+			"name": "blessFnt_fnt"
 		},
 		{
-			"name": "diaoClip_json",
+			"url": "assets/moveClip/diaoClip.json",
 			"type": "json",
-			"url": "assets/moveClip/diaoClip.json"
+			"name": "diaoClip_json"
 		},
 		{
-			"name": "diaoClip_png",
+			"url": "assets/moveClip/diaoClip.png",
 			"type": "image",
-			"url": "assets/moveClip/diaoClip.png"
+			"name": "diaoClip_png"
 		},
 		{
-			"name": "buClip_json",
+			"url": "assets/moveClip/buClip.json",
 			"type": "json",
-			"url": "assets/moveClip/buClip.json"
+			"name": "buClip_json"
 		},
 		{
-			"name": "buClip_png",
+			"url": "assets/moveClip/buClip.png",
 			"type": "image",
-			"url": "assets/moveClip/buClip.png"
+			"name": "buClip_png"
 		},
 		{
-			"name": "buClip1_png",
+			"url": "assets/moveClip/buClip1.png",
 			"type": "image",
-			"url": "assets/moveClip/buClip1.png"
+			"name": "buClip1_png"
 		},
 		{
-			"name": "drawCardClip_png",
+			"url": "assets/moveClip/drawCardClip.png",
 			"type": "image",
-			"url": "assets/moveClip/drawCardClip.png"
+			"name": "drawCardClip_png"
 		},
 		{
-			"name": "killFnt_fnt",
+			"url": "assets/moveClip/killFnt.fnt",
 			"type": "font",
-			"url": "assets/moveClip/killFnt.fnt"
+			"name": "killFnt_fnt"
 		},
 		{
-			"name": "loginSword_json",
+			"url": "assets/moveClip/loginSword.json",
 			"type": "json",
-			"url": "assets/moveClip/loginSword.json"
+			"name": "loginSword_json"
 		},
 		{
-			"name": "loginSword_png",
+			"url": "assets/moveClip/loginSword.png",
 			"type": "image",
-			"url": "assets/moveClip/loginSword.png"
+			"name": "loginSword_png"
 		},
 		{
-			"name": "map2_png",
+			"url": "assets/testBattle/map2.png",
 			"type": "image",
-			"url": "assets/testBattle/map2.png"
+			"name": "map2_png"
 		},
 		{
-			"name": "map3_png",
+			"url": "assets/testBattle/map3.png",
 			"type": "image",
-			"url": "assets/testBattle/map3.png"
+			"name": "map3_png"
 		},
 		{
-			"name": "map1_png",
+			"url": "assets/testBattle/map1.png",
 			"type": "image",
-			"url": "assets/testBattle/map1.png"
+			"name": "map1_png"
 		},
 		{
-			"name": "signBg_png",
+			"url": "assets/tip/signBg.png",
 			"type": "image",
-			"url": "assets/tip/signBg.png"
+			"name": "signBg_png"
 		},
 		{
-			"name": "monster1_2_tex_json",
+			"url": "assets/animation/monster1_2/monster1_2_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster1_2/monster1_2_tex.json"
+			"name": "monster1_2_tex_json"
 		},
 		{
-			"name": "monster1_2_tex_png",
+			"url": "assets/animation/monster1_2/monster1_2_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster1_2/monster1_2_tex.png"
+			"name": "monster1_2_tex_png"
 		},
 		{
-			"name": "monster1_3_tex_json",
+			"url": "assets/animation/monster1_3/monster1_3_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster1_3/monster1_3_tex.json"
+			"name": "monster1_3_tex_json"
 		},
 		{
-			"name": "monster1_3_tex_png",
+			"url": "assets/animation/monster1_3/monster1_3_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster1_3/monster1_3_tex.png"
+			"name": "monster1_3_tex_png"
 		},
 		{
-			"name": "monster1_4_tex_json",
+			"url": "assets/animation/monster1_4/monster1_4_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster1_4/monster1_4_tex.json"
+			"name": "monster1_4_tex_json"
 		},
 		{
-			"name": "monster1_4_tex_png",
+			"url": "assets/animation/monster1_4/monster1_4_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster1_4/monster1_4_tex.png"
+			"name": "monster1_4_tex_png"
 		},
 		{
-			"name": "monster2_1_tex_json",
+			"url": "assets/animation/monster2_1/monster2_1_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster2_1/monster2_1_tex.json"
+			"name": "monster2_1_tex_json"
 		},
 		{
-			"name": "monster2_1_tex_png",
+			"url": "assets/animation/monster2_1/monster2_1_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster2_1/monster2_1_tex.png"
+			"name": "monster2_1_tex_png"
 		},
 		{
-			"name": "monster2_2_tex_json",
+			"url": "assets/animation/monster2_2/monster2_2_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster2_2/monster2_2_tex.json"
+			"name": "monster2_2_tex_json"
 		},
 		{
-			"name": "monster2_2_tex_png",
+			"url": "assets/animation/monster2_2/monster2_2_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster2_2/monster2_2_tex.png"
+			"name": "monster2_2_tex_png"
 		},
 		{
-			"name": "monster2_3_tex_json",
+			"url": "assets/animation/monster2_3/monster2_3_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster2_3/monster2_3_tex.json"
+			"name": "monster2_3_tex_json"
 		},
 		{
-			"name": "monster2_3_tex_png",
+			"url": "assets/animation/monster2_3/monster2_3_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster2_3/monster2_3_tex.png"
+			"name": "monster2_3_tex_png"
 		},
 		{
-			"name": "monster2_4_tex_json",
+			"url": "assets/animation/monster2_4/monster2_4_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster2_4/monster2_4_tex.json"
+			"name": "monster2_4_tex_json"
 		},
 		{
-			"name": "monster2_4_tex_png",
+			"url": "assets/animation/monster2_4/monster2_4_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster2_4/monster2_4_tex.png"
+			"name": "monster2_4_tex_png"
 		},
 		{
-			"name": "monster3_1_tex_json",
+			"url": "assets/animation/monster3_1/monster3_1_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster3_1/monster3_1_tex.json"
+			"name": "monster3_1_tex_json"
 		},
 		{
-			"name": "monster3_1_tex_png",
+			"url": "assets/animation/monster3_1/monster3_1_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster3_1/monster3_1_tex.png"
+			"name": "monster3_1_tex_png"
 		},
 		{
-			"name": "monster3_2_tex_json",
+			"url": "assets/animation/monster3_2/monster3_2_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster3_2/monster3_2_tex.json"
+			"name": "monster3_2_tex_json"
 		},
 		{
-			"name": "monster3_2_tex_png",
+			"url": "assets/animation/monster3_2/monster3_2_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster3_2/monster3_2_tex.png"
+			"name": "monster3_2_tex_png"
 		},
 		{
-			"name": "monster3_3_tex_json",
+			"url": "assets/animation/monster3_3/monster3_3_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster3_3/monster3_3_tex.json"
+			"name": "monster3_3_tex_json"
 		},
 		{
-			"name": "monster3_3_tex_png",
+			"url": "assets/animation/monster3_3/monster3_3_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster3_3/monster3_3_tex.png"
+			"name": "monster3_3_tex_png"
 		},
 		{
-			"name": "monster3_4_tex_json",
+			"url": "assets/animation/monster3_4/monster3_4_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster3_4/monster3_4_tex.json"
+			"name": "monster3_4_tex_json"
 		},
 		{
-			"name": "monster3_4_tex_png",
+			"url": "assets/animation/monster3_4/monster3_4_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster3_4/monster3_4_tex.png"
+			"name": "monster3_4_tex_png"
 		},
 		{
-			"name": "monster1_1_tex_json",
+			"url": "assets/animation/monster1_1/monster1_1_tex.json",
 			"type": "json",
-			"url": "assets/animation/monster1_1/monster1_1_tex.json"
+			"name": "monster1_1_tex_json"
 		},
 		{
-			"name": "monster1_1_tex_png",
+			"url": "assets/animation/monster1_1/monster1_1_tex.png",
 			"type": "image",
-			"url": "assets/animation/monster1_1/monster1_1_tex.png"
+			"name": "monster1_1_tex_png"
 		},
 		{
-			"name": "monster1_2_ske_dbbin",
+			"url": "assets/animation/monster1_2/monster1_2_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster1_2/monster1_2_ske.dbbin"
+			"name": "monster1_2_ske_dbbin"
 		},
 		{
-			"name": "monster1_3_ske_dbbin",
+			"url": "assets/animation/monster1_3/monster1_3_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster1_3/monster1_3_ske.dbbin"
+			"name": "monster1_3_ske_dbbin"
 		},
 		{
-			"name": "monster1_4_ske_dbbin",
+			"url": "assets/animation/monster1_4/monster1_4_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster1_4/monster1_4_ske.dbbin"
+			"name": "monster1_4_ske_dbbin"
 		},
 		{
-			"name": "monster2_1_ske_dbbin",
+			"url": "assets/animation/monster2_1/monster2_1_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster2_1/monster2_1_ske.dbbin"
+			"name": "monster2_1_ske_dbbin"
 		},
 		{
-			"name": "monster2_2_ske_dbbin",
+			"url": "assets/animation/monster2_2/monster2_2_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster2_2/monster2_2_ske.dbbin"
+			"name": "monster2_2_ske_dbbin"
 		},
 		{
-			"name": "monster2_3_ske_dbbin",
+			"url": "assets/animation/monster2_3/monster2_3_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster2_3/monster2_3_ske.dbbin"
+			"name": "monster2_3_ske_dbbin"
 		},
 		{
-			"name": "monster2_4_ske_dbbin",
+			"url": "assets/animation/monster2_4/monster2_4_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster2_4/monster2_4_ske.dbbin"
+			"name": "monster2_4_ske_dbbin"
 		},
 		{
-			"name": "monster3_1_ske_dbbin",
+			"url": "assets/animation/monster3_1/monster3_1_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster3_1/monster3_1_ske.dbbin"
+			"name": "monster3_1_ske_dbbin"
 		},
 		{
-			"name": "monster3_2_ske_dbbin",
+			"url": "assets/animation/monster3_2/monster3_2_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster3_2/monster3_2_ske.dbbin"
+			"name": "monster3_2_ske_dbbin"
 		},
 		{
-			"name": "monster3_3_ske_dbbin",
+			"url": "assets/animation/monster3_3/monster3_3_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster3_3/monster3_3_ske.dbbin"
+			"name": "monster3_3_ske_dbbin"
 		},
 		{
-			"name": "monster3_4_ske_dbbin",
+			"url": "assets/animation/monster3_4/monster3_4_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/monster3_4/monster3_4_ske.dbbin"
+			"name": "monster3_4_ske_dbbin"
 		},
 		{
-			"name": "killTips2Clip_json",
+			"url": "assets/moveClip/killTips/killTips2Clip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTips2Clip.json"
+			"name": "killTips2Clip_json"
 		},
 		{
-			"name": "killTips2Clip_png",
+			"url": "assets/moveClip/killTips/killTips2Clip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTips2Clip.png"
+			"name": "killTips2Clip_png"
 		},
 		{
-			"name": "killTips3Clip_json",
+			"url": "assets/moveClip/killTips/killTips3Clip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTips3Clip.json"
+			"name": "killTips3Clip_json"
 		},
 		{
-			"name": "killTips3Clip_png",
+			"url": "assets/moveClip/killTips/killTips3Clip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTips3Clip.png"
+			"name": "killTips3Clip_png"
 		},
 		{
-			"name": "killTips4Clip_json",
+			"url": "assets/moveClip/killTips/killTips4Clip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTips4Clip.json"
+			"name": "killTips4Clip_json"
 		},
 		{
-			"name": "killTips4Clip_png",
+			"url": "assets/moveClip/killTips/killTips4Clip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTips4Clip.png"
+			"name": "killTips4Clip_png"
 		},
 		{
-			"name": "killTips5Clip_json",
+			"url": "assets/moveClip/killTips/killTips5Clip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTips5Clip.json"
+			"name": "killTips5Clip_json"
 		},
 		{
-			"name": "killTips5Clip_png",
+			"url": "assets/moveClip/killTips/killTips5Clip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTips5Clip.png"
+			"name": "killTips5Clip_png"
 		},
 		{
-			"name": "killTipsBgClip_json",
+			"url": "assets/moveClip/killTips/killTipsBgClip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTipsBgClip.json"
+			"name": "killTipsBgClip_json"
 		},
 		{
-			"name": "killTipsBgClip_png",
+			"url": "assets/moveClip/killTips/killTipsBgClip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTipsBgClip.png"
+			"name": "killTipsBgClip_png"
 		},
 		{
-			"name": "killTips1Clip_json",
+			"url": "assets/moveClip/killTips/killTips1Clip.json",
 			"type": "json",
-			"url": "assets/moveClip/killTips/killTips1Clip.json"
+			"name": "killTips1Clip_json"
 		},
 		{
-			"name": "killTips1Clip_png",
+			"url": "assets/moveClip/killTips/killTips1Clip.png",
 			"type": "image",
-			"url": "assets/moveClip/killTips/killTips1Clip.png"
+			"name": "killTips1Clip_png"
 		},
 		{
+			"url": "assets/icon/randomBuffIcon.json",
+			"type": "sheet",
 			"name": "randomBuffIcon_json",
-			"subkeys": "buff_bisha,buff_chihuan,buff_dingshen,buff_hudun,buff_jian,buff_jiasu,buff_jingxiang,buff_kuangbao,buff_lei,buff_liuxue,buff_mangmu,buff_xuruo,buff_yinghua,buff_yishang,buff_zhadan",
-			"type": "sheet",
-			"url": "assets/icon/randomBuffIcon.json"
+			"subkeys": "buff_bisha,buff_chihuan,buff_dingshen,buff_hudun,buff_jian,buff_jiasu,buff_jingxiang,buff_kuangbao,buff_lei,buff_liuxue,buff_mangmu,buff_xuruo,buff_yinghua,buff_yishang,buff_zhadan"
 		},
 		{
-			"name": "buffdiaoluo_tex_png",
+			"url": "assets/animation/buffdiaoluo/buffdiaoluo_tex.png",
 			"type": "image",
-			"url": "assets/animation/buffdiaoluo/buffdiaoluo_tex.png"
+			"name": "buffdiaoluo_tex_png"
 		},
 		{
-			"name": "buffdiaoluo_tex_json",
+			"url": "assets/animation/buffdiaoluo/buffdiaoluo_tex.json",
 			"type": "json",
-			"url": "assets/animation/buffdiaoluo/buffdiaoluo_tex.json"
+			"name": "buffdiaoluo_tex_json"
 		},
 		{
-			"name": "buffdiaoluo_ske_dbbin",
+			"url": "assets/animation/buffdiaoluo/buffdiaoluo_ske.dbbin",
 			"type": "bin",
-			"url": "assets/animation/buffdiaoluo/buffdiaoluo_ske.dbbin"
+			"name": "buffdiaoluo_ske_dbbin"
 		},
 		{
-			"name": "help_tip_png",
+			"url": "assets/tip/help_tip.png",
 			"type": "image",
-			"url": "assets/tip/help_tip.png"
+			"name": "help_tip_png"
 		},
 		{
-			"name": "TcSign_json",
+			"url": "config/TcSign.json",
 			"type": "json",
-			"url": "config/TcSign.json"
+			"name": "TcSign_json"
 		},
 		{
+			"url": "assets/icon/randomBuffSheet.json",
+			"type": "sheet",
 			"name": "randomBuffSheet_json",
-			"subkeys": "buff_001,buff_002,buff_003,buff_004,buff_005,buff_006,buff_007,buff_008,buff_009,buff_010,buff_011,buff_012,buff_013,buff_014,buff_015,buff_fumiandi,buff_youyidi",
-			"type": "sheet",
-			"url": "assets/icon/randomBuffSheet.json"
+			"subkeys": "buff_001,buff_002,buff_003,buff_004,buff_005,buff_006,buff_007,buff_008,buff_009,buff_010,buff_011,buff_012,buff_013,buff_014,buff_015,buff_fumiandi,buff_youyidi"
 		},
 		{
-			"name": "TcRankReward_json",
+			"url": "config/TcRankReward.json",
 			"type": "json",
-			"url": "config/TcRankReward.json"
+			"name": "TcRankReward_json"
 		},
 		{
-			"name": "select_1_png",
+			"url": "assets/tip/select_1.png",
 			"type": "image",
-			"url": "assets/tip/select_1.png"
+			"name": "select_1_png"
 		},
 		{
-			"name": "select_2_png",
+			"url": "assets/tip/select_2.png",
 			"type": "image",
-			"url": "assets/tip/select_2.png"
+			"name": "select_2_png"
 		},
 		{
+			"url": "pack/equip_res.json",
+			"type": "sheet",
 			"name": "equip_res",
-			"subkeys": "Sequip1,Sequip10,Sequip11,Sequip12,Sequip13,Sequip14,Sequip15,Sequip16,Sequip17,Sequip18,Sequip19,Sequip2,Sequip20,Sequip21,Sequip22,Sequip23,Sequip24,Sequip3,Sequip4,Sequip5,Sequip6,Sequip7,Sequip8,Sequip9,equip_0009,equip_bottom,point_00,point_01,point_02,point_03,point_04,point_05,select_1,select_2,star_00,star_01,star_02,star_03,star_04,star_05,wuqi_01,wuqi_02",
-			"type": "sheet",
-			"url": "pack/equip_res.json"
+			"subkeys": "Sequip1,Sequip10,Sequip11,Sequip12,Sequip13,Sequip14,Sequip15,Sequip16,Sequip17,Sequip18,Sequip19,Sequip2,Sequip20,Sequip21,Sequip22,Sequip23,Sequip24,Sequip3,Sequip4,Sequip5,Sequip6,Sequip7,Sequip8,Sequip9,equip_0009,equip_bottom,point_00,point_01,point_02,point_03,point_04,point_05,select_1,select_2,star_00,star_01,star_02,star_03,star_04,star_05,wuqi_01,wuqi_02"
 		},
 		{
+			"url": "pack/title_res.json",
+			"type": "sheet",
 			"name": "title_res",
-			"subkeys": "title_0001,title_0002,title_0005,title_0006,title_0007,title_0008,title_0009,title_0010,title_0011,title_0012,title_0013,title_0014,title_0015",
-			"type": "sheet",
-			"url": "pack/title_res.json"
+			"subkeys": "title_0001,title_0002,title_0005,title_0006,title_0007,title_0008,title_0009,title_0010,title_0011,title_0012,title_0013,title_0014,title_0015"
 		},
 		{
+			"url": "pack/button_res.json",
+			"type": "sheet",
 			"name": "button_res",
-			"subkeys": "btn_detail,btn_draw,btn_email,btn_help,btn_intoBattle,btn_intoEquip,btn_intoPVP,btn_intoShop,btn_intoTalent,btn_intoTehui,btn_ready,btn_ready_over,btn_reset,btn_shopBuy,btn_shopChange,btn_shopChange_over,btn_shopGet,btn_sign,btn_upgradeStar,button_0001,button_0002,button_0003,button_0004,button_0005,button_0006,button_0007,button_0008,button_0009,button_0010,button_0011,button_0012,button_0013,button_0014,button_0015,button_0016,button_0017,button_0018,button_0019,button_0020,button_0021,button_0022,button_0024,button_down,button_up,denglu_0001,denglu_0002,denglu_0003",
-			"type": "sheet",
-			"url": "pack/button_res.json"
+			"subkeys": "btn_detail,btn_draw,btn_email,btn_help,btn_intoBattle,btn_intoEquip,btn_intoPVP,btn_intoShop,btn_intoTalent,btn_intoTehui,btn_ready,btn_ready_over,btn_reset,btn_shopBuy,btn_shopChange,btn_shopChange_over,btn_shopGet,btn_sign,btn_upgradeStar,button_0001,button_0002,button_0003,button_0004,button_0005,button_0006,button_0007,button_0008,button_0009,button_0010,button_0011,button_0012,button_0013,button_0014,button_0015,button_0016,button_0017,button_0018,button_0019,button_0020,button_0021,button_0022,button_0024,button_down,button_up,denglu_0001,denglu_0002,denglu_0003"
 		},
 		{
+			"url": "pack/common_res.json",
+			"type": "sheet",
 			"name": "common_res",
-			"subkeys": "0_0000_yinghuochongda01,0_0021_kaorou,0_0022_huoguang01,basic_diamond,basic_exp,basic_power,basic_soul,crystal_0001,crystal_0002,email_new,email_status1,email_status2,email_status3,exp_0001,exp_0002,hook,img_fallExp,img_fallSoul,power_0001,power_0002,setting_0001,setting_0002,shop_0011,shop_0012,shop_0013,shop_0014,shop_0015,shop_0019,shop_0020,shop_0021,shop_0022,shop_0023,shop_0024,shop_0025,shop_0026,shop_0027,shop_0028,shop_0029,shop_0030,sole_0001,sole_0002,unknow",
-			"type": "sheet",
-			"url": "pack/common_res.json"
+			"subkeys": "0_0000_yinghuochongda01,0_0021_kaorou,0_0022_huoguang01,basic_diamond,basic_exp,basic_power,basic_soul,crystal_0001,crystal_0002,email_new,email_status1,email_status2,email_status3,exp_0001,exp_0002,hook,img_fallExp,img_fallSoul,power_0001,power_0002,setting_0001,setting_0002,shop_0011,shop_0012,shop_0013,shop_0014,shop_0015,shop_0019,shop_0020,shop_0021,shop_0022,shop_0023,shop_0024,shop_0025,shop_0026,shop_0027,shop_0028,shop_0029,shop_0030,sole_0001,sole_0002,unknow"
 		},
 		{
+			"url": "pack/talAndSkill_res.json",
+			"type": "sheet",
 			"name": "talAndSkill_res",
-			"subkeys": "skill_1,skill_10,skill_11,skill_12,skill_13,skill_14,skill_15,skill_16,skill_17,skill_18,skill_2,skill_3,skill_4,skill_5,skill_6,skill_7,skill_8,skill_9,skill_mask,talent1_1,talent1_2,talent1_3,talent1_4,talent1_5,talent1_6,talent1_7,talent2_1,talent2_2,talent2_3,talent2_4,talent2_5,talent2_6,talent2_7,talent3_1,talent3_2,talent3_3,talent3_4,talent3_5,talent3_6,talent3_7,talentBox,talentLvBox,talentMaxBox",
+			"subkeys": "skill_1,skill_10,skill_11,skill_12,skill_13,skill_14,skill_15,skill_16,skill_17,skill_18,skill_2,skill_3,skill_4,skill_5,skill_6,skill_7,skill_8,skill_9,skill_mask,talent1_1,talent1_2,talent1_3,talent1_4,talent1_5,talent1_6,talent1_7,talent2_1,talent2_2,talent2_3,talent2_4,talent2_5,talent2_6,talent2_7,talent3_1,talent3_2,talent3_3,talent3_4,talent3_5,talent3_6,talent3_7,talentBox,talentLvBox,talentMaxBox"
+		},
+		{
+			"url": "config/TcPVPReward.json",
+			"type": "json",
+			"name": "TcPVPReward_json"
+		},
+		{
+			"url": "config/TcPower.json",
+			"type": "json",
+			"name": "TcPower_json"
+		},
+		{
+			"url": "assets/bg/share3.png",
+			"type": "image",
+			"name": "share3_png"
+		},
+		{
+			"url": "assets/bg/share1.png",
+			"type": "image",
+			"name": "share1_png"
+		},
+		{
+			"url": "assets/bg/share2.png",
+			"type": "image",
+			"name": "share2_png"
+		},
+		{
+			"url": "config/TcNewUser.json",
+			"type": "json",
+			"name": "TcNewUser_json"
+		},
+		{
+			"url": "pack/battleComon.json",
 			"type": "sheet",
-			"url": "pack/talAndSkill_res.json"
-		},
-		{
-			"name": "TcPVPReward_json",
-			"type": "json",
-			"url": "config/TcPVPReward.json"
-		},
-		{
-			"name": "TcPower_json",
-			"type": "json",
-			"url": "config/TcPower.json"
-		},
-		{
-			"name": "share3_png",
-			"type": "image",
-			"url": "assets/bg/share3.png"
-		},
-		{
-			"name": "share1_png",
-			"type": "image",
-			"url": "assets/bg/share1.png"
-		},
-		{
-			"name": "share2_png",
-			"type": "image",
-			"url": "assets/bg/share2.png"
-		},
-		{
-			"name": "TcNewUser_json",
-			"type": "json",
-			"url": "config/TcNewUser.json"
-		},
-		{
 			"name": "battleComon",
-			"subkeys": "Elitemonster000,Elitemonster001,Elitemonster002,Elitemonster003,Elitemonster004,Elitemonster005,Elitemonster006,buxiaoman-pugong,diaochan-pugong,guanyu-pugong,guanyu_skill01_01,guanyu_skill02_01,img_sigh,imprisoned01,imprisoned02,menglingtong-pugong,menglingtong_skill01_01,menglingtong_skill01_02,menglingtong_skill01_04,sevenInOut,sunluban-pugong,sunluban_skill01_01,sunluban_skill01_02,swordDance,zhaoyun-pugong",
-			"type": "sheet",
-			"url": "pack/battleComon.json"
+			"subkeys": "Elitemonster000,Elitemonster001,Elitemonster002,Elitemonster003,Elitemonster004,Elitemonster005,Elitemonster006,buxiaoman-pugong,diaochan-pugong,guanyu-pugong,guanyu_skill01_01,guanyu_skill02_01,img_sigh,imprisoned01,imprisoned02,menglingtong-pugong,menglingtong_skill01_01,menglingtong_skill01_02,menglingtong_skill01_04,sevenInOut,sunluban-pugong,sunluban_skill01_01,sunluban_skill01_02,swordDance,zhaoyun-pugong"
 		},
 		{
-			"name": "guideClip_json",
+			"url": "assets/moveClip/guideClip.json",
 			"type": "json",
-			"url": "assets/moveClip/guideClip.json"
+			"name": "guideClip_json"
 		},
 		{
-			"name": "guideClip_png",
+			"url": "assets/moveClip/guideClip.png",
 			"type": "image",
-			"url": "assets/moveClip/guideClip.png"
+			"name": "guideClip_png"
 		},
 		{
-			"name": "TcEmailContent_json",
+			"url": "config/TcEmailContent.json",
 			"type": "json",
-			"url": "config/TcEmailContent.json"
+			"name": "TcEmailContent_json"
 		},
 		{
-			"name": "drawCardClip_json",
+			"url": "assets/moveClip/drawCardClip.json",
 			"type": "json",
-			"url": "assets/moveClip/drawCardClip.json"
+			"name": "drawCardClip_json"
 		},
 		{
+			"url": "pack/load_res.json",
+			"type": "sheet",
 			"name": "load_res",
-			"subkeys": "loading2,loading_0002,loading_0003,logo",
+			"subkeys": "loading2,loading_0002,loading_0003,logo"
+		},
+		{
+			"url": "config/hero/TcSunAttr.json",
+			"type": "json",
+			"name": "TcSunAttr_json"
+		},
+		{
+			"url": "config/hero/TcGuanAttr.json",
+			"type": "json",
+			"name": "TcGuanAttr_json"
+		},
+		{
+			"url": "config/hero/TcMengAttr.json",
+			"type": "json",
+			"name": "TcMengAttr_json"
+		},
+		{
+			"url": "assets/animation/sunluban/sunluban_ske.dbbin",
+			"type": "bin",
+			"name": "sunluban_ske_dbbin"
+		},
+		{
+			"url": "assets/animation/sunluban/sunluban_tex.json",
+			"type": "json",
+			"name": "sunluban_tex_json"
+		},
+		{
+			"url": "assets/animation/sunluban/sunluban_tex.png",
+			"type": "image",
+			"name": "sunluban_tex_png"
+		},
+		{
+			"url": "assets/animation/guanyu/guanyu_ske.dbbin",
+			"type": "bin",
+			"name": "guanyu_ske_dbbin"
+		},
+		{
+			"url": "assets/animation/guanyu/guanyu_tex.json",
+			"type": "json",
+			"name": "guanyu_tex_json"
+		},
+		{
+			"url": "assets/animation/guanyu/guanyu_tex.png",
+			"type": "image",
+			"name": "guanyu_tex_png"
+		},
+		{
+			"url": "assets/animation/menglingtong/menglingtong_ske.dbbin",
+			"type": "bin",
+			"name": "menglingtong_ske_dbbin"
+		},
+		{
+			"url": "assets/animation/menglingtong/menglingtong_tex.json",
+			"type": "json",
+			"name": "menglingtong_tex_json"
+		},
+		{
+			"url": "assets/animation/menglingtong/menglingtong_tex.png",
+			"type": "image",
+			"name": "menglingtong_tex_png"
+		},
+		{
+			"url": "pack/battle_res.json",
 			"type": "sheet",
-			"url": "pack/load_res.json"
-		},
-		{
-			"name": "TcSunAttr_json",
-			"type": "json",
-			"url": "config/hero/TcSunAttr.json"
-		},
-		{
-			"name": "TcGuanAttr_json",
-			"type": "json",
-			"url": "config/hero/TcGuanAttr.json"
-		},
-		{
-			"name": "TcMengAttr_json",
-			"type": "json",
-			"url": "config/hero/TcMengAttr.json"
-		},
-		{
-			"name": "sunluban_ske_dbbin",
-			"type": "bin",
-			"url": "assets/animation/sunluban/sunluban_ske.dbbin"
-		},
-		{
-			"name": "sunluban_tex_json",
-			"type": "json",
-			"url": "assets/animation/sunluban/sunluban_tex.json"
-		},
-		{
-			"name": "sunluban_tex_png",
-			"type": "image",
-			"url": "assets/animation/sunluban/sunluban_tex.png"
-		},
-		{
-			"name": "guanyu_ske_dbbin",
-			"type": "bin",
-			"url": "assets/animation/guanyu/guanyu_ske.dbbin"
-		},
-		{
-			"name": "guanyu_tex_json",
-			"type": "json",
-			"url": "assets/animation/guanyu/guanyu_tex.json"
-		},
-		{
-			"name": "guanyu_tex_png",
-			"type": "image",
-			"url": "assets/animation/guanyu/guanyu_tex.png"
-		},
-		{
-			"name": "menglingtong_ske_dbbin",
-			"type": "bin",
-			"url": "assets/animation/menglingtong/menglingtong_ske.dbbin"
-		},
-		{
-			"name": "menglingtong_tex_json",
-			"type": "json",
-			"url": "assets/animation/menglingtong/menglingtong_tex.json"
-		},
-		{
-			"name": "menglingtong_tex_png",
-			"type": "image",
-			"url": "assets/animation/menglingtong/menglingtong_tex.png"
-		},
-		{
 			"name": "battle_res",
-			"subkeys": "battle_0001,battle_0002,battle_0003,battle_0004,battle_0005,battle_0010,battle_0011,battle_0012,battle_0013,battle_0014,battle_0015,battle_0016,battle_0017,battle_0018,battle_0019,buxiaoman_skillBg,buy_0001,diaochan_skillBg,guanqian_00,guanyu_skill01_02,guanyu_skillBg,heorLock,iconbg_0001,iconbg_0002,img_buxiaoman,img_buxiaoman1,img_diaochan,img_diaochan1,img_guanyu,img_guanyu1,img_menglingtong,img_menglingtong1,img_selectHero,img_sunluban,img_sunluban1,img_zhaoyun,img_zhaoyun1,menglingtong_skillBg,quanping_01,quanping_02,red_point,shadow,skillICON_bg,sunluban_skillBg,tianjian_01,touxiang_0001,zhanji_11,zhaoyun_skillBg",
+			"subkeys": "battle_0001,battle_0002,battle_0003,battle_0004,battle_0005,battle_0010,battle_0011,battle_0012,battle_0013,battle_0014,battle_0015,battle_0016,battle_0017,battle_0018,battle_0019,buxiaoman_skillBg,buy_0001,diaochan_skillBg,guanqian_00,guanyu_skill01_02,guanyu_skillBg,heorLock,iconbg_0001,iconbg_0002,img_buxiaoman,img_buxiaoman1,img_diaochan,img_diaochan1,img_guanyu,img_guanyu1,img_menglingtong,img_menglingtong1,img_selectHero,img_sunluban,img_sunluban1,img_zhaoyun,img_zhaoyun1,menglingtong_skillBg,quanping_01,quanping_02,red_point,shadow,skillICON_bg,sunluban_skillBg,tianjian_01,touxiang_0001,zhanji_11,zhaoyun_skillBg"
+		},
+		{
+			"url": "assets/moveClip/box/boxBgLight.json",
+			"type": "json",
+			"name": "boxBgLight_json"
+		},
+		{
+			"url": "assets/moveClip/box/boxBgLight.png",
+			"type": "image",
+			"name": "boxBgLight_png"
+		},
+		{
+			"url": "assets/moveClip/box/starSprite.json",
+			"type": "json",
+			"name": "starSprite_json"
+		},
+		{
+			"url": "assets/moveClip/box/starSprite.png",
+			"type": "image",
+			"name": "starSprite_png"
+		},
+		{
+			"url": "assets/moveClip/box/silverMovie.json",
+			"type": "json",
+			"name": "silverMovie_json"
+		},
+		{
+			"url": "assets/moveClip/box/silverMovie.png",
+			"type": "image",
+			"name": "silverMovie_png"
+		},
+		{
+			"url": "assets/moveClip/box/goldMovie.json",
+			"type": "json",
+			"name": "goldMovie_json"
+		},
+		{
+			"url": "assets/moveClip/box/goldMovie.png",
+			"type": "image",
+			"name": "goldMovie_png"
+		},
+		{
+			"url": "pack/box_res.json",
 			"type": "sheet",
-			"url": "pack/battle_res.json"
+			"name": "box_res",
+			"subkeys": "bgLight,goldBox,goldLight,goodsLight,ironBox,ironLight,silverBox,silverLight"
 		},
 		{
-			"name": "box_json",
+			"url": "assets/moveClip/box/ironMovie.json",
 			"type": "json",
-			"url": "assets/moveClip/box/box.json"
+			"name": "ironMovie_json"
 		},
 		{
-			"name": "box_png",
+			"url": "assets/moveClip/box/ironMovie.png",
 			"type": "image",
-			"url": "assets/moveClip/box/box.png"
-		},
-		{
-			"name": "boxBgLight_json",
-			"type": "json",
-			"url": "assets/moveClip/box/boxBgLight.json"
-		},
-		{
-			"name": "boxBgLight_png",
-			"type": "image",
-			"url": "assets/moveClip/box/boxBgLight.png"
-		},
-		{
-			"name": "starSprite_json",
-			"type": "json",
-			"url": "assets/moveClip/box/starSprite.json"
-		},
-		{
-			"name": "starSprite_png",
-			"type": "image",
-			"url": "assets/moveClip/box/starSprite.png"
-		},
-		{
-			"name": "kaibaoxiang_01_png",
-			"type": "image",
-			"url": "assets/other/kaibaoxiang_01.png"
-		},
-		{
-			"name": "kaibaoxiang_05_png",
-			"type": "image",
-			"url": "assets/other/kaibaoxiang_05.png"
-		},
-		{
-			"name": "kaibaoxiang_06_png",
-			"type": "image",
-			"url": "assets/other/kaibaoxiang_06.png"
-		},
-		{
-			"name": "kaibaoxiang_10_png",
-			"type": "image",
-			"url": "assets/other/kaibaoxiang_10.png"
+			"name": "ironMovie_png"
 		},
 		{
 			"name": "TcStageReward_json",

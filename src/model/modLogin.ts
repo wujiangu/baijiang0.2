@@ -43,7 +43,7 @@ namespace modLogin {
      */
     function getUserDataFromSever(callBack:Function):void {
         HttpRequest.getInstance().send("GET", "userinfo", {}, (data)=>{
-            //egret.log("用户信息----->", JSON.stringify(data));
+            egret.log("用户信息----->", JSON.stringify(data));
             if (Object.keys(data.userInfo).length == 0) {
             // if (data.userInfo.roleName == null) {
                 //新用户

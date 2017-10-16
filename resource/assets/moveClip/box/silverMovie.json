@@ -1,0 +1,30 @@
+{"mc":{
+	"silverMovie":{
+		"frameRate":6,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"silver1",
+			"x":9,
+			"y":0
+			},
+			{
+			"res":"silver2",
+			"x":9,
+			"y":30
+			},
+			{
+			"res":"silver3",
+			"x":9,
+			"y":43
+			}
+			]
+}},
+	"res":{
+	"silver1":{"x":0,"y":0,"w":289,"h":244,"offX":9},
+	"silver2":{"x":291,"y":0,"w":289,"h":240,"offX":9},
+	"silver3":{"x":582,"y":0,"w":289,"h":227,"offX":9}
+	}}

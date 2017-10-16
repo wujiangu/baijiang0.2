@@ -10,7 +10,8 @@
         "stage":0,
         "revivalCount":0,
         "sportCount":0,
-        "damage":0
+        "damage":0,
+        "freeCount":0
     },
     "hero":{
         "heroId":2,

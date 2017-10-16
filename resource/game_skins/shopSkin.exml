@@ -92,6 +92,14 @@
 					</e:Skin>
 				</e:skinName>
 			</e:Button>
+			<e:Button id="btn_free" label="免费" x="145.5" y="368" visible="false">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="button_res.btn_shopBuy" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+					<e:Label id="labelDisplay" verticalCenter="-5.5" fontFamily="Microsoft YaHei" textColor="0x0a0003" bold="true" size.down="27" horizontalCenter="5"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
 			<e:Button id="btn_tenDraw" label="150" x="696" y="368">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">

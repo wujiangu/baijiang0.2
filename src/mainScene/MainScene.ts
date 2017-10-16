@@ -12,16 +12,31 @@ class MainScene extends Base {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
         this.btn_addDesk.visible = false;
         this.btn_fullscene.visible = false;
+        this.red_list = new Array();
         if (window["sdw"].canAddDesktop) {
             this.btn_addDesk.visible = true;
             this.btn_fullscene.visible = true;
         }
+
+        this.createRedImage();
         this.onListener();
         this.showSignDialog();
         this.createMainScene();
         this.show_label_text();   
         AudioManager.GetIns().PlayMusic(AudioManager.MAIN_BG_MUSIC);
         this.isFull = false;
+    }
+
+    //creste red image
+    private createRedImage():void{
+        let obj_list:any = [this.btn_sign, this.btn_shop, this.btn_pvp,this.btn_email];
+        let width_list:any = [94,120,116,120];
+        for(let i = 0 ; i < obj_list.length; i++){
+            this.red_list[i] = new egret.Bitmap(RES.getRes("battle_res.red_point"));
+            this.addChild(this.red_list[i]);
+            Common.SetXY(this.red_list[i], obj_list[i].x + width_list[i] - this.red_list[i].width, obj_list[i].y);
+        }
+        obj_list = null;width_list = null;
     }
 
     /** 事件监听 */
@@ -35,6 +50,8 @@ class MainScene extends Base {
             img_list[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchImg, this);
         }
         GameLayerManager.gameLayer().addEventListener(UserData.CHANGEDATA, this.onChangeData, this);
+        GameLayerManager.gameLayer().addEventListener(UserData.REDEVENT, this.onRedEvent, this);
+        this.onRedEvent();
     }
 
     /** 创建精灵 */
@@ -178,6 +195,14 @@ class MainScene extends Base {
         Animations.fadeOut(pop);
     }
 
+    private onRedEvent():void{
+        this.red_list[0].visible = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;  // sign 
+        // this.red_list[1].visible = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;  // shop
+        this.red_list[2].visible = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;  // pvp
+        let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
+        this.red_list[3].visible = emailNum == 0 ? false : true;  // email
+    }
+
      private onChangeData(event:egret.Event):void{
        if(event.data == null){
            GameLayerManager.gameLayer().panelLayer.removeChildren();
@@ -228,6 +253,7 @@ class MainScene extends Base {
     private img_diamond:eui.Image;
     private img_power:eui.Image;
     private img_light:eui.Image;
+    private red_list:Array<egret.Bitmap>;
 
     /**设置弹出 */
     private _shape:egret.Shape;

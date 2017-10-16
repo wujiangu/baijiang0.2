@@ -44,6 +44,7 @@ class ShopDialog extends PopupWindow {
 
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
+        this.btn_free.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_oneDraw.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_tenDraw.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
 
@@ -56,6 +57,11 @@ class ShopDialog extends PopupWindow {
 
     public Init():void{
         this.show_label_text();
+        egret.log("免费次数---->", UserDataInfo.GetInstance().GetBasicData("freeCount"));
+        if (UserDataInfo.GetInstance().GetBasicData("freeCount") == 0) {
+            this.btn_free.visible = true;
+            this.btn_oneDraw.visible = false;
+        }
     }
 
     public Reset(){
@@ -82,6 +88,18 @@ class ShopDialog extends PopupWindow {
             break;
             case this.btn_hero:
                 Utils.viewStackStatus(this.stack_shop, this.btn_top, 3);
+            break;
+            case this.btn_free:
+                this.cards = [];
+                let cardInfo = modShop.drawOnce();
+                this.cards.push(cardInfo);
+                egret.log("一抽--->", JSON.stringify(this.cards));
+                Animations.drawCard("once", cardInfo, ()=>{
+                    this.createEquipPop(this.cards, "once");
+                    this.btn_free.visible = false;
+                    this.btn_oneDraw.visible = true;
+                    UserDataInfo.GetInstance().DealUserData("freeCount", UserDataInfo.GetInstance().GetBasicData("freeCount") + 1);
+                });
             break;
             case this.btn_oneDraw:
                 if(this.haveEnoughDiamond(1)){
@@ -195,6 +213,8 @@ class ShopDialog extends PopupWindow {
 
     private btn_back:eui.Button;
 
+    /**免费抽 */
+    private btn_free:eui.Button;
     /**单抽按钮 */
     private btn_oneDraw:eui.Button;
     /**十连按钮 */

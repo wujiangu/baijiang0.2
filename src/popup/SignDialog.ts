@@ -155,17 +155,18 @@ class SignDialog extends PopupWindow{
         }
 
 
-        if(tcSign[signData.signNum].type == 1 && tcSign[signData.signNum].id == 25){
+        if(tcSign[signData.signNum].type == ModBasic.EQUIP_TYPE && tcSign[signData.signNum].id == 25){
             let rand:number = Math.floor((Math.random() * 100) % 4) + 21;
             Common.DealReward({type:tcSign[signData.signNum].type, name:tcSign[signData.signNum].name, count:tcSign[signData.signNum].count, id:rand});
         }
         else Common.DealReward(tcSign[signData.signNum]);
 
-        if(tcSign[signData.signNum].type == 2) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+        if(tcSign[signData.signNum].type == ModBasic.GOODS_TYPE) GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
 
         this.gooods_info_list[this._currIndex].ShowClickSignEffect();
         UserDataInfo.GetInstance().setSignData(signData.signNum + 1, true);
         this.showSignStatus();
+        GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
     }
 
     private showSignStatus():void{

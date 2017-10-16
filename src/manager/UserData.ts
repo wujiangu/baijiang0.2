@@ -16,4 +16,5 @@ namespace UserData {
     export var offLineEarning:string;          //玩家离线收益
     export var CHANGEDATA:string = "CHANGEDATA";
     export var PURCHASEDATA:string = "PURCHASEDATA";
+    export var REDEVENT:string = "REDEVENT";
 }

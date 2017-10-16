@@ -1,0 +1,9 @@
+{"file":"box_res.png","frames":{
+"goldLight":{"x":308,"y":564,"w":366,"h":125,"offX":0,"offY":0,"sourceW":366,"sourceH":125},
+"silverLight":{"x":465,"y":0,"w":402,"h":125,"offX":0,"offY":0,"sourceW":402,"sourceH":125},
+"ironBox":{"x":599,"y":254,"w":237,"h":169,"offX":35,"offY":72,"sourceW":306,"sourceH":296},
+"silverBox":{"x":308,"y":373,"w":289,"h":189,"offX":9,"offY":81,"sourceW":306,"sourceH":296},
+"goldBox":{"x":0,"y":373,"w":306,"h":207,"offX":0,"offY":89,"sourceW":306,"sourceH":296},
+"ironLight":{"x":465,"y":127,"w":366,"h":125,"offX":0,"offY":0,"sourceW":366,"sourceH":125},
+"bgLight":{"x":0,"y":0,"w":463,"h":371,"offX":0,"offY":0,"sourceW":463,"sourceH":371},
+"goodsLight":{"x":0,"y":582,"w":180,"h":180,"offX":0,"offY":0,"sourceW":180,"sourceH":180}}}

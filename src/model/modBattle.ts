@@ -297,22 +297,29 @@ namespace modBattle {
         if (obj.isBoss && surviveCount > 0) return;
         if (obj.isElite) {
             SceneManager.battleScene.battleSceneCom.changeEliteIcon(GameData.curStage%5);
+            timer.reset();
+            productRule();
         }else{
             sumDead ++;
             if (sumDead <= curChapterSum){
                 SceneManager.battleScene.battleSceneCom.update(sumDead, curChapterSum);
+                timer.reset();
+                productRule();
             }else{
                 if (obj.isSummon && surviveCount == 0) sumDead = 0;
                 if (obj.isBoss && surviveCount == 0) sumDead = 0;
                 Common.log("当前关卡---->", GameData.curStage);
+
+                TimerManager.getInstance().stopTimer();
+                stop();
+                modBuff.randomBuffStop(GameData.heros[0]);
+
                 ResLoadManager.GetInstance().LoadGroup("box", ()=>{
                     stageReward(GameData.curStage);
                 });
                 SceneManager.battleScene.battleSceneCom.update(sumDead, curChapterSum, true);
             }
         }
-        timer.reset();
-        productRule();
     }
 
     /**
@@ -439,6 +446,7 @@ namespace modBattle {
         let rewardConf:any = tcStageReward[0];
         let interval:Array<number> = new Array();
         let sum:number = 0;
+        let data:any = {name:"equip", id:0, count:1, type:1};
         for (let i = 0; i < tcStageReward.length; i++) {
             if (tcStageReward[i].id == stage) {
                 rewardConf = tcStageReward[i];
@@ -450,43 +458,53 @@ namespace modBattle {
             interval.push(sum);
         }
         let seed:number = MathUtils.getRandom(1, sum);
-        Common.log("随机数---->", seed);
         if (seed >= 1 && seed < interval[0]+1) {
             let count:number = MathUtils.getRandom(rewardConf.count[0], rewardConf.count[1]) * stage;
             Common.log("获得魂----->", count);
-            Animations.ShowOpenBoxEffect([{name:"soul",id:0,count:count,type:2}]);
+            data.name = "soul";
+            data.count = count;
+            data.type = 2;
+            // setSoul(count);
+            // SceneManager.battleScene.battleSceneCom.setExpAndSoul(modBattle.getExp(), modBattle.getSoul());
         }
         else if (seed >= interval[0]+1 && seed < interval[1]+1) {
             let count:number = MathUtils.getRandom(rewardConf.count[0], rewardConf.count[1]) * stage;
             Common.log("获得天赋----->", count);
-            Animations.ShowOpenBoxEffect([{name:"power",id:0,count:count,type:2}]);
+            data.name = "power";
+            data.count = count;
+            data.type = 2;
         }
         else if (seed >= interval[1]+1 && seed < interval[2]+1) {
             let id:number = MathUtils.getRandom(1, 4);
             Common.log("获得白色武器");
-            Animations.ShowOpenBoxEffect([{name:"equip",id:id,count:1,type:2}]);
+            data.id = id;
         }
         else if (seed >= interval[2]+1 && seed < interval[3]+1) {
             let id:number = MathUtils.getRandom(5, 9);
             Common.log("获得绿色武器");
-            Animations.ShowOpenBoxEffect([{name:"equip",id:id,count:1,type:2}]);
+            data.id = id;
         }
         else if (seed >= interval[3]+1 && seed < interval[4]+1) {
             let id:number = MathUtils.getRandom(10, 14);
             Common.log("获得蓝色武器");
-            Animations.ShowOpenBoxEffect([{name:"equip",id:id,count:1,type:2}]);
+            data.id = id;
         }
         else if (seed >= interval[4]+1 && seed < interval[5]+1) {
             let id:number = MathUtils.getRandom(15, 19);
             Common.log("获得紫色武器");
-            Animations.ShowOpenBoxEffect([{name:"equip",id:id,count:1,type:2}]);
+            data.id = id;
         }
         else if (seed >= interval[5]+1 && seed < interval[6]+1) {
             let id:number = MathUtils.getRandom(20, 24);
             Common.log("获得橙色武器");
-            Animations.ShowOpenBoxEffect([{name:"equip",id:id,count:1,type:2}]);
+            data.id = id;
         }
-        
+        Common.DealReward([data], ModBasic.BATTLETYPE,rewardConf.type,()=>{
+            TimerManager.getInstance().startTimer();
+            timer.reset();
+            productRule();
+            modBuff.randomBuffStart(GameData.heros[0]);
+        });
     }
 
     /**存活的敌人数量 */

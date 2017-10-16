@@ -333,8 +333,12 @@ namespace Common {
     /** 对奖励进行细分计算 
      * @param type 1 装备 2 基本物品 如经验 钻石
      * @param name 物品名字
+     * @param list data list
+     * @param select_type 动画的播放形式
+     * @param boxType     宝箱类型
+     * @param listener    回调函数
     */
-    export function DealReward(list):void{
+    export function DealReward(list:any,selectType:number = ModBasic.NORMALTYPE,boxType:number = ModBasic.IRONBOX, listener:Function = null):void{
         if(list == null) return;
         if(list.length == null){
             let tempData = list;
@@ -342,14 +346,14 @@ namespace Common {
         }
 
         for(let i in list){
-            if(list[i].type == 1){
+            if(list[i].type == ModBasic.EQUIP_TYPE){
                 modEquip.EquipData.GetInstance().InsertEquipFromReward(list[i]);
             }
-            else if(list[i].type == 2)
+            else if(list[i].type == ModBasic.GOODS_TYPE)
             {
                 UserDataInfo.GetInstance().DealAllData(list[i].name, list[i].count, ModBasic.GET);
             }
-            else if(list[i].type == 3)
+            else if(list[i].type == ModBasic.HERO_TYPE)
             {
                  if (HeroData.hasHero(list[i].name)){
                         Animations.showTips(`已有英雄${list[i].name}`, 1);
@@ -364,8 +368,13 @@ namespace Common {
                  }
             }
         }
-
-        Animations.ShowGoodsPopEffect(list);
+        if(selectType == ModBasic.NORMALTYPE){
+            Animations.ShowGoodsPopEffect(list);
+        }
+        else if(selectType == ModBasic.BATTLETYPE)
+        {
+            Animations.ShowOpenBoxAnimation(list,boxType,listener);
+        }
     }
 
     /** show lack goods popup
