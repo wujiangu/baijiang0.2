@@ -53,7 +53,7 @@ class DragonFly extends SkillBase {
             Animations.fadeIn(this.mask, 600);
             target.setEnermy();
             let enermy = target.getEnermy();
-            let damage:number = target.attr.skd;
+            let damage:number = target.originAtk;
             for (let i = 0; i < enermy.length; i++) {
                 if (enermy[i].type == 1) {
                     if (enermy[i]._isAvatar) enermy[i].gotoHurt(1, true);

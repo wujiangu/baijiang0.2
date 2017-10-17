@@ -11,8 +11,9 @@ class shopItemIR extends Base {
     private onComplete():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this);
 
-        this.btn_itemDetail.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
+        // this.btn_itemDetail.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
         this.btn_buy.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
+        this.img_item.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonHandler, this);
     }
 
     /**
@@ -21,7 +22,7 @@ class shopItemIR extends Base {
     private onButtonHandler(event:egret.TouchEvent):void {
         let target = event.currentTarget;
         switch (target) {
-            case this.btn_itemDetail:
+            case this.img_item:
                 let pop = WindowManager.GetInstance().GetWindow("ShopItemPop");
                 pop.Show(this.content, this.btn_buy.name);
                 Animations.PopupBackOut(pop, 500);
@@ -85,14 +86,16 @@ class shopItemIR extends Base {
         this.lab_name.text = content.name;
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
-        
         if(type == "diamond") {
             this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", true, isShowGroup);
             this.img_diamond.visible = false;
+            if (content.price == 6) this.img_reward.source = "battle_res.img_guanyu";
+            else if (content.price == 1) this.img_reward.source = "common_res.img_syitian";
+            else this.img_reward.visible = false;
         }
         else if(content.discount == 1){
             this.set_label_Text(content.price,"", "限时折扣：    折",true, isShowGroup);
-            this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;
+            // this.btn_itemDetail.y = this.btn_itemDetail.y - this.diamondGroup.height;
             this.lab_discount.visible = true;
             this.lab_discount.text = `${(content.price / content.initPrice) * 10}`;
         } 
@@ -104,7 +107,7 @@ class shopItemIR extends Base {
         this.lab_money.text = strMoney;
         this.lab_reward.text = strReward;
         this.img_diamond.visible = isVisible;
-        this.btn_itemDetail.visible = isVisible;
+        // this.btn_itemDetail.visible = isVisible;
         this.diamondGroup.visible = isShowGroup;
     }
 
@@ -120,6 +123,8 @@ class shopItemIR extends Base {
     private btn_buy:eui.Button;
     /**购买按钮的图标 */
     private img_btnBuy:any;
+    /**奖励图标 */
+    private img_reward:eui.Image;
     /**内容 */
     private content:any;
     private img_diamond:eui.Image;

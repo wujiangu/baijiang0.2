@@ -408,8 +408,9 @@ class ReadyDialog extends PopupWindow {
         let target = event.currentTarget;
 
         if(HeroData.list[target.name] == null){
-            if(target.name == "zhaoyun") Animations.showTips("通过商城购买可获得英雄赵云!", 1, true);
+            if(target.name == "guanyu") Animations.showTips("首冲可获得英雄关羽!",1, true)
             else if(target.name == "diaochan") Animations.showTips("连续签到两天可获得英雄貂蝉!", 1, true);
+            else Animations.showTips(`商城购买可获得英雄${ModBasic.HeroNameList[target.name]}!`, 1, true);
             return;
         }
 

@@ -18,7 +18,7 @@
 		<e:Label id="lab_reward" text="限时折扣：    折" anchorOffsetX="0" width="234" fontFamily="Microsoft YaHei" bold="true" size="22" horizontalCenter="0" verticalCenter="-2.5" textColor="0xe88658" anchorOffsetY="0" height="33" verticalAlign="middle" textAlign="center"/>
 		<e:Label id="lab_discount" text="8" x="150" y="2" anchorOffsetX="0" width="38" size="35" anchorOffsetY="0" height="43" verticalAlign="middle" fontFamily="Microsoft YaHei" bold="true" textAlign="center" textColor="0xedd0bb" visible="false"/>
 	</e:Group>
-	<e:Button id="btn_itemDetail" label="" x="228" y="325" scaleX="1" scaleY="1">
+	<e:Button id="btn_itemDetail" label="" x="228" y="325" scaleX="1" scaleY="1" visible="false">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_res.btn_detail" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
@@ -26,4 +26,5 @@
 		</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Image id="img_reward" width="68" height="68" x="201" y="240"/>
 </e:Skin>

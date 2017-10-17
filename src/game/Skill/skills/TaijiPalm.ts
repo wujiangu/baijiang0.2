@@ -62,25 +62,25 @@ class TaijiPalm extends SkillBase {
         Animations.fadeIn(this.mask, 800);
         target.setEnermy();
         let enermy = target.getEnermy();
-        let damage:number = target.attr.skd;
+        let damage:number = target.originAtk;
         for (let i = 0; i < enermy.length; i++) {
             if (enermy[i].type == 1) {
                 if (enermy[i]._isAvatar) enermy[i].gotoHurt(1, true);
                 else{
-                    if (!this.target.isPVP){
-                        let dis = MathUtils.getDistance(target.x, target.y, enermy[i].x, enermy[i].y);
-                        if (dis <= this.skillData.skill_range) {
-                            let radian = MathUtils.getRadian2(target.x, target.y, enermy[i].x, enermy[i].y);
-                            let dx = Math.cos(radian) * this.push_range;
-                            let dy = Math.sin(radian) * this.push_range;
-                            let changeX = enermy[i].x + dx;
-                            let changeY = enermy[i].y + dy;
+                    let dis = MathUtils.getDistance(target.x, target.y, enermy[i].x, enermy[i].y);
+                    if (dis <= this.skillData.skill_range) {
+                        let radian = MathUtils.getRadian2(target.x, target.y, enermy[i].x, enermy[i].y);
+                        let dx = Math.cos(radian) * this.push_range;
+                        let dy = Math.sin(radian) * this.push_range;
+                        let changeX = enermy[i].x + dx;
+                        let changeY = enermy[i].y + dy;
+                        if (!this.target.isPVP) {
                             egret.Tween.get(enermy[i]).to({x:changeX, y:changeY}, 100).call(()=>{
                                 enermy[i].gotoHurt(damage, true);
                             }, this);
+                        }else{
+                            enermy[i].gotoHurt(damage, true);
                         }
-                    }else{
-                        enermy[i].gotoHurt(damage, true);
                     }
                 }
 

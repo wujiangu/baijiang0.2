@@ -14,5 +14,6 @@ class Base extends eui.Component{
         modEquip.ReqGetEquip();
         modShare.GetShareNum();
         UserDataInfo.GetInstance().InitSignData();
+        modShop.getRechargeAward();
     }
 }

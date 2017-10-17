@@ -197,7 +197,7 @@ class MainScene extends Base {
 
     private onRedEvent():void{
         this.red_list[0].visible = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;  // sign 
-        // this.red_list[1].visible = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;  // shop
+        this.red_list[1].visible = UserDataInfo.GetInstance().GetBasicData("freeCount") == 0 ? true : false;  // shop
         this.red_list[2].visible = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;  // pvp
         let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
         this.red_list[3].visible = emailNum == 0 ? false : true;  // email

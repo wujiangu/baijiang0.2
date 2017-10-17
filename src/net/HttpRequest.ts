@@ -127,6 +127,8 @@ class HttpRequest {
         "award": window["RESOURCE"] + "award",
         //获取分享次数
         "share": window["RESOURCE"] + "userinfo/share",
+        //充值奖励
+        "rechargeAward": window["RESOURCE"] + "award/status",
     }
     /**token值 */
     private token:string;

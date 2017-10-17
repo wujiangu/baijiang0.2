@@ -53,7 +53,8 @@ module modPay {
                 UserDataInfo.GetInstance().SetBasicData({diamond:result.diamond});
                 SceneManager.mainScene.show_label_text();
                 ShopDialog.instance.show_label_text();
-            }, modPay)
+            }, modPay);
+            modShop.getRechargeAward();
         }, modPay);
     }
 }

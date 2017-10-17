@@ -11,13 +11,7 @@ class EnterGameScene extends Base {
     private uiCompleteHandler():void {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.uiCompleteHandler, this)
         this.lab_enter.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickText, this);
-        this.objFadeEffect();
-    }
-
-    private objFadeEffect():void{
-        egret.Tween.get(this.lab_enter).to({alpha:0.2},1000,egret.Ease.circIn).call(()=>{
-            egret.Tween.get(this.lab_enter).to({alpha:1},1000).call(this.objFadeEffect, this);
-        },this)
+        Animations.ObjFadeEffect(this.lab_enter);
     }
 
     protected createChildren(): void{
@@ -54,7 +48,7 @@ class EnterGameScene extends Base {
 
     private onEnterGame(event:egret.Event):void{
         event.target.removeEventListener(egret.Event.COMPLETE, this.onEnterGame, this);
-
+        
         GameLayerManager.gameLayer().sceneLayer.removeChildren();
         SceneManager.mainScene = new MainScene();
         GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.mainScene);

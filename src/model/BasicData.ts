@@ -21,6 +21,7 @@ module ModBasic{
 
     export var KILLNUM:number = 1000;       //杀敌数量
     export var BasicNameList:any = {diamond:"钻石",soul:"魂石",power:"天赋点",exp:"经验"};
+    export var HeroNameList:any = {zhaoyun:"赵云",diaochan:"貂蝉",buxiaoman:"布小蛮",guanyu:"关羽",sunluban:"孙鲁班",menglingtong:"梦凌统"};
 
     /** box type */
     export var IRONBOX:number = 1;

@@ -373,6 +373,8 @@ class BaseGameObject extends egret.DisplayObjectContainer {
     public hp:number;
     /**初始血量 */
     public originHP:number;
+    /**初始攻击 */
+    public originAtk:number;
     /**对敌人的伤害值 */
     public _hurtValue:number;
 }

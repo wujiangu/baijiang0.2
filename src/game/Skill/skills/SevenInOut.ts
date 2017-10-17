@@ -99,7 +99,7 @@ class SevenInOut extends SkillBase {
                 break;
             }
         }
-        this.damage = target.attr.skd;
+        this.damage = target.originAtk;
         target.setEnermy();
         let enermy = target.getEnermy();
         this._enermy = enermy;

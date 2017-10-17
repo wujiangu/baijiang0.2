@@ -99,6 +99,7 @@ class ShopDialog extends PopupWindow {
                     this.btn_free.visible = false;
                     this.btn_oneDraw.visible = true;
                     UserDataInfo.GetInstance().DealUserData("freeCount", UserDataInfo.GetInstance().GetBasicData("freeCount") + 1);
+                    GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
                 });
             break;
             case this.btn_oneDraw:

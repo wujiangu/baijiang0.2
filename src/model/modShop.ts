@@ -164,6 +164,31 @@ namespace modShop {
     }
 
     /**
+     * 获取充值奖励(1元和6元档位)
+     */
+    export function getRechargeAward():void {
+        HttpRequest.getInstance().send("GET", "rechargeAward", {}, (result)=>{
+            let award:Array<any> = result.award;
+            if (award.length > 0) {
+                for (let i = 0; i < award.length; i++) {
+                    if (award[i].kind == 1 && award[i].status == 1) {
+                        let data = {"type":1,"name":"equip","count":1,"id":24};
+                        modEquip.EquipData.GetInstance().InsertEquipFromReward(data);
+                        HttpRequest.getInstance().send("POST", "rechargeAward", {kind:1});
+                    }
+                    else if (award[i].kind == 6 && award[i].status == 1) {
+                        HeroData.addHeroData("guanyu");
+                        if (WindowManager.GetInstance().getObjFromStr("ReadyDialog")) {
+                            WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
+                        }
+                        HttpRequest.getInstance().send("POST", "rechargeAward", {kind:6});
+                    }
+                }
+            }
+        }, modShop);
+    }
+
+    /**
      * 返回数组相同元素并且计算个数
      */
     function repeatCount(ids:Array<number>):any {

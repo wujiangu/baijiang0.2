@@ -461,6 +461,8 @@ namespace Animations {
      * @param obj 
      */
     export function ObjFadeEffect(obj:any):void{
+        if(obj == null) return;
+        
         let randTime:number = Math.floor((Math.random() % 10) * 1000);
         randTime = randTime < 100 ? 100 : randTime;
         egret.Tween.get(obj).to({alpha:0.5},randTime).call(()=>{
@@ -505,13 +507,10 @@ namespace Animations {
         text.width = img.width - 10;
         group.addChild(text);
 
-        let str:string = "恭喜获得" + (data.type == 1 ? TcManager.GetInstance().GetTcEquipData(data.id).name : ModBasic.BasicNameList[data.name]);
-        let szTitle:egret.TextField = Common.CreateText(str,25,0xff0000,true,"Microsoft YaHei","right");
-        group.addChild(szTitle);
+        let str:string = "获得" + (data.type == ModBasic.EQUIP_TYPE ? TcManager.GetInstance().GetTcEquipData(data.id).name : ModBasic.BasicNameList[data.name]);
+        showTips(str, 1, true);
 
-        group.width = bg.width + szTitle.width;
-        Common.SetXY(szTitle, 0, szTitle.y + (bg.height - szTitle.height >> 1));
-        Common.SetXY(bg, szTitle.x + szTitle.width, 0);
+        group.width = bg.width 
         Common.SetXY(img, bg.x + (bg.width - img.width >> 1), bg.height - img.height >> 1);
         Common.SetXY(text, img.x + 5, img.y + img.height - text.height - 5);
 
@@ -612,7 +611,9 @@ namespace Animations {
                     Common.SetXY(rewardGroup, boxMc.x + (boxGroup.width - rewardGroup.width >> 1) + rewardGroup.anchorOffsetX , imgLight.y + 150);
                     egret.Tween.get(rewardGroup).to({alpha:1,y:imgLight.y,scaleX:1,scaleY:1},150);
 
-                    let szContent = Common.CreateText("点击任意位置继续",35,0xffff00,true,"Microsoft YaHei");
+                    let szContent = Common.CreateText("点击任意位置继续",30,0x686155,true,"Microsoft YaHei");
+                    ObjFadeEffect(szContent);
+
                     goodsGroup.addChild(szContent);
                     Common.SetXY(szContent, Common.SCREEN_W - szContent.width >> 1, Common.SCREEN_H - 100);
 
