@@ -233,7 +233,7 @@ namespace modBattle {
         let count:number = baseNum * 5;
         for (let i = count; i > count - 5; i--) {
             let tempCount = ConfigManager.tcStage[i-1].count;
-            Common.log("tempCount--->", tempCount);
+            // Common.log("tempCount--->", tempCount);
             sum += tempCount;
         }
         return sum;
@@ -296,11 +296,12 @@ namespace modBattle {
         if (obj.isSummon && surviveCount > 0) return;
         if (obj.isBoss && surviveCount > 0) return;
         if (obj.isElite) {
-            SceneManager.battleScene.battleSceneCom.changeEliteIcon(GameData.curStage%5);
+            isElite = true;
             timer.reset();
             productRule();
         }else{
             sumDead ++;
+            isElite = false;
             if (sumDead <= curChapterSum){
                 SceneManager.battleScene.battleSceneCom.update(sumDead, curChapterSum);
                 timer.reset();
@@ -308,7 +309,6 @@ namespace modBattle {
             }else{
                 if (obj.isSummon && surviveCount == 0) sumDead = 0;
                 if (obj.isBoss && surviveCount == 0) sumDead = 0;
-                Common.log("当前关卡---->", GameData.curStage);
 
                 TimerManager.getInstance().stopTimer();
                 stop();
@@ -370,6 +370,10 @@ namespace modBattle {
             if (surviveCount > 0) return;
             GameData.curStage ++;
             if (GameData.curStage > ConfigManager.tcStage.length) GameData.curStage = 1;
+            egret.log("是否精英怪---->", isElite, (GameData.curStage-1)%5);
+            if (isElite || (!isElite && (GameData.curStage-1)%5 > 0)) {
+                SceneManager.battleScene.battleSceneCom.changeEliteIcon((GameData.curStage-1)%5);
+            }
             HttpRequest.getInstance().send("POST", "userinfo", {stage:GameData.curStage});
             getEnermyDistribute(GameData.curStage);
             productCount = 0;
@@ -525,6 +529,8 @@ namespace modBattle {
     var curWave:number;
     /**当前章节的总数 */
     var curChapterSum:number;
+    /**精英怪标记 */
+    var isElite:boolean;
     /**boss标记 */
     var isBoss:boolean;
     /**定时器 */

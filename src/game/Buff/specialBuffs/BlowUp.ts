@@ -44,7 +44,6 @@ class BlowUp extends BuffBase {
         let label:string = event.frameLabel;
         if (label == "@blowup") {
             this.target.blew();
-            AudioManager.GetIns().PlayMusic(AudioManager.BOMP_MUSIC);
         }
     }
 

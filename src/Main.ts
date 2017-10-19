@@ -104,9 +104,9 @@ class Main extends eui.UILayer {
                 //设置加载进度界面
                 this.loadingView = new LoadingUI();
                 GameLayerManager.gameLayer().loadLayer.addChild(this.loadingView);
-                ResAsynLoadManager.LoadMainScene();
-                ResAsynLoadManager.LoadReadyScene();
-                ResAsynLoadManager.LoadCurHeroSource(GameData.curHero);
+                // ResAsynLoadManager.LoadMainScene();
+                // ResAsynLoadManager.LoadReadyScene();
+                // ResAsynLoadManager.LoadCurHeroSource(GameData.curHero);
                 break;
             case "battleBack":
                 ConfigManager.InitBattleConfig("battleBack");
@@ -160,11 +160,11 @@ class Main extends eui.UILayer {
         // this.removeChild(this.bg);
         // this.removeChild(this.logo);
         // RES.destroyRes("loading");
-        // modLogin.init();
-        // modLogin.reqLogin(this._onLogin);
-        // modShare.activeShare("百将斩", false, true);
+        modLogin.init();
+        modLogin.reqLogin(this._onLogin);
+        modShare.activeShare("百将斩", false, true);
         // this.test();
-        this.testBattle();
+        // this.testBattle();
         // this.addDesktop();
     }
 

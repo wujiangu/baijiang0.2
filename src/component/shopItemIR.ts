@@ -87,11 +87,18 @@ class shopItemIR extends Base {
         this.img_item.source = content.imgItem;
         this.btn_buy.name = type;
         if(type == "diamond") {
-            this.set_label_Text("","￥"+content.price, "首冲送" + this.content.count + "钻石", true, isShowGroup);
+            let str:string = this.content.count + "钻石";
             this.img_diamond.visible = false;
-            if (content.price == 6) this.img_reward.source = "battle_res.img_guanyu";
-            else if (content.price == 1) this.img_reward.source = "common_res.img_syitian";
+            if (content.price == 6) {
+                this.img_reward.source = "battle_res.img_guanyu";
+                str = "关羽";
+            }
+            else if (content.price == 1) {
+                this.img_reward.source = "common_res.img_syitian";
+                str = "倚天剑";
+            }
             else this.img_reward.visible = false;
+            this.set_label_Text("","￥"+content.price, "首冲送" + str, true, isShowGroup);
         }
         else if(content.discount == 1){
             this.set_label_Text(content.price,"", "限时折扣：    折",true, isShowGroup);

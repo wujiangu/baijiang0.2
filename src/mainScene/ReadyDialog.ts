@@ -301,6 +301,7 @@ class ReadyDialog extends PopupWindow {
     public Close():void{
         AudioManager.GetIns().PlayMusic(AudioManager.CLOSE_MUSIC);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
+        GameLayerManager.gameLayer().dispatchEventWith(UserData.REDEVENT);
 
         this._stopTimer();
         this.eventType();

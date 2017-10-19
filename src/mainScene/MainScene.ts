@@ -29,8 +29,8 @@ class MainScene extends Base {
 
     //creste red image
     private createRedImage():void{
-        let obj_list:any = [this.btn_sign, this.btn_shop, this.btn_pvp,this.btn_email];
-        let width_list:any = [94,120,116,120];
+        let obj_list:any = [this.btn_sign, this.btn_shop, this.btn_pvp,this.btn_email,this.btn_talent];
+        let width_list:any = [94,120,116,120,120];
         for(let i = 0 ; i < obj_list.length; i++){
             this.red_list[i] = new egret.Bitmap(RES.getRes("battle_res.red_point"));
             this.addChild(this.red_list[i]);
@@ -195,12 +195,36 @@ class MainScene extends Base {
         Animations.fadeOut(pop);
     }
 
+    private isShowRed(index:number):boolean{
+        let isShow:boolean = false;
+        if(index == 0){             //sing
+            isShow = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;
+        } 
+        else if(index == 1){        //shop
+            isShow = UserDataInfo.GetInstance().GetBasicData("freeCount") == 0 ? true : false;
+        }
+        else if(index == 2){        //pvp
+            isShow = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;
+        }
+        else if(index == 3){      //email
+             let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
+             isShow = emailNum != 0 ? true : false;
+        }
+        else if(index == 4)                                                                             //talent
+        {
+            let currNum:number = UserDataInfo.GetInstance().GetBasicData("curTalentPage") - 1;
+            let talentPage = modTalent.getTalentData();
+            let currLv = talentPage.length >= 1 ? (talentPage[currNum].count == null ? 1 : talentPage[currNum].count) : 1;
+            let data:any = TcManager.GetInstance().GetDataFromLv(3,currLv);
+            if(UserDataInfo.GetInstance().GetBasicData("diamond") >= data.diamond || UserDataInfo.GetInstance().GetBasicData("power") >= data.power) isShow = true;
+        }
+        return isShow;
+    }
+
     private onRedEvent():void{
-        this.red_list[0].visible = UserDataInfo.GetInstance().GetSignData().isSign ? false : true;  // sign 
-        this.red_list[1].visible = UserDataInfo.GetInstance().GetBasicData("freeCount") == 0 ? true : false;  // shop
-        this.red_list[2].visible = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;  // pvp
-        let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
-        this.red_list[3].visible = emailNum == 0 ? false : true;  // email
+        for(let i:number = 0; i < this.red_list.length; i++){
+            this.red_list[i].visible = this.isShowRed(i);
+        }
     }
 
      private onChangeData(event:egret.Event):void{
