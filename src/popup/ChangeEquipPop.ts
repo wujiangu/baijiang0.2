@@ -117,7 +117,13 @@ class ChangeEquipPop extends PopupWindow {
 
         let attr_name_list:any = [" 生命", " 护甲", " 攻击", " 暴击"];
         for(let i:number = 0; i < 4; i++){
-            this.attr_list[i].text = "+" + Math.ceil(info.GetEquipAttr()[i]) + attr_name_list[i]
+            if(i < 3){
+                this.attr_list[i].text = "+" + Math.ceil(info.GetEquipAttr()[i]) + attr_name_list[i];
+            }
+            else
+            {
+                this.attr_list[i].text = "+" + parseFloat(info.GetEquipAttr()[i].toFixed(2)) + "%" + attr_name_list[i];
+            }
         }
 
         let special_list:any = info.GetAttrType();

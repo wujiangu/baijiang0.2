@@ -227,7 +227,7 @@ class MainScene extends Base {
         }
     }
 
-     private onChangeData(event:egret.Event):void{
+    private onChangeData(event:egret.Event):void{
        if(event.data == null){
            GameLayerManager.gameLayer().panelLayer.removeChildren();
            this.addChild(this._shape);

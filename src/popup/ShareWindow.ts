@@ -36,7 +36,7 @@ class ShareWindow extends PopupWindow{
         }
         else if(param.type == 3)      //hero
         {
-            let name_list:any = {buxiaoman:"布小蛮", zhaoyun:"赵云",diaochan:"貂蝉"}
+            let name_list:any = {buxiaoman:"布小蛮", zhaoyun:"赵云",diaochan:"貂蝉",sunluban:"孙鲁班",guanyu:"关羽",menglingtong:"梦凌统"}
             this.show_lab_text(name_list[param.data],"","","",this.getHeroStage(param.data));
         }
 

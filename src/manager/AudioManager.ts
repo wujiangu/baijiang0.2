@@ -77,9 +77,9 @@ class AudioManager{
         else if(strType == AudioManager.ATTACK_MUSIC) return "attack";
         else if(strType == AudioManager.DEAD_MUSIC) return "dead";
         else if(strType == AudioManager.HIT_MUSIC) return "hit";
-        else if(strType == AudioManager.POWER_MUSIC) return "power";
+        else if(strType == AudioManager.POWER_MUSIC) return "click";
         else if(strType == AudioManager.BOMP_MUSIC) return "bomp";
-        else if(strType == AudioManager.CLOSE_MUSIC) return "close";
+        else if(strType == AudioManager.CLOSE_MUSIC) return "click";
         else if(strType == AudioManager.START_MUSIC) return "start";
     }
 

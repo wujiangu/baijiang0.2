@@ -72,6 +72,7 @@ class ShopDialog extends PopupWindow {
         AudioManager.GetIns().PlayMusic(AudioManager.CLOSE_MUSIC);
         GameLayerManager.gameLayer().removeEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
+        this.show_label_text();
     }
 
     private onButtonHandler(event:egret.TouchEvent) {

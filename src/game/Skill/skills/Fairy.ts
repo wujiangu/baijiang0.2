@@ -24,7 +24,7 @@ class Fairy extends SkillBase {
 
     public init() {
         super.init();
-        this.cd = 5;
+        this.cd = 30;
         // this.img_effect.alpha = 0;
     }
 
