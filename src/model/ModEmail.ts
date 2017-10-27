@@ -23,7 +23,7 @@ module ModEmail{
         return EmailData;
     }
 
-    export function ReqGetEmail(listener:Function):any{
+    export function ReqGetEmail(listener:Function = null):any{
         HttpRequest.getInstance().send("GET", "email", "", (data)=>{
             SetEmailData(data.email);
             if(listener) listener();

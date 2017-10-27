@@ -237,6 +237,21 @@ class PVPScene extends Base {
     }
 
     /**
+     * 创建镜像
+     */
+    public createMirror(data:Array<any>, isPVP:boolean=false) {
+        let mirror = ObjectPool.pop("AvatarHero");
+        GameData.heros.push(mirror);
+        mirror.init(data, isPVP);
+        mirror.x = MathUtils.getRandom(100, 1050);
+        mirror.y = MathUtils.getRandom(100, 550);
+        // mirror.anchorOffsetY = -33;
+        mirror.anchorOffsetY = -50;
+        this.battleLayer.addChild(mirror);
+        return mirror;
+    }
+
+    /**
      * 创建地图
      */
     private _createMap():void {

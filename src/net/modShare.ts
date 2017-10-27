@@ -79,7 +79,11 @@ module modShare {
             if (platform == "micromessenger" || platform == "other") {
                 send["success"] = success;
                 send["cancel"] = cancel;
-                send["fail"] = fail
+                send["fail"] = fail;
+                if (SceneManager.mainScene.isFull && window["sdw"].exitFullScreen) {
+                    SceneManager.mainScene.isFull = false;
+                    window["sdw"].exitFullScreen();
+                }
                 window["sdw"].onSetShareOperate(send);
             }
             else if(platform == "qq") {

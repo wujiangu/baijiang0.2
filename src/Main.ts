@@ -216,13 +216,13 @@ class Main extends eui.UILayer {
                 
                 ResLoadManager.GetInstance().LoadGroup("battleStage", ()=>{
                     ResLoadManager.GetInstance().LoadGroup("battleGroup", ()=>{
-                        RES.loadGroup("battleBack");
-                        SceneManager.battleScene = new BattleScene();
-                        SceneManager.curScene = SceneManager.battleScene;
-                        GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
-                        // SceneManager.pvpScene = new PVPScene();
-                        // SceneManager.curScene = SceneManager.pvpScene;
-                        // this.addChild(SceneManager.pvpScene);
+                        // RES.loadGroup("battleBack");
+                        // SceneManager.battleScene = new BattleScene();
+                        // SceneManager.curScene = SceneManager.battleScene;
+                        // GameLayerManager.gameLayer().sceneLayer.addChild(SceneManager.battleScene);
+                        SceneManager.pvpScene = new PVPScene();
+                        SceneManager.curScene = SceneManager.pvpScene;
+                        this.addChild(SceneManager.pvpScene);
                     })
                 })
             })

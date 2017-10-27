@@ -42,9 +42,10 @@ class Fairy extends SkillBase {
             let attr = Utils.cloneObj(this.target.attr);
             attr["atk"] = Math.floor(attr["atk"]);
             for (let i = 0; i < 2; i++) {
-                let mirror = SceneManager.battleScene.createMirror([name, attr]);
+                let mirror = SceneManager.curScene.createMirror([name, attr], this.target.isPVP);
                 this.mirrors.push(mirror);
             }
+            this.target.visible = true;
             TimerManager.getInstance().doTimer(10000, 1, this.disappear, this);
         });
     }

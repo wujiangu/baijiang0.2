@@ -1,7 +1,7 @@
 {
 	"groups":[
 		{
-			"keys":"blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,killFnt_fnt,goodsBg_png,randomBuffSheet_json,randomBuffIcon_json,kill_0003_png,kill_0004_png,kill_0005_png,kill_0002_png,guideClip_json,guideClip_png,killTipsBgClip_json,killTipsBgClip_png,battleFnt_fnt,randomBuffIcon1_json",
+			"keys":"blood_die_ske_dbbin,blood_die_tex_json,blood_die_tex_png,monster1_1_ske_dbbin,monster1_1_tex_json,monster1_1_tex_png,monster02_skill_ske_dbbin,monster02_skill_tex_json,monster02_skill_tex_png,monster2_1_ske_dbbin,monster2_1_tex_json,monster2_1_tex_png,killFnt_fnt,goodsBg_png,randomBuffSheet_json,randomBuffIcon_json,kill_0003_png,kill_0004_png,kill_0005_png,kill_0002_png,guideClip_json,guideClip_png,killTipsBgClip_json,killTipsBgClip_png,battleFnt_fnt,randomBuffIcon1_json",
 			"name":"battleStage"
 		},
 		{

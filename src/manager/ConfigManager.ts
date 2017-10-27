@@ -79,7 +79,7 @@ namespace ConfigManager {
     /** init battle config */
     export function InitBattleConfig(scene:string):void{
         if(scene == "ready"){
-            initBattleDragonBones(0, 6);
+            initBattleDragonBones(0, 7);
             loadEnermyConfig();
         }
         else if(scene == "battleGroup")

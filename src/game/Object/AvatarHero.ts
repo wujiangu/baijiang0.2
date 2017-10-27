@@ -70,8 +70,10 @@ class AvatarHero extends Alliance {
                 this.deltaY = parseFloat(tempY.toFixed(2));
                 let gotoX = this.x + this.deltaX;
                 let gotoY = this.y + this.deltaY;
-                let isMove:boolean = this.isCollison(gotoX, gotoY);
-                if (!isMove) return;
+                if (!this.isPVP) {
+                    let isMove:boolean = this.isCollison(gotoX, gotoY);
+                    if (!isMove) return;
+                }
                 this.x += this.deltaX;
                 this.y += this.deltaY;
                 this.x = parseFloat(this.x.toFixed(2));
@@ -114,7 +116,8 @@ class AvatarHero extends Alliance {
         this.img_swordLight.visible = false;
         if (this.attr.hp <= 0) return;
         if (!this.isComplete) return;
-        this.setLiveEnermy();
+        if (!this.isPVP) this.setLiveEnermy();
+        else this.setStakes();
         super.gotoAttack();
     }
 
@@ -155,7 +158,8 @@ class AvatarHero extends Alliance {
     /************************************其他函数******************************************/
     /**锁定攻击对象 */
     private lockEnermy():void {
-        this.setLiveEnermy();
+        if (!this.isPVP) this.setLiveEnermy();
+        else this.setStakes();
         this.lockTarget = [];
         for (let i = 0; i < this.enermy.length; i++) {
             if (this.enermy[i].attr.hp > 0 && this.enermy[i].curState != "dead") {

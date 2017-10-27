@@ -207,8 +207,8 @@ class MainScene extends Base {
             isShow = UserDataInfo.GetInstance().GetBasicData("sportCount") == 0 ? true : false;
         }
         else if(index == 3){      //email
-             let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
-             isShow = emailNum != 0 ? true : false;
+            let emailNum = ModEmail.GetEmailData() == null ? 0 : ModEmail.GetEmailData().length;
+            isShow = emailNum != 0 ? true : false;
         }
         else if(index == 4)                                                                             //talent
         {
@@ -216,7 +216,7 @@ class MainScene extends Base {
             let talentPage = modTalent.getTalentData();
             let currLv = talentPage.length >= 1 ? (talentPage[currNum].count == null ? 1 : talentPage[currNum].count) : 1;
             let data:any = TcManager.GetInstance().GetDataFromLv(3,currLv);
-            if(UserDataInfo.GetInstance().GetBasicData("diamond") >= data.diamond || UserDataInfo.GetInstance().GetBasicData("power") >= data.power) isShow = true;
+            if(UserDataInfo.GetInstance().GetBasicData("power") >= data.power) isShow = true;
         }
         return isShow;
     }
@@ -285,5 +285,5 @@ class MainScene extends Base {
 
     /** dialog */
     public readyDialog:ReadyDialog;
-    private isFull:boolean;
+    public isFull:boolean;
 }

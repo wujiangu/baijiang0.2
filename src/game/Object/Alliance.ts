@@ -207,6 +207,11 @@ class Alliance extends BaseGameObject {
         this.addVictim(GameData.monsters);
     }
 
+    public setStakes():void {
+        this.enermy = [];
+        this.addVictim(GameData.stakes);
+    }
+
     /**设置buff循环 */
     public setBuffStatus(status:boolean):void {
         this.isBuffLoop = status;

@@ -21,7 +21,7 @@
 			"name": "pvp"
 		},
 		{
-			"keys": "newParticle_json,newParticle_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin,sunluban_ske_dbbin,sunluban_tex_json,sunluban_tex_png,guanyu_ske_dbbin,guanyu_tex_json,guanyu_tex_png,menglingtong_ske_dbbin,menglingtong_tex_json,menglingtong_tex_png",
+			"keys": "newParticle_json,newParticle_png,combo_bg_png,buxiaoman_tex_png,buxiaoman_tex_json,buxiaoman_ske_dbbin,diaochan_tex_png,diaochan_tex_json,diaochan_ske_dbbin,zhaoyun_tex_png,zhaoyun_tex_json,zhaoyun_ske_dbbin,sunluban_ske_dbbin,sunluban_tex_json,sunluban_tex_png,guanyu_ske_dbbin,guanyu_tex_json,guanyu_tex_png,menglingtong_ske_dbbin,menglingtong_tex_json,menglingtong_tex_png,enter_monster_01_ske_dbbin,enter_monster_01_tex_json,enter_monster_01_tex_png",
 			"name": "ready"
 		},
 		{
