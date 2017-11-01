@@ -24,12 +24,15 @@ namespace modBattle {
         surviveCount = 0;
         exp = 0;
         soul = 0;
+        sumPower = 0;
         isBoss = false;
         getEnermyDistribute(GameData.curStage);
         timer.start();
         // if (SceneManager.battleScene.guideStage == 2) timer.start();
         Common.addEventListener(GameEvents.EVT_PRODUCEMONSTER, onEnermyDead, modBattle);
         tcStageReward = RES.getRes("TcStageReward_json");
+        tcHeroUp = ConfigManager.tcHeroUp;
+        heroData = HeroData.getHeroData(GameData.curHero);
     }
 
     export function addSumkill():void {
@@ -78,6 +81,10 @@ namespace modBattle {
 
     export function getSoul():number {
         return soul;
+    }
+
+    export function getSumPower():number {
+        return sumPower;
     }
 
     /**
@@ -238,6 +245,39 @@ namespace modBattle {
         }
         return sum;
     }
+
+    /**升级配置文件 */
+    var tcHeroUp;
+    /**英雄的数据 */
+    var heroData;
+    /**获得能量点的总数 */
+    var sumPower;
+    /**
+     * 获取关卡掉落
+     */
+    export function getStageItem(Exp:number, Soul:number):void {
+        //英雄数据
+        let level:number = heroData.lv;
+        let getExp:number = Exp + heroData.exp;
+        let upLv = 0;
+        let upExp = 0;
+        let addCount:number = 0;
+        if (getExp >= tcHeroUp[level-1].exp && level <= 300) {
+            upLv = level + 1;
+            upExp = getExp - tcHeroUp[level-1].exp;
+            addCount = ConfigManager.tcPower[level-1].power;
+            sumPower += addCount;
+            HeroData.setHeroAttr(GameData.curHero, upLv);
+            heroData["lv"] = upLv;
+            heroData["exp"] = upExp;
+            HttpRequest.getInstance().send("POST", "hero", {heroId:heroData.heroId, lv:heroData.lv, exp:heroData.exp});
+        }
+        let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + Exp;
+        let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + Soul;
+        let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;
+        UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul, power:source_power});
+    }
+
 
     /**
      * 回收宝箱

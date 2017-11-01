@@ -266,6 +266,8 @@ class BattleScene extends Base {
             modBattle.setExp(exp);
             modBattle.setSoul(0);
             SceneManager.battleScene.battleSceneCom.setExpAndSoul(modBattle.getExp(), modBattle.getSoul());
+            let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + exp;
+            UserDataInfo.GetInstance().SetBasicData({exp:source_exp});
             egret.Tween.get(this.rewardGroup).to({alpha:0}, 800, egret.Ease.circIn).call(()=>{
                 this.clearRewardGroup();
             })

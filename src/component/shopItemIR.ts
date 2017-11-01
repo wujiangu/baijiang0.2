@@ -30,7 +30,7 @@ class shopItemIR extends Base {
             case this.btn_buy:
                 if(this.btn_buy.name == "diamond"){
                     modPay.preOrder({amount:this.content.money, subject:"钻石", diamond:this.content.count});
-                    // Animations.showTips("无法购买，现金充值尚未开放", 1, true);
+                    modLogin.sendPayHeart();
                 }
                 else if(this.btn_buy.name == "packs"){
                     if(!UserDataInfo.GetInstance().IsHaveGoods("diamond", this.content.price,()=>{
@@ -90,11 +90,11 @@ class shopItemIR extends Base {
             let str:string = this.content.count + "钻石";
             this.img_diamond.visible = false;
             if (content.price == 6) {
-                this.img_reward.source = "battle_res.img_guanyu";
+                this.img_reward.source = "common_res.img_payDiammond";
                 str = "关羽";
             }
             else if (content.price == 1) {
-                this.img_reward.source = "common_res.img_syitian";
+                this.img_reward.source = "common_res.img_payDiammond";
                 str = "倚天剑";
             }
             else this.img_reward.visible = false;

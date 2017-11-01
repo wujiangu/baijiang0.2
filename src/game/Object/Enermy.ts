@@ -427,6 +427,7 @@ class Enermy extends BaseGameObject {
         modBattle.setExp(exp);
         modBattle.setSoul(soul);
         SceneManager.battleScene.battleSceneCom.setExpAndSoul(modBattle.getExp(), modBattle.getSoul());
+        modBattle.getStageItem(exp, soul);
     }
 
     /**

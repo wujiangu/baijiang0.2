@@ -11,6 +11,8 @@ namespace modLogin {
         saveBaseData();
         UserData.UserId = userBase["uid"];
         heartTimer = new egret.Timer(15000, 0);
+        let platform = Common.platformType();
+        if (platform == "micromessenger") payTimer = new egret.Timer(15000, 0);
         newUserData = RES.getRes("TcNewUser_json");
     }
 
@@ -36,6 +38,29 @@ namespace modLogin {
             }, modLogin);
         }, modLogin);
         heartTimer.start();
+    }
+
+    /**
+     * 支付心跳包
+     */
+    export function sendPayHeart():void {
+        if (Common.platformType() != "micromessenger") return;
+        payTimer.addEventListener(egret.TimerEvent.TIMER, ()=>{
+            HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
+                UserDataInfo.GetInstance().SetBasicData({diamond:result.diamond});
+                SceneManager.mainScene.show_label_text();
+                ShopDialog.instance.show_label_text();
+            }, modLogin);
+        }, modLogin);
+        payTimer.start();
+    }
+
+    /**
+     * 关闭支付心跳包
+     */
+    export function closePayHeart():void {
+        if (Common.platformType() != "micromessenger") return;
+        payTimer.stop();
     }
 
     /**
@@ -206,4 +231,5 @@ namespace modLogin {
     var iframeData:Array<string>;
     var userBase:any;
     var heartTimer:egret.Timer;
+    var payTimer:egret.Timer;
 }

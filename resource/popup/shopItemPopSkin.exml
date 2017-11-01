@@ -3,7 +3,7 @@
     <e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280"/>
 	<e:Image x="70" y="46" source="shop_popupBg1_png"/>
 
-	<e:Button id="btn_back" label="" x="985" y="82">
+	<e:Button id="btn_back" label="" x="976" y="71" scaleX="1.5" scaleY="1.5">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>

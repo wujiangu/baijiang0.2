@@ -139,43 +139,32 @@ class BattleFailPop extends PopupWindow {
         let data:any = HeroData.getHeroData(GameData.curHero);
         let level:number = data.lv;
         let exp:number = data.exp;
-        let getExp:number = modBattle.getExp() + exp;
-        let upLv = 0;
-        let upExp = 0;
+        // let getExp:number = modBattle.getExp() + exp;
+        // let upLv = 0;
+        // let upExp = 0;
         this._isUp = false;
-        Common.log("before等级---->", level, exp, getExp, tcHeroUp[0]);
-        for (let i = level-1; i < 300; i++) {
-            if (getExp >= tcHeroUp[i].exp) {
-                getExp -= tcHeroUp[i].exp;
-            }else{
-                upLv = i + 1;
-                upExp = getExp;
-                break;
-            }
-        }
-        let addCount:number = 0;
-        if (upLv > level){
+        // Common.log("before等级---->", level, exp, getExp, tcHeroUp[0]);
+        // for (let i = level-1; i < 300; i++) {
+        //     if (getExp >= tcHeroUp[i].exp) {
+        //         getExp -= tcHeroUp[i].exp;
+        //     }else{
+        //         upLv = i + 1;
+        //         upExp = getExp;
+        //         break;
+        //     }
+        // }
+        if (modBattle.getSumPower() > 0){
             this._isUp = true;
             this.img_power.visible = true;
             this.lab_power.visible = true;
-            let count:number = upLv - level;
-            for (let i = 0; i < count; i++) {
-                addCount += ConfigManager.tcPower[level+i-1].power;
-            }
-            this.lab_power.text = addCount.toString();
-            HeroData.setHeroAttr(GameData.curHero, upLv);
+            this.lab_power.text = modBattle.getSumPower().toString();
         }
-        this.lab_lv.text = `lv.${upLv.toString()}`;
-        this._scaleX = upExp/tcHeroUp[upLv-1].exp;
-        egret.log("after等级---->", upLv, upExp)
-        // this.img_exp.scaleX = upExp/tcHeroUp[upLv-1].exp;
-        data["lv"] = upLv;
-        data["exp"] = upExp;
-        HttpRequest.getInstance().send("POST", "hero", {heroId:data.heroId, lv:data.lv, exp:data.exp})
-        let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + modBattle.getExp();
-        let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + modBattle.getSoul();
-        let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;
-        UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul, power:source_power});
+        this.lab_lv.text = `lv.${level.toString()}`;
+        this._scaleX = exp/tcHeroUp[level-1].exp;
+        // egret.log("after等级---->", upLv, upExp)
+        // data["lv"] = upLv;
+        // data["exp"] = upExp;
+        // HttpRequest.getInstance().send("POST", "hero", {heroId:data.heroId, lv:data.lv, exp:data.exp})
         SceneManager.mainScene.show_label_text();
         if (isExit) this.rewardWindow();
     }

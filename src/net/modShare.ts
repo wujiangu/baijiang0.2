@@ -76,36 +76,28 @@ module modShare {
             //移动端平台
             // egret.log("平台---->", platform, location.hostname, location.host);
             if (!isInit) window["show"]();
-            if (platform == "micromessenger" || platform == "other") {
-                send["success"] = success;
-                send["cancel"] = cancel;
-                send["fail"] = fail;
-                if (SceneManager.mainScene.isFull && window["sdw"].exitFullScreen) {
-                    SceneManager.mainScene.isFull = false;
-                    window["sdw"].exitFullScreen();
-                }
-                window["sdw"].onSetShareOperate(send);
+            send["success"] = success;
+            send["cancel"] = cancel;
+            send["fail"] = fail;
+            if (SceneManager.mainScene.isFull && window["sdw"].exitFullScreen) {
+                SceneManager.mainScene.isFull = false;
+                window["sdw"].exitFullScreen();
             }
-            else if(platform == "qq") {
-                Animations.showTips("暂不支持手机QQ内置浏览器分享，请使用微信或闪电玩APP", 1, true);
-                if (!isInit) return;
-                // var oMeta = document.createElement('meta');
-                // oMeta.name = 'description';
-                // oMeta.content = '这里是自定义分享的描述';
-                // document.getElementsByTagName('head')[0].appendChild(oMeta);
-                // var oMeta1 = document.createElement('meta');
-                // oMeta1.setAttribute('itemprop', 'image');
-                // oMeta1.content = 'http://ggsporestudio.com/resource/assets/bg/share1.png';
-                // document.getElementsByTagName('head')[0].appendChild(oMeta1);
-                // seajs.use('http://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js', function(setShareInfo) {
-                //     setShareInfo({
-                //         title:          "dsfdf",
-                //         summary:        "wqfrew",
-                //         pic:            "xxxxx",
-                //         url:            window.location.href
-                //     });
-                // });
-            }
+            window["sdw"].onSetShareOperate(send);
+            // if (platform == "micromessenger" || platform == "other") {
+            //     send["success"] = success;
+            //     send["cancel"] = cancel;
+            //     send["fail"] = fail;
+            //     if (SceneManager.mainScene.isFull && window["sdw"].exitFullScreen) {
+            //         SceneManager.mainScene.isFull = false;
+            //         window["sdw"].exitFullScreen();
+            //     }
+            //     window["sdw"].onSetShareOperate(send);
+            // }
+            // else if(platform == "qq") {
+            //     Animations.showTips("暂不支持手机QQ内置浏览器分享，请使用微信或闪电玩APP", 1, true);
+            //     if (!isInit) return;
+            // }
         }
     }
 
@@ -113,7 +105,9 @@ module modShare {
      * 分享成功
      */
    function success():void {
-        egret.log("分享成功");
+        // egret.log("分享成功");
+        window["hide"]();
+        Animations.showTips("分享成功", 1);
 		if (!isReward) return;
         let shareNum:number = Common.GetShareDiamond();
         if(shareNum != -1){

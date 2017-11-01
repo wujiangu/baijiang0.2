@@ -2,7 +2,7 @@
 <e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mask_png" x="0" y="0" width="1136" height="640"/>
 	<e:Image source="equip_0006_png" x="388.5" y="77"/>
-	<e:Button id="btn_closeDetail" label="" x="671.5" y="82">
+	<e:Button id="btn_closeDetail" label="" x="650.5" y="82" scaleX="1.5" scaleY="1.5">
 		<e:skinName>
 		<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="button_res.button_0009"/>

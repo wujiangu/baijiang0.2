@@ -73,6 +73,7 @@ class ShopDialog extends PopupWindow {
         GameLayerManager.gameLayer().removeEventListener(UserData.PURCHASEDATA, this.onPurchaseData, this);
         GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA);
         this.show_label_text();
+        modLogin.closePayHeart();
     }
 
     private onButtonHandler(event:egret.TouchEvent) {

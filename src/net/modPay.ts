@@ -10,7 +10,7 @@ module modPay {
         data["appId"] = modLogin.getBaseData("appid");
         data["accountId"] = modLogin.getBaseData("uid");
         data["amount"] = params.amount;
-        data["wxopenid"] = modLogin.getBaseData("wxopenid");
+        data["wxopenid"] = modLogin.getBaseData("openid");
         data["call_back_url"] = modLogin.getBaseData("cburl");
         data["merchant_url"] = modLogin.getBaseData("cburl");
         data["subject"] = params.subject;
@@ -27,7 +27,7 @@ module modPay {
             data["complete"] = complete;
             delete data.sdw_test;
             delete data.diamond;
-            // egret.log("发送平台的数据---->", data);
+            // egret.log("充值回调的数据---->", JSON.stringify(data));
             window["sdw"].chooseSDWPay(data);
         }, modPay);
     }
