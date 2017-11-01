@@ -2,8 +2,8 @@
  * 精英怪
  */
 class EliteMonster extends Monster {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
         this.img_halo = Utils.createBitmap("battleComon.Elitemonster000");
         this.img_halo.scaleX = 1.5;
         this.img_halo.scaleY = 1.5;
@@ -20,7 +20,6 @@ class EliteMonster extends Monster {
         }
 
         this.arrayBuffs = new Array();
-        // this.createSpecialArmature();
     }
 
     /**
@@ -28,12 +27,6 @@ class EliteMonster extends Monster {
      */
     public initDragonBonesArmature(name:string):void {
         super.initDragonBonesArmature(name);
-        this.img_halo.visible = true;
-        // this.img_type.visible = true;
-        this.armature.visible = true;
-        this.specialArmature.visible = false;
-        this.visible = true;
-        this.alpha = 1.0;
     }
 
     /**
@@ -41,6 +34,11 @@ class EliteMonster extends Monster {
      */
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
         super.init(data, isElite, isSummon);
+        this.img_halo.visible = true;
+        this.armature.visible = true;
+        this.specialArmature.visible = false;
+        this.visible = true;
+        this.alpha = 1.0;
         this.arrayBuffs = data[1].arrayBuff;
         this._type = data[0];
         this._data = Utils.cloneObj(data[1]);
@@ -316,7 +314,7 @@ class EliteMonster extends Monster {
      * 创建分身
      */
     public createAvatar():void {
-        this._avatar = ObjectPool.pop("EliteMonster");
+        this._avatar = GameObjectPool.pop(this._type, "EliteMonster", this._type);
         this._avatar.x = this.x;
         this._avatar.y = this.y;
         this._avatar.alpha = 1.0;

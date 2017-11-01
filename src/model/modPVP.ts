@@ -57,7 +57,7 @@ namespace modPVP {
             hero.recycleSkill();
             // hero.stopDragonBonesArmature();
             if (hero && hero.parent && hero.parent.removeChild) hero.parent.removeChild(hero);
-            ObjectPool.push(GameData.heros[i]);
+            GameObjectPool.push(GameData.heros[i]);
         }
         for (let i = 0; i < stakeCount; i++) {
             let stakes:Stakes = GameData.stakes[i];

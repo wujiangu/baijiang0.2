@@ -1,6 +1,6 @@
 class Enermy extends BaseGameObject {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
         this.colorFlilter = new egret.ColorMatrixFilter(this.colorMatrix);
         this.defaultFlilter = new egret.ColorMatrixFilter(this.defaultMatrix);
         this.createExpAndSoul();
@@ -43,11 +43,11 @@ class Enermy extends BaseGameObject {
         this.effectArmature.scaleY = 1.5;
         this.buffArmature.scaleX = 1.5;
         this.buffArmature.scaleY = 1.5;
-        this.armature.filters = [this.defaultFlilter];
     }
 
     public init(data:Array<any>) {
         super.init(data);
+        this.armature.filters = [this.defaultFlilter];
         this.confData = data[1];
         this.isInvincible = false;
         this.buff = [];
@@ -282,7 +282,7 @@ class Enermy extends BaseGameObject {
     public disappear():void {
         TimerManager.getInstance().remove(this.disappear, this);
         if (this.curState != Enermy.Action_Dead) return;
-        ObjectPool.push(this);
+        GameObjectPool.push(this);
         if (this.parent && this.parent.removeChild) this.parent.removeChild(this);
     }
     /**

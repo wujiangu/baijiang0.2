@@ -39,7 +39,7 @@ class Mirror extends BaseRandomItem {
         this.mirror.curState = "";
         let index:number = GameData.heros.indexOf(this.mirror);
         GameData.heros.splice(index, 1);
-        ObjectPool.push(this.mirror);
+        GameObjectPool.push(this.mirror);
         if (this.mirror && this.mirror.parent && this.mirror.parent.removeChild) this.mirror.parent.removeChild(this.mirror);
         this.recycle();
     }

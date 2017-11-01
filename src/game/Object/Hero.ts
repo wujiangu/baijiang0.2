@@ -2,8 +2,8 @@
  * 英雄
  */
 class Hero extends Alliance {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
         this.buffIcon = Utils.createBitmap("randomBuffIcon1_json.sbuff_liuxue");
         this.addChild(this.buffIcon);
         this.buffIcon.y = -100;
@@ -12,8 +12,7 @@ class Hero extends Alliance {
 
     public initDragonBonesArmature(name:string):void {
         super.initDragonBonesArmature(name);
-        //增加动画帧执行函数
-        this.armature.addFrameCallFunc(this.armatureFrame, this);
+
 
         //受伤动画
         this.effectArmature.register(DragonBonesFactory.getInstance().makeArmature("daoguang_effect", "daoguang_effect", 8), [
@@ -21,17 +20,13 @@ class Hero extends Alliance {
         ]);
 
         /**从配置文件读取技能动画 */
-        let heroConfig = modHero.getHeroConfig(name);
         let skillArmature = `${name}_skill`;
         this.skillArmature.register(DragonBonesFactory.getInstance().makeArmature(skillArmature, skillArmature, 10), [
             Hero.Effect_Skill01,
             Hero.Effect_SKill02,
             Hero.Effect_SKill03
         ]);
-        this.skillArmature.addFrameCallFunc(this.armatureFrame, this);
-
-        this.skill = ObjectPool.pop(heroConfig["skill"]);
-        this.skill.init();
+        
         this.effectArmature.scaleX = 1.5;
         this.effectArmature.scaleY = 1.5;
         this.skillArmature.scaleX = 1.5;
@@ -40,6 +35,12 @@ class Hero extends Alliance {
 
     public init(data:Array<any>, isPVP:boolean=false) {
         super.init(data);
+        let heroConfig = modHero.getHeroConfig(data[0]);
+        this.skill = ObjectPool.pop(heroConfig["skill"]);
+        this.skill.init();
+        //增加动画帧执行函数
+        this.armature.addFrameCallFunc(this.armatureFrame, this);
+        this.skillArmature.addFrameCallFunc(this.armatureFrame, this);
         this.buffIcon.visible = false;
         let attr = modHero.addEquipAttr(data);      //test
         this.attr.initHeroAttr(data[1]);

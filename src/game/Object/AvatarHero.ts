@@ -2,8 +2,8 @@
  * 自身镜像
  */
 class AvatarHero extends Alliance {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
     }
 
     public initDragonBonesArmature(name:string):void {
@@ -17,13 +17,13 @@ class AvatarHero extends Alliance {
             BaseGameObject.Action_Enter
         ]);
 
-        this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.effectArmature.scaleX = 1.5;
         this.effectArmature.scaleY = 1.5;
     }
 
     public init(data:Array<any>, isPVP:boolean=false):void {
         super.init(data);
+        this.effectArmature.addCompleteCallFunc(this.effectArmaturePlayEnd, this);
         this.attr = data[1];
         this.atk_timer.delay = this.attr.wsp * 1000;
         this.isPVP = isPVP;
@@ -177,7 +177,7 @@ class AvatarHero extends Alliance {
         this.curState = "";
         let index:number = GameData.heros.indexOf(this);
         GameData.heros.splice(index, 1);
-        ObjectPool.push(this);
+        GameObjectPool.push(this);
         if (this && this.parent && this.parent.removeChild) this.parent.removeChild(this);
     }
     /**

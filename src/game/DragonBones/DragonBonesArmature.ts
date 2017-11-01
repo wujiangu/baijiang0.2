@@ -208,6 +208,10 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
         this.removeLiteners();
     }
 
+    public getArmature():dragonBones.Armature {
+        return this._armature;
+    }
+
     private _armature:dragonBones.Armature;
     private _clock:dragonBones.WorldClock;
     private _armatureDisplay:any;

@@ -3,7 +3,7 @@
  */
 class BaseGameObject extends egret.DisplayObjectContainer {
 
-    public constructor() {
+    public constructor(name:string=null) {
         super();
         this.attr = new BaseCharactorData();
         this.armature = new DragonBonesArmatureContainer();

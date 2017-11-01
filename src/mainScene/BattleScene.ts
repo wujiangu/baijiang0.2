@@ -332,7 +332,7 @@ class BattleScene extends Base {
      * 创建英雄
      */
     public createHero(revivalType:number = 0, hp:number = 0):void {
-        this.hero = ObjectPool.pop("Hero");
+        this.hero = GameObjectPool.pop(GameData.curHero, "Hero", GameData.curHero);
         GameData.heros.push(this.hero);
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];
@@ -351,7 +351,7 @@ class BattleScene extends Base {
      * 创建镜像
      */
     public createMirror(data:Array<any>, isPVP:boolean=false) {
-        let mirror = ObjectPool.pop("AvatarHero");
+        let mirror = GameObjectPool.pop(data[0], "AvatarHero", data[0]);
         GameData.heros.push(mirror);
         mirror.init(data, isPVP);
         mirror.x = MathUtils.getRandom(100, 1050);
@@ -374,8 +374,8 @@ class BattleScene extends Base {
     }
 
     public createSingleMonster(data:Array<any>, isElite:boolean = false, isSummon:boolean = false):void {
-        if (isElite) this.monster = ObjectPool.pop("EliteMonster");
-        else this.monster = ObjectPool.pop("Monster");
+        if (isElite) this.monster = GameObjectPool.pop(data[0], "EliteMonster", data[0]);
+        else this.monster = GameObjectPool.pop(data[0], "Monster", data[0]);
         GameData.monsters.push(this.monster);
         // Common.log("怪物的数据---->", data);
         this.monster.init(data, isElite, isSummon);
@@ -395,7 +395,7 @@ class BattleScene extends Base {
      * 创建Boss
      */
     public createBoss(data):void {
-        this.boss = ObjectPool.pop("Boss");
+        this.boss = GameObjectPool.pop(data[0], "Boss", data[0]);
         GameData.boss.push(this.boss);
         this.boss.init(data);
         this.boss.x = MathUtils.getRandom(100, 1050);

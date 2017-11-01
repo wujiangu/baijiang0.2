@@ -40,7 +40,6 @@ class DragonBonesFactory {
     public makeArmature(name:string, dragonBonesName?:string, playSpeed:number = -1):DragonBonesArmature {
         let armature:dragonBones.Armature = this.factory.buildArmature(name, dragonBonesName);
         if (!armature) {
-            Common.log("不存在");
             return null;
         }
         let clock:dragonBones.WorldClock = this.createWorldClock(playSpeed);

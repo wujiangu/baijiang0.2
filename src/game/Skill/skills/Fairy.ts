@@ -60,7 +60,7 @@ class Fairy extends SkillBase {
             this.mirrors[i].curState = "";
             let index:number = GameData.heros.indexOf(this.mirrors[i]);
             GameData.heros.splice(index, 1);
-            ObjectPool.push(this.mirrors[i]);
+            GameObjectPool.push(this.mirrors[i]);
             if (this.mirrors[i] && this.mirrors[i].parent && this.mirrors[i].parent.removeChild) {
                 this.mirrors[i].parent.removeChild(this.mirrors[i]);
                 this.mirrors.splice(i, 1);

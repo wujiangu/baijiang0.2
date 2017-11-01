@@ -240,7 +240,7 @@ class PVPScene extends Base {
      * 创建镜像
      */
     public createMirror(data:Array<any>, isPVP:boolean=false) {
-        let mirror = ObjectPool.pop("AvatarHero");
+        let mirror = GameObjectPool.pop(data[0], "AvatarHero", data[0]);
         GameData.heros.push(mirror);
         mirror.init(data, isPVP);
         mirror.x = MathUtils.getRandom(100, 1050);

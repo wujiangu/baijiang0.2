@@ -3,9 +3,10 @@
  * 技能1的范围: 宽:180, 高:85
  */
 class Boss extends Enermy {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
         this._skill = new Array();
+        this.initDragonBonesArmature(name);
     }
 
     public initDragonBonesArmature(name:string):void {
@@ -40,10 +41,10 @@ class Boss extends Enermy {
     }
 
     public init(data:Array<any>) {
-        Common.log(JSON.stringify(data[1]));
+        // Common.log(JSON.stringify(data[1]));
         this.attr.initEnermyAttr(data[1].attr);
         super.init(data);
-        this.initDragonBonesArmature(data[0]);
+        // this.initDragonBonesArmature(data[0]);
         //boss技能
         this._addSkill(data[1])
         this.skillPoint = new egret.Point();

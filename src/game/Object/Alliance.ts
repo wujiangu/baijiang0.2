@@ -2,8 +2,9 @@
  * 我方人物
  */
 class Alliance extends BaseGameObject {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
+        this.initDragonBonesArmature(name);
     }
 
     public initDragonBonesArmature(name:string):void {
@@ -44,7 +45,7 @@ class Alliance extends BaseGameObject {
     public init(data:Array<any>):void {
         this.isInvincible = true;
         super.init(data);
-        this.initDragonBonesArmature(data[0]);
+        // this.initDragonBonesArmature(data[0]);
         this.name = data[0];
         this.offset = [[1, -113], [77, -109], [121, -50], [75, 14], [0, 23]];
         // this.offset = [[2, -74], [49, -71], [79, -32], [50, 9], [0, 15]]

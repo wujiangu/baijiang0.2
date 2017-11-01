@@ -123,7 +123,7 @@ namespace modBattle {
             if (monster && monster.parent && monster.parent.removeChild) {
                 monster.parent.removeChild(monster);
             }                  
-            ObjectPool.push(GameData.monsters[i]);
+            GameObjectPool.push(GameData.monsters[i]);
         }
         for (let i = 0; i < bossCount; i++) {
             let boss:Boss = GameData.boss[i];
@@ -132,7 +132,7 @@ namespace modBattle {
             if (boss && boss.parent && boss.parent.removeChild) {
                 boss.parent.removeChild(boss);
             }                  
-            ObjectPool.push(GameData.boss[i]);
+            GameObjectPool.push(GameData.boss[i]);
         }
         for (let i = 0; i < monsterCount; i++) GameData.monsters.pop();
         for (let i = 0; i < bossCount; i++) GameData.boss.pop();
@@ -150,7 +150,7 @@ namespace modBattle {
             hero.recycleSkill();
             // hero.stopDragonBonesArmature();
             if (hero && hero.parent && hero.parent.removeChild) hero.parent.removeChild(hero);
-            ObjectPool.push(GameData.heros[i]);
+            GameObjectPool.push(GameData.heros[i]);
         }
         for (let i = 0; i < heroCount; i++) GameData.heros.pop();
     }

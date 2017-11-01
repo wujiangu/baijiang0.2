@@ -2,8 +2,9 @@
  * 怪物
  */
 class Monster extends Enermy {
-    public constructor() {
-        super();
+    public constructor(name:string) {
+        super(name);
+        this.initDragonBonesArmature(name);
     }
 
     public initDragonBonesArmature(name:string):void {
@@ -25,7 +26,6 @@ class Monster extends Enermy {
             Monster.Action_Ready03
         ]);
         //增加动画帧执行函数
-        this.armature.addFrameCallFunc(this.armatureFrame, this);
         this.armature.scaleX = 1.5;
         this.armature.scaleY = 1.5;
     }
@@ -35,7 +35,8 @@ class Monster extends Enermy {
         super.init(data);
         this._isAvatar = data[1].isAvatar;
         this.direction = data[1].direction;
-        this.initDragonBonesArmature(data[0]);
+        // this.initDragonBonesArmature(data[0]);
+        this.armature.addFrameCallFunc(this.armatureFrame, this);
         this.addSkillArmature(data[1].type);
         this.isSummon = isSummon;
         this.isElite = isElite;
