@@ -55,6 +55,7 @@
     "resource/popup/SDDialogSkin.exml",
     "resource/popup/ShareDialogSkin.exml",
     "resource/popup/SignDialogSkin.exml",
+    "resource/popup/addDeskPopSkin.exml",
     "resource/popup/battleFailPopSkin.exml",
     "resource/popup/battlePausePopSkin.exml",
     "resource/popup/battleWinPopSkin.exml",

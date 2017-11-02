@@ -283,6 +283,7 @@ class Enermy extends BaseGameObject {
         TimerManager.getInstance().remove(this.disappear, this);
         if (this.curState != Enermy.Action_Dead) return;
         GameObjectPool.push(this);
+        this.removeComplete();
         if (this.parent && this.parent.removeChild) this.parent.removeChild(this);
     }
     /**

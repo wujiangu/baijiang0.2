@@ -12,7 +12,7 @@ namespace modLogin {
         UserData.UserId = userBase["uid"];
         heartTimer = new egret.Timer(15000, 0);
         let platform = Common.platformType();
-        if (platform == "micromessenger") payTimer = new egret.Timer(15000, 0);
+        if (platform == "micromessenger") payTimer = new egret.Timer(3000, 0);
         newUserData = RES.getRes("TcNewUser_json");
     }
 
@@ -68,7 +68,7 @@ namespace modLogin {
      */
     function getUserDataFromSever(callBack:Function):void {
         HttpRequest.getInstance().send("GET", "userinfo", {}, (data)=>{
-            // egret.log("用户信息----->", JSON.stringify(data));
+            egret.log("用户信息----->", JSON.stringify(data));
             if (Object.keys(data.userInfo).length == 0) {
             // if (data.userInfo.roleName == null) {
                 //新用户
@@ -177,6 +177,7 @@ namespace modLogin {
         userBase["sex"] = getUserData("sex=");
         userBase["time"] = getUserData("time=");
         userBase["wxopenid"] = getUserData("wxopenid=");
+        userBase["sdw_from"] = getUserData("sdw_from=");
         userBase["sdw_test"] = false;
         if (window["isDebug"]){
             userBase["sdw_test"] = true;
@@ -185,6 +186,7 @@ namespace modLogin {
         }
         userBase["cburl"] = encodeURI(str1);
         userBase["reurl"] = encodeURI(str2);
+        egret.log("地址--->", userBase["cburl"]);
     }
 
     /**

@@ -28,6 +28,7 @@ class Monster extends Enermy {
         //增加动画帧执行函数
         this.armature.scaleX = 1.5;
         this.armature.scaleY = 1.5;
+        this._isAddSkillArmature = false;
     }
 
     public init(data:Array<any>, isElite:boolean = false, isSummon:boolean = false) {
@@ -35,7 +36,6 @@ class Monster extends Enermy {
         super.init(data);
         this._isAvatar = data[1].isAvatar;
         this.direction = data[1].direction;
-        // this.initDragonBonesArmature(data[0]);
         this.armature.addFrameCallFunc(this.armatureFrame, this);
         this.addSkillArmature(data[1].type);
         this.isSummon = isSummon;
@@ -55,12 +55,13 @@ class Monster extends Enermy {
      */
     public addSkillArmature(name:string):void {
         //释放主动技能动画
-        if (ConfigManager.isInArmatures(`${name}_skill`)) {
+        if (ConfigManager.isInArmatures(`${name}_skill`) && !this._isAddSkillArmature) {
             this.skillArmature.register(DragonBonesFactory.getInstance().makeArmature(`${name}_skill`, `${name}_skill`, 10), [
                 "skill01_01",
                 "skill01_02"
             ]);
             this.skillArmature.addFrameCallFunc(this.skillArmatureFrame, this);
+            this._isAddSkillArmature = true;
         }
         this.skillArmature.scaleX = 1.5;
         this.skillArmature.scaleY = 1.5;
@@ -376,6 +377,8 @@ class Monster extends Enermy {
     private _deltaY:number;
     /**远程攻击击中 */
     private skill_atkStatus:boolean;
+    /** */
+    private _isAddSkillArmature:boolean;
     /*************英雄的动作***************/
     private static Action_Ready01:string = "xuli01";
     private static Action_Ready02:string = "xuli02";

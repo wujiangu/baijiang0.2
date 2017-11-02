@@ -48,7 +48,6 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
                 return;
             }
         }
-        
         this._completeCalls.push([func, target]);
     }
     /**
@@ -75,7 +74,6 @@ class DragonBonesArmature extends egret.DisplayObjectContainer {
                 return;
             }
         }
-        
         this._frameCalls.push([func, target]);
     }
 

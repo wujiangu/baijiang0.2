@@ -178,6 +178,10 @@ class Main extends eui.UILayer {
         // egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
         GameData.isDebug = false;
         modLogin.sendHeartBeat();
+        let status = UserDataInfo.GetInstance().GetBasicData("roleSex");
+        if (modLogin.getBaseData("sdw_from") == "sdw_desktop" && status == 1) {
+            UserDataInfo.GetInstance().SetBasic("roleSex", {role_sex:2});
+        }
     }
 
     private test():void {

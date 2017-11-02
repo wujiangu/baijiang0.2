@@ -32,7 +32,8 @@ module modShare {
         let data:any = {};
         data.title = "百将斩";
         data.desc = desc;
-        data.link = "http://www.shandw.com/m/ngame/?gid=1112169032&channel="+modLogin.getBaseData("channel");
+        // data.link = "http://www.shandw.com/m/ngame/?gid=1112169032&channel="+modLogin.getBaseData("channel");
+        data.link = modLogin.getBaseData("cburl");
         let index:number = MathUtils.getRandom(1, 3);
         data.imgUrl = "http://"+location.host+"/bjz/resource/assets/bg/"+"share"+index+".png";
         share(data, isInit);

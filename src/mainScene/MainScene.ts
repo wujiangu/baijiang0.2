@@ -172,7 +172,9 @@ class MainScene extends Base {
                 WindowManager.GetInstance().GetWindow("SignDialog").Show();
             break;
             case this.btn_addDesk:
-                if (window["sdw"].canAddDesktop) window["sdw"].addDesktop();
+                if (window["sdw"].canAddDesktop) {
+                    WindowManager.GetInstance().GetWindow("AddDeskPop").Show();
+                }
             break;
             case this.btn_fullscene:
                 if (!this.isFull && window["sdw"].requestFullScreen) {

@@ -96,7 +96,7 @@
 		<e:Label text="等级：" x="420.34" y="180" size="22" fontFamily="Microsoft YaHei" bold="true" textColor="0x72685b"/>
 		<e:Label id="lab_lv" text="0/10" x="504.36" y="180" size="22" fontFamily="Microsoft YaHei" bold="true" textColor="0x72685b"/>
 		<e:Label id="lab_condition" text="需要xx天赋升到5级。" x="424.01" y="181.83" fontFamily="Microsoft YaHei" size="22" textColor="0x8c0a0a" bold="true" visible="false"/>
-		<e:Label id="lab_skillDetail" text="对敌方英雄造成伤害时，回复伤害的10%血量。" x="420.34" y="214" fontFamily="Microsoft YaHei" size="20" multiline="true" width="291" lineSpacing="10" bold="true" anchorOffsetX="0" anchorOffsetY="0" height="170" textColor="0x595959" visible="false"/>
+		<e:Label id="lab_skillDetail" text="对敌方英雄造成伤害时，回复伤害的10%血量。" x="420.34" y="214" fontFamily="Microsoft YaHei" size="20" multiline="true" width="291" lineSpacing="10" bold="true" anchorOffsetX="0" anchorOffsetY="0" height="170" textColor="0x595959"/>
 		<e:Button id="btn_upPower" label="1000" x="420" y="395">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">

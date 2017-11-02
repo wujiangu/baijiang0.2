@@ -222,7 +222,7 @@ class PVPScene extends Base {
      * 创建英雄
      */
     private _createHero():void {
-        this._hero = ObjectPool.pop("Hero");
+        this._hero = GameObjectPool.pop(GameData.curHero, "Hero", GameData.curHero);
         GameData.heros.push(this._hero);
         //测试
         let data = ConfigManager[`${GameData.curHero}Attr`];

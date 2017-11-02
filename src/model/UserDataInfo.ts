@@ -29,6 +29,14 @@ class UserDataInfo{
         },this);
     }
 
+    /**服务端与前端命名不同 */
+    public SetBasic(name:string, data:any):void {
+        for(let key in data){
+            this.userData[name] = data[key];
+        }
+        HttpRequest.getInstance().send("POST", "userinfo", data);
+    }
+
     public DealUserData(name:string, val:number):void{
         let tempData = {}
         tempData[name] = val;

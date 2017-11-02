@@ -143,7 +143,7 @@ class BattleFailPop extends PopupWindow {
         // let upLv = 0;
         // let upExp = 0;
         this._isUp = false;
-        // Common.log("before等级---->", level, exp, getExp, tcHeroUp[0]);
+        egret.log("before等级---->", level, exp, tcHeroUp[level-1].exp);
         // for (let i = level-1; i < 300; i++) {
         //     if (getExp >= tcHeroUp[i].exp) {
         //         getExp -= tcHeroUp[i].exp;

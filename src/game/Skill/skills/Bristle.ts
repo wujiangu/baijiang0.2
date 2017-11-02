@@ -57,7 +57,7 @@ class Bristle extends SkillBase {
         target.setEnermy();
         let enermy = target.getEnermy();
         this.duration = target.attr.dur;
-        this.damage = target.originAtk;
+        this.damage = target.originAtk * 0.25;
         for (let i = 0; i < enermy.length; i++) {
             if (enermy[i].type == 1) {
                 if (enermy[i]._isAvatar) enermy[i].gotoHurt(1, true);

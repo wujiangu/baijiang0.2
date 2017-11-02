@@ -259,8 +259,8 @@ namespace modBattle {
         //英雄数据
         let level:number = heroData.lv;
         let getExp:number = Exp + heroData.exp;
-        let upLv = 0;
-        let upExp = 0;
+        let upLv = level;
+        let upExp = getExp;
         let addCount:number = 0;
         if (getExp >= tcHeroUp[level-1].exp && level <= 300) {
             upLv = level + 1;
@@ -268,10 +268,10 @@ namespace modBattle {
             addCount = ConfigManager.tcPower[level-1].power;
             sumPower += addCount;
             HeroData.setHeroAttr(GameData.curHero, upLv);
-            heroData["lv"] = upLv;
-            heroData["exp"] = upExp;
-            HttpRequest.getInstance().send("POST", "hero", {heroId:heroData.heroId, lv:heroData.lv, exp:heroData.exp});
         }
+        heroData["lv"] = upLv;
+        heroData["exp"] = upExp;
+        HttpRequest.getInstance().send("POST", "hero", {heroId:heroData.heroId, lv:heroData.lv, exp:heroData.exp});
         let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + Exp;
         let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + Soul;
         let source_power = UserDataInfo.GetInstance().GetBasicData("power") + addCount;

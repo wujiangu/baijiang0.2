@@ -306,8 +306,8 @@ class BattleSceneCom extends Base {
      */
     public changeEliteIcon(num:number):void {
         this.img_boss[num-1].source = "battle_res.battle_0016";
-        let curStage = GameData.curStage + 1;
-        this.lab_stage.text = this.stageStr(curStage);
+        // let curStage = GameData.curStage + 1;
+        this.lab_stage.text = this.stageStr(GameData.curStage);
         this.lab_stage.anchorOffsetX = this.lab_stage.width/2;
     }
     /**重置图标 */

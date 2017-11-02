@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280" locked="true"/>
+	<e:Image x="144" y="93" source="share_0001_png" locked="true"/>
+	<e:Label text="加入桌面" y="133" left="538" bold="true" fontFamily="Microsoft YaHei" size="40" textColor="0x707070"/>
+
+	<e:Button id="btn_back" label="" x="834" y="119" scaleX="1.5" scaleY="1.5">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_res.button_0009" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Group width="60" height="60" x="625" y="207">
+		<e:Image source="equip_res.Sequip8" x="0" y="0" width="60" height="60" scaleX="1" scaleY="1"/>
+		<e:Label text="诸葛连弩" y="59" fontFamily="Microsoft YaHei" size="20" scaleX="1" scaleY="1" horizontalCenter="-1" textColor="0xe5d7d7"/>
+	</e:Group>
+	<e:Group width="60" height="60" x="753" y="207">
+		<e:Image x="0" y="0" width="60" height="60" scaleX="1" scaleY="1" source="common_res.basic_diamond"/>
+		<e:Label text="钻石" y="58" fontFamily="Microsoft YaHei" size="20" scaleX="1" scaleY="1" horizontalCenter="1" textColor="0xe5d7d7"/>
+		<e:Label text="50" y="39" fontFamily="Microsoft YaHei" size="15" scaleX="1" scaleY="1" horizontalCenter="16"/>
+	</e:Group>
+	<e:Group width="60" height="60" x="647" y="291">
+		<e:Image x="0" y="0" width="60" height="60" scaleX="1" scaleY="1" source="common_res.basic_exp"/>
+		<e:Label text="经验" y="59" fontFamily="Microsoft YaHei" size="20" scaleX="1" scaleY="1" horizontalCenter="-1" textColor="0xe5d7d7"/>
+		<e:Label text="10W" y="39" fontFamily="Microsoft YaHei" size="15" scaleX="1" scaleY="1" right="5"/>
+	</e:Group>
+	<e:Group width="60" height="60" x="734" y="291">
+		<e:Image x="0" y="0" width="60" height="60" scaleX="1" scaleY="1" source="common_res.basic_soul"/>
+		<e:Label text="魂石" y="59" fontFamily="Microsoft YaHei" size="20" scaleX="1" scaleY="1" horizontalCenter="-1" textColor="0xe5d7d7"/>
+		<e:Label text="10W" y="39" fontFamily="Microsoft YaHei" size="15" scaleX="1" scaleY="1" right="5" x="364"/>
+	</e:Group>
+	<e:Label text="创建快捷图标，战力急速飙升！" x="415" y="388" fontFamily="Microsoft YaHei" textColor="0xd6810c"/>
+	<e:Button id="btn_get" label="前往" y="428" horizontalCenter="50">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_res.button_0012" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size="30" size.down="27" textColor="0x260303"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+
+
+
+
+
+
+</e:Skin>
