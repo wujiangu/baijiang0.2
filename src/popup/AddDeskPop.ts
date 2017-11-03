@@ -39,7 +39,7 @@ class AddDeskPop extends PopupWindow {
                     let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + 100000;
                     let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + 100000;
                     UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul});
-                    UserDataInfo.GetInstance().SetBasic("roleSex", {role_sex:3});
+                    UserDataInfo.GetInstance().SetBasicData({roleSex:3});
                     GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
                 }else{
                     Animations.showTips("你已领取完奖励，不能重复领取", 1);
