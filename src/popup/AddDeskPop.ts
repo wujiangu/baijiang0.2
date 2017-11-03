@@ -34,7 +34,7 @@ class AddDeskPop extends PopupWindow {
                     //武器
                     let equipId:number = modEquip.getRandEquipId();
                     let info:modEquip.EquipInfo = new modEquip.EquipInfo(17,0,4,1,equipId);
-                    modEquip.ReqInsertAndUpEquip(info);
+                    modEquip.EquipData.GetInstance().Add(info);
 
                     let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + 100000;
                     let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + 100000;
