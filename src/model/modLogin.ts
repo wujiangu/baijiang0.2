@@ -12,7 +12,7 @@ namespace modLogin {
         UserData.UserId = userBase["uid"];
         heartTimer = new egret.Timer(15000, 0);
         let platform = Common.platformType();
-        if (platform == "micromessenger") payTimer = new egret.Timer(3000, 0);
+        if (platform == "micromessenger") payTimer = new egret.Timer(2000, 0);
         newUserData = RES.getRes("TcNewUser_json");
     }
 
@@ -47,9 +47,17 @@ namespace modLogin {
         if (Common.platformType() != "micromessenger") return;
         payTimer.addEventListener(egret.TimerEvent.TIMER, ()=>{
             HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
-                UserDataInfo.GetInstance().SetBasicData({diamond:result.diamond});
-                SceneManager.mainScene.show_label_text();
-                ShopDialog.instance.show_label_text();
+                let curDiamond:number = UserDataInfo.GetInstance().GetBasicData("diamond");
+                if (curDiamond < result.diamond) {
+                    payTimer.stop();
+                    let shareNum:number = result.diamond - curDiamond;
+                    UserDataInfo.GetInstance().SetBasicData({diamond:result.diamond});
+                    SceneManager.mainScene.show_label_text();
+                    ShopDialog.instance.show_label_text();
+                    modShop.getRechargeAward((type, id)=>{
+                        WindowManager.GetInstance().GetWindow("RewardTipsPop").Show(shareNum, type, id);
+                    });
+                }
             }, modLogin);
         }, modLogin);
         payTimer.start();

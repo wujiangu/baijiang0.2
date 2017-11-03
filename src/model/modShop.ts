@@ -166,15 +166,19 @@ namespace modShop {
     /**
      * 获取充值奖励(1元和6元档位)
      */
-    export function getRechargeAward():void {
+    export function getRechargeAward(callBack:Function = null):void {
         HttpRequest.getInstance().send("GET", "rechargeAward", {}, (result)=>{
             let award:Array<any> = result.award;
+            let type:string = null;
+            let id:number = null;
             if (award.length > 0) {
                 for (let i = 0; i < award.length; i++) {
                     if (award[i].kind == 1 && award[i].status == 1) {
                         let data = {"type":1,"name":"equip","count":1,"id":24};
                         modEquip.EquipData.GetInstance().InsertEquipFromReward(data);
                         HttpRequest.getInstance().send("POST", "rechargeAward", {kind:1});
+                        type = "equip";
+                        id = 24;
                     }
                     else if (award[i].kind == 6 && award[i].status == 1) {
                         HeroData.addHeroData("guanyu");
@@ -182,8 +186,11 @@ namespace modShop {
                             WindowManager.GetInstance().getObjFromStr("ReadyDialog").updateList();
                         }
                         HttpRequest.getInstance().send("POST", "rechargeAward", {kind:6});
+                        type = "hero";
+                        id = 5;
                     }
                 }
+                if (callBack) callBack(type, id);
             }
         }, modShop);
     }

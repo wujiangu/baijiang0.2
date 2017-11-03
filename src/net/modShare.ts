@@ -108,7 +108,6 @@ module modShare {
    function success():void {
         // egret.log("分享成功");
         window["hide"]();
-        Animations.showTips("分享成功", 1);
 		if (!isReward) return;
         let shareNum:number = Common.GetShareDiamond();
         if(shareNum != -1){
@@ -117,6 +116,7 @@ module modShare {
                 UserDataInfo.GetInstance().SetBasicData({shareNum:share_num});
                 modShare.isFirstShare = false;
                 isReward = false;
+                WindowManager.GetInstance().GetWindow("RewardTipsPop").Show(shareNum);
             })
         }
 

@@ -1,6 +1,6 @@
 {
     "diamond":[
-        {"name":"购买10钻石", "type":"rmb", "count":10, "price":1, "money":1, "imgItem":"common_res.shop_0012", "detail":"内有10钻石,首次购买送倚天剑"},
+        {"name":"购买10钻石", "type":"rmb", "count":10, "price":1, "money":100, "imgItem":"common_res.shop_0012", "detail":"内有10钻石,首次购买送倚天剑"},
         {"name":"购买60钻石", "type":"rmb", "count":60, "price":6, "money":600, "imgItem":"common_res.shop_0026", "detail":"内有60钻石,首次购买送关羽"},        
         {"name":"购买300钻石", "type":"rmb", "count":300, "price":30, "money":3000, "imgItem":"common_res.shop_0029", "detail":"内有300钻石"},
         {"name":"购买1280钻石", "type":"rmb", "count":1280, "price":128, "money":12800,  "imgItem":"common_res.shop_0030", "detail":"内有1280钻石"}

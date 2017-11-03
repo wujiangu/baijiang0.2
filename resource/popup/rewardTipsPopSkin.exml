@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1136" height="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="mask_png" width="5680" height="3200" x="-2272" y="-1280" locked="true"/>
+	<e:Image x="254" y="116" anchorOffsetY="0" source="popmenu_0001_png" locked="true"/>
+	<e:Label text="恭喜您获得" y="147" horizontalCenter="3" fontFamily="KaiTi" size="50" textColor="0xe0ac0f"/>
+
+
+
+
+
+
+
+
+
+	<e:Group id="group_diamond" width="140" height="60" x="498" y="246" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Image source="common_res.basic_diamond" x="0" y="0" width="60" height="60"/>
+		<e:Label id="text_diamond" text="X50" x="63.5" y="10" fontFamily="Microsoft YaHei" size="40" textColor="0x103dea"/>
+	</e:Group>
+	<e:Group id="group_other" width="140" height="60" x="498" y="320" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Image id="img_other" source="common_res.basic_diamond" x="0" y="0" width="60" height="60"/>
+		<e:Label id="text_other" text="X1" x="63.5" y="10" fontFamily="Microsoft YaHei" size="40" textColor="0xf2cc0c"/>
+	</e:Group>
+	<e:Button id="btn_cancel" label="取消" y="413" horizontalCenter="0">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="button_res.button_0012" width.down="90%" height.down="90%" horizontalCenter="0" verticalCenter="0"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="-8" fontFamily="Microsoft YaHei" bold="true" size="30" size.down="27" textColor="0x260303"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>

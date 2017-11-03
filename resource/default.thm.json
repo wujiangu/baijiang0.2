@@ -62,6 +62,7 @@
     "resource/popup/changeEquipSkin.exml",
     "resource/popup/drawCardPopSkin.exml",
     "resource/popup/hangupPopSkin.exml",
+    "resource/popup/rewardTipsPopSkin.exml",
     "resource/popup/shopItemPopSkin.exml"
   ]
 }
