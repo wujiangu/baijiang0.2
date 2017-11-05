@@ -34,6 +34,7 @@ class UserDataInfo{
         for(let key in data){
             this.userData[name] = data[key];
         }
+        data["roleName"] = this.userData.roleName;
         HttpRequest.getInstance().send("POST", "userinfo", data);
     }
 

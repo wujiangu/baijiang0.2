@@ -12,7 +12,7 @@ namespace modLogin {
         UserData.UserId = userBase["uid"];
         heartTimer = new egret.Timer(15000, 0);
         let platform = Common.platformType();
-        if (platform == "micromessenger") payTimer = new egret.Timer(2000, 0);
+        payTimer = new egret.Timer(2000, 0);
         newUserData = RES.getRes("TcNewUser_json");
     }
 
@@ -44,7 +44,6 @@ namespace modLogin {
      * 支付心跳包
      */
     export function sendPayHeart():void {
-        if (Common.platformType() != "micromessenger") return;
         payTimer.addEventListener(egret.TimerEvent.TIMER, ()=>{
             HttpRequest.getInstance().send("GET", "diamond", {}, (result)=>{
                 let curDiamond:number = UserDataInfo.GetInstance().GetBasicData("diamond");
@@ -67,7 +66,6 @@ namespace modLogin {
      * 关闭支付心跳包
      */
     export function closePayHeart():void {
-        if (Common.platformType() != "micromessenger") return;
         payTimer.stop();
     }
 
@@ -76,7 +74,7 @@ namespace modLogin {
      */
     function getUserDataFromSever(callBack:Function):void {
         HttpRequest.getInstance().send("GET", "userinfo", {}, (data)=>{
-            egret.log("用户信息----->", JSON.stringify(data));
+            // egret.log("用户信息----->", JSON.stringify(data));
             if (Object.keys(data.userInfo).length == 0) {
             // if (data.userInfo.roleName == null) {
                 //新用户

@@ -414,7 +414,7 @@ namespace modBattle {
             if (isElite || (!isElite && (GameData.curStage-1)%5 > 0)) {
                 SceneManager.battleScene.battleSceneCom.changeEliteIcon((GameData.curStage-1)%5);
             }
-            HttpRequest.getInstance().send("POST", "userinfo", {stage:GameData.curStage});
+            // HttpRequest.getInstance().send("POST", "userinfo", {stage:GameData.curStage});
             getEnermyDistribute(GameData.curStage);
             productCount = 0;
             // sumDead = 0;

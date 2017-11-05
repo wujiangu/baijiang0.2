@@ -25,11 +25,11 @@ class AddDeskPop extends PopupWindow {
         this.parent.removeChild(this);
         switch (event.currentTarget) {
             case this.btn_get:
-                if (this._status == 1) {
+                if (this._status == 0) {
                     window["sdw"].addDesktop();
                 }
-                else if (this._status == 2) {
-                    this._status = 3;
+                else if (this._status == 1) {
+                    this._status = 2;
                     this.btn_get.label = "已领取";
                     //武器
                     let equipId:number = modEquip.getRandEquipId();
@@ -38,11 +38,11 @@ class AddDeskPop extends PopupWindow {
 
                     let source_exp = UserDataInfo.GetInstance().GetBasicData("exp") + 100000;
                     let source_soul = UserDataInfo.GetInstance().GetBasicData("soul") + 100000;
-                    UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul});
-                    UserDataInfo.GetInstance().SetBasicData({roleSex:3});
+                    UserDataInfo.GetInstance().SetBasicData({exp:source_exp, soul:source_soul, stage:2});
                     GameLayerManager.gameLayer().dispatchEventWith(UserData.CHANGEDATA, false, 1);
+                    Animations.showTips("领取奖励成功", 1);
                 }else{
-                    Animations.showTips("你已领取完奖励，不能重复领取", 1);
+                    Animations.showTips("你已领取完奖励，不能重复领取", 1, true);
                 }
             break;
             default:
@@ -55,9 +55,9 @@ class AddDeskPop extends PopupWindow {
     public Show():void {
         super.Show();
         // roleSex代表加入桌面状态
-        this._status = UserDataInfo.GetInstance().GetBasicData("roleSex");
-        if (this._status == 1) this.btn_get.label = "前往";
-        else if (this._status == 2) this.btn_get.label = "领取";
+        this._status = UserDataInfo.GetInstance().GetBasicData("stage");
+        if (this._status == 0) this.btn_get.label = "前往";
+        else if (this._status == 1) this.btn_get.label = "领取";
         else this.btn_get.label = "已领取";
         Animations.PopupBackOut(this, 350);
     }
