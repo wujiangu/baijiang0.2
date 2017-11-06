@@ -178,9 +178,9 @@ class Main extends eui.UILayer {
         // egret.log("玩家信息---->", JSON.stringify(UserDataInfo.GetInstance().getUserInfo()));
         GameData.isDebug = false;
         modLogin.sendHeartBeat();
-        let status:number = UserDataInfo.GetInstance().GetBasicData("stage");
+        let status:number = UserDataInfo.GetInstance().GetBasicData("addDeskCount");
         if (modLogin.getBaseData("sdw_from") == "sdw_desktop" && status == 0) {
-            UserDataInfo.GetInstance().SetBasicData({stage:1});
+            UserDataInfo.GetInstance().SetBasicData({addDeskCount:1});
         }
     }
 
